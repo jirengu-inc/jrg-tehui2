@@ -14,6 +14,8 @@
 		div {
 			padding: 28px 26px 20px 30px;
 			background: #f6f6f6;
+            /* 解决下面疑问所加语句 */
+			min-width: 1676px;
 		}
 		table {
 			border: 2px solid #ccc;
@@ -36,13 +38,10 @@
 			background-color: #f9f9f9;
 		}
 		th, td {
-			border-bottom: 2px solid #ccc;
+			border: 2px solid #ccc;
 			/* 原图中内容宽度为836px，但下面的赋值并不能产生这样的效果。此处有疑问：怎样完美实现图中的宽度？想到在外面的div上使用overflow: scroll，但无作用。还请老师指点。*/
 /* 			width: 836px; */
 		}
-        th:first-child, td:first-child {
-            border-right: 2px solid #ccc;
-        }
 		
 	</style>
 </head>
