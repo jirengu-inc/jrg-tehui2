@@ -1,0 +1,22 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+body {
+	font-family: Microsoft Yahei;
+	font-size:16px;
+	line-height:1.5;
+	color:#333;
+}
+p{
+	color:#000;
+	text-indent: 2em;
+	line-height:1.5;
+}
+</style>
+</head>
+<body>
+	<p>一程序员去面试，面试官问：“你毕业才两年，这三年工作经验是怎么来的？！”程序员答：“加班。”</p>
+</body>
+</html>
