@@ -4,16 +4,72 @@
 	<meta charset="UTF-8" />
 	<title>Task 8-2</title>
 	<style>
-		body {
-			font-family: '微软雅黑', Helvetica, Arial, sans-serif;
-			/* reset */
+  	/* reset */
+  	body, div, ul, li {
 			margin: 0;
 			padding: 0;
 		}
+		body {
+			font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+			font-size: 16px;
+			line-height: 1.5;
+		}
 		a {
 			text-decoration: none;
-			color: #007f00;
+			color: #008000;
 		}
+		li {
+  		list-style-type: none;
+		}
+		#header {
+  		width: 100%;
+  		background: #333;
+  		padding: 23px 10px;
+  		font-size: 20px;
+		}
+		.nav li {
+  		display: inline-block;
+  		margin-right: 20px;
+		}
+		
+		#content {
+  		padding: 10px;
+		}
+		
+		.desc {
+  		font-size: 14px;
+  		color: #666;
+		}
+		
+		#content h1 {
+  		text-align: center;
+  		color: #008000;
+		}
+		
+		#content h3 {
+  		border-bottom: 1px dashed #ccc;
+		}
+		
+		#content p {
+  		text-indent: 2em;
+		}
+		
+		.tree li {
+  		margin-left: 30px;
+		}
+		
+		.tree > li:before {
+  		content: "+ ";
+		}
+		
+		.tree li.open:before {
+  		content: "- ";
+		}
+		
+		li.has-child:nth-child(2) ul {
+  		display: none;
+		}
+		
 	</style>
 </head>
 <body>
