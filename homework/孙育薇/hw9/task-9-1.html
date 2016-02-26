@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Task 9-1</title>
+	<style>
+  	a {
+    	color: #333;
+    	text-decoration: none;
+    	font-size: 22px;
+    }
+    li {list-style: none;}
+    
+  	.player > li {
+    	display: inline-block;
+    	position: relative;
+    	margin-left: 30px;
+  	}
+  	.player > li:hover a {
+    	color: #9d55b8;
+  	}
+  	
+  	.forward:before, .start:before, .stop:before {
+    	content: "";
+    	background: url(player_icon.png);
+    	width: 22px;
+    	height: 22px;
+    	background-size: 22px;
+    	position: absolute;
+    	left: -22px;
+  	}
+  	.forward:before {
+    	background-position: 0 -22px;    	
+  	}
+  	.start:before {
+    	background-position: 0 -111px;
+    }
+  	.stop:before {
+    	background-position: 0 -66px;
+  	}
+  	.forward:hover:before {
+    	background-position: 0 0;    	
+  	}
+  	.start:hover:before {
+    	background-position: 0 -89px;
+    }
+  	.stop:hover:before {
+    	background-position: 0 -44px;
+  	}
+  	
+  	
+	</style>
+</head>
+<body>
+	<ul class="player">
+  	<li class="forward"><a href="#">前进</a></li>
+  	<li class="start"><a href="#">开始</a></li>
+  	<li class="stop"><a href="#">停止</a></li>
+	</ul>
+</body>
+</html>
