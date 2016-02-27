@@ -1,80 +1,71 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta charset="UTF-8" />
-	<title>Task 8-2</title>
-	<style>
-  	/* reset */
-  	body, div, ul, li {
-			margin: 0;
-			padding: 0;
-		}
-		body {
-			font-family: '微软雅黑', Helvetica, Arial, sans-serif;
-			font-size: 16px;
-			line-height: 1.5;
-		}
-		a {
-			text-decoration: none;
-			color: #008000;
-		}
-		li {
-  		list-style-type: none;
-		}
-		#header {
-  		width: 100%;
-  		background: #333;
-  		padding: 23px 10px;
-  		font-size: 20px;
-		}
-		.nav li {
-  		display: inline-block;
-  		margin-right: 20px;
-		}
-		
-		#content {
-  		padding: 10px;
-		}
-		
-		.desc {
-  		font-size: 14px;
-  		color: #666;
-		}
-		
-		#content h1 {
-  		text-align: center;
-  		color: #008000;
-		}
-		
-		#content h3 {
-  		border-bottom: 1px dashed #ccc;
-		}
-		
-		#content p {
-  		text-indent: 2em;
-		}
-		
-		.tree li {
-  		margin-left: 30px;
-		}
-		
-		.tree > li:before {
-  		content: "+ ";
-		}
-		
-		.tree li.open:before {
-  		content: "- ";
-		}
-		
-		li.has-child:nth-child(2) ul {
-  		display: none;
-		}
-		.tree>li:before{
-      content:"-";
-    }
-	</style>
+  <meta charset="UTF-8">
+  <title>task-8-2</title>
+  <style>
+      *{
+        font-family: "Microsoft Yahei";
+      }
+       #header{
+          background-color: #403B3B;
+          height: 50px;
+          line-height: 50px;
+          padding-left: 0px;
+       }
+       #header li{
+          display: inline-block;
+          font-size: 15px;
+          margin-left: 20px;
+       }
+       .nav{
+          margin-left: 0px;
+          padding-left: 0px;
+          padding-right: 20px;
+       }
+       a{
+          text-decoration: none;
+          color: green; 
+          font-weight: bold;  
+       }
+       .title{
+          text-align: center;
+          font-size: 30px;
+          color:green;
+       }
+       .tree,p{
+          padding-left: 30px;
+       }
+       .desc{
+          color:#7D7272;
+       }
+       h3{
+          padding-bottom: 5px;
+          border-bottom: 2px dotted #ccc;
+       }
+       .tree li{
+          list-style-type: none;
+
+       }
+       .open li{
+           color: gray;
+       }
+       .tree>li:before{
+          content: "+";
+       }
+
+       .tree .open:before{
+          content:"-";
+       }
+       .has-child:nth-child(2) li{
+          display: none;
+
+       }
+       
+  </style>
 </head>
 <body>
+  <body>
     <div id="header">
         <ul class="nav">
           <li><a href="">首页</a></li>
@@ -122,5 +113,7 @@
         </ul>
     </div>
     <div id="footer"></div>
+
+</body>
 </body>
 </html>
