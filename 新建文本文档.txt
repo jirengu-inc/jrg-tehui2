@@ -1,0 +1,28 @@
+13723438136
+
+13643491121
+
+git config --global user.name "若愚老师"  #设置用户名
+git config --global user.email "ruoyu@qq.com"  #设置邮箱
+
+mkdir test3   #创建文件夹
+cd test3      #cd到文件夹 
+git init      # 初始化本地git库文件夹
+touch README.md  # 创建README.md
+git add README.md  # 把README.md 添加到托管区
+git commit -m "first commit"  # 提交到本地库
+git remote add test git@github.com:Dwight923/tasks.git  #本地的库连到远程库，起名叫test
+git remote -v 查看默认状态
+git push -u test master # 把本地库里的内容推送到 test远程库的master分支
+
+
+git remote add jirengu git@github.com:jirengu-inc/jrg-tehui2.git
+
+
+3b27f33ffdbd5982020f976771e1f259
+
+
+chph0514@163.com
+Chen6688
+18703494214
+13934958271
