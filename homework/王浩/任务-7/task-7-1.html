@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-7-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	/*样式初始化*/
+	body,div,ul,li{
+		padding:0;
+		margin:0;
+	}
+	/*设置字体*/
+	body{
+		font-family: "Microsoft Yahei",Arial;
+	}
+	/*为导航栏添加边框*/
+	.nav,.nav-line{
+		border:solid 1px #ccc;
+		overflow: hidden;
+		margin:10px auto;
+		padding:10px;
+		width:800px;
+	}
+	/*去除ul样式*/
+	.nav ul,.nav-line{
+		list-style-type: none;
+	}
+	/*设置li左浮动*/
+	.nav li{
+		float:left;
+	}
+	/*设置字体的样式*/
+	.nav li a{
+		text-decoration: none;
+		display: block;
+		color:#444;
+		margin-right: 20px;
+		font-weight: bold;
+	}
+	.nav li:first-child a,.nav-line li:first-child a{
+		margin-left:20px;
+	}
+	.nav li:last-child a,.nav-line li:last-child a{
+		margin-left:20px;
+		color:#664B83;
+		border-bottom: dashed 1px #999;
+	}
+	
+	/*设置字体hover样式*/
+	.nav li a:hover,.nav-line li a:hover{
+		color:red;
+	}
+
+	.nav-line li{
+		display:inline-block;
+	}
+
+	.nav-line li a{
+		text-decoration: none;
+		color:#444;
+		font-weight: bold;
+		margin-right: 15px;
+	}
+</style>
+</head>
+<body>
+	<div class="nav">
+	    <ul>
+	    	<li><a href="#">主页</a></li>
+	    	<li><a href="#">课程</a></li>
+	    	<li><a href="#">视频</a></li>
+	    	<li><a href="#">关于</a></li>
+	    	<li><a href="#">float:left</a></li>
+	    </ul>
+    </div>
+    <div class="nav-line">
+	    <ul>
+	    	<li><a href="#">主页</a></li>
+	    	<li><a href="#">课程</a></li>
+	    	<li><a href="#">视频</a></li>
+	    	<li><a href="#">关于</a></li>
+	    	<li><a href="#">display:inline-block</a></li>
+	    </ul>
+    </div>
+</body>
+</html>
