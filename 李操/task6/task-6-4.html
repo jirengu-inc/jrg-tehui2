@@ -1,0 +1,26 @@
+<!-- 如何让图片水平垂直居中？ -->
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="我的任务6">
+	<meta name="keywords" content="饥人谷 李操 任务 大前端 html">
+	<title>task-6-4</title>
+	<style type="text/css">
+		.center{
+			width:400px;
+			height:400px;
+			background-color: #CCC;
+			display: table-cell;/*给普通元素赋予表格的特性，让浏览器以表格方式去渲染.center*/
+			vertical-align:middle;/*垂直居中，对表格或者表格特性的元素生效*/
+			text-align: center;/*水平居中*/
+			/*以上是常见的设置图片水平垂直居中的一种方法*/
+		}
+	</style>
+</head>
+<body>
+	<div class="center"><img src="http://cdn.duitang.com/uploads/item/201411/01/20141101173122_z3kTA.jpeg" alt="百度图片">
+	</div>
+</body>
+</html>
