@@ -9,19 +9,14 @@
 
 
   <style>
-    a,span{
-    	display: inline-block;
-  	    font-size: 35px
-    }
-    span{
-    	margin-left: 35px;
-    	width: 50px;
-    	height: 35px;
-    	line-height: 35px;
-    }
+   
     a{
-    	width: 35px;
+    	display: inline-block;
+  	    font-size: 35px;
+    	width: 85px;
     	height: 35px;
+    	padding-left: 35px;
+    	line-height: 35px;
     }
     ul{
     	height: 40px;
@@ -33,27 +28,22 @@
 		margin: 0 -3px;
 		width: 80px;
 	}
-	 span:hover{
-
-		color:#A75FC0;
-		position: relative;
-		cursor: pointer;
-	}
-	a,a:hover,span,span:hover{
+	
+	a,a:hover{
 		text-decoration:none;
 		color:#000;
 		font-size:20px;
 	}
 	a,a:hover{
 		
-		background: url(img/sprite.png);
+		background: url(img/sprite.png) no-repeat;
 	    position: absolute;
 	}
-	.next{
+	.next a{
 		background-position: 0 -65px;
 		
 	}
-	.next:hover{
+	.next a:hover{
 		background-position: 0 -100px;
 	    color: #A65DBF;
 		
@@ -62,7 +52,7 @@
 		background-position: 0 -32px ;
 		
 	}
-	.play a:hover,.play span:hover{
+	.play a:hover{
 		background-position: 0 -175px;
 		 color: #A65DBF;
 	}
@@ -71,7 +61,7 @@
 		
 	}
 
-     .stop a:hover,.stop span:hover{
+     .stop a:hover{
 	     background-position:0 0  ;
 	      color: #A65DBF;
     }
@@ -81,9 +71,9 @@
 </head>
 <body>
     <ul>
-    	<li class="next"><a href="#"></a><span>前进</span></li>
-    	<li class="play"><a href="#"><span>播放</span></a></li>
-    	<li class="stop"><a href="#"><span>停止</span></a></li>
+    	<li class="next"><a href="#">前进</a></li>
+    	<li class="play"><a href="#">播放</a></li>
+    	<li class="stop"><a href="#">停止</a></li>
     </ul>
 </body>
 </html>
