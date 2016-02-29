@@ -212,6 +212,57 @@
     	transform: rotate(64deg);
     	left: -40px;
     }
+    .taiji {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      box-shadow: 0 0 20px black;
+      border-radius: 100%;
+    }
+    .yin, .yang {
+      height: 200px;
+      width: 100px;
+      border-radius: 200px 0 0 200px;
+      position: relative;
+    }
+    .yin:after, .yang:after {
+      height: 100px;
+      width: 50px;
+      border-radius: 100px 0 0 100px;
+      content: "";
+      position: absolute;
+      left: 50px;
+      top: 100px;
+    }
+    .yin {background: black;}
+    .yin:after {background: white;}
+    .yang {
+      background: white;
+      transform: rotate(180deg);
+      position: absolute;
+      left: 100px;
+      top: 0;
+    }
+    .yang:after {background: black;}
+    .circle {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background: white;
+      position: absolute;
+      top: 25px;
+      left: 75px;
+    }
+    .circle:after {
+      content: "";
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+      background: black;
+      position: absolute;
+      top: 100px;
+      left: 0px;
+    }
 	</style>
 </head>
 <body>
@@ -235,6 +286,11 @@
   	<div class="heart"></div>
   	<div class="penta"></div>
   	<div class="star"></div>
+  	<div class="taiji">
+    	<div class="yin"></div>
+      <div class="yang"></div>
+      <div class="circle"></div>
+  	</div>
   	<h4>to be continued...</h4>
 	</div>
 </body>
