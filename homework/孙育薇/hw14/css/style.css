@@ -258,6 +258,7 @@ li {
     color: #fff;
     background: #1f496e;
     margin: 10px;
+    line-height: 45px;
 }
 
 .more .btn:first-of-type {
