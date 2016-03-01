@@ -302,6 +302,10 @@ li {
     color: #337ab7;
 }
 
+.social a:hover {
+    color: #1a507e;
+}
+
 .copyright {
     padding-top: 10px;
 }
