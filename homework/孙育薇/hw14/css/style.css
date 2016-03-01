@@ -18,6 +18,7 @@ html,body {height: 100%;} /* 保证#header高度占满屏幕 */
 
 a {
     text-decoration: none;
+    color: #337ab7;
 }
 
 li {
