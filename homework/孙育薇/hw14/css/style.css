@@ -220,6 +220,10 @@ li {
     width: 94%;
 }
 
+.work img:hover {
+    opacity: 0.6;
+}
+
 .work .btn {
     width: 125px;
     height: 35px;
