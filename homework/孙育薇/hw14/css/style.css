@@ -1,0 +1,298 @@
+/*
+    1. change .service h2:after, .work h3:after to hr tag for IE 8
+    2. change font-awesome style (background+border+border-radius for displaying circle) to font-awesome stack with more tags for IE 8
+*/
+
+body,div,h1,h2,h3,h4,p,ul {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+body {
+    font-family: "微软雅黑", "Helvetica Neue", Arial, sans-serif;
+    text-align: center;
+}
+
+html,body {height: 100%;} /* 保证#header高度占满屏幕 */
+
+a {text-decoration: none;}
+li {
+    list-style-type: none;
+    display: inline-block;
+    *display: inline;
+}
+
+.wrap-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 960px;
+    margin-left: -480px;
+}
+
+.line {
+    width: 100px;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+.btn {
+    display: inline-block;
+    border: none;
+}
+
+#header {
+    background: url(../img/bg.jpg) center center no-repeat;
+    -webkit-background-size: cover;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#header h1 {
+    font-size: 60px;
+}
+
+#header p {
+    font-size: 22px;
+    padding: 30px 0;
+}
+
+#header .btn {
+    width: 140px;
+    height: 50px;
+    background: #aaa;
+    font-size: 16px;
+    color: #fff;
+    line-height: 50px;
+}
+
+#header .wrap-center {
+    height: 220px;
+    margin-top: -110px;
+}
+
+#main {width: 100%;}
+
+.intro {
+    position: relative;
+    height: 210px;
+    width: 100%;
+}
+
+.intro h2 {
+    font-size: 26px;
+    margin-bottom: 10px;
+}
+
+.intro p {
+    font-size: 19px;
+}
+
+.intro .wrap-center {
+    height: 80px;
+    margin-top: -40px;
+}
+
+.service {
+    background-color: #337ab7;
+    height: 460px;
+    position: relative;
+    color: #fff;
+}
+
+/*.service h2:after {*/
+    /*content: "_______";*/
+    /*display: block;*/
+/*}*/
+
+.service h2{padding-bottom: 20px;}
+
+.service li {
+    padding: 10px 30px;
+}
+
+.service h3 {
+    padding: 10px 0;
+}
+
+.service p {
+    font-size: 12px;
+    line-height: 1.5em;
+    width: 160px;
+}
+
+.service .btn {
+    width: 95px;
+    height: 35px;
+    background: #eee;
+    font-size: 16px;
+    color: #000;
+    line-height: 35px;
+    margin-top: 10px;
+}
+
+.service .wrap-center {
+    height: 320px;
+    margin-top: -160px;
+}
+
+/* style below is not suitable for IE 8 */
+/*.service .fa {*/
+    /*color: #337ab7;*/
+    /*font-size: 55px;*/
+    /*width: 55px;*/
+    /*height: 55px;*/
+    /*border: 20px solid #fff;*/
+    /*background: #fff;*/
+    /*-webkit-border-radius: 100%;*/
+    /*-moz-border-radius: 100%;*/
+    /*border-radius: 100%;*/
+
+    /*利用border制造圆形背景,然而fa图案无法居中,不知可有解决方案 */
+/* .fa {
+    /*border: 50px solid #fff;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*-webkit-border-radius: 100%;*/
+    /*-moz-border-radius: 100%;*/
+    /*border-radius: 100%;*/
+/*}*/
+
+/* 伪类覆盖在.fa之上,如果z-index为-1则在其他内容之下,暂无解 */
+/*.fa:after {*/
+    /*content: "";*/
+    /*position: absolute;*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*border: 50px solid #fff;*/
+    /*-webkit-border-radius: 100%;*/
+    /*-moz-border-radius: 100%;*/
+    /*border-radius: 100%;*/
+    /*top: 100px;*/
+/*}*/
+
+.service .fa-stack-1x {
+    color: #337ab7;
+}
+
+.center-image {
+    height: 400px;
+    line-height: 400px;
+    background: url(../img/callout.jpg) center center no-repeat;
+}
+
+.center-image h1 {
+    color: #fff;
+    font-size: 60px;
+}
+
+.work {
+    width: 960px;
+    margin: 30px auto;
+}
+
+.work h3 {
+    margin: 20px auto;
+    font-size: 26px;
+}
+
+/*.work h3:after {*/
+    /*content: "_______";*/
+    /*display: block;*/
+    /*color: #eee;*/
+/*}*/
+
+.work ul {
+    width: 99%;
+}
+
+.work li {
+    margin-bottom: 30px;
+    padding: 0;
+    width: 470px;
+}
+
+.work img {
+    width: 94%;
+}
+
+.work .btn {
+    width: 125px;
+    height: 35px;
+    background: #aaa;
+    font-size: 14px;
+    color: #fff;
+    line-height: 35px;
+}
+
+.more {
+    position: relative;
+    background: #337ab7;
+    height: 220px;
+}
+
+.more h3 {
+    font-size: 22px;
+    padding-bottom: 10px;
+    color: #fff;
+}
+
+.more .wrap-center {
+    height: 100px;
+    margin-top: -50px;
+    padding: 5px;
+}
+
+.more .btn {
+    width: 108px;
+    height: 45px;
+    font-size: 16px;
+    color: #fff;
+    background: #1f496e;
+    margin: 10px;
+}
+
+.more .btn:first-of-type {
+    background: #fff;
+    color: #000;
+}
+
+#footer {
+    height: 470px;
+    position: relative;
+    font-size: 13px;
+}
+
+#footer h4 {
+    font-size: 17px;
+}
+
+.address {
+    line-height: 1.5em;
+    margin: 10px 0;
+}
+
+.vcard .fa {
+    margin-right: 5px;
+}
+
+.social .fa {
+    font-size: 40px;
+    margin: 30px 15px;
+    color: #337ab7;
+}
+
+.copyright {
+    padding-top: 10px;
+}
+
+#footer .wrap-center {
+    height: 260px;
+    margin-top: -130px;
+}
+
+.line {width: 100px;}
