@@ -43,6 +43,10 @@ li {
     border: none;
 }
 
+.btn:hover {
+    opacity: 0.7;
+}
+
 #header {
     background: url(../img/bg.jpg) center center no-repeat;
     -webkit-background-size: cover;
@@ -64,10 +68,15 @@ li {
 #header .btn {
     width: 140px;
     height: 50px;
-    background: #aaa;
+    background: #000;
     font-size: 16px;
     color: #fff;
     line-height: 50px;
+    opacity: 0.6;
+}
+
+#header .btn:hover {
+    opacity: 1;
 }
 
 #header .wrap-center {
@@ -105,8 +114,8 @@ li {
 }
 
 /*.service h2:after {*/
-    /*content: "_______";*/
-    /*display: block;*/
+/*content: "_______";*/
+/*display: block;*/
 /*}*/
 
 .service h2{padding-bottom: 20px;}
@@ -142,37 +151,37 @@ li {
 
 /* style below is not suitable for IE 8 */
 /*.service .fa {*/
-    /*color: #337ab7;*/
-    /*font-size: 55px;*/
-    /*width: 55px;*/
-    /*height: 55px;*/
-    /*border: 20px solid #fff;*/
-    /*background: #fff;*/
-    /*-webkit-border-radius: 100%;*/
-    /*-moz-border-radius: 100%;*/
-    /*border-radius: 100%;*/
+/*color: #337ab7;*/
+/*font-size: 55px;*/
+/*width: 55px;*/
+/*height: 55px;*/
+/*border: 20px solid #fff;*/
+/*background: #fff;*/
+/*-webkit-border-radius: 100%;*/
+/*-moz-border-radius: 100%;*/
+/*border-radius: 100%;*/
 
-    /*利用border制造圆形背景,然而fa图案无法居中,不知可有解决方案 */
+/*利用border制造圆形背景,然而fa图案无法居中,不知可有解决方案 */
 /* .fa {
     /*border: 50px solid #fff;*/
-    /*width: 0;*/
-    /*height: 0;*/
-    /*-webkit-border-radius: 100%;*/
-    /*-moz-border-radius: 100%;*/
-    /*border-radius: 100%;*/
+/*width: 0;*/
+/*height: 0;*/
+/*-webkit-border-radius: 100%;*/
+/*-moz-border-radius: 100%;*/
+/*border-radius: 100%;*/
 /*}*/
 
 /* 伪类覆盖在.fa之上,如果z-index为-1则在其他内容之下,暂无解 */
 /*.fa:after {*/
-    /*content: "";*/
-    /*position: absolute;*/
-    /*width: 0;*/
-    /*height: 0;*/
-    /*border: 50px solid #fff;*/
-    /*-webkit-border-radius: 100%;*/
-    /*-moz-border-radius: 100%;*/
-    /*border-radius: 100%;*/
-    /*top: 100px;*/
+/*content: "";*/
+/*position: absolute;*/
+/*width: 0;*/
+/*height: 0;*/
+/*border: 50px solid #fff;*/
+/*-webkit-border-radius: 100%;*/
+/*-moz-border-radius: 100%;*/
+/*border-radius: 100%;*/
+/*top: 100px;*/
 /*}*/
 
 .service .fa-stack-1x {
@@ -201,9 +210,9 @@ li {
 }
 
 /*.work h3:after {*/
-    /*content: "_______";*/
-    /*display: block;*/
-    /*color: #eee;*/
+/*content: "_______";*/
+/*display: block;*/
+/*color: #eee;*/
 /*}*/
 
 .work ul {
@@ -227,10 +236,15 @@ li {
 .work .btn {
     width: 125px;
     height: 35px;
-    background: #aaa;
+    background: #000;
     font-size: 14px;
     color: #fff;
     line-height: 35px;
+    opacity: 0.6;
+}
+
+.work .btn:hover {
+    opacity: 1;
 }
 
 .more {
