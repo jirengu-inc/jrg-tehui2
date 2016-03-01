@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>task-7-2</title>
+	<style type="text/css">
+		body{
+			font-family: Microsoft YaHei,sans-serif;
+		}
+	</style>
+</head>
+<body>
+	<form name="myForm" action="test.php" method="get">
+		<div>姓名：<input type="text" name="name" placeholder="请输入用户名" value="" /></div>
+		<div>密码：<input type="password" name="password" placeholder="请输入密码" value="" /></div>
+		<div>性别：
+			<input type="radio" value="man" name="sex" id="sex-man" checked /><label for="sex-man">男</label>
+			<input type="radio" value="woman" name="sex" id="sex-woman" /><label for="sex-woman">女</label>
+		</div>
+		<div>取向：
+			<input type="radio" value="man" name="like" id="like-man" /><label for="like-man">男</label>
+			<input type="radio" value="woman" name="like" id="like-woman" checked/><label for="like-woman">女</label>
+		</div>
+		<div>爱好：
+			<input type="checkbox" name="dota"/>dota
+			<input type="checkbox" name="travel" checked/>旅游
+			<input type="checkbox" name="pet"/>宠物
+		</div>
+		<div>评论：
+		<textarea name="ddd" placeholder="ddd" style="height: 200px ;width:400px"></textarea>
+		</div>
+		<div>我的car：
+    		<select name="mycar">
+    	  	<option value ="BMW">宝马</option>
+    	  	<option value ="Benz">奔驰</option>
+    	  	<option value="Chevrolet">雪佛兰</option>
+    	  	<option value="saab" selected>萨博</option>
+    		</select>
+    		<button type="submit">提交</button>
+		</div>
+	</form>
+</body>
+</html>
