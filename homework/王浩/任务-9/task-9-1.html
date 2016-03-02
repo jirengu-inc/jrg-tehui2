@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-9-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	div,ul,li,body{
+		padding: 0;
+		margin: 0;
+	}
+	.box{
+		height:40px;
+		width:300px;
+		border:solid 1px #aaa;
+		border-radius: 10px;
+		padding:10px;
+		margin: 20px auto;
+	}
+	.box ul{
+		list-style-type: none;
+		margin:0 0 0 30px;
+	}
+	.box ul li{
+		float:left;
+	}
+	.box li a{
+		display: block;
+		text-decoration: none;
+		color:#333;
+		padding: 11px 10px 0 32px;
+		font-size: 20px;
+		height:35px;
+		line-height: 15px;
+	}
+	.box li a.forward{
+		background: url(result.png) 0 0 no-repeat;
+	}
+	.box li:hover a.forward{
+		background: url(result.png) -1px -165px no-repeat;
+	}
+	.box li a.start{
+		background: url(result.png) 0 -53px no-repeat;
+	}
+	.box li:hover a.start{
+		background: url(result.png) -5px -224px no-repeat;
+	}
+	.box li a.stop{
+		background: url(result.png) -3px -110px no-repeat;
+	}
+	.box li:hover a.stop{
+		background: url(result.png) 1px -278px no-repeat;
+	}
+</style>
+</head>
+<body>
+    <div class="box">
+		<ul>
+			<li><a class="forward" href="#">前进</a></li>
+			<li><a class="start" href="#">开始</a></li>
+			<li><a class="stop" href="#">停止</a></li>
+		</ul>
+    </div>
+</body>
+</html>
