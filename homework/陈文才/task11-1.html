@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task11-1</title>
+	<style type="text/css">
+    body , ul {
+    	margin:0;
+    	padding:0;
+    }
+    ul {
+    	list-style-type:none;
+    }
+    a {
+        text-decoration:none;
+        color:inherit;
+    }
+    
+    #header {
+    	margin:0px;
+    	padding:0;
+    	height:2em;
+    	width:1200px;
+    	margin:0 auto;
+    	background-color:#ccc;
+    }
+
+    #header .nav>li {
+    	float:left;
+    	line-height: 2em;
+    	padding:0 0.5em;
+    }
+    
+    #header .nav>li:hover {
+    	background-color:#aaa;
+    }
+
+    #header .nav>li>ul {
+    	display:none;
+    }
+    
+    #header .nav>li {
+    	position:relative;
+    }
+    #header .nav>li:hover ul{
+    	display:block;
+    	background-color:;
+    	position:absolute;
+    	top:2em;
+    	left:0;
+    	border:1px solid #ccc;
+    }
+    
+    #header .nav>li>ul>li:hover {
+        background-color:#ccc;
+    }
+
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="nav">
+			<li>
+				前端
+				<ul>
+					<li><a href="">Javascript</a></li>
+					<li><a href="">CSS</a></li>
+					<li><a href="">HTML</a></li>
+				</ul>
+			</li>
+			<li>
+				服务端
+				<ul>
+					<li><a href="">NODE</a></li>
+					<li><a href="">PHP</a></li>
+					<li><a href="">JJAVA</a></li>
+				</ul>
+			</li>
+			<li>
+				前端工具
+				<ul>
+					<li><a href="">Sublime</a></li>
+					<li><a href="">Sublime</a>Webstorm</li>
+					<li><a href="">Sublime</a>Git</li>
+				</ul>
+			</li>
+			<li>HTML</li>
+			<li>NODE</li>
+		</ul>
+	</div>
+</body>
+</html>
