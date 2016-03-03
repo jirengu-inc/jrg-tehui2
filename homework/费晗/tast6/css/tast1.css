@@ -9,13 +9,11 @@
  */
 div{
 	width: 200px; height: 80px;
-	border: 1px #ccc solid;
-	background-color: #ddd;
-}
-div p{
 	font-size: 14px;
 	color: #f0f;
 	line-height: 80px;   /*实现垂直居中*/
 	text-align: center;
+	border: 1px #ccc solid;
+	background-color: #ddd;
 
 }
