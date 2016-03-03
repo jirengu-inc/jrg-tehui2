@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-10-2</title>
+</head>
+<style>
+	.box1{
+		position: relative;
+		margin-top: 20px;
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box1 .tran1{
+		width: 0px;
+		height: 0px;
+		border-width: 0px 15px 15px 15px;
+   		border-style: solid;
+		border-color: #CCC9C9 transparent;
+		position:absolute;
+		top: -15px;
+		left: 10px;
+	}
+	.box2{
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box2 .tran2{
+		width: 0;
+		height: 0;
+		float: right;
+		border-left:30px solid transparent; 
+		border-bottom:30px solid transparent; 
+		border-right:30px solid red; 
+	}
+	
+	.box3{
+		position: relative;
+		margin-top: 20px;
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box3 .tran3{
+		width: 0px;
+		height: 0px;
+		border-width: 0px 15px 15px 15px;
+   		border-style: solid;
+		border-color: #CCC9C9 transparent;
+		position:absolute;
+		top: -15px;
+		left: 10px;
+	}
+	.box3 .tran4{
+		width: 0px;
+		height: 0px;
+		border-width: 0px 15px 15px 15px;
+   		border-style: solid;
+		border-color: #fff transparent;
+		position:absolute;
+		top: -13px;
+		left: 10px;
+	}
+
+</style>
+<body>
+	<div class="box1">
+		<div class="tran1"></div>
+	</div>
+	<br>
+	<div class="box2">
+		<div class="tran2"></div>
+	</div>
+	<br>
+	<div class="box3">
+		<div class="tran3"></div>
+		<div class="tran4"></div>
+	</div>
+</body>
+</html>
