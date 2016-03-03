@@ -468,11 +468,26 @@ input:focus, textarea:focus {
 }
 
 .user-info input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
 .user-info input:-moz-placeholder,
-textarea:-moz-placeholder,
+textarea:-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
 .user-info input::-moz-placeholder,
-textarea::-moz-placeholder,
+textarea::-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
 .user-info input:-ms-input-placeholder,
 textarea:-ms-input-placeholder {
     font-weight: bold;
