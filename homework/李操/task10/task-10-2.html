@@ -13,7 +13,7 @@
 		border: 1.5px solid #CCC9C9;
 	}
 
-	.box1 .tran1{
+	.box1 div{
 		width: 0px;
 		height: 0px;
 		border-width: 0px 15px 15px 15px;
@@ -29,7 +29,7 @@
 		border: 1.5px solid #CCC9C9;
 	}
 
-	.box2 .tran2{
+	.box2 div{
 		width: 0;
 		height: 0;
 		float: right;
@@ -46,7 +46,7 @@
 		border: 1.5px solid #CCC9C9;
 	}
 
-	.box3 .tran3{
+	.box3 div{
 		width: 0px;
 		height: 0px;
 		border-width: 0px 15px 15px 15px;
@@ -56,30 +56,24 @@
 		top: -15px;
 		left: 10px;
 	}
-	.box3 .tran4{
-		width: 0px;
-		height: 0px;
-		border-width: 0px 15px 15px 15px;
-   		border-style: solid;
+	.box3 div:last-child{
 		border-color: #fff transparent;
-		position:absolute;
 		top: -13px;
-		left: 10px;
 	}
 
 </style>
 <body>
 	<div class="box1">
-		<div class="tran1"></div>
+		<div></div>
 	</div>
 	<br>
 	<div class="box2">
-		<div class="tran2"></div>
+		<div></div>
 	</div>
 	<br>
 	<div class="box3">
-		<div class="tran3"></div>
-		<div class="tran4"></div>
+		<div></div>
+		<div></div>
 	</div>
 </body>
 </html>
