@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Examples</title>
+<meta name="description" content="task14 sample">
+<meta name="keywords" content="task14">
+<link href="font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet">
+<style type="text/css">
+    body {
+    	margin:0;
+    	padding:0;
+        font:16px/1.5 "Microsoft Yahei",sans-serif;
+    	background:url(bg.jpg) no-repeat;
+        background-size:100% auto  ;
+    }
+
+    a {
+        text-decoration:none;
+        color:#337ab7;
+    }
+
+    ul {
+        list-style-type:none;
+    }
+
+    hr {
+        width:5em;
+        border:none;
+        border-top: 1px solid #eee;
+    }
+    
+    .btn1 {
+        color:white;
+        display:inline-block;
+        padding:0.5em 1em;
+        background-color:rgba(0,0,0,0.5);
+    }
+
+    .btn1:hover{
+        background-color:rgba(0,0,0,0.8);
+    }
+
+    .btn2 {
+        color:#000;
+        display:inline-block;
+        padding:0.5em 1em;
+        background-color:rgba(255,255,255,1);
+    }
+    
+    .btn2:hover {
+        background-color:rgba(255,255,255,0.3);
+    }
+
+	.header {
+        padding:13em 0;
+		text-align:center;
+	}
+
+    .text1 {
+        text-align: center;
+        padding:3em 0;
+    }
+
+    .services , .text3 {
+        background-color: #337ab7;
+    }
+    
+    .services .container {
+        width:960px;
+        margin:0 auto;
+        color:#fff;
+        padding:4em 0;
+    }
+
+    .container h2 {
+        text-align: center;
+    }
+
+    .container .detail .item {
+        display:inline-block;
+        width:25%;/*inline-block间距问题*/
+        text-align:center;
+    }
+    
+    .detail .item p, 
+    .detail .item a {
+        font-size: 14px;
+    }
+    
+    .detail .fa-cloud,
+    .detail .fa-compass, 
+    .detail .fa-flask, 
+    .detail .fa-shield {
+        color:#337ab7;
+    }
+    
+    .text2 {
+        background:url(callout.jpg) no-repeat;
+        background-size:100% auto;
+        text-align:center;
+        padding:10em;
+        color:#fff;
+    }
+    .text2 h1{
+        font-size: 3em;
+    }
+
+    .works {
+        width:960px;
+        margin:0 auto;
+        padding:1em 0;
+        text-align:center;
+    }
+    
+    .works img {
+        width:450px;
+        margin:10px;
+    }
+
+    .works .jobs:hover {
+        opacity:0.8;
+    }
+    
+    .works ul li a {
+        font-size: 14px;
+        position:relative;
+        left:-1.5em;
+    }
+
+    .text3 {
+        padding:1em;
+        text-align:center;
+    }
+    .text3 {
+        color:#fff;
+    }
+    
+    .text3 ul li a {
+        margin:0 1em;
+    }
+
+    .footer {
+        text-align: center;
+        padding:5em 0;
+    }
+    
+    .footer p {
+        font-size:12px;
+    }
+
+    .footer ul li {
+        position:relative;
+        left:-1.5em;
+    }
+
+    .footer ul li a {
+        display:inline-block;
+        margin:0 1em;
+    }
+    
+</style>
+</head>
+<body>
+    <div class="header">
+    	<h1>Start Bootstrap</h1>
+    	<h3>Free Bootstrap Themes & Templates</h3>
+    	<a href="#" class="btn1">Find out more</a>
+    </div>
+    <div class="text1">
+        <h3>Stylish Portfolio is the perfect theme for your next project!</h3>
+        <p>This theme features some wonderful photography courtesy of <a href="#">Death to the Stock Photo.</a></p>
+    </div>
+
+    <div class="services">
+        <div class="container">
+        <h2>Our Services</h2>
+        <hr>
+        <div class="detail">
+            <div class="item">
+                <span class="fa-stack fa-3x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-cloud fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4>Service Name</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" class="btn2">Learn More</a>
+            </div><div class="item">
+                <span class="fa-stack fa-3x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-compass fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4>Service Name</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" class="btn2">Learn More</a>
+            </div><div class="item">
+                <span class="fa-stack fa-3x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-flask fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4>Service Name</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" class="btn2">Learn More</a>
+            </div><div class="item">
+                <span class="fa-stack fa-3x">
+                <i class="fa fa-circle fa-stack-2x"></i>
+                <i class="fa fa-shield fa-stack-1x fa-inverse"></i>
+                </span>
+                <h4>Service Name</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                <a href="#" class="btn2">Learn More</a>
+            </div>
+            </div>
+        </div>
+        </div>
+    <div class="text2">
+        <h1>Vertically Centered Text</h1>
+    </div>
+    <div class="works">
+        <h3>Our Work</h3>
+        <hr>
+        <a href="" class="job"><img src="portfolio-1.jpg" alt=""></a>
+        <a href="" class="job"><img src="portfolio-2.jpg" alt=""></a>
+        <a href="" class="job"><img src="portfolio-3.jpg" alt=""></a>
+        <a href="" class="job"><img src="portfolio-4.jpg" alt=""></a>
+        <ul>
+            <li><a href="" class="btn1">View More Items</a></li>
+        </ul>
+        </div>
+    <div class="text3">
+        <h4>The buttons below are impossible to resist.</h4>
+        <ul>
+            <li><a href="" class="btn2">Click Me!</a><a href="" class="btn1">Look at Me!</a></li>
+        </ul>
+        </div>
+    <div class="footer">
+        <h4>Start Bootstrap</h4>
+        <p>3481 Melrose Place</p>
+        <p>  Beverly Hills, CA 90210</p>
+        <p><i class="fa fa-phone fa-lg"></i> (123) 456-7890</p>
+        <p><i class="fa fa-envelope-o fa-lg"></i> <a href="name@example.com">name@example.com</a></p>
+        <ul>
+            <li>
+                <a href=""><i class="fa fa-facebook fa-3x"></i></a>
+                <a href=""><i class="fa fa-twitter fa-3x"></i></a>
+                <a href=""><i class="fa fa-dribbble fa-3x"></i></a>
+            </li>
+        </ul>
+        <hr>
+        <p>Copyright © Your Website 2014</p>
+    </div>
+    </div>
+</body>
+</html>
