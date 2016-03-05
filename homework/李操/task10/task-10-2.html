@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-10-2</title>
+</head>
+<style>
+	.box1{
+		position: relative;
+		margin-top: 20px;
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box1 div{
+		width: 0px;
+		height: 0px;
+		border-width: 0px 15px 15px 15px;
+   		border-style: solid;
+		border-color: #CCC9C9 transparent;
+		position:absolute;
+		top: -15px;
+		left: 10px;
+	}
+	.box2{
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box2 div{
+		width: 0;
+		height: 0;
+		float: right;
+		border-left:30px solid transparent; 
+		border-bottom:30px solid transparent; 
+		border-right:30px solid red; 
+	}
+	
+	.box3{
+		position: relative;
+		margin-top: 20px;
+		width: 300px;
+		height: 150px;
+		border: 1.5px solid #CCC9C9;
+	}
+
+	.box3 div{
+		width: 0px;
+		height: 0px;
+		border-width: 0px 15px 15px 15px;
+   		border-style: solid;
+		border-color: #CCC9C9 transparent;
+		position:absolute;
+		top: -15px;
+		left: 10px;
+	}
+	.box3 div:last-child{
+		border-color: #fff transparent;
+		top: -13px;
+	}
+
+</style>
+<body>
+	<div class="box1">
+		<div></div>
+	</div>
+	<br>
+	<div class="box2">
+		<div></div>
+	</div>
+	<br>
+	<div class="box3">
+		<div></div>
+		<div></div>
+	</div>
+</body>
+</html>

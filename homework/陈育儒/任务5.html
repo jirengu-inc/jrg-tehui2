@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+<body>
+<style type="text/css">
+  html{
+    font-size:15px;//设置根元素，此外，可以通过百分比设置，来使用浏览器默认的字体大小。
+  }
+
+  .demo1{
+    font-size:20px;
+  }
+  .demo2{
+    font-size:2rem;
+  }
+  .demo3{
+    font-size:2em;
+  }
+  body{
+    font-family:"微软雅黑";
+    font-size:25px;
+    color:#333;
+  }
+  p{
+    color:#000;
+    text-indent: 2em;
+    line-height:1.5;  //行高等于1.5x20px=30px行高
+  }
+  </style>
+  <div class="demo1">                 <!-- demo1作为父级容器参考 -->
+
+    <h1 class="demo2">测试</h1>        <!-- demo2使用rem -->
+    <h1 class="demo3">测试</h1>        <!-- demo3使用em -->
+    <p>测试测试测试</p>
+  </div>
+</body>
+</html>
