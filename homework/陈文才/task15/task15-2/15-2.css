@@ -156,6 +156,7 @@ body {
         width: 100%;
         height:100%;
         opacity:0;
+        filter:alpha(opacity=0);
         background-color:#FEC503;
     }
 
@@ -171,6 +172,7 @@ body {
 
     .collection .work .work-hover:hover {
         opacity:.8;
+        filter:alpha(opacity=80);
     }
 
     .work .work-hover .fa-stack {
