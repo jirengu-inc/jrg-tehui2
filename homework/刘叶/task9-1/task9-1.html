@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task9-1</title>
+</head>
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+        transition: 0.5s;
+    }
+    li{
+        list-style: none;
+        margin: 8px 8px;
+        display: inline-block;
+        height: 35px;
+    }
+    a{
+        text-decoration: none;
+        color: #000;
+        padding-left: 35px;
+        line-height: 35px;
+        font-size: 23px;
+    }
+    li:hover a{
+        color: rgb(167,95,162);
+        transition: 0.2s;
+    }
+    .go{
+        background: url("./icon.png") no-repeat 0 -1px;
+    }
+    .go:hover{
+        background:url("./icon.png") no-repeat 0 -95px;
+    }
+    .start{
+        background: url("./icon.png") no-repeat 0 -30px;
+    }
+    .start:hover{
+        background: url("./icon.png") no-repeat -1px -127px;
+    }
+    .stop{
+        background: url("./icon.png") no-repeat 0 -63px;
+    }
+    .stop:hover{
+        background: url("./icon.png") no-repeat 0 -156px;
+    }
+    .task{
+        border: 1px solid transparent;
+        width:400px;
+        height:88px;
+        margin: 10px auto;
+        border-radius: 15px;
+    }
+</style>
+<body>
+    <div class="task">
+        <ul>
+            <li class="go"><a href="#">快进</a></li>
+            <li class="start"><a href="#">开始</a></li>
+            <li class="stop"><a href="#">停止</a></li>
+        </ul>
+    </div>
+</body>
+</html>
