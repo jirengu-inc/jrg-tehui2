@@ -1,0 +1,457 @@
+body,ul {
+    min-width: 1080px;
+    padding: 0;
+    margin: 0;
+    font-family: "iconfont";
+}
+
+.nav {
+    height: 80px;
+    background: transparent;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+.nav-a {
+    font-size: 30px;
+    height: 50px;
+    line-height: 50px;
+    color: #fed136;
+    font-family: "Comic Sans MS";
+    text-decoration: none;
+    float: left;
+    padding: 15px 15px;
+    display: inline-block;
+    margin: 0 15%;
+}
+.nav li {
+    list-style: none;
+    float: left;
+    line-height: 80px;
+    box-sizing: border-box;
+    margin-left: 30px;
+}
+.nav li a {
+    font-size: 14px;
+    font-family: "Verdana","SimHei";
+    padding: 20px 20px;
+    text-decoration: none;
+    color: #fff;
+}
+.nav li a:hover {
+    color: #f7c633;
+}
+
+#header {
+    height: 758px;
+    background: url("../img/header-bg.jpg");
+}
+.main {
+    text-align: center;
+    padding-top: 160px;
+}
+.main .main-1 {
+    color: #fff;
+    font-family: "Comic Sans MS";
+    font-weight: normal;
+}
+.main .main-2 {
+    color: #fff;
+    font-family: "Verdana","SimHei";
+    font-size: 64px;
+    line-height: 64px;
+}
+.main a {
+    color: #fff;
+    display: inline-block;
+    width: 220px;
+    height: 70px;
+    text-decoration: none;
+    background: #fed136;
+    line-height: 70px;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    margin-top: 30px;
+    font-family: "Verdana","SimHei";
+    font-weight: bold;
+}
+.main a:hover {
+    background: #fec503;
+}
+
+
+#services {
+    box-sizing: border-box;
+    height: 650px;
+    text-align: center;
+}
+#services h2 {
+    margin: 0;
+    padding-top: 120px;
+    font-family: "Verdana","SimHei";
+    font-size: 40px;
+}
+.ita {
+    margin-top: -10px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-style: italic;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    color: #888;
+}
+.serv-wrap {
+    min-width: 1020px;
+    height: auto;
+    margin: 0 auto;
+    overflow: hidden;
+    display: inline-block;
+}
+.serv-wrap div {
+    width: 318px;
+    height: 300px;
+    float: left;
+}
+.serv-wrap .ecom,.resp,.webs {
+    color: #fed136;
+    padding: 0 10px;
+}
+.fa-shopping-cart,.fa-laptop,.fa-lock,.fa-linkedin,.fa-facebook,.fa-twitter {
+    color: #fff;
+}
+.serv-wrap h5 {
+    color: #111;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    font-size: 18px;
+}
+.serv-wrap p {
+    margin-top: -10px;
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    color: #888;
+}
+
+
+#portfolio {
+    background: #eee;
+    box-sizing: border-box;
+    text-align: center;
+    padding-bottom: 120px;
+}
+#portfolio:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#portfolio h2 {
+    margin: 0;
+    padding-top: 120px;
+    font-family: "Verdana","SimHei";
+    font-size: 40px;
+}
+.port-wrap {
+    overflow: hidden;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+.port-wrap a:hover {
+    opacity: 0.7;
+}
+.port-wrap div {
+    width: 400px;
+    height: 400px;
+    float: left;
+    background: #fff;
+    margin:30px 30px;
+}
+.port-wrap h5 {
+    margin: 20px auto;
+    color: #111;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    font-size: 18px;
+}
+
+#about {
+    box-sizing: border-box;
+    text-align: center;
+    height: 1800px;
+}
+#about h2 {
+    padding-top: 120px;
+    font-family: "Verdana","SimHei";
+    font-size: 40px;
+}
+.abou-wrap {
+    margin: 0;
+    padding: 0;
+}
+.abou-wrap li {
+    list-style: none;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+}
+.abou-wrap li .circle {
+    margin: 130px auto;
+    width: 150px;
+    height: 150px;
+    border:3px solid #ccc;
+    border-radius: 75px;
+}
+.abou-wrap .line {
+    position: relative;
+    width: 0;
+    height: 1240px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    z-index: -10;
+}
+.cir-1 {
+    background: url("../img/1.jpg") no-repeat;
+}
+.cir-2 {
+    background: url("../img/2.jpg") no-repeat;
+}
+.cir-3 {
+    background: url("../img/3.jpg") no-repeat;
+}
+.cir-4 {
+    background: url("../img/4.jpg") no-repeat;
+}
+.cir-5 {
+    background: #fed136;
+    box-sizing: border-box;
+    padding: 28px;
+    font-weight: bold;
+    color: #fff;
+    text-align: center;
+}
+
+.cir-txt-1 {
+    box-sizing: border-box;
+    padding-left: 200px;
+    width: 41%;
+    height: 200px;
+    float: left;
+    text-align: right;
+}
+.cir-h5 {
+    padding: 6px 0;
+    margin: 0;
+    font-size: 18px;
+}
+.cir-p {
+    font-size: 16px;
+    line-height: 30px;
+}
+.cir-txt-2 {
+    box-sizing: border-box;
+    padding-right: 200px;
+    width: 41%;
+    height: 200px;
+    float: right;
+    text-align: left;
+}
+
+
+
+#team {
+    height: 900px;
+    background: #eee;
+    text-align: center;
+}
+#team h2 {
+    margin: 0;
+    padding-top: 120px;
+    font-family: "Verdana","SimHei";
+    font-size: 40px;
+}
+.team-wrap {
+    overflow: hidden;
+    max-width: 840px;
+    margin: 0 auto;
+}
+.team-1,.team-2,.team-3 {
+    width: 200px;
+    height: 200px;
+    border: 5px solid #fff;
+    border-radius: 100px;
+}
+.team-1 {
+    background: url("../img/1(1).jpg") no-repeat;
+}
+.team-2 {
+    background: url("../img/2(1).jpg") no-repeat;
+}
+.team-3 {
+    background: url("../img/3(1).jpg") no-repeat;
+}
+.team-wrap h5 {
+    padding: 22px 0 0 0;
+    margin: 0;
+    font-size: 18px;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+}
+.team-wrap p {
+    font-size: 14px;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+.team-wrap a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+.team-wrap a:hover {
+    color: #fec503;
+}
+.ct-1 {
+    float: left;
+    width: 210px;
+    margin: 40px 100px 40px 0;
+}
+.ct-2 {
+    float: left;
+    width: 210px;
+    margin: 40px 100px 40px 0;
+}
+.ct-3 {
+    float: left;
+    width: 210px;
+    margin: 40px 0px 40px 0;
+}
+h6 {
+    font-size: 16px;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    font-weight: normal;
+    line-height: 30px;
+}
+
+
+#logo {
+    height: 150px;
+}
+#logo .logo-ct {
+    width: 840px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+
+#footer {
+    box-sizing: border-box;
+    background: #111 url("../img/map-image.png") no-repeat;
+    text-align: center;
+}
+#footer:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+#footer h2 {
+    margin: 0;
+    padding-top: 120px;
+    font-family: "Verdana","SimHei";
+    font-size: 40px;
+    color: #fff;
+}
+
+#footer .container {
+    box-sizing: border-box;
+    width: 1200px;
+    height: 300px;
+    margin: 0 auto;
+}
+.form-wrap {
+    width: 400px;
+    height: 500px;
+    float: left;
+    padding: 15px;
+}
+.form-wrap input {
+    width: 550px;
+    height: 65px;
+    display: inline-block;
+    margin-top: 23px;
+    margin-right: 30px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+#form-mesg {
+    margin-top: 35px;
+    float: right;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+  }
+.form-subm {
+    height: 70px;
+    display: inline-block;
+    float: left;
+    padding-left: 35px;
+}
+.form-subm input {
+    width: 230px;
+    height: 70px;
+    margin-top: 40px;
+    background: #fed136;
+    border: 3px solid transparent;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.form-subm input:hover {
+    background: #fec503;
+}
+.container input::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 15px;
+    font-weight: bold;
+}
+.container textarea::-webkit-input-placeholder {
+    color: #ccc;
+    font-size: 15px;
+    font-weight: bold;
+    font-family: "Verdana","SimHei";
+    padding-top: 20px;
+}
+
+
+
+#copyright {
+}
+.copy-wrap {
+    width: 1000px;
+    height: 100px;
+    margin: 0 auto;
+}
+.copy-ct p {
+    margin: 0;
+    padding: 0;
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    font-size: 14px;
+}
+.copy-ct {
+    line-height: 100px;
+    display: inline-block;
+    width: 300px;
+    float: left;
+    text-align: center;
+    margin-left: 30px;
+}
+.copy-ct a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+}
+.copy-ct a:hover {
+    color: #fec503;
+}
+.copy-ct:nth-child(3) a {
+    font-family: Helvetica, Tahoma, Arial, STXihei, "华文细黑", "Microsoft YaHei", "微软雅黑", "sans-serif";
+    text-decoration: none;
+    color: #fec503;
+    font-size: 14px;
+}
+.copy-ct:nth-child(3) a:hover {
+    text-decoration: underline;
+    color: #f3ba03;
+}
