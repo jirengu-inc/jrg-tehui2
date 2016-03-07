@@ -1,0 +1,368 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-03-06 01:59:53
+ * @version $Id$
+ */
+html,body,h1,h3,div,p,ul,li,dl,dt,dd{
+		padding: 0;
+		margin: 0;
+		font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,		sans-serif;
+		color: #333;
+	}
+
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	
+	#container{
+		background-image: url(../img/bg.jpg);
+		background-repeat: no-repeat;
+		background-size:106.5% 681px;
+		background-position: top center;
+	}
+
+	/* -----------------box1------------- */
+	.box1{		
+		width: 960px;
+		height: 681px;	
+		margin: 0 auto;
+		text-align: center;
+		display: table;
+	}
+	.box1 .text1{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.box1 h1{
+		font-size: 63px;
+		margin: 15px 0 17px 0;
+	}
+	.box1 p{
+		font-size: 24px;
+		margin: 17px 0 15px 0;
+	}
+	.box1 a{
+		font-size: 18px;
+		margin: 15px 0;
+		display: inline-block;
+		width: 150px;
+		height: 46px;
+		line-height: 46px;
+		background-color: #6D7E84;
+		color: #fff;
+	}
+	.box1 a:hover{
+		background-color: #363E41;
+	}
+
+
+	/* -----------------box2------------------- */
+	.box2{
+		width: 960px;
+		margin: 0 auto;
+		text-align: center;
+		height: 213px;
+		display: table;		
+	}
+	.box2 .text2{
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.box2 p:first-child{
+		font-size: 30px;
+	}
+	.box2 p:last-child{
+		font-size: 21px;
+	}
+	.box2 p{
+		margin: 12px 0;
+	}
+	.box2 p a{
+		color: #337AB7;
+	}
+	.box2 p a:hover,.box2 p a:active{
+		border-bottom: solid 2px #23527C;
+		color: #23527C;
+	}
+
+
+
+	/* --------------------box3------------------ */
+	.box3{
+		height: 460px;
+		background-color: #337AB7;
+		position: relative;
+	}
+	.box3 .text3{
+		width: 960px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -480px;
+		margin-top: -161px;	
+	}
+	.box3 .text3>p{
+		color: #fff;
+		font-size: 30px;
+		text-align: center;
+	}
+	.box3 .text3>p:after{
+		content: "";
+		display: block;
+		height: 0;
+		border: solid 1px #fff;
+		width: 100px;
+		margin-left: 430px;
+		margin-top: 20px;
+	}
+	.box3 ul{
+		margin-left: 25px;
+	}
+	.box3 ul li{
+		width: 180px;
+		height: 235px;
+		list-style-type: none;
+		float: left;
+		margin-right: 65px;
+		margin-top: 26px;
+	}
+	.box3 ul li:last-child{
+		margin-right: 0;
+	}
+
+	.box3 ul dl *{
+		display: inline-block;
+		text-align: center;
+	}
+	.box3 dt div{
+		width: 98px;
+		height: 98px;
+		border-radius: 50px;
+		background-color: #fff;
+		position: relative;
+		margin-left: 39px;
+		margin-bottom: 14px;
+	}
+	.box3 dt span{
+		font-size: 57px;
+		position: absolute;
+		top: 21px;
+		left: 19px;
+		color: #337AB7;
+	}
+	.box3 ul li:nth-child(2) span{
+		left:25px;
+	}
+	.box3 ul li:nth-child(3) span{
+		left:23px;
+	}
+	.box3 ul li:nth-child(4) span{
+		left:28px;
+		top: 22px;
+	}
+	.box3 dd h3{
+		color: #fff;
+		margin-bottom: 9px;
+		font-size: 18px;
+	}
+	.box3 dd p{
+		font-size: 14px;
+		color: #fff;
+		margin-top: 2px;
+	}
+	.box3 dd a{
+		color: #333;
+		display: inline-block;
+		height: 34px;
+		width: 100px;
+		line-height: 34px;
+		background-color: #fff;
+		margin-top: 10px;
+		font-size: 14px;
+	}
+	.box3 dd a:hover{
+		background-color: #D6E4F0;
+	}
+
+
+	/* -------------------box4--------------------------- */
+
+	.box4{
+		height: 400px;
+		width: 100%;
+		background-image: url(../img/callout.jpg);
+		background-size: cover;
+		background-position: center center;
+		background-repeat: no-repeat;
+	}
+	.box4 h3{
+		color: #fff;
+		font-size: 62px;
+		text-align: center;
+		height: 400px;
+		line-height: 400px;
+	}
+	
+
+	/* -------------------box5--------------------------- */
+
+	.box5{
+		height: 840px;
+		text-align: center;
+	}
+	.box5 ul{
+		width: 960px;
+		margin: 0 auto;
+		list-style-type: none;
+		
+	}
+	.box5 ul:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.box5 li:nth-child(1),.box5 li:nth-child(3){
+		float:left;
+		margin-left: 7.5px;
+		margin-bottom: 30px;
+	}
+	.box5 li:nth-child(2),.box5 li:nth-child(4){
+		float:right;
+		margin-right: 7.5px;
+		margin-bottom: 30px;
+	}
+	.box5 li img{
+		width: 457px;
+		height: 305px;
+	}
+	.box5 li img:hover{
+		opacity: 0.8;
+	}
+	.box5 h3{
+		font-size: 32px;
+		font-weight: normal;
+		margin-top: 68px;
+		margin-bottom: 39px;
+	}
+	.box5>a{
+		width: 132px;
+		height: 34px;
+		line-height: 34px;
+		display: inline-block;
+		background-color: #999999;
+		color: #fff;
+		font-size: 14px;
+		
+	}
+	.box5>a:hover{
+		background-color: #4C4C4C;
+	}
+
+
+	/* -------------------box6--------------------------- */
+
+
+	.box6{
+		height: 222px;
+		width: 100%;
+		background-color: #337AB7;
+		display: table;
+	}
+	.box6 .text6{
+		width: 960px;
+		margin: 0 auto;
+		text-align: center;
+		/*border: solid 1px red; */
+		display: table-cell;
+		vertical-align: middle;
+	}
+	.box6 p{
+		color: #fff;
+		font-size: 24px;
+		margin-bottom: -8px;
+	}
+	.box6 .text6 a{
+		display: inline-block;
+		height: 47px;
+		width: 109px;
+		font-size: 18px;
+		line-height: 47px;
+		margin-top: 25px;
+		margin-right: 25px;
+	}
+	.box6 .text6 a:nth-child(2){
+		color: #333;
+		background-color: #fff;
+	}
+	.box6 .text6 a:nth-child(2):hover{
+		background-color: #D6E4F0;
+	}
+	.box6 .text6 a:last-child{
+		color: #fff;
+		background-color: #1F496E;
+		padding: 0 10px;
+		margin-right: 0;
+	}
+	.box6 .text6 a:last-child:hover{
+		background-color: #0F2436;
+	}
+
+
+	/* -------------------box7--------------------------- */
+	.box7{
+		height: 475px;
+		width: 100%;
+	}
+	.box7 .text7{
+		width: 960px;
+		margin: 0 auto;
+		/*margin-top: 113px;*/ /* ----------设置margin，总高度会变化--- */
+		text-align: center;
+		/*border: solid 1px red;*/
+		position: relative;
+		top: 113px;
+	}
+	.box7 .text7 h3{
+		font-size: 18px;
+		margin-bottom: 10px;
+	}
+	.box7 address{
+		font-style: normal;
+		font-size: 14px;
+	}
+	.box7 address p{
+		margin: 5px;
+	}
+	.box7 address span{
+		margin-right: 3px;
+	}
+	.box7 address p:nth-child(3){
+		margin-top: 15px;
+	}
+	.box7 address a{
+		color: #338ACF;
+	}
+	.box7 address a:hover{
+		color: #23527C;
+		text-decoration: underline;
+	}
+
+	.box7 .icon a{
+		display: inline-block;
+		font-size: 42px;
+		margin: 20px 29px 40px 0;
+		color: #337AB7;
+	}
+	.box7 .icon a:nth-child(3){
+		margin-right:0px;
+	}
+	.box7 .icon a:hover{
+		color: #23527C;
+	}
+	.box7 .icon p{
+		color: #77777B;
+		font-size: 14px;
+	}
