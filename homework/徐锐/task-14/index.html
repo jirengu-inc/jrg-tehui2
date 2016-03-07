@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Bootstrap</title>
+    <link rel="stylesheet" href="font-awesome-4.5.0/css/font-awesome.min.css">
+    <style>
+        html,body,h2 {
+            font-family: "Source Sans Pro","Helvetica Neue",Helvetica,Arial,sans-serif;
+            min-width: 960px;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            position: relative;
+            display: table;
+            width: 100%;
+            height: 100%;
+            background: url("http://7xrart.com1.z0.glb.clouddn.com/bg.jpg")  center center no-repeat scroll;
+            background-size: cover;
+        }
+        .header-txt {
+            height: 100%;
+            display: table-cell;
+            vertical-align: middle;
+            text-align: center;
+            box-sizing: border-box;
+            color: #333;
+        }
+        .header-txt h1 {
+            font-size: 60px;
+            line-height: 60px;
+        }
+        .header-txt h3 {
+            font-size: 20px;
+            font-weight: 100;
+        }
+        .header-txt a {
+            font-size: 18px;
+            padding: 10px 16px;
+            text-decoration: none;
+            display: inline-block;
+            font-weight: 100;
+            color: #fff;
+            background: #55636a;
+            opacity: 0.7;
+        }
+        .header-txt a:hover {
+            background: #1e1e1e;
+            opacity: 0.7;
+        }
+
+        .theme {
+            padding: 60px 0;
+            text-align: center;
+        }
+        .theme h2 {
+            font-size: 26px;
+            font-weight: 400;
+        }
+        .theme p {
+            font-size: 18px;
+            line-height: 22px;
+            color: #333333;
+            font-weight: 100;
+        }
+        .theme a {
+            color: #337ab7;
+            text-decoration: none;
+        }
+        .theme a:hover {
+            color: #23527c;
+            text-decoration: underline;
+        }
+
+        .service {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            height: 460px;
+            background-color: #337ab7;
+            padding-top: 50px;
+        }
+        .service h2 {
+            font-size: 26px;
+            line-height: 26px;
+            text-align: center;
+            color: #fff;
+            font-weight: normal;
+        }
+        .service-hr {
+            display: block;
+            width: 5%;
+            size: 1px;
+            color: #fff;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .fa-circle {
+            color: #fff;;
+        }
+        .fa-cloud,.fa-compass,.fa-flask,.fa-shield,.fa-facebook,.fa-twitter,.fa-dribbble {
+            color: #337ab7;
+        }
+        .row {
+            position: relative;
+            margin-left: 15px;
+            margin-right: 15px;
+            box-sizing: border-box;
+            color: #fff;
+        }
+        .box1 {
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            left: 25%;
+        }
+        .box2 {
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            left: 38%;
+        }
+        .box3 {
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            left: 51%;
+        }
+        .box4 {
+            display: inline-block;
+            text-align: center;
+            position: absolute;
+            left: 64%;
+        }
+        .font-size-16px {
+            font-size: 14px;
+            line-height: 14px;
+        }
+        .leranmore {
+            display: inline-block;
+            width: 90px;
+            height: 35px;
+            line-height: 35px;
+            font-size: 14px;
+            background: #fff;
+            color: #333;
+            text-decoration: none;
+        }
+        .leranmore:hover {
+            background: #d6e4f0;
+            color: #333;
+        }
+
+
+        .callout {
+            height: 400px;
+            background: url("img/callout.jpg") center no-repeat;
+            background-size: cover;
+        }
+        .callout h1 {
+            margin: 0;
+            padding: 0;
+            color: #fff;
+            opacity: 0.8;
+            line-height: 400px;
+            text-align: center;
+        }
+
+        .portfolio {
+            height: 900px;
+            padding-top: 60px;
+            position: relative;
+        }
+        .portfolio h2 {
+            font-size: 26px;
+            line-height: 30px;
+            text-align: center;
+            color: #333;
+            font-weight: normal;
+        }
+        .portfolio hr {
+            display: block;
+            width: 5%;
+            border: none;
+            background-color: black;
+            height: 1px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .port {
+            display: inline-block;
+            text-align: center;
+        }
+        .port:hover {
+            opacity: 0.8;
+        }
+        .work-1 {
+            position: absolute;
+            left: 425px;
+        }
+        .work-2 {
+            position: absolute;
+            left: 965px;
+        }
+        .work-3 {
+            position: absolute;
+            left: 425px;
+            top: 520px;
+        }
+        .work-4 {
+            position: absolute;
+            left: 965px;
+            top: 520px;
+        }
+        
+        .portfolio .port-foot{
+            text-align: center;
+        }
+        .portfolio .port-a {
+            display: inline-block;
+            margin-top: 750px;
+            width: 200px;
+            font-size: 18px;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: 100;
+            color: #fff;
+            background: #55636a;
+            opacity: 0.7;
+        }
+        .portfolio .port-a:hover {
+            background: #1e1e1e;
+            opacity: 0.7;
+        }
+
+        .contact {
+            box-sizing: border-box;
+            height: 220px;
+            background: #337ab7;
+            padding-top: 60px;
+            text-align: center;
+        }
+        .contact h2 {
+            font-size: 24px;
+            line-height: 30px;
+            text-align: center;
+            color: #fff;
+            font-weight: normal;
+        }
+        .contact a {
+            display: inline-block;
+            margin-top: 30px;
+            margin-right: 20px;
+            width: 100px;
+            font-size: 18px;
+            padding: 10px 16px;
+            text-decoration: none;
+            font-weight: 100;
+            background: #55636a;
+        }
+        .contact .click {
+            background: #fff;
+            color: #6c3333;
+        }
+        .contact .click:hover {
+            background: #d6e4f0;
+            color: #333;
+        }
+        .contact .look {
+            background: #1f496e;
+            color: #fff;
+        }
+        .contact .look:hover {
+            background: #0f2436;
+        }
+
+        .footer {
+            height: 470px;
+            box-sizing: border-box;
+            padding-top: 60px;
+        }
+        .footer h4 {
+            color: #333;
+        }
+        .case {
+            text-align: center;
+        }
+        .case p {
+            font-size: 13px;
+        }
+        .case .fa-phone {
+            margin: 0;
+        }
+        .case-a {
+            text-decoration: none;
+            color: #397ebd;
+            margin-top: 0;
+        }
+        .case-a:hover {
+            color: #23527c;
+            text-decoration: underline;
+        }
+        .case-span a {
+            display: inline-block;
+            width: 60px;
+            margin-top: 30px;
+        }
+        .case-span i:hover {
+            color: #23527c;;
+        }
+        .footer-hr {display: block;
+            width: 5%;
+            border: none;
+            background-color: #ddd;
+            height: 1px;
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="header-txt">
+            <h1>Start Bootstrap</h1>
+            <h3>Free Bootstrap Themes & Templates</h3>
+            <a href="#">Find Out More</a>
+        </div>
+    </div>
+
+    <div class="theme"><h2>Stylish Portfolio is the perfect theme for your next project!</h2>
+        <p>This theme features some wonderful photography courtesy of <a href="#">Death to the Stock Photo</a>.</p>
+    </div>
+
+    <div class="service">
+        <div class="content">
+            <h2>Our Services</h2>
+            <hr class="service-hr">
+            <div class="row">
+                <div class="box1">
+                    <span class="fa fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-cloud fa-stack-1x"></i>
+                    </span>
+                    <h4>Service Name</h4>
+                    <p class="font-size-16px">Lorem ipsum dolor sit amet,</p>
+                    <p class="font-size-16px">consectetur adipsicing elit.</p>
+                    <a href="#" class="leranmore">Learn More</a>
+                </div>
+                <div class="box2">
+                    <span class="fa fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-compass fa-stack-1x"></i>
+                    </span>
+                    <h4>Service Name</h4>
+                    <p class="font-size-16px">Lorem ipsum dolor sit amet,</p>
+                    <p class="font-size-16px">consectetur adipsicing elit.</p>
+                    <a href="#" class="leranmore">Learn More</a>
+                </div>
+                <div class="box3">
+                    <span class="fa fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-flask fa-stack-1x"></i>
+                    </span>
+                    <h4>Service Name</h4>
+                    <p class="font-size-16px">Lorem ipsum dolor sit amet,</p>
+                    <p class="font-size-16px">consectetur adipsicing elit.</p>
+                    <a href="#" class="leranmore">Learn More</a>
+                </div>
+                <div class="box4">
+                    <span class="fa fa-stack fa-3x">
+                        <i class="fa fa-circle fa-stack-2x"></i>
+                        <i class="fa fa-shield fa-stack-1x"></i>
+                    </span>
+                    <h4>Service Name</h4>
+                    <p class="font-size-16px">Lorem ipsum dolor sit amet,</p>
+                    <p class="font-size-16px">consectetur adipsicing elit.</p>
+                    <a href="#" class="leranmore">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="callout">
+        <h1>Vertically Centered Text</h1>
+    </div>
+
+    <div class="portfolio">
+        <div class="port-head">
+            <h2>Our Work</h2>
+            <hr>
+        </div>
+        <div class="port work-1"><a href="#"><img src="img/portfolio-1.jpg" alt=""></a></div>
+        <div class="port work-2"><a href="#"><img src="img/portfolio-2.jpg" alt=""></a></div>
+        <div class="port work-3"><a href="#"><img src="img/portfolio-3.jpg" alt=""></a></div>
+        <div class="port work-4"><a href="#"><img src="img/portfolio-4.jpg" alt=""></a></div>
+        <h5 class="port-foot"><a href="#" class="port-a">View More Items</a></h5>
+    </div>
+
+    <div class="contact">
+        <div>
+            <h2>The buttons below are impossible to resist.</h2>
+            <a href="#" class="click">Click Me!</a>
+            <a href="#" class="look">Look at Me!</a>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="case">
+            <h4>Start Bootstrap</h4>
+            <p>3481 Melrose Place</p>
+            <p>Beverly Hills, CA 90210</p>
+            <br>
+            <p class="fa fa-phone"> (123) 456-7890</p>
+            <br>
+            <p class="fa fa-envelope-o"><a href="#" class="case-a"> name@example.com</a></p>
+            <br>
+            <span class="case-span">
+            <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+            <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+            <a href="#"><i class="fa fa-dribbble fa-2x"></i></a>
+            </span>
+            <hr class="footer-hr">
+            <p class="copyright">Copyright © Your Website 2014</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+<meta charset="utf-8">
+<title>图片垂直水平居中</title>
+<style type="text/css">
+ .center{
+        display: table-cell;// block; inline; inline-blick; none; table-cell; 
+        width: 300px;
+        height: 200px;
+        vertical-align: middle;//因用了表格的方式渲染;
+        text-align: center;//才使图片有垂直水平居中的效果;
+        background-color: #ccc;
+    }
+    p{
+        border-right: 1px solid #fff;
+    }
+</style>
+</head>
+<body>
+<p class="center">
+因用了表格的方式渲染，才使图片有垂直水平居中的效果
+</p>
+<div class="center">
+     <img src="xiao.jpg"/>
+</div>
+</body>
+</html>

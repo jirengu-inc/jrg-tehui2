@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>simple text</title>
+    <style>
+    *{
+        font-family: "微软雅黑";
+    }
+    body,ul,li{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    #header{
+        background: #333;
+    }
+    #header .nav{
+        height: 50px;
+    }
+    #header .nav li{
+        float: left;
+        margin-right: 10px;
+    }
+    #header .nav li a{
+        float: left;
+        padding: 0 20px;
+        line-height: 50px;
+        text-decoration: none;
+        text-align: center;
+        color: #008000;
+    }
+    #header .nav li a:hover{
+        background: #555;
+    }
+
+    #content{
+        margin-top: 50px;
+    }
+    #content h1{
+        text-align: center;
+        font-weight: normal;
+        color: #008000;
+    }
+    #content h3{
+        margin-left: 0.5em;
+        padding-bottom: 10px;
+        border-bottom: 1px dashed gray;
+    }
+    #content p{
+        text-indent: 2em;
+    }
+    #content p.desc{
+        color: #989898;
+    }
+    #content ul {
+        text-indent: 2em;
+        width: 100px;
+    }
+    #content ul.tree>li>a{
+        color: #008000;
+        text-decoration: none;
+    }
+    #content ul.tree>li>a:before{
+        content:"+";
+        color: #000;
+    }
+    #content ul.tree>li.open>a:before{
+        content:"-";
+    }
+    #content ul.tree>li.open li{
+        color: #555;
+    }
+    #content ul.tree>li.has-child ul{
+        display: none;
+    }
+    #content ul.tree>li.has-child.open ul{
+        display: block;
+    }
+    #content ul.tree>li.has-child:hover ul{
+        display: block;
+    }
+    #content ul.tree>li.has-child:hover a:before{
+        content:"-";
+    }
+    #content ul.tree>li>ul li{
+        margin-left: 2em;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="header">
+        <ul class="nav">
+            <li><a href="">首页</a></li>
+            <li><a href="">简介</a></li>
+            <li><a href="">作品</a></li>
+            <li><a href="">关于</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1 class="title">前端学习</h1>
+        <p class="desc">这是我的前端学习笔记</p>
+        <h3>第一章</h3>
+        <p>这是我的前端学习笔 记这是我是
+            <span class="text-less"> 特别的</span> 的前端学习笔 记这是我的前端学习笔记这是 我的前端学习,笔记这是我, 的前端, 学习笔记
+        </p>
+        <h3>第二章</h3>
+        <p>这是我的前端学习笔 记这是我的前端学习笔 记这是我的
+            <span class="text-less"> 特别的</span>前端学习笔记这是 我的前端学习,笔记这是我, 的前端, 学习笔记
+        </p>
+        <ul class="tree">
+            <li class="open has-child">
+                <a href="#">记笔记</a>
+                <ul>
+                    <li>jscode</li>
+                    <li>博客</li>
+                    <li>Github</li>
+                </ul>
+            </li>
+            <li class="has-child">
+                <a href="#">做作业</a>
+                <ul>
+                    <li>jscode</li>
+                    <li>博客</li>
+                    <li>Github</li>
+                </ul>
+            </li>
+            <li><a href="#">多思考</a></li>
+            <li><a href="#">多练习</a></li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+</body>
+
+</html>
