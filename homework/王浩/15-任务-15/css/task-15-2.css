@@ -89,12 +89,14 @@
 		font-weight: bold;
 		font-size: 44px;
 		font-style: italic;
+		color: #fff;
 	}
 	#container .content p{
 		font-size: 72px;
 		font-weight: bold;
 		margin: 15px 0;
 		letter-spacing: 1px;
+		color: #fff;
 	}
 	#container .content a{
 		width: 221px;
