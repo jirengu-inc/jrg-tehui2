@@ -100,7 +100,7 @@ html,body,div,p,h1,h3,ul,li{
 		text-align: center;
 		border-radius: 3px 3px 0 0;
 		transition: color 0.3s;
-		transition: background-color 0.5s;
+		transition: background-color 0.3s;
 		/*border: solid 1px red;*/
 	}
 	.v-frame li a:hover{
