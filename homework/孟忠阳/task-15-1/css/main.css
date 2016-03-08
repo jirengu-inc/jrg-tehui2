@@ -137,6 +137,9 @@ a{
 	height: 200px;
 	margin: 2.5px auto;
 }
+.work-overview img:hover{
+	opacity: 0.7;
+}
 .work-describe{
 	width: 310px;
 	height: 178px;
