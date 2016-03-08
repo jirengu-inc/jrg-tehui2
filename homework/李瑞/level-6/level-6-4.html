@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<style type="text/css">
+			.center{
+					display: table-cell;// block; inline; inline-blick; none; table-cell;
+					width: 200px;
+					height: 200px;
+					vertical-align: middle;
+					text-align: center;
+					background-color: #ccc;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="center">
+			<img src="F:/day01/JS/xxx.png" alt="" />
+		</div>
+		<p>如果没用使用display:table-cell,div中的图片会显示为<span><br><img src="F:/day01/JS/ceshi.png" alt="图片" title="未使用display:table-cell标签的样子"></span>
+		<br>
+		里面只能图片只能显示为水平居中，而vertical-align:middle在此失效，要想使得图片在div中实现垂直水平居中，添加display:table-cell让标签元素以表格单元格的形式呈现,类似于td标签。从而就能实现图片垂直水平居中。
+	</p>
+</body>
+</html>
