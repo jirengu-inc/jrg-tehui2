@@ -136,10 +136,9 @@ a{
 	width: 300px;
 	height: 200px;
 	margin: 2.5px auto;
+	border-bottom:1px solid #ccc;
 }
-.work-overview{
-	border:1px dotted #ccc;
-}
+
 .work-overview img:hover{
 	opacity: 0.7;
 }
