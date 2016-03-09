@@ -103,6 +103,17 @@ img{
 #service .row{
 	*zoom: 1;
 	display: inline-block;
+	min-width: 945px;
+}
+#service .service-item{
+	float: left;
+	margin: 0 100px;
+}
+#service .service-item:first-of-type{
+	margin-left: 0;
+}
+#service .service-item:last-of-type{
+	margin-right: 0;
 }
 #service .service-item{
 	float: left;
@@ -156,6 +167,7 @@ img{
 #our-work .row-child{
 	overflow: auto;
 	display: inline-block;
+	min-width: 1040px;
 }
 #our-work .row a:hover{
 	opacity: 0.8;
