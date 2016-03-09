@@ -24,12 +24,9 @@
       line-height:70px;
       margin-right:40px;
     }
-    .nav  a{
+    .nav li a{
        color:green;
     }
-	.nav a:hover{
-		color:white;
-	}
     .title{
       text-align:center;
       color:green;
