@@ -1,0 +1,76 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-03-08 13:10:05
+ * @version $Id$
+ */
+html,body,div,p,h1,h3,ul,li{
+		padding: 0;
+		margin: 0;
+		font-family: "Microsoft Yahei";
+		color: #333;
+		
+	}
+	
+	/* ----------------------  header  ------------------------- */
+	#header{
+		height: 60px;
+		width: 100%;
+		text-align: center;
+		
+		line-height: 60px;
+		
+	}
+	#header h1{
+		color: #99CCCC;
+	}
+
+	/*  ---------------------- container  ------------------- */
+	#container{
+		width: 100%;
+		border: solid 1px yellow;
+		
+	}
+	#container::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+
+	/* --------------------- main ---------------------------- */
+	.main{
+		float: left;
+		width: 100%;
+	}
+	.main .content{
+		margin-left: 220px;
+		margin-right: 220px;
+		/*background-color: pink;*/
+		min-height: 600px;
+		text-align: center;
+	}
+
+	
+
+	/* ---------------------  sidebar  ---------------------- */
+	.sidebar{
+		float: left;
+		width: 200px;
+		min-height: 400px;
+		background-color: red;
+		margin-left: -200px;
+		/*border-radius: 10px;*/
+		text-align: center;
+		
+	}
+
+	/* ---------------------------  leftbar  ----------------------- */
+	.leftbar{
+		float: left;
+		width: 200px;
+		min-height: 400px;
+		margin-left: -100%;
+		background-color: yellow;
+	}
+	

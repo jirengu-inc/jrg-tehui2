@@ -1,79 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="utf-8"/>
-<title>tast8-2</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task8-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
 <style type="text/css">
- body,html{
- 	margin: 0;
- 	padding: 0;
-  font-family: "微软雅黑",sans-serif;
- }
- /*设置导航栏背景颜色，去除内外边距*/
- #header .nav{
- 	background-color: #333;
-  font-size: 18px;
-  line-height: 1.5;
- 	margin: 0;
- 	padding: 0;
- }
- /*去除列表符号*/
- ul{
- 	list-style-type: none;
- }
-/*设置导航水平排列*/
- .nav li{
- 	display: inline-block;
- 	padding: 20px 10px;
+	body{
+		margin: 0;
+		padding:0;
+	}
+	a,h1{
+		text-decoration: none;
+		color: green;
+		text-align: center;
+	}
+	ul{
+		list-style: none;
+	}
+	p{
+		text-indent: 2em;
+		font-family: "微软雅黑";
+	}
+	p.desc,li.has-child>ul>li{
+		color: #666;
+	}
+	ul.nav>li{
+		margin-left: 20px;
+		display: inline-block;
+		text-align: center;
+		padding: 0.3em;
 
-  }
-/*设置链接的样式*/
-.nav li a ,.tree a{
-  	text-decoration: none;
-    color: #148914;
-  }
-/*设置内容框与导航条左对齐*/
-#content{
-    padding: 0 10px;
-  }
-  /*设置标题样式*/
-#content .title{
-    text-align: center;
-    color: #148914;
-    letter-spacing: 2px;   //文字与文字间的距离
-    font-weight: normal;
-  }
-  /*设置第一个段落的缩进，文字颜色的和大小*/
-.desc{
-    text-indent: 2em;
-    color: #333;
-    font-size: 14px;
-  }
-   /*h3的下边框，实现分割线的效果*/
-#content h3{
-    border-bottom: 1px dashed #ccc;
-    padding-bottom: 5px
-  }
-  /*设p段落缩进*/
-#content p{
-    text-indent: 2em;
-  }
-/*将.tree与p段落对齐*/
-.tree li{
-    margin-left: -10px;
-}
-/*加号的添加*/
-.tree > li:before {
-      content: "+ ";
-    }
-/*减号的添加*/  
-.tree li.open:before {
-      content: "- ";
-    }
-    
-.tree li.has-child:nth-child(2) ul {
-      display: none;
-    }
+	}
+	ul.nav{
+		margin-top: 0;
+		padding-left: 0;
+		height: 2.5em;
+		line-height: 2.5em;
+	}
+	a:visited{
+		color: green;
+	}
+	#header {
+		background-color: #333;
+		padding: 0;
+		margin: 0;
+		height: 3.1em;
+	}
+	li.has-child>ul{
+		display: none;
+	}
+	li.open>ul{
+		display: block;
+	}
+	ul.tree a:before{
+		content: "+";
+	}
+	li.open>a:before{
+		content: "-";
+	}
+	
 </style>
 </head>
 <body>
