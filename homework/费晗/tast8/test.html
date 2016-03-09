@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>tast8-1</title>
+<style type="text/css">
+  .box{
+  	color: red;
+  	border: 1px solid #ccc;
+  }
+  .box h1{
+    background-color: pink;
+  }
+  .box > h1{    //.box的直接子元素
+    font-weight: bolder;
+    font-size: 12px;
+  }
+  .box > .content{
+  	border: 1px solid red;
+  }
+  
+</style>
+</head>
+<body>
+<h1>大标题1</h1>
+<div class="box">
+    <h1>大标题1</h1>
+    <div class="content">
+        <h1>大标题2</h1>	
+    </div>
+    <h1>大标题2</h1>
+    <h1>大标题3</h1>
+	
+</div>
+</body>
+</html>
