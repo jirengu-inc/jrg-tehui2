@@ -84,6 +84,7 @@ img{
 	border-bottom: 2px solid #164771;
 }
 #service{
+	min-width: 945px;
 	background-color: #337AB7;
 	color: #fff;
 	text-align: center;
@@ -103,7 +104,6 @@ img{
 #service .row{
 	*zoom: 1;
 	display: inline-block;
-	min-width: 945px;
 }
 #service .service-item{
 	float: left;
@@ -156,6 +156,7 @@ img{
 	padding: 2.5em;
 }
 #our-work{
+	min-width: 1040px;
 	text-align: center;
 	padding: 50px 0;
 }
@@ -167,7 +168,6 @@ img{
 #our-work .row-child{
 	overflow: auto;
 	display: inline-block;
-	min-width: 1040px;
 }
 #our-work .row a:hover{
 	opacity: 0.8;
