@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-11-1</title>
+<style>
+html,body,ul{
+	font-family: "微软雅黑";
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: #000;
+}
+li{
+	list-style-type: none;
+	text-align: center;
+	width: 80px;
+}
+.header{
+	height: 50px;
+	background-color: #eee;
+}
+
+.nav_list{
+	width: 80px;
+	position: relative;
+	margin-left: 20px;
+	display: inline-block;
+	line-height: 50PX;
+}
+.nav_list:hover{
+	background-color: #a49f9f;
+}
+.child_list{
+	position: absolute;
+	left: 0;
+	top: 100%;
+	display: none;
+}	
+.nav_list:hover .child_list {
+	display:block;
+}
+.child_list>li:hover{
+	background-color: #7b7676;
+}
+
+
+</style>
+</head>
+<body>
+	<div class="header">
+		<ul class="nav">
+			<li class="nav_list"><a href="#">前端</a>
+				<ul class="child_list">
+					<li>
+						<a href="#">
+							HTML	
+						</a>
+					</li>
+					<li>
+					<a href="#">CSS</a>
+					</li>
+					<li><a href="#">Javascript</a></li>
+				</ul>
+			</li>
+			<li class="nav_list">
+				<a href="#">服务端</a>
+				<ul class="child_list">
+					<li>
+						<a href="#">NODE</a>
+					</li>
+					<li>
+						<a href="#">PHP</a>
+					</li>
+					<li>
+						<a href="#">JAVA</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav_list">
+				<a href="#">前段工具</a>
+				<ul class="child_list">
+					<li>
+						<a href="#">Webstorm</a>
+					</li>
+					<li>
+						<a href="#">Sublime</a>
+					</li>
+					<li>
+						<a href="#">Git</a>
+					</li>
+				</ul>
+			</li>
+			<li class="nav_list">HTML</li>
+			<li class="nav_list">NODE</li>
+		</ul>
+
+	</div>	
+</body>
+</html>
