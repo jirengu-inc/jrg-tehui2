@@ -4,60 +4,86 @@
     <meta charset="UTF-8">
     <title>level-8-2</title>
     <style>
-    body{
-     font-family:"微软雅黑";
-    }
-    li{
-     list-style: none;
-    }
-    a{
-      text-decoration:none;color:green;
-    }
-    #header{
-      width:100%;
-      background-color:#333;
-      height:70px;
-    }
-    .nav li{
-      display: inline-block;
-      font-size:34px;
-      line-height:70px;
-      margin-right:40px;
-    }
-    .nav  a{
-       color:green;
-    }
-	.nav a:hover{
-		color:white;
-	}
-    .title{
-      text-align:center;
-      color:green;
-    }
-    .desc{
-      color:#666666;
-      text-indent:2em;
-    }
-    h3{
-      border-bottom:2px dashed #666;
-    }
-    p{
-      text-indent:2em;
-    }
-    .tree a{
-      background:url(未标题-1.gif)no-repeat left;
-      padding-left: 19px;
-    }
-    .open a{
-      background:url(未标题-2.gif)no-repeat left;
-      padding-left: 19px;
-    }
-    .has-child:nth-child(2) li{
-      display:none;
-    }
-    .tree li{
-      color:#666;
-    }
+     body,ul,p,h1,h3{
+       margin:0;padding:0;
+      }
+      
+     li{
+        list-style:none;
+     }
+
+      a{
+        text-decoration:none;
+      }
+
+      body{
+        font-family:'微软雅黑',Arial;
+      }
+
+      #header{
+       background:#333;height:80px;
+      }
+
+      .nav li{
+        display:inline-block;
+        line-height:80px;
+        font-size:30px;
+        margin-right:40px;
+      }
+
+      .nav{
+        margin-left:15px;
+      }
+
+      .nav a{
+        color:green;
+      }
+
+      .title{
+        text-align:center;
+        color:green;
+        letter-spacing:5px;
+        margin-top:30px;
+        margin-bottom:10px;}
+      .desc{text-indent:2em;
+        color:gray;
+      }
+
+      h3{
+        margin-top:20px;
+        border-bottom:1px dashed #ccc;
+        padding-bottom:10px;
+      }
+
+      p{
+        text-indent:2em;
+        padding-top:15px;
+        margin-bottom:15px;
+      }
+
+      .tree>li{
+        text-indent:2em;
+      }
+
+      .tree>li a{
+        color:green;
+      }
+
+      .tree .open li{
+        text-indent:4em;
+      }
+
+      .tree>li:nth-child(2) li{
+        display:none;
+      }
+
+      .tree>li:before{
+        content:"+ ";
+      }
+
+      .tree>li:first-of-type:before{
+        content:"- ";
+      }
     </style>
   </head>
   <body>
