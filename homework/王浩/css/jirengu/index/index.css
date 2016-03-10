@@ -255,7 +255,7 @@ html,body,div,p,h1,h3,ul,li{
 	.leftbar:hover{
 		opacity: 0.8;
 	}
-	.time-line a{
+	.time-line>a{
 		display: inline-block;
 		font-size: 14px;
 		/*border: solid 1px red;*/
@@ -266,11 +266,16 @@ html,body,div,p,h1,h3,ul,li{
 		font-weight: bold;
 		border-radius: 5px;
 	}
-	.time-line a:hover{
+	.time-line>a:hover{
 		background-color: #2A2A2A;
 	}
-	.time-line h3{
-		margin-bottom: 3px;
+	.time-line h3 a{
+		display: inline-block;
+		margin-bottom: 8px;
+		color: #555;
+	}
+	.time-line h3 a:hover{
+		color: #000;
 	}
 
 	.icon ul{

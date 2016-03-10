@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>二级导航</title>
+	<style>
+	/*css reset*/
+	body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,th,td,img,div,dl,dt,dd,input,select{margin: 0;padding: 0;}
+	body{font-size: 12px;}
+	img{border: none;vertical-align:top;}
+	li{list-style: none;}
+	input,select,textarea{outline: none;border: none;}
+	textarea{resize: none;overflow:auto;}
+	a{text-decoration: none;}
+
+
+	/*clear float*/
+	.clearfix:after{content: "";clear: both; display: table;}
+	.clearfix{zoom:1;}
+	
+	.fl{float: left;}
+	.fr{float: right;}
+
+	.wrapper{
+	width: 960px;
+	margin: 0 auto;
+	}
+	body{
+		font-family: "微软雅黑";
+	}
+	.nav{
+	width: 960px;
+	margin: 0 auto;
+	}
+	.nav>li {
+		float: left;
+		position: relative;
+	}
+	.nav>li>a{
+		float: left;
+		padding: 0 15px;
+		background: #999;
+		font-size: 16px;
+		line-height: 30px;
+		color: #000;
+	}
+	.nav>li>a:hover{
+		background: #555;
+		color: #fff;
+	}
+	.nav li ul{
+		display: none;
+	}
+	.nav li:hover ul{
+		display: block;
+		border: 1px solid #999;
+		margin-top: -1px;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+	.nav li:hover ul li{
+		
+	}
+	.nav li:hover ul li a{
+		display: block;
+		padding: 0 10px;
+
+		background: #fff;
+		font-size: 14px;
+		line-height: 30px;
+		color: #000;
+	}
+	.nav li:hover ul li a:hover{
+		background: #777;
+	}
+	</style>
+</head>
+<body>
+	<ul class="nav">
+		<li>
+			<a href="">前端</a>
+			<ul>
+				<li><a href="">Html</a></li>
+				<li><a href="">Css</a></li>
+				<li><a href="">Javascript</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="">服务端</a>
+			<ul>
+				<li><a href="">Node</a></li>
+				<li><a href="">PHP</a></li>
+				<li><a href="">JAVA</a></li>
+			</ul>
+		</li>
+		<li>
+			<a href="">前端工具</a>
+			<ul>
+				<li><a href="">sublime</a></li>
+				<li><a href="">git</a></li>
+				<li><a href="">Webstrom</a></li>
+			</ul>
+		</li>
+		<li><a href="">HTML</a></li>
+		<li><a href="">NODE</a></li>
+	</ul>
+	
+
+</body>
+</html>
