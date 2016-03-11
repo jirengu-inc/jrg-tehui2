@@ -1,0 +1,243 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+}
+h1{
+	font:70px/1.1 source_sans_pro_hard-webfont;
+	color: #333;
+}
+h2{
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font:32px source_sans_pro-webfont;
+}
+h3{
+	font:28px source_sans_pro-webfont;
+	color: #fff;
+}
+h4{
+	font:20px/2 source_sans_pro-webfont;
+}
+.btn-night-big{
+	font: 20px/1.1 source_sans_pro-webfont;
+	color: #fff;
+	padding: 12px 15px;
+	background-color:rgba(0,0,0,0.4); 
+	display: inline-block;
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .btn-night-big{
+    background-color:#000;
+    filter:Alpha(opacity=40);
+  }
+}
+.btn-night-big:hover{
+	background-color:rgba(0,0,0,0.7)
+}
+@media \0screen\,screen\9 {
+  .btn-night-big:hover{
+    background-color:#000;
+    filter:Alpha(opacity=80);
+  }
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+img{
+	border: none;
+}
+#header{
+	width: 100%;
+	height: 100%;
+	background: url('../img/bg.jpg') no-repeat center;
+	background-size: cover;
+	display: table;
+}
+#header .container{
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+#header .description{
+	font: 28px/1.1 source_sans_pro-webfont;
+	color: #333;
+	margin-top:20px;
+	margin-bottom: 30px;
+}
+.review{
+	text-align: center;
+	padding: 50px 0 70px 0;
+}
+.review p{
+	color: #393939;
+	font:23px source_sans_pro_light-webfont;
+}
+.review p a{
+	color: #337AB7;
+}
+.review p a:hover{
+	color: #164771;
+	border-bottom: 2px solid #164771;
+}
+#service{
+	min-width: 945px;
+	background-color: #337AB7;
+	color: #fff;
+	text-align: center;
+	padding: 50px 0px 75px 0px;
+}
+.line{
+	margin: 20px auto;
+	width: 90px;
+	border: 0;
+	border-top: 1px solid #eee;
+}
+#service .row:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+#service .row{
+	*zoom: 1;
+	display: inline-block;
+}
+#service .service-item{
+	float: left;
+	margin: 0 100px;
+}
+#service .service-item:first-of-type{
+	margin-left: 0;
+}
+#service .service-item:last-of-type{
+	margin-right: 0;
+}
+#service .service-item{
+	float: left;
+	margin: 0 2em;
+}
+#service p{
+	font: 16px/1.2 source_sans_pro-webfont;
+}
+#service .fa-stack{
+	font-size: 3.5em;
+}
+#service .fa-stack-1x{
+	color: #337AB7;
+}
+.btn-white{
+	font: 16px/1.1 source_sans_pro-webfont;
+	color: #000;
+	padding: 8px 12px;
+	margin-top: 10px;
+	background-color:#fff; 
+	display: inline-block;
+}
+.btn-white:hover{
+	background-color:rgba(255,255,255,0.8)
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .btn-white:hover{
+    background-color:#fff;
+    filter:Alpha(opacity=80);
+  }
+}
+.text-vertical-center{
+	width: 100%;
+	text-align: center;
+	background: url('../img/callout.jpg') no-repeat center center;
+	background-size: cover;
+}
+.text-vertical-center h1{
+	color: #fff;
+	padding: 2.5em;
+}
+#our-work{
+	min-width: 1040px;
+	text-align: center;
+	padding: 50px 0;
+}
+#our-work .portfolio{
+	float: left;
+	margin: 10px;
+	padding: 0;
+}
+#our-work .row-child{
+	overflow: auto;
+	display: inline-block;
+}
+#our-work .row a:hover{
+	opacity: 0.8;
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  #our-work .row a:hover{
+    filter:Alpha(opacity=80);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+  }
+}
+.btn-night{
+	margin-top: 20px;
+	font: 16px/1.1 source_sans_pro-webfont;
+	color: #fff;
+	padding: 9px 14px;
+	background-color:rgba(0,0,0,0.4); 
+	display: inline-block;
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .btn-night{
+    background-color:#000;
+    filter:Alpha(opacity=40);
+  }
+}
+.btn-night:hover{
+	background-color:rgba(0,0,0,0.7)
+}
+@media \0screen\,screen\9 {/* 只支持IE6、7、8 */
+  .btn-night:hover{
+    background-color:#000;
+    filter:Alpha(opacity=70);
+    position:static; /* IE6、7、8只能设置position:static(默认属性) ，否则会导致子元素继承Alpha值 */
+  }
+}
+.bellow-button{
+	text-align: center;
+	background-color: #337AB7;
+	padding: 60px;
+}
+.bellow-button .btn{
+	font: 20px/1.1 source_sans_pro-webfont;
+	padding: 12px 15px;
+	margin-left:8px;
+	margin-right:8px;
+}
+#footer{
+	text-align: center;
+	padding: 6em;
+}
+#footer .row .content-item{
+	display: inline-block;
+}
+#footer p{
+	font:16px source_sans_pro-webfont;
+}
+#footer .contact{
+	margin: 10px 0;
+}
+#footer .row{
+	font-size: 3em;
+	margin-top: 20px;
+}
+#footer a{
+	color: #337AB7;
+}
+#footer a:hover{
+	color: #23527C;
+	border-bottom: 1px solid #23527C;
+}
+#footer .copyright{
+	color: #9B9B9B;
+	font-size: 15px;
+}
