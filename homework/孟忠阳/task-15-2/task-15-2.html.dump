@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-15-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/fonts.css">
+</head>
+<body>
+    <div id="header">
+    	<div class="header-text">
+    		<a href="#">Start Bootstrap</a>
+    		<ul class="menu">
+    			<li>SERVICES</li>
+    			<li>PORTFOLIO</li>
+    			<li>ABOUT</li>
+    			<li>TEAM</li>
+    			<li>CONTACT</li>
+    		</ul>
+    	</div>
+    </div>
+    <div id="main">
+    	<div id="main-header">
+    		<div class="header-container">
+    			<div>Welcome To Our Studio!</div>
+    			<p>It's Nice To Meet You</p>
+    			<a href="#">TELL ME MORE</a>
+    		</div>
+    	</div>
+    	<div id="main-services">
+    		<div id="services-container">
+	    		<h2>SERVICES</h2>
+	    		<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+	    		<div class="services-item">
+	    			<i class="fa fa-shopping-cart"></i>
+	    			<h4>E-Commerce</h4>
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+	    			</p>
+	    		</div>
+	    		<div class="services-item">
+	    			<i class="fa fa-laptop"></i>
+	    			<h4>Responsive</h4>
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+	    			</p>
+	    		</div>
+	    		<div class="services-item">
+	    			<i class="fa fa-lock"></i>
+	    			<h4>Web Secuity</h4>
+	    			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+	    			</p>
+	    		</div>
+    		</div>
+    	</div>
+        <div id="main-portfolio">
+        	<div id="portfolio-container">
+	         	<h2>PORTFOLIO</h2>
+	         	<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/Round-icons.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Round Icons</h4>
+	         			<p>Graphic Design</p>
+	         		</div>
+	         	</div>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/startup-framework.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Startup Framework</h4>
+	         			<p>Website Design</p>
+	         		</div>
+	         	</div>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/treehouse.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Treehouse</h4>
+	         			<p>Website Design</p>
+	         		</div>
+	         	</div>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/golden.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Golden</h4>
+	         			<p>Website Design</p>
+	         		</div>
+	         	</div>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/escape.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Escape</h4>
+	         			<p>Website Design</p>
+	         		</div>
+	         	</div>
+	         	<div class="portfolio-item">
+	         		<div class="item-overview">
+	         			<img src="img/dreams.png" height="260" width="360" alt="">
+	         			<i class="fa fa-plus"></i>
+	         		</div>
+	         		<div class="item-describe">
+	         			<h4>Dreams</h4>
+	         			<p>Website Design</p>
+	         		</div>
+	         	</div>
+         	</div>
+        </div>
+        <div id="main-about">
+        	<div id="about-container">
+	         	<h2>ABOUT</h2>
+	         	<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+	         	<div class="about-time">
+	         		<div class="timeline-image">
+	         			<img src="img/2009-2011.jpg" height="200" width="200" alt="">
+	         		</div>
+	         		<div class="timeline-describe-left">
+	         			<h4>2009-2011</h4>
+	         			<h4>Our Humble Beginnings</h4>
+	         			<p>
+	         				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+	         			</p>
+	         		</div>
+	         	</div>
+	         	<div class="about-time">
+	         		<div class="timeline-image">
+	         			<img src="img/2011.jpg" alt="">
+	         		</div>
+	         		<div class="timeline-describe-right">
+	         			<h4>March 2011</h4>
+	         			<h4>An Agency is Born</h4>
+	         			<p>
+	         				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+	         			</p>
+	         		</div>
+	         	</div>
+	         	<div class="about-time">
+	         		<div class="timeline-image">
+	         			<img src="img/2012.jpg" alt="">
+	         		</div>
+	         		<div class="timeline-describe-left">
+	         			<h4>DECEMBER 2012</h4>
+	         			<h4>Transition to Full Service</h4>
+	         			<p>
+	         				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+	         			</p>
+	         		</div>
+	         	</div>
+	         	<div class="about-time">
+	         		<div class="timeline-image">
+	         			<img src="img/2014.jpg" alt="">
+	         		</div>
+	         		<div class="timeline-describe-right">
+	         			<h4>JULY 2014</h4>
+	         			<h4>Phase Two Expansion</h4>
+	         			<p>
+	         				"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!"
+	         			</p>
+	         		</div>
+	         		<div class="timeline-describe">
+	         			<div class="time-line-foot">
+	         			    <h4>
+	         			    	BE PART
+                                  <br>
+                                  OF OUR
+                                  <br>
+                                  STORY!
+	         			    </h4>
+	         		    </div>
+	         		</div>
+	         	</div>
+         	</div>
+        </div>
+        <div id="main-team">
+            <div id="team-container">
+            	<h2>Our Amazing Team</h2>
+            	<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+            	<div class="team-member">
+	            	<div class="team-member-container">
+	            		<div class="member-photo">
+	            			<img src="img/kay.jpg" height="225" width="225" alt="">
+	            		</div>
+	            		<div class="member-describe">
+	            			<h4>Kat Garland</h4>
+	            			<p>Lead Designer</p>
+	            			<a href="#"><i class="fa fa-twitter"></i></a>
+	            			<a href="#"><i class="fa fa-facebook"></i></a>
+	            			<a href="#"><i class="fa fa-linkedin"></i></a>
+	            		</div>
+	            	</div>
+	            	<div class="team-member-container">
+	            		<div class="member-photo">
+	            			<img src="img/larry.jpg" height="225" width="225" alt="">
+	            		</div>
+	            		<div class="member-describe">
+	            			<h4>Larry Park</h4>
+	            			<p>Lead Marketer</p>
+	            			<a href="#"><i class="fa fa-twitter"></i></a>
+	            			<a href="#"><i class="fa fa-facebook"></i></a>
+	            			<a href="#"><i class="fa fa-linkedin"></i></a>
+	            		</div>
+	            	</div>
+	            	<div class="team-member-container">
+	            		<div class="member-photo">
+	            			<img src="img/diana.jpg" height="225" width="225" alt="">
+	            		</div>
+	            		<div class="member-describe">
+	            			<h4>Diana Pertersen</h4>
+	            			<p>Lead Developer</p>
+	            			<a href="#"><i class="fa fa-twitter"></i></a>
+	            			<a href="#"><i class="fa fa-facebook"></i></a>
+	            			<a href="#"><i class="fa fa-linkedin"></i></a>
+	            		</div>
+	            	</div>
+            	</div>
+            	<p class="text-muted">
+            		Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
+            	</p>
+            	<div class="clients">
+            		<a href="#"><img src="img/envato.jpg" height="50" width="200" alt=""></a>
+            		<a href="#"><img src="img/designmodo.jpg" height="50" width="200" alt=""></a>
+            		<a href="#"><img src="img/themeforest.jpg" height="50" width="200" alt=""></a>
+            		<a href="#"><img src="img/creative-market.jpg" height="50" width="200" alt=""></a>
+            	</div>
+            </div>	
+        </div>
+        <div id="main-contact">
+         	<div id="contact-container">
+         		<h2>CONTACT US</h2>
+         		<h3>Lorem ipsum dolor sit amet consectetur.</h3>
+         		<div class="contact-way">
+         			<div class="no-textarea">
+	         			<div class="formgroup">
+	         				<input type="text" class="form-control" placeholder="YOUR NAME*" id="name" >
+	         			</div>
+	         			
+	         			<div class="formgroup">
+	         				<input type="email" class="form-control" placeholder="YOUR EMAIL*" id="email" >
+	         			</div>
+	         			<div class="formgroup">
+	         				<input type="phone" class="form-control" placeholder="YOUR PHONE*" id="phone" >
+	         			</div>
+         		    </div>
+         			<div class="formgroup-textarea">
+         				<textarea type="text" class="form-control" placeholder="YOUR MESSAGE*" id="message" ></textarea>
+         			</div>
+         		</div>
+         		<a href="#">SEND MESSAGE</a>
+         	</div>
+        </div>
+    </div>
+    <div id="footer">
+    	<p>Copyright 漏 Your Website 2014</p>
+    	<a class="link-icon" href="#"><i class="fa fa-twitter"></i></a>
+    	<a class="link-icon" href="#"><i class="fa fa-facebook"></i></a>
+    	<a class="link-icon" href="#"><i class="fa fa-linkedin"></i></a>
+    	<a class="link-address"href="#">Privacy Policy</a>
+    	<a class="link-address"href="#">Terms of Use</a>
+    </div>
+</body>
+</html>

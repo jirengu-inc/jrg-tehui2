@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-9-1</title>
+<style>
+ul{margin:0;padding:0;}
+li{
+	display: inline-block;
+	color:#000;
+	cursor:pointer; 
+	list-style: none;
+}
+a{
+	display: inline-block;
+	text-decoration: none;
+	margin-left: 35px;
+	height: 35px;
+	line-height: 35px;
+	color: inherit;
+}
+ul li{background:url(icon.png)no-repeat;}
+.box1{
+	background-position:0  0px ;
+}	
+.box2{
+	background-position:0 -44px ;
+}
+.box3{
+	background-position:0 -90px ;
+
+}
+.box1:hover{
+	background-position:0  -134px ;color:purple;
+}
+.box2:hover{
+	background-position:0 -183px ;color:purple;
+}
+.box3:hover{
+	background-position:0 -230px ;color:purple;
+
+}
+</style>
+</head>
+<body>
+	<ul class="player">
+		<li class="box1"><a href="#">前进</a></li>
+		<li class="box2"><a href="#">播放</a></li>
+		<li class="box3"><a href="#">暂停</a></li>
+	</ul>
+
+
+</body>
+</html>
