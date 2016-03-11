@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 22</title>
+    <style>
+        body, div, h3, h5, input, ul, li, p {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body { padding-left: 40px; }
+        li { list-style:none; }
+        h3 { margin: 20px; }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        #task-1, #task-2, #task-3, #task-4 {
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+            margin-bottom: 30px;
+        }
+
+        #tab-list {
+            width: 600px;
+            margin-left: 10px;
+        }
+        #tab-list li {
+            display: inline-block;
+            border: 1px solid #ddd;
+            width: 200px;
+            text-align: center;
+            padding: 5px 0;
+            margin-left: -5px;
+            cursor: pointer;
+        }
+        #tab-list li.active {
+            background: #efefef;
+        }
+
+        #content-area {
+            width: 598px;
+            border: 1px solid #ddd;
+            margin-left: 5px;
+            height: 200px;
+            margin-top: -1px;
+            padding: 20px;
+        }
+
+        #content-area > p {
+            display: none;
+        }
+
+        #content-area .active {
+            display: block;
+        }
+
+        #task-5 {
+            position: relative;
+            width: 600px;
+            height: 400px;
+        }
+
+        #click-me {
+            cursor: pointer;
+        }
+
+        #panel {
+            position: absolute;
+            background: rgba(200,200,200,.6);
+            top: 0;
+            left: 0;
+            width: 600px;
+            height: 400px;
+            display: none;
+        }
+
+        .cover {
+            width: 400px;
+            height: 180px;
+        }
+
+        #panel .container {
+            position: absolute;
+            width: 400px;
+            height: 180px;
+            top: 50%;
+            left: 50%;
+            margin-left: -200px;
+            margin-top: -90px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            background: #fff;
+        }
+
+        .header {
+            border-bottom: 1px solid #ccc;
+            padding: 10px;
+            height: 40px;
+        }
+
+        .header:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .header h5 {
+            font-size: 16px;
+            float: left;
+        }
+
+        .header .close {
+            float: right;
+            cursor: pointer;
+        }
+
+        .content {
+            padding: 10px;
+            height: 100px;
+        }
+
+        .content p {
+            margin: 10px;
+        }
+
+        .footer {
+            border-top: 1px solid #eee;
+            text-align: right;
+            padding: 10px;
+            height: 40px;
+        }
+
+    </style>
+</head>
+<body>
+<div id="task-1">
+    <h3>代码题1</h3>
+    <!--有如下代码，要求当点击每一个元素`li`时控制台展示该元素的文本内容。不考虑兼容-->
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+</div>
+
+<div id="task-2">
+    <h3>代码题2</h3>
+    <!--* 当点击按钮`开头添加时`在`<li>这里是</li>`元素前添加一个新元素，内容为用户输入的非空字符串；当点击`结尾添加`时在`<li>前端6班</li>`后添加用户输入的非空字符串.-->
+    <!--* 当点击每一个元素`li`时控制台展示该元素的文本内容。-->
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+</div>
+
+
+<div id="task-3">
+    <h3>代码题3</h3>
+    <!--补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。-->
+    <ul class="ct">
+        <li data-img="1.png">鼠标放置查看图片1</li>
+        <li data-img="2.png">鼠标放置查看图片2</li>
+        <li data-img="3.png">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+</div>
+<h3>代码题4</h3>
+<div id="task-4">
+
+    <ul id="tab-list">
+        <li class="active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div id="content-area">
+        <p class="active">内容1</p>
+        <p>内容2</p>
+        <p>内容3</p>
+    </div>
+</div>
+
+<h3>代码题5</h3>
+<div id="task-5">
+    <input id="click-me" type="button" value="点我1">
+    <div id="panel">
+        <div class="cover"></div>
+        <div class="container">
+            <div class="header">
+                <h5>我是标题1</h5>
+                <span class="close">×</span>
+            </div>
+            <div class="content">
+                <p>我是内容1</p>
+                <p>我是内容1</p>
+            </div>
+            <div class="footer">
+                <a href="#" class="cancel">取消</a>
+                <a href="#" class="submit">确定</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    function find(arr, itm) {
+        if (arguments.length < 2 || typeof arguments[0] !== "object") {
+            console.log("An array and an item is needed.");
+            return -1;
+        }
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] === itm) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    function addClass(el, cls) {
+        var str = el.className;
+        if (str.search(cls) !== -1) {
+            return false;
+        } else {
+            if (str === "") {
+                el.className = str.concat(cls);
+            } else {
+                var tmp = el.className.split(" ");
+                tmp.push(cls);
+                el.className = tmp.join(" ");
+            }
+        }
+    }
+
+    function removeClass(el, cls) {
+        var str = el.className;
+        if (str.search(cls) === -1) {
+            return false;
+        } else {
+            var tmp = el.className.split(" ");
+            var location = find(tmp, cls);
+            tmp.splice(location, 1);
+            el.className = tmp.join(" ");
+        }
+    }
+
+    function addEvent(node, type, handler) {
+        if (!node) return false;
+        if (node.addEventListener) {
+            node.addEventListener(type, handler, false);
+            return true;
+        } else if (node.attachEvent) {
+            node.attachEvent('on' + type, handler);
+            return true;
+        }
+        return false;
+    }
+
+    //task 1
+    function showListItemsText(item) {
+        for (var i = 0; i < item.length; i++) {
+            item[i].addEventListener("click", function(){
+                console.log(this.innerText);
+            })
+        }
+    }
+
+    var task1 = document.getElementById("task-1");
+    var listItems1 = task1.getElementsByTagName("li");
+
+    showListItemsText(listItems1);
+
+    //task 2
+    function createNode(node, text) {
+        if (text === "") return false;
+        var newNode = document.createElement(node);
+        var newNodeText = document.createTextNode(text);
+        newNode.appendChild(newNodeText);
+        return newNode;
+    }
+
+    var task2 = document.getElementById("task-2");
+
+    var listParent = task2.querySelector(".ct");
+    var listItems2 = task2.getElementsByTagName("li");
+
+    var btnAddStart = document.getElementById("btn-add-start");
+    var btnAddEnd = document.getElementById("btn-add-end");
+    var inputText = document.querySelector(".ipt-add-content");
+
+    addEvent(btnAddStart, "click", function() {
+        var content = inputText.value;
+        //新节点
+        var newItem = createNode("li", content);
+        //放到最前
+        listParent.insertBefore(newItem,listParent.firstChild);
+        //清空输入框
+        inputText.value = "";
+        
+    });
+
+    addEvent(btnAddEnd, "click", function() {
+        var content = inputText.value;
+        var newItem = createNode("li", content);
+        listParent.appendChild(newItem);
+        inputText.value = "";
+    });
+
+    addEvent(listParent, "click", function(e) {
+        console.log(e.target.innerText);
+    });
+
+    //task 3
+    var task3 = document.getElementById("task-3");
+    var liItems = task3.getElementsByTagName("li");
+    var imgPreview = task3.querySelector(".img-preview");
+
+    for (var i = 0; i < liItems.length; i++) {
+        addEvent(liItems[i], "mouseenter", function() {
+            //获取图片地址
+            var imgSrc = this.getAttribute("data-img");
+            //新建图片节点，添加图片地址，加入imgPreview
+            var img = document.createElement("img");
+            img.setAttribute("src", imgSrc);
+            imgPreview.appendChild(img);
+        });
+        addEvent(liItems[i], "mouseout", function() {
+            if (imgPreview.hasChildNodes()) {
+                //删除图片节点
+                imgPreview.removeChild(imgPreview.childNodes[0]);
+            }
+        });
+    }
+
+    //task4
+    var tabList = document.getElementById("tab-list");
+    var tabListItem = tabList.getElementsByTagName("li");
+
+    var contentArea = document.getElementById("content-area");
+    var contentAreaItem = contentArea.getElementsByTagName("p");
+
+    for (var i = 0; i < tabListItem.length; i++) {
+        addEvent(tabListItem[i], "click", function() {
+            var children = this.parentNode.children;
+            var index;
+            for (var j = 0; j < children.length; j++) {
+                removeClass(children[j], "active");
+                removeClass(contentAreaItem[j], "active");
+                //获取当前节点在“数组”中的下标，以备contentArea中添加"active"用
+                if (children[j] === this){
+                    index = j;
+                }
+            }
+            addClass(this, "active");
+            //对应项加"active"
+            addClass(contentAreaItem[index], "active");
+        });
+    }
+
+    //task5
+    function showPanel() {
+        panel.style.display = "block";
+    }
+    function hidePanel() {
+        panel.style.display = "none";
+    }
+    var clickMe = document.getElementById("click-me");
+    var panel = document.getElementById("panel");
+    var close = panel.querySelector(".close");
+    var cover = panel.querySelector(".cover");
+    var cancel = panel.querySelector(".cancel");
+    var submit = panel.querySelector(".submit");
+
+    submit.onclick = function (e) {
+        e.preventDefault();
+    };
+
+    addEvent(clickMe, "click", showPanel);
+
+    addEvent(cover, "click", hidePanel);
+    addEvent(close, "click", hidePanel);
+    addEvent(cancel, "click", function(e) {
+        e.preventDefault();
+        hidePanel();
+    });
+
+</script>
+</body>
+</html>
