@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-11-1</title>
+	<style type="text/css">
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#header{
+			margin: 10px;
+			height: 40px;
+			line-height: 40px;
+			background-color: #E0DEDE;
+		}
+		#header ul.dad>li{
+			position: relative;
+			padding: 0;
+			display: inline-block;
+		}
+		#header ul.dad>li:hover{
+			background-color: #CBCBCB;
+		}
+		#header ul.dad .child>li:hover{
+			background-color: #E0DEDE;
+		}
+		#header a{
+			text-decoration: none;
+			font:20px Microsoft YaHei;
+			color: #6F6E6E;
+		}
+		#header ul.dad>li>a{
+			padding:0 40px;
+		}
+		#header ul.dad .child{
+			width: 100%;
+			text-align: center;
+			display: none;
+			position: absolute;	
+			left: 0;
+			right: 0;
+			top: 100%;
+			border: 1px solid #E0DEDE;
+			border-top: none;
+		}
+		#header .dad>li:hover>ul{
+			display: block;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<ul class="dad">
+			<li><a href="#">前端</a>
+				<ul class="child">
+					<li><a href="#">JavaScript</a></li>
+					<li><a href="#">HTML</a></li>
+					<li><a href="#">CSS</a></li>
+				</ul>
+			</li>
+			<li><a href="#">服务端</a>
+				<ul class="child">
+					<li><a href="#">Node</a></li>
+					<li><a href="#">PHP</a></li>
+					<li><a href="#">Java</a></li>
+				</ul>
+			</li>
+			<li><a href="#">前端工具</a>
+				<ul class="child">
+					<li><a href="#">Sublime</a></li>
+					<li><a href="#">WebStrom</a></li>
+					<li><a href="#">Git</a></li>
+				</ul>
+			</li>
+			<li><a href="#">HTML</a></li>
+			<li><a href="#">NODE</a></li>
+		</ul>
+	</div>
+</body>
+</html>

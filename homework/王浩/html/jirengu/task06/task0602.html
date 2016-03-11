@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-6-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	body,div,h3,a{
+		padding:0;
+		margin:0;
+	}
+	.box{
+		border:solid 1px #ccc;
+		margin:10px;
+	}
+	.box .header{
+		height:40px;
+		text-align: left;
+		padding-left: 10px;
+		font-size:16px;
+		color:#f00;
+		border-bottom:solid #ccc 1px;
+		position:relative;
+	}
+	.box .header .close{
+		float:right;
+		position:absolute;
+		top:0;
+		right:5px;
+		text-decoration: none;
+		color:red;
+		font-weight: bold;
+	}
+	.box .content{
+		height:100px;
+	}
+	.box .content a{
+		text-decoration:none;
+		color:blue;
+	}
+	.box .content a:hover{
+		color:red;
+	}
+	.box .footer{
+		height:50px;
+		text-align: center;
+
+	}
+	.box .footer .btn{
+		border:solid 1px #ccc;
+		border-radius:3px;
+		padding:4px 3px;
+		display:inline-block;
+		text-decoration: none;
+	}
+</style>
+</head>
+<body>
+    <div class="box">
+    	<div class="header">
+    		<h3>我是标题</h3>
+    		<a href="#" class="close" title="关闭">X</a>
+    	</div>
+    	<div class="content">
+    		<h3>欢迎来到<a href="http://jirengu.com">饥人谷</a></h3>
+    		<p>在这个大家庭你能快乐的学到更多前端技能</p>
+    	</div>
+    	<div class="footer">
+    		<a href="" class="btn btn-cancel">取消</a>
+    		<a href="" class="btn btn-confirm">确认</a>
+    	</div>
+    </div>
+</body>
+</html>

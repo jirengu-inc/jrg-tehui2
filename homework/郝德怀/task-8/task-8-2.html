@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-8-2</title>
+<style>
+*{
+    padding: 0;
+    margin: 0;
+    font-family: "微软雅黑";
+}
+a{
+    text-decoration: none;
+ }
+.nav{
+    height: 120px;
+    background-color: #333;
+}
+ .nav li{
+    display: inline-block;
+    list-style-type: none;
+    font-size: 35px;
+    line-height: 120px;
+    margin-left: 50px;
+ }   
+ .nav a{
+    color: #008000;
+ }
+ .title{
+    height: 200px;
+    color: #008000;
+    text-align: center;
+    line-height: 200px;
+ }
+.desc{
+    text-indent: 2em;
+
+}
+p{
+    font-size: 30px;
+    height: 120px;
+    line-height: 120px;
+    text-indent: 2em;
+}
+h3{ 
+	font-size: 35px;
+    height: 60px;
+    border-bottom: 2px dashed gray;
+    line-height: 60px;
+}
+.tree li a{
+  color: #008000;
+}
+
+.list{
+  text-indent: 2em;
+  font-size: 30px;
+  line-height: 50px;
+}
+
+.note li{
+   text-indent: 4em; 
+}
+
+</style>
+</head>
+<body>
+     <div id="header">
+        <ul class="nav">
+          <li><a href="">首页</a></li>
+          <li><a href="">简介</a></li>
+          <li><a href="">作品</a></li>
+          <li><a href="">关于</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1 class="title">前端学习</h1>
+        <p class="desc">这是我的前端学习笔记</p>
+        <h3>第一章</h3>
+        <p>这是我的前端学习笔
+            记这是我是<span class="text-less"> 特别的</span> 的前端学习笔
+            记这是我的前端学习笔记这是
+        </p>
+        <h3>第二章</h3>
+        <p>这是我的前端学习笔
+            记这是我的前端学习笔
+            记这是我的<span class="text-less"> 特别的</span>前端学习笔记这是
+            
+        </p>
+        <ul class="tree">
+          <li class="list">
+            -<a href="#">记笔记</a>
+            <ul class="note">
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li class="list">+<a href="#">做作业</a></li>
+          <li class="list">+<a href="#">多思考</a></li>
+          <li class="list">+<a href="#">多练习</a></li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>

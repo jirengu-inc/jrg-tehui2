@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body,ul{
+      margin: 0;
+      padding: 0;
+      font-family: "微软雅黑";
+      line-height: 1.5;
+    }
+    .nav{
+      list-style: none;
+    }
+    .nav li {
+      display: inline-block;
+    }
+    #header li a{
+      color:green;
+      text-decoration: none;
+      font-family: "微软雅黑";
+      margin-right: 15px;
+    }
+    #header{
+      background-color: #333;
+      font-size: 20px;
+      padding: 23px 10px;
+    }
+    #content .title{
+      color:green;
+      text-align:center;
+    }
+    .desc{
+      color:#999;
+      text-indent:2em;
+    }
+    h3{
+      border-bottom:1px dashed #ccc;
+    }
+    #content p,#content ul{
+      text-indent:3em;
+    }
+    .tree a{
+      text-decoration: none;
+      color:green;
+    }
+     .tree>li:nth-of-type(2) ul {
+    display:none;
+    }
+  .tree>li:nth-of-type(1):before {
+      content:"-";
+    }    
+  .tree>li:nth-of-type(2):before , 
+  .tree>li:nth-of-type(3):before ,
+  .tree>li:nth-of-type(4):before {
+      content:"+";
+    }
+    .open ul{
+      margin-left:2em;
+      list-style: none;
+      color:#999;
+    }
+
+  </style>
+</head>
+<body>
+    <div id="header">
+        <ul class="nav">
+          <li><a href="">首页</a></li>
+          <li><a href="">简介</a></li>
+          <li><a href="">作品</a></li>
+          <li><a href="">关于</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1 class="title">前端学习</h1>
+        <p class="desc">这是我的前端学习笔记</p>
+        <h3>第一章</h3>
+        <p>这是我的前端学习笔
+            记这是我是<span class="text-less"> 特别的</span> 的前端学习笔
+            记这是我的前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
+        </p>
+        <h3>第二章</h3>
+        <p>这是我的前端学习笔
+            记这是我的前端学习笔
+            记这是我的<span class="text-less"> 特别的</span>前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
+        </p>
+        <ul class="tree">
+          <li class="open has-child">
+            <a href="#">记笔记</a>
+            <ul>
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li class="has-child">
+              <a href="#">做作业</a>
+              <ul>
+                  <li>jscode</li>
+                  <li>博客</li>
+                  <li>Github</li>
+                </ul>
+          </li>
+          <li><a href="#">多思考</a></li>
+          <li><a href="#">多练习</a></li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+
+</body>
+</html>

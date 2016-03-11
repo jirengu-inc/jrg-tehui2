@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>CSS Sprite</title>
+	<style>
+	ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: #000;
+	}
+	li{
+		float: left;
+	}
+	li a{
+		float: left;
+		background: url(images/ico.png) no-repeat;
+		width: 40px;
+		height: 40px;
+		padding-left: 40px;
+		line-height: 40px;
+	}
+	li a.advance{
+		background-position: 0 0;
+	}
+	li a.start{
+		background-position: 0 -39px;
+	}
+	li a.stop{
+		background-position: 0 -80px;
+	}
+	li a.advance:active{
+		background-position: 0 -120px;
+	}
+	li a.start:active{
+		background-position: 0 -160px;
+	}
+	li a.stop:active{
+		background-position: 0 -200px;
+	}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><a href="" class="advance">前进</a></li>
+		<li><a href="" class="start">开始</a></li>
+		<li><a href="" class="stop">停止</a></li>
+	</ul>
+</body>
+</html>

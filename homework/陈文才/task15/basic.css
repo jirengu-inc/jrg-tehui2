@@ -1,0 +1,353 @@
+body {
+    	margin:0;
+    	padding:0;
+    	font:16px/1.5 "Microsoft Yahei",sans-serif;
+    }
+    ul {
+    	list-style:none;
+    }
+    a {
+    	text-decoration:none;
+    }
+    img {
+        border: none;
+    }
+
+    #header {
+    	position: fixed;
+    	left:0;
+    	top:0;
+        z-index: 24;
+        width:100%;
+        background-color:rgba(0,0,0,.8);
+    }
+    #header .nav {
+    	width:1000px;
+    	line-height:5em;
+    	margin:0 auto;
+    }
+    #header .nav li {
+    	float:right;
+    	padding:0 0 0 2em;
+    }
+    #header .nav .company {
+    	float:left;
+    }
+    .nav .company a {
+        color:#FED136;
+        font:1.5em ;
+    }
+    #header .nav:after {
+    	content: " ";
+    	display: block;
+    	clear:both;
+    }
+    .nav li a {
+        font-weight: bolder;
+        color:#fff;
+    }
+    .nav li a:hover {
+        color:#FED136;
+    }
+
+    #content .intro {
+    	padding:16em 0;
+    	text-align: center;
+    	font-weight: bold;
+    	color:#fff;
+    	background:url(header-bg.jpg) no-repeat center center;
+    	background-size:cover;
+    }
+    #content .intro h1 {
+    	font-size: 4em;
+    }
+    #content .intro h2 {
+    	font:italic 2em/0.5 "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    .btn {
+        font-weight: bold;
+    	color:#fff;
+    	padding:1.5em 3em;
+    	background-color:#FED136;
+    	border-radius:5px;
+    }
+    .btn:hover {
+    	background-color:#FEC503;
+    }
+    #content .service {
+    	padding:5em 0;
+    	text-align: center;
+    }
+    #content .service ul {
+    	width:1000px;
+    	margin:3em auto 0 auto;
+    }
+    #content .service .item {
+        display:inline-block;
+        width:310px;
+        margin-left: 20px;
+    }
+    #content .service .first-item {
+       margin-left:0px;
+    }
+    .service .item p {
+        font-size: 14px;
+    }
+    .service .item .fa-stack {
+    	color:#FED136;
+    }
+    #content .portfolio {
+    	padding:3em 0;
+    	text-align: center;
+    	background-color:#F7F7F7;
+    }
+    .portfolio .collection {
+    	width: 1000px;
+    	margin:1.5em auto;
+    }
+    .portfolio .first-collection {
+    	margin-top: 3em;
+    }
+    .collection .work {
+    	display: inline-block;
+    	margin-left: 30px;
+    	background-color: #fff;
+    }
+    .collection .work a {
+        position: relative;
+        display: block;
+        width:310px;
+        padding:0;
+    }
+    .work a img {
+        width:100%;
+        height: 100%;
+    }
+    .collection .work .work-hover {
+        position: absolute;
+        width: 100%;
+        height:100%;
+        opacity:0;
+        background-color:#FEC503;
+    }
+    .work .work-hover span{
+        position: absolute;
+        left:50%;
+        top:50%;
+        z-index: 5;
+        display: block;
+        margin-left:-1em;
+        margin-top:-1em;
+    }
+    .collection .work .work-hover:hover {
+        opacity:.8;
+    }
+    .work .work-hover .fa-stack {
+        color:#FED136;
+    }
+    .portfolio .collection .first-work {
+        margin-left:0;
+    }
+    .info {
+        padding: 3em 0;
+        margin-bottom: 2em;
+        text-align: center;
+    }
+
+    .detail {
+        position: relative;
+        width:1000px;
+        margin:2em auto;
+        padding-bottom: 10em;
+        text-align: center;
+    }
+    .detail:before {
+        position: absolute;
+        top:0;
+        left:50%;
+        content:" ";
+        width:2px;
+        height:100%;
+        margin-top: 2em;
+        margin-left: 10px;
+        background-color: #eee;
+    }
+    .detail:after {
+        content: " ";
+        display: block;
+        clear:both;
+    }
+    .detail h4 {
+        margin: 0;
+        padding:0;
+    }
+    .detail .text-left {
+        width:38%;
+        padding-top: 2em;
+        text-align: right;
+        clear:both;
+    }
+    .detail .text-right {
+        float:right;
+        width:38%;
+        padding-top: 2em;
+        text-align: left;
+    }
+    .detail .pic {
+        position: absolute;
+        left:50%;
+        margin-left:-75px;
+        width:150px;
+        height:150px;
+        border-radius:100%;
+        border:10px solid #eee;
+        background:url(1.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .detail .pic1 {
+        top:2em;
+    }
+    .detail .pic2 {
+        top:17em;
+    }
+    .detail .pic3 {
+        top:31em;
+    }
+    .detail .pic4 {
+        top:46em;
+    }
+    .detail .pic5 {
+        top:60em;
+        font-weight: bold;
+        text-align: center;
+        color:#fff;
+        background-color:#FED136;
+        background-image: none;
+    }
+    .detail .pic5 p {
+        position: absolute;
+        left:2em;
+        top:1.5em;
+        width:5em;
+    }
+    .info .blank {
+        height: 5em;
+    }
+    .team {
+        background-color: #F7F7F7;
+        padding:2em 0;
+        text-align: center;
+    }
+    .team .mate {
+        width:1000px;
+        margin:0 auto;
+    }
+    .mate {
+        padding:2em 0;
+    }
+    .mate .member {
+        display:inline-block;
+        margin-left:100px;
+        text-align: center;
+    }
+    .mate .first-member {
+        margin-left: 0;
+    }
+    .member div {
+        width:240px;
+        height:240px;
+        border:5px solid #fff;
+        border-radius:100%;
+        background: url(kay.jpg) no-repeat center center;
+        background-size: cover;
+    }
+    .member .kay {
+        margin-left: 0;
+    }
+    .member a {
+       color:#000;
+    }
+    .member a:hover {
+        color:#FED136;
+    }
+    .friend {
+        text-align: center;
+    }
+    .friend a {
+        display: inline-block;
+        margin:2em 1.5em;
+    }
+    .contact {
+        padding:2em 0;
+        color:#fff;
+        text-align: center;
+        background:#000 url(map-image.png) no-repeat center center;
+        background-size: cover;
+    }
+    .contact .information {
+        position: relative;
+        width: 1000px;
+        margin: 3em auto;
+    }
+    .contact .information:after {
+        content: " ";
+        display: block;
+        clear: both;
+    }
+    .contact input[type="text"] {
+        display: block;
+        width: 34em;
+        height: 4em;
+        line-height: 4em;
+        padding-left:1em; 
+        margin: 1em;
+        outline: none;
+        border-radius: 5px;
+    }
+    .contact textarea {
+        position: absolute;
+        right: 0;
+        top:0;
+        width: 34em;
+        height: 15em;
+        line-height: 4em;
+        padding-left: 1em;
+        border-radius: 5px;
+        outline: none;
+    }
+    .contact input[type="submit"] {
+        margin-top: 2em;
+        outline: none;
+        border: none;
+    }
+    #footer .extra{
+        width: 1000px;
+        height: 4em;
+        line-height: 4em;
+        margin:2em auto;
+    }
+    .extra li {
+        position: relative;
+        display: inline-block;
+        text-align: center;
+    }
+    .extra .fa-stack {
+        color: #000;
+    }
+    .extra .fa-stack:hover {
+        color:#FED136;
+    }
+    .extra .extra-middle {
+        position: absolute;
+        left:50%;
+        margin-left: -3em;
+    }
+    .extra .extra-right {
+        float: right;
+    }
+     .extra-right a {
+        color: #FED136;
+     }
+     .extra-right a:hover {
+        text-decoration: underline;
+     }
