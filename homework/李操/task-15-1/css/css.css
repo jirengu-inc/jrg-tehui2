@@ -1,3 +1,4 @@
+/******************************************我是重置(*^__^*)***************************************/
 *{
 	margin: 0;
 	padding: 0;
@@ -23,9 +24,11 @@ img{
 	width:1000px;
 	margin: 0 auto;
 }
+/******************************************我是替身(*^__^*)***************************************/
 #topnav-2{
 	height: 50px;
 }
+/****************************************d=====(￣▽￣*)b 顶导航栏样式******************************/
 #topnav{
 	position: fixed;
 	width: 100%;
@@ -55,7 +58,7 @@ img{
 #topnav ul.menu>li>a:hover{
 	color: #000;
 }
-#topnav .menu>li:hover>ul{
+#topnav .menu>li:hover>ul.submenu{
 	display: block;
 }
 #topnav ul.submenu{
@@ -92,6 +95,7 @@ img{
 	font-size: 14px;
 	color: #908E8E;
 }
+/*************************************我给#header化妆(*^__^*)***************************/
 #header{
 	background-color: #B84D45;
 	padding: 55px 0;
@@ -102,6 +106,7 @@ img{
 	margin-top: 10px;
 	line-height: 1.5;
 }
+/*************************************我是主菜#main <(￣ˇ￣)/***************************/
 #main .subnav{
 	margin-top: 35px;
 	height: 35px;
@@ -166,6 +171,7 @@ img{
 #main .img a:hover{
 	opacity: 0.8;
 }
+/*************************************************联系我吧(*^__^*)*******************************/
 #contact{
 	padding-top: 50px;
 	padding-bottom: 50px;
@@ -177,6 +183,7 @@ img{
 	margin-top: 10px;
 	font:18px Microsoft YaHei,Arial,Helvetica,sans-serif;
 }
+/*************************************不要盗版我哦!(。⌒∇⌒)***************************/
 #footer{
 	padding-top: 80px;
 	padding-bottom: 50px;
