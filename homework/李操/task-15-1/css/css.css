@@ -21,7 +21,7 @@ img{
 	margin-top: 5px;
 }
 .container{
-	width:1000px;
+	max-width:1000px;
 	margin: 0 auto;
 }
 /******************************************我是替身(*^__^*)***************************************/
@@ -107,6 +107,9 @@ img{
 	line-height: 1.5;
 }
 /*************************************我是主菜#main <(￣ˇ￣)/***************************/
+#main .container{
+	width: 1000px;
+}
 #main .subnav{
 	margin-top: 35px;
 	height: 35px;

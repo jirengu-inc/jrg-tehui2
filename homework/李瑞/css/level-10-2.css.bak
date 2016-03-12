@@ -1,0 +1,26 @@
+.wrap{
+	width:200px;
+	height:100px;
+	border:2px solid gray;
+	margin:30px auto;
+	position:relative;
+}
+.box1{
+	width:0;
+	height:0;
+	border:10px solid;
+	border-color:white white gray white;
+	position:relative;
+	left:10px;
+	margin-top:-22px;
+}
+.box2{
+	width:0;
+	height:0;
+	border:10px solid;
+	border-color:red red white white;
+	position:absolute;
+	right:0;
+	top:0;
+
+}
