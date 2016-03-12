@@ -60,6 +60,9 @@ a.fa-stack:hover>.fa-stack-2x{
 	padding-top: 100px;
 	padding-bottom: 100px;
 }
+#portfolio,#team{
+	background-color: #F7F7F7;
+}
 .clear-float:after{
 	content: '';
 	display: block;
@@ -146,9 +149,7 @@ a.fa-stack:hover>.fa-stack-2x{
 #service .row-item .fa-stack-1x{
 	color: #fff; 
 }
-#portfolio,#team{
-	background-color: #F7F7F7;
-}
+
 #portfolio .row{
 	margin-top: 80px;
 	margin-bottom: 50px;
@@ -264,7 +265,9 @@ a.fa-stack:hover>.fa-stack-2x{
 	height: 200px;
 	border-radius: 100px;
 }
-
+#team .row-description{
+	font-size: 16px;
+}
 #cooperrator ul>li{
 	display: inline-block;
 	margin-left: 35px;
@@ -277,11 +280,14 @@ a.fa-stack:hover>.fa-stack-2x{
 #contact{
 	height: 600px;
 	width: 100%;
-	background: url('../img/header-bg.jpg') no-repeat center center;
+	background: url('../img/pexels-photo (1).jpg') no-repeat center center;
 	background-size: cover;
 }
 #contact h2{
 	color:#fff;
+}
+#contact p{
+	color: #fff;
 }
 #contact .table{
 	margin-top: 60px;
@@ -289,11 +295,13 @@ a.fa-stack:hover>.fa-stack-2x{
 }
 #contact .table-left{
 	float: left;
-	margin-left: 20px;
+	position: relative;
+	left: 20px;
 }
 #contact .table-right{
 	float: right;
-	margin-left: 20px;
+	position: relative;
+	right: 20px;
 }
 #contact input{
 	width: 500px;
@@ -313,7 +321,6 @@ a.fa-stack:hover>.fa-stack-2x{
 #contact textarea{
 	width: 500px;
 	height: 210px;
-	margin-left: 20px;
 	display: block;
 	border: none;
 	border-radius: 4px;
