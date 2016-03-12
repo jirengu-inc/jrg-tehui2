@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task15</title>
+</head>
+<link href="./Font-Awesome-3.2.1%2008.50.31/css/font-awesome.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+    *{
+        margin:0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    .introduce{
+        width: 2000px;
+        height: 950px;
+        background:url("bg.jpg");
+        background-size:cover;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .introduce>h1{
+        font-weight:bolder;
+        font-size: 60px;
+    }
+    .introduce>h3{
+        margin-top:30px;
+        font-size: 25px;
+        font-weight: 400;
+    }
+    .introduce-btn>a{
+        width: 100%;
+        line-height: 55px;
+    }
+    .introduce-btn{
+        margin-top: 30px;
+        font-size: 20px;
+        height: 55px;
+        display: inline-block;
+        color: #ffffff;
+        background-color:rgba(0,0,0,0.4);
+        padding: 0 20px;
+
+    }
+    .introduce-btn:hover {
+        background-color: #000;
+        cursor: pointer;
+    }
+    .text a{
+        color: #5bc0de;
+        text-decoration: none;
+    }
+    .text a:hover{
+        text-decoration: underline;
+    }
+    .text{
+        width: 2000px;
+        height: 200px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .text>h1{
+        margin-bottom: 20px;
+    }
+    .text>p,a{
+        font-weight: lighter;
+        font-size: 18px;
+    }
+    .services-info{
+        width: 2000px;
+        height: 600px;
+        background-color: #149bdf;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .services-info>h2{
+        color: #ffffff;
+        font-size: 30px;
+    }
+    .service-item{
+        display: inline-block;
+        width: 120px;
+        height: 120px;
+        background-color: #ffffff;
+        border-radius: 50%;
+        margin-bottom: 40px;
+    }
+    .icon-cloud{
+        font-size: 80px;
+        color:#149bdf;
+        line-height: 120px;
+    }
+    .icon-compass{
+        font-size: 80px;
+        color:#149bdf;
+        line-height: 120px;
+    }
+    .icon-beaker{
+        font-size: 80px;
+        color:#149bdf;
+        line-height: 120px;
+    }
+    .icon-shield{
+        font-size: 80px;
+        color:#149bdf;
+        line-height: 120px;
+    }
+    .services-all-function div{
+        margin:30px 40px ;
+        display: inline-block;
+    }
+    .services-info>h2{
+        margin-top: 20px;
+    }
+    .services-btn{
+        display: inline-block;
+        background-color: #ffffff;
+        height: 40px;
+        margin-top: 30px;
+    }
+    .services-btn>a{
+        line-height: 40px;
+        text-decoration: none;
+        color: #000000;
+        padding: 20px 20px;
+    }
+    .services-btn:hover{
+        background-color: #cccccc;
+        cursor: pointer;
+
+    }
+    .services-all-function h1{
+        font-size: 30px;
+        margin-bottom: 20px;
+        color: #ffffff;
+    }
+    .services-all-function p{
+        line-height: 25px;
+        color: #ffffff;
+    }
+    .pic{
+        width: 2000px;
+        height: 500px;
+        background:url("callout.jpg");
+        background-size:cover;
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+    }
+    .pic>h1{
+        display: block;
+        color: #ffffff;
+        font-size: 80px;
+        font-weight:bolder;
+    }
+    .work-pic{
+        height: 1000px;
+        width: 2000px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .work-pic>h1{
+        color: #000000;
+        font-size: 40px;
+    }
+    .border-1 {
+         width: 150px;
+         height: 1px;
+         border: 1px solid #ffffff;
+         margin: 15px auto;
+     }
+    .work-pic-all>img{
+        margin:20px;
+    }
+    .work-pic>.work-btn{
+        height: 45px;
+        display: inline-block;
+        color: #ffffff;
+        background-color:rgba(0,0,0,0.4);
+        padding: 0px 20px;
+    }
+    .work-btn{
+        margin:20px auto;
+    }
+    .border-2 {
+        width: 160px;
+        height: 1px;
+        border: 1px solid #cccccc;
+        margin: 15px auto;
+    }
+    .work-btn:hover{
+        background-color: #000;
+        cursor: pointer;
+    }
+    .work-btn>a{
+        text-decoration: none;
+        color: #ffffff;
+        line-height: 45px;
+    }
+    .below-info>h1{
+        color: #ffffff;
+    }
+    .below-info{
+        width: 2000px;
+        height: 300px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        background-color:#337ab7;
+    }
+    .below-btn-1>a{
+        color: #000000;
+        text-decoration: none;
+        line-height: 45px;
+    }
+    .below-btn-1:hover{
+        background-color: #d3d3d3;
+    }
+    .below-btn-1{
+        margin-top: 30px;
+        height: 45px;
+        display: inline-block;
+        font-size: 20px;
+        background-color: #ffffff;
+        color: #000000;
+        padding: 0 20px;
+    }
+    .below-btn-2>a{
+        color: #ffffff;
+        text-decoration: none;
+        line-height: 45px;
+    }
+    .below-btn-2:hover{
+        background-color: #000000;
+    }
+    .below-btn-2{
+        margin-top: 30px;
+        height: 45px;
+        display: inline-block;
+        font-size: 20px;
+        background-color:rgba(0,0,0,0.4);
+        color: #ffffff;
+        padding: 0 20px;
+        margin-left: 30px;
+    }
+    .footer-info{
+        width: 2000px;
+        height: 520px;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+        background-color:#ffffff;
+    }
+    .location,.address,.phone-num,.e-mail{
+        margin-bottom: 10px;
+    }
+    .phone-num{
+        margin-top: 20px;
+    }
+    .footer-info>h2{
+        font-size: 30px;
+        margin: 20px auto;
+        font-weight: bolder;
+    }
+    .e-mail>a{
+        color: #337ab7;
+        text-decoration: none;
+    }
+    .e-mail a:hover{
+       text-decoration: underline;
+    }
+    .border-3{
+         width: 200px;
+         height: 1px;
+         border: 1px solid #cccccc;
+         margin: 30px auto;
+    }
+    .SNS-logo{
+        font-size: 50px;
+        color: #337ab7;
+        margin-top: 35px;
+    }
+    .SNS-logo>.icon-facebook{
+        margin:auto 40px;
+    }
+    .SNS-logo span:hover{
+        color:dodgerblue;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <div class="introduce" >
+        <h1>Start Bootstrap</h1>
+        <h3>Free Bootstrap Themes & Templates</h3>
+        <div class="introduce-btn"><a>Find Out More</a></div>
+    </div>
+    <div class="word">
+        <div class="text">
+            <h1>Stylish Portfolio is the perfect theme for your next project!</h1>
+            <p>This theme features some wonderful photography courtesy of
+                <a target="_blank" href="#"> Death to the Stock Photo.</a>
+            </p>
+        </div>
+    </div>
+    <div class="services">
+        <div class="services-info">
+            <h2>Our Services</h2>
+            <div class="border-1"></div>
+            <div class="services-all-function">
+                <div class="service-function-1">
+                    <div class="service-item icon-cloud">
+                    </div>
+                    <h1>Service Name</h1>
+                    <p>Lorem ipsum dolor sit amet,</br>consectetur adipisicing elit.</p>
+                    <div class="services-btn"><a href="#">Learn More</a></div>
+                </div>
+                <div class="service-function-2">
+                    <div class="service-item icon-compass"></div>
+                    <h1>Service Name</h1>
+                    <p>Lorem ipsum dolor sit amet,</br>consectetur adipisicing elit.</p>
+                    <div class="services-btn"><a href="#">Learn More</a></div>
+                </div>
+                <div class="service-function-3 ">
+                    <div class="service-item icon-beaker"></div>
+                    <h1>Service Name</h1>
+                    <p>Lorem ipsum dolor sit amet,</br>consectetur adipisicing elit.</p>
+                    <div class="services-btn"><a href="#">Learn More</a></div>
+                </div>
+                <div class="service-function-4 ≈">
+                    <div class="service-item icon-shield"></div>
+                    <h1>Service Name</h1>
+                    <p>Lorem ipsum dolor sit amet,</br>consectetur adipisicing elit.</p>
+                    <div class="services-btn"><a href="#">Learn More</a></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="pic">
+        <h1>Vertically Centered Text</h1>
+    </div>
+    <div class="work">
+        <div class="work-pic">
+            <h1>Our Work</h1>
+            <div class="border-2"></div>
+            <div class="work-pic-all">
+                <img src="./portfolio-1.jpg">
+                <img src="./portfolio-2.jpg">
+                <img src="./portfolio-3.jpg">
+                <img src="./portfolio-4.jpg">
+            </div>
+            <div class="work-btn">
+                <a href="#">View More Items</a>
+            </div>
+        </div>
+    </div>
+    <div class="below">
+        <div class="below-info">
+            <h1>The buttons below are impossible to resist.</h1>
+            <span class="below-btn-1"><a href="#">Click Me!</a></span>
+            <span class="below-btn-2"><a href="#">Look at Me!</a></span>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="footer-info">
+            <h2><strong>Start Bootstrap</strong></h2>
+            <div class="address">3481 Melrose Place</div>
+            <div class="location">Beverly Hills,CA90210</div>
+            <div class="phone-num">(123)456-7890</div>
+            <div class="e-mail"><a href="#">name@example.com</a></div>
+            <div class="SNS-logo">
+                <span class="icon-twitter"></span>
+                <span class="icon-facebook"></span>
+                <span class="icon-dribbble"></span>
+            </div>
+            <div class="border-3"></div>
+            <p>Copyright © Your Website 2016</p>
+        </div>
+    </div>
+</body>
+</html>
