@@ -1,0 +1,23 @@
+
+		#header,#footer{
+			min-height:100px;
+			background:gray;
+			clear:both;
+		}
+		#wrap{
+			width:100%;
+			float:left;
+			height:200px;
+		}
+		.main{
+			background:red;
+			height:200px;
+			margin-left:200px;
+		}
+		.side{
+			float:left;
+			background:green;
+			margin-left:-100%;
+			height:200px;
+			width:200px;
+		}	
