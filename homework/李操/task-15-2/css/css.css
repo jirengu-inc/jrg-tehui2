@@ -149,7 +149,6 @@ a.fa-stack:hover>.fa-stack-2x{
 #service .row-item .fa-stack-1x{
 	color: #fff; 
 }
-
 #portfolio .row{
 	margin-top: 80px;
 	margin-bottom: 50px;
@@ -280,7 +279,7 @@ a.fa-stack:hover>.fa-stack-2x{
 #contact{
 	height: 600px;
 	width: 100%;
-	background: url('../img/pexels-photo (1).jpg') no-repeat center center;
+	background: url('../img/map.jpg') no-repeat center center;
 	background-size: cover;
 }
 #contact h2{
