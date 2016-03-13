@@ -1,0 +1,26 @@
+body{
+	margin:0;
+	padding:0;
+}
+#header,#footer{
+	min-height:100px;
+	background:gray;
+	clear:both;
+}
+#content{
+	padding-left:100px;
+}
+.main{
+	width:100%;
+	float:left;
+	background:red;
+}
+.side{
+	float:left;
+	background:yellow;
+	margin-left:-100%;
+	position: relative;
+	left:-100px;
+	width:100px;
+	height:100px;
+}
