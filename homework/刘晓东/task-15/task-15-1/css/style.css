@@ -1,0 +1,234 @@
+/*css reset*/
+	body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,th,td,img,div,dl,dt,dd,input,select{margin: 0;padding: 0;}
+	body{font-size: 12px;}
+	img{border: none;vertical-align:top;}
+	li{list-style: none;}
+	input,select,textarea{outline: none;border: none;}
+	textarea{resize: none;overflow:auto;}
+	a{text-decoration: none;}
+
+
+	/*clear float*/
+	.clearfix:after{content: "";clear: both; display: table;}
+	.clearfix{zoom:1;}
+	
+	.fl{float: left;}
+	.fr{float: right;}
+
+	.wrapper {
+    width: 1140px;
+    margin: 0 auto;
+	}
+
+	body {
+	    font-family: '微软雅黑';
+	}
+
+	.header,
+	.page-info,
+	.content,
+	.about-me,
+	.footer {
+	    min-width: 960px;
+	}
+
+	.header {
+	    line-height: 50px;
+	    height: 50px;
+	    border-bottom: 2px solid #e7e7e7;
+	    background: #fff;
+	}
+
+	.header .logo {
+	    margin-right: 30px;
+	}
+
+	.header h1 a {
+	    font-size: 18px;
+	    float: left;
+	    color: #777;
+	}
+
+	.header .nav li {
+	    position: relative;
+	    float: left;
+	    margin-right: 30px;
+	}
+
+	.header .nav li > a {
+	    float: left;
+	    color: #777;
+	}
+
+	.header .nav li > a i {
+	    margin-left: 5px;
+	}
+	
+	.header .nav li > a:hover{
+		color: #000;
+	}
+
+	.header .nav li dl {
+	    position: absolute;
+	    top: 100%;
+	    left: -15px;
+	    display: none;
+	    width: 160px;
+	    padding-top: 5px;
+	    border-top: 2px solid #e7e7e7;
+	    border-radius: 3px;
+	    background: #fff;
+	}
+
+	.header .nav li:hover dl {
+	    display: block;
+	}
+
+	.header .nav li dd {
+	    line-height: 26px;
+	    height: 26px;
+	}
+
+	.header .nav li dd a {
+	    display: block;
+	    color: #000;
+	}
+
+	.header .nav li dd i {
+	    margin: 0 7px 0 22px;
+	}
+
+	.header .nav > li dd a:hover {
+	    background: #f5f5f5;
+	}
+
+	.header .nav li dt {
+	    line-height: 37px;
+	    height: 37px;
+	    margin-top: 10px;
+	    padding-left: 20px;
+	    border-top: 1px solid #e7e7e7;
+	}
+
+	.page-info {
+	    padding: 60px 0;
+	    color: #fff;
+	    background: #b84d45;
+	}
+
+	.page-info h2 {
+	    font-size: 60px;
+	    font-weight: normal;
+	}
+
+	.page-info p {
+	    font-size: 24px;
+	}
+
+	.content {
+	    padding: 40px 0;
+	    background: #fff;
+	}
+
+	.content .work-title {
+	    height: 36px;
+	    padding-left: 15px;
+	    background: #f5f5f5;
+	}
+
+	.content .work-title li {
+	    line-height: 36px;
+	    float: left;
+	    margin-right: 20px;
+	    color: #777;
+	}
+
+	.content .work-title .homepage:after {
+	    margin-left: 10px;
+	    content: '/';
+	}
+
+	.content .work-title li a {
+	    color: #b84d45;
+	}
+
+	.content .work-list {
+	    margin-right: -30px;
+	    padding-top: 20px;
+	}
+
+	.content .work-list li {
+	    float: left;
+	    margin-right: 28px;
+	    margin-bottom: 30px;
+	    padding: 5px;
+	    text-align: center;
+	    border: 1px solid #ddd;
+	    border-radius: 3px;
+	}
+
+	.content .work-list img {
+	    width: 348px;
+	    border: 1px solid #ddd;
+	}
+
+	.content .work-list .workpic:hover {
+	    opacity: .7;
+	}
+
+	.content .work-list p.name {
+	    font-size: 18px;
+	    font-weight: bold;
+	    margin: 30px 0 20px 0;
+	}
+
+	.content .work-list p.introduction {
+	    font-size: 12px;
+	}
+
+	.content .work-list a.view {
+	    line-height: 34px;
+	    display: inline-block;
+	    height: 34px;
+	    margin: 15px 0 20px 0;
+	    padding: 0 15px;
+	    color: #000;
+	    border: 1px solid #ddd;
+	    border-radius: 3px;
+	}
+
+	.content .work-list a.view:hover {
+	    background: #e6e6e6;
+	}
+
+	.about-me {
+	    padding: 50px 0;
+	    text-align: center;
+	    color: #fff;
+	    background: #b84d45;
+	}
+
+	.about-me h2 {
+	    font-size: 30px;
+	    font-weight: normal;
+	}
+
+	.about-me p {
+	    font-size: 18px;
+	}
+
+	.footer {
+	    padding: 25px 0 60px 0;
+	    text-align: center;
+	    color: #000;
+	    background: #fff;
+	}
+
+	.footer a {
+	    color: #b84d45;
+	}
+
+	.footer a:hover {
+	    text-decoration: underline;
+	}
+
