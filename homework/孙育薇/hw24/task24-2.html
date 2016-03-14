@@ -36,62 +36,111 @@
     </style>
 </head>
 <body>
-    <ul id="list">
-        <li>0</li>
-        <li>1</li>
-    </ul>
-    <button id="btn">加载更多</button>
-    <script>
-        function getHTTPObject() {
-            if (typeof XMLHttpRequest === "undefined") {
-                try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
-                catch (e) {}
-                try { return new ActiveXObject("Msxml.2.XMLHTTP.3.0"); }
-                catch (e) {}
-                try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
-                catch (e) {}
-                return false;
-            }
-            return new XMLHttpRequest();
-        }
-
-        function addEvent(node, type, handler) {
-            if (!node) return false;
-            if (node.addEventListener) {
-                node.addEventListener(type, handler, false);
-                return true;
-            } else if (node.attachEvent) {
-                node.attachEvent('on' + type, handler);
-                return true;
-            }
+<ul id="list">
+    <li>0</li>
+    <li>1</li>
+</ul>
+<button id="btn">加载更多</button>
+<script>
+    function getHTTPObject() {
+        if (typeof XMLHttpRequest === "undefined") {
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+            catch (e) {}
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.3.0"); }
+            catch (e) {}
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+            catch (e) {}
             return false;
         }
+        return new XMLHttpRequest();
+    }
 
-        var btn = document.getElementById("btn");
-        var base = 0;
-        addEvent(btn, "click", function() {
-            var request = getHTTPObject();
-            request.onreadystatechange = function () {
+    function addEvent(node, type, handler) {
+        if (!node) return false;
+        if (node.addEventListener) {
+            node.addEventListener(type, handler, false);
+            return true;
+        } else if (node.attachEvent) {
+            node.attachEvent('on' + type, handler);
+            return true;
+        }
+        return false;
+    }
+
+    function ajax(opts){
+        var request = getHTTPObject();
+        if (request) {
+            var data = "";
+            for (var key in opts.data) {
+                data += key + "=" + opts.data[key] + "&";
+            }
+            data = data.substr(0, data.length-1);
+            if (opts.type.toLowerCase() === "get") {
+                request.open(opts.type, opts.url + "?" + data, true);
+                request.send();
+            } else if (opts.type.toLowerCase() === "post") {
+                request.open(opts.type, opts.url, true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(data);
+            }
+            request.onreadystatechange = function() {
                 if (request.readyState === 4 && request.status === 200) {
+                    console.log(request.responseText);
                     var response = JSON.parse(request.responseText);
-                    var list = document.getElementById("list");
-                    for (var key in response) {
-                        for (var i = 0; i < response[key].length; i++) {
-                            var li = document.createElement("li");
-                            var liText = document.createTextNode("内容" + (response[key][i] + base));
-                            li.appendChild(liText);
-                            console.log(li);
-                            list.appendChild(li);
-                        }
-                    }
-                    base += 6;
-                } else {
-                    return false;
+                    opts.success(response);
                 }
-            };
-            request.open("GET", "data.json", true);
-            request.send();
+                if (request.readyState === 4 && request.status === 404) {
+                    opts.error();
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+
+    var btn = document.getElementById("btn");
+    var start = 2;
+    var len = 6;
+    var isLoading = false;
+
+    addEvent(btn, "click", function() {
+        if (isLoading) return;
+        isLoading = true;
+        btn.innerText = "加载中...";
+        btn.style.cursor = "not-allowed";
+        ajax({
+            type: "get",
+            url: "load.php",
+            data: {"start": start, "len": len},
+            success: function(response) {
+                loadMore(response);
+                start += 6;
+                isLoading = false;
+                btn.innerText = "加载更多";
+                btn.style.cursor = "pointer";
+            },
+            error: function(){
+                isLoading = false;
+                btn.innerText = "加载更多";
+                btn.style.cursor = "pointer";
+                alert("加载错误");
+            }
         });
-    </script>
+    });
+
+    function loadMore(response) {
+        var list = document.getElementById("list");
+        if (response["status"] === 1) {
+            for (var i = 0; i < response["list"].length; i++) {
+                var li = document.createElement("li");
+                var liText = document.createTextNode(response["list"][i]);
+                li.appendChild(liText);
+                list.appendChild(li);
+            }
+        } else {
+            alert('获取数据失败');
+        }
+    }
+</script>
 </body>
 </html>
