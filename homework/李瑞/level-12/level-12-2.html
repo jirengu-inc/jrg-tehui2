@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" content="圣杯布局">
+	<title>level-12-1</title>
+	<link rel="stylesheet" href="../css/level-12-2.css">
+</head>
+<body>
+	<div>
+		<div id="header">头部</div>
+		<div id="content">
+			<div class="main">
+				圣杯布局，中间自适应的两栏布局，原理是中间部门首先利用padding:间隔出左右两边框的距离。（这里只需要padding-left：100px）main和side中间自适应元素放在第一个。然后利用负margin-left使得side。元素上移。然后利用position:relative将左侧边栏。移到左边。
+			</div>
+			<div class="side">
+			左侧边栏、固定宽度
+			</div>
+		</div>
+		<div id="footer"></div>
+	</div>
+</body>
+</html>

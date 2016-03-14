@@ -8,29 +8,29 @@
 body,ul,li,div,p{
 	margin: 0;
 	padding: 0;
-	font-family: "微软雅黑"；
+	font-family: "微软雅黑",sans-serif；
 }
-/*头部背景*/
+/*-----头部背景色-----*/
 #header{
 	background-color: #333;
 	height: 60px;
 }
-/*头部固定宽度且居中*/
+/*-----头部固定宽度且居中-----*/
 #header .nav{
 	margin: 0 auto;
 	width: 900px;
 }
-/*头部logo，向左浮动*/
+/*-----头部logo，向左浮动-----*/
 #header .nav .left-icon{
 	float: left;
 	margin-top: 8px;
 }
-/*设置头部logo的宽高*/
+/*-----设置头部logo的宽高-----*/
 #header .left-icon img{
 	height: 40px;
 	width: 150px;
 }
-/*设置头部导航栏向右浮动*/
+/*-----设置头部导航栏向右浮动-----*/
 #header .navbar{
 	float: right;
 }
@@ -54,12 +54,12 @@ body,ul,li,div,p{
     border-bottom: 3px solid #fff;
     transition: border 0.1s;
 }
-/* content固定宽度且居中，和上下margin值 */
+/*----- content固定宽度且居中，和上下margin值----- */
 #content{
 	width: 900px;
 	margin: 15px auto;
 }
-/* content的左侧栏固定宽度，向左浮动 */
+/* -----content的左侧栏固定宽度，向左浮动----- */
 #content .left-side{
 	float: left;
 	width: 190px;
@@ -67,15 +67,15 @@ body,ul,li,div,p{
 	background-color: #eee;
 	border-radius: 15px;
 }
-/* content的主体栏固定宽度，向右浮动 */
+/* -----content的主体栏固定宽度，向右浮动----- */
 #content .main{
 	float: right;
 	width: 690px;
-	min-height: 500px;
+	min-height: 400px;
 	background-color: #eee;
 	border-radius: 15px;
 }
-/* content下主体栏的内容 */
+/* -----content下主体栏的内容 -----*/
 #content .main .date {
 	margin: 20px;
 }
@@ -88,11 +88,11 @@ body,ul,li,div,p{
 	font-size: 18px;
 	margin: 2px 0;
 }
-/*清除content的浮动，对周围的div不产生影响*/
+/*-----清除content的浮动，对周围的div不产生影响-----*/
 #content .clear{
 	clear: both;
 }
-/* 尾部样式 */
+/* -----尾部样式----- */
 #footer{
 	height: 60px;
 	background-color: #333;
@@ -105,25 +105,30 @@ body,ul,li,div,p{
 #footer .link ul{
 	list-style-type: none;
 }
-#footer li {
-	font: 20px/1.5 "微软雅黑";
+
+#footer .link li {
 	float: left;
-	
 } 
+/*-----footer的导航栏变为块元素时的样式-----*/
 #footer .link a{
 	display: block;
 	text-decoration: none;
-	color: #f0f0f0;
+	color: #ccc;
+	font-size: 22px;
+	height: 40px;
 	text-align: center;
-	margin-right: 100px;
-	height: 60px;
+	margin-right: 60px;
+	margin-top: 16px;
+	transition: color 0.2s;
 }
-/*
-#footer .link li {
-	float: left;
-} */
+#footer .link a:hover{
+    color: #fff;
+}
 
-/*#footer .link a{
+/*-----footer的导航栏变为inline-block元素时的样式-----*/
+
+/*
+#footer .link a{
 	text-decoration: none;
 	display: inline-block;
 	line-height: 40px;
@@ -134,11 +139,13 @@ body,ul,li,div,p{
 	margin-right: 30px;
 	transition: border 0.2s;
 	
-}*/
+
+}
 #footer .link a:hover{
     color: #fff;
     border-bottom: 3px solid #fff;
 }
+*/
 </style>
 </head>
 <body>

@@ -67,7 +67,7 @@ html,body,div,p,h1,h3,ul,li{
 	.box-bj li{
 		width: 900px;
 		margin: 0 auto;
-		height: 46px;
+		height: 45px;
 		
 		border-top: solid 1px #5C5A5A;
 		position: relative;
@@ -87,7 +87,7 @@ html,body,div,p,h1,h3,ul,li{
 	.v-frame ul{
 		transform: rotate(180deg);
 		position: absolute;
-		bottom: 113px;
+		bottom: 123px;
 		left: 60px;
 		/*border: solid 1px red;*/
 
@@ -119,67 +119,67 @@ html,body,div,p,h1,h3,ul,li{
 		color: #fff;
 	}
 	.v-frame li .order1{
-		height: 211px;
+		height: 153px;
 		background-color: #339933;
 		/*border: solid 1px red;*/
 	}
 
 	.v-frame li .order2{
-		height: 375px;
+		height: 275px;
 	}
 	.v-frame li .order3{
-		height:234px;
+		height:199px;
 	}
 	.v-frame li .order4{
-		height: 375px;
+		height: 260px;
 	}
 	.v-frame li .order5{
-		height: 352px;
+		height: 260px;
 	}
 	.v-frame li .order6{
-		height: 258px;
+		height: 230px;
 	}
 	.v-frame li .order7{
-		height: 469px;
+		height: 352px;
 	}
 	.v-frame li .order8{
-		height: 164px;
+		height: 168px;
 	}
 	.v-frame li .order9{
-		height: 422px;
+		height: 322px;
 	}
 	.v-frame li .order10{
-		height: 141px;
+		height: 153px;
 	}
 	.v-frame li .order11{
-		height: 164px;
+		height: 168px;
 	}
 	.v-frame li .order12{
-		height: 305px;
+		height: 245px;
 	}
 	.v-frame li .order13{
-		height: 235px;
+		height: 199px;
 	}
 	.v-frame li .order14{
-		height: 164px;
+		height: 153px;
 	}
 	.v-frame li .order15{
-		height: 70px;
+		height: 46px;
 	}
 	.v-frame li .order16{
-		height: 187px;
+		height: 199px;
 	}
 	.v-frame li .order17{
-		height: 259px;
+		height: 230px;
 	}
 	.v-frame li .order18{
-		height: 47px;
+		height: 30px;
 	}
 	.v-frame li .order19{
-		height: 93px;
+		height: 169px;
 	}
 	.v-frame li .order20{
-		height: 141px;
+		height: 184px;
 	}
 
 	/* ---------------------------静态图  ----------------------- */
