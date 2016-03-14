@@ -145,29 +145,29 @@ console.log(info);  //function(){ console.log(1) }
 console.log(typeof info);  //function
 </code></pre>
 上面的代码在JS解析器中就会重新布局为下面的代码顺序：
-```
+<pre><code>
 var info  //声明变量info但是未赋值，umdefined；
 var info  //重复声明info，值仍然为umdefined；
 function info(){
     return 2;
-}<br>
+}
 //把function赋值给imfo，此时info的值就是function的内容；
 console.log(info);  // function的内容；
 console.log(typeof info);  //类型为函数function；
 info = 3;  //  给info赋值3；
 console.log(info);  //  此时info的值就是3；
-console.log(typeof info);  //类型为数值number；</li>
-</ul>
+console.log(typeof info);  //类型为数值number；
 
-<p>console.log(info);  //  此时info的值就是3；
+console.log(info);  //  此时info的值就是3；
 console.log(typeof info);   //类型为数值number；
-info = function(){<br>
+info = function(){
     console.log(1)
 }
 //  把function赋值给info；此时info的值就是function的内容；
 console.log(info);  //function的内容；
 console.log(typeof info);  //function
-```</p></li>
+</code></pre>
+</ul>
 <li><p>立即执行函数表达式是什么？有什么作用？</p>
 
 <h4>立即执行函数描述：</h4>
