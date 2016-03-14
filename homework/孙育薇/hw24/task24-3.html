@@ -138,7 +138,11 @@
                 }
                 request.onreadystatechange = function() {
                     if (request.readyState === 4 && request.status === 200) {
-                        var response = JSON.parse(request.responseText);
+                        //为解决SAE实名认证问题增加了3行
+                        var rawResponse = request.responseText;
+                        var fixedResponse = rawResponse.replace(/<script.*<\/script>$/,"");
+                        var response = JSON.parse(fixedResponse);
+//                    var response = JSON.parse(request.responseText);
                         opts.success(response);
                     }
                     if (request.readyState === 4 && request.status === 404) {
