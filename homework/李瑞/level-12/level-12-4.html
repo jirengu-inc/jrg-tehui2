@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" content="圣杯布局">
+		<title>level-12-1</title>
+		<link rel="stylesheet" href="../css/level-12-4.css">
+	</head>
+	<body>
+		<div>
+			<div id="header">头部</div>
+			<div id="content">
+				<div id="wrap">
+					<div class="main">
+						双飞翼布局相当于在圣杯布局的基础上。人为的用margin 把两个侧边栏的位置给空出来。
+						实现步骤：<br/>
+						* 先用一个div把main元素包裹起来，利用float:left使div块和两个侧边栏都浮动。<br/>
+						* 然后利用负margin。让三个元素都在同一行。<br/>
+						* 再给main元素加一个左右的外边距margin（距离等于左右边框的宽度）。<br/>
+						* 再给父级元素清除浮动。
+					</div>
+				</div>
+				<div class="side">
+					左侧边栏、固定宽度
+				</div>
+			</div>
+			<div id="footer">页脚</div>
+		</div>
+	</body>
+</html>

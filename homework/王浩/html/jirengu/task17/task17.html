@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-17</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="../../../css/jirengu/mackdown.css" rel="stylesheet">
+</head>
+<body>
+   <div class="container">
+   <h1>task-17</h1>
+   	<h3>问答</h3>
+
+<ol>
+<li>函数声明和函数表达式有什么区别？
+
+<ul>
+<li>定义函数有3种方法，构造函数、函数声明、函数表达式；其中最常用的就是函数声明和函数表达式；</li>
+<li>函数声明——函数声明的解析是在预执行阶段，也就是浏览器准备执行解析代码的时候，因此通过函数声明定义的函数，可以在定义前或者后被调用。下面的代码效果是一样的：
+<pre><code>
+function count(a,b){
+return a+b;
+}
+console.log(count（2，3）)；
+</code></pre>
+换个顺序也可以：
+<pre><code>
+console.log(count（2，3）)；
+function count(a,b){
+return a+b;
+}
+</code></pre></li>
+<li>函数表达式——在JS里面，函数function和number、string一样，是一阶值，只要是可以放置变量的地方，都可以放置函数。例如，你可以这样使用变量：
+<pre><code>var f = 5;</code></pre>；
+也可以赋值一个函数表达式：
+<pre><code>
+var f = function(name){
+alert(&quot;Hi &quot;+ name+&quot;!&quot;);
+}
+</code></pre>
+函数表达式会在执行流执行到它的时候才会创建函数，此时函数才定义了，然后才可以被调用。
+<pre><code>
+console.log(count2(2,3))   //count2 is not a function
+var count2=function(a,b){
+return a+b;
+}
+console.log(count2(2,3));  //5
+</code></pre></li>
+</ul></li>
+<li>什么是变量的声明前置？什么是函数的声明前置？
+
+<ul>
+<li>变量声明前置——指的是解析器将当前作用域内声明的所有变量放到作用域的开始处，但是，只有变量的声明被前置了，而赋值操作被保留在原处，
+<pre><code>
+console.log(name);  // undefined;  
+var name=&quot;wmsj100&quot;;
+console.log(name);  // &quot;wmsj100&quot;;
+</code></pre>
+因为变量的声明被前置了，但是赋值操作被保留在原处，所以这段代码和下面的效果是一样的：
+<pre><code>
+var name;
+console.log(name);  //已经被声明但未赋值的变量会被自动赋值undefinde;
+name = &quot;wmsj100&quot;;  //  进行赋值操作
+console.log(name);  //&quot;wmsj100&quot;
+</code></pre></li>
+<li>函数声明前置——JavaScript解释器允许在函数声明之前使用函数，此时不仅仅是函数名被前置了，整个函数定义也被前置了，所以就可以直接调用函数：
+<pre><code>
+sayHi();  //&quot;hello world&quot; 
+function sayHi(){
+console.log(&quot;hello world&quot;);
+}
+</code></pre>
+和下面这段代码是等效的：
+<pre><code>
+function sayHi(){
+console.log(&quot;hello world&quot;);
+}
+sayHi();  //因为函数sayHi已经声明，所以此时直接输出&quot;hello world&quot; 
+</code></pre></li>
+</ul></li>
+<li>arguments是什么？
+
+<ul>
+<li>arguments是JS里的一个内置对象，所有的函数都有属于自己的一个arguments，它以数组的形式存储了函数执行时传递过来的所有参数，即使函数定义没有定义这么多个形参。它还有一个特别之处就是跟Array类型相比，arguments变量有且只有一个length属性，Array的方法，例如push、pop等，它并不具备，它只是一个伪数组，具有length属性，存储的数组能够用数组访问符[ ]来访问，并且是只读不可写。</li>
+<li>ECMAScript函数的参数在内部是用一个数组来表示的，函数接受到的始终是这个数组，而不关心数组中包含多少个参数，也不在乎传进来的参数是什么数据类型；</li>
+<li>在函数体内可以通过arguments对象来访问这个参数数组；</li>
+<li>给函数命名参数只是为了提供便利，但不是必须的，JS解析器不会验证命名参数，而是通过arguments对象的length属性获得参数的个数，且arguments的长度由传入的参数决定，不是由定义函数时候命名参数的个数决定的。</li>
+<li>arguments的值永远与对应的命名参数的值同步，但它们的内存空间是独立的，没有传递命名参数的值将被自动赋值umdefined；
+<pre><code>
+function infor(name,age,sex){
+console.log(name);
+console.log(age);
+console.log(sex);
+        console.log(arguments.length);
+console.log(arguments);
+}
+infor(&quot;wmsj100&quot;,28,&quot;male&quot;); 
+// &quot;wmsj100&quot;, 28,  &quot;male&quot;, 3 , [&quot;wmsj100&quot;, 28 , &quot;male&quot;]
+infor(&quot;wmsj100&quot;,28);  
+//&quot;wmsj100&quot; , 28, undefined, 2, [&quot;wmsj100&quot;, 28]
+infor(&quot;wmsj100&quot;); 
+// &quot;wmsj100&quot;, undefined, undefined , 1 , [&quot;wmsj100&quot;]
+</code></pre>
+由上面的代码可以知道通过arguments可以遍历实参，通过arguments.length来知道传入的实参个数，这俩个使用的比较频繁，而且使用arguments之后函数由于没有定死参数的个数，就会显得极为灵活，可以适应更广泛的场景。</li>
+</ul></li>
+<li><p>函数的重载怎么实现？</p>
+
+<ul>
+<li>在面向对象的编程中，很多语言都支持函数重载，能够根据函数传递的不同个数、类型的参数来做不同的操作。</li>
+<li>JS对函数重载却不支持，可以用相同的函数名在同一作用区域定义俩个函数，分别赋予不同个数类型的参数名，但真正使用的是最后一个；</li>
+<li>JS是依靠函数名来区分函数的，因为是弱类型语言，不会事先强调数值类型，而且JS函数具备arguments属性，所以不同数目和类型的参数是无法区分函数的，在JS解析器看来都是同一个函数，所有后面的就会覆盖前面的函数；</li>
+<li>JS虽然无法直接使用函数重载的便利性，但是可以通过arguments间接的实现这种效果，如下代码：
+<pre><code>
+function info(){
+if(arguments.length == 1){
+    console.log(&quot;引入的唯一参数是：&quot;+arguments[0]);
+}
+else if(arguments.length == 2){
+    console.log(&quot;第一个参数是：&quot;+arguments[0]+&quot; ; &quot;+&quot;第二个参数是：&quot;+arguments[1]);
+}
+}
+info(&quot;wmsj100&quot;);  
+//引入的唯一参数是：wmsj100;
+info(&quot;wmsj100&quot;,28);
+//第一个参数是：wmsj100 ; 第二个参数是：28
+</code></pre></li>
+<li>由于JS是通过function的函数名来识别和区分函数的，但是JS的函数和其它类型的数据（string、object）一样，可以把函数赋值给变量，所以如果是通过函数声明的方式定义的函数，那么在函数重载时候就是后面的同名函数覆盖前面的，但是对于通过函数表达式定义的函数，（因为这种方式是把函数赋值给一个变量）这时候函数前置只是函数的变量名前置，但函数表达式并没有前置，只有等到引用函数的时候，才会给变量名赋值函数，可以通过如下代码感受一下：
+<pre><code>
+console.log(info);  //function info(){return 2;}
+console.log(typeof info); //function;
+var info = 3;
+console.log(info);  //3
+console.log(typeof info);  //number
+function info(){
+    return 2;
+}
+console.log(info); //3;
+console.log(typeof info);  //number;
+var info = function(){
+console.log(1)
+}
+console.log(info);  //function(){ console.log(1) }
+console.log(typeof info);  //function
+</code></pre>
+上面的代码在JS解析器中就会重新布局为下面的代码顺序：
+<pre><code>
+var info  //声明变量info但是未赋值，umdefined；
+var info  //重复声明info，值仍然为umdefined；
+function info(){
+    return 2;
+}
+//把function赋值给imfo，此时info的值就是function的内容；
+console.log(info);  // function的内容；
+console.log(typeof info);  //类型为函数function；
+info = 3;  //  给info赋值3；
+console.log(info);  //  此时info的值就是3；
+console.log(typeof info);  //类型为数值number；
+
+console.log(info);  //  此时info的值就是3；
+console.log(typeof info);   //类型为数值number；
+info = function(){
+    console.log(1)
+}
+//  把function赋值给info；此时info的值就是function的内容；
+console.log(info);  //function的内容；
+console.log(typeof info);  //function
+</code></pre>
+</ul>
+<li><p>立即执行函数表达式是什么？有什么作用？</p>
+
+<h4>立即执行函数描述：</h4>
+
+<ul>
+<li>立即执行函数是一种语法，可以让函数在定义后立即被执行，
+<pre><code>
+(function(){
+console.log(1);
+}()); // 1
+</code></pre></li>
+<li>这种模式本质上就是函数表达式（命名的或者匿名的），在创建后立即执行；</li>
+<li>立即执行函数术语不是在ECMAScript标准中定义的，但它很短有助于描述和讨论模式，这种模式由以下几部分组成：</li>
+<li>使用函数表达式定义一个函数（函数声明不能起作用）；</li>
+<li>在结尾加上一对括号，让函数立即执行；</li>
+<li>将整个函数包裹在一对括号中（只有在不将函数赋值给变量的时候才需要）；</li>
+<li>立即执行函数可以包含参数；
+<pre><code>
+(function(name,age){
+console.log(&quot;姓名：&quot;+name+&quot; ; &quot;+&quot;年龄：&quot;+age+&quot;!&quot;);
+}(&quot;wmsj100&quot;,28));
+// 姓名：wmsj100 ; 年龄：28!
+</code></pre></li>
+<li>像其它任何函数一样，立即执行函数也可以返回值并且把值赋给其它变量；
+<pre><code>
+var infor=function(){
+return &quot;wmsj100&quot;;
+}();    //把函数的返回值&quot;wmsj100&quot;赋值给infor；
+console.log(infor); //&quot;wmsj100&quot;;
+</code></pre>
+#### 立即执行函数作用；</li>
+<li>立即执行函数模式被广泛使用，它可以封装大量的工作而不会在背后遗留任何全局变量；定义的所有变量都会成为立即执行函数的局部变量，所以不必担心这些临时变量会污染全局空间；</li>
+<li>这种模式也可以将独立的功能封装在自包含模块中。假如页面是稳定的并且在没有JS情况下能正常工作，然后本着逐步加强的想法，你加入了一些代码加强页面某个方面；你可以将这些代码封装进一个立即执行函数中，并且确保页面在没有它们的时候也可以正常工作。
+&gt; 参考文献——<a href="http://blog.csdn.net/qq838419230/article/details/8030078">立即执行函数</a></li>
+</ul></li>
+<li><p>什么是函数的作用域链？</p>
+
+<h4>作用域</h4>
+
+<p>任何程序语言都有作用域的概念，简单的说，作用域就是变量和函数的可访问范围，即作用域控制着变量和函数的可见性和生命周期。在JavaScript中，变量的作用域有全局作用域和局部作用域俩种。</p>
+
+<ol>
+<li>全局作用域
+在代码的任何地方都能访问到的对象拥有全局作用域，一般来说一下几种情况拥有全局作用域；</li>
+<li>最外层函数和最外层函数外面定义的变量拥有全局作用域。
+<pre><code>
+var name=&quot;wmsj100&quot;;
+function infor(){
+var name2=&quot;wmsj&quot;;
+ function how1(){
+    console.log(28);
+}
+how1();
+}
+console.log(name);  //wmsj100;
+console.log(name2); //脚本错误；
+infor();    //28；
+how1();     //脚本错误；
+</code></pre></li>
+<li>所有未定义直接赋值的变量自动声明为全局变量，拥有全局作用域，例如：
+<pre><code>
+function info(){
+var author=&quot;wmsj100&quot;;
+age=28;
+console.log(author);
+}
+info(); //wmsj100
+console.log(age);   //28
+console.log(author);    //脚本错误
+</code></pre>
+但是对于函数内未声明的变量，只有在函数执行之后它才可以成为全局变量，如果函数没有执行就去调用，肯定会报错的。
+<pre><code>
+function info(){
+var author=&quot;wmsj100&quot;;
+age=28;
+console.log(author);
+}
+console.log(age);   //age is not defined
+info(); //wmsj100   //wmsj100
+console.log(age);   //28
+</code></pre></li>
+<li>所有window对象的属性拥有全局作用域，一般情况下，window对象的内置属性都拥有全局作用域，例如window.name, window.location, window.top;
+基于这个原因，所以应该避免使用window的默认属性值，否则就会出现很多奇怪的现象，比如下面：
+<pre><code>
+function info(){
+var name=&quot;wmsj100&quot;
+}
+console.log(name)
+</code></pre>
+对于这个本来预期的是解析器进行报错，因为我输出了一个函数内部的局部变量，但是浏览器并没有报错，而是一个空白，查看name值的时候，发现现实一个空的字符串，类型属于string，就会感觉莫名其妙，因为只要把name该一下名字就不会出现这个问题了，如下图：
+<img src="http://upload-images.jianshu.io/upload_images/1606281-3023350fc8938865.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="name问题">
+其实这就是因为使用了window的默认属性window.name,这个还是需要注意一下的。</li>
+<li>局部作用域
+和全局作用域相反，局部作用域一般只在固定的代码片段内可以访问到，最常见的例如函数内部，所以有人也把这种作用域称作函数作用域；
+#### 作用域链</li>
+<li>在JavaScript中，函数也是对象，实际上JS中一切都是对象。函数对象和其他对象一样，拥有可以通过代码访问的属性和一系列仅供JS引擎访问的内部属性。其中一个内部属性是[scope],该内部属性包含了函数被创建的作用域中对象的集合，这个集合被称为函数的作用域链，它决定了那些数据可以被函数访问到。</li>
+<li>当一个函数创建后，它的作用域链会被创建此函数的作用域中可访问的数据对象填充。
+<pre><code>
+function add ( num1, num2 ) {
+var sum = num1 + num2;
+return sum;
+}
+</code></pre>
+在函数add创建时，它的作用域链会填入一个全局对象，该全局对象包含了所有全局变量，如下图所示，
+<img src="http://upload-images.jianshu.io/upload_images/1606281-b88f39292a483be9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="函数作用域链">
+函数add的作用域将会在执行时用到，例如执行如下代码：
+<pre><code>var total = add (5 , 10);</code></pre>
+执行此函数时会创建一个称为“运行期上下文”的内部对象，运行期上下文定义了函数执行时的环境。每个运行期上下文都有自己的作用域链，用于标识符解析，当运行期上下文被创建时，它的作用域链初始化为当前运行函数的[scope]所包含的对象。
+这些值按照他们出现在函数中的顺序被复制到运行期上下文的作用域链中。它们共同组成了一个新的对象，叫“活动对象”，该对象包含了函数的所有局部变量、命名参数、参数集合以及this，然后此函数会被推入作用域链的前端，当运行期上下文被销毁，活动对象也随之销毁。新的作用域链如下图所示：
+<img src="http://upload-images.jianshu.io/upload_images/1606281-0195ebfb5ce06749.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="新的作用域链">
+在函数执行过程中，每遇到一个变量，都会经历一次标识符解析过程以决定从哪里获取和存储数据。该过程从作用域链头部，也就是从活动对象开始搜索，查找同名的标识符，如果找到了就使用这个标识符对应的变量，如果没找到就继续搜索作用域链中的下一个对象，如果搜索完所有对象都未找到，则认为该标识符未定义。</li>
+</ol></li>
+</ol>
+
+<h3>代码</h3>
+
+<ol>
+<li>以下代码输出什么？
+<pre><code>
+function getInfo(name,age,sex){
+    console.log(&quot;name:&quot;,name);
+    console.log(&quot;age:&quot;,age);
+    console.log(&quot;sex:&quot;,sex);
+    console.log(arguments);
+    arguments[0]=&quot;valley&quot;;
+    console.log(&quot;name&quot;,name);
+}
+getInfo(&quot;hunger&quot;,28,&quot;男&quot;);
+//name: &quot;hunger&quot;;
+// age: 28;
+// sex: &quot;男&quot;;
+// [&quot;hunger&quot;,28,&quot;男&quot;];
+// name valley;
+getInfo(&quot;hunger&quot;,28);
+// name: &quot;hunger&quot;;
+// age: 28;
+// sex: undefined;
+// [&quot;hunger&quot;,28];
+// name valley;
+getInfo(&quot;男&quot;);
+// name: &quot;男&quot;;
+// age: undefined;
+// sex: undefined;
+// [&quot;男&quot;];
+// name valley;
+</code></pre></li>
+<li>写一个函数，返回参数的平方和？
+<pre><code>
+function sumOfSquares(){
+    var sum=&quot;&quot;;
+    for(var i=0;i&lt;arguments.length;i++){
+        if(typeof arguments[i] === &quot;number&quot;){
+            sum=+sum;
+            sum+=arguments[i]*arguments[i];
+        }
+        else{
+            sum=&quot;对不起，请输入数字！&quot;;
+        }
+    }
+    console.log(sum);
+}
+sumOfSquares(2,3,4);  //29
+sumOfSquares(1,3);  //10
+sumOfSquares(&quot;a&quot;,&quot;b&quot;);  //&quot;对不起，请输入数字！&quot;
+</code></pre></li>
+<li>如下代码的输出？为什么？
+<pre><code>
+console.log(a); //undefines
+var a = 1;  
+console.log(b); //b is not defined;
+</code></pre>
+解释如下：
+<pre><code>
+var a;  //变量声明前置
+console.log(a);
+//a只是声明但并没有赋值，所以默认值为undefined；
+a = 1;  //给a赋值为1；
+console.log(b);
+//b属于为声明的变量，所以就会报错
+</code></pre></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+sayName(&quot;world&quot;);   //hello world;
+sayAge(10); //sayAge is not a function；
+function sayName(name){
+    console.log(&quot;hello &quot;,name);
+}
+var sayAge=function(age){
+    console.log(age)
+}
+</code></pre>
+代码解析如下：
+```
+var sayAge; 
+// 因为变量声明的优先级高于函数，所以变量声明排到前面
+function sayName(name){
+    console.log(&quot;hello &quot;,name);
+}   /<em>函数声明前置；</em>/</p>
+
+<p>sayName(&quot;world&quot;)<br>
+//给参数name赋值&quot;world&quot;，console.log输出为&quot;hello &quot; &quot;world&quot;;
+sayAge(10)<br>
+//因为sayAge属于一个未赋值的变量，并不是函数，所以JS解析器就会报错，并且停止执行脚本。后面的内容就不会被执行到。
+sayAge=function(age){
+    console.log(age)
+}   //这段代码不会被执行；
+```</p></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+function fn(){}
+var fn = 3;
+console.log(fn);    //空值
+</code></pre>
+解析如下：
+<pre><code>
+var fn  
+// //因为变量声明的优先级高于函数声明所以变量声明排前面
+function fn(){} 
+//函数声明前置，fn为未定义的数据类型undefined；
+fn = 3; //给fn赋值3；
+console.log(fn)     //输出3；
+</code></pre></p>
+
+<ul>
+<li>fn和fn( )是有区别的；</li>
+<li>fn是一个变量，所赋值为函数function，所以console.log(fn)就会输出完整的匿名函数；</li>
+<li>而fn( )表示函数的执行，console.log(fn( ))就会输出函数的值；</li>
+</ul></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+function fn(fn2){   //fn2=10;
+    console.log(fn2);   
+    //function fn2(){console.log(&quot;fnnn2&quot;)}
+    var fn2 = 3;    
+    console.log(fn2);   //3
+    console.log(fn);    
+    //fn=function fn(fn2){  
+    // console.log(fn2);    
+    // var fn2 = 3; 
+    // console.log(fn2);    
+    // console.log(fn); 
+    // function fn2(){
+    //  console.log(&quot;fnnn2&quot;);
+    // }
+    // }
+    function fn2(){
+        console.log(&quot;fnnn2&quot;);
+    }
+}
+fn(10);
+</code></pre>
+解析如下：
+<pre><code>
+function fn(fn2){   //fn2赋值为10；
+    var fn2;        //fn2变量声明前置；此时fn2仍为10；
+    function fn2(){
+        console.log(&quot;fnnn2&quot;);
+    }               
+    //fn2函数声明前置；此时给fn2赋值函数，所以fn2的值就是函数本身；
+    console.log(fn2);   
+    //fn2=function fn2(){console.log(&quot;fnnn2&quot;)};
+    console.log(fn);
+    //在函数局部变量作用域内没有fn变量，然后就会向上查询，到全局变量作用域内查找到函数fn，因为fn是函数的变量名，所以fn就等于函数本身；
+    //fn=function fn(fn2){  
+    // console.log(fn2);    
+    // var fn2 = 3; 
+    // console.log(fn2);    
+    // console.log(fn); 
+    // function fn2(){
+    //  console.log(&quot;fnnn2&quot;);
+    // }
+    // }
+}
+    fn(10);    //fn2赋值为10；
+</code></pre></p></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+var fn=1;
+function fn(fn){
+    console.log(fn);    //值为空；
+}
+console.log(fn(fn))     //fn is not a function
+</code></pre>
+解析如下：
+<pre><code>
+var fn;     //变量声明前置；此时fn=undefined；
+function fn(fn){
+    //把函数赋值给fn，所以此时fn的值就是函数本身；
+    //参数fn在函数作用域内部并没有申明，然后沿着
+    //函数作用域链向上查询，没有声明fn的值，
+    //未声明的参数值为undefined；
+    console.log(fn);    
+    //等效于console.log(undefined),输出为undefined;
+}
+fn = 1;     //重新给fn赋值为1；
+console.log(fn(fn))     
+//这个等效于console.log(3(3)),因为fn此时是number数字3，
+//不是一个函数，所以解析器会报错。
+</code></pre></p></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+console.log(j);     //undefined;
+console.log(i);     //undefined;
+for(var i=0;i&lt;10;i++){
+    var j = 100;
+}                   //循环结束时候i=10；j=100；
+console.log(i);     //输出i的值——10；
+console.log(j);     //输出j的值——100；
+</code></pre>
+解析如下：
+<pre><code>
+var i;      //变量i前置i=undefined；
+var j;      //变量j前置j=undefined；
+console.log(j);     //undefined;
+console.log(i);     //undefined;
+for(i=0;i&lt;10;i++){  //依次进行循环，知道i=10的时候
+     j = 100;       //循环结束，此时i=10;j=100;
+}   
+console.log(i);     //输出i的值——10；
+console.log(j);     //输出j的值——100；
+</code></pre></p></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+fn();       //undefined,100
+var i = 10;
+var fn = 20;
+console.log(i);     //10;
+function fn(){
+    console.log(i);
+    var i=99;
+    fn2();
+    console.log(i);
+    function fn2(){
+        i=100;
+    }
+}
+</code></pre>
+解析如下：
+```
+var i;      //变量i前置
+var fn;     //变量fn前置
+function fn(){      //给fn赋值为函数
+    var i;          // 变量i前置；
+    function fn2(){     //函数声明前置，但未执行；
+        i=100;          //函数未执行；
+    }
+    console.log(i);     //==》i为赋值，输出undefined；
+    i = 99;         //给i赋值99；
+    fn2();          //执行函数声明fn2，i的值为100；
+    console.log(i);     //==》输出i的值为100；</p>
+
+<p>}
+fn();       //此时开始执行fn函数
+i = 10;     //给i赋值为10；
+fn = 20;        //给fn赋值为20；
+console.log(i);     //==》输出i的值为10；
+```</p></li>
+<li><p>如下代码的输出？为什么？
+<pre><code>
+var say = 0;
+(function say(n){       
+    console.log(n);     //输出10,9,8,7,6,5,4,3,2，undefined
+    if(n&lt;3) return;     
+    say(n-1);
+}( 10 ));
+console.log(say);       //把say的undefined值覆盖为0;
+</code></pre>
+解析如下：
+<pre><code>
+var say     //变量say前置；
+(function say(n){
+//自执行函数也属于函数声明，所以函数要前置；
+//重新给say赋值函数，并且参数n=10;
+    console.log(n);     //输出10;
+    if(n&lt;3) return;     //10&gt;3,不触发条件；
+    say(n-1);       
+    //say(9) 再次执行函数，但此时参数n=9；
+    //一直这样循环，8，7，6，5，4，3，直到当n=2的时候，
+    //2&lt;3,所以触发return条件，
+    //当return为空的时候，函数返回undefined；
+    //此时函数因为没有再次触发，所以undefined值没有被提取；
+}( 10 ));
+//此时console已经输出了——10，9，8，7，6，5，4，3，2;
+say=0；        //给say赋值0；
+console.log(say);       //输出say的值0；
+</code></pre>
+JavaScript的编译是边编译边处理（执行）所以上面的代码中say函数的10，9，8，7，……0；如果是先计算完成在一次性输出的话，say的输出值就全部会被0覆盖，可结果没有，所以可以验证JS的编译过程，边编译边执行。
+如果想看到这个编译过程，可以把n的初始值设置的大一点，我设置的是10000，然后就可以看到这个运算过程了。我的奔腾处理器处理不了这个运算，电脑几乎要卡死了。</p></li>
+</ol>
+   </div> 
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+</head>
+  <style>
+    .box{
+  width:300px;
+  height:200px;
+  border:2px solid #ccc;
+  margin:50px;
+}
+.l1{
+  width:0px;
+  height:0px;
+  border-bottom:40px solid #ccc;
+  border-left:40px solid transparent;
+  border-right:40px solid transparent;
+  border-top:40px solid transparent;
+  position:relative;
+  top:-80px;
+  left:10px;  
+}
+.l2{
+  width:0px;
+  height:0px;
+  border-left:40px solid transparent;
+  border-top:40px solid red;
+  position:relative;
+  left:261px;
+}
+.l3{
+  width:0px;
+  height:0px;
+  border-bottom:40px solid #ccc;
+  border-left:40px solid transparent;
+  border-right:40px solid transparent;
+  border-top:40px solid transparent;
+  position:relative;
+  top:-80px;
+  left:10px;  
+}
+.l4{
+  width:0px;
+  height:0px;
+  border-bottom:39px solid #fff;
+  border-left:39px solid transparent;
+  border-right:39px solid transparent;
+  border-top:39px solid transparent;
+  position:relative;
+  top:-35px;
+  left:-39px;
+}
+
+  </style>
+<body>
+   <div class="box 1">
+     <div class="l1"></div>
+   </div>
+   <div class="box 2">
+     <div class="l2"></div>
+   </div>
+   <div class="box 3">
+     <div class="l3">
+       <div class="l4"></div>
+     </div>
+   </div>
+</body>
+</html>
