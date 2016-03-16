@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>代理 | Task 25-3</title>
+    <style>
+        body, div, ul, li, p, a {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        a { text-decoration: none; }
+        li { list-style: none; }
+
+        .container {
+            width: 800px;
+            margin: 0 auto;
+        }
+
+        .jewelry-list{
+            display: block;
+        }
+
+        .jewelry-list:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .jewelry-list li {
+            position: relative;
+            float: left;
+            width: 220px;
+            height: 212px;
+            margin-top: 20px;
+            margin-left: 20px;
+            padding: 10px 20px;
+            font-size: 12px;
+            text-align: center;
+            border: 1px solid #eee;
+            *width: 180px;
+            *margin-left: 19px;
+        }
+
+        .jewelry-list li:nth-child(3n) {
+            margin-right: 0;
+        }
+
+        .name {
+            height: 35px;
+            text-align: left;
+        }
+
+        .price {
+            color: #c7171e;
+            text-align: left;
+        }
+
+        .normal, .precious {
+            display: none;
+        }
+
+        .buy-link {
+            position: absolute;
+            display: none;
+            top: 0;
+            left: 0;
+            width: 218px;
+            height: 210px;
+            background-color: rgba(0,0,0,0.5);
+            background: #ccc\9;
+            filter: alpha(opacity=80);
+            -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+        }
+
+        .buy-link a {
+            position: absolute;
+            display: block;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            top: 50%;
+            left: 50%;
+            margin-top: -20px;
+            margin-left: -40px;
+            color: #c7171e;
+            background: #fff;
+            border: 1px solid #c7171e;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+        }
+
+        .btn {
+            width: 56px;
+            height: 40px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #c7171e;
+            background: transparent;
+            color: #c7171e;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        .btn:focus {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>珠宝首饰</h1>
+    <ul class="jewelry-list">
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div></div>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>
+        </li>
+        <li>
+            <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+            <p class="name">藏美千足金和田玉金镶玉路路通吊坠</p>
+            <p class="price">￥1699.00</p>
+            <div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>
+        </li>
+    </ul>
+    <button class="btn">添加</button>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var products = [
+        {
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手 猴哥款',
+            price: '￥405.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金转运珠 猴哥款',
+            price: '￥100.00'
+        },{
+            img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+            name: '珂兰 黄金手链 3D猴哥款',
+            price: '￥45.00'
+        }
+    ];
+    function addNewProducts(products) {
+        var content = "";
+        for (var i = 0; i < products.length; i++) {
+            var img = products[i]["img"];
+            var name = products[i]["name"];
+            var price = products[i]["price"];
+            content += '<li>' +
+                    '<img src="' + img + '" alt="">' +
+                    '<p class="name">' + name + '</p>' +
+                    '<p class="price">' + price + '</p>' +
+                    '<div class="buy-link"><a href="javascript:void(0)">立即抢购</a></div>' +
+                    '</li>';
+        }
+        return $(content);
+    }
+
+    $(".jewelry-list").on("mouseover", "li", function(){
+        $(this).find(".buy-link").show();
+    }).on("mouseleave", "li", function(){
+        $(this).find(".buy-link").hide();
+    });
+
+    $(".btn").on("click",function(){
+        var content = addNewProducts(products);
+        $(".jewelry-list").append(content);
+    });
+</script>
+</body>
+</html>
