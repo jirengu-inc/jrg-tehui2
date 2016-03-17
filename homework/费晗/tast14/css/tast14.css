@@ -1,0 +1,90 @@
+@charset "UTF-8";
+/**
+ * 
+ * @authors Your Name (you@example.org)
+ * @date    2016-03-17 10:16:03
+ * @version $Id$
+ */
+body,html,div,p,ul,li,dl,dt,dd,h2,h3{
+	padding: 0;
+	margin: 0;
+}
+a{
+	text-decoration: none;
+	color: #fff;
+	font-size: 18px;
+}
+.btn{
+	display: inline-block;
+	width: 150px;
+	height: 45px;
+	line-height: 45px;
+	margin: 20px 0;
+	background-color: #6D7E84;
+	transition: background-color 0.2s;
+}
+.btn:hover{
+	background-color: #363E41;
+}
+h2{
+	color: #333;
+	font-size: 60px;
+
+}
+p{
+	color: #333;
+	font-size: 18px;
+}
+#container{
+	padding: 0;
+	margin: 0;
+	font: 16px/1.5 "Source Sans Pro","Helvetica Neue",Arial,Helvetica,sans-serif;
+}
+#header{
+	position: relative;
+	width: 100%;
+	height: 1080px;
+	background-size: cover;
+	background: url(../img/bg.jpg) top no-repeat scroll;
+}
+.wrap-center{
+	position: absolute;
+	width: 960px;
+	top: 50%;
+	left: 50%;
+	margin-left: -480px;
+}
+#header .wrap-center{
+	height: 200px;
+	margin-top: -100;
+	text-align: center;	
+	
+}
+#header p{
+	font-size: 22px;
+}
+#about{
+	position: relative;
+	background-color: #fff;
+}
+#about .wrap-center{
+	height: 180px;
+	margin-top: 90px;
+	
+}
+#about h3{
+	font-size: 26px;
+	color: #000;
+}
+#about p{
+	font-size: 22px;
+}
+#about a{
+	font-size: 20px;
+	color: #337AB7;
+}
+#about p a:hover,
+#about p a:active{
+	color: #23527c;
+	border-bottom: 2px solid #23527c;
+}
