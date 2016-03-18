@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>tast-11-1</title>
+<style type="text/css">
+	body{
+		font: 18px/1.2 "微软雅黑",sans-serif;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+    html,body,p,ul,li{
+    	margin: 0;
+		padding: 0;
+    }
+    ul{
+    	list-style-type: none;
+    }
+    .nav:after{
+    	content: '';
+    	display: block;
+    	clear: both;
+    }
+    /* 父元素的背景色和左边距 */
+	.nav{
+		background-color: #cbcbcb;
+		padding-left: 10px;
+	}
+	.navbar > li{
+		float: left;
+		padding: 0 30px;
+		line-height: 40px;
+		position: relative;
+	}
+	.navbar > li:hover{
+		background-color: #aaa;
+	}
+	/* 影藏子菜单栏，下拉样式居中 */
+	.navbar .child{
+		position: absolute;
+		display: none;
+		left: 0;
+		top: 100%;
+		width: 99%;
+		text-align: center;
+		border: 1px solid #ccc;
+		border-top: none;
+	}
+	/*将子菜单栏设为块级元素*/
+	.navbar > li:hover .child{
+		display: block;
+	}
+	/* 拉伸子菜单高度 */
+	.navbar .child li{
+		padding: 8px 0;
+	}
+	/* 鼠标经过子菜单栏的样式 */
+	.navbar .child > li:hover{
+		background-color: #ccc;
+		border-bottom: 1px solid #666;
+	}
+</style>
+</head>
+<body>
+    <div class="nav">
+    	<ul class="navbar">
+    	   <li>
+    	      <a href="#">前端</a>
+    	      <ul class="child">
+    	      	  <li ><a href="#">JavaScript</a></li>
+    	      	  <li ><a href="#">CSS</a></li>
+    	      	  <li ><a href="#">HTML</a></li>
+    	      </ul>
+    	   </li>
+    	   <li>
+    	   	  <a href="#">服务器</a>
+    	      <ul class="child">
+    	      	  <li ><a href="#">Node</a></li>
+    	      	  <li ><a href="#">PHP</a></li>
+    	      	  <li ><a href="#">Java</a></li>
+    	      </ul>
+    	   </li>
+    	   <li>
+    	   	  <a href="#">前端工具</a>
+    	      <ul class="child">
+    	      	  <li ><a href="#">Sublime</a></li>
+    	      	  <li ><a href="#">WebStrom</a></li>
+    	      	  <li ><a href="#">Git</a></li>
+    	      </ul>
+    	   </li>
+    	   <li><a href="#">HTML</a></li>
+    	   <li><a href="#">NODE</a></li>
+    	</ul>
+    </div>
+</body>
+</html>
