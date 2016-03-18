@@ -4,9 +4,6 @@ html,body {
 	height: 100%;
     font-family: "微软雅黑", "Helvetica Neue", Arial, sans-serif;
 }
-li {
-	list-style-type: none;
-}
 a {
 	text-decoration: none;
 }
@@ -35,7 +32,7 @@ a {
 	display: inline-block;
 	padding: 10px 16px;
 	background-color: #697d84;
-	opacity: 0.4;
+	opacity: 0.8;
 	color: #fff;
 }
 .header-wrap a:hover {
@@ -225,11 +222,16 @@ a {
 }
 .footer-icon a {
 	display: inline-block;
-	font-size: 30px;
+	font-size: 20px;
 	margin:20px 20px;
 }
 .footer-wrap>.fa {
 	width: 100%;
 	padding: 0;
 	margin: 0;
+}
+.footer-line {
+	width: 100px;
+	border: none;
+	border-top: 1px solid #eee;
 }
