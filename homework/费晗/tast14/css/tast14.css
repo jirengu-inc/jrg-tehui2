@@ -8,8 +8,6 @@
 body,html,div,p,ul,li,h2,h3,h4,h5{
 	padding: 0;
 	margin: 0;
-	-moz-box-sizing: border-box;
-    box-sizing: border-box;
 	font: 16px/1.5 "Source Sans Pro","Helvetica Neue",Arial,Helvetica,sans-serif;
 }
 body,html{
@@ -114,8 +112,8 @@ li{
 	font-size: 18px;
 }
 .services p {
-	font-size: 12px;
 	width: 160px;
+	font-size: 12px;
 	line-height: 1.5em;
 }
 .services .fa-stack-1x{
@@ -174,7 +172,7 @@ li{
 	width: 470px;
 }
 #work img{
-	width: 94%;
+	width: 94%;   /*图片实际高度500px，li设置为470px*/
 }
 #work img:hover{
 	opacity: 0.8;
@@ -196,6 +194,7 @@ li{
 	background-color: #337ab7;
 	margin-top: -30px; 
 	display: table;
+	position: relative;
 	width: 100%;
 	height: 220px;
 }
@@ -241,8 +240,8 @@ li{
 }
 #footer .address p:nth-child(4){
 	margin-top: 15px;
-	}
-#footer p{
+}
+#footer .address p{
 	font-size: 14px;	
 }
 #footer .address a{
@@ -269,9 +268,6 @@ li{
 }
 .address p span{
 	margin-right: 5px;
-}
-#footer.icon a{
-	color: #338ACF;
 }
 #footer hr{
 	max-width: 100px;
