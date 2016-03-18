@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>导航 | Task 25-1</title>
+    <style>
+        body, div, ul, li, a {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        a { text-decoration: none; }
+        li { list-style: none; }
+
+        .jewelry-list {
+            margin: 10px;
+        }
+
+        .jewelry-list li {
+            width: 200px;
+            background: #c7171e;
+            padding: 10px 20px;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .jewelry-list li a {
+            color: #fff;
+        }
+
+        .jewelry-list > li > a:after {
+            content: ">";
+            color: #fff;
+            position: relative;
+            left: 100px;
+        }
+
+        .jewelry-cats {
+            position: absolute;
+            border: 1px solid #ccc;
+            top: 0;
+            left: 200px;
+            width: 208px;
+            display: none;
+            *left: 240px;
+            *width: 180px;
+        }
+
+        .jewelry-cats li {
+            width: 100px;
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 14px;
+            cursor: auto;
+            background: transparent;
+            line-height: 20px;
+            height: 40px;
+            *display: inline;
+            *line-height: 40px;
+        }
+
+        .jewelry-cats li a {
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+        <ul class="jewelry-list">
+            <li>
+                <a href="#">珠宝玉器</a>
+                <ul class="jewelry-cats">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">宝石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">玛瑙</a></li>
+                    <li><a href="#">珍珠</a></li>
+                    <li><a href="#">钻石</a></li>
+                    <li><a href="#">琥珀</a></li>
+                    <li><a href="#">和田</a></li>
+                    <li><a href="#">琥珀</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">珠宝玉器</a>
+                <ul class="jewelry-cats">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">宝石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">玛瑙</a></li>
+                    <li><a href="#">珍珠</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">珠宝玉器</a>
+                <ul class="jewelry-cats">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">宝石</a></li>
+                    <li><a href="#">水晶</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">珠宝玉器</a>
+                <ul class="jewelry-cats">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">宝石</a></li>
+                    <li><a href="#">水晶</a></li>
+                    <li><a href="#">玛瑙</a></li>
+                    <li><a href="#">珍珠</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">珠宝玉器</a>
+                <ul class="jewelry-cats">
+                    <li><a href="#">翡翠</a></li>
+                    <li><a href="#">玉石</a></li>
+                    <li><a href="#">宝石</a></li>
+                    <li><a href="#">水晶</a></li>
+                </ul>
+            </li>
+        </ul>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+        $(".jewelry-list").on("mouseover", "li", function(){
+            $(this).find("ul").show();
+        }).on("mouseleave", "li", function(){
+            $(this).find("ul").hide();
+        });
+    </script>
+</body>
+</html>
