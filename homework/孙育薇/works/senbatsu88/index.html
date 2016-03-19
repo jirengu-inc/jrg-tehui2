@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+    <meta name="description" content="第87回選抜高等学校野球大会">
+    <meta name="author" content="Hanna">
+    <title>第88回選抜高等学校野球大会</title>
+    <link rel="stylesheet" href="css/font-awesome.min.css" media="all">
+    <link rel="stylesheet" href="css/base.css">
+</head>
+<body>
+<div class="header">
+    <div class="header-wrap">
+    <h1>第88回選抜高等学校野球大会</h1>
+    <ul class="nav">
+        <li><a href="#game"><i class="fa fa-calendar"></i>日程</a></li>
+        <li><a href="#summary"><i class="fa fa-sitemap"></i>概要</a></li>
+        <li><a href="#reference"><i class="fa fa-book"></i>参考</a></li>
+    </ul>
+        <div class="toggle-nav hide"><i class="fa fa-align-justify"></i></div>
+    </div>
+</div>
+<div class="main">
+    <div class="section" id="game">
+        <h2><i class="fa fa-calendar"></i>日程</h2>
+        <ul id="time-table">
+            <li class="today"><span class="date">20</span><span class="day">日</span></li>
+            <li><span class="date">21</span><span class="day">月</span></li>
+            <li><span class="date">22</span><span class="day">火</span></li>
+            <li><span class="date">23</span><span class="day">水</span></li>
+            <li><span class="date">24</span><span class="day">木</span></li>
+            <li><span class="date">25</span><span class="day">金</span></li>
+            <li><span class="date">26</span><span class="day">土</span></li>
+            <li><span class="date">27</span><span class="day">日</span></li>
+            <li><span class="date">28</span><span class="day">月</span></li>
+            <li class="rest"><span class="date">29</span><span class="day">火</span></li>
+            <li><span class="date">30</span><span class="day">水</span></li>
+            <li><span class="date">31</span><span class="day">木</span></li>
+        </ul>
+        <div class="today" id="game-list">
+        </div><!-- #game-list -->
+        <div class="hide" id="card-bg">
+            <div class="card-cover"></div>
+            <div class="single-card">
+                <div class="card-header clearfix">
+                    <h3 id="school-name"><i class="fa fa-university"></i></h3>
+                    <span id="school-prefecture"></span>
+                    <p id="school-count"><i class="fa fa-flag"></i></p>
+                    <span id="close"><i class="fa fa-close"></i></span>
+                </div>
+                <table id="card-content">
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="section" id="summary">
+        <h2><i class="fa fa-sitemap"></i>概要</h2>
+        <div id="tournament">
+            <ul class="school-column" id="school-left">
+                <li><span class="prefecture">(福井)</span><span class="name">福井工大福井</span></li>
+                <li><span class="prefecture">(奈良)</span><span class="name">智弁学園</span></li>
+                <li><span class="prefecture">(茨城)</span><span class="name">常総学院</span></li>
+                <li><span class="prefecture">(鹿児島)</span><span class="name">鹿児島実</span></li>
+                <li><span class="prefecture">(群馬)</span><span class="name">桐生第一</span></li>
+                <li><span class="prefecture">(滋賀)</span><span class="name">滋賀学園</span></li>
+                <li><span class="prefecture">(岩手)</span><span class="name">釜石</span></li>
+                <li><span class="prefecture">(香川)</span><span class="name">小豆島</span></li>
+                <li><span class="prefecture">(高知)</span><span class="name">明徳義塾</span></li>
+                <li><span class="prefecture">(京都)</span><span class="name">龍谷大平安</span></li>
+                <li><span class="prefecture">(青森)</span><span class="name">八戸学院光星</span></li>
+                <li><span class="prefecture">(島根)</span><span class="name">開星</span></li>
+                <li><span class="prefecture">(兵庫)</span><span class="name">明石商</span></li>
+                <li><span class="prefecture">(宮崎)</span><span class="name">日南学園</span></li>
+                <li><span class="prefecture">(愛知)</span><span class="name">東邦</span></li>
+                <li><span class="prefecture">(東京)</span><span class="name">関東第一</span></li>
+            </ul>
+            <ul class="date-column" id="date-left">
+                <li class="round-1" id="t1-1">03/20<i class="triangle-to-right"></i></li>
+                <li class="round-2" id="t6-2">03/25<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t1-2">03/20<i class="triangle-to-right"></i></li>
+                <li class="round-3" id="t9-1">03/28<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t1-3">03/20<i class="triangle-to-right"></i></li>
+                <li class="round-2" id="t6-3">03/25<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t2-1">03/21<i class="triangle-to-right"></i></li>
+                <li class="round-semi" id="t10-1">03/30<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t2-2">03/21<i class="triangle-to-right"></i></li>
+                <li class="round-2" id="t7-1">03/26<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t2-3">03/21<i class="triangle-to-right"></i></li>
+                <li class="round-3" id="t9-2">03/28<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t3-1">03/22<i class="triangle-to-right"></i></li>
+                <li class="round-2" id="t7-2">03/26<i class="triangle-to-right"></i></li>
+                <li class="round-1" id="t3-2">03/22<i class="triangle-to-right"></i></li>
+            </ul>
+            <div class="winner">
+                <p class="final" id="t11-1">03/31</p>
+                <p class="name">優勝校</p>
+            </div>
+            <ul class="date-column" id="date-right">
+                <li class="round-1" id="t3-3"><i class="triangle-to-left"></i>03/22</li>
+                <li class="round-2" id="t7-3"><i class="triangle-to-left"></i>03/26</li>
+                <li class="round-1" id="t4-1"><i class="triangle-to-left"></i>03/23</li>
+                <li class="round-3" id="t9-3"><i class="triangle-to-left"></i>03/28</li>
+                <li class="round-1" id="t4-2"><i class="triangle-to-left"></i>03/23</li>
+                <li class="round-2" id="t8-1"><i class="triangle-to-left"></i>03/27</li>
+                <li class="round-1" id="t4-3"><i class="triangle-to-left"></i>03/23</li>
+                <li class="round-semi" id="t10-2"><i class="triangle-to-left"></i>03/30</li>
+                <li class="round-1" id="t5-1"><i class="triangle-to-left"></i>03/24</li>
+                <li class="round-2" id="t8-2"><i class="triangle-to-left"></i>03/27</li>
+                <li class="round-1" id="t5-2"><i class="triangle-to-left"></i>03/24</li>
+                <li class="round-3" id="t9-4"><i class="triangle-to-left"></i>03/28</li>
+                <li class="round-1" id="t5-3"><i class="triangle-to-left"></i>03/24</li>
+                <li class="round-2" id="t8-3"><i class="triangle-to-left"></i>03/27</li>
+                <li class="round-1" id="t6-1"><i class="triangle-to-left"></i>03/25</li>
+            </ul>
+            <ul class="school-column" id="school-right">
+                <li><span class="name">札幌第一</span><span class="prefecture">(北海道)</span></li>
+                <li><span class="name">木更津総合</span><span class="prefecture">(千葉)</span></li>
+                <li><span class="name">土佐</span><span class="prefecture">(高知)</span></li>
+                <li><span class="name">大阪桐蔭</span><span class="prefecture">(大阪)</span></li>
+                <li><span class="name">市和歌山</span><span class="prefecture">(和歌山)</span></li>
+                <li><span class="name">南陽工</span><span class="prefecture">(山口)</span></li>
+                <li><span class="name">秀岳館</span><span class="prefecture">(熊本)</span></li>
+                <li><span class="name">花咲徳栄</span><span class="prefecture">(埼玉)</span></li>
+                <li><span class="name">東海大甲府</span><span class="prefecture">(山梨)</span></li>
+                <li><span class="name">創志学園</span><span class="prefecture">(岡山)</span></li>
+                <li><span class="name">高松商</span><span class="prefecture">(香川)</span></li>
+                <li><span class="name">いなべ総合</span><span class="prefecture">(三重)</span></li>
+                <li><span class="name">海星</span><span class="prefecture">(長崎)</span></li>
+                <li><span class="name">長田</span><span class="prefecture">(兵庫)</span></li>
+                <li><span class="name">敦賀気比</span><span class="prefecture">(福井)</span></li>
+                <li><span class="name">青森山田</span><span class="prefecture">(青森)</span></li>
+            </ul>
+        </div>
+    </div>
+    <div class="section" id="reference">
+        <h2><i class="fa fa-book"></i>参考</h2>
+        <ul>
+            <li><a href="http://www.nhk.or.jp/koushien"><img src="img/nhk_logo.png" alt="NHK Online"></a></li>
+            <li><a href="http://www.mbs.jp/senbatsu/"><img src="img/mbs_logo_s.png" alt="MBS"></a></li>
+            <li><a href="http://www.asahi.com/koshien"><img src="img/asahi_logo.png" alt="朝日新聞"></a></li>
+        </ul>
+    </div>
+</div>
+<div class="footer">
+    <p>&copy;&nbsp;Hanna 2016.03.16 - </p>
+</div>
+<script src="js/jquery.js"></script>
+<script src="js/game.js"></script>
+</body>
+</html>
