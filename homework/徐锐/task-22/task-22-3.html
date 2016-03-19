@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-3</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="1.png">鼠标放置查看图片1</li>
+    <li data-img="2.png">鼠标放置查看图片2</li>
+    <li data-img="3.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<img src="" alt="">
+<script>
+
+    window.onload = function () {
+
+        var oLi = document.getElementsByTagName('li');
+        var oDiv = document.getElementsByClassName('img-preview');
+
+        for(var i=0; i<oLi.length; i++){
+
+            var oImg = oLi[i].getAttribute('data-img');
+
+            oLi[i].addEventListener('mouseover', function () {
+
+                oDiv[0].innerHTML = "<img src='oImg' >";
+
+            });
+            oLi[i].addEventListener('mouseout', function () {
+
+                oDiv[0].innerHTML = "";
+
+            });
+        }
+
+    }
+
+</script>
+</body>
+</html>

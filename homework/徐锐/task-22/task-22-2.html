@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-2</title>
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <script>
+        window.onload = function () {
+
+            var oLi = document.getElementsByTagName('li');
+            var oBtn1 = document.getElementById('btn-add-start');
+            var oBtn2 = document.getElementById('btn-add-end');
+            var oUl = document.getElementsByClassName('ct');
+            var oInput = document.getElementsByClassName('ipt-add-content');
+
+
+            function showTxt (){
+                for(var i = 0; i < oLi.length; i++){
+                    oLi[i].addEventListener('click', function () {
+                        console.log(this.innerText);
+                    });
+                }
+            }
+
+            oBtn1.onclick = function () {
+                var oNode = document.createElement('li');
+                oUl[0].insertBefore(oNode,oLi[0]);
+                oNode.innerHTML = oInput[0].value;
+                showTxt();
+            };
+
+            oBtn2.onclick = function () {
+                var oNode = document.createElement('li');
+                oUl[0].appendChild(oNode);
+                oNode.innerHTML = oInput[0].value;
+                showTxt();
+            };
+
+        }
+    </script>
+</body>
+</html>

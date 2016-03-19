@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-1</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+    window.onload = function () {
+
+        var oLi = document.getElementsByTagName('li');
+
+        var obj = function () {
+            console.log(this.innerText);
+            };
+
+        for(var i = 0; i < oLi.length; i++){
+            oLi[i].addEventListener('click', obj);
+        }
+
+    }
+</script>
+</body>
+</html>
