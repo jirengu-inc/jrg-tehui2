@@ -73,7 +73,7 @@ font-family:cursive;
 /*-------主页面部分样式设置-----------*/
 /*页面mainpage样式-box1*/
 .mainpage{
-	width:100%;
+	min-width:1200px;
 	background:url(img/task1.jpg)no-repeat;background-size:cover;
 	text-align:center;
 /*	display: table;*/
@@ -334,7 +334,8 @@ font-family:cursive;
 }*/
 /*--------页面4--team部分----*/
 #team{
-	width:100%;
+
+	min-width:1200px;
 	background:#eee;
 	text-align:center;
 	padding:150px 0;
@@ -420,6 +421,7 @@ font-family:cursive;
 /*---------注册部分contact--------*/
 /*contact标语部分*/
 #contact{
+	min-width:1200px;
 	background:url(img/map-image.png) #222;
 	padding:150px 0;
 	text-align:center;
@@ -471,6 +473,7 @@ float:right;
 #footer{
 	text-align:center;
 	height:80px;
+	clear:both;
 }
 /*设置图标样式*/
 .footer-main{
