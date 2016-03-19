@@ -136,6 +136,7 @@ font-family:cursive;
 }
 /*--------portfolio页面部分-box2*---------*/
 .portfolio{
+	min-width:1200px;
 	background:#f7f7f7;
 	padding-top:150px;
 	padding-bottom:150px;
