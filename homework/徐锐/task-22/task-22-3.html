@@ -16,23 +16,28 @@
 
     window.onload = function () {
 
-        var oLi = document.getElementsByTagName('li');
-        var oDiv = document.getElementsByClassName('img-preview');
 
-        for(var i=0; i<oLi.length; i++){
+        /*
+         var ct = document.querySelector('.ct'),
+         childs = ct.querySelectorAll('li'),
+         preview = document.querySelector('.img-preview');
 
-            var oImg = oLi[i].getAttribute('data-img');
+         for(var i=0; i<childs.length; i++){
+         childs[i].addEventListener('mouseenter', function(){
+         var dataImg = this.getAttribute('data-img');
+         preview.innerHTML = '<img src="' + dataImg + '">'
+         });
+         }
+         */
 
-            oLi[i].addEventListener('mouseover', function () {
+        //不使用循环的实现方式：
 
-                oDiv[0].innerHTML = "<img src='oImg' >";
+        var ct = document.querySelector('.ct'),
+                preview = document.querySelector('.img-preview');
 
-            });
-            oLi[i].addEventListener('mouseout', function () {
-
-                oDiv[0].innerHTML = "";
-
-            });
+        ct.onmouseover = function(ev){
+            var dataImg = ev.target.getAttribute('data-img');
+            preview.innerHTML = '<img src="' + dataImg + '">'
         }
 
     }
