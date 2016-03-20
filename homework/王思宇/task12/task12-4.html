@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>双翼布局 两栏布局</title>
+  <style>
+  .header,.footer{
+    height:50px;
+    background: #ccc;
+  }
+    .wrap{
+    margin-right:200px;          
+    background-color: green;
+    min-height: 300px;
+}
+.ct:after{        
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.main{
+    width: 100%;       
+    float: left;
+}
+.right{
+    min-height: 300px;
+    width: 200px;
+    background-color: blue;
+    float: left;
+    margin-left: -200px;        /*负margin定位到右上角，不需要使用相对定位*/
+}
+ </style>
+  
+  </head>
+<body>
+
+<body>
+    <div class="header">header</div>
+    <div class="ct">
+        <div class="main">
+            <div class="wrap">中间部分</div>
+        </div>
+        <div class="right">right</div>
+    </div>
+    <div class="footer">footer</div>
+</body>
+</body>
+</html>

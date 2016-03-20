@@ -1,0 +1,657 @@
+{
+  "schools": [
+    {
+      "id": 1,
+      "area": "北海道",
+      "prefecture": "北海道",
+      "name": "札幌第一",
+      "count": "初出場",
+      "games":["3-3"]
+    }, {
+      "id": 2,
+      "area": "東北",
+      "prefecture": "青森",
+      "name": "青森山田",
+      "count": "11年ぶり２回目",
+      "games":["6-1"]
+    }, {
+      "id": 3,
+      "area": "東北",
+      "prefecture": "青森",
+      "name": "八戸学院光星",
+      "count": "３年連続９回目",
+      "games":["2-3"]
+    }, {
+      "id": 4,
+      "area": "東北",
+      "prefecture": "岩手",
+      "name": "釜石",
+      "count": "20年ぶり２回目",
+      "games":["2-1"]
+    }, {
+      "id": 5,
+      "area": "関東・東京",
+      "prefecture": "茨城",
+      "name": "常総学院",
+      "count": "２年連続９回目",
+      "games":["1-2"]
+    }, {
+      "id": 6,
+      "area": "関東・東京",
+      "prefecture": "群馬",
+      "name": "桐生第一",
+      "count": "２年ぶり５回目",
+      "games":["1-3"]
+    }, {
+      "id": 7,
+      "area": "関東・東京",
+      "prefecture": "埼玉",
+      "name": "花咲徳栄",
+      "count": "３年ぶり４回目",
+      "games":["4-3"]
+    }, {
+      "id": 8,
+      "area": "関東・東京",
+      "prefecture": "千葉",
+      "name": "木更津総合",
+      "count": "２年連続３回目",
+      "games":["3-3"]
+    }, {
+      "id": 9,
+      "area": "関東・東京",
+      "prefecture": "東京",
+      "name": "関東第一",
+      "count": "２年ぶり６回目",
+      "games":["3-2"]
+    }, {
+      "id": 10,
+      "area": "関東・東京",
+      "prefecture": "山梨",
+      "name": "東海大甲府",
+      "count": "25年ぶり５回目",
+      "games":["5-1"]
+    }, {
+      "id": 11,
+      "area": "東海",
+      "prefecture": "愛知",
+      "name": "東邦",
+      "count": "11年ぶり28回目",
+      "games":["3-2"]
+    }, {
+      "id": 12,
+      "area": "東海",
+      "prefecture": "三重",
+      "name": "いなべ総合",
+      "count": "初出場",
+      "games":["5-2"]
+    }, {
+      "id": 13,
+      "area": "北信越",
+      "prefecture": "福井",
+      "name": "敦賀気比",
+      "count": "２年連続７回目",
+      "games":["6-1"]
+    }, {
+      "id": 14,
+      "area": "北信越",
+      "prefecture": "福井",
+      "name": "福井工大福井",
+      "count": "12年ぶり４回目",
+      "games":["1-1"]
+    }, {
+      "id": 15,
+      "area": "近畿",
+      "prefecture": "滋賀",
+      "name": "滋賀学園",
+      "count": "初出場",
+      "games":["1-3","6-3"]
+    }, {
+      "id": 16,
+      "area": "近畿",
+      "prefecture": "京都",
+      "name": "龍谷大平安",
+      "count": "４年連続40回目",
+      "games":["2-2"]
+    }, {
+      "id": 17,
+      "area": "近畿",
+      "prefecture": "大阪",
+      "name": "大阪桐蔭",
+      "count": "２年連続８回目",
+      "games":["4-1"]
+    }, {
+      "id": 18,
+      "area": "近畿",
+      "prefecture": "兵庫",
+      "name": "長田",
+      "count": "初出場",
+      "games":["5-3"]
+    }, {
+      "id": 19,
+      "area": "近畿",
+      "prefecture": "兵庫",
+      "name": "明石商",
+      "count": "初出場",
+      "games":["3-1"]
+    }, {
+      "id": 20,
+      "area": "近畿",
+      "prefecture": "奈良",
+      "name": "智弁学園",
+      "count": "２年ぶり10回目",
+      "games":["1-1","6-2"]
+    }, {
+      "id": 21,
+      "area": "近畿",
+      "prefecture": "和歌山",
+      "name": "市和歌山",
+      "count": "11年ぶり５回目",
+      "games":["4-2"]
+    }, {
+      "id": 22,
+      "area": "中国・四国",
+      "prefecture": "島根",
+      "name": "開星",
+      "count": "６年ぶり３回目",
+      "games":["2-3"]
+    }, {
+      "id": 23,
+      "area": "中国・四国",
+      "prefecture": "岡山",
+      "name": "創志学園",
+      "count": "５年ぶり２回目",
+      "games":["5-1"]
+    }, {
+      "id": 24,
+      "area": "中国・四国",
+      "prefecture": "山口",
+      "name": "南陽工",
+      "count": "７年ぶり５回目",
+      "games":["4-2"]
+    }, {
+      "id": 25,
+      "area": "中国・四国",
+      "prefecture": "香川",
+      "name": "小豆島",
+      "count": "初出場",
+      "games":["2-1"]
+    }, {
+      "id": 26,
+      "area": "中国・四国",
+      "prefecture": "香川",
+      "name": "高松商",
+      "count": "20年ぶり26回目",
+      "games":["5-2"]
+    }, {
+      "id": 27,
+      "area": "中国・四国",
+      "prefecture": "高知",
+      "name": "土佐",
+      "count": "３年ぶり８回目",
+      "games":["4-1"]
+    }, {
+      "id": 28,
+      "area": "中国・四国",
+      "prefecture": "高知",
+      "name": "明徳義塾",
+      "count": "２年ぶり16回目",
+      "games":["2-2"]
+    }, {
+      "id": 29,
+      "area": "九州・沖縄",
+      "prefecture": "長崎",
+      "name": "海星",
+      "count": "15年ぶり５回目",
+      "games":["5-3"]
+    }, {
+      "id": 30,
+      "area": "九州・沖縄",
+      "prefecture": "熊本",
+      "name": "秀岳館",
+      "count": "13年ぶり２回目",
+      "games":["4-3"]
+    }, {
+      "id": 31,
+      "area": "九州・沖縄",
+      "prefecture": "宮崎",
+      "name": "日南学園",
+      "count": "12年ぶり５回目",
+      "games":["3-1"]
+    }, {
+      "id": 32,
+      "area": "九州・沖縄",
+      "prefecture": "鹿児島",
+      "name": "鹿児島実",
+      "count": "５年ぶり９回目",
+      "games":["1-2","6-2"]
+    }
+  ],
+  "schedule": [
+    {
+      "date": "2016年3月20日",
+      "games": [
+        {
+          "id": "1-1",
+		  "time": "10:30",
+          "round": "一回戦",
+          "first": "福井工大福井",
+          "firstIsHome": true,
+          "third": "智弁学園",
+          "score": "0-4",
+          "fScore": ["0","0","0","0","0","0","0","0","0"],
+          "tScore": ["2","0","0","2","0","0","0","0","X"],
+          "news": "http://www.asahi.com/koshien/senbatsu2016/sokuhou/2016032061/",
+          "video": "http://mainichi.jp/koshien/senbatsu/2016/games/g0101/"
+        },{
+		  "id": "1-2",
+		  "time": "13:00",
+          "round": "一回戦",
+          "first": "常総学院",
+          "firstIsHome": false,
+          "third": "鹿児島実",
+          "score": "2-6",
+          "fScore": ["2","0","0","0","0","0","0","0","0"],
+          "tScore": ["0","0","0","2","1","1","0","0","2"],
+          "news": "http://www.asahi.com/koshien/senbatsu2016/sokuhou/2016032062",
+          "video": "http://mainichi.jp/koshien/senbatsu/2016/games/g0102/"
+        },{
+          "id": "1-3",
+		  "time": "15:30",
+          "round": "一回戦",
+          "first": "桐生第一",
+          "firstIsHome": false,
+          "third": "滋賀学園",
+          "score": "5-9",
+          "fScore": ["0","0","0","0","0","0","3","2","0"],
+          "tScore": ["0","3","0","4","0","2","0","0","0"],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月21日",
+      "games": [
+        {
+          "id": "2-1",
+		  "time": "09:00",
+          "round": "一回戦",
+          "first": "釜石",
+          "firstIsHome": true,
+          "third": "小豆島",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "2-2",
+		  "time": "11:30",
+          "round": "一回戦",
+          "first": "明徳義塾",
+          "firstIsHome": true,
+          "third": "龍谷大平安",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "2-3",
+		  "time": "14:00",
+          "round": "一回戦",
+          "first": "八戸学院光星",
+          "firstIsHome": true,
+          "third": "開星",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月22日",
+      "games": [
+        {
+          "id": "3-1",
+		  "time": "09:00",
+          "round": "一回戦",
+          "first": "明石商",
+          "firstIsHome": true,
+          "third": "日南学園",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "3-2",
+		  "time": "11:30",
+          "round": "一回戦",
+          "first": "東邦",
+          "firstIsHome": true,
+          "third": "関東第一",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "3-3",
+		  "time": "14:00",
+          "round": "一回戦",
+          "first": "札幌第一",
+          "firstIsHome": true,
+          "third": "木更津総合",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月23日",
+      "games": [
+        {
+          "id": "4-1",
+		  "time": "09:00",
+          "round": "一回戦",
+          "first": "土佐",
+          "firstIsHome": true,
+          "third": "大阪桐蔭",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "4-2",
+		  "time": "11:30",
+          "round": "一回戦",
+          "first": "市和歌山",
+          "firstIsHome": true,
+          "third": "南陽工",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""]
+        },{
+          "id": "4-3",
+		  "time": "14:00",
+          "round": "一回戦",
+          "first": "秀岳館",
+          "firstIsHome": true,
+          "third": "花咲徳栄",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月24日",
+      "games": [
+        {
+          "id": "5-1",
+		  "time": "09:00",
+          "round": "一回戦",
+          "first": "東海大甲府",
+          "firstIsHome": true,
+          "third": "創志学園",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "5-2",
+		  "time": "11:30",
+          "round": "一回戦",
+          "first": "高松商",
+          "firstIsHome": true,
+          "third": "いなべ総合",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "5-3",
+		  "time": "14:00",
+          "round": "一回戦",
+          "first": "海星",
+          "firstIsHome": true,
+          "third": "長田",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月25日",
+      "games": [
+        {
+          "id": "6-1",
+		  "time": "09:00",
+          "round": "一回戦",
+          "first": "敦賀気比",
+          "firstIsHome": true,
+          "third": "青森山田",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "6-2",
+		  "time": "11:30",
+          "round": "二回戦",
+          "first": "智弁学園",
+          "firstIsHome": true,
+          "third": "鹿児島実",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "6-3",
+		  "time": "14:00",
+          "round": "二回戦",
+          "first": "滋賀学園",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月26日",
+      "games": [
+        {
+          "id": "7-1",
+		  "time": "09:00",
+          "round": "二回戦",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "7-2",
+		  "time": "11:30",
+          "round": "二回戦",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "7-3",
+		  "time": "14:00",
+          "round": "二回戦",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月27日",
+      "games": [
+        {
+          "id": "8-1",
+		  "time": "09:00",
+          "round": "二回戦",
+          "first": "",
+            "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "8-2",
+		  "time": "11:30",
+          "round": "二回戦",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "8-3",
+		  "time": "14:00",
+          "round": "二回戦",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月28日",
+      "games": [
+        {
+          "id": "9-1",
+		  "time": "08:30",
+          "round": "準々決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "9-2",
+		  "time": "11:00",
+          "round": "準々決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "9-3",
+		  "time": "13:30",
+          "round": "準々決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "9-4",
+		  "time": "16:00",
+          "round": "準々決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月30日",
+      "games": [
+        {
+          "id": "10-1",
+		  "time": "11:00",
+          "round": "準決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        },{
+          "id": "10-2",
+		  "time": "13:30",
+          "round": "準決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    },{
+      "date": "2016年3月31日",
+      "games": [
+        {
+          "id": "11-1",
+		  "time": "12:30",
+          "round": "決勝",
+          "first": "",
+          "firstIsHome": true,
+          "third": "",
+          "score": "-",
+          "fScore": ["","","","","","","","",""],
+          "tScore": ["","","","","","","","",""],
+          "news": "",
+          "video": ""
+        }
+      ]
+    }
+  ]
+}

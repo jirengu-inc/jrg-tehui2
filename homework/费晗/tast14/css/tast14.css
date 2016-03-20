@@ -5,7 +5,7 @@
  * @date    2016-03-17 10:16:03
  * @version $Id$
  */
-body,html,div,p,ul,li,dl,dt,dd,h2,h3{
+body,html,div,p,ul,li,h2,h3,h4,h5{
 	padding: 0;
 	margin: 0;
 	font: 16px/1.5 "Source Sans Pro","Helvetica Neue",Arial,Helvetica,sans-serif;
@@ -17,6 +17,11 @@ body,html{
 a{
 	text-decoration: none;
 	color: #fff;
+}
+li{
+	list-style-type: none;
+	display: inline-block;
+	*display: inline;
 }
 .btn{
 	display: inline-block;
@@ -30,12 +35,12 @@ a{
 .btn:hover{
 	background-color: #363E41;
 }
-h2{
+#header h2{
 	color: #333;
 	font-size: 60px;
 	font-weight: bold;
 }
-.text-vertical-center {
+.text-vertical-center{
     display: table-cell;
     text-align: center;
     vertical-align: middle;
@@ -59,13 +64,14 @@ h2{
 	width: 960px;
 	left: 50%;
 	margin-left: -480px;
-	padding: 40px 0;
+	padding: 65px 0;
 	text-align: center;
 	background-color: #fff;
 }
 .about h3{
-	font-size: 26px;
+	font-size: 27px;
 	color: #000;
+	font-weight: bold;
 }
 .about p{
 	font-size: 22px;
@@ -79,11 +85,12 @@ h2{
 	color: #23527c;
 	border-bottom: 2px solid #23527c;
 }
-.services{
+.services {
 	background-color: #337ab7;
-	position: relative;
+	padding-top: 70px;
+	padding-bottom: 60px;
 }
-.services .services-container{
+.services .services-container {
 	position: relative;
 	width: 960px;
 	left: 50%;
@@ -91,22 +98,179 @@ h2{
 	text-align: center;
 	color: #fff;
 }
-.services-container h3{
-	padding-top:40px;
-	font-size: 30px;
+.services h3 {
+	font-size: 28px;
 }
-.services-container hr{
-	text-align: center;
+.services hr {
 	max-width: 100px;
-	margin-bottom: 10px;
 }
-.services-content{
+.services li {
+	padding: 10px 30px;
+}
+.services h4 {
+	padding: 10px 0;
+	font-size: 18px;
+}
+.services p {
+	width: 160px;
+	font-size: 12px;
+	line-height: 1.5em;
+}
+.services .fa-stack-1x{
+	color: #337ab7;
+}
+.services .btn{
+	width: 100px;
+	height: 35px;
+	line-height: 35px;
+	margin: 10px 0;
+	font-size: 12px;
+	color: #000;
+	background-color: #fff;
+	transition: background-color 0.2s;
+}
+.services .btn:hover{
+	background-color: #eee;
+}
+#callout{
 	position: relative;
-	display: inline-block;
-	padding: 0 20px;
+	display: table;
+	width: 100%;
+	height: 400px;
+	color: #fff;
+	background: url(../img/callout.jpg) no-repeat center center scroll;
+	-webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
-.services-icon{
-	background-color: white;
-    color: #337ab7;
-    width: 2em;
+#callout h2{
+	font-size: 60px;
+	font-weight: bold;
+}
+#work {
+	background-color: #fff;
+	position: relative;
+	width: 960px;
+	margin: 60px auto;
+    text-align: center;
+}
+#work h5{
+	color: #000;
+	margin: 20px auto; 
+	font-size: 26px; 
+}
+#work hr{
+	max-width: 90px;
+	color: #f2f2f2;
+}
+#work ul{
+	margin-top: 20px;
+}
+#work li{
+	margin-bottom: 30px;
+	width: 470px;
+}
+#work img{
+	width: 94%;   /*图片实际高度500px，li设置为470px*/
+}
+#work img:hover{
+	opacity: 0.8;
+}
+#work .btn{
+	display: inline-block;
+	width: 130px;
+	height: 35px;
+	line-height: 35px;
+	margin-top: -10px;
+	font-size: 14px;
+	background-color: #999999;
+	transition: background-color 0.2s;
+}
+#work .btn:hover{
+	background-color: #4C4C4C;
+}
+#more{
+	background-color: #337ab7;
+	margin-top: -30px; 
+	display: table;
+	position: relative;
+	width: 100%;
+	height: 220px;
+}
+#more a{
+	display: inline-block;
+	width: 120px;
+	height: 45px;
+	line-height: 45px;
+	margin-left: 12px;
+	margin-right:12px;
+	font-size: 16px;
+	transition: background-color 0.2s;
+}
+#more a:nth-child(2){
+    color: #333;
+    background-color: #fff;
+}
+#more a:nth-child(2):hover{
+    background-color: #d6e4f0;
+}
+#more a:last-child{
+    color: #fff;
+    background-color: #1f496e;
+}
+#more a:last-child:hover{
+    background-color: #0f2436;
+}
+#more p{
+	color: #fff;
+	font-size: 24px;
+    padding-bottom: 15px;
+}
+#footer{
+	display: table;
+	width: 100%;
+	height: 470px;
+	position: relative;
+}
+#footer h5{
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 5px;
+}
+#footer .address p:nth-child(4){
+	margin-top: 15px;
+}
+#footer .address p{
+	font-size: 14px;	
+}
+#footer .address a{
+	color: #338ACF;
+}
+#footer .address a:hover{
+	color: #23527C;
+	text-decoration: underline;
+}
+#footer .icon a{
+	color: #337AB7;
+	font-size: 40px;
+	display: inline-block;
+	margin: 20px 15px;
+}
+#footer .icon a:hover{
+	color: #23527C;
+}
+.icon p{
+	color: #77777b;
+	font-size: 14px;
+	padding-top: 8px;
+
+}
+.address p span{
+	margin-right: 5px;
+}
+#footer hr{
+	max-width: 100px;
+	color: #f2f2f2;
+	margin-top: -10px;
 }
