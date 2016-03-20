@@ -20,6 +20,7 @@ var dateArr = [
 ];
 
 /* 获取数据 */
+
 var $schools;
 var $schedule;
 
@@ -65,6 +66,14 @@ function getDateToday() {
 	return $year+"年"+$month+"月"+$date+"日";
 }
 
+function getTimeNow() {
+	var $now = new Date();
+	var $hour = $now.getUTCHours();
+	var $gameHour = $hour + 9;
+	var $minute = $now.getMinutes();
+	return $gameHour + ":" + $minute;
+}
+
 function getGameId(id) {
 	return id.substr(1,id.length-1);
 }
@@ -96,6 +105,38 @@ function getGameInfoOrDate(id, type) {
 		return $schedule[$i]["games"][$j];
 	} else if (type === "date") {
 		return $schedule[$i]["date"];
+	}
+}
+
+//检查当前时间,高亮当前的比赛
+function highlightCurrentGame(){
+	var $timeNow = getTimeNow();
+	var $time = $(".info .time");
+	if ($time.length === 1) {$time.eq(0).css("color", "#fd6a06");}
+	if ($time.length === 2) {
+		if ($timeNow < $time.eq(1).text()){
+			$time.eq(0).css("color", "#fd6a06");
+		} else if ($timeNow < "17:00") {
+			$time.eq(1).css("color", "#fd6a06");
+		}
+	}
+	if ($time.length === 4) {
+		if ($timeNow < $time.eq(1).text()){
+			$time.eq(0).css("color", "#fd6a06");
+		} else if ($timeNow < $time.eq(2).text()) {
+			$time.eq(1).css("color", "#fd6a06");
+		} else if ($timeNow < $time.eq(3).text()) {
+			$time.eq(2).css("color", "#fd6a06");
+		} else if ($timeNow < "20:00") {
+			$time.eq(3).css("color", "#fd6a06");
+		}
+	}
+	if ($timeNow < $time.eq(1).text()){
+		$time.eq(0).css("color", "#fd6a06");
+	} else if ($timeNow < $time.eq(2).text()) {
+		$time.eq(1).css("color", "#fd6a06");
+	} else if ($timeNow < "19:00") {
+		$time.eq(2).css("color", "#fd6a06");
 	}
 }
 
@@ -265,6 +306,7 @@ function showTodaysGame(data) {
 		}
 	}
 
+
 	$showMore.on("click", function() {
 		$(this).prev().toggleClass("hide");
 		$(this).prev().prev().toggleClass("hide");
@@ -299,6 +341,7 @@ function onloadShow() {
 		}
 	}
 
+	highlightCurrentGame();
 	checkWidth();
 }
 
@@ -402,6 +445,11 @@ $("#time-table").on("click", "li", function() {
 		showTodaysGame($schedule[$this.index()-1]);
 	} else if($this.index() < 9) {
 		showTodaysGame($schedule[$this.index()]);
+	}
+	var $todaysDate = new Date();
+	var $thisDate = $todaysDate.getDate();
+	if ($thisDate == $(".today .date").text()) {
+		highlightCurrentGame();
 	}
 });
 
