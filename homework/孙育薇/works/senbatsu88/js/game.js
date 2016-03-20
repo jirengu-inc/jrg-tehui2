@@ -20,7 +20,6 @@ var dateArr = [
 ];
 
 /* 获取数据 */
-
 var $schools;
 var $schedule;
 
