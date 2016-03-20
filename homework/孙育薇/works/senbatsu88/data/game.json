@@ -6,256 +6,224 @@
       "prefecture": "北海道",
       "name": "札幌第一",
       "count": "初出場",
-      "games":["3-3"],
-      "result": ""
+      "games":["3-3"]
     }, {
       "id": 2,
       "area": "東北",
       "prefecture": "青森",
       "name": "青森山田",
       "count": "11年ぶり２回目",
-      "games":["6-1"],
-      "result": ""
+      "games":["6-1"]
     }, {
       "id": 3,
       "area": "東北",
       "prefecture": "青森",
       "name": "八戸学院光星",
       "count": "３年連続９回目",
-      "games":["2-3"],
-      "result": ""
+      "games":["2-3"]
     }, {
       "id": 4,
       "area": "東北",
       "prefecture": "岩手",
       "name": "釜石",
       "count": "20年ぶり２回目",
-      "games":["2-1"],
-      "result": ""
+      "games":["2-1"]
     }, {
       "id": 5,
       "area": "関東・東京",
       "prefecture": "茨城",
       "name": "常総学院",
       "count": "２年連続９回目",
-      "games":["1-2"],
-      "result": ""
+      "games":["1-2"]
     }, {
       "id": 6,
       "area": "関東・東京",
       "prefecture": "群馬",
       "name": "桐生第一",
       "count": "２年ぶり５回目",
-      "games":["1-3"],
-      "result": ""
+      "games":["1-3"]
     }, {
       "id": 7,
       "area": "関東・東京",
       "prefecture": "埼玉",
       "name": "花咲徳栄",
       "count": "３年ぶり４回目",
-      "games":["4-3"],
-      "result": ""
+      "games":["4-3"]
     }, {
       "id": 8,
       "area": "関東・東京",
       "prefecture": "千葉",
       "name": "木更津総合",
       "count": "２年連続３回目",
-      "games":["3-3"],
-      "result": ""
+      "games":["3-3"]
     }, {
       "id": 9,
       "area": "関東・東京",
       "prefecture": "東京",
       "name": "関東第一",
       "count": "２年ぶり６回目",
-      "games":["3-2"],
-      "result": ""
+      "games":["3-2"]
     }, {
       "id": 10,
       "area": "関東・東京",
       "prefecture": "山梨",
       "name": "東海大甲府",
       "count": "25年ぶり５回目",
-      "games":["5-1"],
-      "result": ""
+      "games":["5-1"]
     }, {
       "id": 11,
       "area": "東海",
       "prefecture": "愛知",
       "name": "東邦",
       "count": "11年ぶり28回目",
-      "games":["3-2"],
-      "result": ""
+      "games":["3-2"]
     }, {
       "id": 12,
       "area": "東海",
       "prefecture": "三重",
       "name": "いなべ総合",
       "count": "初出場",
-      "games":["5-2"],
-      "result": ""
+      "games":["5-2"]
     }, {
       "id": 13,
       "area": "北信越",
       "prefecture": "福井",
       "name": "敦賀気比",
       "count": "２年連続７回目",
-      "games":["6-1"],
-      "result": ""
+      "games":["6-1"]
     }, {
       "id": 14,
       "area": "北信越",
       "prefecture": "福井",
       "name": "福井工大福井",
       "count": "12年ぶり４回目",
-      "games":["1-1"],
-      "result": ""
+      "games":["1-1"]
     }, {
       "id": 15,
       "area": "近畿",
       "prefecture": "滋賀",
       "name": "滋賀学園",
       "count": "初出場",
-      "games":["1-3"],
-      "result": ""
+      "games":["1-3"]
     }, {
       "id": 16,
       "area": "近畿",
       "prefecture": "京都",
       "name": "龍谷大平安",
       "count": "４年連続40回目",
-      "games":["2-2"],
-      "result": ""
+      "games":["2-2"]
     }, {
       "id": 17,
       "area": "近畿",
       "prefecture": "大阪",
       "name": "大阪桐蔭",
       "count": "２年連続８回目",
-      "games":["4-1"],
-      "result": ""
+      "games":["4-1"]
     }, {
       "id": 18,
       "area": "近畿",
       "prefecture": "兵庫",
       "name": "長田",
       "count": "初出場",
-      "games":["5-3"],
-      "result": ""
+      "games":["5-3"]
     }, {
       "id": 19,
       "area": "近畿",
       "prefecture": "兵庫",
       "name": "明石商",
       "count": "初出場",
-      "games":["3-1"],
-      "result": ""
+      "games":["3-1"]
     }, {
       "id": 20,
       "area": "近畿",
       "prefecture": "奈良",
       "name": "智弁学園",
       "count": "２年ぶり10回目",
-      "games":["1-1"],
-      "result": ""
+      "games":["1-1"]
     }, {
       "id": 21,
       "area": "近畿",
       "prefecture": "和歌山",
       "name": "市和歌山",
       "count": "11年ぶり５回目",
-      "games":["4-2"],
-      "result": ""
+      "games":["4-2"]
     }, {
       "id": 22,
       "area": "中国・四国",
       "prefecture": "島根",
       "name": "開星",
       "count": "６年ぶり３回目",
-      "games":["2-3"],
-      "result": ""
+      "games":["2-3"]
     }, {
       "id": 23,
       "area": "中国・四国",
       "prefecture": "岡山",
       "name": "創志学園",
       "count": "５年ぶり２回目",
-      "games":["5-1"],
-      "result": ""
+      "games":["5-1"]
     }, {
       "id": 24,
       "area": "中国・四国",
       "prefecture": "山口",
       "name": "南陽工",
       "count": "７年ぶり５回目",
-      "games":["4-2"],
-      "result": ""
+      "games":["4-2"]
     }, {
       "id": 25,
       "area": "中国・四国",
       "prefecture": "香川",
       "name": "小豆島",
       "count": "初出場",
-      "games":["2-1"],
-      "result": ""
+      "games":["2-1"]
     }, {
       "id": 26,
       "area": "中国・四国",
       "prefecture": "香川",
       "name": "高松商",
       "count": "20年ぶり26回目",
-      "games":["5-2"],
-      "result": ""
+      "games":["5-2"]
     }, {
       "id": 27,
       "area": "中国・四国",
       "prefecture": "高知",
       "name": "土佐",
       "count": "３年ぶり８回目",
-      "games":["4-1"],
-      "result": ""
+      "games":["4-1"]
     }, {
       "id": 28,
       "area": "中国・四国",
       "prefecture": "高知",
       "name": "明徳義塾",
       "count": "２年ぶり16回目",
-      "games":["2-2"],
-      "result": ""
+      "games":["2-2"]
     }, {
       "id": 29,
       "area": "九州・沖縄",
       "prefecture": "長崎",
       "name": "海星",
       "count": "15年ぶり５回目",
-      "games":["5-3"],
-      "result": ""
+      "games":["5-3"]
     }, {
       "id": 30,
       "area": "九州・沖縄",
       "prefecture": "熊本",
       "name": "秀岳館",
       "count": "13年ぶり２回目",
-      "games":["4-3"],
-      "result": ""
+      "games":["4-3"]
     }, {
       "id": 31,
       "area": "九州・沖縄",
       "prefecture": "宮崎",
       "name": "日南学園",
       "count": "12年ぶり５回目",
-      "games":["3-1"],
-      "result": ""
+      "games":["3-1"]
     }, {
       "id": 32,
       "area": "九州・沖縄",
       "prefecture": "鹿児島",
       "name": "鹿児島実",
       "count": "５年ぶり９回目",
-      "games":["1-2"],
-      "result": ""
+      "games":["1-2"]
     }
   ],
   "schedule": [
@@ -270,8 +238,8 @@
           "firstIsHome": true,
           "third": "智弁学園",
           "score": "-",
-          "fScore": ["0","0","0","0","","","","",""],
-          "tScore": ["2","0","0","","","","","",""],
+          "fScore": ["0","0","0","0","0","","","",""],
+          "tScore": ["2","0","0","2","0","","","",""],
           "news": "",
           "video": ""
         },{
