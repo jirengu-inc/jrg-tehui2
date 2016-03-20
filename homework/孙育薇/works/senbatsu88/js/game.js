@@ -286,6 +286,7 @@ function onloadShow() {
 	//大会进行时
 	for (var $i = 0; $i < $schedule.length; $i++) {
 		if ($today === $schedule[$i]["date"]) {
+			var $timeTable = $("#time-table");
 			//空出休养日
 			if($i < 9) {
 				$timeTable.find("li").eq($i).siblings().removeClass("today");
