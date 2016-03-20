@@ -324,6 +324,9 @@ function showTodaysGame(data) {
 				$scoreHome.eq($idx).append($tScoreList);
 				$scoreVisit.eq($idx).append($fScoreList);
 
+				$(".scoreboard .home .name").eq($idx).text($third);
+				$(".scoreboard .visit .name").eq($idx).text($first);
+
 				$(".scoreboard .home .final").eq($idx).text($finalScore[1]);
 				$(".scoreboard .visit .final").eq($idx).text($finalScore[0]);
 			}
