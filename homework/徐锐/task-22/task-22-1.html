@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-1</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<script>
+/*
+    window.onload = function () {
+
+        var oLi = document.getElementsByTagName('li');
+        //这一步我确实没有考虑到作用域空间的问题，下次谨记！
+
+        var obj = function () {
+            console.log(this.innerText);
+            };
+
+        for(var i = 0; i < oLi.length; i++){
+            oLi[i].addEventListener('click', obj);
+        }
+
+    }
+*/
+    window.onload = function () {
+        var ct = document.querySelector('.ct');
+        ct.addEventListener('click', function(ev){
+            console.log(ev.target.innerText);
+        });
+        //这种写法之前没有想到，对event的理解和使用都存在一些问题
+    }
+</script>
+</body>
+</html>

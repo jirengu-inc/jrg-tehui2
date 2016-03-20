@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+            height: 32px;
+        }
+        li{
+            float: left;
+            display: inline-block;
+            width: 200px;
+            line-height: 30px;
+            border-bottom: 1px solid #ccc;
+            text-align: center;
+            line-height: middle;
+            cursor: pointer;
+        }
+        li:first-child{
+            border-left: none;
+        }
+        li:first-child~li{
+            border-left: 1px solid #ccc;
+        }
+        #tab-list{
+            border: 1px solid #ccc;
+            width: 602px;
+            height: 200px;
+        }
+        #active{
+            background: #eee;
+
+        }
+        #show{
+            display: block;
+        }
+        #hide{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="tab-list">
+    <ul id="ul1">
+        <li id="active">Tab1</li>
+        <li>Tab2</li>
+        <li>Tab3</li>
+    </ul>
+    <div>
+        <p>内容1</p>
+    </div>
+    <div id="hide">
+        <p>内容2</p>
+    </div>
+    <div id="hide">
+        <p>内容3</p>
+    </div>
+</div>
+
+<script>
+    window.onload = function(){
+        var oUl = document.querySelector('#ul1'),
+                aLi = oUl.getElementsByTagName('li'),
+                oDiv = document.querySelector('#tab-list'),
+                aDiv = oDiv.getElementsByTagName('div');
+
+        for(var i=0,len=aLi.length; i<len; i++){
+            aLi[i].index = i;
+            aLi[i].onclick = function(){
+                for(var i=0,len=aLi.length; i<len; i++){
+                    aLi[i].id = '';
+                }
+                this.id = 'active';
+                for(var j=0,len=aDiv.length; j<len; j++){
+                    aDiv[j].id = 'hide';
+                }
+                aDiv[this.index].id = 'show';
+            }
+        }
+    }
+</script>
+</body>
+</html>
