@@ -109,36 +109,52 @@ function getGameInfoOrDate(id, type) {
 }
 
 //检查当前时间,高亮当前的比赛
+//TODO: 优化
 function highlightCurrentGame(){
 	var $timeNow = getTimeNow();
 	var $time = $(".info .time");
-	if ($time.length === 1) {$time.eq(0).css("color", "#fd6a06");}
+	if ($time.length === 1) {highlight(0)}
 	if ($time.length === 2) {
 		if ($timeNow < $time.eq(1).text()){
-			$time.eq(0).css("color", "#fd6a06");
+			highlight(0);
 		} else if ($timeNow < "17:00") {
-			$time.eq(1).css("color", "#fd6a06");
+			highlight(1);
 		}
 	}
 	if ($time.length === 4) {
 		if ($timeNow < $time.eq(1).text()){
-			$time.eq(0).css("color", "#fd6a06");
+			highlight(0);
 		} else if ($timeNow < $time.eq(2).text()) {
-			$time.eq(1).css("color", "#fd6a06");
+			highlight(1);
 		} else if ($timeNow < $time.eq(3).text()) {
-			$time.eq(2).css("color", "#fd6a06");
+			highlight(2);
 		} else if ($timeNow < "20:00") {
-			$time.eq(3).css("color", "#fd6a06");
+			highlight(3);
 		}
 	}
 	if ($timeNow < $time.eq(1).text()){
-		$time.eq(0).css("color", "#fd6a06");
+		highlight(0);
 	} else if ($timeNow < $time.eq(2).text()) {
-		$time.eq(1).css("color", "#fd6a06");
+		highlight(1);
 	} else if ($timeNow < "19:00") {
-		$time.eq(2).css("color", "#fd6a06");
+		highlight(2);
 	}
 }
+
+function highlight(idx) {
+	$(".info .time").eq(idx).css("color", "#fd6a06");
+	$(".scoreboard").eq(idx).toggleClass("hide");
+	$(".after-game").eq(idx).toggleClass("hide");
+	$(".show-more span").eq(idx).toggleClass("triangle-to-top");
+	$(".show-more span").eq(idx).toggleClass("triangle-to-bottom");
+}
+
+//function toggleMore() {
+//	$(this).prev().toggleClass("hide");
+//	$(this).prev().prev().toggleClass("hide");
+//	$(this).find("span").toggleClass("triangle-to-top");
+//	$(this).find("span").toggleClass("triangle-to-bottom");
+//}
 
 function checkWidth() {
 	if ($(window).width() <= 640) {
@@ -475,7 +491,6 @@ $(".school-column").on("click", "li", function() {
 
 $(".toggle-nav").on("click", function() {
 	$(this).prev().toggleClass("hide");
-	//setClock();
 });
 
 $(window).resize(checkWidth);
