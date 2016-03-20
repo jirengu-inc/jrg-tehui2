@@ -204,7 +204,7 @@ function showTodaysGame(data) {
 		'</tr>' +
 		'</table>' +
 		'<div class="after-game hide">' +
-		'<a class="news"><i class="fa fa-newspaper-o"></i>新聞</a>' +
+		'<a class="news"><i class="fa fa-link"></i>速報</a>' +
 		'<a class="video"><i class="fa fa-video-camera"></i>ビデオ</a>' +
 		'</div>' +
 		'<div class="show-more">詳細<span class="triangle-to-bottom"></span></div>' +
@@ -297,6 +297,14 @@ function showTodaysGame(data) {
 			$video.eq($idx).attr("href", $gameVideo);
 			$news.eq($idx).attr("href", $gameNews);
 
+			if ($gameVideo === "") {
+				$video.eq($idx).addClass("disabled");
+			}
+
+			if ($gameNews === "") {
+				$news.eq($idx).addClass("disabled");
+			}
+
 			$scoreHome.eq($idx).empty();
 			$scoreVisit.eq($idx).empty();
 
@@ -321,7 +329,6 @@ function showTodaysGame(data) {
 			}
 		}
 	}
-
 
 	$showMore.on("click", function() {
 		$(this).prev().toggleClass("hide");

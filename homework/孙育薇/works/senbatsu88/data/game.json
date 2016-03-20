@@ -237,11 +237,11 @@
           "first": "福井工大福井",
           "firstIsHome": true,
           "third": "智弁学園",
-          "score": "-",
-          "fScore": ["0","0","0","0","0","0","0","",""],
-          "tScore": ["2","0","0","2","0","0","0","",""],
-          "news": "",
-          "video": ""
+          "score": "0-4",
+          "fScore": ["0","0","0","0","0","0","0","0","0"],
+          "tScore": ["2","0","0","2","0","0","0","0","X"],
+          "news": "http://www.asahi.com/koshien/senbatsu2016/sokuhou/2016032061/",
+          "video": "http://mainichi.jp/koshien/senbatsu/2016/games/g0101/"
         },{
 		  "id": "1-2",
 		  "time": "13:00",

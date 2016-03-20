@@ -278,10 +278,20 @@ img { border: none; }
     background-color: #eee;
 }
 
-.after-game .news, .after-game .video {
+.after-game a {
     display: inline-block;
     font-size: 18px;
     font-weight: bold;
+}
+
+.after-game a:hover {
+    color: #fd6a06;
+}
+
+.after-game a.disabled,
+.after-game a.disabled:hover {
+    color: #ccc;
+    cursor: default;
 }
 
 .news {
@@ -482,6 +492,11 @@ img { border: none; }
     font-weight: bold;
     background-color: #baeef8;
     border: 1px solid #ccc;
+}
+
+.school-column li.sayonara {
+    background: #ccc;
+    color: #eee;
 }
 
 .school-column .prefecture {
