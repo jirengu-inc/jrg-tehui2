@@ -139,7 +139,7 @@
       "prefecture": "奈良",
       "name": "智弁学園",
       "count": "２年ぶり10回目",
-      "games":["1-1"]
+      "games":["1-1","6-2"]
     }, {
       "id": 21,
       "area": "近畿",
@@ -249,11 +249,11 @@
           "first": "常総学院",
           "firstIsHome": false,
           "third": "鹿児島実",
-          "score": "-",
-          "fScore": ["2","0","0","0","","","","",""],
-          "tScore": ["0","0","0","2","","","","",""],
-          "news": "",
-          "video": ""
+          "score": "2-6",
+          "fScore": ["2","0","0","0","0","0","0","0","0"],
+          "tScore": ["0","0","0","2","1","1","0","0","2"],
+          "news": "http://www.asahi.com/koshien/senbatsu2016/sokuhou/2016032062",
+          "video": "http://mainichi.jp/koshien/senbatsu/2016/games/g0102/"
         },{
           "id": "1-3",
 		  "time": "15:30",
@@ -449,7 +449,7 @@
           "id": "6-2",
 		  "time": "11:30",
           "round": "二回戦",
-          "first": "",
+          "first": "智弁学園",
           "firstIsHome": true,
           "third": "",
           "score": "-",

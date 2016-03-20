@@ -291,8 +291,10 @@ function showTodaysGame(data) {
 			$fPrefecture.eq($idx).text("("+$firstPrefecture+")");
 			$fFinalScore.eq($idx).text($finalScore[0]);
 			$tName.eq($idx).text($third);
-			$tPrefecture.eq($idx).text("("+$thirdPrefecture+")");
-			$tFinalScore.eq($idx).text($finalScore[1]);
+			if ($third !== "") {
+				$tPrefecture.eq($idx).text("(" + $thirdPrefecture + ")");
+				$tFinalScore.eq($idx).text($finalScore[1]);
+			}
 
 			$video.eq($idx).attr("href", $gameVideo);
 			$news.eq($idx).attr("href", $gameNews);
