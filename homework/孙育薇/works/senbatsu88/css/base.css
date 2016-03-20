@@ -23,7 +23,7 @@ a {
 }
 
 a:visited {
-    color: #aaa;
+    color: #333;
 }
 li { list-style: none; }
 img { border: none; }

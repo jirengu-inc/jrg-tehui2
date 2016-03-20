@@ -108,7 +108,7 @@ function getGameInfoOrDate(id, type) {
 	}
 }
 
-//检查当前时间,高亮当前的比赛
+//检查当前时间,跳转到当前正在(或即将)进行的比赛并高亮当前的比赛时间
 //TODO: 优化
 function highlightCurrentGame(){
 	var $timeNow = getTimeNow();
@@ -142,19 +142,10 @@ function highlightCurrentGame(){
 }
 
 function highlight(idx) {
+	var id = getGameId($(".single-game").eq(idx).attr("id"));
+	jumpToDetail(id);
 	$(".info .time").eq(idx).css("color", "#fd6a06");
-	$(".scoreboard").eq(idx).toggleClass("hide");
-	$(".after-game").eq(idx).toggleClass("hide");
-	$(".show-more span").eq(idx).toggleClass("triangle-to-top");
-	$(".show-more span").eq(idx).toggleClass("triangle-to-bottom");
 }
-
-//function toggleMore() {
-//	$(this).prev().toggleClass("hide");
-//	$(this).prev().prev().toggleClass("hide");
-//	$(this).find("span").toggleClass("triangle-to-top");
-//	$(this).find("span").toggleClass("triangle-to-bottom");
-//}
 
 function checkWidth() {
 	if ($(window).width() <= 640) {
@@ -302,7 +293,6 @@ function showTodaysGame(data) {
 			if ($gameVideo === "") {
 				$video.eq($idx).addClass("disabled");
 			}
-
 			if ($gameNews === "") {
 				$news.eq($idx).addClass("disabled");
 			}
@@ -456,8 +446,7 @@ function jumpToDetail(id) {
 	} else {
 		$(gId).find(".scoreboard").removeClass("hide");
 		$(gId).find(".after-game").removeClass("hide");
-		$(gId).find(".show-more span").removeClass("triangle-to-bottom");
-		$(gId).find(".show-more span").addClass("triangle-to-top");
+		$(gId).find(".show-more span").removeClass("triangle-to-bottom").addClass("triangle-to-top");
 	}
 }
 
