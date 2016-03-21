@@ -20,8 +20,13 @@ a{
 }
 li{
 	list-style-type: none;
-	display: inline-block;
-	*display: inline;
+}
+.line{
+	max-width: 100px;
+	margin-top: -2px;
+	margin-bottom: 5px;
+	border: 1px solid #E5E4E4;
+	border-top: 0;
 }
 .btn{
 	display: inline-block;
@@ -35,6 +40,7 @@ li{
 .btn:hover{
 	background-color: #363E41;
 }
+/*------header------*/
 #header h2{
 	color: #333;
 	font-size: 60px;
@@ -59,6 +65,7 @@ li{
 #header p{
 	font-size: 22px;
 }
+/*------about------*/
 .about{
 	position: relative;
 	width: 960px;
@@ -85,10 +92,11 @@ li{
 	color: #23527c;
 	border-bottom: 2px solid #23527c;
 }
+/*------services------*/
 .services {
 	background-color: #337ab7;
 	padding-top: 70px;
-	padding-bottom: 60px;
+	padding-bottom: 50px;
 }
 .services .services-container {
 	position: relative;
@@ -101,11 +109,14 @@ li{
 .services h3 {
 	font-size: 28px;
 }
-.services hr {
+.services .line {
 	max-width: 100px;
+	margin-top: 10px;
 }
 .services li {
 	padding: 10px 30px;
+	display: inline-block;
+	*display: inline;
 }
 .services h4 {
 	padding: 10px 0;
@@ -132,6 +143,7 @@ li{
 .services .btn:hover{
 	background-color: #eee;
 }
+/*------callout------*/
 #callout{
 	position: relative;
 	display: table;
@@ -148,6 +160,7 @@ li{
 	font-size: 60px;
 	font-weight: bold;
 }
+/*------work------*/
 #work {
 	background-color: #fff;
 	position: relative;
@@ -160,9 +173,10 @@ li{
 	margin: 20px auto; 
 	font-size: 26px; 
 }
-#work hr{
+#work .line{
 	max-width: 90px;
-	color: #f2f2f2;
+	color: #E5E4E4;
+	margin-top: -5px;
 }
 #work ul{
 	margin-top: 20px;
@@ -170,6 +184,8 @@ li{
 #work li{
 	margin-bottom: 30px;
 	width: 470px;
+	display: inline-block;
+	*display: inline;
 }
 #work img{
 	width: 94%;   /*图片实际高度500px，li设置为470px*/
@@ -190,9 +206,10 @@ li{
 #work .btn:hover{
 	background-color: #4C4C4C;
 }
+/*------more------*/
 #more{
 	background-color: #337ab7;
-	margin-top: -30px; 
+	margin-top: -35px; 
 	display: table;
 	position: relative;
 	width: 100%;
@@ -227,6 +244,7 @@ li{
 	font-size: 24px;
     padding-bottom: 15px;
 }
+/*------footer------*/
 #footer{
 	display: table;
 	width: 100%;
@@ -268,9 +286,4 @@ li{
 }
 .address p span{
 	margin-right: 5px;
-}
-#footer hr{
-	max-width: 100px;
-	color: #f2f2f2;
-	margin-top: -10px;
 }
