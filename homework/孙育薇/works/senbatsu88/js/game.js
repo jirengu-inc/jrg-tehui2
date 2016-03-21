@@ -1,6 +1,7 @@
 /**
  * Created by sun on 16/3/16.
  * TODO:是否必要用try,catch,return false等
+ * TODO:!!从schoolCard跳转到detail的时候,time table上的日期不对应
  */
 
 //预定义日期数组,如果因天气等原因而延期,可在此处修改调整后的日期
@@ -113,11 +114,11 @@ function getGameInfoOrDate(id, type) {
 function highlightCurrentGame(){
 	var $timeNow = getTimeNow();
 	var $time = $(".info .time");
-	if ($time.length === 1) {highlight(0)}
+	if ($time.length === 1 && ($(".after-game .video").eq(0) === "")) {highlight(0)}
 	if ($time.length === 2) {
 		if ($timeNow < $time.eq(1).text()){
 			highlight(0);
-		} else if ($timeNow < "17:00") {
+		} else if ($timeNow < "17:00" && ($(".after-game .video").eq(1) === "")) {
 			highlight(1);
 		}
 	}
@@ -128,7 +129,7 @@ function highlightCurrentGame(){
 			highlight(1);
 		} else if ($timeNow < $time.eq(3).text()) {
 			highlight(2);
-		} else if ($timeNow < "20:00") {
+		} else if ($timeNow < "20:00" && ($(".after-game .video").eq(3) === "")) {
 			highlight(3);
 		}
 	}
@@ -136,7 +137,7 @@ function highlightCurrentGame(){
 		highlight(0);
 	} else if ($timeNow < $time.eq(2).text()) {
 		highlight(1);
-	} else if ($timeNow < "19:00") {
+	} else if ($timeNow < "19:00" && ($(".after-game .video").eq(2) === "")) {
 		highlight(2);
 	}
 }
