@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>加载更多 | Task 26-6</title>
+    <style>
+        body, ul, li, button {
+            margin: 0;
+            padding: 0;
+        }
+        #list li {
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        #list li:hover {
+            background-color: #008000;
+        }
+        button {
+            width: 80px;
+            height: 40px;
+            color: coral;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid coral;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+            background: transparent;
+            cursor: pointer;
+        }
+        button:focus {
+            outline: none;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="list">
+    <li>内容0</li>
+    <li>内容1</li>
+</ul>
+<button id="btn">加载更多</button>
+<script src="jquery.js"></script>
+<script>
+    var $btn = $("#btn");
+    var start = 2;
+    var len = 6;
+    var isLoading = false;
+
+    $btn.on("click", function() {
+        if (isLoading) return;
+        isLoading = true;
+        $btn.text("加载中...");
+        $btn.css("cursor", "not-allowed");
+        $.ajax({
+            url: "load.php",
+            method: "GET",
+            data: {
+                start: start,
+                len: len
+            }
+        }).done(function(response) {
+            loadMore(response);
+            start += 6;
+            isLoading = false;
+            $btn.text("加载更多");
+            $btn.css("cursor", "pointer");
+        }).fail(function() {
+            isLoading = false;
+            $btn.text("加载更多");
+            $btn.css("cursor", "pointer");
+            alert("加载错误");
+        });
+    });
+
+    function loadMore(response) {
+        var $list = $("#list");
+        var result = JSON.parse(response);
+        if (result["status"] === 1) {
+            for (var i = 0; i < result["data"].length; i++) {
+                var $li = $("<li>" + result["data"][i] + "</li>");
+                $list.append($li);
+            }
+        } else {
+            alert('获取数据失败');
+        }
+    }
+</script>
+</body>
+</html>
