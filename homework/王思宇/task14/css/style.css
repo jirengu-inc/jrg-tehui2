@@ -106,6 +106,13 @@ h2{
 .services li a:hover{
 	background-color: rgba(255,255,255,0.9);
 }
+.services ul .clearfix:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+}
 .box1 p{
 	font-size: 15px;
 }
@@ -120,6 +127,13 @@ h2{
 }
 .work ul{
 	margin-top: 20px;
+}
+.work ul .clearfix:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
 }
 .work hr{
 	border-width: 1px;
