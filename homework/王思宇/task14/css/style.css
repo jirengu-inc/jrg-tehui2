@@ -1,0 +1,198 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+html,body{
+	height:100%;
+	font-family: "微软雅黑",Arial,sans-serif;
+	text-align:center;
+}
+body{
+	font-size: 12px;
+}
+/* head的样式*/
+     /* 文字居中的样式*/
+.first {
+	display:table-cell; 
+	vertical-align: middle;
+}
+#head h1{
+	font-size: 60px;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+h2{
+	font-size:20px;
+}
+.first>a{
+    color: #fff;
+}
+#head .btn{
+	font-size:18px;
+	padding: 10px 8px;
+	background-color: rgba(0,0,0,0.4);
+}
+#head .btn:hover{
+     background-color: rgba(0,0,0,0.8);
+}
+#head p{
+	padding: 30px;
+	font-size: 20px;
+}
+#head{
+	background: url(http://7xrqxc.com1.z0.glb.clouddn.com/bg.jpg) center center no-repeat;
+    width: 100%;
+    height: 100%;
+    display: table;
+} 
+
+/* main的样式*/
+.second{
+	width: 960px;
+	padding: 80px;
+	margin: 0 auto;  /* 自适应居中*/
+}
+.second a{
+	color: blue;
+}
+.services{
+	background: #337AB7;
+	padding: 200px 0;
+	padding-top: 0;
+}
+.services h2,h4{
+	color: #fff;
+}
+.services hr{
+	border-width: 1px;
+	width: 100px;
+	margin: auto;
+	margin-bottom: 30px;
+}
+.services span{
+	display: inline-block;
+	width: 100px;
+	height:100px;
+	border-radius: 50%;
+	background: #fff;
+}
+.fa-5x{
+	color: #337AB7;
+}
+.services li{
+	float: left;
+	padding: 0 30px;
+	width:180px;
+}
+.services span i{
+	margin-top: 20px;
+}
+.services p{
+	font-size: 10px;
+	color: #fff;
+	margin-bottom: 20px;
+}
+.services h4{
+	padding:5px;
+}
+.services li a{
+    padding:8px;
+    background: #fff;
+}
+.services li a:hover{
+	background-color: rgba(255,255,255,0.9);
+}
+.services ul .clearfix:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+}
+.box1 p{
+	font-size: 15px;
+}
+/*vertically部分*/
+.third{
+	background:#767779 url(http://7xrqxc.com1.z0.glb.clouddn.com/callout.jpg) center center ;
+}
+.third h2{
+	font-size: 50px;
+	line-height: 400px;
+	color: #fff;
+}
+.work ul{
+	margin-top: 20px;
+}
+.work ul .clearfix:after {
+          content: ".";
+          display: block;
+          height: 0;
+          clear: both;
+          visibility: hidden;
+}
+.work hr{
+	border-width: 1px;
+	width: 100px;
+	margin:auto;
+}
+.work li{
+	float:left;
+    margin:0 30px 30px 0;
+    width: 450px;
+    overflow: hidden;
+}
+.work a:hover{
+	opacity: 0.4;
+}
+a.view-more {
+    background-color: #999999;
+    padding: 10px;
+    color: #fff;
+}
+.forth{
+	padding:30px;
+	background-color: #337AB7;
+}
+.forth p{
+     font-size: 15px;
+     padding:10px;
+}
+.click{
+	padding:5px;
+	margin-right:5px;
+	background-color: #ccc;
+}
+.look{
+	padding:5px;
+	margin-left:5px;
+	background-color: #ccc;
+}
+.click:hover,.look:hover,#foot a:hover{
+	opacity: 0.4;
+}
+#foot {
+	padding:100px;
+}
+#foot div a{
+	padding:20px;
+	color: #337AB7;
+}
+#foot h3{
+     padding:20px;
+     font-size: 20px;
+}
+#foot hr{
+	width:100px;
+	color:#ccc;
+	margin:20px auto;
+}
+#foot ul{
+	margin-bottom:20px;
+}
+
+

@@ -147,16 +147,20 @@ li{
 }
 
 .main>ul>li{
+	width:30%;
 	height:370px;
 	border:1px solid #e6e6e6;
 	display: inline-block;
-	padding:5px;
 	text-align:center;
+	padding:5px;
 	border-radius:5px;
 	margin-top:25px;
-	margin-right:12px;
-
-
+	margin-right:18px;
+}
+.main>ul>li:nth-child(1),.main>ul>li:nth-child(4),.main>ul>li:nth-child(7),.main>ul>li:nth-child(10){
+	margin-left:1px;
+}
+.main>ul>li:nth-child(3),.main>ul>li:nth-child(6),.main>ul>li:nth-child(9){
 }
 .main img{
 	border:1px solid #e6e6e6;
