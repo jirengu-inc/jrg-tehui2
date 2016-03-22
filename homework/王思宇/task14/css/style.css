@@ -128,13 +128,6 @@ h2{
 .work ul{
 	margin-top: 20px;
 }
-.work ul .clearfix:after {
-          content: ".";
-          display: block;
-          height: 0;
-          clear: both;
-          visibility: hidden;
-}
 .work hr{
 	border-width: 1px;
 	width: 100px;
