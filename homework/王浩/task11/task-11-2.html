@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-11-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	html,body,div{
+		padding: 0;
+		margin: 0;
+		font-family: "Microsoft Yahei",Arial;
+	}
+	.header,.footer{
+		height: 60px;
+		background-color: red;
+		font-size: 24px;
+		color: #fff;
+	}
+	.content .aside{
+		float: left;
+		background-color: #CCCBFF;
+		min-width: 350px;
+		color: #CCCCCF;
+	}
+	.box{
+		margin: 20px 0;
+		padding-bottom: 10px;
+		border-bottom: dashed 2px #555;
+	}
+	.box:last-child{
+		border-bottom: none;
+	}
+	.box:first-child{
+		margin: 0;
+	}
+
+	/* ----------first---------------- */
+	#method1 .content .main{
+		padding-left: 20px;
+		font-size: 20px;
+		background-color: #FFBFCB;
+		overflow: hidden;
+	}
+	
+	/* -------------second------------ */
+	#method2 .content::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#method2 .content .main{
+		float:left;
+		width: 989px;
+		padding-left: 10px;
+		background-color: #FFBFCB;
+		font-size: 20px;
+	}
+	
+	/* -----------third------------- */
+	#method3 .content .main{
+		display: table-cell;
+		padding-left: 10px;
+		background-color: #FFBFCB;
+		font-size: 20px;
+	}
+
+	/* --------------four------------------- */
+	#method4 .main{
+		margin-left: 350px;
+		background-color: #FFBFCB;
+		font-size: 20px;
+		padding-left: 10px;
+	}
+</style>
+</head>
+<body>
+<div id="method1" class="box">
+    <div class="header">overflow: hidden;</div>
+    <div class="content">
+    	<div class="aside">aside</div>
+    	<div class="main">
+    		我是main 
+    		我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 
+    	</div>
+    </div>
+    <div class="footer"></div>
+    </div>
+
+    <div id="method2" class="box">
+    <div class="header">父容器清除浮动，main——float：left；</div>
+    <div class="content">
+    	<div class="aside">aside</div>
+    		<div class="main">
+    		我是main 
+    		我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 
+    	</div>
+    </div>
+    <div class="footer"></div>
+    </div>
+
+    <div id="method3" class="box">
+    <div class="header">display: table-cell;</div>
+    <div class="content">
+    	<div class="aside">aside</div>
+    	<div class="main">
+    		我是main 
+    		我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 
+    	</div>
+    </div>
+    <div class="footer"></div>
+    </div>
+
+    <div id="method4" class="box">
+    <div class="header">margin: 350px;</div>
+    <div class="content">
+    	<div class="aside">aside</div>
+    	<div class="main">
+    		我是main 
+    		我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 我是main 
+    	</div>
+    </div>
+    <div class="footer"></div>
+    </div>
+</body>
+</html>

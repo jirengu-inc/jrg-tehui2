@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-5</title>
+    <style>
+        #modal-1 {
+            display: none;
+        }
+        .cover {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #000;
+            opacity: 0.4;
+            z-index: 2;
+        }
+        .modal-ct {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            border-radius: 3px;
+            background: #fff;
+            z-index: 3;
+        }
+        .header {
+            position: relative;
+            height: 36px;
+            line-height: 36px;
+            border-bottom: 1px solid #ccc;
+        }
+        .close{
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            line-height: 1;
+        }
+        h3 {
+            margin: 0;
+            padding: 0;
+        }
+        .btn {
+            float: right;
+            margin-left: 10px;
+        }
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <button id="btn-modal">点我1</button>
+</div>
+
+<div id="modal-1" class="modal-dialog">
+    <div class="cover"></div>
+    <div class="modal-ct">
+        <div class="header">
+            <h3>我是标题1</h3>
+            <a class="close" href="#">×</a>
+        </div>
+        <div class="content">
+            <p>我是内容1</p>
+            <p>我是内容1</p>
+        </div>
+        <div class="footer">
+            <a class="btn btn-cancel" href="#">取消</a>
+            <a class="btn btn-confirm" href="#">确定</a>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    window.onload = function () {
+/*
+        var oClose = document.querySelector('.close');
+        var oCover = document.querySelector('.cover');
+        var oCancel = document.querySelector('.btn-cancel');
+        var oModal = document.querySelector('#btn-modal');
+        var modal = document.querySelector('#modal-1');
+
+        oModal.addEventListener('click', function () {
+            show(modal);
+        });
+
+        oClose.addEventListener('click', function () {
+           hide(modal);
+        });
+
+        oCancel.addEventListener('click', function () {
+            hide(modal);
+        });
+
+        oCover.addEventListener('click', function () {
+            hide(modal);
+        });
+
+        function show(modal){
+            modal.style.display = 'block';
+        }
+        function hide(modal){
+            modal.style.display = 'none';
+        }
+
+        任务存在的最大问题：
+        没有形成事件代理的意识，过多地选择了子元素进行事件绑定导致了代码量巨大，且逻辑性可读性都变得很差。谢谢老师的指导！！
+ */
+
+        var btn = document.querySelector('#btn-modal'),
+                modal = document.querySelector('#modal-1'),
+                modalCt = document.querySelector('#modal-1 .modal-ct');
+
+        btn.addEventListener('click', function(e){
+            e.stopPropagation();
+            showModal(modal);
+        });
+
+        modalCt.addEventListener('click', function(e){
+            e.stopPropagation();
+            if( hasClass(e.target, 'close') || hasClass(e.target, 'btn-cancel') ){
+                hideModal(modal);
+            }
+        });
+
+        document.body.addEventListener('click', function(){
+            hideModal(modal);
+        });
+
+
+
+        function showModal(modal){
+            modal.style.display = 'block';
+        }
+        function hideModal(modal){
+            modal.style.display = 'none';
+        }
+        function hasClass (ele, cls){
+            return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+        }
+    }
+
+</script>
+</body>
+</html>

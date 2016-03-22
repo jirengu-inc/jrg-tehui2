@@ -1,0 +1,550 @@
+body,div,h1,h2,h3,h4,p,ul,li,form {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: 16px;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style-type: none;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+}
+
+#header {
+    position: fixed;
+    z-index: 2; /*不然就被be part of our story 挡住了..*/
+    background: #000;
+    width: 100%;
+    height: 70px;
+}
+
+#header .wrap-center {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#header h1 {
+    font-family: "Kaushan Script",cursive;
+    font-size: 1.25em;
+    line-height: 70px;
+    float: left;
+}
+
+#header h1 a {
+    color: #fed136;
+}
+
+#header h1 a:hover {
+    color: #fec503;
+}
+
+.nav {
+    float: right;
+}
+
+.nav li {
+    display: inline-block;
+    line-height: 10px;
+    margin: 10px 0;
+    padding: 20px 15px;
+}
+
+.nav a {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    color: #fff;
+    text-transform: uppercase;
+}
+
+.nav a:hover {
+    color: #fed136;
+}
+
+.banner {
+    position: relative;
+    color: #fff;
+    background: url(../img/header-bg.jpg) center center no-repeat #000;
+    background-size: cover;
+    width: 100%;
+    height: 758px;
+}
+
+.banner .wrap-center {
+    position: absolute;
+    text-align: center;
+    width: 64%;
+    height: 280px;
+    top: 50%;
+    left: 50%;
+    margin-top: -140px;
+    margin-left: -32%;
+}
+
+.banner h3 {
+    font-family: "DroidSerif", serif;
+    font-size: 2.5em;
+    font-style: italic;
+    margin: 10px auto;
+}
+
+.banner h2 {
+    font-family: "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: 4.625em;
+    text-transform: uppercase;
+    margin: 20px auto;
+}
+
+.btn {
+    font-weight: bold;
+    font-size: 1.125em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #fed136;
+    display: block;
+    width: 220px;
+    height: 65px;
+    line-height: 65px;
+    border: none;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 30px auto;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #fec503;
+}
+
+#main h3 {
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+}
+
+#main h4 {
+    font-size: 1.25em;
+}
+
+#main h3+p {
+    font-family: "DroidSerif", serif;
+    font-style: italic;
+    font-size: 1.125em;
+    margin-bottom: 80px;
+}
+
+#service {
+    text-align: center;
+    width: 80%;
+    margin: 160px auto;
+}
+
+#service li {
+    display: inline-block;
+    width: 360px;
+    padding: 10px;
+}
+
+#service h4 {
+    margin: 15px;
+}
+
+#service li p {
+    font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: .8125em;
+}
+
+.fa-circle {
+    color: #fed136;
+}
+
+.fa-stack-1x {
+    color: #fff;
+}
+
+#portfolio {
+    position: relative;
+    text-align: center;
+    background: #f7f7f7;
+    height: 1220px;
+}
+
+#portfolio .wrap-center {
+    position: absolute;
+    width: 80%;
+    height: 60%;
+    top: 50%;
+    left: 50%;
+    margin-top: -30%;
+    margin-left: -40%;
+}
+
+#portfolio li {
+    display: inline-block;
+    background: #fff;
+    width: 360px;
+    margin: 30px 30px 0 0;
+}
+
+#portfolio li:nth-child(3n){
+    margin-right: 0;
+}
+
+#portfolio img {
+    width: 100%;
+}
+
+#portfolio a:hover {
+    position: relative;
+}
+
+#portfolio a:hover:after {
+    content: "+";
+    position: absolute;
+    z-index: 1;
+    display: block;
+    font-size: 6.25em;
+    font-weight: bold;
+    color: #fff;
+    opacity: 0.8;
+    background: #fed136;
+    width: 100%;
+    height: 260px;
+    line-height: 260px;
+    top: -245px;
+}
+
+#portfolio li h4 {
+    margin: 27px auto 10px;
+}
+
+#portfolio li p {
+    margin-bottom: 30px;
+}
+
+#about {
+    position: relative;
+    width: 100%;
+    height: 1920px;
+}
+
+#about .wrap-center {
+    position: absolute;
+    text-align: center;
+    width: 76%;
+    height: 1588px;
+    top: 50%;
+    left: 50%;
+    margin-left: -38%;
+    margin-top: -794px;
+}
+
+#about li {
+    position: relative;
+    width: 50.1%;
+    padding-bottom: 150px;
+    line-height: 1.5em;
+}
+
+#about li h4 {
+    margin-bottom: 15px;
+}
+
+#about li p {
+    font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: .875em;
+}
+
+#about li:nth-child(2n+1) {
+    text-align: right;
+    border-right: 2px solid #eee;
+    padding-right: 120px;
+    float: left;
+    clear: right;
+}
+
+#about li:nth-child(2n) {
+    text-align: left;
+    border-left: 2px solid #eee;
+    padding-left: 120px;
+    float: right;
+    clear: left;
+}
+
+#about li img {
+    position: absolute;
+    width: 27%;
+    border: 8px solid #eee;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+#about li:nth-child(2n+1) img {
+    right: -15%;
+}
+
+#about li:nth-child(2n) img {
+    left: -15%;
+}
+
+#about ul {
+    position: relative;
+}
+
+#about ul:before {
+    content: "Be part of our story!";
+    font-weight: bold;
+    font-size: 1.125em;
+    color: #fff;
+    text-transform: uppercase;
+    background: #fed136;
+    position: absolute;
+    z-index: 1;
+    display: block;
+    width: 78px;
+    height: 78px;
+    left: 50%;
+    bottom: -140px;
+    border: 8px solid #eee;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    margin-left: -82px;
+    padding: 35px;
+}
+
+#about ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#team {
+    position: relative;
+    text-align: center;
+    background: #f7f7f7;
+    width: 100%;
+    height: 920px;
+}
+
+#team .wrap-center {
+    position: absolute;
+    width: 80%;
+    height: 610px;
+    top: 50%;
+    left: 50%;
+    margin-top: -305px;
+    margin-left: -40%;
+}
+
+/* 为ul添加member类,否则使用#team li时会导致特殊值高于.social li */
+.member li {
+    display: inline-block;
+    margin-left: 150px;
+}
+
+.member li:first-child {
+    margin-left: 0;
+}
+
+.member h4 {
+    margin-top: 20px;
+}
+
+.member h4+p {
+    font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    margin: 5px auto;
+}
+
+.member img {
+    border: 8px solid #fff;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+.social li {
+    display: inline-block;
+    text-align: center;
+    background: #333;
+    width: 42px;
+    height: 42px;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    margin: 5px;
+}
+
+.social li:hover {
+    background: #fed136;
+    transition: .3s;
+}
+
+.social a {
+    font-size: 1.25em;
+    color: #fff;
+    line-height: 42px;
+}
+
+#team ul+p {
+    font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    width: 65%;
+    margin: 40px auto 0;
+}
+
+.brand {
+    text-align: center;
+    width: 80%;
+    height: 150px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+
+.brand li {
+    display: inline-block;
+}
+
+#contact {
+    position: relative;
+    text-align: center;
+    background: url(../img/map-image.png) center center no-repeat #000;
+    width: 100%;
+    height: 785px;
+}
+
+#contact .wrap-center {
+    position: absolute;
+    width: 80%;
+    height: 480px;
+    top: 50%;
+    left: 50%;
+    margin-top: -240px;
+    margin-left: -40%;
+}
+
+#contact h3 {
+    color: #fff;
+}
+
+#contact p {
+    color: #aaa;
+}
+
+.user-info {
+    width: 50%;
+    margin-right: 20px;
+    float: left;
+}
+
+.user-info input {
+    display: block;
+    width: 95%;
+    height: 30px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+
+}
+
+.user-info input:focus, textarea:focus {
+    border: 1px solid #fed136;
+}
+
+.user-info input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input:-moz-placeholder,
+textarea:-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input::-moz-placeholder,
+textarea::-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+textarea {
+    width: 45%;
+    height: 192px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+    float: left;
+}
+
+input[type="submit"] {
+    clear: both;
+}
+
+#footer {
+    position: relative;
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    height: 90px;
+}
+
+#footer .wrap-center {
+    position: absolute;
+    width: 70%;
+    height: 42px;
+    top: 50%;
+    left: 50%;
+    margin-top: -21px;
+    margin-left: -35%;
+}
+
+#footer p, #footer ul {
+    display: inline-block;
+    line-height: 42px;
+}
+
+#footer ul {
+    margin: 0 180px;
+}
+
+#footer .info a {
+    color: #fed136;
+}
+
+#footer .info a:hover {
+    color: #fec503;
+    text-decoration: underline;
+}
+
+#footer .info a:nth-child(2) {
+    margin-left: 15px;
+}

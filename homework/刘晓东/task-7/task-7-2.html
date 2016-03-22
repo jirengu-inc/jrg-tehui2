@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Form</title>
+	<style>
+	form,input,select {
+		font-family: "微软雅黑";
+	}
+	section {
+		margin-bottom: 5px;
+	}
+	</style>
+</head>
+<body>
+    <form action="#" name="information" method="post">
+        <section>
+            <label for="user_name">姓名:</label>
+            <input type="text" id="user_name" placeholder="用户名">
+        </section>
+        <section>
+            <label for="password">密码:</label>
+            <input type="password" id="password" value="123345678">
+        </section>
+        <section>
+            <span>性别:</span>
+            <input checked="checked" id="radio1" name="sex" type="radio" value="men">
+            <label for="radio1">男</label>
+            <input id="radio2" name="sex" type="radio" value="women">
+            <label for="radio2">女</label>
+        </section>
+        <section>
+            <span>取向:</span>
+            <input id="radio3" name="sex-choose" type="radio" value="men">
+            <label for="radio3">男</label>
+            <input checked="checked" id="radio4" name="sex-choose" type="radio" value="women">
+            <label for="radio2">女</label>
+        </section>
+        <section>
+            <span>爱好:</span>
+            <input type="checkbox" id="check1" name="checkset" value="dota">
+            <label for="check1">dota</label>
+            <input checked="checked" type="checkbox" id="check2" name="checkset" value="travel">
+            <label for="check2">旅游</label>
+            <input checked="checked" type="checkbox" id="check3" name="checkset" value="pet">
+            <label for="check3">宠物</label>
+        </section>
+        <section>
+            <label for="description">评论:</label>
+            <textarea id="description" name="description" placeholder="ddd" cols="50" rows="30"></textarea>
+        </section>
+        <section>
+            <label for="select_choice">我的car:</label>
+            <select id="select_choice" name="select_choice">
+                <option value="0">萨博</option>
+                <option value="1">兰博基尼</option>
+                <option value="2">阿斯顿马丁</option>
+            </select>
+            <input type="submit" value="提交">
+        </section>
+    </form>
+</body>
+
+
+
+
+</html>
