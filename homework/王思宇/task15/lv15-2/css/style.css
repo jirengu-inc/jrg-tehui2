@@ -1,0 +1,45 @@
+
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	font-family: "黑体" , Aril ;
+	text-align: center;
+}
+a{
+	text-decoration: none;
+}
+li{
+	list-style: none;
+}
+.navigation ul.clearfix:after{
+    centent: "";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.navgation ul{
+	margin-left: 30px;
+	background-color: #fff;
+}
+.navigation li{
+	float:left;
+	padding:20px;
+}
+.jirengu{
+	font-size: 20px;
+	margin-left: 100px;
+	color: #777777;
+}
+.jirengu:hover{
+    color:#000;
+}
+.me,.blogs,.project,.about{
+	color: #777777;
+}
+.me:hover,.blogs:hover,.project:hover,.about:hover{
+	color: #000;
+}
