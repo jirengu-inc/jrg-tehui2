@@ -16,9 +16,9 @@
             padding: 10px;
             border: 1px solid #ccc;
         }
-        #list li:hover {
-            background-color: #008000;
-        }
+        /*#list li:hover {*/
+            /*background-color: #008000;*/
+        /*}*/
         button {
             width: 80px;
             height: 40px;
@@ -72,6 +72,12 @@
     var start = 2;
     var len = 20;
     var isLoading = false;
+
+    $("#list").on("mouseenter", "li", function() {
+        $(this).css("background-color", "#008000");
+    }).on("mouseleave", "li", function() {
+        $(this).css("background-color", "inherit");
+    });
 
     function showMore() {
         if(isVisible($btn)) {

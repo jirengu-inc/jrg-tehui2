@@ -16,9 +16,6 @@
             padding: 10px;
             border: 1px solid #ccc;
         }
-        #list li:hover {
-            background-color: #008000;
-        }
         button {
             width: 80px;
             height: 40px;
@@ -90,6 +87,12 @@
             alert('获取数据失败');
         }
     }
+
+    $("#list").on("mouseenter", "li", function() {
+        $(this).css("background-color", "#008000");
+    }).on("mouseleave", "li", function() {
+        $(this).css("background-color", "inherit");
+    });
 </script>
 </body>
 </html>
