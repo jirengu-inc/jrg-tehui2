@@ -1,0 +1,198 @@
+body,p,ul,li,h1,h2,h3{
+    margin:0;
+    padding:0;
+    font-family: "微软雅黑";
+}
+
+a{
+    text-decoration: none;
+    color:#337AB7;;
+}
+
+li{
+    list-style: none;
+    display:inline-block;
+}
+
+html,body{
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+.btn1{
+    font: 20px;
+    color: #fff;
+    padding: 12px 15px;
+    background:rgba(0,0,0,0.3); 
+    display: inline-block;
+}
+
+.btn1:hover{
+    background: rgba(0,0,0,0.7);
+}
+
+#header{
+    width: 100%;
+    height: 100%;
+    background: url('../img/bg.jpg') no-repeat center;
+    background-size: cover;
+    display: table;
+}
+
+.container{
+    display: table-cell;
+    vertical-align: middle;
+}
+
+h1{
+    font-size:60px;
+}
+
+#description{
+    text-align: center;
+    padding: 50px 0 70px 0;
+}
+
+#service{
+    min-width: 945px;
+    background-color: #337AB7;
+    color: #fff;
+    text-align: center;
+    padding: 50px 0px 75px 0px;
+}
+
+#service h2{
+    padding-bottom: 20px;
+}
+
+#service li {
+    padding: 10px 30px;
+}
+
+#service h3 {
+    padding: 10px 0;
+}
+
+#service p {
+    font-size: 12px;
+    line-height: 1.5em;
+    width: 160px;
+}
+
+#service .fa-stack-1x {
+    color: #337ab7;
+}
+
+.btn2 {
+    font: 16px;
+    color: #000;
+    padding: 8px 12px;
+    margin-top: 10px;
+    background-color:#fff; 
+    display: inline-block;
+}
+.line {
+    width: 100px;
+    border-top: 1px solid #eee;
+    margin-bottom: 20px;
+}
+
+#center-image {
+    height: 400px;
+    line-height: 400px;
+    background: url(../img/callout.jpg) center center no-repeat;
+}
+
+#center-image h1 {
+    color: #fff;
+    font-size: 60px;
+}
+
+#work {
+    margin-top: 40px;
+}
+
+#work li {
+    margin-bottom: 30px;
+    padding: 0;
+    width: 470px;
+}
+
+#work img {
+    width: 94%;
+}
+
+#work img:hover {
+    opacity: 0.6;
+}
+
+#work .btn1 {
+margin-bottom: 40px;
+}
+
+#work .btn1:hover {
+    opacity: 1;
+}
+#more {
+    background: #337ab7;
+    height: 220px;
+    position:relative;
+}
+
+#more h3 {
+    font-size: 22px;
+    padding-bottom: 10px;
+    color: #fff;
+    display: table;
+}
+
+#more .container {
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+}
+
+#more .btn2{
+    padding: 12px 15px;
+    margin-right: 20px;
+}
+
+.btn2:hover{
+    background-color:rgba(255,255,255,0.8)
+}
+
+#footer {
+    height: 470px;
+    font-size: 13px;
+    margin-top: 80px;
+}
+
+#footer h4 {
+    font-size: 17px;
+}
+
+.address {
+    line-height: 1.5em;
+    margin: 10px 0;
+}
+
+.vcard .fa {
+    margin-right: 5px;
+}
+
+.social .fa {
+    font-size: 40px;
+    margin: 30px 15px;
+    color: #337ab7;
+}
+
+.social a:hover {
+    color: #1a507e;
+}
+
+.copyright {
+    padding-top: 10px;
+}
+
