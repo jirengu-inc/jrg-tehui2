@@ -83,7 +83,7 @@ li{
 }
 .wrap h1{
 	font-size: 80px;
-	display:inline-block;
+	display: block;
 }
 .wrap p{
 	font-size:30px;
@@ -104,6 +104,7 @@ li{
 }
 .pic ul{
    margin-right:-30px;
+   clear: both;
 }
 .picture li{
 	float:left;
@@ -127,8 +128,28 @@ li{
 .picture h3{
 	padding: 20px;
 }
+.picture a{
+	margin-bottom: 20px;
+}
 .look{
 	padding: 5px 10px;
 	background-color: #ddd;
-	margin: 20px;
+}
+
+.footer{
+	clear: both;
+	text-align: center;
+	background-color: #b84d45;
+}
+.foot{
+	padding: 50px;
+	color: #fff;
+}
+.statement{
+	background-color: #eee;
+}
+.statement p{
+	padding:10px;
+	font-size: 10px;
+	text-align: center;
 }
