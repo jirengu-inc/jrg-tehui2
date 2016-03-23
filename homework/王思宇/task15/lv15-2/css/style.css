@@ -136,6 +136,8 @@ li{
 .look{
 	padding: 5px 10px;
 	background-color: #ddd;
+	border: 1px solid #ccc;
+	color: #000;
 }
 
 .footer{
