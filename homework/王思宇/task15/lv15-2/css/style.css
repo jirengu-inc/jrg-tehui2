@@ -1,11 +1,10 @@
-
 *{
 	margin: 0;
 	padding: 0;
 }
 body{
-	font-family: "黑体" , Aril ;
-	text-align: center;
+	font-family: "微软雅黑" , Aril ;
+	font-size: 15px;
 }
 a{
 	text-decoration: none;
@@ -13,33 +12,146 @@ a{
 li{
 	list-style: none;
 }
-.navigation ul.clearfix:after{
+/* 导航条 */
+.header{
+	line-height: 50px;
+	background-color:#fff;
+	height: 50px;
+	position: fixed;
+	width:100%;
+}
+.wrap .clearfix:after{
     centent: "";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden;
 }
-
-.navgation ul{
-	margin-left: 30px;
-	background-color: #fff;
+.wrap {
+	zoom: 1;
+}
+.nav a{
+	float:left;
+	font-size: 20px;
 }
 .navigation li{
+	position: relative;
 	float:left;
-	padding:20px;
+	padding: 0 20px;
+	margin: 0 auto;
 }
-.jirengu{
-	font-size: 20px;
-	margin-left: 100px;
-	color: #777777;
-}
-.jirengu:hover{
-    color:#000;
+.wrap{
+	margin:0 auto;
+    width:1000px;
 }
 .me,.blogs,.project,.about{
 	color: #777777;
 }
 .me:hover,.blogs:hover,.project:hover,.about:hover{
 	color: #000;
+}
+.navigation{
+	display: block;
+}
+.menu1{
+	background-color: #eee;
+	display: none;
+	width: 100px;
+	line-height: 20px
+}
+.menu1>dd:hover{
+	background-color: #ccc;
+}
+.menu1 dt{
+	border-top: 1px solid #aaa;
+	padding-right: 20px;
+	margin-top: 10px;
+}
+.menu i{
+	padding: 5px;
+}
+.menu>li:hover .menu1{
+    display: block;
+    position: absolute;
+}
+/*红色区域*/
+.page{
+	width: 100%;
+	background-color: #b84d45;
+	color: #fff;
+	padding: 50px 0;
+}
+.wrap h1{
+	font-size: 80px;
+	display: block;
+}
+.wrap p{
+	font-size:30px;
+}
+.home-page{
+	background-color: #ddd;
+	margin-top:30px;
+	margin-bottom: 20px;
+	line-height: 30px;
+	height: 30px;
+}
+.home li{
+	float: left;
+	margin-left: 10px; 
+}
+.home a{
+	color: red;
+}
+/* 图片*/
+.pic ul{
+   margin-right:-30px;
+   clear: both;
+}
+.picture li{
+	float:left;
+	border:1px solid #ddd;
+	border-radius:5px;	
+	overflow: hidden;
+	padding:5px;
+	margin-right: 20px;
+	margin-bottom:30px;
+	height: 490px;
+}
+.picture img{
+	width: 310px;
+}
+.picture{
+	text-align: center;
+}
+.picture p{
+	font-size: 15px;
+	margin:20px;
+}
+.picture h3{
+	margin:20px;
+}
+.picture a{
+	margin-bottom: 20px;
+}
+.look{
+	padding: 5px 10px;
+	background-color: #ddd;
+}
+
+.footer{
+	clear: both;
+	text-align: center;
+	background-color: #b84d45;
+}
+.foot{
+	padding: 50px;
+	color: #fff;
+}
+.statement{
+	background-color: #eee;
+}
+.statement p{
+	padding:10px;
+	font-size: 10px;
+	text-align: center;
 }
