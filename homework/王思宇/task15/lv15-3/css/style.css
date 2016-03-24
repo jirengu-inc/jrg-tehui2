@@ -67,8 +67,11 @@ body{
 	font-weight: bold;
 }
 /*services的样式*/
+.services{
+	background-color: #fff;
+}
 .ser{
-	padding: 100px 0 100px 0;
+	padding: 100px 0 ;
 }
 .ser h2{
 	font-size: 40px;
@@ -79,6 +82,9 @@ body{
 	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding: 30px;
 	color: #666666;
+}
+.commerce{
+	display: block;
 }
  .commerce span{
 	background-color: #FED136;
@@ -103,7 +109,6 @@ ul.commerce{
 	float: left;
 	padding: 0 20px;
 	margin-top: 50px;
-	margin-bottom: 50px;
 }
 .commerce h5{
 	font-size:18px;
@@ -118,4 +123,52 @@ ul.commerce{
 li.clear{
 	float:none;
 	clear:both;
+}
+/*portf的样式*/
+
+.portf{
+    padding:150px 0;
+	background-color: #F7F7F7;
+}
+.lorem p{
+	padding:20px;
+	margin-bottom:40px;
+}
+.picture{
+	overflow: hidden;
+}
+.pic li{
+	background-color:#fff;
+	float: left;
+	width: 360px;
+	margin: 0 15px 30px 0;
+}
+.pic h2{
+	margin-top:20px;
+}
+.pic p{
+	margin-top: 10px;
+	padding-bottom: 40px;
+}
+.pic img{
+	width: 360px;
+}
+.pic a:hover .pic-btu{
+	display: block;
+}
+.pic-btu{
+	background-color: #F6CD41;
+	width: 360px;
+	height:260px;
+	position: absolute;
+	display: none;
+}
+.picture li>a:hover .pic-btu{
+	visibility: visible;
+}
+.pic-hover{
+	padding-top: 100px;
+}
+.pic-btu .fa-5x{
+	color: #fff;
 }
