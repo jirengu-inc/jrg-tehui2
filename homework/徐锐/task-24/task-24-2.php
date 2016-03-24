@@ -1,4 +1,6 @@
 <?php
+
+header('Content-type:text/html; charset="utf-8"');
     $start = 2;
     $len = 6;
     $items = array();

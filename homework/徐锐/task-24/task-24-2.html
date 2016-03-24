@@ -45,7 +45,7 @@
 </ul>
 <a id="load-more" class="btn" href="#">加载更多</a>
 </body>
-<script src="ajax(task).js"></script>
+<script src="ajax.js"></script>
 <script>
 
     window.onload = function () {
@@ -63,11 +63,11 @@
             ajax({
                 url: 'task-24-2.php',
                 type: 'get',
-                success: function (ret) {
+                success: function (data) {
 
                     if ( a ) {
                         a = false;
-                        var data = JSON.parse(ret);
+                        var data = JSON.parse(data);
                         oBtn.innerText = "加载更多";
                         appendLi(data.data);
                     }
