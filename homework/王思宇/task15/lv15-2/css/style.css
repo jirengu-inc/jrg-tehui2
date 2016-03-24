@@ -115,7 +115,7 @@ li{
 	padding:5px;
 	margin-right: 20px;
 	margin-bottom:30px;
-	height: 490px;
+	height: 370px;
 }
 .picture img{
 	width: 310px;
@@ -136,6 +136,8 @@ li{
 .look{
 	padding: 5px 10px;
 	background-color: #ddd;
+	border: 1px solid #ccc;
+	color: #000;
 }
 
 .footer{

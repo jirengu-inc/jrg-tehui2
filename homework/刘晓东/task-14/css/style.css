@@ -15,6 +15,12 @@
 	width: 960px;
 	margin: 0 auto;
 	}
+	
+	html,body{
+		width: 100%;
+		height: 100%;
+	}
+
 	body {
     font-family: "微软雅黑";
     text-align: center;
@@ -23,11 +29,18 @@
 	a {
 	    display: inline-block;
 	}
-
+	
 	.header-start {
+		display: table;
+		width: 100%;
+		height: 100%;
 	    background: url(../images/bg.jpg) no-repeat center center;
 	    background-size: cover;
-	    padding: 235px 0;
+	}
+
+	.header-start .text{
+		display: table-cell;
+		vertical-align: middle;
 	}
 
 	.header-start .text h1 {
