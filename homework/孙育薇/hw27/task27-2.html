@@ -142,7 +142,7 @@
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
 <script>
     var $ct = $(".ct");
-    var $curIdx = []; //使用数组分管各部分的执行情况
+    var $curIdx = []; //用数组管理各部分执行情况
     var $isAnimate = [];
     var clock = [];
     for (var i = 0; i < $ct.length; i++) {
@@ -150,6 +150,9 @@
         $isAnimate.push(false);
 
         var ct = $ct.eq(i);
+
+        play(ct, 0);
+        autoPlay(ct);
 
         var $bullets = ct.find(".bullet");
         var $arrowPrev = ct.find(".prev");
@@ -168,6 +171,13 @@
             var thisCt = $(this).parents(".ct");
             play(thisCt, idx);
         })
+    }
+
+    function autoPlay(ct) {
+        var ctIdx = ct.index();
+        clock[ctIdx] = setInterval(function() {
+            playNext(ct);
+        },3000);
     }
 
     function playNext(ct) {
@@ -202,20 +212,10 @@
         $bullet.eq($curIdx[ctIdx]).addClass("active");
     }
 
-    function autoPlay(ct) {
-        var ctIdx = ct.index();
-        clock[ctIdx] = setInterval(function() {
-            playNext(ct);
-        },3000);
-    }
-
     function stopAutoPlay(ct) {
         var ctIdx = ct.index();
         clearInterval(clock[ctIdx]);
     }
-
-    play(ct, 0);
-    autoPlay(ct);
 
 </script>
 </body>
