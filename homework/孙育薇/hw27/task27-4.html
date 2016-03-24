@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>无限轮播 | Task 27-4</title>
+    <style>
+        html, body { height: 100%; }
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        .ct {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .img-ct {
+            position: absolute;
+            left: 0;
+            height: 100%;
+        }
+
+        .img-ct li {
+            position: relative;
+            height: 100%;
+            float: left;
+            opacity: 0.7;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+        }
+
+        .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .desc {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            color: #000;
+            background: rgba(255,255,255,0.5);
+            border-radius: 50%;
+            padding: 50px;
+            text-align: center;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            display: none;
+        }
+
+        .desc h3 {
+            font-size: 40px;
+        }
+
+        .desc p {
+            font-size: 22px;
+            font-style: italic;
+            font-family: Baskerville, "Brush Script MT", serif;
+        }
+
+        .bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .bullet li {
+            float: left;
+            width: 20px;
+            height: 5px;
+            margin: 0 5px;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .bullet li.active {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="img-ct">
+        <li data-img="img/t4-1.jpg">
+            <div class="desc">
+                <h3>BACCANO!</h3>
+                <p>How interesting the life is!</p>
+            </div>
+        </li>
+        <li data-img="img/t4-2.jpg">
+            <div class="desc">
+                <h3>ONE PIECE</h3>
+                <p>How interesting the travel is!</p>
+            </div>
+        </li>
+        <li data-img="img/t4-3.jpg">
+            <div class="desc">
+                <h3>OOFURI</h3>
+                <p>How interesting the baseball is!</p>
+            </div>
+        </li>
+        <li data-img="img/t4-4.jpg">
+            <div class="desc">
+                <h3>HTML5 ELEMENTS</h3>
+                <p><strike>Oh, what is this?!</strike></p><p>How interesting the HTML5 is!</p>
+            </div>
+        </li>
+    </ul>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $ct = $(".ct");
+    var $imgCt = $(".img-ct");
+    var $img = $(".img-ct li");
+    var $bullet = $(".bullet li");
+    var $imgCount = $imgCt.children().size();
+    var $curIdx = 1;
+    var $width = $(window).width();
+    $img.css("width", $width);
+    $bullet.eq($curIdx - 1).addClass("active");
+
+    var isAnimate = false;
+
+    $imgCt.prepend($img.eq($img.length-1).clone());
+    $imgCt.append($img.eq(0).clone());
+
+    var $imgRealCount = $imgCt.children().size();
+    $imgCt.css({"left": -$width, "width": $width * $imgRealCount}); //因为不小心删了"width",折腾了一晚上调试后面的函数以为哪里写错了,结果原因在这里...
+
+    $bullet.on("click", function() {
+        var idx = $(this).index() + 1; //因为$curIdx 初始值为1,所以这里+1才能对应
+        if (idx > $curIdx) {
+            playNext(idx - $curIdx);
+        } else if (idx < $curIdx) {
+            playPrev($curIdx - idx);
+        }
+    });
+
+    function playNext(idx) {
+        var idx = idx || 1;
+        if(isAnimate) return;
+        isAnimate = true;
+        setBg($curIdx+idx); //先设置好下一张的背景图片,再开始动画
+        $imgCt.animate({
+            left: "-=" + idx * $width
+        },function() {
+            $curIdx += idx;
+            if ($curIdx === $imgCount + 1) { //首尾各加了一张图后,$imgCount+1对应的是原本的第一张图,如果到了这里,就回到初始状态($curIdx = 1)
+                $curIdx = 1;
+                $imgCt.css("left", -$width);
+            }
+            isAnimate = false;
+            setBullet();
+        });
+    }
+
+    function playPrev(idx) {
+        var idx = idx || 1;
+        if(isAnimate) return;
+        isAnimate = true;
+        setBg(($curIdx + $imgCount - idx)%$imgCount);
+        $imgCt.animate({
+            left: "+=" + idx * $width
+        }, function() {
+            $curIdx = ($imgCount + $curIdx - idx) % $imgCount;
+            if ($curIdx === 0) {
+                setBg($imgCount);
+                $imgCt.css("left", -($width * $imgCount));
+                $curIdx = $imgCount;
+            }
+            isAnimate = false;
+            setBullet();
+            console.log($curIdx);
+        });
+    }
+
+    function setBg(idx) {
+        if(!arguments.length) {var idx = 1;} // var idx = idx || 1; 只有当传入的值不是0的时候才可以,如果传入的是0,结果就变成1了... 这里用判断arguments的长度更保险些.
+        var $node = $imgCt.children().eq(idx);
+        var $bg = $node.attr("data-img");
+        if($node.data("set")) return; //已经加载过的就不用再次设置了
+        $node.css("background-image", "url("+$bg+")");
+        $node.data("set", true);
+    }
+
+    function setBullet() {
+        $bullet.eq($curIdx - 1).siblings().removeClass("active"); //因为$curIdx初始值为1
+        $bullet.eq($curIdx - 1).addClass("active");
+    }
+
+    function autoPlay() {
+        clock = setInterval(function() {
+            playPrev();
+        },3000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(clock);
+    }
+
+    setBg();
+    $(".desc").show(); //背景图设置完毕后再显示文字(否则打开页面的一瞬会非常难看
+    autoPlay();
+
+</script>
+</body>
+</html>

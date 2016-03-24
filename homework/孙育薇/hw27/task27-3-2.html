@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滚动轮播 - 修改DOM | Task 27-3</title>
+    <style>
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        .ct {
+            width: 600px;
+            height: 375px;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .img-ct {
+            position: absolute;
+        }
+
+        .img-ct li {
+            float: left;
+        }
+
+        .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .arrow {
+            position: absolute;
+            text-align: center;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background: #ccc;
+            top: 50%;
+            margin-top: -20px;
+            -webkit-box-shadow: 0 0 3px #ccc;
+            -moz-box-shadow: 0 0 3px #ccc;
+            box-shadow: 0 0 3px #ccc;
+            opacity: 0.7;
+            color: #fff;
+        }
+        .prev {
+            left: 5px;
+        }
+
+        .next {
+            right: 5px;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/t3-1.jpg"></a></li>
+        <li><a href="#"><img src="img/t3-2.jpg"></a></li>
+        <li><a href="#"><img src="img/t3-3.jpg"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $ct = $(".ct");
+    var $imgCt = $(".img-ct");
+    var $img = $(".img-ct li");
+    var $arrowPrev = $(".prev");
+    var $arrowNext = $(".next");
+    var $imgCount = $imgCt.children().size();
+    var $curIdx = 0;
+    var $width = $ct.width();
+    $imgCt.css("width", $width * $imgCount);
+
+    var isAnimate = false;
+
+    $imgCt.css("left", 0);
+
+    function playNext() {
+        if(isAnimate) return;
+        isAnimate = true;
+        $imgCt.animate({
+            left: "-=" + $width
+        },1000, function() {
+            $imgCt.children().first().appendTo($imgCt); //把第一个挪到最后
+            $imgCt.css("left", 0);
+
+            if (++$curIdx === $imgCount) {
+                $curIdx = 0;
+            }
+            isAnimate = false;
+        });
+    }
+
+    function playPrev() {
+        if(isAnimate) return;
+        isAnimate = true;
+        $imgCt.prepend($imgCt.children().last()); //先把最后一个挪到最前面,然后再动画
+        $imgCt.css("left", -$width);
+        $imgCt.animate({
+            left: "+=" + $width
+        },1000, function() {
+            if (--$curIdx === -1) {
+                $curIdx = $imgCount - 1;
+            }
+            isAnimate = false;
+        });
+    }
+
+    function autoPlay() {
+        clock = setInterval(function() {
+            playPrev();
+        },3000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(clock);
+    }
+
+    $arrowPrev.on("click", playPrev);
+    $arrowNext.on("click", playNext);
+
+    autoPlay();
+
+    //TODO: bullet跳转
+</script>
+</body>
+</html>

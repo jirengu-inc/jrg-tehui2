@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>滚动轮播 - 不修改DOM | Task 27-3</title>
+    <style>
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        .ct {
+            width: 600px;
+            height: 375px;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .img-ct {
+            position: absolute;
+        }
+
+        .img-ct li {
+            float: left;
+        }
+
+        .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .arrow {
+            position: absolute;
+            text-align: center;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background: #ccc;
+            top: 50%;
+            margin-top: -20px;
+            -webkit-box-shadow: 0 0 3px #ccc;
+            -moz-box-shadow: 0 0 3px #ccc;
+            box-shadow: 0 0 3px #ccc;
+            opacity: 0.7;
+            color: #fff;
+        }
+
+        .prev {
+            left: 5px;
+        }
+
+        .next {
+            right: 5px;
+        }
+
+        .bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .bullet li {
+            float: left;
+            width: 20px;
+            height: 15px;
+            margin: 0 5px;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .bullet li.active {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/t3-1.jpg"></a></li>
+        <li><a href="#"><img src="img/t3-2.jpg"></a></li>
+        <li><a href="#"><img src="img/t3-3.jpg"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $ct = $(".ct");
+    var $imgCt = $(".img-ct");
+    var $img = $(".img-ct li");
+    var $bullet = $(".bullet li");
+    var $arrowPrev = $(".prev");
+    var $arrowNext = $(".next");
+    var $imgCount = $imgCt.children().size();
+    var $curIdx = 1;
+    var $width = $ct.width();
+    $bullet.eq($curIdx - 1).addClass("active");
+
+    var isAnimate = false;
+
+    $imgCt.prepend($img.eq($img.length-1).clone());
+    $imgCt.append($img.eq(0).clone());
+    var $imgRealCount = $imgCt.children().size();
+    $imgCt.css({"left": -$width, "width": $width * $imgRealCount});
+
+    $arrowPrev.on("click", function() {
+        playPrev();
+    });
+    $arrowNext.on("click", function() {
+        playNext();
+    });
+
+    $bullet.on("click", function() {
+        var idx = $(this).index() + 1;
+        if (idx > $curIdx) {
+            playNext(idx - $curIdx);
+        } else if (idx < $curIdx) {
+            playPrev($curIdx - idx);
+        }
+    });
+
+    function playNext(idx) {
+        var idx = idx || 1;
+        if(isAnimate) return;
+        isAnimate = true;
+        $imgCt.animate({
+            left: "-=" + idx * $width
+        }, function() {
+            $curIdx += idx;
+            if ($curIdx === $imgCount + 1) {
+                $curIdx = 1;
+                $imgCt.css("left", -$width);
+            }
+            isAnimate = false;
+            setBullet();
+            console.log($curIdx);
+        });
+    }
+
+    function playPrev(idx) {
+        var idx = idx || 1;
+        if(isAnimate) return;
+        isAnimate = true;
+        $imgCt.animate({
+            left: "+=" + idx * $width
+        }, function() {
+            $curIdx = ($imgCount + $curIdx - idx) % $imgCount;
+            if ($curIdx === 0) {
+                $imgCt.css("left", -($width * $imgCount));
+                $curIdx = $imgCount;
+            }
+            isAnimate = false;
+            setBullet();
+            console.log($curIdx);
+        });
+    }
+
+    function setBullet() {
+        $bullet.eq($curIdx - 1).siblings().removeClass("active");
+        $bullet.eq($curIdx - 1).addClass("active");
+    }
+
+    function autoPlay() {
+        clock = setInterval(function() {
+            playNext();
+        },3000);
+    }
+
+    function stopAutoPlay() {
+        clearInterval(clock);
+    }
+
+    autoPlay();
+
+</script>
+</body>
+</html>

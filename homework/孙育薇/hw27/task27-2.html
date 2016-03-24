@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>无限轮播 - 渐隐渐现 - 多个 | Task 27-2</title>
+    <style>
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        .ct {
+            width: 400px;
+            height: 250px;
+            margin: 20px auto;
+            position: relative;
+        }
+
+        .img-ct {
+            position: relative;
+        }
+
+        .img-ct li {
+            position: absolute;
+            display: none;
+        }
+
+        .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .arrow {
+            position: absolute;
+            text-align: center;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background: #ccc;
+            top: 50%;
+            margin-top: -20px;
+            -webkit-box-shadow: 0 0 3px #ccc;
+            -moz-box-shadow: 0 0 3px #ccc;
+            box-shadow: 0 0 3px #ccc;
+            opacity: 0.7;
+            color: #fff;
+        }
+
+        .prev {
+            left: 5px;
+        }
+
+        .next {
+            right: 5px;
+        }
+
+        .bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .bullet li {
+            float: left;
+            width: 20px;
+            height: 5px;
+            margin: 0 5px;
+            border-radius: 10px;
+            background: #fff;
+        }
+
+        .bullet li.active {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/t1-1.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-2.png"></a></li>
+        <li><a href="#"><img src="img/t1-3.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-4.png"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/t1-1.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-2.png"></a></li>
+        <li><a href="#"><img src="img/t1-3.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-4.png"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/t1-1.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-2.png"></a></li>
+        <li><a href="#"><img src="img/t1-3.jpg"></a></li>
+        <li><a href="#"><img src="img/t1-4.png"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+    var $ct = $(".ct");
+    var $curIdx = []; //使用数组分管各部分的执行情况
+    var $isAnimate = [];
+    var clock = [];
+    for (var i = 0; i < $ct.length; i++) {
+        $curIdx.push(0);
+        $isAnimate.push(false);
+
+        var ct = $ct.eq(i);
+
+        var $bullets = ct.find(".bullet");
+        var $arrowPrev = ct.find(".prev");
+        var $arrowNext = ct.find(".next");
+
+        $arrowPrev.on("click", function() {
+            var thisCt = $(this).parents(".ct");
+            playPrev(thisCt);
+        });
+        $arrowNext.on("click", function() {
+            var thisCt = $(this).parents(".ct");
+            playNext(thisCt);
+        });
+        $bullets.on("click", "li", function() {
+            var idx = $(this).index();
+            var thisCt = $(this).parents(".ct");
+            play(thisCt, idx);
+        })
+    }
+
+    function playNext(ct) {
+        var ctIdx = ct.index();
+        var imgCount = ct.find(".img-ct").children().size();
+        play(ct, ($curIdx[ctIdx]+1)%imgCount);
+    }
+
+    function playPrev(ct) {
+        var ctIdx = ct.index();
+        var imgCount = ct.find(".img-ct").children().size();
+        play(ct, (imgCount+$curIdx[ctIdx]-1)%imgCount);
+    }
+
+    function play(ct, idx) {
+        var $img = ct.find(".img-ct li");
+        var ctIdx = ct.index();
+        if ($isAnimate[ctIdx]) return;
+        $isAnimate[ctIdx] = true;
+        $img.eq($curIdx[ctIdx]).fadeOut(1000);
+        $img.eq(idx).fadeIn(1000, function() {
+            $isAnimate[ctIdx] = false;
+        });
+        $curIdx[ctIdx] = idx;
+        setBullet(ct);
+    }
+
+    function setBullet(ct) {
+        var ctIdx = ct.index();
+        var $bullet = ct.find(".bullet li");
+        $bullet.eq($curIdx[ctIdx]).siblings().removeClass("active");
+        $bullet.eq($curIdx[ctIdx]).addClass("active");
+    }
+
+    function autoPlay(ct) {
+        var ctIdx = ct.index();
+        clock[ctIdx] = setInterval(function() {
+            playNext(ct);
+        },3000);
+    }
+
+    function stopAutoPlay(ct) {
+        var ctIdx = ct.index();
+        clearInterval(clock[ctIdx]);
+    }
+
+    play(ct, 0);
+    autoPlay(ct);
+
+</script>
+</body>
+</html>
