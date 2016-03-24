@@ -106,6 +106,7 @@ li{
 .pic ul{
    margin-right:-30px;
    clear: both;
+   overflow: hidden;
 }
 .picture li{
 	float:left;
@@ -115,7 +116,6 @@ li{
 	padding:5px;
 	margin-right: 20px;
 	margin-bottom:30px;
-	height: 370px;
 }
 .picture img{
 	width: 310px;
@@ -138,6 +138,8 @@ li{
 	background-color: #ddd;
 	border: 1px solid #ccc;
 	color: #000;
+	display: inline-block;
+	margin: 20px 0;
 }
 
 .footer{
