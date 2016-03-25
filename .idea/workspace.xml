@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ad556ab3-ab5e-40bc-bbfc-e4c1a4385014" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-1.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-4.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw27/task27-4.html" />
     </list>
     <ignored path="Homework.iws" />
@@ -57,18 +61,18 @@
       <file leaf-file-name="task27-1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
+            <state relative-caret-position="329">
+              <caret line="97" column="102" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task27-2.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="task27-2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="232">
-              <caret line="144" column="36" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
+            <state relative-caret-position="319">
+              <caret line="128" column="109" selection-start-line="128" selection-start-column="109" selection-end-line="128" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -77,8 +81,8 @@
       <file leaf-file-name="task27-3-1.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="155">
-              <caret line="159" column="12" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
+            <state relative-caret-position="347">
+              <caret line="94" column="109" selection-start-line="92" selection-start-column="8" selection-end-line="94" selection-end-column="109" />
               <folding />
             </state>
           </provider>
@@ -87,18 +91,18 @@
       <file leaf-file-name="task27-3-2.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
+            <state relative-caret-position="407">
+              <caret line="68" column="109" selection-start-line="68" selection-start-column="109" selection-end-line="68" selection-end-column="109" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="task27-4.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="task27-4.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-4.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
+            <state relative-caret-position="406">
+              <caret line="118" column="86" selection-start-line="118" selection-start-column="86" selection-end-line="118" selection-end-column="86" />
               <folding />
             </state>
           </provider>
@@ -133,11 +137,11 @@
         <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3.html" />
         <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-4t.html" />
         <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-4n.html" />
-        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html" />
-        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html" />
         <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-1.html" />
-        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html" />
         <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-4.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html" />
       </list>
     </option>
   </component>
@@ -363,7 +367,7 @@
       <updated>1458689853044</updated>
       <workItem from="1458689854276" duration="1021000" />
       <workItem from="1458707728136" duration="1370000" />
-      <workItem from="1458720953797" duration="36011000" />
+      <workItem from="1458720953797" duration="36628000" />
     </task>
     <task id="LOCAL-00001" summary="Add homework 27">
       <created>1458863648339</created>
@@ -379,11 +383,18 @@
       <option name="project" value="LOCAL" />
       <updated>1458863969844</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="update hw 27-4, now autoplay is playnext..">
+      <created>1458864075961</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1458864075961</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38402000" />
+    <option name="totallyTimeSpent" value="39019000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="877" extended-state="6" />
@@ -422,7 +433,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Add homework 27" />
     <MESSAGE value="update hw 27-2" />
-    <option name="LAST_COMMIT_MESSAGE" value="update hw 27-2" />
+    <MESSAGE value="update hw 27-4, now autoplay is playnext.." />
+    <option name="LAST_COMMIT_MESSAGE" value="update hw 27-4, now autoplay is playnext.." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -657,42 +669,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="159" column="12" selection-start-line="159" selection-start-column="12" selection-end-line="159" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-1.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="86" column="18" selection-start-line="86" selection-start-column="18" selection-end-line="86" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="144" column="36" selection-start-line="144" selection-start-column="36" selection-end-line="144" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="140" column="20" selection-start-line="140" selection-start-column="20" selection-end-line="140" selection-end-column="20" />
+        <state relative-caret-position="329">
+          <caret line="97" column="102" selection-start-line="97" selection-start-column="102" selection-end-line="97" selection-end-column="102" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-4.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="215" column="20" selection-start-line="215" selection-start-column="20" selection-end-line="215" selection-end-column="20" />
+        <state relative-caret-position="406">
+          <caret line="118" column="86" selection-start-line="118" selection-start-column="86" selection-end-line="118" selection-end-column="86" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="347">
+          <caret line="94" column="109" selection-start-line="92" selection-start-column="8" selection-end-line="94" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-3-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="68" column="109" selection-start-line="68" selection-start-column="109" selection-end-line="68" selection-end-column="109" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw27/task27-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="319">
+          <caret line="128" column="109" selection-start-line="128" selection-start-column="109" selection-end-line="128" selection-end-column="109" />
           <folding />
         </state>
       </provider>
