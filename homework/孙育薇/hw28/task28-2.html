@@ -115,15 +115,14 @@
 
         $(window).scroll(function() {
             var top = $(window).scrollTop();
-            console.log(top);
+            if( top < navTop[0]) {
+                unfixNav($nav.eq(0));
+            }
+            $nav.each(function(){
+                unfixNav($(this))
+            });
             for (var i = 0; i < $nav.length; i++) {
-                if( top < navTop[0]) {
-                    unfixNav($nav.eq(0));
-                }
                 if(top >= navTop[i] && top < navTop[i+1]) {
-                    $nav.each(function(){
-                        unfixNav($(this))
-                    });
                     fixNav($nav.eq(i));
                 }
             }
