@@ -36,6 +36,7 @@ body{
 	color: #FED136;
 	float: left;
 	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+	font-style: italic;
 }
 .nav li:hover{
 	color: #FED136;
@@ -133,6 +134,7 @@ li.clear{
 .lorem p{
 	padding:20px;
 	margin-bottom:40px;
+	font-style: italic;
 }
 .picture{
 	overflow: hidden;
@@ -163,12 +165,85 @@ li.clear{
 	position: absolute;
 	display: none;
 }
-.picture li>a:hover .pic-btu{
-	visibility: visible;
-}
+
 .pic-hover{
 	padding-top: 100px;
 }
 .pic-btu .fa-5x{
 	color: #fff;
+}
+/*about的样式*/
+.about{
+	padding:120px;
+}
+.vertical li{
+	list-style: none;
+}
+.vertical li.line{
+	border:2px solid #ccc;
+	position: absolute;
+	left:50%;
+	height: 100%;
+}
+.left-1 li{
+    float: left;
+    margin-left: 70px;
+}
+.left-1 h4,.text-muted1{
+	text-align: right;
+}
+.left-1 h4{
+	font-size: 18px;
+}
+.right-1 li{
+    float: right;
+    margin-right: 100px;
+}
+.right-1 h4,.text-muted{
+	text-align: left;
+}
+.right-1 h4{
+	font-size: 18px;
+}
+.text-muted,.text-muted1{
+	font-size: 14px;
+	line-height: 1.5;
+	color: #777777;
+}
+.vertical li:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.vertical ul{
+	margin-bottom: 120px;
+}
+.timeline.vertical{
+	position: relative;
+}
+.time-img{
+	position: absolute;
+	left: 50%;
+	margin-left: -80px;
+	overflow: hidden;
+	border-radius: 50%;
+	border: 5px solid #ccc;
+	width: 156px;
+	height:156px;
+}
+.time-img a{
+	display: inline-block;
+    width: 60px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 50px;
+}
+.time-img{
+	background-color:#FED136;
+}
+.story{
+	margin-top: 120px;
+
 }
