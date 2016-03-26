@@ -25,6 +25,7 @@ body{
 	width:100%;
 	display: block;
 	position: fixed;
+	z-index: 999;
 }	
 .nav li{
 	float: right;
@@ -36,6 +37,7 @@ body{
 	color: #FED136;
 	float: left;
 	font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+	font-style: italic;
 }
 .nav li:hover{
 	color: #FED136;
@@ -67,8 +69,11 @@ body{
 	font-weight: bold;
 }
 /*services的样式*/
+.services{
+	background-color: #fff;
+}
 .ser{
-	padding: 100px 0 100px 0;
+	padding: 100px 0 ;
 }
 .ser h2{
 	font-size: 40px;
@@ -79,6 +84,9 @@ body{
 	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
 	padding: 30px;
 	color: #666666;
+}
+.commerce{
+	display: block;
 }
  .commerce span{
 	background-color: #FED136;
@@ -103,7 +111,6 @@ ul.commerce{
 	float: left;
 	padding: 0 20px;
 	margin-top: 50px;
-	margin-bottom: 50px;
 }
 .commerce h5{
 	font-size:18px;
@@ -118,4 +125,102 @@ ul.commerce{
 li.clear{
 	float:none;
 	clear:both;
+}
+/*portf的样式*/
+
+.portf{
+    padding:150px 0;
+	background-color: #F7F7F7;
+}
+.lorem p{
+	padding:20px;
+	margin-bottom:40px;
+	font-style: italic;
+}
+.picture{
+	overflow: hidden;
+}
+.pic li{
+	background-color:#fff;
+	float: left;
+	width: 360px;
+	margin: 0 15px 30px 0;
+}
+.pic h2{
+	margin-top:20px;
+}
+.pic p{
+	margin-top: 10px;
+	padding-bottom: 40px;
+}
+.pic img{
+	width: 360px;
+}
+.pic a:hover .pic-btu{
+	display: block;
+}
+.pic-btu{
+	background-color: #F6CD41;
+	width: 360px;
+	height:260px;
+	position: absolute;
+	display: none;
+}
+
+.pic-hover{
+	padding-top: 100px;
+}
+.pic-btu .fa-5x{
+	color: #fff;
+}
+/*about的样式*/
+.about{
+	padding:120px;
+}
+.timeline li:after{
+	content: "";
+	display: table;
+	clear: both;
+	overflow: hidden;
+}
+.timeline li.line{
+	border-left: 2px solid #ddd;
+    position: absolute;
+    left: 50%;
+    height: 200%;
+    margin-left: 15px;
+}
+.time-img{
+	border: 5px solid #ddd;
+	border-radius: 50%;
+	overflow:hidden;
+	width: 156px;
+	height: 156px;
+	position: relative;
+	left: 50%;
+	margin-left: -80px;
+	margin-bottom: 120px;
+}
+.timeline ul:after{
+	content: "";
+	display: table;
+	clear: both;
+	overflow: hidden;
+}
+.left1 li{
+	float: left;
+}
+.text{
+	width: 360px;
+}
+.left1 .time-text{
+    text-align: right;
+    margin-left: 80px;
+}
+.right1 li{
+	float: right;
+}
+.right1 .time-text{
+    text-align: left;
+    margin-right: 80px;
 }
