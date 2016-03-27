@@ -384,7 +384,7 @@ input[type="submit"]{
 }
 
 .footer ul {
-    margin: 0 180px;
+    margin: 0 100px;
 }
 
 .footer .info a {
@@ -411,9 +411,8 @@ input[type="submit"]{
 	margin-top: 10px;
 	font-size: 1.5em;
 }
-p.info{
-	display: inline-block;
-	line-height: 42px;
+.footer-float.cleatfix {
+    margin-left: 100px;
 }
 .footer-float1 li{
 	float: left;
@@ -425,5 +424,5 @@ ul.social{
 	margin-top: 40px;
 }
 .info{
-	margin-bottom: 30px;
+	margin-top: 50px;
 }
