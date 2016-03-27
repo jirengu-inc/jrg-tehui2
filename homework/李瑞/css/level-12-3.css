@@ -1,0 +1,35 @@
+body{
+	margin:0;
+	padding:0;
+}
+#header,#footer{
+	min-height:100px;
+	background:gray;
+	clear:both;
+}
+#wrap{
+	width:100%;
+	background:red;
+	float:left;
+	height:100px;
+}
+.main{
+	margin-left:200px;
+	margin-right:200px;
+}
+.side{
+	float:left;
+	background:yellow;
+	margin-left:-100%;
+	width:200px;
+	height:100px;
+
+}
+.extra{
+	float:left;
+	background:green;
+	margin-left:-200px;
+	width:200px;
+	height:100px;
+
+}

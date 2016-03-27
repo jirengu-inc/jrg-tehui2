@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-12-3,双飞翼三栏布局</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    body,div{
+    	margin:0;
+    	padding:0;
+    }
+	.header,.footer{
+		height: 50px;
+		background: #ccc;
+	}
+	.middle,.left,.right{
+		float: left;
+		min-height: 150px;
+		position: relative;
+	}
+	.main{
+		overflow: hidden;
+		min-height: 150px;
+	}
+	
+	.middle{
+		background-color: green;
+		position:relative;
+		width: 100%;
+	}
+	.inner{
+		padding:0 200px 0 0;
+	}
+		.right{
+		background-color: yellow;
+		margin-left: -200px;
+		width: 200px;
+
+	}
+	.main:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+</style>
+</head>
+<body>
+    <div class="header">头部</div>
+    <div class="main">
+    	
+    		<div class="middle">
+    			<div class="inner">圣杯布局三栏中间栏自适应高度。
+    			</div>
+    		</div>
+    	    <div class="right">右侧固定宽度</div>
+    	
+    </div>
+    <div class="footer">尾部</div>
+</body>
+</html>

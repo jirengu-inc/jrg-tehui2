@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="UTF-8" />
+	<title>Task 12-1 三栏圣杯布局</title>
+	<style>
+  	body, div {margin: 0; padding: 0;}
+  	body {
+    	font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    	min-width: 600px;
+  	}
+  	#header, #footer {
+    	background: #cdcdcd;
+    	min-height: 40px;
+  	}
+  	.container {
+    	padding: 0 200px;
+  	}
+  	.container:after {
+    	content: "";
+    	display: block;
+    	clear: both;
+  	}
+  	.main, .aside, .extra {
+    	float: left;
+    	min-height: 500px;
+  	}
+  	.main {
+    	width: 100%;
+    	background: green;
+  	}
+  	.aside {
+    	width: 200px;
+    	background: red;
+    	margin-left: -100%;
+    	position: relative;
+    	left: -200px;
+  	}
+  	.extra {
+    	width: 200px;
+    	background: yellow;
+    	margin-left: -200px;
+    	position: relative;
+    	left: 200px;
+  	}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div class="container">
+  	<div class="main">圣杯布局指两边定宽，中间自适应的三栏布局，中间栏要放在文档流前面以优先渲染。其流程为：1）设置container的左右padding，用于预留左右边栏的空间。2）给所有元素设置定位和浮动，用于设置左右两栏偏移。3）给左侧边栏设置right，让其移动位置。设置负边距100%（#center的宽度），让其跑到上面。4）给右边栏设置负边距使其跑到上面。</div>
+  	<div class="aside">左侧边栏，固定宽度</div>
+  	<div class="extra">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>

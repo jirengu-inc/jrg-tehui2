@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-8-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://cdn.bootcss.com/jquery/2.2.1/jquery.min.js"></script>
+<style>
+	/* -----------样式初始化---------------------- */
+	body,ul,h1,h3{
+		margin:0;
+		padding:0
+	} 
+
+	body{
+		font-size: 16px;
+		font-family: "Microsoft Yahei","宋体","Arial Narrow",HELVETICA;
+		background-color: #fff;
+		letter-spacing: 1px;
+		color:#333;
+	} 
+
+	/* ----------------header样式--------------- */
+
+	/* 设置导航栏菜单背景色，并且内容自动撑开 */
+	#header{
+		background-color: #333333;
+		overflow:hidden;
+	}
+	/* 清除ul的默认样式 */
+	#header ul{
+		list-style-type:none;
+	}
+	/* 设置li左浮动 */
+	#header ul li{
+		float:left;
+	}
+	/* 设置文本样式并且添加延迟 */
+	#header li a{
+		text-decoration: none;
+		color:#126212;
+		display:block;
+		font-size: 18px;
+		font-weight: bold;
+		height:60px;
+		padding:3px 15px;
+		line-height: 60px;
+		transition:color 0.3s;
+	}
+	/* 设置导航栏左margin */
+	#header ul.nav li:first-child{
+		margin-left: -5px;
+	}
+	/* 设置hover颜色 */
+	#header li a:hover{
+		color:white;
+	}
+
+	/*-------------- content样式 ---------------*/
+	/* 设置content的外边距 */
+	#content{
+		margin: 10px;
+	}
+	/* 设置h1的样式 */
+	#content h1.title{
+		color:#399C39;
+		font-size: 2em;
+		text-align: center;
+		margin-top:35px;
+		margin-bottom: 32px;
+		letter-spacing: 5px;
+	}
+	/* 设置段落的样式 */
+	#content p.desc{
+		color:#949494;
+		text-indent: 2em;
+		font-size: 14px;
+		margin:22px 0;
+		font-weight: bold;
+	}
+	/* 设置h3的样式 */
+	#content h3{
+		border-bottom: dashed 1px #ddd;
+		font-size: 18px;
+		padding:3px 0;
+	}
+	/*设置段落p的样式*/
+	#content p{
+		text-indent: 2em;
+		margin:22px 0;
+	}
+	/* 设置span的文本格式 */
+	#content p span{
+		white-space: pre;
+	}
+	/* 清除ul的默认样式 */
+	#content ul{
+		list-style-type: none;
+		color:#666;
+	}
+	/* 设置li缩进 */
+	ul.tree>li ul{
+		text-indent: 4em;
+		display:none;
+	}
+	ul.tree>li{
+		text-indent: 2em;
+	}
+	/* 设置文本链接的样式 */
+	ul.tree>li>a{
+		color:#399C39;
+		text-decoration: none;
+		font-weight: bold;
+	}
+
+	ul.tree li{
+		margin:5px;
+	}
+	ul.tree>li.open ul{
+		display:block;
+	}
+	/* 为第一个链接左端添加- */
+	ul.tree>li:first-child::before{
+		content:"- ";
+		color: #399C39;
+	}
+	/* 为剩下的链接左端添加+ */
+	ul.tree>li+li:before{
+		content:"+";
+		color: #399C39;
+	}
+</style>
+</head>
+<body>
+    <div id="header">
+    	<ul class="nav">
+    		<li><a href="">首页</a></li>
+    		<li><a href="">简洁</a></li>
+    		<li><a href="">作品</a></li>
+    		<li><a href="">关于</a></li>
+    	</ul>
+    </div>
+    <div id="content">
+    	<h1 class="title">前端学习</h1>
+    	<p class="desc">这是我的前端学习笔记</p>
+    	<h3>第一章</h3>
+    	<p>
+    		这是我的前端学习笔
+            记这是我是<span class="text-less">  特  别的</span> 的前端学习笔
+            记这是我的前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
+    	</p>
+    	<h3>第二章</h3>
+    	<p>
+    		这是我的前端学习笔
+            记这是我是<span class="text-less"> 特别的</span> 的前端学习笔
+            记这是我的前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
+    	</p>
+    	 <ul class="tree">
+          <li class="open has-child">
+          	<a href="">
+            记笔记</a>
+            <ul>
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li class="has-child">
+              <a href="">
+              做作业</a>
+              <ul>
+                  <li>jscode</li>
+                  <li>博客</li>
+                  <li>Github</li>
+                </ul>
+          </li>
+          <li><a href="#">多思考</a></li>
+          <li><a href="#">多练习</a></li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+	
+</body>
+</html>

@@ -1,0 +1,25 @@
+html,body,p,h1,h2,h3,div{
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft Yahei",Arial;
+	font-size: 16px;
+	color: #333;
+	line-height: 1.75em;
+}
+.container{
+	width: 900px;
+	margin: 0 auto;
+}
+img{
+	width: 850px;
+}
+h1{
+	text-align: center;
+	font-size: 24px;
+}
+pre{
+	background: #FDF6E3;
+	border: solid 1px #777;
+	padding: 10px 20px;
+	white-space: pre-wrap;
+}

@@ -1,0 +1,20 @@
+@charset "UTF-8";
+
+@font-face {
+font-family: 'Kaushan Script';
+src: url('../fonts/KaushanScript-Regular.otf');
+font-style: normal;
+font-weight: normal;
+}
+@font-face {
+font-family: 'Montserrat';
+src: url('../fonts/Montserrat-Regular.otf');
+font-style: normal;
+font-weight: normal;
+}
+@font-face {
+font-family: 'Droid Serif';
+src: url('../fonts/DroidSerif-Italic-webfont.woff');
+font-style: normal;
+font-weight: normal;
+}
