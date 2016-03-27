@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>导航</title>
+</head>
+<style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    a {
+        text-decoration: none;
+        color: #000000;
+    }
+
+    li {
+        list-style: none;
+    }
+    body {
+        font: 15px/1.5 “微软雅黑”;
+    }
+    #nav {
+        background-color: lightseagreen;
+        height: 50px;
+        line-height: 50px;
+    }
+    #nav > ul > li{
+        float: left;
+        margin-left: 30px;
+    }
+    #nav > ul > li > a{
+        display:block;
+        height: 50px;
+        padding:0 20px;
+    }
+    #nav > ul > li > a:hover{
+        background-color: #ff7f50;
+        color: #ffffff;
+    }
+    #nav .child{
+        background-color:#d3d3d3;
+        position: relative;
+        left: 0;
+        text-align: center;
+        line-height: 1.5;
+        padding: 10px 10px;
+        display: none;
+    }
+    #nav > ul > li:hover .child{
+         display:block;
+    }
+    .clearfix:after{
+        content:"";
+        display: block;
+        clear: both;
+    }
+    #nav .child a:hover{
+        color:#ffffff;
+    }
+</style>
+<body>
+    <div id="nav" class="clearfix">
+          <ul>
+              <li><a href="#">前端</a>
+                  <ul class="child">
+                      <li><a href="#">JS</a></li>
+                      <li><a href="#">CSS</a></li>
+                      <li><a href="#">HTML</a></li>
+                  </ul>
+              </li>
+              <li><a href="#">前端工具</a>
+                  <ul class="child">
+                      <li><a href="#">Sublime</a></li>
+                      <li><a href="#">webstorm</a></li>
+                      <li><a href="#">Git</a></li>
+                  </ul>
+              </li>
+              <li><a href="#">服务端</a>
+                  <ul class="child">
+                      <li><a href="#">NODE</a></li>
+                      <li><a href="#">PHP</a></li>
+                      <li><a href="#">Java</a></li>
+                  </ul>
+              </li>
+          </ul>
+    </div>
+</body>
+</html>

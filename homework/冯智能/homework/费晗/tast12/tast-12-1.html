@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>tast-12-1</title>
+<style type="text/css">
+body,html,div,dl,dt,dd{
+	padding: 0;
+	margin: 0;
+	font: 16px/1.2em "微软雅黑",sans-serif;
+	color: #222;
+}
+.header,.footer{
+	height: 40px;
+	line-height: 40px;
+	text-align: center;
+	font-size: 20px;
+	color: #333;
+    background-color: #eee;
+}
+.comtainer{
+  margin: 20px 0px;
+  padding: 0 210px;
+}
+.comtainer:after{
+  content: '';
+  display: block;
+  clear: both;
+}
+.comtainer .content{
+  width: 100%;
+  float: left;
+  min-height: 300px;
+  background-color: pink;
+  border-radius: 10px;
+}
+.comtainer .left-side{
+  width: 200px;
+  min-height: 200px;
+  background-color: green;
+  float: left;
+  margin-left: -100%;
+  position: relative;
+  left: -210px;
+  border-radius: 10px;
+
+}
+.comtainer .right-side{
+  width: 200px;
+  min-height:200px;
+  background-color: yellow;
+  float: left;
+  margin-left: -200px;
+  position: relative;
+  left: 210px;
+  border-radius: 10px;
+}
+.content dt{
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-top: 5px;
+ }
+.content dd{
+  padding-left: 20px;
+ }
+span{
+  padding: 0 10px;
+
+}
+ </style>
+</head>
+<body>
+<div class="header">头部</div>
+<div class="comtainer">
+  <div class="content">
+     <dl>
+      <dt>双飞翼布局指俩边顶宽，中间自适应的三栏布局，中间栏要放在文档流的前面优先渲染。其流程为：
+      </dt>
+       <dd>
+       1. 设置container的作用padding用于预留左右边栏的空间。</dd>
+       <dd>
+       2. 给所有元素设置定位和浮动，用于设置作用俩栏的偏移。</dd>
+       <dd>
+       3. 给左边栏设置right，让其移动位置，设置负边距100%（container的宽度），让其跑到上面。</dd>
+       <dd>
+       4. 给右边栏设置负边距使其跑到上面。</dd>
+       </dl>
+  </div>
+  <div class="left-side"><span>左侧边栏，固定宽度</span></div>
+  <div class="right-side"><span>右侧边栏，固定宽度</span></div>
+</div>
+<div class="footer">尾部</div>
+</body>
+</html>

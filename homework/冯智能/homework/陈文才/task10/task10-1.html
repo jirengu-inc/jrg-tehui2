@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task10-1</title>
+    <style type="text/css">
+    body , #wrapper , .header , ul {
+        font:16px/1.5 "Microsoft Yahei",sans-serif;
+    	margin:0;
+    	padding:0;
+    }
+    ul {
+    	list-style-type:none;
+    }
+    a {
+    	text-decoration:none;
+    	color:white;
+    }
+    li {
+    	height:3em;
+    	line-height: 3em;
+    }
+    h2 , p {
+    	text-indent:2rem;
+    }
+    
+
+    .header {
+    background-color:black;
+    }
+    .header .nav {
+    	width:900px;
+    	margin:0 auto;
+    }
+
+    .nav img {
+        height:3em;
+    }
+    .nav .nav_left , .sidebar {
+    	float:left;
+    }
+    .nav .nav_right , .main {
+    	float:right;
+
+    }
+    .nav .nav_right ul li {
+    	display: inline-block;
+    }
+
+    .nav .nav_right ul li a{
+        display: inline-block;
+        padding:0 1em;
+    }
+    .nav .nav_right ul li a:hover {
+        color:black;
+        background-color: white;
+    }
+    .clear {
+    	clear:both;
+    }
+    .content {
+    	width:900px;
+    	margin:5px auto;
+    }
+    .content .main {
+    	width:695px;
+    	background-color: #eee;
+    }
+    .content .sidebar {
+    	width:200px;
+    	background-color: #eee;
+    	min-height:500px;
+    }
+
+    .footer {
+    	background-color: black;
+    	position:fixed;
+    	bottom:0px;
+    	width:100%;
+    }
+    .footer .nav_bottom {
+    	width:900px;
+    	margin:0 auto;
+    }
+    .footer .nav_bottom li {
+        display: inline-block;
+        margin: 0 0.5em;
+    }
+    </style>
+</head>
+<body>
+	<div id="wrapper">
+	<div class="header">
+		<ul class="nav">
+		    <li class="nav_left"><a href="#"><img src="55bb23fc43c54.png"/></a></li>
+			<li class="nav_right">
+			<ul>
+			<li><a href="#">技能</a></li>
+			<li><a href="#">经历</a></li>
+			<li><a href="#">作品</a></li>
+			<li><a href="#">关于</a></li>
+		</ul>
+		</li>
+		</ul>
+        <div class="clear"></div>
+	</div>
+	<div class="content">
+		<div class="main">
+			<h2>我的作品</h2>
+			<p>生活很美好</p>
+			<p>心情不错</p>
+			<p>代码写得很漂亮</p>
+		</div>
+		<div class="sidebar"></div>
+		<div class="clear"></div>
+	</div>
+	<div class="footer">
+    <ul class="nav_bottom">
+    	<li><a href="#">饥人谷</a></li>
+    	<li><a href="#">JSCODE</a></li>
+    	<li><a href="#">JSBIN</a></li>
+    </ul>
+	</div>
+    </div>
+</body>
+</html>

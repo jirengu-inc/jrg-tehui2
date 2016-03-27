@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>task-24-2</title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0
+        }
+        #ct li{
+            list-style:none;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 10px;
+            cursor:pointer;
+        }
+        #load-more{
+            display: block;
+            margin: 10px auto;
+            text-align: center;
+            cursor: pointer;
+        }
+        #load-more img{
+            width: 40px;
+            height: 40px;
+        }
+        .btn{
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+            width: 80px;
+            border: 1px solid #E27272;
+            border-radius: 3px;
+            text-align: center;
+            text-decoration: none;
+            color: #E27272;
+        }
+    </style>
+</head>
+<body>
+<ul id="ct">
+    <li>内容</li>
+    <li>内容</li>
+</ul>
+<a id="load-more" class="btn" href="#">加载更多</a>
+</body>
+<script src="ajax.js"></script>
+<script>
+
+    window.onload = function () {
+
+        var oBtn = document.getElementById('load-more');
+        var oUl = document.getElementById('ct');
+        var a = true;
+
+        oBtn.addEventListener('click', function () {
+
+            oBtn.innerText = "加载中";
+
+            a = true;
+
+            ajax({
+                url: 'task-24-2.php',
+                type: 'get',
+                success: function (data) {
+
+                    if ( a ) {
+                        a = false;
+                        var data = JSON.parse(data);
+                        oBtn.innerText = "加载更多";
+                        appendLi(data.data);
+                    }
+                },
+                error: function () {
+                    console.log('出错了')
+                }
+
+            })
+        });
+
+
+        function appendLi(arr){
+            for(var i = 0;i<arr.length;i++){
+                var li = document.createElement('li');
+                li.innerText = arr[i];
+                oUl.appendChild(li);
+            }
+        }
+
+    }
+
+
+
+
+</script>
+</html>

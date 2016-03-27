@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+    li {
+  		list-style: none;
+    	display: inline-block;
+    	margin: 0;
+		padding: 0;
+  	}
+  	a {
+  		text-decoration: none;
+  		color: #333;
+  		font-size: 37px;
+  	}
+  	.icon {
+    	background: url(img/icon.png);
+    	background-repeat: no-repeat;
+    	padding-left: 35px;
+    	padding-right: 10px;
+  	}
+  	
+  	.forward {
+		background-position: 0 -65px;
+  	}
+	.forward:hover {
+		background-position: 0 -100px;
+		color: #a459be;
+	}
+
+	.play {
+		background-position: 0 -32px;
+  	}
+	.play:hover {
+		background-position: 0 -175px;
+		color: #a459be;
+	}
+
+	.stop {
+		background-position: 0 -139px;
+  	}
+	.stop:hover {
+		background-position: 0 0;
+		color: #a459be;
+	}
+	</style>
+</head>
+<body>
+	<ul>
+	  <li><a class="icon forward" href="#">前进</a></li>
+	  <li><a class="icon play" href="#">开始</a></li>
+	  <li><a class="icon stop" href="#">停止</a></li>	
+	</ul>
+</body>
+</html>

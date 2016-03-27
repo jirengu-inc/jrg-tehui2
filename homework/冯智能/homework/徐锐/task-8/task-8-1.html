@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-8-1</title>
+    <style>
+        .btn {
+            box-sizing: border-box;
+            width: 68px;
+            height: 40px;/*按图片里的宽高测量的*/
+
+            margin: 0;
+            padding: 0;
+
+            display: inline-block; /*使在同行显示*/
+
+            font: 24px/40px "微软雅黑","sans-serif"; /*解决button按钮不对齐的问题*/
+            text-decoration: none; /*去掉a下划线*/
+            text-align: center; /*文本居中*/
+
+            background: #f36e41;  /*老师给出来的颜色值和photoshop吸出来的不一样。。*/
+            color: #fff;
+            border: none; /*去掉button按钮自带的边框*/
+            border-radius: 4px;
+            cursor: pointer;/*手型*/
+            transition: background 0.1s;
+        }
+        .btn:hover {
+            background: #c14d21;
+        }
+        .btn:active {
+            background: #e25f31;
+        }
+    </style>
+</head>
+<body>
+    <a class="btn" href="#">确定</a>
+    <span class="btn" >取消</span>
+    <div class="btn">提交</div>
+    <button class="btn"> 发送</button>
+</body>
+</html>

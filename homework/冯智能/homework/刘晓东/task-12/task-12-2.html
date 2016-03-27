@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局2</title>
+	<style>
+	/*css reset*/
+	body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,th,td,img,div,dl,dt,dd,input,select{margin: 0;padding: 0;}
+	body{font-size: 12px;}
+	img{border: none;vertical-align:top;}
+	li{list-style: none;}
+	input,select,textarea{outline: none;border: none;}
+	textarea{resize: none;overflow:auto;}
+	a{text-decoration: none;}
+
+
+	/*clear float*/
+	.clearfix:after{content: "";clear: both; display: table;}
+	.clearfix{*zoom:1;}
+	
+	.fl{float: left;}
+	.fr{float: right;}
+
+	.wrapper{
+	width: 960px;
+	margin: 0 auto;
+	}
+	body{
+		font-family: "微软雅黑";
+	}
+
+	.header,.footer{
+		height: 50px;
+		background: #999;
+	}
+	.content{
+		padding-left: 200px;
+	}
+	.main{
+		float: left;
+		width: 100%;
+		height: 100px;
+		background: red;
+	}
+	.left{
+		float: left;
+		width: 200px;
+		height: 200px;
+		margin-left: -100%;
+		background: yellow;
+		position: relative;
+		left: -200px;
+	}
+	.right{
+		float: left;
+		width: 200px;
+		height: 200px;
+		margin-left: -200px;
+		background: yellow;
+		position: relative;
+		left: 200px;
+	}
+	</style>
+</head>
+<body>
+	<div class="footer">
+		头部
+	</div>
+	
+	<div class="content clearfix">
+		<div class="main">圣杯布局是指两边顶宽,中间自适应的三栏布局,中间栏要放在文档流前面以优先渲染.参考:圣杯布局原理.其流程为:1.设置container的左右padding,用于预留左右边栏的空间.2.给所有元素设置浮动和定位,用于设置左右两栏偏移.3.给左侧边栏设置right,让其移动位置.设置负边距100%(#center的宽度),让其跑到上面;4.给右边栏设置负边距使其跑到上面</div>
+		<div class="left">
+			左侧边栏,固定宽度
+		</div>
+		
+		
+	</div>
+	<div class="footer">
+			尾部
+	</div>
+</body>
+</html>
