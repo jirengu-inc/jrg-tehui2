@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-12-4</title>
+
+<style>
+.header,.footer{
+	width:100%;  
+	background: #eee;
+	height:60px;
+}
+.wrap{
+	margin-right:200px;
+	background-color: green;
+	min-height: 300px;
+}
+.container:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.main{
+	width: 100%;
+	float: left;
+}
+
+.right{
+	min-height: 300px;
+	width: 200px;
+	background-color: blue;
+	float: left;
+	margin-left: -200px;
+}
+
+
+</style>
+</head>
+<body>
+	<div class="header">header</div>
+	<div class="container">
+		<div class="main">
+			<div class="wrap">中间部分</div>
+		</div>
+		<div class="right">right</div>
+	</div>
+	<div class="footer">footer</div>
+
+
+</body>
+</html>

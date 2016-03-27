@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>level-8-2</title>
+    <style>
+     body,ul,p,h1,h3{
+       margin:0;padding:0;
+      }
+      
+     li{
+        list-style:none;
+     }
+
+      a{
+        text-decoration:none;
+      }
+
+      body{
+        font-family:'微软雅黑',Arial;
+      }
+
+      #header{
+       background:#333;height:80px;
+      }
+
+      .nav li{
+        display:inline-block;
+        line-height:80px;
+        font-size:30px;
+        margin-right:40px;
+      }
+
+      .nav{
+        margin-left:15px;
+      }
+
+      .nav a{
+        color:green;
+      }
+
+      .title{
+        text-align:center;
+        color:green;
+        letter-spacing:5px;
+        margin-top:30px;
+        margin-bottom:10px;}
+      .desc{text-indent:2em;
+        color:gray;
+      }
+
+      h3{
+        margin-top:20px;
+        border-bottom:1px dashed #ccc;
+        padding-bottom:10px;
+      }
+
+      p{
+        text-indent:2em;
+        padding-top:15px;
+        margin-bottom:15px;
+      }
+
+      .tree>li{
+        text-indent:2em;
+      }
+
+      .tree>li a{
+        color:green;
+      }
+
+      .tree .open li{
+        text-indent:4em;
+      }
+
+      .tree>li:nth-child(2) li{
+        display:none;
+      }
+
+      .tree>li:before{
+        content:"+ ";
+      }
+
+      .tree>li:first-of-type:before{
+        content:"- ";
+      }
+    </style>
+  </head>
+  <body>
+    <body>
+      <div id="header">
+        <ul class="nav">
+          <li><a href="">首页</a></li>
+          <li><a href="">简介</a></li>
+          <li><a href="">作品</a></li>
+          <li><a href="">关于</a></li>
+        </ul>
+      </div>
+      <div id="content">
+        <h1 class="title">前端学习</h1>
+        <p class="desc">这是我的前端学习笔记</p>
+        <h3>第一章</h3>
+        <p>这是我的前端学习笔
+          记这是我是<span class="text-less"> 特别的</span> 的前端学习笔
+          记这是我的前端学习笔记这是
+          我的前端学习,笔记这是我, 的前端,
+          学习笔记
+        </p>
+        <h3>第二章</h3>
+        <p>这是我的前端学习笔
+          记这是我的前端学习笔
+          记这是我的<span class="text-less"> 特别的</span>前端学习笔记这是
+          我的前端学习,笔记这是我, 的前端,
+          学习笔记
+        </p>
+        <ul class="tree">
+          <li class="open has-child">
+            <a href="#">记笔记</a>
+            <ul>
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li class="has-child">
+            <a href="#">做作业</a>
+            <ul>
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li><a href="#">多思考</a></li>
+          <li><a href="#">多练习</a></li>
+        </ul>
+      </div>
+      <div id="footer"></div>
+    </body>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task11-1</title>
+	<style>
+	body, div, ul, li {
+		margin: 0; 
+		padding: 0;
+	}
+	div{
+		width:100%;
+		background: #ccc;
+		min-height: 40px;
+	}
+	li{
+		list-style: none;
+	}
+    a {
+    	text-decoration: none;
+    	color: #333;
+    }
+	.container>li{
+     	float:left;
+     	padding:0 10px;
+     	line-height: 40px;
+     	position: relative; 
+     }
+	.container>li:hover{
+		background-color:#aaa;
+	}	
+
+	.child{
+		display:none;
+		position: absolute;
+		border:1px solid #ccc;
+		left: 0;
+     	top: 100%;
+	}
+	.child>li{
+		padding:0 10px;
+	}
+	.child>li:hover{
+		background: #ccc;
+	}
+	li:hover .child{
+     	display: block;
+    }
+
+
+
+	</style>
+
+</head>
+<body>
+<div>
+	<ul class="container">
+		<li>
+			<a href="#">前端</a>
+			<ul class="child">
+				<li>JavaScript</li>
+				<li>CSS</li>
+				<li>HTML</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">服务端</a>
+			<ul class="child">
+				<li>Node</li>
+				<li>PHP</li>
+				<li>Java</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">前端工具</a>
+			<ul class="child">
+				<li>Sublime</li>
+				<li>WebSrorm</li>
+				<li>Git</li>
+			</ul>
+		</li>
+		<li>
+			<a href="#">HTML</a>
+		</li>
+		<li>
+			<a href="#">NODE</a>
+		</li>
+	</ul>
+</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-12-1,圣杯三栏布局</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<style>
+    body,div{
+    	margin:0;
+    	padding:0;
+    }
+	.header,.footer{
+		height: 50px;
+		background: #ccc;
+	}
+	.middle,.left,.right{
+		float: left;
+		min-height: 150px;
+		position: relative;
+	}
+	.main{
+		padding:0px 200px 0 200px;
+		overflow: hidden;
+		min-height: 150px;
+	}
+	
+	
+	.left{
+		background-color: red;
+		margin-left: -100%;
+		width: 200px;
+		left: -200px;
+	}
+	.middle{
+		background-color: green;
+		position:relative;
+		width: 100%;
+	}
+		.right{
+		background-color: yellow;
+		margin-left: -200px;
+		width: 200px;
+		left: 200px;
+
+	}
+	.main:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+
+</style>
+</head>
+<body>
+    <div class="header">头部</div>
+    <div class="main">
+    	<div class="middle">圣杯布局三栏中间栏自适应高度。</div>
+    	<div class="left">左侧固定宽度</div>
+    	<div class="right">右侧固定宽度</div>
+    </div>
+    <div class="footer">尾部</div>
+</body>
+</html>

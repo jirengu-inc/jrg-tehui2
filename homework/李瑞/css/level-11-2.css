@@ -1,0 +1,21 @@
+
+body{
+	margin:0;
+	padding:0;
+}
+
+#header,#footer{
+	background:red;
+	min-height:50px;
+	clear:both;
+}
+#content .aside{
+	background:#eee;
+	width:200px;
+	float:left;
+}
+#content .main{
+	overflow: auto;
+	background:pink;
+	height:300px;
+}

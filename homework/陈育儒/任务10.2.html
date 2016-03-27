@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+<head>
+	<title>任务10.2</title>
+	<meta charset="utf-8">
+	<style>
+          body{
+               margin:0;
+               padding:0;
+          }
+          .div1{
+               width:150px;
+               height:80px;
+               border:1px solid #999;
+               margin:30px;
+               position:relative;
+          }
+          .border1{
+               width:0;
+               height:0;
+               border-bottom:10px solid #999;
+               border-right:10px solid transparent;
+               border-left:10px solid transparent;
+               position:absolute;
+               top:-10px;
+               left:10px;
+          }
+          .border2{
+               width:0;
+               height:0;
+               border-top:20px solid #999;
+               border-left:20px solid transparent;
+               position:absolute;
+               top:0px;
+               right:0px;
+          }
+          .border3{
+               width:20px;
+               height:20px;
+               content:"";
+               background-color:white;
+               transform:rotate(45deg);
+               border-top:1px solid #999;
+               border-left:1px solid #999;
+               position:absolute;
+               top:-11px;
+               left:10px;
+          }
+     </style>
+</head>
+<body>
+     <div class="div1">
+          <div class="border1"></div>
+     </div>
+     <div class="div1">
+          <div class="border2"></div>
+     </div>
+     <div class="div1">
+          <div class="border3"></div>
+     </div>
+  
+</body>
+</html>

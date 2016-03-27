@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 28-1</title>
+    <style>
+        #header {
+            height: 80px;
+            line-height: 80px;
+            background: red;
+            text-align: center;
+        }
+
+        #nav {
+            height: 40px;
+            background: blue;
+            margin-top: 20px;
+        }
+
+        #nav.fixed {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            margin-top: 0;
+        }
+
+        .container {
+            background: #ccc;
+            padding: 10px;
+        }
+
+        .container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        #aside {
+            float: left;
+            width: 100px;
+            background: green;
+            min-height: 400px;
+        }
+        #main {
+            margin-left: 100px;
+            min-height: 800px;
+            background: #fff;
+            padding-left: 20px;
+        }
+        #footer {
+            height: 30px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="header">header</div>
+<div id="nav">nav</div>
+<div class="container">
+    <div id="aside">aside</div>
+    <div id="main">main</div>
+</div>
+<div id="footer">footer</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    var $nav = $("#nav");
+    var $navTop = $nav.offset().top;
+    var hasCopy = false;
+    var isFixed = false;
+    $(window).scroll(function() {
+                if ($(window).scrollTop() >= $navTop) {
+                    if (!isFixed) {
+                        $copyNav = $nav.clone();
+                        $copyNav.css("visibility", "hidden");
+                        $copyNav.insertAfter($nav);
+                        hasCopy = true;
+                        $nav.addClass("fixed");
+                        isFixed = true;
+                    }
+                } else {
+                    if (hasCopy){
+                        $copyNav.remove();
+                    }
+                    $nav.removeClass("fixed");
+                    isFixed = false;
+                }
+            }
+    );
+</script>
+</body>
+</html>

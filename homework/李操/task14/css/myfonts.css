@@ -1,0 +1,43 @@
+/*字体声明*/
+
+/*字体1：source_sans_pro-webfont*/
+@font-face{
+	font-family: source_sans_pro-webfont;
+	src:url("../fonts/source_sans_pro-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: source_sans_pro-webfont;
+	src:url("../fonts/source_sans_pro-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: source_sans_pro-webfont;
+	src:url("../fonts/source_sans_pro-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体2：source_sans_pro_hard-webfont*/
+@font-face{
+	font-family: source_sans_pro_hard-webfont;
+	src:url("../fonts/source_sans_pro_hard-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: source_sans_pro_hard-webfont;
+	src:url("../fonts/source_sans_pro_hard-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: source_sans_pro_hard-webfont;
+	src:url("../fonts/source_sans_pro_hard-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体3：source_sans_pro_light-webfont*/
+@font-face{
+	font-family: source_sans_pro_light-webfont;
+	src:url("../fonts/source_sans_pro_light-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: source_sans_pro_light-webfont;
+	src:url("../fonts/source_sans_pro_light-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: source_sans_pro_light-webfont;
+	src:url("../fonts/source_sans_pro_light-webfont.svg");/*SVG file for iPhoe*/
+}
