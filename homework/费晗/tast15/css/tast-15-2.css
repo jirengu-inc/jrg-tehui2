@@ -40,7 +40,10 @@ li{
 	z-index: 10;
 	background-color: #222;
 }
-#topnav .navbar{
+#topnav ul.navbar:after{
+	content: "";
+	display: block;
+	clear: both;
 }
 #topnav li{
 	float: right;
@@ -48,10 +51,10 @@ li{
 	line-height: 70px;
 	margin-left: 30px;
 }
-/*
+
 #topnav li:first-of-type{
     margin-left: 0;
-}*/
+}
 #topnav a{
 	color: #fff;
 	font-size: 14px;
@@ -124,26 +127,27 @@ li{
 #services{
 	background-color: #fff;
 }
-.nav-h2-decp{
+/*.nav-h2-decp{
 	margin: 0 auto;
 	padding-top: 140px;
-}
+}*/
 #services .wrap-center{
     text-align: center;
     height: 684px;
 }
-.nav-h2-decp h2{
+h2{
     font-size: 38px;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 20px;
+    padding-top: 140px;
 }
 h3{
 	font-size: 18px;
 	font-weight: bold;
 	margin: 15px auto;
 }
-.nav-h2-decp p{
+p{
 	color: #838383;
 	letter-spacing: 1px;
 	font-style: italic;
@@ -152,7 +156,7 @@ h3{
     display: inline-block;
     *display: inline;
     padding: 50px 10px;
-    width: 350px;
+    width: 355px;
 }
 .fa-circle{
 	color: #fed136;
@@ -244,19 +248,19 @@ h3{
 #about .content{
 	position: absolute;
 	margin-top: -8px;
-	width: 500px;
+	width: 440px;
 	height: 180px; 
 }
 #about li:nth-child(1) .content,#about li:nth-child(3) .content{
 	text-align: right;
 	top: 0;		
-	left: -50px;
-    clear: right;
+	left: 10px;
+   /* clear: right;*/
 }
 #about li:nth-child(2) .content,#about li:nth-child(4) .content{
 	text-align: left;
 	top: 0;
-	right: -50px;
+	right: 10px;
 }
 #about .content h3{
 	font-style: normal;

@@ -66,12 +66,19 @@ li{
 	font-size: 22px;
 }
 /*------about------*/
-.about{
+/*.about{
 	position: relative;
 	width: 960px;
 	left: 50%;
 	margin-left: -480px;
 	padding: 65px 0;
+	text-align: center;
+	background-color: #fff;
+}*/
+.about{
+	position: relative;
+	width: 960px;
+	margin: 40px auto;
 	text-align: center;
 	background-color: #fff;
 }
@@ -98,11 +105,17 @@ li{
 	padding-top: 70px;
 	padding-bottom: 50px;
 }
+.services .services-container ul:after{
+	content: '';
+	display: block;
+    clear: both;
+}
 .services .services-container {
 	position: relative;
 	width: 960px;
-	left: 50%;
-	margin-left: -480px;
+	/*left: 50%;
+	margin-left: -480px;*/
+	margin: 0 auto;
 	text-align: center;
 	color: #fff;
 }
@@ -178,17 +191,22 @@ li{
 	color: #E5E4E4;
 	margin-top: -5px;
 }
+/*#work ul:after{
+	content: '';
+	display: block;
+    clear: both;
+}*/
 #work ul{
 	margin-top: 20px;
 }
 #work li{
-	margin-bottom: 30px;
 	width: 470px;
+	margin-bottom: 30px;
 	display: inline-block;
 	*display: inline;
 }
 #work img{
-	width: 94%;   /*图片实际高度500px，li设置为470px*/
+	width: 94%;   /*图片实际宽度500px，li设置为470px*/
 }
 #work img:hover{
 	opacity: 0.8;
@@ -217,6 +235,7 @@ li{
 }
 #more a{
 	display: inline-block;
+	*display: inline;
 	width: 120px;
 	height: 45px;
 	line-height: 45px;
@@ -273,6 +292,7 @@ li{
 	color: #337AB7;
 	font-size: 40px;
 	display: inline-block;
+	*display: inline;
 	margin: 20px 15px;
 }
 #footer .icon a:hover{
@@ -282,7 +302,6 @@ li{
 	color: #77777b;
 	font-size: 14px;
 	padding-top: 8px;
-
 }
 .address p span{
 	margin-right: 5px;
