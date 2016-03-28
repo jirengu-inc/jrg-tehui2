@@ -1,0 +1,68 @@
+ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    font-size: 14px;
+}
+a {
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+}
+.tab:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.tab li {
+    float: left;
+    border: 1px solid #ccc;
+}
+
+.box:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.box {
+    width: 820px;
+    border: 1px solid #ccc;
+    text-align: center;
+    display: none;
+}
+.box li {
+    width: 250px;
+    float: left;
+    margin: 10px;
+    border: 1px solid #ccc;
+    position: relative;
+}
+.box li p:nth-child(3) {
+    color: red;
+}
+
+.active {
+    background: #eee;
+}
+
+.now {
+    cursor: pointer;
+    display: inline-block;
+    border: 2px solid red;
+    color: red;
+    padding: 5px;
+    position: absolute;
+    left: 90px;
+    top: 80px;
+    display: none;
+    font-weight: bold;
+}
+
+#add {
+    color: red;
+    padding: 10px;
+    border: 1px solid red;
+    border-radius: 5px;
+    margin: 10px;
+}
