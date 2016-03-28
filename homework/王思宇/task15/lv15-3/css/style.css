@@ -177,6 +177,9 @@ li.clear{
 .about{
 	padding:120px;
 }
+.timeline ul{
+	position: relative;
+}
 .timeline li:after{
 	content: "";
 	display: table;
@@ -187,7 +190,7 @@ li.clear{
 	border-left: 2px solid #ddd;
     position: absolute;
     left: 50%;
-    height: 180%;
+    height: 85%;
     margin-left: 15px;
 }
 .left1 .time-img{
@@ -198,7 +201,7 @@ li.clear{
 	height: 156px;
 	position: relative;
 	left: 50%;
-	margin-left: -25px;
+	margin-left: -15px;
 	margin-bottom: 120px;
 }
 .right1 .time-img{
@@ -209,7 +212,7 @@ li.clear{
 	height: 156px;
 	position: relative;
 	left: 50%;
-	margin-right: 255px;
+	margin-right: 230px;
 	margin-bottom: 120px;
 }
 .story .time-img{
@@ -220,7 +223,7 @@ li.clear{
 	height: 156px;
 	position: relative;
 	left: 50%;
-	margin-left: -80px;
+	margin-left: -60px;
 	margin-bottom: 120px;
 	background-color: #FED136;
 }
