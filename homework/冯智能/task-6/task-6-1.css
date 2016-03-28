@@ -1,0 +1,16 @@
+#box{
+	border: 1px solid #ccc;
+	height: 80px;
+	width: 200px;
+	vertical-align: middle;
+	text-align: center;
+	display: table-cell;
+}
+
+.content{
+	font-size: 14px;
+	color: #f0f;
+	
+	vertical-align: middle;
+	text-align: center;
+}
