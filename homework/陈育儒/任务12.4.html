@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+	<title>任务12.4</title>
+	<meta charset="utf-8">
+	<style>
+		html,body{
+			margin:0;
+			padding:0;
+		}
+		#header,#footer{
+			height:30px;
+			background:#ccc;
+		}
+
+		#container:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		.main,.right{
+			float:left;
+			min-height:130px;
+		}
+		.main{
+			width:100%;
+		}
+		.main-inner{
+			min-height:130px;
+			margin-right:200px;
+			background:green;
+		}
+		.right{
+			width:200px;
+			background:yellow;
+			margin-left:-200px;
+			opacity:0.5;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="main">
+			<div class="main-inner">
+				我是主内容
+			</div>
+		</div>
+		<div class="right">我是右边栏</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>
+<!--双飞翼布局没有使用relative，其次，对包裹main-Inner的main设置了宽度100%，再对中间栏里面的元素使用浮动，对父容器使用伪类after的方法清除浮动，形成bfc，然后用负margin的方法，使侧栏偏移上去。-->
