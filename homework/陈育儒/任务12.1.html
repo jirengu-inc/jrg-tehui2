@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+	<head>
+		<title>任务12.1</title>
+		<meta charset="utf-8">
+		<style>
+			html,body{
+				margin:0;
+				padding:0;
+			}
+			#header,#footer{
+				height:30px;
+				background-color:#ccc;
+			}
+			#container{
+				padding:0 80px;
+			}
+			#container:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.center{
+				width:100%;
+				height:80px;
+				background-color:pink;
+			}
+			.left{
+				width:80px;
+				height:100px;
+				background-color:yellow;
+				margin-left:-100%;
+				position:relative;
+				left:-80px;
+			}
+			.right{
+				width:80px;
+				height:100px;
+				background-color:blue;
+				margin-left:-80px;
+				position:relative;
+				left:80px;
+			}
+			.float{
+				float:left;
+			}
+
+		</style>
+		<!--圣杯布局特点：父容器里面的子元素都是浮动元素，其次，父容器不要设置宽度(不管使百分比还是数字，否则会使容器超出外面。其次，使用浮动元素后，负边距能使元素移动，如果超过自己宽度，则会变到上一行，如果设置100%则是父容器的宽度。最后对父容器设置左右padding，宽度使两栏的宽度，使用position定位的方式，使元素往左右两边移动。)-->
+	</head>
+	<body>
+		<div id="header">头部</div>
+		<div id="container">
+			<div class="center float">中间</div>
+			<div class="left float">左边</div>
+			<div class="right float">右边</div>
+		</div>
+		<div id="footer">尾部</div>
+	</body>
+</html>
