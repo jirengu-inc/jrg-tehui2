@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>能回到顶部的懒加载 | Task 29-1 & 29-2</title>
+    <style>
+        body {
+            height: 3000px;
+        }
+        #to-top {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            display: none;
+            width: 85px;
+            height: 35px;
+            line-height: 35px;
+            text-align: center;
+            border: 1px solid red;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        #products-show {
+            width: 900px;
+            margin: 20px auto;
+        }
+
+        li {
+            list-style: none;
+            display: inline-block;
+            margin: 20px;
+        }
+
+        img {
+            /* 不设置宽高那大家的offsetTop都缩水啦 */
+            width: 400px;
+            height: 250px;
+        }
+    </style>
+</head>
+<body>
+<ul id="products-show">
+    <!-- 敢不设置src地址就敢给你加个困扰的灰框...= = -->
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww1.sinaimg.cn/large/696270d9jw1f28sedl7d7j20b406yq39.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww1.sinaimg.cn/large/696270d9jw1f28sedl7d7j20b406yq39.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/696270d9jw1f28sftgng6j20b406yq3n.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/696270d9jw1f28sftgng6j20b406yq3n.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/696270d9jw1f28sg6y7dtj20b406yq3f.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/696270d9jw1f28sg6y7dtj20b406yq3f.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/696270d9jw1f28sgjt8qwj20b406yaar.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/696270d9jw1f28sgjt8qwj20b406yaar.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww1.sinaimg.cn/large/bfc459bbjw1f2e41t3hmij20b406yjua.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww1.sinaimg.cn/large/bfc459bbjw1f2e41t3hmij20b406yjua.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww3.sinaimg.cn/large/bfc459bbjw1f2e42lcvauj20b406yjrv.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww3.sinaimg.cn/large/bfc459bbjw1f2e42lcvauj20b406yjrv.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/bfc459bbjw1f2e42wb6usj20b406ydg7.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww2.sinaimg.cn/large/bfc459bbjw1f2e42wb6usj20b406ydg7.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww3.sinaimg.cn/large/bfc459bbjw1f2e43734d9j20b406yabg.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww3.sinaimg.cn/large/bfc459bbjw1f2e43734d9j20b406yabg.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/bfc459bbjw1f2e43j5ajuj20b406ywgb.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/bfc459bbjw1f2e43j5ajuj20b406ywgb.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/bfc459bbjw1f2e43t3psrj20b406y75x.jpg"></a></li>
+    <li><a href=""><img src="http://joysr.com/img/hw/loading.png" data-src="http://ww4.sinaimg.cn/large/bfc459bbjw1f2e43t3psrj20b406y75x.jpg"></a></li>
+</ul>
+<div id="to-top">回到顶部</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    /* 任务29-1 */
+    var $toTop = $("#to-top");
+    $(window).scroll(function() {
+        if ($(window).scrollTop() > 400) {
+            $toTop.show();
+        } else {
+            $toTop.hide();
+        }
+    });
+
+    $toTop.on("click", function() {
+        $(window).scrollTop(0);
+    });
+
+    /* 任务29-2 */
+    var clock;
+    $(window).scroll(function() {
+        if (clock) {
+            clearTimeout(clock);
+        }
+        clock = setTimeout(function () {
+            showPic();
+        }, 300);
+    });
+
+        showPic();
+
+        function showPic() {
+            var $img = $("#products-show img");
+            $img.each(function() {
+                if ($(this).attr("isLoad")) return;
+                var sTop = $(window).scrollTop();
+                var wHeight = $(window).height();
+                var thisTop = $(this).offset().top;
+
+                if ((sTop + wHeight) > thisTop) {
+                    loadPic($(this));
+                }
+            });
+        }
+
+        function loadPic($item) {
+            var imgSrc = $item.attr("data-src");
+            $item.attr("src", imgSrc);
+            $item.attr("isLoad", true);
+            $item.parents("a").attr("href", imgSrc);
+        }
+</script>
+</body>
+</html>
