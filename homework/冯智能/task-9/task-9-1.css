@@ -1,0 +1,41 @@
+.ul1 a{
+	text-decoration: none;
+	color:black;
+	font-weight:bold;
+}
+.ul1>li{
+	list-style: none;
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	position: relative;
+	padding-left: 2em;
+}
+.forward{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: 0 -65px;
+}
+.start{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: 0 -32px;
+}
+.stop{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: -4px -143px;
+}
+.forward:hover{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: -1px -101px;	
+}
+.start:hover{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: -5px -178px;	
+}
+.stop:hover{
+	background: url(xuebitu/img.png) no-repeat;
+	background-position: 0 0;	
+}
+a:hover{
+			color: #a75fc0;
+		}
