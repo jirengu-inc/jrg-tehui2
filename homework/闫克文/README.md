@@ -1,1 +1,1 @@
-Today is shenme day
+Today is a beautiful day
