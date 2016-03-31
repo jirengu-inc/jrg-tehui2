@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+  <meta charset="utf-8">
+  <title>task-07</title>
+    <style>
+      body {font-family: "Microsoft Yahei","微软雅黑";}
+      .main {
+      	-webkit-padding-start:1rem;
+      	padding-top: 1rem;
+      	padding-bottom:1rem;
+	    border: 2px solid #ccc;
+      }
+      .main li{
+      	display: inline-block;
+      	margin-right:2rem;
+      	color:#444;
+      	font-size: 1.5rem;
+      }
+      .main li a {
+      	text-decoration: none;
+      	transition: 0.3s;
+      }
+      .main li a:hover {
+      	color:red;
+      }
+
+    </style>
+</head>
+<body>
+  <ol class="main">
+  	<li><a href="#">主页</a></li>
+  	<li><a href="#">课程</a></li>
+  	<li><a href="#">视频</a></li>
+  	<li><a href="#">关于</a></li>
+  </ol>
+  <div>--------------上面是导航下面是表单-----------------------</div>
+  <form name="myfrom" action="a.php" method="post">
+  	<label>姓名：</label>
+  	<input name="username" type="text" placeholder="用户名"></input>
+  	<br/>
+  	<label>密码：</label>
+  	<input name="password" type="password" placeholder="密码"></input>
+  	<br/>
+  	<label>性别：</label>
+  	<input  type="radio" name="sex" value="man" checked>男</input>
+  	<input  type="radio" name="sex" value="female">女</input>
+  	<br/>
+  	<label>取向：</label>
+  	<input  type="radio" name="target" value="man">男</input>
+  	<input  type="radio" name="target" value="female" checked>女</input>
+  	<br/>
+  	<label>爱好：</label>  	
+  	<input type="checkbox" name="dota" value="dota">Dota</input>
+  	<input type="checkbox" name="journey" value="journey" checked>旅游</input>
+  	<input type="checkbox" name="pet" value="pet" checked>宠物</input>
+  	<br/>
+  	<label>评论：</label> 
+  	<textarea name="comment" rows="10" cols="21" placeholder="在这里输入评论。。。"></textarea>
+  	<br/>
+  	<label>我的车：</label>
+  	<select name="mycar">
+      <option value="volvo">volvo</option>
+      <option value="saab">saab</option>
+      <option value="opel">opel</option>
+      <option value="audi">audi</option>
+      <option value="phenix" selected>凤凰牌</option>
+  	</select>
+  	<input name="submit" type="submit" value="提交">
+  	<input name="reset" type="reset" value="重置">
+
+  </form>
+</body>
+</html>
