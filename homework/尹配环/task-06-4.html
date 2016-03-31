@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--参考资料：http://www.w3cplus.com/css/inline-blocks.html -->
+	<!--dispaly-cell介绍：http://www.cnblogs.com/StormSpirit/archive/2012/10/24/2736453.html-->
+	<meta charset="utf-8">
+	<title>task-06-4</title>
+	<style type="text/css">
+		.center {
+			display:table-cell;
+			width:200px;
+			height:200px;
+			vertical-align:middle;
+			text-align:center;
+			background-color: #ccc;
+		}
+    	.classtd{ 
+    		display: table-cell; 
+    		padding:10px;
+    		border:1px solid #ccc;
+    		vertical-align: middle;
+    	}  
+    	.classtd div{ 
+    		display: inline-block; 
+    		vertical-align: middle;
+    	}  
+	</style>
+</head>
+<body>
+<div class="center">
+	<img src="http://www.liaoxuefeng.com/static/img/download-on-the-app-store.png">
+</div>
+<div class="classtd">  
+    <div style="padding:40px 80px 10px 10px; background: #639146; color:#fff;">div+css</div>
+    <div style="padding:60px 80px 10px 10px; background: #2B82EE; color:#fff;">javascript</div>  
+    <div style="padding:70px 80px 10px 10px; background: #F57900; color:#fff;">HTML5</div>  
+    <div style="padding:80px 80px 10px 10px; background: #BC1D49; color:#fff;">CSS3</div>  
+</div> 
+
+</ul>
+</body>
+</html>

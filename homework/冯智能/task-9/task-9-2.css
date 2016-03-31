@@ -1,0 +1,16 @@
+   	a {
+    	color: #333;
+    	text-decoration: none;
+    	font-size: 22px;
+    }
+    li {
+      list-style: none;
+      display: inline-block;
+    }
+    li:hover * {
+      color: #9d55b8;
+    }
+    li a {
+      margin-left: 5px;
+      margin-right: 10px;
+    }  	
