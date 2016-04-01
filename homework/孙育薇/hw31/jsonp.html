@@ -58,15 +58,10 @@
     }
 
     addEvent(btn, "click", function() {
-        var secret = "TELLME!";
-        fetchSecret(secret);
-        btn2.disabled = true;
-        btn2.style.cursor = "not-allowed";
+        fetchSecret("TELLME!")
     });
-
     addEvent(btn2, "click", function() {
-        var secret = "HEHE";
-        fetchSecret(secret);
+        fetchSecret("HEHE!")
     });
 
     function setURL(data) {
@@ -85,6 +80,7 @@
     }
 
     function jsonpCallback(result) {
+        content.innerText = "数据获取中...";
         if (result["status"] === 1) {
             content.innerText = result["text"];
         } else if (result["status"] === 0) {
@@ -97,6 +93,8 @@
         var url = setURL(data);
         setJSONP(url);
         jsonpCallback(data);
+        btn2.disabled = true;
+        btn2.style.cursor = "not-allowed";
     }
 </script>
 </body>
