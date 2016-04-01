@@ -13,5 +13,7 @@
 
     $result = json_encode($data);
 
-    $callback=$_GET['callback'];
+    if (isset($_GET["callback"])) {
+        $callback=trim($_GET["callback"]);
+    }
     echo $callback."($result)";

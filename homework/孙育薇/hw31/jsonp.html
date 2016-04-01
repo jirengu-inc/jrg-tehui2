@@ -57,19 +57,6 @@
         }
     }
 
-    function removeEvent(node, type, handler) {
-        if (!node) return false;
-        if (node.removeEventListener) {
-            node.removeEventListener(type, handler, false);
-            return true;
-        } else if (node.detachEvent) {
-            node.detachEvent('on' + type, handler);
-            return true;
-        } else {
-            node["on" + type] = null;
-        }
-    }
-
     addEvent(btn, "click", function() {
         var secret = "TELLME!";
         fetchSecret(secret);
