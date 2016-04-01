@@ -1,0 +1,37 @@
+.blue-yellow-green-red{
+    border: 50px solid;
+    border-color: blue yellow green red;
+}
+div{
+    width: 0px;
+    height: 0px;
+    margin:30px auto;
+ }
+ .blue{
+ 	border-left: 50px solid transparent;
+ 	border-right: 50px solid transparent;
+ 	border-top: 50px solid blue;
+ }
+ .red{
+ 	border-top: 50px solid transparent;
+ 	border-bottom: 50px solid transparent;
+ 	border-left: 50px solid red;
+ }
+  .yellow{
+ 	border-top: 50px solid transparent;
+ 	border-bottom: 50px solid transparent;
+ 	border-right: 50px solid yellow;
+ }
+  .green{
+ 	border-left: 50px solid transparent;
+ 	border-right: 50px solid transparent;
+ 	border-bottom: 50px solid green;
+ }
+ .div-red{
+ 	border-left: 50px solid red;
+ 	border-top: 50px solid transparent;
+ }
+  .div-green{
+ 	border-right: 50px solid green;
+ 	border-top: 50px solid transparent;
+ }

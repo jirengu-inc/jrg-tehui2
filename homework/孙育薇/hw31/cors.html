@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 31</title>
+    <style>
+        button {
+            width: 200px;
+            height: 40px;
+            color: coral;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid coral;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+            background: transparent;
+            cursor: pointer;
+        }
+        button:focus {
+            outline: none;
+        }
+
+        #content {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid coral;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<button id="btn">点击获取一个秘密</button>
+<div id="content"></div>
+<script>
+    var btn = document.getElementById("btn");
+    var content = document.getElementById("content");
+
+    function getHTTPObject() {
+        if (typeof XMLHttpRequest === "undefined") {
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+            catch (e) {}
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.3.0"); }
+            catch (e) {}
+            try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+            catch (e) {}
+            return false;
+        }
+        return new XMLHttpRequest();
+    }
+
+    function addEvent(node, type, handler) {
+        if (!node) return false;
+        if (node.addEventListener) {
+            node.addEventListener(type, handler, false);
+            return true;
+        } else if (node.attachEvent) {
+            node.attachEvent('on' + type, handler);
+            return true;
+        }
+        return false;
+    }
+
+    function ajax(opts) {
+        var request = getHTTPObject();
+        if (request) {
+            var data = "";
+            for (var key in opts.data) {
+                data += key + "=" + opts.data[key] + "&";
+            }
+            data = data.substr(0, data.length - 1);
+            if (opts.type.toLowerCase() === "get") {
+                request.open(opts.type, opts.url + "?" + data, true);
+                request.send();
+            } else if (opts.type.toLowerCase() === "post") {
+                request.open(opts.type, opts.url, true);
+                request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                request.send(data);
+            }
+            request.onreadystatechange = function () {
+                if (request.readyState === 4 && request.status === 200) {
+                    var response = JSON.parse(request.responseText);
+                    opts.success(response);
+                }
+                if (request.readyState === 4 && request.status === 404) {
+                    opts.error();
+                }
+            }
+        } else {
+            return false;
+        }
+    }
+
+        addEvent(btn, "click", function() {
+            var secret = "TELLME!";
+            ajax({
+                type: "get",
+                url: "//joysr.com/hw/hw31/ajax.php",
+                data: {"secret": secret},
+                success: function(response) {
+                    if (response["status"] === 1) {
+                        content.innerText = response["text"];
+                    }
+                },
+                error: function(){
+                    alert("加载数据错误");
+                }
+            });
+        });
+</script>
+</body>
+</html>

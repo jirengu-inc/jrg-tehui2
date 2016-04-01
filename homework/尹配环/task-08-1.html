@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<title>btn class</title>
+	<style>
+	   .btn{
+	   	display: inline-block; 			/*行内块*/
+			box-sizing: border-box;			/*真实宽高*/
+      width: 68px;
+      height: 40px;
+      padding:0;
+      margin:0;      
+      line-height: 40px;          /*行内元素垂直居中*/
+      text-align: center;	        /*行内元素水平居中*/
+      
+      border: none;								/*去掉默认边框*/
+      text-decoration: none;			/*去掉默认下划线*/
+      border-radius: 5px;					/*边框圆角*/
+      cursor: pointer;            /*手型鼠标*/
+      
+      font-family:"Microsoft YaHei",Verdana,sans-serif;
+      font-size:20px;
+      color: white;
+      background-color: #e25f31;
+
+    }
+    .btn:hover{
+      background: #c14d21;
+    }
+    .btn:active{
+      background: #e25f31;
+    }
+	</style>
+</head>
+<body>
+	<a class="btn" href="#">确定</a>
+	<span class="btn" >取消</span>
+	<div class="btn">提交</div>
+	<button class="btn"> 发送</button>
+</body>
+</html>
