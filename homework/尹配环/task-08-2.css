@@ -1,0 +1,58 @@
+body {font-family: "微软雅黑","sans-serif";}
+#header {
+	background-color: #444;
+}
+#header .nav {
+	padding: 1rem;
+}
+#header .nav li {
+	display: inline-block;
+	margin-right: 1rem;
+
+}
+#header .nav li a {
+	color:green;
+	font-weight: bold;
+	text-decoration: none;
+}
+
+#content {
+
+}
+#content .title {
+	text-align: center;
+	color:green;
+}
+#content .desc {
+	text-indent:2rem;
+	color:#888;
+}
+#content h3 {
+	border-bottom: 2px #bbb dashed;
+}
+#content p {
+	text-indent: 2rem;
+}
+#content p span {
+	word-spacing: .7rem;
+}
+
+.tree li,ul {
+	list-style: none;
+}
+.tree a {
+	text-decoration: none;
+	color:green;
+	font-size: 1.5rem;
+}
+.tree .open::before {
+	content:"-";
+}
+.tree>li~li::before {
+	content:"+";
+}
+.tree .has-child ul li {
+	color:#555;
+	font-size:1.5rem;
+}
+
