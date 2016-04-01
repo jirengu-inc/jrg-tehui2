@@ -8,7 +8,6 @@ body {font-family: "微软雅黑","sans-serif";}
 #header .nav li {
 	display: inline-block;
 	margin-right: 1rem;
-
 }
 #header .nav li a {
 	color:green;
@@ -16,9 +15,6 @@ body {font-family: "微软雅黑","sans-serif";}
 	text-decoration: none;
 }
 
-#content {
-
-}
 #content .title {
 	text-align: center;
 	color:green;
@@ -43,7 +39,6 @@ body {font-family: "微软雅黑","sans-serif";}
 .tree a {
 	text-decoration: none;
 	color:green;
-	font-size: 1.5rem;
 }
 .tree .open::before {
 	content:"-";
@@ -53,6 +48,5 @@ body {font-family: "微软雅黑","sans-serif";}
 }
 .tree .has-child ul li {
 	color:#555;
-	font-size:1.5rem;
 }
 
