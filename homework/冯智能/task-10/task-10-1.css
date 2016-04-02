@@ -1,0 +1,75 @@
+#header{
+	background-color: #333333;
+	height: 50px;
+	width: 90%;
+	margin: 0 auto;
+}
+.content li{
+	display: inline-block;
+	list-style: none;
+	color: #e0e0e0;
+	text-indent: 3em;
+}
+.content{
+	float: right;
+	padding-right: 200px;
+}
+.logo{
+	
+	background: url(http://cdn.jirengu.com/public/logo-tiny.png) 180px 3px no-repeat;
+	float: left;
+	background-size: contain;
+	height: 30px;
+	width: 300px;	
+}
+#inner{
+	width: 900px;
+	margin: 5px auto 5px;
+}
+.inner-1{
+	width: 190px;
+	height: 500px;
+	float: left;
+	border: 5px solid white;
+	background-color: #eeeeee;
+}
+.inner-2{
+	width: 690px;
+	height: 150px;
+	float: right;
+	border: 5px solid white;
+	background-color: #eeeeee;
+}
+h2{
+  color: #646464;
+}
+p{
+	color: #9b9b9b;
+	line-height: 18px;
+	font-size: 12px;
+}
+.inner-2-1{
+	margin-left: 15px;
+	margin-top: 45px;
+}
+#footer{
+	height: 40px;
+	width: 90%;
+	background-color: #333333;
+	clear: both;
+	margin: 0 auto;
+	position: relative;
+}
+.footer-content{
+    margin-left: 80px;
+    margin-top: 8px;
+    color: white;
+    position: absolute;
+}
+.footer-content li{
+	display: inline-block;
+	list-style: none;
+	text-indent: 2em;
+	font-size: 10px;
+
+}
