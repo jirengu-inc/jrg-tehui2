@@ -1,20 +1,23 @@
 body, div, ul, li{
 	margin: 0px;
 	padding: 0px;
+	font-family:  "微软雅黑";
 }
 #header{
-  background-color: #ccc;
-  height: 35px;
-  line-height: 35px;
-  position: relative;
-  top: 10px;
-  left: 5px;
+  	background-color: #ccc;
+  	height: 35px;
+  	line-height: 35px;
+  	position: relative;
+  	top: 10px;
+ 	left: 5px;
 }
 .nav>li{
-  display: inline-block;
-  float: left;
-  list-style: none;
-  margin-left: 15px;
+  	display: inline-block;
+  	float: left;
+  	list-style: none;
+  	margin-left: 15px;
+  	width: 80px;
+ 	text-align: center;
 }
 .nav{
 	position: absolute;
@@ -24,13 +27,18 @@ body, div, ul, li{
 	text-decoration: none;
 	color: black;
 }
-.nav-1>li{
-	display: block;
-	list-style: none;
+.nav-list{
+	display: inline-block;
+	width: 80px;
 }
 .nav-1{
 	display: none;
+	list-style: none;
 }
-.nav-1>li:hover .nav-1{
+.nav-list:hover .nav-1{
 	display: block;
+	border: 1px solid #ccc;
+	width: 100px;
+	height: 110px;
+
 }
