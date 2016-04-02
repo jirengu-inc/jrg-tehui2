@@ -65,9 +65,9 @@
     });
 
     function setURL(data) {
-        var url = "";
+        var url = "//joysr.com/hw/hw31/ajax2.php?callback=jsonpCallback&";
         for (var key in data) {
-            url += "//joysr.com/hw/hw31/ajax2.php?callback=jsonpCallback&" + key + "=" + data[key] + "&";
+            url += key + "=" + data[key] + "&";
         }
         return url;
     }
@@ -96,6 +96,8 @@
         btn2.disabled = true;
         btn2.style.cursor = "not-allowed";
     }
+
+
 </script>
 </body>
 </html>
