@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 32</title>
+    <style>
+        body, ul, li, div, h4, p {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+
+        #gallery {
+            position: relative;
+            width: 910px;
+            margin: 0 auto;
+        }
+
+        #gallery li {
+            position: absolute;
+            list-style: none;
+            width: 280px;
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #eee;
+        }
+
+        #gallery img {
+            width: 260px;
+        }
+
+        #gallery h4 {
+            margin-top: 10px;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 5px;
+            font-size: 16px;
+        }
+
+        #gallery p {
+            font-size: 12px;
+            color: #777;
+            margin-top: 5px;
+            line-height: 1.7;
+        }
+
+        #helper {
+            width: 280px;
+            margin: 10px;
+            display: none;
+        }
+
+        #load {
+            border: 1px solid red;
+            margin: 20px;
+            width: 20px;
+            height: 20px;
+            visibility: hidden;
+        }
+
+    </style>
+</head>
+<body>
+<ul id="gallery"></ul>
+<div id="helper"></div>
+<div id="load"></div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    /*
+    * 看视频前完成效果后,加上看视频和示例代码后增加的内容
+    * 增加: page++ 功能显示新内容
+    * 增加: response获取后的状态判断
+    * 增加: clock2,判断连续滚动
+    * 增加: 等待图片加载完成再进行瀑布流
+    * */
+    var $load = $("#load");
+    var $gallery = $("#gallery");
+
+    function isVisible($node){
+        var sTop = $(window).scrollTop();
+        var wHeight = $(window).height();
+        var thisTop = $node.offset().top;
+
+        return ((sTop + wHeight) > thisTop);
+    }
+
+    var isLoading = false;
+
+    /* JSONP 获取数据 */
+
+    var apiKey = "1271687855";
+    var imgCount = 3;
+    var imgPage = 4;
+
+    function fetchData() {
+        if (!isLoading) {
+            isLoading = true;
+            $.ajax({
+                url: "//platform.sina.com.cn/slide/album_tech",
+                method: "GET",
+                dataType: "jsonp",
+                jsonp: "jsoncallback",
+                jsonpCallback: "func",
+                data: {
+                    "app_key": apiKey,
+                    "num": imgCount,
+                    "page": imgPage
+                }
+            }).done(function (response) {
+                if(response && response.status && response.status.code === "0") {
+                    generateImgList(response);
+                    imgPage++;
+                    isLoading = false;
+                } else {
+                    console.log("图片获取错误,请刷新页面");
+                    isLoading = false;
+                }
+            }).fail(function () {
+                console.log("图片获取错误,请刷新页面");
+                isLoading = false;
+            });
+        }
+    }
+
+    function confirmLoad($node) {
+        var defereds = [];
+        $node.find('img').each(function(){
+            var defer = $.Deferred();
+            $(this).load(function(){
+                defer.resolve();
+            });
+            defereds.push(defer);
+        });
+        $.when.apply(null,defereds).done(function() {
+            waterfall.init();
+        });
+    }
+
+    function generateImgList(response) {
+        var len = response["data"].length;
+        for (var i = 0; i < len; i++) {
+            var img = response["data"][i]["img_url"];
+            var url = response["data"][i]["url"];
+            var name = response["data"][i]["short_name"];
+            var intro = response["data"][i]["short_intro"];
+
+            var item = '' +
+                    '<li data-ranged="false">' +
+                    '<a href="' + url + '">' +
+                    '<img src="' + img + '">' +
+                    '</a>' +
+                    '<h4>' + name + '</h4>' +
+                    '<p>' + intro + '</p>' +
+                    '</li>';
+            $gallery.append($(item));
+            confirmLoad($(item));
+        }
+    }
+
+    function loadMore() {
+        if(isVisible($load)) {
+            var clock = setInterval(function() { //如果加载过后#load还可见,继续加载
+                fetchData();
+                if (!isVisible($load)) {
+                    clearInterval(clock);
+                }
+            },1000);
+        }
+    }
+
+    var clock2;
+    $(window).scroll(function() {
+        if (clock2) {
+            clearTimeout(clock2);
+        }
+        clock2 = setTimeout(function () {
+            loadMore();
+        }, 300);
+    });
+
+    /* 瀑布流 */
+
+    //抽象出瀑布流需要用到的变量
+    var $wfFrameTarget = $gallery;
+    var $wfWidthSetter = $("#helper");
+    var $wfRelativeWidthTarget = $gallery;
+    var $wfElem = "li";
+
+    var waterfall = {
+        $item: $wfFrameTarget,
+        itmWidth: $wfWidthSetter.outerWidth(true),
+        relativeWidth: $wfRelativeWidthTarget.width(),
+        count: 0,
+        heightArr: []
+    };
+
+    waterfall.setArr = function() {
+        this.count = parseInt(this.relativeWidth / this.itmWidth);
+        this.heightArr = [];
+        for (var i = 0; i < this.count; i++) {
+            this.heightArr.push(0);
+        }
+    };
+
+    waterfall.placeItem = function() {
+        this.$item.find($wfElem).each(function() {
+            if ($(this).attr("data-ranged") == "true") return;
+            var minHeight = Math.min.apply({}, waterfall.heightArr);
+            var idx = waterfall.heightArr.indexOf(minHeight);
+            $(this).css({
+                "top": minHeight,
+                "left": waterfall.itmWidth * idx
+            });
+            waterfall.heightArr[idx] += $(this).outerHeight(true);
+            $(this).attr("data-ranged", true);
+            //为撑开#gallery元素而增加的内容
+            var maxHeight = Math.max.apply({}, waterfall.heightArr);
+            var parentHeight = Math.max(maxHeight,minHeight+ $(this).height());
+            $wfFrameTarget.css("height", parentHeight);
+        });
+    };
+
+    waterfall.init = function() {
+        this.placeItem();
+    };
+
+    /* 瀑布流结束 */
+
+    //初始化
+    waterfall.setArr();
+    loadMore();
+</script>
+</body>
+</html>
