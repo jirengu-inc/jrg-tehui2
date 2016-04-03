@@ -12,26 +12,35 @@ $(function () {
     var imgLen = $ct.eq(0).children().length;
 
     // 左右按钮的显示和隐藏，用闭包解决for循环匿名函数无法调用参数i的问题
-    for(var i=0; i<$ct.length; i++){
+    // for(var i=0; i<$ct.length; i++){
+    //
+    //
+    //     function showBtn(i) {
+    //         return function () {
+    //             $($next[i]).css('display', 'block');
+    //             $($pre[i]).css('display', 'block');
+    //         }
+    //     }
+    //     function hideBtn(i) {
+    //         return function () {
+    //             $($next[i]).css('display', 'none');
+    //             $($pre[i]).css('display', 'none');
+    //         }
+    //     }
+    //
+    //     $($carousel[i]).on('mouseover', $($ct[i]), showBtn(i))
+    //                    .on('mouseleave', $($ct[i]), hideBtn(i));
+    //
+    // }
 
-
-        function showBtn(i) {
-            return function () {
-                $($next[i]).css('display', 'block');
-                $($pre[i]).css('display', 'block');
-            }
-        }
-        function hideBtn(i) {
-            return function () {
-                $($next[i]).css('display', 'none');
-                $($pre[i]).css('display', 'none');
-            }
-        }
-
-        $($carousel[i]).on('mouseover', $($ct[i]), showBtn(i))
-                       .on('mouseleave', $($ct[i]), hideBtn(i));
-
-    }
+    // jquery中选择器不需要遍历，这里利用回调函数里的$(this)
+    $carousel.on('mouseover', $ct, function(){
+        $(this).find('.pre').show();
+        $(this).find('.next').show();
+    }).on('mouseleave', $ct, function(){
+        $(this).find('.pre').hide();
+        $(this).find('.next').hide();
+    });
 
 
     //为左右按钮以及下面一排对应图片的小图标绑定点击事件
