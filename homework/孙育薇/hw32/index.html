@@ -109,7 +109,6 @@
             }).done(function (response) {
                 if(response && response.status && response.status.code === "0") {
                     generateImgList(response);
-                    waterfall.init();
                     imgPage++;
                     isLoading = false;
                 } else {
@@ -121,6 +120,22 @@
                 isLoading = false;
             });
         }
+    }
+
+    function confirmLoad($node) {
+        var defereds = [];  //创建存储 defered 对象的数组
+        $node.find('img').each(function(){
+            var defer = $.Deferred();
+            $(this).load(function(){
+                defer.resolve();
+            });   //当每个图片加载完成后，执行 resolve
+            defereds.push(defer);
+        });
+        $.when.apply(null,defereds).done(function() { //当所有的图片都执行 resolve 后，即全部图片加载后，执行下面的内容
+            console.log('new images all loaded ...');
+            //当节点里的图片全部加载后再使用瀑布流计算，否则会因为图片未加载 item 高度计算错误导致瀑布流高度计算出问题
+            waterfall.init();
+        });
     }
 
     function generateImgList(response) {
@@ -140,6 +155,7 @@
                     '<p>' + intro + '</p>' +
                     '</li>';
             $gallery.append($(item));
+            confirmLoad($(item));
         }
     }
 
