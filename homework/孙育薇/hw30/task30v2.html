@@ -49,8 +49,6 @@
 <script>
     var waterfall = {
         $item: $("#waterfall li"),
-        // 为何不能用this
-        // itmWidth: this.item.outerWidth(true),
         itmWidth: $("#waterfall li").outerWidth(true),
         windowWidth: $(window).width(),
         count: 0,
@@ -84,7 +82,7 @@
     };
 
     waterfall.init();
-    
+
     $(window).on("resize", function() {
         waterfall.placeItem();
     });
