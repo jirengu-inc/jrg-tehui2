@@ -68,7 +68,6 @@
     $(function () {
 
         var cur = 18;
-        var a = true;
 
         $('#ct').on('mouseover','li',function () {
             $(this).css('background','pink');
@@ -93,7 +92,6 @@
             function loadMore() {
 
                 $('#load-more').text('loading');
-                a = true;
 
                 $.get('task-29-3.php?'+ new Date().getTime() ,{
                     start: cur,
@@ -105,7 +103,6 @@
                             var newLi = '<li>' + data.data[i] + '</li>';
                             newUl += newLi;
                         }
-                        a = false;
                         cur += 6;
 
                         $('#load-more').text('加载更多');
