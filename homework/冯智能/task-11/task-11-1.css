@@ -1,0 +1,44 @@
+body, div, ul, li{
+	margin: 0px;
+	padding: 0px;
+	font-family:  "微软雅黑";
+}
+#header{
+  	background-color: #ccc;
+  	height: 35px;
+  	line-height: 35px;
+  	position: relative;
+  	top: 10px;
+ 	left: 5px;
+}
+.nav>li{
+  	display: inline-block;
+  	float: left;
+  	list-style: none;
+  	margin-left: 15px;
+  	width: 80px;
+ 	text-align: center;
+}
+.nav{
+	position: absolute;
+	left: 10px;
+}
+.nav a{
+	text-decoration: none;
+	color: black;
+}
+.nav-list{
+	display: inline-block;
+	width: 80px;
+}
+.nav-1{
+	display: none;
+	list-style: none;
+}
+.nav-list:hover .nav-1{
+	display: block;
+	border: 1px solid #ccc;
+	width: 100px;
+	height: 110px;
+
+}
