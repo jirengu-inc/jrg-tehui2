@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tab</title>
+    <style>
+        body, ul, li, div, p {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .ct {
+            width: 800px;
+            margin: 20px auto;
+        }
+
+        .tabs:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .tabs li {
+            list-style: none;
+            float: left;
+            padding: 10px;
+            min-width: 80px;
+            height: 40px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-bottom: none;
+            cursor: pointer;
+
+        }
+        .tabs li.active {
+            background: #ccc;
+        }
+
+        .contents {
+            border: 1px solid #ccc;
+            min-height: 300px;
+        }
+
+        .contents p {
+            display: none;
+            padding: 20px;
+        }
+
+        .contents p.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="tabs">
+        <li class="active">欢迎</li>
+        <li>经典</li>
+        <li>最爱的冷笑话</li>
+    </ul>
+    <div class="contents">
+        <p class="active">你好呀</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium architecto asperiores consequatur cum deserunt distinctio expedita fuga in incidunt inventore ipsum iusto necessitatibus porro provident quos repellat sit, tenetur voluptas!</p>
+        <p>一间空屋子。走进去一个人，一段时间后走出两个人。数学家：再进去一个人，屋子就空了。</p>
+    </div>
+</div>
+<div class="ct">
+    <ul class="tabs">
+        <li class="active">Welcome</li>
+        <li>Lorem Ipsum</li>
+        <li>Another bad joke</li>
+    </ul>
+    <div class="contents">
+        <p class="active">Hello World!</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus alias aliquam delectus eaque eius error explicabo impedit, odio perspiciatis, praesentium rem reprehenderit saepe tenetur, vitae voluptas? Fuga magnam odio sit.</p>
+        <p>我:喵。猫:喵。我:喵。猫: HTTP /1.1 200 OK</p>
+    </div>
+</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    function SwitchTab($node) {
+        this.$tabList = $node.find(".tabs");
+        this.$contentArea = $node.find(".contents");
+
+        var self = this;
+
+        this.bindClickEvent = function() {
+            this.$tabList.children().each(function() {
+                $(this).on("click", function() {
+                    var idx = $(this).index();
+                    self.switchToContent(idx);
+                });
+            });
+        };
+        this.switchToContent = function(idx) {
+            this.$contentArea.children().each(function() {
+               $(this).removeClass("active");
+            });
+            this.$tabList.children().each(function() {
+                $(this).removeClass("active");
+            });
+            this.$contentArea.children().filter(function() {
+                return $(this).index() === idx;
+            }).addClass("active");
+            this.$tabList.children().filter(function() {
+                return $(this).index() === idx;
+            }).addClass("active");
+        };
+        this.init = function() {
+            this.bindClickEvent();
+        };
+        this.init();
+    }
+
+    var $node1 = $('.ct').eq(0);
+    var $node2 = $('.ct').eq(1);
+    var switchTab1 = new SwitchTab($node1);
+    var switchTab2 = new SwitchTab($node2);
+</script>
+</body>
+</html>
