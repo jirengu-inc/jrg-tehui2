@@ -86,6 +86,7 @@
     }
 
     var isLoading = false;
+    var isLoaded = true;
 
     /* JSONP 获取数据 */
 
@@ -133,6 +134,7 @@
             defereds.push(defer);
         });
         $.when.apply(null,defereds).done(function() {
+            isLoaded = true;
             waterfall.init();
         });
     }
@@ -159,7 +161,8 @@
     }
 
     function loadMore() {
-        if(isVisible($load)) {
+        if(isVisible($load) && isLoaded) {
+            isLoaded = false;
             var clock = setInterval(function() { //如果加载过后#load还可见,继续加载
                 fetchData();
                 if (!isVisible($load)) {
