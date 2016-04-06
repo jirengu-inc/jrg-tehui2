@@ -95,16 +95,18 @@
             });
         };
         this.switchToContent = function(idx) {
-            this.$contentArea.children().each(function() {
+            var $contentChildren = this.$contentArea.children();
+            var $tabChildren = this.$tabList.children();
+            $contentChildren.each(function() {
                $(this).removeClass("active");
             });
-            this.$tabList.children().each(function() {
+            $tabChildren.each(function() {
                 $(this).removeClass("active");
             });
-            this.$contentArea.children().filter(function() {
+            $contentChildren.filter(function() {
                 return $(this).index() === idx;
             }).addClass("active");
-            this.$tabList.children().filter(function() {
+            $tabChildren.filter(function() {
                 return $(this).index() === idx;
             }).addClass("active");
         };
