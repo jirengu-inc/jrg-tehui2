@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+	<ul class="ct">
+	    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/11.jpg">鼠标放置查看图片1</li>
+	    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/13.jpg">鼠标放置查看图片2</li>
+	    <li data-img="http://cdn.jirengu.com/book.jirengu.com/img/14.jpg">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+	<script>
+	//todo ...当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。
+	var per= document.querySelector(".img-preview");
+	var img=document.createElement("img");
+	var ul=document.querySelector(".ct");
+	ul.addEventListener('mouseover',function(event){
+		// if(per.children){
+		// 	var oldImg=per.children[0];
+		// 	console.log(typeof oldImg);
+		// 	// per.removeChild(oldImg);
+		// }
+		img.src=event.target.getAttribute("data-img");
+		per.appendChild(img);
+	})
+	</script>
+</body>
+</html>
