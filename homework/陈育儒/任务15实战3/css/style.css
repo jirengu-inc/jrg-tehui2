@@ -146,6 +146,7 @@ ul,li{
 /*这里是portfolio的样式*/
 .portfolio{
 	padding:50px 0px;
+	background-color: #eee;
 }
 .port-item li{
 	float:left;
@@ -260,6 +261,9 @@ ul,li{
 	background-color: yellow;
 	color:white;
 	font-size: 20px;
+}
+.team{
+	background-color: #eee;
 }
 .team-item{
 	line-height:1.3;
