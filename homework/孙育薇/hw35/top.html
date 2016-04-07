@@ -30,16 +30,17 @@
             this.target.appendChild(btnText);
             ct.appendChild(this.target);
         };
+        this.init = function() {
+            this.createNode();
+            this.bindEvent();
+        };
+        this.init();
     }
 
     var ct = document.getElementById("ct");
 
     var goTop = new GoTop(ct);
-    goTop.createNode();
-    goTop.bindEvent();
     var goTop2 = new GoTop(ct);
-    goTop2.createNode();
-    goTop2.bindEvent();
 </script>
 </body>
 </html>
