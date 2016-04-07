@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script async type="text/javascript" src="js/comment.js"></script>
+<style type="text/css">
+	.btn{
+		text-align: center;
+	}
+	div{
+		width: 30%;
+
+	}
+	ul{
+		padding: 0px;
+		margin: 0px;
+	}
+	li{
+		display: inline-block;
+	}
+	.btn>li{
+		width: 33%;
+		border: 1px #ccc solid;
+		float: left;
+		border-collapse: collapse;
+		padding: 10px 0px;
+		cursor: pointer;
+	}
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.clearfix:left:{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	div{
+		border: 1px #ccc solid;
+		border-collapse: collapse;
+		width: 600px;
+		height: 300px;
+	}
+	.change{
+		background-color: #333;
+	}
+	.hide{
+		display: none;
+	}
+	.show{
+		display: block;
+	}
+</style>
+</head>
+<body>
+	<div>
+	    <ul class="btn clearfix">
+	    	<li>tab1</li>
+	    	<li>tab2</li>
+	    	<li>tab3</li>
+	    </ul>
+	    <ul class="content">
+	    	<li>内容1</li>
+	    	<li class="hide">内容2</li>
+	    	<li class="hide">内容3</li>
+	    </ul>
+    </div>
+    <script type="text/javascript">
+    	var btn=document.querySelector(".btn");
+    	var content=document.querySelector(".content");
+    	var temp=0;
+    	btn.addEventListener('click',function(event){
+    		for(var i=0;i<content.children.length;i++){
+    			Utils.addClass(content.children[i],"hide");
+    		}
+    		for(var i=0;i<btn.children.length;i++){
+    			Utils.removeClass(btn.children[i],"change");
+    			if(btn.children[i]==event.target){
+    				Utils.removeClass(content.children[i],"hide");
+    			}
+    		}
+    		Utils.addClass(event.target,"change");
+
+    	});
+    </script>
+</body>
+</html>

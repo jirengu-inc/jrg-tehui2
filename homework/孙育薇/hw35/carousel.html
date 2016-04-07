@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
+    <style>
+        body, div, ul, li {
+            margin: 0;
+            padding: 0;
+        }
+        li { list-style: none; }
+        a { text-decoration: none; }
+
+        .ct {
+            width: 600px;
+            height: 375px;
+            position: relative;
+            margin: 20px auto;
+            overflow: hidden;
+        }
+
+        .img-ct {
+            position: absolute;
+        }
+
+        .img-ct li {
+            float: left;
+        }
+
+        .img-ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .arrow {
+            position: absolute;
+            text-align: center;
+            display: block;
+            width: 20px;
+            height: 40px;
+            line-height: 40px;
+            border-radius: 20px;
+            background: #ccc;
+            top: 50%;
+            margin-top: -20px;
+            -webkit-box-shadow: 0 0 3px #ccc;
+            -moz-box-shadow: 0 0 3px #ccc;
+            box-shadow: 0 0 3px #ccc;
+            opacity: 0.7;
+            color: #fff;
+        }
+
+        .prev {
+            left: 5px;
+        }
+
+        .next {
+            right: 5px;
+        }
+
+        .bullet {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            -webkit-transform: translateX(-50%);
+            -moz-transform: translateX(-50%);
+            -ms-transform: translateX(-50%);
+            -o-transform: translateX(-50%);
+            transform: translateX(-50%);
+        }
+
+        .bullet li {
+            float: left;
+            width: 20px;
+            height: 15px;
+            margin: 0 5px;
+            border-radius: 10px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .bullet li.active {
+            background: #333;
+        }
+    </style>
+</head>
+<body>
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="http://ww4.sinaimg.cn/large/696270d9jw1f28sgwmlm3j20go0af0yy.jpg"></a></li>
+        <li><a href="#"><img src="http://ww3.sinaimg.cn/large/696270d9jw1f28sh6ogg7j20go0afjsh.jpg"></a></li>
+        <li><a href="#"><img src="http://ww3.sinaimg.cn/large/696270d9jw1f28shg6x6yj20go0af75a.jpg"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<div class="ct">
+    <ul class="img-ct">
+        <li><a href="#"><img src="http://ww4.sinaimg.cn/large/696270d9jw1f28sgwmlm3j20go0af0yy.jpg"></a></li>
+        <li><a href="#"><img src="http://ww3.sinaimg.cn/large/696270d9jw1f28sh6ogg7j20go0afjsh.jpg"></a></li>
+        <li><a href="#"><img src="http://ww3.sinaimg.cn/large/696270d9jw1f28shg6x6yj20go0af75a.jpg"></a></li>
+    </ul>
+    <a class="arrow prev" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet">
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+        <li><a href="#"></a></li>
+    </ul>
+</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    function Carousel($node) {
+        this.$imgCt = $node.find(".img-ct");
+        this.$img = $node.find(".img-ct li");
+        this.$bullet = $node.find(".bullet li");
+        this.$arrowPrev = $node.find(".prev");
+        this.$arrowNext = $node.find(".next");
+
+        this.$imgCount = this.$imgCt.children().size();
+        this.$width = $node.width();
+
+        var self = this;
+
+        this.playNext = function(idx) {
+            var idx = idx || 1;
+            if(this.isAnimate) return;
+            this.isAnimate = true;
+            this.$imgCt.animate({
+                left: "-=" + idx * this.$width
+            }, function() {
+                self.$curIdx += idx;
+                if (self.$curIdx === self.$imgCount + 1) {
+                    self.$curIdx = 1;
+                    self.$imgCt.css("left", -self.$width);
+                }
+                self.isAnimate = false;
+                self.setBullet();
+            });
+        };
+
+        this.playPrev = function(idx) {
+            var idx = idx || 1;
+            if(this.isAnimate) return;
+            this.isAnimate = true;
+            this.$imgCt.animate({
+                left: "+=" + idx * this.$width
+            }, function() {
+                self.$curIdx = (self.$imgCount + self.$curIdx - idx) % self.$imgCount;
+                if (self.$curIdx === 0) {
+                    self.$imgCt.css("left", -(self.$width * self.$imgCount));
+                    self.$curIdx = self.$imgCount;
+                }
+                self.isAnimate = false;
+                self.setBullet();
+            });
+        };
+
+        this.clickToPlayPrev = function() {
+            this.$arrowPrev.on("click", function() {
+                self.playPrev();
+            });
+        };
+        this.clickToPlayNext = function() {
+            this.$arrowNext.on("click", function() {
+                self.playNext();
+            });
+        };
+
+        this.clickToSwitch = function() {
+            this.$bullet.on("click", function() {
+                var idx = $(this).index() + 1;
+                if (idx > self.$curIdx) {
+                    self.playNext(idx - self.$curIdx);
+                } else if (idx < self.$curIdx) {
+                    self.playPrev(self.$curIdx - idx);
+                }
+            });
+        };
+
+        this.setBullet = function() {
+            this.$bullet.eq(this.$curIdx - 1).siblings().removeClass("active");
+            this.$bullet.eq(this.$curIdx - 1).addClass("active");
+        };
+
+        this.autoPlay = function() {
+            clock = setInterval(function() {
+                self.playNext();
+            },3000);
+        };
+
+        this.stopAutoPlay = function() {
+            clearInterval(clock);
+        };
+
+        this.init = function() {
+            this.$bullet.eq(this.$curIdx - 1).addClass("active");
+            this.$imgCt.prepend(this.$img.eq(this.$img.length-1).clone());
+            this.$imgCt.append(this.$img.eq(0).clone());
+            var $imgRealCount = this.$imgCt.children().size();
+            this.$imgCt.css({"left": -this.$width, "width": this.$width * $imgRealCount});
+            this.clickToPlayNext();
+            this.clickToPlayPrev();
+            this.clickToSwitch();
+            this.autoPlay();
+        };
+        this.init();
+    }
+    //不知道什么该放到prototype里比较好
+    Carousel.prototype = {
+        $curIdx : 1,
+        isAnimate : false
+    };
+    var $node1 = $('.ct').eq(0);
+    var $node2 = $('.ct').eq(1);
+    var carousel1 = new Carousel($node1);
+    var carousel2 = new Carousel($node2);
+</script>
+</body>
+</html>

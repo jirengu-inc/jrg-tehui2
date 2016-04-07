@@ -1,0 +1,26 @@
+.content{
+    position: relative;
+
+}
+.item{
+    position: absolute;
+    width: 300px;
+    margin-right: 10px;
+    margin-top: 10px;
+    transition: all 0.5s;
+}
+
+.h1{
+    height: 400px;
+    background-color: #f4b300;
+}
+
+.h2{
+    height: 600px;
+    background-color: #691BB8;
+}
+
+.h3{
+    height: 800px;
+    background-color: #006ac1;
+}
