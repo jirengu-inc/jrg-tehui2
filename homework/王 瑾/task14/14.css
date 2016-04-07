@@ -153,7 +153,7 @@ body {
   padding-top: 10px;
   padding-left:145px;
 }
-#displaypage:after{
+.graphs:after{
   content: '';
   display: block;
   clear: both;
@@ -163,6 +163,7 @@ body {
 }
 .graphs li{
   border: 15px solid white;
+  width:500px;
 }
 #displaypage a {
   display: block;
