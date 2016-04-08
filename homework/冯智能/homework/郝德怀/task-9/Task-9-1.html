@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-9-1</title>
+<style>
+.player{
+	list-style-type: none;
+}
+li{
+	display: inline-block;
+	color:#000;
+	cursor:pointer; 
+}
+a{
+	display: inline-block;
+	text-decoration: none;
+	margin-left: 35px;
+	height: 35px;
+	line-height: 35px;
+	color: inherit;
+}
+.forward{
+	background: url(sprite.png) 0 0 no-repeat;
+}	
+.play{
+	background: url(sprite.png) 0 -35px no-repeat;
+}
+.stop{
+	background: url(sprite.png) 0 -70px no-repeat;
+}
+.forward:hover{
+	background: url(sprite.png) 0 -105px no-repeat;
+	color: #a75fc0;
+}
+.play:hover{
+	background: url(sprite.png) 0 -145px no-repeat;
+	color: #a75fc0;
+}
+.stop:hover{
+	background: url(sprite.png) 0 -178px no-repeat;
+	color: #a75fc0;
+}
+
+</style>
+</head>
+<body>
+	<ul class="player">
+		<li class="forward"><a  href="#">前进</a></li>
+		<li class="play"><a  href="#">播放</a></li>
+		<li  class="stop"><a href="#">暂停</a></li>
+
+	</ul>
+
+
+</body>
+</html>

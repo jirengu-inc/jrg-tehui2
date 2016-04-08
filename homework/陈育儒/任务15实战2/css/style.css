@@ -1,0 +1,187 @@
+html,body,div,p,h1,ul,li,hr{
+	margin:0;
+	padding:0;
+}
+ul,li{
+	list-style:none;
+}
+a{
+	text-decoration: none;
+}
+.wrap-center{
+	width:1000px;
+	margin:0 auto;
+}
+.clearfix{
+	clear:both;
+}
+.btn{
+	width:60px;
+	height:30px;
+	line-height: 30px;
+	font-size:18px;
+	border:1px solid;
+	border-radius:5px;
+	padding:3px;
+	color:black;
+}
+/*下面是顶部样式*/
+#header{
+	width:100%;
+	font-size:18px;
+	background-color:white;
+	border-bottom:1px solid #ccc;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:9;
+}
+.top-navbar{
+	height:50px;
+	line-height: 50px;
+	color:#999;
+	position: relative;
+}
+.top-navbar:after{
+	content:'';
+  display:block;
+  clear:both;
+}
+.top-navbar>li{
+	float:left;
+	margin-right:30px;
+}
+.top-navbar a{
+		color:#777;
+}
+.top-navbar li:hover > a,
+.top-navbar li:hover .fa-caret-down{
+	color:black;
+}
+.nav-item1{
+	font-size:20px;
+}
+.list-child{
+	position: absolute;
+	top:100%;
+	display: none;
+	border:1px solid #999;
+	background-color: white;
+	width:100px;
+	height:80px;
+}
+.list-child li{
+	width:100%;
+	height:20px;
+	line-height: 20px;
+}
+.top-navbar li:hover .list-child{
+	display: block;
+}
+.list-child>li:hover{
+	background:#ccc;
+}
+/*下面是text1的样式*/
+.text1{
+	height:260px;
+	background-color: #b84d45;
+	color:white;
+	margin-top: 50px;
+}
+.text1 .wrap-center{
+	padding-top:70px;
+}
+.text1 h1{
+	font-size:60px;
+}
+.text1 p{
+	font-size:20px;
+	margin-bottom:8px;
+}
+/*这里是主内容*/
+
+#main-content{
+  width:100%;
+}
+.main-nav{
+	background-color: #ddd;
+	height:20px;
+	line-height: 20px;
+	margin-top:40px;
+}
+.main-nav a{
+	color:#666;
+}
+.main-nav li{
+	display: inline-block;
+	list-style: none;
+}
+/*主内容图片区块*/
+.wrap-item{
+	height:100%;
+}
+.wrap-item li:first-child{
+	margin-left:0px;
+}
+.wrap-item:after{
+	content:'';
+	display:block;
+	clear:both;
+}
+.item{
+	float:left;
+	width:30%;
+	height:100%;
+	border:1px solid #ccc;
+	border-radius:5px;
+	padding:5px;
+	text-align: center;
+	margin-top:25px;
+	margin-left:32px;
+}
+.item img{
+	width:100%;
+}
+.item img:hover{
+	opacity:0.7;
+}
+.item h1{
+	margin:16px 0px;
+}
+.item p{
+	margin:16px 0px;
+}
+.item .btn{
+	border-color:#bbb;
+	padding:6px 8px;
+}
+.item .btn:hover{
+	background-color: #ddd;
+}
+#footer{
+	width:100%;
+	margin-top:80px;
+}
+.text2,.text3{
+	text-align: center;
+}
+.text2{
+	padding:40px 0px 40px 0px;
+	background-color: #b84d45;
+	color:white;
+}
+.text3{
+	padding:70px 0px 40px 0px;
+}
+.text3 hr{
+	opacity:0.5;
+	margin:0 auto;
+	width:1000px;
+}
+.text3 p{
+	margin-top:10px;
+	font-size:12px;
+}
+.text3 a{
+	color: #b84d45;
+}

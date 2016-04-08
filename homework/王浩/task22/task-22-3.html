@@ -31,7 +31,9 @@
    	 var imgBox = document.querySelector(".img-preview");
    	 ct.addEventListener("mouseover", function(e) {
    	 	var boxImg = e.target.getAttribute("data-img");
+
    	 	console.log(boxImg);
+      
    	 	var img = document.createElement("img");
    	 	img.setAttribute("src", boxImg);
    	 	imgBox.appendChild(img);

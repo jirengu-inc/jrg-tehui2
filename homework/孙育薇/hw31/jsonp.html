@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Task 31</title>
+    <style>
+        button {
+            width: 200px;
+            height: 40px;
+            color: coral;
+            display: block;
+            margin: 10px auto;
+            border: 1px solid coral;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+            background: transparent;
+            cursor: pointer;
+        }
+        button:focus {
+            outline: none;
+        }
+
+        #content {
+            width: 400px;
+            height: 300px;
+            margin: 20px auto;
+            padding: 10px;
+            border: 1px solid coral;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+<button class="btn" id="btn">点击获取一个秘密</button>
+<button class="btn" id="btn2">才不想知道什么秘密</button>
+<div id="content"></div>
+<script>
+    var btn = document.getElementById("btn");
+    var btn2 = document.getElementById("btn2");
+    var content = document.getElementById("content");
+
+    function addEvent(node, type, handler) {
+        if (!node) return false;
+        if (node.addEventListener) {
+            node.addEventListener(type, handler, false);
+            return true;
+        } else if (node.attachEvent) {
+            node.attachEvent('on' + type, handler);
+            return true;
+        } else {
+            node["on" + type] = handler;
+        }
+    }
+
+    addEvent(btn, "click", function() {
+        fetchSecret("TELLME!")
+    });
+    addEvent(btn2, "click", function() {
+        fetchSecret("HEHE!")
+    });
+
+    function setURL(data) {
+        var url = "//joysr.com/hw/hw31/ajax2.php?callback=jsonpCallback&";
+        for (var key in data) {
+            url += key + "=" + data[key] + "&";
+        }
+        return url;
+    }
+
+    function setJSONP(url) {
+        var newScript = document.createElement("script");
+        newScript.setAttribute("type", "text/javascript");
+        newScript.setAttribute("src", url);
+        document.getElementsByTagName("head")[0].appendChild(newScript);
+    }
+
+    function jsonpCallback(result) {
+        content.innerText = "数据获取中...";
+        if (result["status"] === 1) {
+            content.innerText = result["text"];
+        } else if (result["status"] === 0) {
+            content.innerText = "很遗憾，获取秘密的过程中出现了点问题，请稍后或明年此时再做尝试~";
+        }
+    }
+
+    function fetchSecret(secret) {
+        var data = {"secret": secret};
+        var url = setURL(data);
+        setJSONP(url);
+        jsonpCallback(data);
+        btn2.disabled = true;
+        btn2.style.cursor = "not-allowed";
+    }
+</script>
+</body>
+</html>

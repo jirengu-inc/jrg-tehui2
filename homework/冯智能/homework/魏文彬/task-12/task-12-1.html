@@ -1,0 +1,55 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task12-1</title>
+	<style type="text/css">
+    #header,#footer {
+        height: 100px;
+        background-color: #ccc;
+    }
+    #container {
+        padding: 0 200px;
+    }
+    #container:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    #container .main {
+        width: 100%;
+        min-height: 500px;
+        background-color: green;
+        float: left;
+    }
+    #container .aside {
+        width: 200px;
+        min-height: 500px;
+        background-color: red;
+        float: left;
+        margin-left: -100%;
+        position: relative;
+        left: -200px;
+    }
+    #container .extra {
+        width: 200px;
+        min-height: 500px;
+        background-color: yellow;
+        float: left;
+        margin-left: -200px;
+        position: relative;
+        left: 200px;
+    }
+	</style>
+</head>
+<body>
+    <div id="header"></div>
+	<div id="container">
+		<div class="main"></div>
+		<div class="aside"></div>
+		<div class="extra"></div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>

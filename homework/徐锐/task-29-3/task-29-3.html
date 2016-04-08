@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-29-3</title>
+    <style>
+    ul,li{
+        margin: 0;
+        padding: 0
+    }
+    #ct li{
+        list-style:none;
+        border: 1px solid #ccc;
+        padding: 10px;
+        margin-top: 10px;
+        cursor:pointer;
+    }
+    #load-more{
+        display: block;
+        margin: 10px auto;
+        text-align: center;
+        cursor: pointer;
+    }
+    #load-more img{
+        width: 40px;
+        height: 40px;
+    }
+    .btn{
+        display: inline-block;
+        height: 40px;
+        line-height: 40px;
+        width: 80px;
+        border: 1px solid #E27272;
+        border-radius: 3px;
+        text-align: center;
+        text-decoration: none;
+        color: #E27272;
+    }
+    </style>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+
+<ul id="ct">
+    <li>内容0</li>
+    <li>内容1</li>
+    <li>内容2</li>
+    <li>内容3</li>
+    <li>内容4</li>
+    <li>内容5</li>
+    <li>内容6</li>
+    <li>内容7</li>
+    <li>内容8</li>
+    <li>内容9</li>
+    <li>内容10</li>
+    <li>内容11</li>
+    <li>内容12</li>
+    <li>内容13</li>
+    <li>内容14</li>
+    <li>内容15</li>
+    <li>内容16</li>
+    <li>内容17</li>
+</ul>
+<a id="load-more" class="btn" href="#">加载更多</a>
+
+<script>
+
+    $(function () {
+
+        var cur = 18;
+
+        $('#ct').on('mouseover','li',function () {
+            $(this).css('background','pink');
+        }).on('mouseleave','li',function () {
+            $(this).css('background','');
+        });
+
+
+        $(window).on('scroll',function () {
+
+            setInterval(function () {
+                var winHeight = $(window).height(),
+                        winScroll = $(window).scrollTop(),
+                        btnTop = $('.btn').offset().top;
+                if(winScroll >= btnTop - winHeight){
+                    loadMore();
+                }
+            },1000);
+
+
+
+            function loadMore() {
+
+                $('#load-more').text('loading');
+
+                $.get('task-29-3.php?'+ new Date().getTime() ,{
+                    start: cur,
+                    len: 6
+                },function (data) {
+                    var newUl = '';
+                    if(data.status == 1) {
+                        for (var i=0; i<data.data.length; i++){
+                            var newLi = '<li>' + data.data[i] + '</li>';
+                            newUl += newLi;
+                        }
+                        cur += 6;
+
+                        $('#load-more').text('加载更多');
+                        $('#ct').append(newUl);
+
+                    }else{
+                        console.log('出错了');
+                    }
+                },"json");
+            }
+
+        });
+
+
+    });
+
+</script>
+
+</body>
+</html>

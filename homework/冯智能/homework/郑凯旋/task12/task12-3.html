@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task12-3</title>
+	<style>
+		body,div{
+			margin:0;
+			padding: 0;
+		}
+		#header,#footer{
+			min-height:40px;
+			background:#ccc;
+		}
+		#container {
+	        height:350px;
+	    }
+		.main{
+			float:left;
+			width:100%;
+			height:350px;
+		}
+		.wrap{
+			height: 350px;
+			background: green;
+			margin:0 200px;
+
+		}
+		.leftsider{
+			width:200px;
+			float:left;
+			margin-left:-100%;
+			height:200px;
+			background: red;
+
+
+		}
+		.rightsider{
+			width:200px;
+			float:left;
+			margin-left:-200px; 
+			height:200px;
+			background: yellow;
+		}
+	
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="main">
+			<div class="wrap"></div>
+		</div>
+		<div class="leftsider">左侧边栏，固定宽度</div>
+		<div class="rightsider">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>

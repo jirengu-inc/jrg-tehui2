@@ -1,0 +1,360 @@
+html,body,ul,li,a{
+	margin:0;
+	padding: 0;
+	list-style: none;
+	text-decoration: none;
+	height: 100%;
+	overflow-x:hidden;
+}
+h2{
+	font:40px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color: #333;
+	margin-bottom: 0;
+}
+h1{
+	font:75px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color: #fff;
+	margin-top: 20px;
+}
+h3{
+	font:18px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color: #333;
+	margin-bottom: 0;
+}
+p{
+	font: 14px/1.8 robotoslab-regular-webfont,Microsoft YaHei,scans-serif;
+	color:#777
+}
+p.h2-description{
+	font: 16px droidserif-italic-webfont,Microsoft YaHei,scans-serif;
+}
+.btn{
+	font:18px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	background-color: #FED136;
+	padding: 20px 40px;
+	border-radius: 4px;
+	color: #fff;
+	display: inline-block;
+	border: none;
+	cursor:pointer;
+}
+.btn:hover{
+	color: #fff;
+	background-color: #FDC607;
+}
+a.fa-stack .fa-stack-2x{
+	color: #333;
+}
+a.fa-stack .fa-stack-1x{
+	color: #fff;
+}
+a.fa-stack:hover>.fa-stack-2x{
+	color: #FED136;
+}
+.container{
+	width: 1140px;
+	margin:0 auto;
+}
+#service,#portfolio,#about,#team,#cooperrator,#contact{
+	text-align: center;
+	padding-top: 100px;
+	padding-bottom: 100px;
+}
+#portfolio,#team{
+	background-color: #F7F7F7;
+}
+.clear-float:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.clear-float{
+	*zoom: 1;
+}
+#topnav{
+	position: fixed;
+	z-index: 2;
+	width: 100%;
+	top: 0;
+	left: 0;
+	height: 70px;
+	line-height: 70px;
+	background-color: #222;
+	opacity: 0.8;
+}
+#topnav .logo{
+	float: left;
+}
+#topnav .choice{
+	float: right;
+}
+#topnav .logo>a{
+	font: 25px kaushanscript-regular-webfont,Microsoft YaHei,scans-serif;
+	padding-top:10px; 
+	padding-bottom: 10px;
+	color: #FED136;
+}
+#topnav .logo>a:hover{
+	color: #FDC607;
+}
+#topnav .choice ul>li{
+	display: inline-block;
+}
+#topnav .choice ul>li>a{
+	font: 14px montserrat-regular-webfont,Microsoft YaHei,scans-serif;
+	padding: 15px 12px;
+	color: white;
+}
+#topnav .choice ul>li>a:hover{
+	color: #FDC607;
+}
+#header{
+	display: table;
+	width: 100%;
+	height: 100%;
+	background: url('../img/header-bg.jpg') no-repeat center center;
+	background-size: cover;
+}
+#header .container{
+	text-align: center;
+	display: table-cell;
+	vertical-align: middle;
+}
+#header h2{
+	font:40px droidserif-italic-webfont,Microsoft YaHei,scans-serif;
+	color: #fff;
+}
+
+#service .row{
+	float: left;
+	position: relative;
+	left: 50%;
+	margin-top: 60px;
+}
+#service .row-item{
+	float: left;
+	position: relative;
+	left: -50%;
+	margin-right: 40px;
+}
+#service .row-item:last-of-type{
+	margin-right: 0;
+}
+#service .row-item .fa-stack{
+	font-size: 56px;
+}
+#service .row-item .fa-stack:first-child{
+	color: #FED136; 
+}
+#service .row-item .fa-stack-1x{
+	color: #fff; 
+}
+#portfolio .row{
+	margin-top: 80px;
+	margin-bottom: 50px;
+}
+#portfolio .row-item{
+	background-color: #fff;
+	position: relative;
+	margin:0 15px 30px 15px;
+	float:left;
+	width: 350px;
+}
+#portfolio .row-item img{
+	display: block;
+	width: 100%;
+}
+#portfolio .img-hover{
+	background-color: rgba(254,209,54,0.8);
+	position: absolute;
+	width: 100%;
+	line-height: 253px;
+	height: 253px;
+	z-index: -1;
+}
+#portfolio a:hover>.img-hover{
+	z-index: 0;
+	color: #fff;
+}
+#portfolio .row-item p{
+	margin-top: 0;
+	margin-bottom: 30px;
+}
+#about .border{
+	position: relative;
+	margin-top: 100px;
+}
+#about .timeline:before{
+	content: '';
+	position: absolute;
+	top: 0;
+	bottom:0;
+	width: 2px;
+	margin-left: -2px;
+	background-color: #eee;
+}
+#about .event{
+	margin-bottom: 100px;
+}
+#about .event:last-child{
+	margin-bottom: 50px;
+}
+#about .event-img{
+	width: 160px;
+	height: 160px;
+	margin: 0 auto;
+	float: left;
+	position: relative;
+	left: 50%;
+	margin-left: -85px;
+	display: inline-block;
+}
+#about .event-img>img{
+	display: block;
+	width: 100%;
+	border-radius: 50%;
+	border: 5px solid #eee;
+}
+#about .circle{
+	border-radius: 85px;
+	background-color: #FED136;
+	border: 5px solid #eee;
+	line-height: 190px;
+}
+#about .circle .join{
+	display: inline-block;
+}
+#about .circle h3{
+	color: #fff;
+	margin-top: 0;
+}
+#about .event-description>h3{
+	line-height: 0.5;
+}
+#about .left .event-description{
+	text-align: right;
+	float: left;
+	position: relative;
+	bottom: 20px;
+}
+#about .right .event-description{
+	text-align: left;
+	float: right;
+	position: relative;
+	left: -60px;
+	bottom: 20px;
+}
+#team .row{
+	float: left;
+	position: relative;
+	left: 50%;
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+#team .row-item{
+	float: left;
+	position: relative;
+	left: -50%;
+	margin-left:80px;
+	margin-right: 80px;
+}
+#team img{
+	display: block;
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+}
+#team .row-description{
+	font-size: 16px;
+}
+#cooperrator ul>li{
+	display: inline-block;
+	margin-left: 35px;
+	margin-right: 35px;
+}
+#cooperrator{
+	padding-bottom: 30px;
+	padding-top: 30px;
+}
+#contact{
+	height: 600px;
+	width: 100%;
+	background: url('../img/map.jpg') no-repeat center center;
+	background-size: cover;
+}
+#contact h2{
+	color:#fff;
+}
+#contact p{
+	color: #fff;
+}
+#contact .table{
+	margin-top: 60px;
+	margin-bottom: 30px;
+}
+#contact .table-left{
+	float: left;
+	position: relative;
+	left: 20px;
+}
+#contact .table-right{
+	float: right;
+	position: relative;
+	right: 20px;
+}
+#contact input{
+	width: 500px;
+	height: 30px;
+	display: block;
+	border: none;
+	border-radius: 4px;
+	padding: 20px;
+	margin-bottom: 20px;
+	font:14px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color:#333;
+	outline: none;
+}
+#contact input:last-of-type{
+	margin-bottom: 0;
+}
+#contact textarea{
+	width: 500px;
+	height: 210px;
+	display: block;
+	border: none;
+	border-radius: 4px;
+	padding: 20px;
+	font:14px montserrat-bold-webfont,Microsoft YaHei,scans-serif;
+	color:#333;
+	outline: none;
+	resize: none;
+}
+#footer{
+	height: 80px;
+	line-height: 80px;
+	text-align: center;
+}
+#footer .container>div{
+	display: inline-block;
+}
+#footer .container>div>span{
+	font: 14px montserrat-regular-webfont,Microsoft YaHei,scans-serif;
+	color: #999898;
+}
+#footer .icon{
+	margin-left: 200px;
+	margin-right: 200px;
+}
+#footer .policy>a{
+	color: #FCD54C;
+}
+#footer .policy>a:hover{
+	text-decoration: underline;
+}
+
+
+
+
+
+
+

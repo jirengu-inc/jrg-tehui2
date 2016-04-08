@@ -1,0 +1,30 @@
+body{
+	font-family: "微软雅黑";
+}
+#header{
+	background-color: red;
+	width: 1000px;
+	height: 50px;
+}
+
+#footer{
+	background-color: red;
+	width: 1000px;
+	height: 50px;
+}
+.container-left{
+	width: 300px;
+	background-color: #ccc;
+	float: left;
+
+}
+.container-right{
+	overflow: auto;
+}
+#container{
+	width: 1000px;
+}
+#div1{
+	width: 1000px;
+	margin: 0 auto;
+}

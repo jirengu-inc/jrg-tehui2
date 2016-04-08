@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>WJ任务6</title>
+  <style>
+    p{
+      display:inline;
+    }
+    .eg1{
+      display:none;
+    }
+    .eg2{
+      display:table-cell;
+    }
+    .eg3{
+      display:inline-block;
+    }
+    .center{
+      display:table-cell;
+      width:600px;/*宽 注为适应图片尺寸长宽都做了改动*/
+      height:300px;/*长*/
+      vertical-align:middle;/*垂直居中*/
+      text-align:center;/*水平居中*/
+      background-color:#ccc;/*背景色*/
+    }
+  </style>
+</head>
+<body>
+ <h3>代码4的示例</h3>
+  <ul>
+  <li>display:inline的作用是设置对象作为行内元素显示</li>
+  <p>This is the first paragraph.</p>
+    <p>This is the second paragraph.</p>
+  <div class="note1">
+    （我们可以看到本来作为块级元素的段落此时以行内元素的形式呈现）
+  </div><br/>
+    <li>display:none的作用是隐藏元素，使之不可见</li><br/>
+    <div class="eg1">
+      这段内容看不见
+    </div>
+    <li>display:table-cell的作用是将设置对象作为表格单元显示</li>
+    <div class="eg2">
+      <p>段落1</p>
+      <p>段落2</p>
+      <p>段落3</p>
+    </div>
+    <div class="note2">
+      （本来段落元素应该以起新行的样式显示，改动后变成了以表格单元格的样式显示）
+    </div></br>
+    <li>display:block的作用是设置对象作为块级元素显示</li><br/>
+  <li>display:inline-block的作用是设置对象为内联对象，但是对象的内容以块对象传递</li><br/>
+  <div class="center">
+    <img src="http://p1.so.qhimg.com/t0136125bbf23b8ed6b.jpg"/>
+  </div>
+ 
+</body>
+</html>

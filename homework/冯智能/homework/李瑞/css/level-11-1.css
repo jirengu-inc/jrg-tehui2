@@ -1,0 +1,45 @@
+body,ul,li{
+	margin:0;
+	padding:0;
+	font-size: 16px;
+	font-family: '微软雅黑'
+}
+
+a{
+	text-decoration:none;
+}
+
+li{
+	list-style:none;
+}
+#header{
+	width:1000px;
+	margin:50px auto;
+    background:#eee;
+}
+#header>ul{
+	min-height:40px;
+}
+#header .link>li{
+	float:left;
+	position:relative;
+		margin-right: 10px;
+}
+.link a{
+	padding:0 10px;
+	line-height: 40px;
+	display:block
+}
+.link1{
+	position: absolute;
+	top:100%;
+	left:0;
+	border:1px solid black;
+	display: none;
+}
+a:hover{
+	background:#b0adad;
+}
+#header .link>li:hover .link1{
+	display: block;
+}
