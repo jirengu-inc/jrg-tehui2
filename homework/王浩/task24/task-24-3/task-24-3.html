@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-24-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<style>
+	body{
+		font-family: "Microsoft Yahei";
+		font-size: 14px;
+	}
+	input{
+		margin: 10px;
+		width: 300px;
+	}
+	.wrap{
+		width: 415px;
+		margin: 40px auto;
+		border: solid 1px #ccc;
+		border-radius: 10px;
+		padding: 20px;
+	}
+	label .header{
+		display: inline-block;
+		width: 85px;
+	}
+	.tip{
+		font-size: 12px;
+		color: #999;
+		margin-left: 105px;
+	}
+	.btn{
+		display: block;
+		width: 50px;
+		margin: 10px auto;
+	}
+	.true_color{
+		border-color: #ccc;
+	}
+	.false_color{
+		border-color: #E27272;
+	}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<form action="task-24-3_get.php" method="get">
+	    <h3>注册</h3>
+	    <label ><span class="header">用户名：</span>
+	    	<input type="text" class="username" placeholder="用户名(hunger被注册过)">
+	    </label><br>
+		    <span class="tip usertip">
+		    	只能是字母、数字、下划线，3-10个字符
+		    </span><br>
+
+	    <label><span class="header">密码：</span>
+	    	<input type="password" class="password" placeholder="输入密码">
+	    </label><br>
+		    <span class="tip passtip">
+		    	大写字母、小写、数字、下划线最少两种，6-15个字符
+		    </span><br>
+
+		<label><span class="header">再输入一次：</span>
+			<input type="password" class="again" placeholder="再输入一次">
+		</label><br>
+		<span class="tip againtip"></span>
+
+		<input type="button" class="btn" value="注册">
+	</form>	
+</div>	
+	<script>
+		var username = document.querySelector(".username");
+		var usertip = document.querySelector(".usertip");
+		var password = document.querySelector(".password");
+		var passtip = document.querySelector(".passtip");
+		var btn = document.querySelector(".btn");
+		var again = document.querySelector(".again");
+		var againtip = document.querySelector(".againtip");
+		 //---------------------验证用户名----------------
+		username.addEventListener("change", function(e) {
+			if (/^[\w]{3,10}$/g.test(username.value)) {
+				var scope = this;
+				//符合规则之后还要和后台进行数据验证；
+				//--------------接入ajax验证
+				var xhr = new XMLHttpRequest();
+				var url = "task-24-3_get.php" + "?" + "username=" + username.value;
+				xhr.onreadystatechange = function(e) {
+					if (xhr.status === 200 && xhr.readyState === 4) {
+						if (username.value === xhr.responseText) {
+							console.log(e.target);
+							scope.className = addClass(scope.className);
+							usertip.innerHTML =
+								'该用户名已被注册';
+						} else {
+							scope.className = removeClass(scope.className);
+							usertip.innerHTML = "用户名可用";
+						}
+					}
+
+				}
+				xhr.open("get", url, true);
+				xhr.send();
+			} else {
+				this.className = addClass(this.className);
+				usertip.innerHTML =
+					'错误！！"A-Z"/"a-z"/"0-9"/"_" 3-10个字符';
+			}
+
+		}, false);
+		 //-----------------------验证密码----------------
+		password.addEventListener("change", function(e) {
+			if (/^[\w]{6,15}$/g.test(password.value)) {
+				var str = password.value.match(/^[\w]{3,10}$/g);
+				var a = this;
+				str = str.toString();
+				if (str.match(/[0-9]/g) !== null &&
+					str.length === str.match(/[0-9]/g).length ||
+					str.match(/[a-z]/g) !== null &&
+					str.length === str.match(/[a-z]/g).length ||
+					str.match(/[A-Z]/g) !== null &&
+					str.length === str.match(/[A-Z]/g).length ||
+					str.match(/_/g) !== null &&
+					str.length === str.match(/_/g).length
+				) {
+					// console.log(a);
+					a.className = addClass(a.className);
+					passtip.innerHTML =
+						'错误！"A-Z"/"a-z"/"0-9"/"_" 6-15个字符';
+				} else {
+					a.className = removeClass(a.className);
+					passtip.innerHTML = "密码格式正确";
+				}
+			} else {
+				this.className = addClass(this.className);
+				passtip.innerHTML =
+					'错误！"A-Z"/"a-z"/"0-9"/"_"至少两种 6-15个字符';
+			}
+		}, false);
+		 //----------------------再一次验证密码
+		again.addEventListener("change", function(e) {
+			if (again.value === password.value) {
+				againtip.innerHTML = "密码验证通过";
+				this.className = removeClass(this.className);
+			} else {
+				e.target.className = addClass(e.target.className);
+				againtip.innerHTML = "俩次输入密码不一样，请重新输入!";
+			}
+		}, false);
+		 //------------------提交----
+		var form = document.querySelector("form");
+		form.addEventListener("change", function() {
+			if (usertip.innerText === "用户名可用" && passtip.innerText === "密码格式正确" && againtip.innerText === "密码验证通过") {
+				btn.setAttribute("type", "submit");
+			}
+		}, false);
+
+		btn.addEventListener("click", function() {
+			if (!username.value) {
+				username.className = addClass(username.className);
+			}
+			if (!password.value) {
+				password.className = addClass(password.className);
+			}
+			if (again.value === "") {
+				again.className = addClass(again.className);
+			}
+		}, false);
+
+
+		 //-----------------添加class函数---------------
+		function addClass(str) {
+			if (/false_color/g.test(str)) {
+				return str;
+			} else {
+				var arr = str.split(/\s+/g);
+				arr.push("false_color");
+				str = arr.join(" ");
+				return str;
+			}
+
+		}
+		 //-----------------删除class函数-----------------
+		function removeClass(str) {
+			str = str.replace("false_color", "");
+			return str;
+		}
+	</script>
+
+</body>
+</html>
