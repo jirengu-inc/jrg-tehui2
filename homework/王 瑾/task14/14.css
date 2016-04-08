@@ -151,14 +151,19 @@ body {
 .graphs {
   margin:0;
   padding-top: 10px;
-  clear:both;
   padding-left:145px;
+}
+.graphs:after{
+  content: '';
+  display: block;
+  clear: both;
 }
 .graphs1,.graphs3,.graphs2,.graphs4{
   float:left;
 }
 .graphs li{
   border: 15px solid white;
+  width:500px;
 }
 #displaypage a {
   display: block;
@@ -169,7 +174,6 @@ body {
   line-height:20px;
   padding:7px;
   color: white;
-  clear:both;
 }
 #displaypage a:hover{
   background-color:DimGrey;
