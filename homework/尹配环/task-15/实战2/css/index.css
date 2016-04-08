@@ -1,0 +1,108 @@
+* {
+	padding:0;
+	margin:0;
+}
+a {
+	text-decoration: none;
+	color:#666;
+}
+.line{
+	height: 1px;           					/*<hr>的用法，先设置个高度*/
+	border:none;
+	border-top:1px solid #eee;
+	margin-top:.7rem;
+	margin-bottom: .5rem;
+}
+#top {
+	width: 1000px;
+	height:50px;
+	line-height: 50px;
+	margin:0 auto;
+}
+#top>a {
+  float: left;
+  font-size: 1.3rem;
+  color: black;
+  line-height: 50px;
+  margin-right:1.5rem;
+}
+#top>ul {
+	line-height: 50px;
+}
+#top li {
+	list-style: none;
+	padding-right: 1.2rem;
+}
+#top>ul>li {
+	display:inline-block;
+}
+#top>ul>li>a:hover {
+	color: black;
+}
+
+#top>ul>li:nth-child(1) {						/*我的作品*/
+	position: relative;     					/*给子菜单提供定位基准*/
+}
+#top>ul>li:nth-child(1):hover .dropdown-menu {
+	display: block;										/*鼠标滑过显示子菜单*/
+}
+.caret {														/*向下的小箭头*/
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top:4px solid black;
+	border-left:4px solid transparent;
+	border-right: 4px solid transparent;
+  padding-top: 2px;
+}
+.dropdown-menu {
+    display: none; 
+    position: absolute;								/*绝对定位脱离文档流*/
+    left: -1rem;
+    width: 11rem;
+    line-height: 1.8rem;
+    word-spacing: 3px;
+    padding-top:5px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: white;
+}
+.dropdown-menu>li>i {
+	margin-left: 1.2rem;								/*子菜单左留白*/
+}
+.dropdown-menu>li:hover {
+	background-color: #ccc;
+}
+.dropdown-menu>li:last-child {			/*最后一个li的字号*/
+	font-size: .7rem;
+	color:#999;
+}
+.dropdown-menu>li:last-child:hover {
+	background-color: inherit;				/*去掉最后一个li的hover效果*/
+}
+
+/*-----------------------------------------*/
+#banner {
+	box-sizing: border-box;
+	width:100%;
+	padding:60px 10px 60px 10px;
+	background-color: #B84D45;
+	
+}
+#banner .header {
+	width: 1000px;
+	margin:0 auto;
+}
+.header h1 {
+	font-size: 3.5rem;
+	color: white;
+}
+.header p {
+	font-size: 1.7rem;
+	color:rgba(225,225,225,.9);
+}
+/*-----------------------------------------*/
+
+
+
+
