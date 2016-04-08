@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body{
+		margin:0;
+		padding:0;
+		box-sizing: border-box;
+	}
+	#wrap{
+		position: relative;
+		width:500px;
+		margin:100px auto;
+
+	}
+	.tap{
+
+		overflow: auto;
+	}
+	.tap div{
+		text-align:center;
+		width:100px;
+		float:left;
+		height:30px;
+		line-height:30px;
+		border:1px solid black;
+	}
+	.div1{
+		width:304px;
+		height:300px;
+		/*position: absolute;
+		left:0;
+		top:30px;*/
+		border:1px solid black;
+	}
+	.tap>div:active,.tap>div:hover{
+		background:red;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<div class="tap">
+			<div class="tap1">tap1</div>
+			<div class="tap2">tap2</div>
+			<div class="tap3">tap3</div>
+		</div>
+		<div class="div1">内容1</div>
+	</div>
+</body>
+<script>
+var tap=document.querySelector(".tap");
+var show=document.querySelector(".div1");
+tap.addEventListener("click",function(e){
+	var child=tap.children;
+	switch(e.target.className.toLowerCase()){
+		case "tap1":{
+			show.innerHTML="内容1";
+			break;
+		}
+		case "tap2":{
+			show.innerHTML="内容2";
+			break;
+		}
+		case("tap3"):{
+			show.innerHTML="内容3";
+			break;
+		}
+		default:
+		console.log("未知");
+	}
+})
+</script>
+</html>
