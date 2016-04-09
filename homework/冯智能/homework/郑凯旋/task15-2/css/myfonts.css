@@ -1,0 +1,72 @@
+/*字体声明*/
+
+/*字体1：droidserif-italic-webfont*/
+@font-face{
+	font-family: droidserif-italic-webfont;
+	src:url("../fonts/droidserif-italic-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: droidserif-italic-webfont;
+	src:url("../fonts/droidserif-italic-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: droidserif-italic-webfont;
+	src:url("../fonts/droidserif-italic-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体2：kaushanscript-regular-webfont*/
+@font-face{
+	font-family: kaushanscript-regular-webfont;
+	src:url("../fonts/kaushanscript-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: kaushanscript-regular-webfont;
+	src:url("../fonts/kaushanscript-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: kaushanscript-regular-webfont;
+	src:url("../fonts/kaushanscript-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体3：montserrat-bold-webfont*/
+@font-face{
+	font-family: montserrat-bold-webfont;
+	src:url("../fonts/montserrat-bold-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: montserrat-bold-webfont;
+	src:url("../fonts/montserrat-bold-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: montserrat-bold-webfont;
+	src:url("../fonts/montserrat-bold-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体4：montserrat-regular-webfont*/
+@font-face{
+	font-family: montserrat-regular-webfont;
+	src:url("../fonts/montserrat-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: montserrat-regular-webfont;
+	src:url("../fonts/montserrat-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: montserrat-regular-webfont;
+	src:url("../fonts/montserrat-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+
+/*字体5：robotoslab-regular-webfont*/
+@font-face{
+	font-family: robotoslab-regular-webfont;
+	src:url("../fonts/robotoslab-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: robotoslab-regular-webfont;
+	src:url("../fonts/robotoslab-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: robotoslab-regular-webfont;
+	src:url("../fonts/robotoslab-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+

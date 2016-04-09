@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-11-1</title>
+    <style>
+        html,body {
+            padding: 0;
+            margin: 0;
+            font-family: "SimHei","sans-serif";
+        }
+        .container {
+            height: 40px;
+            background: #eee;
+            margin-top: -20px;
+        }
+        li {
+            list-style: none;
+        }
+        .nav>li {
+            position: relative;
+            list-style: none;
+            float: left;
+            padding-left: 30px;
+        }
+        .li1 {
+            margin-left: -20px;
+        }
+        .nav li a {
+            display: inline-block;
+            text-decoration: none;
+            color: #333;
+            line-height: 40px;
+        }
+        .nav li:hover .child {
+            display: block;
+        }
+        .nav li a:hover {
+            background: #ccc;
+        }
+        .nav li ul {
+            display: none;
+            padding: 0;
+            position: absolute;
+            left: 30px;
+            top: 100%;
+            border: 1px solid #ccc;
+            background: #eee;
+        }
+        .child li:hover {
+            background: #ccc;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+<ul class="nav">
+    <li class="li1">
+        <a href="#">前端</a>
+        <ul class="child">
+            <li><a href="">HTML</a></li>
+            <li><a href="">CSS</a></li>
+            <li><a href="">Javascript</a></li>
+        </ul>
+    </li>
+    <li class="li2">
+        <a href="#">服务端</a>
+        <ul class="child">
+            <li><a href="">NODE</a></li>
+            <li><a href="">PHP</a></li>
+            <li><a href="">JAVA</a></li>
+        </ul>
+    </li>
+    <li class="li3">
+        <a href="#">前端工具</a>
+        <ul class="child">
+            <li><a href="">Sublime</a></li>
+            <li><a href="">Webstrom</a></li>
+            <li><a href="">Git</a></li>
+        </ul>
+    </li>
+    <li class="li4"><a href="#">HTML</a></li>
+    <li class="li5"><a href="#">NODE</a></li>
+</ul>
+</div>
+</body>
+</html>

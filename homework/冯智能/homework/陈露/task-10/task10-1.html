@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task10-1两栏布局</title>
+	<style>
+	body{
+		font-family: "微软雅黑";
+	}
+	  #header,#footer{
+	  	height: 50px;
+	  	background-color: #333;
+	  }
+	  #contanier{
+	  	width: 910px;
+	  	height: 550px;
+	  	margin: 0px auto;
+	  	position: relative;
+	  }
+	  #header .logo{
+	  	width: 300px;
+	  	position: absolute;
+	  	left: 250px;
+	  }
+	
+	 #header .nav{
+	 	width: 400px;
+	 	float:right;
+	    position: absolute;
+	    top: 5px;
+	    right: 200px;	
+	 }
+	 ul li{ 
+	 	display: inline-block;
+	 	margin-right: 40px;
+	 }
+	 ul li a{
+	 	text-decoration: none;
+	 	color: #fff;
+	 	font-size: 18px;
+	 }
+	 ul li a:hover{
+	 	color: #00b6f8;
+	 }
+
+	 #contanier .sidebar{
+       width: 200px;
+       height: 650px;
+       background-color: #eee;
+       float: left;
+	 }
+	 #contanier .infobar{
+       width: 700px;
+       background-color: #eee;
+       float: right;  
+	 }
+	 p{
+	 	color: grey;
+	 }
+     #footer{
+     	position: relative;
+     	top: 100px;
+     }
+	 .bottom{
+	 	position: absolute;
+	 	left: 250px;
+	 }
+	 .bottom li{
+	 	margin-right: 10px;
+	 }
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="logo"><a href="http://www.jirengu.com"><img src="logo.PNG" alt="饥人谷LOGO"></a></div>
+	    <ul class="nav">
+		<li><a href="">技能</a></li>
+		<li><a href="">经历</a></li>
+		<li><a href="">作品</a></li>
+		<li><a href="">关于</a></li>
+	</ul>
+	</div>
+	<div id="contanier">
+		<div class="sidebar"></div>
+		<div class="infobar">
+			<h1>我的作品</h1>
+			<p>生活很美好<br>心情不错<br>代码写的很漂亮</p>
+		</div>
+	</div>
+	<div id="footer">
+	<ul class="bottom">
+		<li><a href="">饥人谷</a></li>
+		<li><a href="">JSCODE</a></li>
+		<li><a href="">JSBIN</a></li>
+	</ul>
+	</div>
+</body>
+</html>

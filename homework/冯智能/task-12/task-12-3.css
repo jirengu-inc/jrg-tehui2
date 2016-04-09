@@ -1,0 +1,45 @@
+body{
+	margin: 0;
+	padding: 0;
+	font-family:  '微软雅黑', Helvetica, Arial, sans-serif;
+}
+#header{
+	width: 100%;
+	background-color: #ccc;
+	min-height: 50px;
+}
+#footer{
+	width: 100%;
+	background-color: #ccc;
+	min-height: 50px;
+}
+.container-left, .content, .container-right{
+	float: left;
+}
+.container-left{
+	width: 150px;
+	margin-left: -100%;
+	min-height: 200px;
+	position: relative;
+	background-color: red;
+}
+.container-right{
+	width: 150px;
+	margin-left: -150px;
+	min-height: 200px;
+	position: relative;
+	background-color: yellow;
+}
+.content1{
+	margin: 0 150px;
+	min-height: 200px;
+	background-color: green;
+}
+#container:after {
+	content: "";
+	display: block;
+	clear: both;
+}
+.content{
+	width: 100%;
+}

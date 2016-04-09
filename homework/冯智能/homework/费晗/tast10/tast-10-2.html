@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>tast-10-2</title>
+<style type="text/css">
+body,div{
+	    margin: 0;
+	    padding: 0;
+}
+
+.father-box{
+		margin: 0 auto;
+		width: 600px;
+		border: 1px solid #ccc;
+}
+.father-box > .box1{
+		margin: 30px auto;
+		border: 2px solid #666;
+		width: 350px;
+		height: 200px;
+		position: relative;
+}
+.box1 .gray{
+		width: 0;
+		height: 0;
+		border: 20px solid transparent;
+		border-bottom-color: #666;
+		position: absolute;
+		top: -40px;
+		left: 13px;
+}
+.box1 .red{
+		width: 0;
+		height: 0;
+		border: 15px solid transparent;
+		border-top-color: #ff0000;
+		border-right-color: #ff0000;
+		position: absolute;
+		top: 0;
+		right: 0;
+}
+.box1 .san-blank{
+		width: 30px;
+		height: 30px;
+		border: 2px solid transparent;
+		border-top-color: #666;
+		border-right-color: #666;
+		background-color: #fff;
+		-webkit-transform:rotate(-45deg);
+		position: absolute;
+		top: -17px;
+		left: 23px;
+}
+</style>
+</head>
+<body>
+    <div class="father-box">
+    	<div class="box1">
+    		<div class="gray"></div>
+    	</div>
+    	<div class="box1">
+    		<div class="red"></div>
+    	</div>
+    	<div class="box1">
+    		<div class="san-blank"></div>
+    	</div>
+    </div>
+</body>
+</html>

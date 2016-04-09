@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="description" content="圣杯三栏布局">
+	<title>task-12-1</title>
+	<style type="text/css">
+		html,body{
+			margin: 0;
+			padding: 0;
+			min-width: 600px;
+		}
+		#header,#footer{
+			height: 50px;
+			background-color: #eee;
+		}
+		#container:after{
+			content: ''	;
+			display: block;
+			clear: both;
+		}
+		#container{
+			*zoom: 1;
+		}
+		#container .main{
+			width: 100%;
+			float: left;
+		}
+		#container .main .main-inner{
+			margin-right:200px;
+			min-height: 100px;
+			background-color: green;
+		}
+		#container .right{
+			width: 200px;
+			float: left;
+			min-height: 120px;
+			background-color: yellow;
+			margin-left: -200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="main">
+			<div class="main-inner">圣杯布局指两边定宽，中间自适应的三栏布局，中间栏药房在文档流前面优先渲染。
+			</div>
+		</div>
+		<div class="right">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>
