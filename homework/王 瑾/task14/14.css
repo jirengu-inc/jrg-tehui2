@@ -53,7 +53,6 @@ body {
   color: white;
   padding: 12px;
 }
-
 .content2{
   width：960px;
   text-align: center;
@@ -85,6 +84,12 @@ body {
   color: white;
   font-size: 25px;
 }
+.underline{
+  padding-top: 25px;
+  width: 80px;
+  border-bottom: 2px solid white;
+  margin: 0 auto;
+}
 .list1 {
   text-align: center;
 }
@@ -96,7 +101,6 @@ body {
 .iconname {
   font-weight: bold;
   color: white;
-  margin-bottom: 30px;
 }
 .list1 a {
   font-size:12px;
@@ -109,7 +113,6 @@ body {
 .list1 a:hover{
   background-color:LightGrey;
 }
-
 
 #pic {
   background: url(pics/2.jpg) 0 0 no-repeat;
@@ -131,6 +134,12 @@ body {
   text-align: center;
   font-size: 25px;
   padding-top: 40px;
+}
+.underline2{
+  margin: 0 auto;
+  width: 80px;
+  border-bottom: 2px solid Grey;
+  padding-top: 25px;
 }
 .graphs {
   padding-top: 10px;
@@ -218,6 +227,13 @@ body {
   text-align: center;
   padding-right: 20px;
 }
+.underline3{
+  width: 80px;
+  border-bottom: 2px solid Grey;
+  margin: 0 auto;
+
+}
 #lastpage p{
     text-align: center;
+    margin-bottom: 35px;
 }
