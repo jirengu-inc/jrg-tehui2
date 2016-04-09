@@ -15,14 +15,22 @@ body,header,main,footer,div,h1,h2,h3,p,ul {
 }
 .nav-ul{
 	position: absolute;
-	padding: 0 15px 15px 15px;
+	padding: 0 15px 15px 0;
 }
 .nav-ul>li{
 	display: inline-block;
 	margin-left: 30px;
 }
+.wrap-nav{
+	width: 1200px;
+	margin: 0 auto;
+}
+
 .my-work>li:hover{
 	background-color: #ccc;
+}
+.jirengu{
+	font-size: 22px;
 }
 .my-work>li{
 	padding: 10px;
@@ -31,6 +39,9 @@ body,header,main,footer,div,h1,h2,h3,p,ul {
 .work-a{
 	height: 50px;
 	line-height: 50px;
+}
+.page{
+	color: red;
 }
 li{
 	list-style: none;
@@ -70,12 +81,14 @@ a{
 	width: 0px;
 	height: 0px;
 }
-#header{
+.wrap-header{
 	background: #b84d45;
 	margin-top: 50px;
 	padding: 80px 75px;
 	color: white;
 	font-weight: normal;
+	width: 1190px; 
+	margin: 0 auto;
 }
 .header-title{
 	font-size: 3.5em;
@@ -89,6 +102,7 @@ a{
 	margin: 40px 80px;
 	position: relative;
 	display: block;
+	width: 1190px;
 }
 .inner-title{
 	height: 40px;
@@ -99,7 +113,9 @@ a{
 }
 .inner-title li{
 	display: inline-block;
-
+}
+#main{
+	height: 2000px;
 }
 .inner-img>li>img{
 	width: 340px;
@@ -119,9 +135,7 @@ a{
 	margin: 15px;
 	margin-top: 30px;
 }
-.inner-img{
-	position: absolute;
-}
+
 .check{
 	border: 1px solid #ccc;
 	height: 30px;
@@ -130,9 +144,10 @@ a{
 	margin: 0 auto;
 	margin-top: 10px;
 }
-#footer{
+.wrap-footer{
 	text-align: center;
 	width: 100%;
+	margin: 0 auto;
 }
 .footer-1{
 	background-color: #b84d45;
