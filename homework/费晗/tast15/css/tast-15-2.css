@@ -5,14 +5,9 @@
  * @date    2016-03-17 10:16:03
  * @version $Id$
  */
-body,html,div,h1,h2,h3,p,ul,li,form,input,textarea,button{
+body,html,div,h1,h2,h3,p,ul,li,form,input,textarea{
     margin: 0;
-    padding: 0;
-    /*
-    -webkit-box-sizing: border-box;   // IE8以上兼容 
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;  
-    */          
+    padding: 0;      
 	font: 16px/1.2 "Roboto Slab","Helvetica Neue",Arial,sans-serif;
 	color: #333;
 }
@@ -40,8 +35,6 @@ li{
 	z-index: 10;
 	background-color: #222;
 }
-#topnav .navbar{
-}
 #topnav li{
 	float: right;
 	height: 70px;
@@ -66,8 +59,8 @@ li{
 	color: #fec503;
 	font-style: italic;
 	font-family: "Kaushan Script";
-	word-spacing: -7px;
-	letter-spacing: -2px;
+	word-spacing: -7px;      //拉近单词与单词之间的距离
+	letter-spacing: -2px;    //拉近字母与字母之间的距离
 }
 #header{
 	position: relative;
@@ -126,7 +119,7 @@ li{
 }
 #services .wrap-center{
     text-align: center;
-    height: 684px;
+    height: 624px;
 }
 .nav-h2-decp h2{
     font-size: 38px;
@@ -396,7 +389,7 @@ h3{
 #footer .wrap-center>div{
 	display: inline-block;
 }
-#footer p{
+#footer .copy{
 	font-size: 14px;
 	font-weight: bold;
 	color: #222222;

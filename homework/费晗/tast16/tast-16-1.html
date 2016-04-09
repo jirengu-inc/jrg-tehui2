@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>tast-16</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+    	function isNumber(e1){
+    		if (typeof(e1)==="number") {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	function isNumber(e1){
+    		if (typeof(e1)==="string") {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	function isNumber(e1){
+    		if (typeof(e1)==="boolean") {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	function isNumber(e1){
+    		if (typeof(e1)==="function") {
+    			return true;
+    		}else{
+    			return false;
+    		}
+    	}
+    	var a = 2,
+    	    b = "jirengu",
+    	    c = false;
+    	alert( isNumber(a) );  //trun
+    	alert( isString(a) );  //false
+    	alert( isString(b) );  //trun
+    	alert( isBoolean(c) );  //trun
+    	alert( isFunction(a) );   //false
+    	alert( isFunction( isNumber) );  //trun
+    	console.log(1+1);  //2
+    	console.log("2"+"4");  //24
+    	console.log(2+"4");  //24
+    	console.log(+new Date()); //1457285383621 
+    	console.log(+"4");  //4
+    	var a = 1;
+    	a+++a;  //3
+    	typeof a+2;  //number2
+    	var arr = [3,4,5]
+    	for(var i=0;i<=arr.length;i++){
+    		console.log(arr[i]*arr[1]);
+    	}
+    	// 输出 9 16 25
+    	var obj={
+    		name:"hunger";
+    		sex:"男"；
+    		age:24;
+    	}
+    	for(var a in obj){
+    		console.log(a+":"+obj[a]+";");
+    	}
+    	name:hunger;
+    	sex:男；
+    	age:24;
+    	console.log(a);  //声明变量a，但没有赋值，只是先占一个存储空间，comsole.log返回的值为undefined
+    	var a = 1;  //把值1赋给a
+    	console.log(a);  //1，因前面给 a赋值了
+    	console.log(b);  //b没有被声明，所以报错
+    </script>
+</body>
+</html>
