@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-22-5</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	body,html,div,li,ul,h3,p{
+   	padding: 0;
+   	margin: 0;
+   	font-family: "Microsoft Yahei";
+   }
+   #container{
+   	width: 600px;
+   	height: 600px;
+   	border: solid 1px #999;
+   	position: relative;
+   	margin: 20px;
+   }
+   .cover{
+   	background-color: #333;
+   	opacity: 0.5;
+   	border: solid 1px red;
+   	position: absolute;
+   	top: 0;
+   	left: 0;
+   	width: 100%;
+   	height: 100%;
+   	z-index: 1;
+
+   }
+   .wrap{
+   	width: 390px;
+   	height: 165px;
+   	border: solid 1px #999;
+   	position: absolute;
+   	left: 50%;
+   	top: 50%;
+   	margin-left: -195px;
+   	margin-top: -82.5px;
+   	z-index: 2;
+   	background-color: #fff;
+
+   }
+   .header{
+   	border-bottom: solid 1px #999;
+   	padding: 5px;
+   	/*outline: solid 1px #999;*/
+   }
+   a{
+   	text-decoration: none;
+   	font-weight: bold;
+   	color: #333;
+   }
+   .header a{
+   	position: absolute;
+   	right: 10px;
+   	top: 5px;	
+   }
+   .content{
+   	/*outline: solid 1px #999;*/
+   }
+   .footer{
+   	position: absolute;
+   	bottom: 0;
+   	width: 100%;
+   	/*outline: solid 1px #999;*/
+   }
+   .footer a{
+   	float: right;
+   	margin: 10px;
+   	border: solid 1px #999;
+   	padding: 5px 15px;
+   	border-radius: 5px;
+   }
+   .close{
+   	display: none;
+   }
+</style>
+</head>
+<body>
+    <div id="container">
+   	<button class="btn">点我1</button>
+   	<div class="cover close shutdown">adsf</div>
+   	<div class="wrap close">
+   		<div class="header">
+   			<h3>我是标题1</h3>
+   			<a href="#" class="shutdown">X</a>
+   		</div>
+   		<div class="content">
+   			<p>我是内容1</p>
+   			<p>我是内容1</p>
+   		</div>
+   		<div class="footer">
+   			<a href="#" class="shutdown">取消</a>
+   			<a href="#" class="confirm">确定</a>
+   		</div>
+   	</div>
+   </div>
+
+   <script>
+   	var cont = document.querySelector("#container");
+   	var cover = document.querySelector(".cover");
+   	var wrap = document.querySelector(".wrap");
+   	var btn = document.querySelector(".btn");
+   	cont.addEventListener("click", function(e) {
+   		var attribute = e.target.className;
+   		console.log(attribute);
+   		if (/shutdown/g.test(attribute)) {
+   			addClass("close", cover);
+   			addClass("close", wrap);
+   			e.preventDefault();
+   		}
+   	})
+   	 btn.addEventListener("click", function(e) {
+   		removeClass("close", cover);
+   		removeClass("close", wrap);
+   	})
+
+   	 //-----------下面时封装的函数------------------
+   	 //------------添加className函数
+   	function removeClass(name, node) {
+   		var str = node.className;
+   		str = str.replace(name, "");
+   		node.className = str;
+   	}
+   	 //------------去除className函数
+   	function addClass(name, node) {
+   		var str = node.className;
+   		str = str.replace(str, str + " " + name);
+   		node.className = str;
+   	}
+   </script>
+</body>
+</html>

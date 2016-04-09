@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="task-12-1.css">
+</head>
+<body>
+  <div id="header">头部</div>
+  <div id="container">
+    <div class="content">圣杯布局指两边定宽，中间自适应的三栏布局，中间流要放在文档流前面以优先渲染，其流程为1、设置container左右的padding，用于预留左右边栏的空间，2、给所有元素设置定位和浮动，用于设置左右两栏偏移，3、给左侧边栏设置right，让其移动位置。设置负边距100%，让其跑到上面；4、给右侧边栏设置负边距，使其跑到上面。</div>
+    <div class="container-left">左侧边栏，固定宽度</div>
+ 	
+    <div class="container-right">右侧边栏，固定宽度</div>
+  </div>
+  <div id="footer">尾部</div>
+</body>
+</html>

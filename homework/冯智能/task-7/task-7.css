@@ -1,0 +1,15 @@
+.nav-ul1 li{
+	display: inline-block;
+	color: #444;
+	text-decoration: none;
+	padding: 12px;
+}
+.nav-ul1 li a{
+	text-decoration: none;
+}
+.nav-ul1{
+	border:1px solid #ccc;
+}
+.nav-ul1 li a:hover{
+	color: red;
+}
