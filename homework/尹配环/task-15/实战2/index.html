@@ -8,16 +8,17 @@
 <meta name="keywords" content="">
 <link href="css/index.css" rel="stylesheet">
 <link href="css/font-awesome.css" rel="stylesheet">
+<link href="css/normalize.css" rel="stylesheet">
 
 </head>
   <body>
-    <div id="top" class="contianer">
+    <div id="menu" class="wrap">
       <a href="#">饥人谷</a>
       <ul>
       	<li>
     	    <a href="#">我的作品</a>
           <div class="caret"></div>
-          <ul class="dropdown-menu">
+          <ul class="dropmenu">
             <li>
               <i class="fa fa-globe"></i>    
               <a href="#">作品1</a>
@@ -48,86 +49,99 @@
         </li>
       </ul>
     </div>
-    <!-- ******************顶部导航******************** -->
-    <div id="banner">
-      <div class="contianer">
-        <h1>页面特征</h1>
-        <p>不需要处理响应式，不使用Bootstrap，不需要js。</p>
-        <p>图标使用font-awesome，页面中心内容固定宽度1000px。</p>
-      </div>
-    </div>
-    <!-- ******************页面特征******************** -->
-    <div class="nav contianer">
-      <a href="#">首页</a>/我的作品
-    </div>
-    <!-- ******************导航条******************** -->
-    <div id="photolist">
-      <ul class="contianer">
-        <li>
-          <a href="#"><img class="img-set" src="img/creative.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/agency.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/freelancer.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/full-slider.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/full-width-pics.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/grayscale.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/half-slider.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/landing-page.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/one-page-wonder.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-        <li>
-          <a href="#"><img src="img/stylish-portfolio.jpg" alt=""></a>
-          <h1></h1>
-          <p></p>
-          <a href="#"></a>
-        </li>
-      </ul>
+    <!-- ******************顶部菜单******************** -->
+		<div id="header">
+			<div class="wrap">
+				<h1>页面特征</h1>
+				<p>不需要处理响应式，不使用Bootstrap，不需要JS。</p>
+				<p>图标使用font-awesome,页面中心内容固定宽度1000px。</p>
+			</div>
+		</div>
+		<!-- ******************导航条******************** -->
+		<div id="nav">
+			<div class="wrap">
+				<a href="#">首页</a>
+				<span>/ 我的作品</span>
+			</div>
+		</div>
+		<!-- ******************图片列表******************** -->
+		<div id="photolist">
+			<div class="wrap">
+				<ul class="items">
+					<li>
+						<a href="#">
+							<img src="img/creative.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/agency.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/freelancer.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/full-width-pics.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/grayscale.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/half-slider.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/landing-page.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
+					<li>
+						<a href="#">
+							<img src="img/one-page-wonder.jpg" alt="1">
+						</a>
+						<h2>Creative</h2>
+						<p>A one page create theme.</p>
+						<a class="btn" href="#">查看</a>
+					</li>
 
-    </div>
-
-
+				</ul>
+			</div>
+		</div>
+		<div id="footer">
+			<div class="wrap">
+				<h1>想更详细的了解我？</h1>
+				<p>下载简历，打我电话找我吧</p>
+			</div>
+		</div>
 
 
 

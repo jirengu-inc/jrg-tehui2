@@ -1,12 +1,12 @@
-* {
-	padding:0;
-	margin:0;
+/***********************通用**********************/
+li {
+	list-style: none;
 }
 a {
 	text-decoration: none;
 	color:#666;
 }
-.contianer {
+.wrap {
 	width: 1000px;
 	margin:0 auto;	
 }
@@ -17,34 +17,48 @@ a {
 	margin-top:.7rem;
 	margin-bottom: .5rem;
 }
-#top {
+.btn {
+	display: inline-block;
+	box-sizing: border-box;
+	padding:3px 10px;
+	margin:0;
+	border:1px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+}
+.btn:hover {
+	background-color: #ccc;
+}
+/***********************顶部菜单**********************/
+#menu {
 	line-height: 50px;
 }
-#top>a {
+#menu>a {
   float: left;
   font-size: 1.3rem;
   color: black;
   line-height: 50px;
   margin-right:1.5rem;
 }
-#top>ul {
+#menu>ul {
+	margin:0;
 	line-height: 50px;
 }
-#top li {
-	list-style: none;
+#menu>ul>li {
 	padding-right: 1.2rem;
 }
-#top>ul>li {
+#menu>ul>li {
 	display:inline-block;
 }
-#top>ul>li>a:hover {
+#menu>ul>li>a:hover {
 	color: black;
 }
 
-#top>ul>li:nth-child(1) {						/*我的作品*/
+#menu>ul>li:first-child {						/*我的作品*/
 	position: relative;     					/*给子菜单提供定位基准*/
 }
-#top>ul>li:nth-child(1):hover .dropdown-menu {
+#menu>ul>li:first-child:hover .dropmenu {
 	display: block;										/*鼠标滑过显示子菜单*/
 }
 .caret {														/*向下的小箭头*/
@@ -56,76 +70,113 @@ a {
 	border-right: 4px solid transparent;
   padding-top: 2px;
 }
-.dropdown-menu {
-    display: none; 
-    position: absolute;								/*绝对定位脱离文档流*/
-    left: -1rem;
-    width: 11rem;
-    line-height: 1.8rem;
-    word-spacing: 3px;
-    padding-top:5px;
-    border: 1px solid #ddd;
-    border-radius: 3px;
-    background-color: white;
+/***********************下啦菜单**********************/
+.dropmenu {
+  display: none; 
+  position: absolute;								/*绝对定位脱离文档流*/
+  left: -1rem;
+  width: 11rem;
+  line-height: 1.8rem;
+  word-spacing: 3px;
+  padding-top:5px;
+  padding-left:0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: white;
 }
-.dropdown-menu>li>i {
+.dropmenu>li>i {
 	margin-left: 1.2rem;								/*子菜单左留白*/
 }
-.dropdown-menu>li:hover {
+.dropmenu>li:hover {
 	background-color: #ccc;
 }
-.dropdown-menu>li:last-child {			/*最后一个li的字号*/
+.dropmenu>li:last-child {			/*最后一个li的字号*/
 	font-size: .7rem;
 	color:#999;
 }
-.dropdown-menu>li:last-child:hover {
+.dropmenu>li:last-child:hover {
 	background-color: inherit;				/*去掉最后一个li的hover效果*/
 }
-
-/*-----------------------------------------*/
-#banner {
-	box-sizing: border-box;
-	width:100%;
-	padding:60px 10px 60px 10px;
+/***********************header**********************/
+#header {
+	line-height: 2;
+	padding:2rem 0;
 	background-color: #B84D45;
-	
 }
-#banner h1 {
-	font-size: 3.5rem;
-	color: white;
+#header h1,#header p {
+	color:white;
+	margin: 0;
 }
-#banner p {
-	font-size: 1.7rem;
-	color:rgba(225,225,225,.9);
+#header h1 {
+	font-size: 2.5rem;
 }
-/*-----------------------------------------*/
-.nav {
-	background-color: #ccc;
-	border:1px solid #ccc;
-	border-radius: 3px;
-	padding-top:5px;
-	padding-bottom: 5px;
-	padding-left:25px;
-	margin-top: 40px;
-	margin-bottom: 30px;
+#header p {
+	font-size: 1.1rem;
 }
-/*-----------------------------------------*/
+/***********************nav**********************/
+#nav {
+	margin-top:2.5rem;
+}
+#nav>.wrap {
+	padding:.5rem 0;
+	border-radius: 5px;
+	background-color: #eee;
+}
+#nav a {
+	padding-left:1rem;
+	color: red;
+}
+#nav a:hover {
+	color:#B84D45;
+	text-decoration: underline;
+}
+
+/***********************photolist**********************/
+
 #photolist {
 
 }
-#photolist:after {
+#photolist .items {
+	padding:0;
+	margin-right: -20px;           /*相当于父元素增加20px；*/
+	/*overflow: hidden;*/						/*可以隐藏多余的部分*/
+}
+.items:after {
 	content: "";
 	display:block;
-	clear:both;
+	clear: both;
 }
-#photolist li {
-	float:left;
-	width: 290px;
-	margin-right: 15px;
-	border:1px solid;
-	list-style: none;
+.items>li {
+	box-sizing: border-box;
+	float: left;
+	width: 320px;                 	/*（1000-20*2）/3 */
+	margin-right: 20px;							/*最后一个元素右面会多出20px；父元素设置-margin让留出20px；*/
+	margin-bottom: 20px;
+	padding-top:5px;
+	padding-bottom: 33px;
+	text-align: center;
+	border:1px solid #ccc;
+	border-radius: 5px;
+}
+.items>li img {
+	width: 310px;
+}
+.items>li>a:hover {
+	opacity: .7;
+}
+.items>li>h2,.items>li>p {
+	color:#555;
+}
+/***********************footer**********************/
+#footer {
+	overflow: hidden;                             /*已经形成BFC 为什么还是边距合并？*/
+	margin-top: 10px;
+	padding: 10px;
+	background-color: #B84D45;
+	text-align: center;
 }
 
-.img-set {
-	width: 280px;
-}
+
+
+
+
