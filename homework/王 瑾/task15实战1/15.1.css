@@ -28,6 +28,8 @@ a {
 }
 .top-nvbar{
   margin-left:100px;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .top-nvbar li{
   display:inline-block;
@@ -38,11 +40,12 @@ a {
 }
 .mywork{
   position:relative;
+  line-height: 59px;
 }
 .mywork-list{
   position:absolute;
   display:none;
-  top: 23px;
+  top: 59px;
   left:-15px;
   background-color:white;
   border:1px solid LightGrey;
@@ -50,9 +53,8 @@ a {
   padding: 0;
 }
 .mywork-list li{
-  width:120px;
+  width:160px;
   margin-left: 0;
-  padding-bottom: 10px;
 }
 .mywork:hover .mywork-list{
   display:block;
