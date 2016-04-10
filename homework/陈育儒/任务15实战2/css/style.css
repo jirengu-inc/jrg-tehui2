@@ -12,8 +12,13 @@ a{
 	width:1000px;
 	margin:0 auto;
 }
-.clearfix{
+.clearfix:after{
+	content:'';
+	display: block;
 	clear:both;
+}
+.clearfix{
+	*zoom:1;
 }
 .btn{
 	width:60px;
@@ -41,11 +46,6 @@ a{
 	line-height: 50px;
 	color:#999;
 	position: relative;
-}
-.top-navbar:after{
-	content:'';
-  display:block;
-  clear:both;
 }
 .top-navbar>li{
 	float:left;
@@ -119,14 +119,7 @@ a{
 /*主内容图片区块*/
 .wrap-item{
 	height:100%;
-}
-.wrap-item li:first-child{
-	margin-left:0px;
-}
-.wrap-item:after{
-	content:'';
-	display:block;
-	clear:both;
+	margin-right:-40px;
 }
 .item{
 	float:left;
@@ -137,7 +130,7 @@ a{
 	padding:5px;
 	text-align: center;
 	margin-top:25px;
-	margin-left:32px;
+	margin-right:15px;
 }
 .item img{
 	width:100%;
