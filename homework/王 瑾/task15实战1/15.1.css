@@ -1,13 +1,8 @@
 body,html{
   width: 100%；
-  margin: 0;
   padding: 0;
+  margin: 0;
   font-family: "Microsoft Yahei";
-}
-*,*:before,*:after{
-  box-sizing:border-box;
-  -webkit-box-sizing:border-box;
-  -ms-box-sizing:border-box;
 }
 li{
   list-style:none;
@@ -22,7 +17,7 @@ a {
   color:black;
 }
 
-#nvbar{
+#top{
   position: fixed;
   top: 0;
   left: 0;
@@ -30,49 +25,48 @@ a {
   z-index: 1;
   border: 1px transparent solid;
   background-color:white;
-  margin-bottom: 0;
 }
-.list{
-  padding-left:145px;
+.top-nvbar{
+  margin-left:100px;
 }
-.list li{
+.top-nvbar li{
   display:inline-block;
-  padding:0 25px;
+  margin-left: 25px;
 }
-.list a{
+.top-nvbar a{
   color:Grey;
 }
 .mywork{
   position:relative;
 }
-.inner{
+.mywork-list{
   position:absolute;
   display:none;
-  top:21px;
+  top: 23px;
+  left:-15px;
   background-color:white;
   border:1px solid LightGrey;
   border-radius:5px;
-  padding:0;
+  padding: 0;
 }
-.inner li{
-  padding:5px;
-  padding-left:10px;
-  padding-right:40px;
-  width:130px;
+.mywork-list li{
+  width:120px;
+  margin-left: 0;
+  padding-bottom: 10px;
 }
-.mywork:hover .inner{
+.mywork:hover .mywork-list{
   display:block;
 }
-.list a:hover{
+.top-nvbar a:hover{
   color:black;
 }
-.inner li:hover{
+.mywork-list li:hover{
   background-color:Lightgrey;
 }
-.lastone{
- display: block;
- text-align: center;
+.nolink-one{
+  margin-left:15px;
 }
+
 hr{
   margin:0;
   border-top:LightGrey;
@@ -80,63 +74,65 @@ hr{
 
 #header{
   background-color:#B22222;
-  margin: -20px ;
   margin-bottom: 30px;
+  margin-top: 59px;
 }
 #header p{
-  padding-left:170px;
+  width: 1000px;
   font-size:20px;
   color:white;
-  padding-top:110px;
+  padding-top: 60px;
   padding-bottom: 60px;
+  margin:0 auto;
 }
 .bold{
   font-size:45px;
 }
 
-#nvbar2 {
-  margin-top:30px;
+#main-wrap{
+  margin: 0 auto;
   width: 1000px;
+}
+.main-title{
   background-color: Lightgrey;
+  box-sizing:border-box;
+  -webkit-box-sizing:border-box;
   padding-left: 15px;
   line-height: 40px;
-  margin: 0 auto;
 }
-.link {
+.homepage-link {
   color: red;
 }
-.link:hover {
+.homepage-link:hover {
   color: black;
   border-bottom: 1px solid;
 } 
-
-#works p{
+.works-display p{
   font-size:13px;
 }
-.a1:hover {
+.works-link:hover {
   opacity: 0.5;
 }
-.works_list{
- width: 1000px;
- margin: 0 auto;
+.works-list{
  padding: 0;
  margin-top: 30px;
+ margin-right: -25px;
 }
-.works_list:after{
+.works-list:after{
   clear: both;
   display: block;
   content: '';
 }
-.works_list li{
+.works-list li{
  float: left;
  height: 340px;
+ width: 304px;
  border: 1px solid Lightgrey;
  border-radius: 4px;
- display: inline-block;
  text-align: center;
- padding: 5px;
- margin-right: 21px;
+ margin-right: 25px;
  margin-bottom: 25px;
+ padding: 5px;
 }
 .check{
   padding:7px;
@@ -149,7 +145,7 @@ hr{
 }
 
 #footer{
-  margin-top: 60px;
+  margin-top: 30px;
   background-color:#B22222;
   padding-top: 30px;
   padding-bottom: 30px;
@@ -162,22 +158,22 @@ hr{
   font-size:35px;
 }
 
-#last {
- display:block;
- text-align:center;
- height:150px;
+#footer-note {
+ width: 1000px;
+ margin:0 auto;
  margin-top:60px;
- padding-top:30px;
 }
-#last a{
+#footer-note p{
+  text-align: center;
+}
+#footer-note a{
   color:red;
 }
-.line_{
-  width: 900px;
-margin:0 auto;
-  border-bottom: 2px solid Grey;
-}
-#last a:hover{
+#footer-note a:hover{
 color:black;
 border-bottom:1px solid;
+}
+.line{
+  width: 1000px;
+  border-bottom: 2px solid Grey;
 }

@@ -8,16 +8,16 @@
 <link rel="stylesheet"type="text/css"href="15.1.css">
 </head>
 <body>
-<div id="nvbar">
-	<ul class="list">
+<div id="top">
+	<ul class="top-nvbar">
 		<li><a href="#"><big>饥人谷</big></a></li>
         <li class="mywork"><a href="#">我的作品</a><span><i class="fa fa-fw fa-sort-desc"></i></span>
-	        <ul class="inner">
+	        <ul class="mywork-list">
 		       <li><i class="fa fa-fw fa-globe"></i><a href="#"> 作品1</a></li>
                <li><i class="fa fa-fw fa-star"></i><a href="#"> 作品2</a></li>
                <li><i class="fa fa-fw fa-shopping-cart"></i><a href="#"> 作品3</a></li>
         <hr/>
-        <li><span class="lastone"><small>作品4</small></span></li>
+        <li><span class="nolink-one"><small>作品4</small></span></li>
             </ul>
        </li>
        <li><a href="#">博客</a></li>
@@ -32,15 +32,16 @@
 图标使用font-awesome, 页面中心内容固定宽度1000px</p>
 </div>
 
-<div id="container">
-<div id="nvbar2">
-<a href="#"><span class="link">首页</span></a>
+<div id="main">
+  <div id="main-wrap">
+<div class="main-title">
+<a href="#"><span class="homepage-link">首页</span></a>
 / 我的作品
 </div>
-<div id="works">
-	<ul class="works_list">
+<div class="works-display">
+	<ul class="works-list">
         <li>
-            <div class="a1"><a href="#"><img src="pics/1.jpg"width="300"height="180"></a></div>
+            <div class="works-link"><a href="#"><img src="pics/1.jpg"width="300"height="180"></a></div>
                 <h2>Creative</h2>
                 <p>A one page creative theme.</p>
                 <a class="check" href="#">查看</a>
@@ -102,13 +103,15 @@
 </ul>
 </div>
 </div>
+</div>
 
 <div id="footer">
 	<p><span class="bigger">想更详细的了解我？</span></p>
     <p>下载简历，打我电话找我吧</p>
-</div>	
-<div id="last">
-	<div class="line_"></div>
+</div>
+
+<div id="footer-note">
+	<div class="line"></div>
 	<p>模板来自<a href="http://startbootstrap.com/template-categories/landing-pages/">Start Bootstrap</a>.</p>	
 </div>
 </body>
