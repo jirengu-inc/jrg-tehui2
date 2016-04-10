@@ -66,12 +66,19 @@ li{
 	font-size: 22px;
 }
 /*------about------*/
-.about{
+/*.about{
 	position: relative;
 	width: 960px;
 	left: 50%;
 	margin-left: -480px;
 	padding: 65px 0;
+	text-align: center;
+	background-color: #fff;
+}*/
+.about{
+	position: relative;
+	width: 960px;
+	margin: 40px auto;
 	text-align: center;
 	background-color: #fff;
 }
@@ -101,29 +108,47 @@ li{
 .services .services-container {
 	position: relative;
 	width: 960px;
-	left: 50%;
-	margin-left: -480px;
+	/*left: 50%;
+	margin-left: -480px;*/
+	margin: 0 auto;
 	text-align: center;
 	color: #fff;
+/*	border: 1px solid;*/
 }
 .services h3 {
 	font-size: 28px;
 }
 .services .line {
-	max-width: 100px;
+/*	max-width: 100px;*/
 	margin-top: 10px;
 }
-.services li {
+/*.services li {
 	padding: 10px 30px;
 	display: inline-block;
 	*display: inline;
+}*/
+.services ul:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.services ul {
+    margin-top: 20px;
+}
+.services li {
+    float: left;
+    width: 210px;
+    margin-right: 40px;
+}
+.services ul>li:nth-child(4){
+    margin-right: 0;
 }
 .services h4 {
 	padding: 10px 0;
 	font-size: 18px;
 }
 .services p {
-	width: 160px;
+	/*width: 160px;*/
 	font-size: 12px;
 	line-height: 1.5em;
 }
@@ -146,7 +171,8 @@ li{
 /*------callout------*/
 #callout{
 	position: relative;
-	display: table;
+	/*display: table;*/
+	/*margin: 0 auto;*/
 	width: 100%;
 	height: 400px;
 	color: #fff;
@@ -159,6 +185,9 @@ li{
 #callout h2{
 	font-size: 60px;
 	font-weight: bold;
+	text-align: center;
+	padding-top: 135px;
+	padding-bottom: 130px;
 }
 /*------work------*/
 #work {
@@ -178,17 +207,22 @@ li{
 	color: #E5E4E4;
 	margin-top: -5px;
 }
+/*#work ul:after{
+	content: '';
+	display: block;
+    clear: both;
+}*/
 #work ul{
 	margin-top: 20px;
 }
 #work li{
-	margin-bottom: 30px;
 	width: 470px;
+	margin-bottom: 30px;
 	display: inline-block;
 	*display: inline;
 }
 #work img{
-	width: 94%;   /*图片实际高度500px，li设置为470px*/
+	width: 94%;   /*图片实际宽度500px，li设置为470px*/
 }
 #work img:hover{
 	opacity: 0.8;
@@ -217,6 +251,7 @@ li{
 }
 #more a{
 	display: inline-block;
+	*display: inline;
 	width: 120px;
 	height: 45px;
 	line-height: 45px;
@@ -273,6 +308,7 @@ li{
 	color: #337AB7;
 	font-size: 40px;
 	display: inline-block;
+	*display: inline;
 	margin: 20px 15px;
 }
 #footer .icon a:hover{
@@ -282,7 +318,6 @@ li{
 	color: #77777b;
 	font-size: 14px;
 	padding-top: 8px;
-
 }
 .address p span{
 	margin-right: 5px;

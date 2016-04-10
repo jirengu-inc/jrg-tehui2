@@ -1,6 +1,10 @@
 
 body,html,{
   height:100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing:border-box;
 }
 a {
   text-decoration: none;
@@ -28,7 +32,6 @@ body {
   margin-bottom:0;
 }
 .content1 {
-  display: block;
   text-align: center;
   padding-top: 230px;
   padding-bottom: 230px;
@@ -40,30 +43,22 @@ body {
 .content1 p {
   font-size: 25px;
 }
-.link0{
-  width:100%;
-  margin-left:45%;
-}
 .a0 {
   display:block;
   text-align:center;
   height: 30px;
   width: 130px;
+  margin: 0 auto;
   background-color:Grey;
   color: white;
   padding: 12px;
 }
-
-#slogan {
-  height: 300px;
-  width: 100%;
-}
 .content2{
-  display: block;
   width：960px;
   text-align: center;
   padding-top: 85px;
-  line-height: 40px;
+  padding-bottom: 85px;
+  line-height: 30px;
 }
 .line1 {
   font-size: 25px;
@@ -78,35 +73,34 @@ body {
 }
 
 #servicepage {
-  height: 450px;
-  width: 100%;
   background-color: SteelBlue;
   position: relative;
+  padding-bottom: 65px;
+  padding-top: 65px;
 }
 .header1 {
-  display: block;
+  display:block;
   text-align: center;
   color: white;
-  padding-top: 65px;
   font-size: 25px;
-  margin-bottom: 25px;
+}
+.underline{
+  padding-top: 25px;
+  width: 80px;
+  border-bottom: 2px solid white;
+  margin: 0 auto;
 }
 .list1 {
-  width: 100%;
-  margin-left:130px;
+  text-align: center;
 }
 .list1 li {
+  width: 200px;
   display: inline-block;
   padding: 0 40px;
 }
 .iconname {
   font-weight: bold;
   color: white;
-  margin-bottom: 30px;
-}
-.p{
-  position:relative;
-  left:-35px;
 }
 .list1 a {
   font-size:12px;
@@ -115,20 +109,15 @@ body {
   background-color:white;
   padding: 10px;
   color: black;
-  position:relative;
-  top:20px;
-  left:10px;
 }
 .list1 a:hover{
   background-color:LightGrey;
 }
 
 #pic {
-  width: 100%;
-  height: 450px;
   background: url(pics/2.jpg) 0 0 no-repeat;
   background-size: cover;
-  margin-bottom: 0;
+  overflow: hidden;
 }
 #pic p {
   width: 700px;
@@ -136,67 +125,71 @@ body {
   color: white;
   font-weight: bold;
   font-size: 55px;
-  line-height: 450px;
+  padding-top:200px;
+  padding-bottom: 200px; 
+  
 }
 
-#displaypage {
-  width: 100%;
-  height: 900px;
-}
 #displaypage p {
   text-align: center;
   font-size: 25px;
   padding-top: 40px;
 }
+.underline2{
+  margin: 0 auto;
+  width: 80px;
+  border-bottom: 2px solid Grey;
+  padding-top: 25px;
+}
 .graphs {
-  margin:0;
   padding-top: 10px;
-  clear:both;
   padding-left:145px;
+}
+.graphs:after{
+  content: '';
+  display: block;
+  clear: both;
 }
 .graphs1,.graphs3,.graphs2,.graphs4{
   float:left;
 }
 .graphs li{
   border: 15px solid white;
+  width:500px;
 }
 #displaypage a {
   display: block;
   width: 110px;
   height: 20px;
-  margin-left: 45%;
+  margin: 0 auto;
   background-color: Grey;
   line-height:20px;
   padding:7px;
   color: white;
-  clear:both;
+  margin-bottom: 40px;
 }
 #displaypage a:hover{
   background-color:DimGrey;
 }
 
 #button {
-  width: 100%;
-  height: 250px;
   background-color: SteelBlue;
-  margin-top: 45px;
 }
 #button p {
   color: white;
-  padding-top: 80px;
+  padding-top: 90px;
   text-align:center;
   font-size: 20px;
 }
 .a1,.a2 {
-  display: inline-block;
-  text-align: center;
+  display:inline-block;
   height: 25px;
   width: 100px;
   padding: 10px;
 }
 .button1{
- position:relative;
- left:40%;
+  padding-bottom: 90px;
+  text-align: center;
 }
 .a1 {
   background-color: white;
@@ -214,13 +207,10 @@ body {
   background-color: #191970;
 }
 
-#lastpage {
-  width: 100%;
-  height: 400px;
-  padding-top:50px;
+#lastpage{
+  padding-top: 50px;
 }
 .container {
-  display: block;
   text-align: center;
 }
 .container a:hover {
@@ -228,10 +218,22 @@ body {
   color: black;
 }
 .icon {
-  margin-top: 30px;
-  margin-bottom: 25px;
+   width: 160px;
+   margin: 0 auto;
+   margin-bottom: 20px;
 }
 .icon li {
   display: inline-block;
-  margin-right: 35px;
+  text-align: center;
+  padding-right: 20px;
+}
+.underline3{
+  width: 80px;
+  border-bottom: 2px solid Grey;
+  margin: 0 auto;
+
+}
+#lastpage p{
+    text-align: center;
+    margin-bottom: 35px;
 }
