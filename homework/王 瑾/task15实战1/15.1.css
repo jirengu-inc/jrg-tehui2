@@ -27,13 +27,15 @@ a {
   background-color:white;
 }
 .top-nvbar{
-  margin-left:100px;
   margin-top: 0;
   margin-bottom: 0;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0;
 }
 .top-nvbar li{
   display:inline-block;
-  margin-left: 25px;
+  margin-right: 25px;
 }
 .top-nvbar a{
   color:Grey;
@@ -53,8 +55,8 @@ a {
   padding: 0;
 }
 .mywork-list li{
-  width:160px;
-  margin-left: 0;
+  width:140px;
+  margin:0;
 }
 .mywork:hover .mywork-list{
   display:block;
