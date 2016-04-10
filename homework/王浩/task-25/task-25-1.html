@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-25-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+	$(function() {
+		$("li").on("mouseenter", function() {
+			$(this).find(".wrap").addClass("show");
+		})
+		$("li").on("mouseleave", function() {
+			$(this).find(".wrap").removeClass("show");
+		})
+	})
+</script>
+<style>
+	body{
+		font-family: "Microsoft Yahei";
+	}
+	li{
+		width: 160px;
+		list-style-type: none;
+		padding: 5px 20px;
+		background-color: #C81213;
+		border-bottom: dotted 1px #E02426;
+		color: #fff;
+		font-weight: bold;
+		position: relative;
+		cursor: pointer;
+	}
+	li span{
+		position: absolute;
+		right: 10px;
+	}
+	.wrap{
+		position: absolute;
+		width: 200px;
+		top: 0;
+		right: -200px;
+		outline: solid 1px #999;
+		display: none;
+	}
+	.wrap a{
+		text-decoration: none;
+		color: #333;
+		font-size: 14px;
+		display: inline-block;
+		width: 97px;
+		text-align: center;
+		line-height: 24px;
+	}
+	.wrap a:hover{
+		background-color: #ccc;
+
+	}
+	.show{
+		display: block;
+	}
+</style>
+</head>
+<body>
+    <ul>
+	<li>
+		珠宝玉器<span>></span>
+		<div class="wrap">
+			<a href="#">翡翠</a>
+			<a href="#">玛瑙</a>
+			<a href="#">玉石</a>
+			<a href="#">珍珠</a>
+		</div>
+	</li>
+	<li>
+		珠宝玉器<span>></span>
+		<div class="wrap">
+			<a href="#">翡翠</a>
+			<a href="#">玛瑙</a>
+			<a href="#">玉石</a>
+			<a href="#">珍珠</a>
+		</div>
+	</li>
+	<li>
+		珠宝玉器<span>></span>
+		<div class="wrap">
+			<a href="#">翡翠</a>
+			<a href="#">玛瑙</a>
+			<a href="#">玉石</a>
+			<a href="#">珍珠</a>
+		</div>
+	</li>
+	<li>
+		珠宝玉器<span>></span>
+		<div class="wrap">
+			<a href="#">翡翠</a>
+			<a href="#">玛瑙</a>
+			<a href="#">玉石</a>
+			<a href="#">珍珠</a>
+		</div>
+	</li>	
+	<li>
+		珠宝玉器<span>></span>
+		<div class="wrap">
+			<a href="#">翡翠</a>
+			<a href="#">玛瑙</a>
+			<a href="#">玉石</a>
+			<a href="#">珍珠</a>
+		</div>
+	</li>
+</ul>
+</body>
+</html>
