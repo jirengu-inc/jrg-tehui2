@@ -6,6 +6,10 @@ a {
 	text-decoration: none;
 	color:#666;
 }
+.smalfont {
+	font-size:14px;
+	color: #777;
+}
 .wrap {
 	width: 1000px;
 	margin:0 auto;	
@@ -126,7 +130,7 @@ a {
 	padding-left:1rem;
 	color: red;
 }
-#nav a:hover {
+#nav a:hover,#copyright a:hover{
 	color:#B84D45;
 	text-decoration: underline;
 }
@@ -169,14 +173,25 @@ a {
 }
 /***********************footer**********************/
 #footer {
-	overflow: hidden;                             /*已经形成BFC 为什么还是边距合并？*/
-	margin-top: 10px;
-	padding: 10px;
+	margin-top: 35px;
+	padding: 20px;
 	background-color: #B84D45;
 	text-align: center;
+	color:white;
 }
-
-
+#footer h2 {
+	margin-bottom: 10px;
+}
+#footer p {
+	margin-top: 10px;
+}
+/***********************copyright**********************/
+#copyright {
+	text-align: center;
+}
+#copyright a {
+	color:red;
+}
 
 
 
