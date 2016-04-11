@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task24-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="js/comment.js"></script>
+<style type="text/css">
+	form>div{
+		margin: 20px;
+	}
+	label{
+		display: inline-block;
+		margin-right: 20px;
+		width: 5em;
+	}
+	.prompt{
+		margin-left: 7em;
+		color: #ccc;
+		margin-top:10px;
+		font-size: 13px;
+	}
+	.warming{
+		border:1px red solid;
+	}
+</style>
+</head>
+<body>
+    <form action="#">
+    	<h3>注册</h3>
+    	<div>
+    		<label for="name">用户名:</label><input id="name" type="text" placeholder="用户名(hunger被注册过)"></input>
+    		<div class="prompt">只能是字母、数字、下划线，3-10个字符</div>
+    	</div>
+    	<div>
+    		<label for="password">密码:</label><input id="password" type="text"></input>
+    		<div class="prompt">大写字母、小写、数字、下划线最少两种，6-15个字符</div>
+    	</div>
+    	<div>
+    		<label for="repassword">重复密码:</label><input id="repassword" type="text" placeholder="再输入一次密码"></input>
+    		<div class="prompt"></div>
+    	</div>
+		<div>
+    		<label></label><button>注册</button>
+    	</div>
+    </form>
+    <script type="text/javascript">
+  		var rename=document.querySelector("#name");
+  		// console.log(rename);
+  		var prompt=document.querySelectorAll(".prompt");
+  		function warm(str,num,node){
+  			prompt[num].innerHTML=str;
+  			Utils.addClass(node,"warming");
+  		}
+  		function pass(str,num,node){
+  			prompt[num].innerHTML=str;
+  			Utils.removeClass(node,"warming");
+  		}
+  		//设置用户名的前端检查
+  		rename.addEventListener("blur",function(){
+	  		if(!rename.value.match(/^\w{3,10}$/g)){
+	  			warm("用户名格式不正确",0,rename);
+	  		}else if(rename.value ==="hunger"){
+	  			warm("用户名已经存在",0,rename);
+	  		}else{
+	  			pass("用户名可用",0,rename);
+	  		}
+	  	});
+	  	//设置密码检查
+	  	var password=document.querySelector("#password");
+	  	// console.log(password);
+	  	var repassword=document.querySelector("#repassword");
+	  	// console.log(repassword);
+	  	password.addEventListener("blur",function(){
+	  		var pv=password.value;
+	  		if((!pv.match(/(^\d+$)|(^[a-zA-Z]+$)|(^[_]+$)/g))&&pv.match(/^\w{6,15}$/g)){
+	  			pass("密码合法",1,password);
+	  		}else{
+	  			warm("密码不合法",1,password);
+	  		}
+	  		
+	  	});
+	  	//检查密码是否一致
+	  	repassword.addEventListener("blur",function(){
+	  		var rpv=repassword.value;
+	  		var pv=password.value;
+	  		if(rpv===pv){
+	  			pass("密码一致",2,repassword);
+	  		}else{
+	  			warm("密码不一致",2,repassword);
+	  		}
+	  		
+	  	});
+
+
+
+    </script>
+</body>
+</html>
