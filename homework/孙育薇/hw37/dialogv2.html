@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+    <style>
+        body, div, h3, ul, li {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 14px;
+        }
+        li {
+            list-style: none;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .btn {
+            width: 50px;
+            height: 30px;
+            padding: 5px;
+            line-height: 20px;
+            font-size: 1em;
+            text-align: center;
+            border: none;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            color: white;
+            background-color: #e33100;
+        }
+        .btn-close, .btn-confirm {
+            cursor: pointer;
+        }
+        .dialog-panel {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            -webkit-box-shadow: 0 0 10px #333;
+            -moz-box-shadow: 0 0 10px #333;
+            box-shadow: 0 0 10px #333;
+            background-color: #eeeeee;
+            width: 330px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            margin-left: -165px;
+        }
+        .dialog-header {
+            height: 40px;
+            line-height: 40px;
+            background-color: #676666;
+            color: white;
+            padding: 0 20px;
+        }
+        .dialog-header h3 {
+            font-size: 1em;
+            float: left;
+        }
+        .dialog-header .btn-close {
+            float: right;
+        }
+        .dialog-content {
+            padding: 20px;
+        }
+        .dialog-footer {
+            width: 100%;
+            margin: 10px auto;
+        }
+        .dialog-footer .btn {
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<button id="open1"> 打开1</button>
+<button id="open2"> 打开2</button>
+<button id="open3"> 打开3</button>
+<button id="open4"> 打开4</button>
+<button id="open5"> 打开5</button>
+<script src="../hw26/jquery.js"></script>
+<script>
+    /* 18:06 开始 18:21 晚饭 18:56 再次开工 19:07 结束 19:10 排错完毕 */
+    /* 最大遗憾: bindEvent里又忘了me = this... */
+    /* 成就感满满! */
+    (function($) {
+        $.fn.drag = function() {
+            $(this).each(function() {
+                var me = $(this);
+                var isMoved = false;
+                var rX, rY;
+
+                me.on("mousedown", function(event) {
+                    isMoved = true;
+                    rX = event.pageX - parseInt(me.css("left"));
+                    rY = event.pageY - parseInt(me.css("top"));
+
+                    me.css("cursor", "move");
+                });
+
+                $(document).on("mousemove", function(event) {
+                    if (isMoved) {
+                        var eX = event.pageX;
+                        var eY = event.pageY;
+                        var wX = $(window).width();
+                        var wY = $(window).height();
+                        var thisX = me.width();
+                        var thisY = me.height();
+                        var thisMarginLeft = parseInt(me.css("margin-left"));
+                        var nowX = eX - rX;
+                        var nowY = eY - rY;
+                        var left, top;
+
+                        var thisLeft = (thisMarginLeft > 0) ? 0 : (-thisMarginLeft);
+
+                        if (nowX < thisLeft) {
+                            left = thisLeft;
+                        } else if (nowX > wX - thisX + thisLeft) {
+                            left = wX - thisX + thisLeft;
+                        } else {
+                            left = nowX;
+                        }
+
+                        if (nowY < 0) {
+                            top = 0;
+                        } else if (nowY > wY - thisY) {
+                            top = wY - thisY;
+                        } else {
+                            top = nowY;
+                        }
+
+                        me.css({
+                            "left": left,
+                            "top": top
+                        });
+                    }
+                }).on("mouseup", function() {
+                    isMoved = false;
+                    me.css("cursor", "auto");
+                });
+            });
+        };
+    })(jQuery);
+
+    function Dialog() {
+        this.createDialog();
+        this.bindEvent();
+    }
+
+    Dialog.prototype = {
+        defaultOpts: {
+            title: "",
+            message: "",
+            isShowCloseBtn: true,
+            isShowConfirmBtn: false,
+            onClose: function(){},
+            onConfirm: function(){}
+        },
+        createDialog: function() {
+            var tpl = '<div class="dialog-panel">' +
+                    '<div class="dialog-header clearfix">' +
+                    '<h3></h3>' +
+                    '<div class="btn-close">x</div>' +
+                    '</div>' +
+                    '<div class="dialog-content">' +
+                    '</div>' +
+                    '<div class="dialog-footer clearfix">' +
+                    '<div class="btn btn-close">取消</div>' +
+                    '<div class="btn btn-confirm">确定</div>' +
+                    '</div>' +
+                    '</div>';
+            this.$dialog = $(tpl);
+            $("body").append(this.$dialog);
+        },
+        bindEvent: function() {
+            var me = this;
+            this.$dialog.find(".btn-close").on("click",function() {
+                me.opts.onClose();
+                me.hideDialog();
+            });
+            this.$dialog.find(".btn-confirm").on("click", function() {
+                me.opts.onConfirm();
+                me.hideDialog();
+            });
+            this.$dialog.drag();
+        },
+        setOpts: function(opts) {
+            if (typeof opts === "string") {
+                this.opts = $.extend({}, this.defaultOpts, {message: opts});
+            } else if (typeof opts === "object") {
+                this.opts = $.extend({}, this.defaultOpts, opts);
+            }
+        },
+        setDialog: function() {
+            var $dHeader = this.$dialog.find(".dialog-header");
+            var $dContent = this.$dialog.find(".dialog-content");
+            var $dFooter = this.$dialog.find(".dialog-footer");
+            var $dClose = $dFooter.find(".btn-close");
+            var $dConfirm = $dFooter.find(".btn-confirm");
+
+            if (!this.opts.title) {
+                $dHeader.hide();
+            } else {
+                $dHeader.find("h3").text(this.opts.title);
+            }
+            if (!this.opts.message) {
+                $dContent.hide();
+            } else {
+                $dContent.html(this.opts.message);
+            }
+            if (!this.opts.isShowCloseBtn) {
+                $dClose.hide();
+            }
+            if (!this.opts.isShowConfirmBtn) {
+                $dConfirm.hide();
+            }
+
+            if (this.opts.isShowCloseBtn && this.opts.isShowConfirmBtn) {
+                $dClose.css("margin-right", "20px");
+                $dFooter.css("width", $dClose.outerWidth(true) + $dConfirm.outerWidth(true));
+            } else if (this.opts.isShowCloseBtn || this.opts.isShowConfirmBtn) {
+                $dFooter.css("width", $dFooter.children().outerWidth(true));
+            }
+        },
+        hideDialog: function() {
+            this.$dialog.hide();
+        },
+        destroyDialog: function() {
+            this.$dialog.remove();
+        },
+        open: function(opts) {
+            this.setOpts(opts);
+            this.setDialog();
+        }
+    };
+
+    $('#open1').on('click',function(){
+        var dialog1 = new Dialog();
+        dialog1.open('hello, 这里是饥人谷');
+    });
+
+    $('#open2').on('click',function(){
+        var dialog2 = new Dialog();
+        dialog2.open('<a href="http://jirengu.com">饥人谷</a>');
+    });
+
+    $('#open3').on('click',function(){
+        var dialog3 = new Dialog();
+        dialog3.open({
+            title: '欢迎来到饥人谷',
+            message: 'hello',
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onClose: function(){
+                alert('close')
+            },
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+
+    var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+    $('#open4').on('click',function(){
+        var dialog4 = new Dialog();
+        dialog4.open({
+            title: '欢迎来到饥人谷',
+            message: tpl,
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onClose: function(){
+                alert('close')
+            },
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+    $('#open5').on('click',function(){
+        var dialog5 = new Dialog();
+        dialog5.open({
+            title: '欢迎来到饥人谷',
+            message: 'hello',
+            isShowCloseBtn: false,
+            isShowConfirmBtn: false
+        });
+    });
+</script>
+</body>
+</html>
