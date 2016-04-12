@@ -1,63 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-<head>
-	<title>8-2</title>
-	<style type="text/css">
+	<head>
+		<title>website</title>
+		<meta charset="utf-8">
+		<style>
 		body{
-			font-family: "微软雅黑";  /*页面字体*/
-		
+		font-family: "lucida grande","lucida sans unicode",lucida,helvetica,"Hiragino Sans GB","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+		margin:20px;
 		}
-		.nav{
-			background-color: #444;  /*导航背景色*/
-				padding:0;
-			margin:0;
+		#header {
+		background-color:black;
 		}
-		.nav li,a{
-			display: inline-block;
-			text-decoration: none;	/*去下划线*/
-			color: green;
-			padding: 5px 1px;
-			font-weight: bold;
-		}		
+		#header li{
+		display:inline-block;
+		padding-left: 5px;
+		}
+		.nav li{
+		padding:20px;
+		}
+		.nav a:hover{
+			color: yellow;
+		}
+		a{
+		color:green;
+		text-decoration:none;
+		}
+		.content{
+		padding:10px 0;
+		}
 		.title{
-			color: green;
+			color:green;
+			font-size: 30px;
 			text-align: center;
 		}
 		.desc{
-			color: #caf;
-			margin: 1px 20px;
+		color:	#636363;
+		font-size: 15px;
 		}
-		#content h3{
-			font-size: 30px;   /*标题字体大小*/
+		h3{
+		border-bottom: 1px dashed #ccc;	
 		}
-		#content p{
-			text-indent: 20px; /*正文缩进*/
+		p{
+		text-indent: 2em;
 		}
-		.tree{
-			list-style: none;
-		}
-		.has-child ul li{
-			list-style: none;
-			color: gray;
-		}
-		#content > h3:first-of-type{
-			border-bottom:dotted;      /*第一章的下划线*/
-		}
-		#content > h3:nth-of-type(2){
-			border-bottom:dotted;		/*第二章的下划线*/
-		}
-		#content .tree .open a::before{
-			content: "-";
-			color: black;				/*添加展开标记*/
-		}
-		.tree > li~li:before{
-			content: "+";				/*添加折叠标记*/
-			color: black;
-		}
-	</style>
-</head>
-<body>
-	<div id="header">
+		.tree,.tree ul{
+		list-style: none;}
+		.tree> li:before{
+  		content:'+';}
+  		.tree li.open:before {
+   		 content: "- ";}
+   		 .tree li.has-child:nth-child(2) ul {
+ 		  display: none;}
+ 		  /*折腾了一晚上也没弄出来树状列表，回头再努力！！！*/
+ 		</style>
+	</head>
+	<body>
+    <div id="header">
         <ul class="nav">
           <li><a href="">首页</a></li>
           <li><a href="">简介</a></li>
@@ -76,17 +74,19 @@
             学习笔记
         </p>
         <h3>第二章</h3>
-        <p>这是我的前端学习笔记这是我的前端学习笔记这是我的
-        <span class="text-less">特别的</span>
-        前端学习笔记这是我的前端学习,笔记这是我, 的前端,学习笔记
+        <p>这是我的前端学习笔
+            记这是我的前端学习笔
+            记这是我的<span class="text-less"> 特别的</span>前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
         </p>
         <ul class="tree">
           <li class="open has-child">
             <a href="#">记笔记</a>
             <ul>
               <li>jscode</li>
-              <li>博客</li>
               <li>Github</li>
+              <li>博客</li>
             </ul>
           </li>
           <li class="has-child">
@@ -102,5 +102,6 @@
         </ul>
     </div>
     <div id="footer"></div>
+
 </body>
 </html>
