@@ -112,14 +112,14 @@ li{
 	display: block;
 }
 .icons-list{
-	padding:0;
-	margin:0;
-	margin-left: 40px;
+	padding: 0;
+	margin:0 auto;
+	width:1200px;
 }
 .icons-list li{
 	float: left;
 	text-align: center;
-	margin:30px 50px 60px;
+	padding: 30px;	
 }
 .icon-name{
 	font-weight:bold;
@@ -155,13 +155,17 @@ li{
 	display: block;
 	content: ''; 
 }
+.display-content ul{
+	padding: 0;
+	width: 1200px;
+	margin:0 auto;
+}
 .display-content li{
 	float: left;
 	text-align:center;
-	border:1px solid #DCDCDC;
-    margin:20px 20px;
+	border:10px solid #DCDCDC;
     background-color:white;
-    width: 380px;
+    margin-bottom: 5px;
 }
 .display-content a:hover{
     position: relative;
