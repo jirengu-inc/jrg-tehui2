@@ -3,21 +3,18 @@ html,body{
 	width:100%;
 	margin:0;
 	padding:0;
-    height:100%;
-	box-sizing:border-box;
 }
-*,*:before,*:after{
-	box-sizing:border-box;
-	-webkit-box-sizing:border-box;
-	-moz-box-sizing:border-box;
-    -ms-box-sizing:border-box;
-}
+body{
+	overflow-x:hidden;
+}/*消掉顶部导航栏产生的缝隙 */
 a{
 	text-decoration:none;
 }
 li{
 	list-style:none;
 }
+
+/*从servicespage起每个页面的标题和副标题*/
 .title{
 	padding-top:60px;
 	display:block;
@@ -32,17 +29,15 @@ li{
 	color:Grey;
 	font-family:"Kaushan Script","Microsoft Yahei";
 	font-size:20px;
-}
+} 
+
 #homepage{
-	height:120%;
 	background:url(pics/bg1.jpg) 0 0 no-repeat;
 	background-size:cover;
 }
 #nvbar{
-	width:100%;
-	height:70px;
 	background-color:black;
-	z-index:7;
+	z-index:1;
 	top:0;
 	left:0;
 	right:0;
@@ -57,19 +52,18 @@ li{
 	font-size:30px;
 	font-family:"Kaushan Script" "Microsoft Yahei";
 	margin-left:60px;
-	margin-top:15px;
+	padding: 10px;
 	color:orange;
 	float:left;
-	z-index:10;
 }
 .navigation{
-	padding-right:40px;
+	margin-right:60px;
     float:right;
+    padding:4px;
 }
 .navigation li{
 	display:inline-block;
-	padding-top:15px;
-    margin-right:25px;
+    margin-right:20px;
 }
 .navigation a{
 	color:white;
@@ -80,115 +74,119 @@ li{
 }
 .content{
 	color:white;
-	text-align:center;
+	text-align:center;/*可继承哈*/
 	padding-top:300px;
 	padding-bottom:100px;
+	line-height: 30px;
 }
-.p1{
+.content p:nth-child(1){
 	font-family:"Kaushan Script","Microsoft Yahei";
-	font-size:45px;
+	font-size:40px;
 }
-.p2{
-	font-size:75px;
+.content p:nth-child(2){
+	font-size:60px;
 	font-weight:bold;
 	font-family:"Microsoft Yahei";
 }
-.link1{
-	margin-top:35px;
-}
-.link1 a{
-	height:70px;
-	width:180px;
-	line-height:70px;
+.content-link a{
 	font-weight:bold;
 	background-color:#FFD700;
 	border-radius:5px;
 	color:white;
 	font-size:20px;
-	padding:24px;
+	padding:24px;/*用padding撑开就不用再设宽高了*/
 }
-.link1 a:hover{
+.content-link a:hover{
 	background-color:orange;
 }
 
-.icons_list{
-    text-align:center;
-    margin-bottom:60px;
-}
-.icons_list li{
-	display:inline-block;
-	text-align:center;
-	width:350px;
-}
-.icon_name{
-	font-weight:bold;
-	font-family:"Microsoft Yahei";
-	font-size:20px;
-}
-.icon_introduction{
-	font-family:"Roboto Slab","Helvetica Neue", "Helvetica", Arial;
-	color:Grey;
-	font-size:14px;
-}
 #servicespage .fa-circle{
 	color:Gold;
 }
 #servicespage .fa-shopping-cart,.fa-laptop,.fa-lock{
 	color:white;
 }
+.icons-list:after{
+	clear: both;
+	content: '';
+	display: block;
+}
+.icons-list{
+	padding:0;
+	margin:0;
+	margin-left: 40px;
+}
+.icons-list li{
+	float: left;
+	text-align: center;
+	margin:30px 50px 60px;
+}
+.icon-name{
+	font-weight:bold;
+	font-family:"Microsoft Yahei";
+	font-size:20px;
+}
+.icon-introduction{
+	font-family:"Roboto Slab","Helvetica Neue", "Helvetica", Arial;
+	color:Grey;
+	font-size:14px;
+}
   
 
 #displaypage{
 	background-color:#DCDCDC;
 	padding-bottom:60px;
+	margin: 0;
 }
-.line1{
+/*displaypage上每个图片中的文字内容*/
+.display-name{
 	font-size:20px;
 	font-weight:bold;
 	font-family:"Microsoft Yahei";
 }
-.line2{
+.display-note{
 	font-family:"Roboto Slab","Helvetica Neue", "Helvetica", Arial;
 	font-size:18px;
 	color:Grey;
-	padding-bottom:15px;
+	margin-bottom:30px;
 }
-.main{
-	padding-top:30px;
+.display-content ul:after{
+	clear: both;
+	display: block;
+	content: ''; 
 }
-.main ul{
-	text-align:center;
-}
-.main li{
-	display:inline-block;
+.display-content li{
+	float: left;
 	text-align:center;
 	border:1px solid #DCDCDC;
-    margin-right:20px;
-    margin-bottom:30px;
+    margin:20px 20px;
     background-color:white;
+    width: 380px;
 }
-.main a:hover{
-position: relative;
+.display-content a:hover{
+    position: relative;
 }
-.main a:hover:after{
+.display-content a:hover:after{
 	content: "+";
     position: absolute;
+    top: -246px;
     display: block;
-    font-size:180px;
+    font-size:160px;
     font-weight: bold;
     color: white;
     opacity: 0.6;
     background-color: #FFD700;
     width: 100%;
     height: 260px;
-    line-height:260px;
-    top: -246px;
+    line-height: 260px; /*让+号垂直居中*/
 }
 
-
-.timeline{
-	margin-bottom:60px;
+#aboutpage{
+	margin: 0;
+	padding: 0;
+	padding-bottom: 60px;
 }
+/*每个表格里的文字内容*/
 .timeline h3{
 	font-family:"Microsoft Yahei";
 }
@@ -197,10 +195,16 @@ position: relative;
   color:DarkGrey;
   font-size:15px;
 }
+.timeline{
+	padding: 0;/*不然padding-left默认值40px*/
+	width: 900px;
+	margin:0 auto;
+}
+ /*让整个ul水平居中,之前未设置成功是因为timeline的宽度没有设置,默认100% （？）*/
 .timeline:after{
     clear:both;
     display:block;
-    content:'';
+    content:''; /*清除浮动*/
 }
 .timeline img{
 	display:block;
@@ -211,50 +215,55 @@ position: relative;
 	-ms-border-radius:100%;
 	border:8px solid #DCDCDC;
 }
-.timeline{
-    padding-left:200px;
-    padding-right:200px;
-}
 .timeline li:nth-child(2n+1){
     border-right:2px solid #DCDCDC;
-    clear:right;
+    clear:right;  
     float:left;
     text-align:right;
-    padding-right:154px;
+    padding-right:130px;  /*左右border距离的设置*/
 }
 .timeline li:nth-child(2n){
 	border-left:2px solid #DCDCDC;
     clear:left;
     float:right;
     text-align:left;
-    padding-left:155px;
+    padding-left:130px;
 }
 .timeline li:nth-child(2n+1) img{
 	position:relative;
-	left:385px;
+	left:350px;
 	top:-205px;
 }
 .timeline li:nth-child(2n) img{
 	position:relative;
-	left:-245px;
-	top:-205px;
+	left:-230px; 
+	top:-210px;
 }
-.timeline li:last-child{
-	padding:40px;
-	display:block;
-	width:170px;
-	height:170px;
+.timeline-end{
+	display: block;
+	text-align: center;
+	font-weight: bold;
+	font-size: 25px;
+	color:white;
+	position: relative;
+	top:-130px;
+    width: 180px;
+    margin: 0 auto;
+}
+.timeline li:last-child:after{
+	content:"";
+	display:inline-block;
+	width: 180px;
+	height: 180px;
+	font-size:16px;
 	border-radius:100%;
 	-webkit-border-radius:100%;
 	-moz-border-radius:100%;
 	border:8px solid #DCDCDC;
 	background-color:Gold;
-    text-align:center;
-    font-size:20px;
-    position:relative;
-    left:385px;
-    color:white;
-    font-weight:bold;
+    position: relative;
+    left: -230px;
+    top:10px;
 }
 
 #teampage{
@@ -270,16 +279,22 @@ position: relative;
 #teampage a:hover .fa-circle{
 	color:orange;
 }
-.team_list{
+.team-list{
    text-align:center;
+   padding: 0;
+   margin:0 auto;
+   width: 1230px;
 }
-.team_list li{
-	padding-top:25px;
-	display:inline-block;
-	text-align:center;
-	padding-right:100px;
+.team-list:after{
+	clear: both;
+	display: block;
+	content: '';
 }
-.team_list img{
+.team-list li{
+	float:left;
+    padding: 15px 100px; /*因为每个li宽度已定，加起来后放在父容器中平分*/
+}
+.team-list img{
 	height:200px;
 	width:200px;
 	border-radius:100%;
@@ -287,11 +302,11 @@ position: relative;
 	-moz-border-radius:100%;
 	border:5px solid white;
 }
-.name{
+.member-name{
 	font-family:"Microsoft Yahei";
 	font-weight:bold;
 }
-.position{
+.member-position{
 	font-family:"Roboto Slab","Helvetica Neue", "Helvetica", Arial;
 	color:Grey;
 	font-size:12px;
@@ -306,38 +321,41 @@ position: relative;
 }
 
 
-#logopage:after{
+.logo-list:after{
 	clear:both;
 	display:block;
 	content:'';
 }
-.logo_list li{
+.logo-list{
+    margin:0 auto;
+    padding:0;
+    width:1120px;
+}
+.logo-list li{
     float:left;
-    padding-left:90px;
-    padding-top:30px;
-    padding-bottom:30px;
+    padding: 15px 40px;
 }
 
 
-#feedback_page{
-	width:100%;
-	height:120%;
+#feedback-page{
     background:url(pics/bg2.jpg) 0 0 no-repeat #000;
+    background-size: cover;
+    padding-bottom: 60px;
 }
-#feedback_page h1{
+#feedback-page h1{
 	color:white;
 }
-#feedback_page:after{
+#feedback-page:after{
 	clear:both;
 	display:block;
 	content:'';
 }
-.form1{
+.user-information{
 	width:50%;
     float:left; 
-    margin-top:40px;
+    margin-top:40px; /*平分左右*/
 }
-.form1 input{
+.user-information input{
 	display:block;
 	width:85%;
 	height:50px;
@@ -348,13 +366,13 @@ position: relative;
 	margin-bottom:30px;
 	margin-left:10%;
 }
-.form2{
+.user-message{
 	width:50%;
 	float:right;
 	margin-top:40px;
 }
-.form2 textarea{
-	height:210px;
+.user-message textarea{
+	height:212px; /*同左边表单高度去除margin-bottom后一致*/
 	width:85%;
 	border: 1px solid #ccc;
     -webkit-border-radius: 5px;
@@ -375,26 +393,33 @@ position: relative;
     -moz-border-radius: 5px;
     border-radius: 5px;
     border:1px solid black;
-    margin-top:40px;
 }
 
-#last_footer li{
-	display:inline-block;
+#footer-page ul:after{
+	clear: both;
+	display: block;
+	content: '';
 }
-#last_footer ul{
-	padding-top:20px;
-	padding-bottom:20px;
+#footer-page ul{
+	padding:0;
+    width: 1200px;
+    margin: 0 auto;
 }
-.first_part,.final_part{
+#footer-page li{
+    float: left;
+    width: 200px;
+    padding:10px 100px;
+}
+.first-part,.final-part{
 	font-size:14px;
+	margin-top: 13px;
 }
-.first_part{
-	margin-left:100px;
+.middle-part a:hover .fa-circle{
+    color:orange;
 }
-.middle_part{
-	margin-left:230px;
-	margin-right:230px;
-}
-.final_part{
+.final-part a{
 	color:orange;
+}
+.final-part a:hover{
+	border-bottom: 1px solid orange;
 }
