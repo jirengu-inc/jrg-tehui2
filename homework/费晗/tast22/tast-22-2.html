@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+<!-- 当点击按钮开头添加时在<li>这里是</li>元素前添加一个新元素，内容为用户输入的非空字符串；当点击结尾添加时在<li>前端6班</li>后添加用户输入的非空字符串.
+当点击每一个元素li时控制台展示该元素的文本内容。 -->
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>前端6班</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+</body>
+
+    <script>
+var input = document.createElement('input'),
+    button = document.createElement('button'),
+    button = document.createElement('button')；
+//用createElement创建<img>​元素
+input.class = 'ipt-add-content';
+button.id = 'btn-add-start';
+input.setAttribute("placeholder","添加内容");
+//使用setAttribute()方法来设置元素属性
+var top = document.createTextNode("开头添加"); 
+var bottom = document.createTextNode("结尾添加"); 
+top.insertBefore(input, items.firstChild); 
+document.body.appendChild(input);  //使用appendChild()方法将添加的图片绑定到页面上
+		var items = document.querySelectorAll('li');
+		for (var i = 0; i < items.length; i++) {
+			items[i].onclick = function(e){
+		     console.log(this.innerText);
+		  }
+		}
+
+
+	</script>
+</body>
+</html>
