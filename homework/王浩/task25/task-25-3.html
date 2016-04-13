@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-25-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+	html,body,p,div,ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	.wrap{
+		width: 700px;
+	}
+	a{
+		text-decoration: none;
+		color: #333;
+	}
+	.content:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.content li{
+		list-style-type: none;
+		border: solid 1px #ccc;
+		float: left;
+		position: relative;
+	}
+	.content li p{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		margin-left: -60px;
+		margin-top: -20px;
+	}
+	.content p a{
+		display: block;
+		width: 100px;
+		height: 20px;
+		line-height: 20px;
+		text-align: center;
+		border: solid 1px #CC3333;		
+		padding: 10px;		
+		z-index: 2;
+		background-color: #fff;
+		cursor: pointer;
+		color: red;
+		font-weight: bold;
+	}
+	.content li div{
+		background-color: #333;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		opacity: 0.2;
+	}
+	.content img{
+		width: 150px;
+		height: 150px;
+		padding: 10px 30px 50px 30px;
+	}
+	.tab{
+		border: solid 1px #ccc;
+		width: 305px;
+	}
+
+	.tab li{
+		list-style-type: none;
+		float: left;		
+	}
+	.tab li:last-child{
+		border:none;
+	}
+	.tab span{
+		display: block;
+		width: 60px;
+		padding: 10px 20px;
+		cursor: pointer;
+		text-align: center;
+		border-right: dotted 1px #999;
+		font-weight: bold;
+	}
+	.tab li:nth-child(3) span{
+		border: none;
+	}
+	.choose{
+		background-color: #999;
+		color: #fff;
+		border-radius: 3px 3px 0 0;
+	}
+	.tab:after{
+		content: "";
+		display: block;
+		clear: both;
+	}	
+	.hide{
+		display: none;
+	}
+	.content span.name{
+		position: absolute;
+		top: 160px;
+		left: 10px;
+		font-size: 14px;
+		color: #555;
+		font-weight: bold;
+	}
+	.content span.price{
+		position: absolute;
+		top: 190px;
+		left: 10px;
+		font-size: 14px;
+		color: #CC3333;
+		font-weight: bold;
+	}
+	button{
+		padding: 5px 10px;
+		font-size: 16px;
+		color: #CC3333;
+		border: solid 2px #CC3333;
+		background-color: #fff;
+		border-radius: 5px;
+		margin-top: 10px;
+		margin-bottom: 30px;
+		font-weight: bold;
+	}
+	button:hover{
+		color: #fff;
+		background-color: #CC3333;
+	}
+</style>
+</head>
+<body>
+<div class="wrap">
+	<ul class="tab">
+		<li class="choose"><span>戒指</span></li>
+		<li><span>珠宝</span></li>
+		<li><span>黄金</span></li>
+	</ul>
+	<div class="content">
+	<ul class="jiez">
+		<li>
+			<a href="#"><img src="img/jiez-1.jpg" alt=""></a>
+			<span class="name">镀18k玫瑰金简约光面戒指</span>
+			<span class="price">￥699.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/jiez-2.jpg" alt=""></a>
+			<span class="name">钻石谷白18K金钻石戒指女正品</span>
+			<span class="price">￥799.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/jiez-3.jpg" alt=""></a>
+			<span class="name">范琦彩金戒指环结婚情侣对戒</span>
+			<span class="price">￥558.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/jiez-1.jpg" alt=""></a>
+			<span class="name">镀18k玫瑰金简约光面戒指</span>
+			<span class="price">￥699.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/jiez-2.jpg" alt=""></a>
+			<span class="name">钻石谷白18K金钻石戒指女正品</span>
+			<span class="price">￥799.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/jiez-3.jpg" alt=""></a>
+			<span class="name">范琦彩金戒指环结婚情侣对戒</span>
+			<span class="price">￥558.00</span>
+		</li>
+	</ul>
+	<ul class="baos hide">
+		<li>
+			<a href="#"><img src="img/baos-1.jpg" alt=""></a>
+			<span class="name">18K金镶嵌彩色宝石戒指</span>
+			<span class="price">￥15168.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/baos-2.jpg" alt=""></a>
+			<span class="name">米莱珠宝鸽血红红碧玺戒指</span>
+			<span class="price">￥5348.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/baos-3.jpg" alt=""></a>
+			<span class="name">米莱天然鸽血红碧玺戒指</span>
+			<span class="price">￥2529.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/baos-1.jpg" alt=""></a>
+			<span class="name">18K金镶嵌彩色宝石戒指</span>
+			<span class="price">￥15168.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/baos-2.jpg" alt=""></a>
+			<span class="name">米莱珠宝鸽血红红碧玺戒指</span>
+			<span class="price">￥5348.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/baos-3.jpg" alt=""></a>
+			<span class="name">米莱天然鸽血红碧玺戒指</span>
+			<span class="price">￥15168.00</span>
+		</li>
+	</ul>
+	<ul class="gold hide">
+		<li>
+			<a href="#"><img src="img/gold-1.jpg" alt=""></a>
+			<span class="name">黄金投资金条金砖</span>
+			<span class="price">￥5480.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/gold-2.jpg" alt=""></a>
+			<span class="name">足金黄金收藏投资送礼</span>
+			<span class="price">￥7460.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/gold-3.jpg" alt=""></a>
+			<span class="name">Au9999金砖20g薄片金条</span>
+			<span class="price">￥5492.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/gold-1.jpg" alt=""></a>
+			<span class="name">黄金投资金条金砖</span>
+			<span class="price">￥5480.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/gold-2.jpg" alt=""></a>
+			<span class="name">足金黄金收藏投资送礼</span>
+			<span class="price">￥7460.00</span>
+		</li>
+		<li>
+			<a href="#"><img src="img/gold-3.jpg" alt=""></a>
+			<span class="name">Au9999金砖20g储值金条</span>
+			<span class="price">￥5492.00</span>
+		</li>
+	</ul>
+
+	</div>
+	<button class="addmore-jiez">添加</button>
+</div>
+
+<script>
+	$(".content").on("mouseenter", "li", function(e) {
+		var cover = $("<div></div>");
+		var graph = $('<p><a href="#">立即购买</a></p>');
+		$(this).append(cover);
+		$(this).append(graph);
+	});
+	$(".content").on("mouseleave", "li", function() {
+		$(this).find("div").remove();
+		$(this).find("p").remove();
+	});
+	$(".tab li").on("click", function() {
+		var idx = $(this).index();
+		var father = $(this).text();
+		console.log(father);
+		$(this).siblings().removeClass("choose");
+		$(this).addClass("choose");
+		$("button").attr("data", "");
+		$(this).parents(".wrap").find(".content ul").addClass("hide");
+		$(this).parents(".wrap").find(".content ul").eq(idx).removeClass("hide");
+		btnClass(father);
+	});
+	$("button").on("click", function() {
+		var className = $(this).attr("class");
+		ajax(className);
+		setTimeout(function() {
+			addMore(className);
+		}, 100);
+		//如果设置为0，就会先执行，所以需要添加一个延时，
+		//让addMore函数最后执行；
+	});
+	$("button").on("click", function() {
+		var className = $(this).attr("class");
+
+	});
+
+	function btnClass(str) {
+		if (str === "戒指") {
+			$("button").removeClass();
+			$("button").addClass("addmore-jiez");
+		}
+		if (str === "珠宝") {
+			$("button").removeClass();
+			$("button").addClass("addmore-zhub");
+		}
+		if (str === "黄金") {
+			$("button").removeClass();
+			$("button").addClass("addmore-gold");
+		}
+	}
+
+	function addMore(className) {
+		var data = $("button").attr("data");
+		if (className === "addmore-jiez") {
+			// console.log(data);
+			$(".jiez").append(data);
+		}
+		if (className === "addmore-zhub") {
+			// console.log(data);
+			$(".baos").append(data);
+		}
+		if (className === "addmore-gold") {
+			// console.log(data);
+			$(".gold").append(data);
+		}
+
+	}
+
+	function ajax(className) {
+		xhr = new XMLHttpRequest();
+		url = "task-25-3_get.php" + "?className=" + className;
+		// console.log(url);
+		xhr.onreadystatechange = function temp() {
+			if (xhr.status === 200 && xhr.readyState === 4) {
+				var json = JSON.parse(xhr.responseText);
+				// console.log(jsonData(json));
+				// $(".addmore-jiez").attr('data',jsonData(json));
+				$("button").attr('data', jsonData(json));
+				//把字符串绑定到button的data属性上面；
+				// console.log( $("button").attr('data'));
+			}
+		}
+
+		xhr.open("get", url, true);
+		xhr.send();
+	}
+
+	function jsonData(json) {
+		var str = "";
+		for (var i = 0; i < json.length; i++) {
+			str += '<li><a href="#"><img src=' + json[i][0] + ' alt=""></a><span class="name">' + json[i][1] + '</span><span class="price">' + json[i][2] + '</span></li>'
+		}
+		// console.log(str);
+		return str;
+	}
+</script>
+</body>
+</html>

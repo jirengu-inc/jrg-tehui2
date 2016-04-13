@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>border</title>
+	<style type="text/css">
+    div{
+        width:0;
+        height:0;
+        margin:10px auto;
+        border-width:60px; 
+    }
+    .triangle-border{         
+        border-style:solid;
+        border-color:blue yellow green red;          
+    }
+    .triangle-up{
+        border-style:solid;
+        border-color:blue transparent transparent transparent   
+    }
+    .triangle-left{
+        border-style:solid;
+        border-color:transparent transparent transparent red ;
+    }
+    .triangle-right{
+        border-style:solid;
+        border-color:transparent yellow transparent transparent ;
+    }
+    .triangle-bottom{
+        border-style:solid;
+        border-color:transparent transparent green transparent;
+    }
+    .triangle-vertical{
+        border-bottom: 100px solid red;
+        border-right: 100px solid transparent;
+    }
+     #combination {    
+        width: 120px;     
+        height: 80px;     
+        background: green;    
+        position: relative;       
+        border-radius: 10px; 
+    } 
+     #combination:before {    
+        content:"";    
+        position: absolute;   
+        left: 100%;    
+        top: 26px;    
+        width: 0;    
+        height: 0;    
+        border-top: 13px solid transparent;    
+        border-left: 26px solid green;  
+        border-bottom: 13px solid transparent; 
+    }
+	</style>
+</head>
+<body>
+	<div class="triangle-border"></div>
+    <div class="triangle-up"></div>
+    <div class="triangle-left"></div>
+    <div class="triangle-right"></div>
+    <div class="triangle-bottom"></div>
+    <div class="triangle-vertical"></div>
+    <div id="combination"></div>
+</body>
+</html>
