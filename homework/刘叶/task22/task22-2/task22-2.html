@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task22-2</title>
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <style>
+        .ct{
+            background-color:rgba(0, 0, 0, 0.5);
+            color: #ffffff;
+            padding: 20px;
+            font-family:"Microsoft YaHei UI";
+            list-style: none;
+        }
+    </style>
+    <script>
+        var ct=document.querySelector('.ct');
+        var btnStart=document.querySelector('#btn-add-start');
+        var btnEnd=document.querySelector('#btn-add-end');
+        var str=document.querySelector('.ipt-add-content')
+        function ipt(input){
+            var reg=/\S+/;
+            return input.match(reg);
+        }
+        ct.addEventListener('click',function(e){
+            if(e.target.tagName.toLowerCase()==='li'){
+                console.log(e.target.innerText);
+            }
+        });
+        btnStart.addEventListener('click',function(e){
+                var input=str.value;
+                if(ipt(input)){
+                    var li=document.createElement('li');
+                    li.innerText=str.value;
+                    ct.insertBefore(li,ct.firstChild);
+                }
+                else{alert('内容不能为空，请再次输入')}
+        });
+        btnEnd.addEventListener('click',function(e){
+                var input=str.value;
+                if(ipt(input)){
+                    var li=document.createElement('li');
+                    li.innerText=str.value;
+                    ct.appendChild(li);
+                }
+                else{alert('内容不能为空，请再次输入')}
+        });
+    </script>
+</body>
+</html>
