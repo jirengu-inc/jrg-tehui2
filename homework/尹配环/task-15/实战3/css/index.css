@@ -174,36 +174,41 @@ a {
 }
 #portfolio li img {
 	display: block;
-	max-width: 370px;
 }
 #portfolio .pf-link {
 	display: block;
-	position: relative;
+	width: 370px;
 
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+.bg-img1 {
+	background-image: url(../img/roundicons.png);
+}
+.bg-img2 {
+	background-image: url(../img/startup-framework.png);
+}
+.bg-img3 {
+	background-image: url(../img/treehouse.png);
+}
+.bg-img4 {
+	background-image: url(../img/escape.png);
+}
+.bg-img5 {
+	background-image: url(../img/dreams.png);
+}
+.bg-img6 {
+	background-image: url(../img/golden.png);
 }
 .pf-content {
-	position: absolute;
-	top:50%;
-	left: 50%;
-	z-index: 1000;
-	margin-left: -23px;
-	margin-top: -28px;
+	padding:100px 160px;
 	color: white;
-}
-.pf-cover {
-	position: absolute;
-	left: 0;
-	top:0;
-	z-index: 900;
-	width: 100%;
-	height: 100%;
 	background-color: #E4AB24;
-}
-.pf-content-hover {
 	opacity: 0;
 	transition:opacity .5s;
 }
-.pf-content-hover:hover {
+
+.pf-content:hover {
 	opacity: .8;
 }
 .summery {
