@@ -109,19 +109,38 @@
         		repeatpwd = document.getElementById("repeatpwd"),
         		btn = document.getElementById("btn");
                 
-        	username.addEventListener('blur', function() { checkname() && exitname(); },false);
+            username.addEventListener('blur', function() {
+                checkname() && existname();
+            }, false);
 
-        	email.addEventListener('blur', function() { checkemail(); },false);
+            email.addEventListener('blur', function() {
+                checkemail();
+            }, false);
 
-        	pwd.addEventListener('blur', function() { checkpwd(); },false);
+            pwd.addEventListener('blur', function() {
+                checkpwd();
+            }, false);
 
-        	repeatpwd.addEventListener('blur', function() { checkrepeatpwd(); },false);
+            repeatpwd.addEventListener('blur', function() {
+                checkrepeatpwd();
+            }, false);
   
             btn.addEventListener('click', function(e) {
                 e.preventDefault();
-                if (checkname() && checkemail() && checkpwd() && checkrepeatpwd() && exitname()) {
-                    console.log("正在注册......");
-                    alert("正在注册......");
+
+                // if (checkname() && checkemail() && checkpwd() && checkrepeatpwd() && existname()) {
+                //     console.log("正在注册......");
+                //     alert("正在注册......");
+                // }
+                // //这里看起来没什么问题，但假设用户的网络很慢(ajax 需要几秒才有数据返回)， 他先输入了一个正常的用户名（未重复）,这时候 过了几秒钟 isSuccess 变成了 true。 这个时候他又换了个不正常的用户名(有重复),然后立即点注册（这时候因为 ajax 比较慢，所以 isSuccess 还是 true）， 会验证通过…  这就是同步和异步的问题
+                
+                if ( checkname() && checkemail() && checkpwd() && checkrepeatpwd() ) {
+                    existname(function (valiname) {
+                        if(valiname){
+                            console.log("正在注册......");
+                            alert("正在注册......");
+                        }
+                    });
                 }
             });
         </script>

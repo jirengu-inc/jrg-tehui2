@@ -1,7 +1,7 @@
 <?php
 	$username= $_POST['userName'];
-
-	if ($username == 'hunger'){
+	sleep(0.5);//模拟后台返回数据比较慢
+	if ($username == 'licao'){
 		$arr = array('data'=>false);
 		echo json_encode($arr);
 	}

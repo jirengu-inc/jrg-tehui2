@@ -12,9 +12,9 @@ function checkname() {
 }
 
 var isSuccess = false;
-
+console.log("用户名“licao”已存在");
 //AJAX请求后台数据验证是否已存在用户名
-function exitname() {
+function existname(makesure) {
     ajax({
         url: "task24-3.php",
         type: "post",
@@ -26,16 +26,19 @@ function exitname() {
                 isSuccess = false;
                 document.getElementsByClassName("usernameErr")[0].innerText = "*用户名已存在";
                 addClass(username, "errColor");
+                makesure && makesure(false);
             } else if(ret.data) {
                 isSuccess = true;
                 document.getElementsByClassName("usernameErr")[0].innerText = "";
                 removeClass(username, "errColor");
+                makesure && makesure(true);
             }
         },
         error: function() {
             alert("Error :(");
         }
     });
+
     if(isSuccess){
         return true;
     }else if(!isSuccess){
