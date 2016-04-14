@@ -1,0 +1,64 @@
+#btn-login{
+    width: 200px;
+    height: 100px;
+    font-size: 40px;
+}
+.loginWrap .loginWindow {
+    position: fixed;
+    width: 400px;
+    height: 200px;
+    top: 50%;
+    left: 50%;
+    margin-left: -200px;
+    margin-top: -100px;
+    background: #fff;
+    z-index: 4;
+}
+.loginWrap a {
+    text-decoration: none;
+    color: #000;
+}
+.loginWrap .cover {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: 0.5;
+    z-index: 3;
+}
+.loginWrap .loginWindow .header {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #ccc;
+}
+.loginWrap .loginWindow .header h3 {
+    margin: 0;
+    padding-left: 10px;
+    font-size: 20px;
+}
+.loginWrap .loginWindow .header .close {
+    position: absolute;
+    right: 10px;
+    top: 2px;
+}
+.loginWrap .loginWindow .content {
+    padding: 13px;
+}
+.loginWrap .loginWindow .footer {
+    padding: 10px;
+    border-top: 1px solid #eee;
+}
+.loginWrap .loginWindow .footer .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+}
+.loginWrap .loginWindow .footer .btn:hover{
+    background-color: #fed163;
+}
+.loginWrap {
+    display: none;
+}

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dialog</title>
+    <style>
+        .btn {
+            width: 50px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            font-size: 14px;
+            -webkit-border-radius: 2px;
+            -moz-border-radius: 2px;
+            border-radius: 2px;
+            color: #ffffff;
+            background-color: #e33100;
+            float: left;
+        }
+        .clearfix {
+            zoom: 1;
+        }
+        .clearfix:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .panel {
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            width: 320px;
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            margin-left: -160px;
+            background-color: #eeeeee;
+            -webkit-box-shadow: 0 0 10px #333;
+            -moz-box-shadow: 0 0 10px #333;
+            box-shadow: 0 0 10px #333;
+        }
+
+        .panel .header {
+            color: #ffffff;
+            background-color: #676666;
+            padding: 10px 20px;
+        }
+
+        .panel .header .close {
+            float: right;
+        }
+
+        .panel .content {
+            margin: 20px;
+        }
+
+        .panel .submit {
+            width: 100%;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+<button id="open1">Button1</button>
+<button id="open2">Button2</button>
+<button id="open3">Button3</button>
+<button id="open4">Button4</button>
+<script src="../hw26/jquery.js"></script>
+<script>
+    /* 写得很不满意,怎么样把代码模块化这一点想了很久,最后还是弄得糟糟的.但能够实现功能依然有些兴奋,然后开始看demo,看过以后特郁闷,想把自己写的都删了...但是又舍不得.
+     * 虽然是X一样的代码,但毕竟也是一份心血,于是还是先把这个提交,然后再把老师的艺偷来做v2版.
+     * 不肯直接提交更好的,可能还是想说明自己的水平吧.
+     * 往好处想,还有很大的进步空间,应该高兴.
+     * 唠叨完毕,push上去然后开始写v2.
+     */
+    function Dialog(){
+        this.title = "";
+        this.message = "";
+        this.showCloseBtn = false;
+        this.showConfirmBtn = false;
+    }
+
+    Dialog.prototype.open = function(opts) {
+        if(opts.title) {
+            this.title = '<div class="header">' + opts.title + '<div class="close">x</div></div>';
+        }
+        if(opts.message) {
+            this.message = opts.message;
+        }
+        this.showCloseBtn = opts.isShowCloseBtn;
+        this.showConfirmBtn = opts.isShowConfirmBtn;
+
+        var $panel = $('' +
+                '<div class="panel">' +
+                this.title +
+                '<div class="content">' +
+                this.message +
+                '</div>' +
+                '<div class="submit clearfix">' +
+                '</div>' +
+                '</div>');
+
+        var $confirm = $('<div class="btn confirm close">确定</div>');
+        var $close = $('<div class="btn cancel close">取消</div>');
+
+        $("body").append($panel);
+        $panel.drag();
+
+        var $submit = $panel.find(".submit");
+
+        if(this.showCloseBtn) {
+            $submit.append($close);
+        }
+
+        if(this.showConfirmBtn) {
+            $submit.append($confirm);
+        }
+
+        if(opts.onClose) {
+            $close.on("click", function() {
+                opts.onClose();
+            });
+        }
+
+        if(opts.onConfirm) {
+            $confirm.on("click", function() {
+                opts.onConfirm();
+            });
+        }
+
+        //统一添加点击关闭事件
+        $panel.find(".close").on("click", function() {
+            $panel.hide();
+        });
+
+        //按钮区样式设置
+        if(this.showCloseBtn && this.showConfirmBtn) {
+            $submit.width($close.outerWidth() + 30 + $confirm.outerWidth());
+            $close.css("margin-right", "20px");
+        } else if( this.showCloseBtn || this.showConfirmBtn ) {
+            $submit.width($submit.children().outerWidth());
+        }
+    };
+
+    (function($) {
+        $.fn.drag = function() {
+            $(this).each(function() {
+                var me = $(this),
+                        isMoved = false,
+                        rX, rY; //相对距离
+
+                me.on("mousedown", function(event) {
+                    isMoved = true;
+                    rX = event.pageX - parseInt(me.css("left"));
+                    rY = event.pageY - parseInt(me.css("top"));
+
+                    me.css("cursor", "move");
+                });
+
+                $(document).on("mousemove", function(event) {
+                    if(isMoved) {
+                        var eX = event.pageX,
+                                eY = event.pageY,
+
+                                //以下,防止跑到窗口之外
+                                wX = $(window).width(),
+                                wY = $(window).height(),
+                                thisX = me.outerWidth(true),
+                                thisY = me.height(),
+                                thisMarginLeft = parseInt(me.css("margin-left")),
+                                nowX = eX - rX,
+                                nowY = eY - rY,
+                                left, top, leftEdge;
+
+                        if(thisMarginLeft > 0) {
+                            leftEdge = 0;
+                        } else {
+                            leftEdge = -thisMarginLeft;
+                        }
+                        if( nowX < leftEdge ) {
+                            left = leftEdge;
+                        } else  if( nowX > wX - thisX ) {
+                            left = wX - thisX;
+                        } else {
+                            left = nowX;
+                        }
+
+                        if( nowY < 0 ) {
+                            top = 0;
+                        } else  if( nowY > wY - thisY ) {
+                            top = wY - thisY;
+                        } else {
+                            top = nowY;
+                        }
+                        //以上,防止跑到窗口之外
+
+                        me.css({
+                            "left" : left,
+                            "top" : top
+                        });
+                    }
+                }).on("mouseup", function() {
+                    isMoved = false;
+                    me.css("cursor", "auto");
+                });
+            });
+        };
+    })(jQuery);
+
+    var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+
+    $('#open4').on('click',function(){
+        var dialog4 = new Dialog();
+        dialog4.open({
+            title: '欢迎来到饥人谷',
+            message: tpl,
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onClose: function(){
+                alert('close')
+            },
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+    $('#open3').on('click',function(){
+        var dialog3 = new Dialog();
+        dialog3.open({
+            message: '<img src="http://jirengu.com/data/upload/2016/0321/16/56efb29eadb87.png" width="100%">',
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onClose: function(){
+                alert('close')
+            },
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+    $('#open2').on('click',function(){
+        var dialog2 = new Dialog();
+        dialog2.open({
+            title: '欢迎来到饥人谷',
+            isShowCloseBtn: true,
+            isShowConfirmBtn: true,
+            onClose: function(){
+                alert('close')
+            },
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+    $('#open1').on('click',function(){
+        var dialog1 = new Dialog();
+        dialog1.open({
+            title: '欢迎来到饥人谷',
+            message: '<a href="http://jirengu.com">饥人谷</a>',
+            isShowConfirmBtn: true,
+            onConfirm: function(){
+                alert('确定');
+            }
+        });
+    });
+</script>
+</body>
+</html>

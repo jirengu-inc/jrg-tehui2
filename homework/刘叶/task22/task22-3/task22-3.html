@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task22-3</title>
+</head>
+<style>
+    li{
+        display: inline;
+        padding: 10px;
+        margin-left: -15px;
+        font-family: "Microsoft YaHei UI";
+        transition: 0.2s;
+    }
+    li:hover{
+        background-color: #fed136;
+        font-weight: bolder;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <ul class="ct">
+        <li data-img="http://i0.hdslb.com/group1/M00/F8/6A/oYYBAFalnGCARTvpAAA_9Cu9X2Q368.jpg">仰望星空</li>
+        <li data-img="http://i0.hdslb.com/group1/M00/F8/7C/oYYBAFalnk6AHePwAAB7JTPsGKE551.jpg">王牌特工</li>
+        <li data-img="http://i0.hdslb.com/group1/M00/F8/7E/oYYBAFalnp2AEixNAABcO2ArS5g888.jpg">梦游仙境</li>
+    </ul>
+    <div class="img-preview"></div>
+    <script>
+        var ct=document.querySelector('.ct'),
+            preview=document.querySelector('.img-preview'),
+            li=ct.querySelectorAll('li');
+        ct.addEventListener('mouseover',function(e) {
+            if (e.target.tagName.toLowerCase()==='li'){
+                var dataImg =e.target.getAttribute('data-img');
+                preview.innerHTML='<img src=" '+dataImg+' " >';
+            }
+        });
+        ct.addEventListener('mouseout',function(){
+            preview.innerHTML='';
+        });
+    </script>
+</body>
+</html>
+

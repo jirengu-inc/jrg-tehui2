@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-24-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<style type="text/css">
+	body{
+		font-family: "Microsoft Yahei";
+	}
+	p{
+		border: solid 1px #ccc;
+		font-size: 18px;
+		padding: 8px;
+		margin: 10px;
+		border-radius: 5px;
+		color: #333;
+		transition: background 0.3s;
+	}
+	p:hover{
+		background-color: #E27272;
+		color: #fff;
+		cursor: pointer;
+	}
+	.btn{
+		display: block;
+		width: 100px;
+		margin: 0 auto;
+		background-color: #fff;
+		color: #E27272;
+		border: solid 2px #E27272;
+		padding: 5px 10px;
+		font-size: 18px;
+		font-weight: bold;
+		border-radius: 8px;
+		transition: background 0.3s;
+	}
+	.btn:hover{
+		background-color: #E27272;
+		color: #fff;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap">
+	    <p>内容1</p>
+	    <p>内容2</p>
+    </div>
+    <button class="btn">加载更多</button>
+
+    <script type="text/javascript">
+    	var wrap= document.querySelector(".wrap");
+    	var btn=document.querySelector(".btn");
+    	// var graph=document.querySelectorAll("p"); 
+    	btn.addEventListener("click",function(){
+    		
+    		addmore();
+    	},false);
+
+
+
+    	function addmore(){
+    		var xhr=new XMLHttpRequest();
+    		var num=wrap.children.length;
+    		//num用于给PHP传递此时页面内容的数量；
+    		console.log(num);
+    		url="task-24-2_get.php"+"?"+"num="+num;
+    		xhr.onreadystatechange=function(){
+    		    if(xhr.status===200 && xhr.readyState===4){
+    		        var str=xhr.responseText;
+    		        // console.log(str);
+    		        var json=str.substr(0,str.length-1);
+    		        // console.log(json);
+    		        json=json.split(",");
+
+    		        console.log(json);
+    		        //["内容3", "内容4", "内容5", "内容6", "内容7", "内容8"]
+    		    	addGraph(json);
+    		    	}
+    		    }
+    		    xhr.open("get",url,true);
+    		    xhr.send();
+    	}
+
+    	function addGraph(obj){
+    		for(var i=0;i<obj.length;i++){
+    			var childs=document.createElement("p");
+    			childs.innerHTML=obj[i];
+    			wrap.appendChild(childs);
+    		}
+    		    }
+
+    </script>
+ </body>
+</html>
