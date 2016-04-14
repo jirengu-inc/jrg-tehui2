@@ -11,6 +11,7 @@
 <body>
 <!-- 当点击按钮开头添加时在<li>这里是</li>元素前添加一个新元素，内容为用户输入的非空字符串；当点击结尾添加时在<li>前端6班</li>后添加用户输入的非空字符串.
 当点击每一个元素li时控制台展示该元素的文本内容。 -->
+
 <ul class="ct">
     <li>这里是</li>
     <li>饥人谷</li>
@@ -19,29 +20,40 @@
 <input class="ipt-add-content" placeholder="添加内容"/>
 <button id="btn-add-start">开头添加</button>
 <button id="btn-add-end">结尾添加</button>
-</body>
+
 
     <script>
-var input = document.createElement('input'),
-    button = document.createElement('button'),
-    button = document.createElement('button')；
-//用createElement创建<img>​元素
-input.class = 'ipt-add-content';
-button.id = 'btn-add-start';
-input.setAttribute("placeholder","添加内容");
-//使用setAttribute()方法来设置元素属性
-var top = document.createTextNode("开头添加"); 
-var bottom = document.createTextNode("结尾添加"); 
-top.insertBefore(input, items.firstChild); 
-document.body.appendChild(input);  //使用appendChild()方法将添加的图片绑定到页面上
-		var items = document.querySelectorAll('li');
-		for (var i = 0; i < items.length; i++) {
-			items[i].onclick = function(e){
-		     console.log(this.innerText);
-		  }
-		}
+        var ct = document.querySelector('.ct'),
+	        ipt = document.querySelector(".ipt-add-content"),
+	        btns = document.querySelector("#btn-add-start"),
+	        btnd = document.querySelector("#btn-add-end");
 
-
+	  ct.addEventListener("click", function(e) {
+	      if(e.target.tagName.toLowerCase() === 'li'){
+	       console.log(e.target.innerText);
+	      }
+	  });
+	  btns.addEventListener("click", function() {
+			if (ipt.value === "") {
+				alert("不能为空，请输入信息：")
+			}else{
+				var li = document.createElement('li');
+				// var fChild = ct.children[0];
+				li.innerText = ipt.value;
+				ct.insertBefore(li,ct.firstChild);
+			}
+			
+	 });
+	 btnd.addEventListener("click", function() {
+			if (ipt.value === "") {
+				alert("不能为空，请输入信息：")
+			}else{
+				var li = document.createElement('li');
+				li.innerText = ipt.value;
+				ct.appendChild(li);
+			}
+			
+	 });
 	</script>
 </body>
 </html>
