@@ -18,18 +18,12 @@
 <div class="img-preview"></div>
 <script>
      var ct = document.querySelector('.ct'),
-	     // list = ct.querySelectorAll('li'),
          view = document.querySelector('.img-preview');
-         // for (var i = 0; i < list.length; i++) {
-         // 	list[i].addEventListener('mouseenter',function(){
-         // 		var dateImg = this.getAttribute('date-img');
-         // 		view.innerHTML ='<img src="' + dateImg+'">' ;
-         // 	});
-         // }
-         ct.addEventListener('mouseenter',function(e){
-         	var dateImg = e.target.getAttribute('date-img');
+    
+         ct.addEventListener('mouseover',function(e){
+         	var dateImg = e.target.getAttribute('data-img');
          	view.innerHTML = '<img src="'+ dateImg+'">';
-         });
+         })
 </script>
 </body>
 </html>
