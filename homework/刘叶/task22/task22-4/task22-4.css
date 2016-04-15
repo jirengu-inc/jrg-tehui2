@@ -1,0 +1,37 @@
+* {
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+.wrap {
+    border:1px solid #ccc;
+}
+.wrap ul>li {
+    list-style:none;
+}
+.wrap .tabs>li {
+    float:left;
+    width:33.33%;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    border-right:1px solid #ccc;
+    border-bottom:1px solid #ccc;
+    cursor: pointer;
+}
+.wrap .panel {
+    display:none;
+    height:200px;
+    padding:30px 30px;
+}
+.wrap .tabs:after {
+    content:'';
+    display:table;
+    clear:both;
+}
+.wrap .tabs .active {
+    background:#ccc;
+}
+.wrap .active {
+    display:block;
+}

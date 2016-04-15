@@ -74,7 +74,8 @@ font-family:cursive;
 /*页面mainpage样式-box1*/
 .mainpage{
 	min-width:1200px;
-	background:url(img/task1.jpg)no-repeat;background-size:cover;
+	background:url(img/task1.jpg)no-repeat;
+	background-size:cover;
 	text-align:center;
 /*	display: table;*/
 }
@@ -261,7 +262,7 @@ font-family:cursive;
 .time-left{
 	position: relative;
 	text-align: right;
-	margin-left:70px;
+	left:70px;
 /*	margin-bottom:100px;*/
 }
 .time-left .rahmen{
@@ -271,7 +272,7 @@ font-family:cursive;
 	float:left;
 }
 .time-right{
-	margin-left:520px;
+	left:520px;
 /*	margin-bottom:100px;*/
 	position: relative;
 	text-align:left;

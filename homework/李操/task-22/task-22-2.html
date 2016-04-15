@@ -3,6 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<title>task-22-2</title>
+	<style>
+	  .ct{
+		background: pink;
+		padding: 20px;
+	  }
+	</style>
 </head>
 <body>
 <ul class="ct">
@@ -18,10 +24,16 @@
 	var ul = document.querySelector('.ct'),
 		addEnd = document.querySelector('#btn-add-end'),
 		addStart = document.querySelector('#btn-add-start');
-	
-	ul.onclick = function (e) {
-		 console.log(e.target.innerText) ;
-	}
+
+		// ul.onclick = function (e) {
+		//      console.log(e.target.innerText) ;
+		// }//注意：这样写会出问题，当点击到的是ul而不是li时（ul有padding时）会出错
+		//改为以下这种写法：
+		ul.addEventListener('click',function(e){
+		    if (e.target.tagName.toLowerCase() === 'li') {
+		        console.log(e.target.innerText);
+		    }
+		});
 
 	addEnd.onclick = function () {
 		var item = document.createElement('li');
@@ -43,6 +55,6 @@
 		}else {
 			alert("Input Nothing!");
 		}
-	}	
+	}
 </script>
 </html>
