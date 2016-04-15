@@ -107,6 +107,7 @@
     var isLoading = false;
 
     addEvent(btn, "click", function() {
+      isloading=true;
         if (isLoading) return;
         isLoading = true;
         btn.innerText = "加载中...";
@@ -116,6 +117,7 @@
             url: "load.php",
             data: {"start": start, "len": len},
             success: function(response) {
+              isloading=false;
                 loadMore(response);
                 start += 6;
                 isLoading = false;
@@ -123,6 +125,7 @@
                 btn.style.cursor = "pointer";
             },
             error: function(){
+              isloading=false;
                 isLoading = false;
                 btn.innerText = "加载更多";
                 btn.style.cursor = "pointer";
