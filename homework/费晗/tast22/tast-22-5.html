@@ -9,6 +9,15 @@
     	padding: 0;
     	margin: 0;
     }
+    .modal-dialog{
+    	display: none;
+    /*	position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+*/		
+    }
     .clearfix:after{
     	content: '';
     	display: block;
@@ -20,27 +29,33 @@
     }
     #btn-modal{
     	margin: 10px;
+    	display: inline-block;
     }
 	.cover{
 		position: fixed;
 		top: 0;
 		left: 0;
+		right: 0;
+		bottom: 0;
 		background-color: #000;
 		opacity: 0.4;
 		z-index: 1;
-		display: none;
+		/*display: none;*/
 	}
 	.modal-ct{
 		position: fixed;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%,-50%);
+		-webkit-transform: translate(-50%, -50%);
 		/*margin-left: -200px;
 		margin-top: -150px;*/
 		width: 400px;
 		/*height: 300px;*/
 		border-radius: 2px;
 		background-color: #fff;
+		border: 1px solid #ccc;
+		border-radius: 5px;
 		z-index: 2;
 	}
 	.modal-ct .header{
@@ -58,7 +73,7 @@
 	}
 	.modal-ct .header .close{
 		float: right;
-		font-size: 16px;
+		font-size: 20px;
 		/*padding-right: 10px;*/
 	}
 	.content{
@@ -87,15 +102,15 @@
 		<div class="modal-ct">
 			<div class="header clearfix">
 				<h3>我是标题1</h3>
-				<a href="#" class="close">X</a>
+				<a href="#" class="close">x</a>
 			</div>
 			<div class="content">
 				<p>我是内容1</p>
 				<p>我是内容2</p>
 			</div>
 			<div class="footer clearfix">
-				<a href="#" class="btn-confirm">确定</a>
 				<a href="#" class="btn-cancel">取消</a>
+				<a href="#" class="btn-confirm">确定</a>
 			</div>
 		</div>
 	</div>
@@ -106,19 +121,33 @@
        var btn = document.querySelector('#btn-modal'),
            modal = document.querySelector('#modal'),
            modalCt = document.querySelector('#modal .modal-ct');
+        //思路整理：需要把X和取消蒙层设置关闭内容框事件
+       // document.querySelector('.close').addEventListener('click',function(e){
+       // 	hideModal(modal);  //当点击X的时候关闭内容框
+       // });
+       // document.querySelector('.cover').addEventListener('click',function(e){
+       // 	hideModal(modal);  //当点击蒙层的时候关闭内容框
+       // });
+       // document.querySelector('.btn-cancel').addEventListener('click',function(e){
+       // 	hideModal(modal);  //当点击取消的时候关闭内容框
+       // });
+       //以上三个可以用事件代理，绑定在父容器上一次搞定；
        btn.addEventListener('click',function(e){
-	       	e.stopPropagation();
-	       	showModal(modal);
-       });
-       modalCt.addEventListener('click',function(e){
-       	e.stopPropagation();
-       	if (hasClass(e.target,'close')||hasClass(e.target,'btn-cancel')) {
+	       	// e.stopPropagation();
+	       	/*如果没有蒙层cover，而又想达到同样的效果，可以把监听事件绑定在body上，此时btn也属于body，会监听到事件，所以需要用这一步来阻止冒泡，点击时让内容框出现*/
+	       	showModal(modal);  
+       }); //按钮点击出现内容框事件
+       modal.addEventListener('click',function(e){
+       	// e.stopPropagation();
+       	/*如果没有蒙层cover，而又想达到同样的效果，可以把监听事件绑定在body上，此时内容框也属于body，会监听到事件，所以需要用这一步来阻止事件冒泡，只在点击设置了的位置关闭内容框*/  
+       	console.log(e);
+       	if (hasClass(e.target,'close')||hasClass(e.target,'btn-cancel')||hasClass(e.target,'cover')){
        		hideModal(modal);
-       	}
+	       	}  //e.target表示点什么就会出现什么
        });
-       document.body.addEventListener('click',function(){
-       	   hideModal(modal);
-       });
+       // document.body.addEventListener('click',function(){
+       // 	   hideModal(modal);
+       // });
        function showModal(modal){
        	   modal.style.display = 'block';
        }
