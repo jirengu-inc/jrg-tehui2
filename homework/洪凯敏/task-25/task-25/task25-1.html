@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>task-25</title>
+	<style type="text/css">
+		ul{
+			list-style: none;
+			padding: 0px;
+			margin:0px;
+
+		}
+		a{
+			text-decoration: none;
+		}
+		.content{
+			/*position: relative;*/
+			/*border: 1px red solid;*/
+	/*		width: 175px;*/
+			float: left;
+			color: #fff;
+			background-color: rgb(201,18,19);
+			font-size: 15px;
+			font-family: "微软雅黑";
+/*			padding: 5px;*/
+
+
+		}
+		.content>li{
+/*			padding-top: 5px;
+			margin-left: 5px;
+			margin-right:5px; */
+			width: 170px;
+			margin:0px 5px;
+			padding: 10px 5px;
+			border-bottom: 1px #ccc solid;
+
+		}
+/*		.cut-off{
+			border-bottom: 1px #ccc solid;
+			opacity: 0.7;
+			margin:0px;
+			padding: 0px;
+/*			position: relative;
+			top: 5px;
+			left: 0px;*/
+		}*/
+		.describe{
+			float: left;
+		}
+		.mark{
+			float: right;
+		}
+		.clearfix{
+			position: relative;
+		}
+		.clearfix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.clearfix:before{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.content-warp{
+			position: absolute;
+			left: 100%;
+			top: 0px;
+			color: #ccc;
+			border: 1px #ccc solid;
+			width: 180px;
+			margin-left: 5px;
+			display: none;
+		}
+		.content-warp>li{
+			display: inline-block;
+			width: 70px;
+			margin-left:10px;
+			margin-top: 10px;
+			margin-bottom: 10px;
+		}
+		.content-warp a{
+			color: #555;
+		}
+
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js" type="text/javascript" ></script>
+</head>
+<body>
+	<ul class="content">
+		<li class="clearfix">
+		<span class="describe">珠宝玉器</span>
+		<span class="mark">></span>
+		<!-- <li class="cut-off"></li> -->
+		<ul class="content-warp">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+		</ul>
+		</li>
+		<li class="clearfix">
+		<span class="describe">珠宝玉器</span>
+		<span class="mark">></span>
+		<ul class="content-warp">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a></li>
+			<li><a href="#">珍珠</a></li>
+		</ul>
+		</li>
+		<li class="clearfix">
+		<span class="describe">珠宝玉器</span>
+		<span class="mark">></span>
+		<ul class="content-warp">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+			<li><a href="#">玛瑙</a></li>
+			<li><a href="#">珍珠</a></li>
+		</ul>
+		</li>
+		<li class="clearfix">
+		<span class="describe">珠宝玉器</span>
+		<span class="mark">></span>
+		<ul class="content-warp">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+		</ul>
+		</li>
+		<li class="clearfix">
+		<span class="describe">珠宝玉器</span>
+		<span class="mark">></span>
+		<ul class="content-warp">
+			<li><a href="#">翡翠</a></li>
+			<li><a href="#">玉石</a></li>
+			<li><a href="#">宝石</a></li>
+			<li><a href="#">水晶</a></li>
+		</ul>
+		</li>
+	</ul>
+	<script type="text/javascript">
+		$(".clearfix").on("mouseenter",function(){
+				$(this).find(".content-warp").show();
+		});
+		$(".clearfix").on("mouseleave",function(){
+				$(this).find(".content-warp").hide();
+		});
+
+	</script>
+</body>
+</html>
