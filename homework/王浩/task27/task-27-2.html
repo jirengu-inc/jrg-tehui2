@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-27-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+	html,body,div,ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	li{
+		list-style-type: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.carousel{
+		width: 200px;
+		height: 200px;
+		position: relative;
+		/*overflow: hidden;*/
+	}
+	/*.wrap{
+		position: absolute;
+	}*/
+	/*.wrap:after{
+		content: "";
+		display: block;
+		clear: both;
+	}*/
+	.wrap li{
+		position: absolute;
+		top: 0;
+		left: 0; 	
+		display: none;	
+	}
+	.wrap li img{
+		width: 200px;
+		height: 200px;
+	}
+	.arrow{
+		display: block;
+		position: absolute;
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		color: #fff;
+		background-color: #333;
+		top: 50%;
+		margin-top: -15px;
+		text-align: center;
+		border-radius: 15px;
+		opacity: 0.5;
+	}
+	.arrow:hover{
+		opacity: 1;
+	}
+	.pre{
+		left: 10px;
+	}
+	.next{
+		right: 10px;
+	}
+	.opt{
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.opt li{
+		display: inline-block;
+		width: 19px;
+		height: 6px;
+		background-color: #ccc;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	li.active{
+		background-color: #666;
+	}
+	li.show{
+		display: block;	
+	}
+</style>
+</head>
+<body>
+    <div class="carousel">
+    	<ul class="wrap">
+    		<li class="show"><a href="#"><img src="img/01.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/02.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/03.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/04.jpg" alt="轮播图片"></a></li>
+    	</ul>
+    	<a href="javascript:void(0)" class="pre arrow"><</a>
+    	<a href="javascript:void(0)" class="next arrow">></a>
+    	<ul class="opt">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+    <div class="carousel">
+    	<ul class="wrap">
+    		<li class="show"><a href="#"><img src="img/01.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/02.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/03.jpg" alt="轮播图片"></a></li>
+    		<li><a href="#"><img src="img/04.jpg" alt="轮播图片"></a></li>
+    	</ul>
+    	<a href="javascript:void(0)" class="pre arrow"><</a>
+    	<a href="javascript:void(0)" class="next arrow">></a>
+    	<ul class="opt">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+    <script>
+    	var $wrap = $(".wrap"),
+    		$child = $wrap.children(),
+    		$pre = $(".pre"),
+    		$next = $(".next"),
+    		$opt = $(".opt li"),
+    		imgCount = $child.length;
+    	$pre.on("click", function() {
+    		playPre();
+    	});
+    	$next.on("click", function() {
+    		playNext();
+    	});
+    	var wrapIdx = 0;
+    	$opt.on("click", function() {
+    		var idx = $(this).index();
+    		console.log(idx);
+    		if (idx > wrapIdx) {
+    			playNext(idx - wrapIdx);
+    		} else if (idx < wrapIdx) {
+    			playPre(wrapIdx - idx);
+    		}
+    	});
+    	start();
+    	var clock;
+
+    	function start() {
+    		clock = setInterval(function() {
+    			playNext();
+    		}, 3000);
+    	}
+
+    	function stop() {
+    		clearInterval(clock);
+    	}
+    	function playNext(idx) {
+    		stop();
+    		if (!$($child.eq(wrapIdx)).is(":animated")) {
+    			var idx = idx || 1;
+    			wrapIdx += idx;
+    			$child.fadeOut(2000);
+
+    			if (wrapIdx === imgCount) {
+    				wrapIdx = 0;
+    			}
+    			$child.eq(wrapIdx).fadeIn(2000);
+    			$opt.removeClass("active").eq(wrapIdx).addClass("active");
+    		}
+    		start();
+    	}
+    	function playPre(idx) {
+    		stop();
+    		if (!$($child.eq(wrapIdx)).is(":animated")) {
+    			var idx = idx || 1;
+    			wrapIdx -= idx;
+    			$child.fadeOut(2000);
+
+    			if (wrapIdx === -1) {
+    				wrapIdx = imgCount - 1;
+    			}
+    			$child.eq(wrapIdx).fadeIn(2000);
+    			$opt.removeClass("active").eq(wrapIdx).addClass("active");
+    		}
+    		start();
+    	}
+    			
+
+
+    </script>
+</body>
+</html>

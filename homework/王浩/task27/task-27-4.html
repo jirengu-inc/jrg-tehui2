@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-27-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+	html,body,div,ul,li{
+		
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style-type: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	html,body,div,ul.wrap,ul.wrap li{
+		width: 100%;
+		height: 100%;
+	}
+	.carousel{
+		position: relative;
+	}
+	.wrap{
+		position: absolute;
+	}
+	.wrap li{
+		float: left;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0.8;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.opt{
+		position: absolute;
+		bottom: 100px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.opt:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.opt li{
+		float: left;
+		margin: 0 10px;
+		width: 50px;
+		height: 8px;
+		background-color: #999;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	li.active{
+		background-color: #E04C4C;
+	}
+</style>
+</head>
+<body>
+    <div class="carousel">
+    	<ul class="wrap">
+    		<li data-bg-img="img/05.jpg"><a href="#"></a></li>
+    		<li><a href="#"></a></li>
+    		<li><a href="#"></a></li>
+    		<li><a href="#"></a></li>
+    	</ul>
+    	<ul class="opt">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+    <script>
+    	
+    </script>
+</body>
+</html>
