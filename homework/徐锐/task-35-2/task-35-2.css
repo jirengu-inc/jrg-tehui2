@@ -1,0 +1,31 @@
+.tab-list {
+    width: 600px;
+    margin-left: 10px;
+}
+.tab-list li {
+    display: inline-block;
+    border: 1px solid #ddd;
+    width: 180px;
+    text-align: center;
+    padding: 5px 0;
+    margin-left: -5px;
+    cursor: pointer;
+}
+.tab-list li.active {
+    background: #efefef;
+}
+
+.content-box {
+    width: 598px;
+    border: 1px solid #ddd;
+    margin-left: 5px;
+    height: 200px;
+    margin-top: -1px;
+    padding: 20px;
+}
+.content-box > p {
+    display: none;
+}
+.content-box .active {
+    display: block;
+}

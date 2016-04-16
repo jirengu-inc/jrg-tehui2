@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+</head>
+<body>
+<ul class="ct">
+    <li>这里是</li>
+    <li>饥人谷</li>
+    <li>任务2班</li>
+</ul>
+<script>
+    var ct=document.querySelector('.ct');
+    ct.addEventListener('click',function(e){
+        console.log(e.target.innerText);
+    });
+
+    //    var li=document.getElementsByTagName('li');
+    //    for(var i=0;i<li.length;i++)
+    //    li[i].onclick = function () {
+    //        console.log(this.innerText);
+    //    }//将事件绑定在li身上,全部用了最土的方法
+</script>
+</body>
+</html>

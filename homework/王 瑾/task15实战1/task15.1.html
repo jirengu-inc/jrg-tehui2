@@ -8,147 +8,111 @@
 <link rel="stylesheet"type="text/css"href="15.1.css">
 </head>
 <body>
-
-<div id="nvbar">
-<ul class="list">
-<li><a href="#"><big>饥人谷</big></a></li>
-<li class="mywork"><a href="#">我的作品</a><span><i class="fa fa-fw fa-sort-desc"></i></span>
-<ul class="inner">
-<li><i class="fa fa-fw fa-globe"></i><a href="#"> 作品1</a></li>
-<li><i class="fa fa-fw fa-star"></i><a href="#"> 作品2</a></li>
-<li><i class="fa fa-fw fa-shopping-cart"></i><a href="#"> 作品3</a></li>
-<hr/>
-<li><span class="lastone"><small>作品4</small></span></li>
-</ul>
-</li>
-<li><a href="#">博客</a></li>
-<li><a href="#">项目</a></li>
-<li><a href="#">关于我</a></li>
-</ul>
+<div id="top">
+	<ul class="top-nvbar">
+		<li><a href="#"><big>饥人谷</big></a></li>
+        <li class="mywork"><a href="#">我的作品</a><span><i class="fa fa-fw fa-sort-desc"></i></span>
+	        <ul class="mywork-list">
+		       <li><i class="fa fa-fw fa-globe"></i><a href="#"> 作品1</a></li>
+               <li><i class="fa fa-fw fa-star"></i><a href="#"> 作品2</a></li>
+               <li><i class="fa fa-fw fa-shopping-cart"></i><a href="#"> 作品3</a></li>
+        <hr/>
+        <li><span class="nolink-one"><small>作品4</small></span></li>
+            </ul>
+       </li>
+       <li><a href="#">博客</a></li>
+       <li><a href="#">项目</a></li>
+       <li><a href="#">关于我</a></li>
+   </ul>
 </div>
 
 <div id="header">
-<p><span class="bold">页面特征</span><br/>
+	<p><span class="bold">页面特征</span><br/>
 不需要处理响应式，不使用Bootstrap, 不需要js。<br/>
 图标使用font-awesome, 页面中心内容固定宽度1000px</p>
 </div>
 
-<div id="container">
-<div id="nvbar2">
-<a href="#"><span class="link">首页</span></a>
+<div id="main">
+  <div id="main-wrap">
+<div class="main-title">
+<a href="#"><span class="homepage-link">首页</span></a>
 / 我的作品
 </div>
-
-<div id="works">
-<div class="row1">
-<div class="pic1">
-<div class="a1"><a href="#"><img src="pics/1.jpg"width="300"height="180"></a></div>
-<div class="content">
-<h2>Creative</h2>
-<p>A one page creative theme.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-
-<div class="pic2">
-<div class="a1"><a href="#"><img src="pics/2.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Agency</h2>
-<p>A one page agency theme.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-
-<div class="pic3">
-<div class="a1"><a href="#"><img src="pics/3.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Freelancer</h2>
-<p>A one page Freelancer theme.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-</div>
-
-<div class="row2">
-<div class="pic4">
-<div class="a1"><a href="#"><img src="pics/4.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Grayscale</h2>
-<p>A multipurpose one page theme.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-
-<div class="pic5">
-<div class="a1"><a href="#"><img src="pics/5.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Landing Page</h2>
-<p>A clean, functional landing page theme.</p>
-<a class="check"href="#">查看</a>
-</div>	
-</div>
-
-<div class="pic6">
-<div class="a1"><a href="#"><img src="pics/6.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Stylih Porfolio</h2>
-<p>A stylish Bootstrap portfolio theme.</p>
-<a class="check"href="#">查看</a>
-</div>	
-</div>
-</div>
-
-<div class="row3">
-<div class="pic7">
-<div class="a1"><a href="#"><img src="pics/7.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Full Width Pics</h2>
-<p>Full width picture backgrounds.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-
-<div class="pic8">
-<div class="a1"><a href="#"><img src="pics/8.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>One Page Wonder</h2>
-<p>A simple one page website template.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-
-<div class="pic9">
-<div class="a1"><a href="#"><img src="pics/9.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Half Slider</h2>
-<p>A half page image slider template.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
-</div>
-
-<div class="row4">
-<div class="pic10">
-<div class="a1"><a href="#"><img src="pics/10.jpg"height="180"width="300"></a></div>
-<div class="content">
-<h2>Full Slider</h2>
-<p>A full page image slider template.</p>
-<a class="check"href="#">查看</a>
-</div>
-</div>
+<div class="works-display">
+	<ul class="works-list">
+        <li>
+            <div class="works-link"><a href="#"><img src="pics/1.jpg"width="300"height="180"></a></div>
+                <h2>Creative</h2>
+                <p>A one page creative theme.</p>
+                <a class="check" href="#">查看</a>
+        </li>
+        <li>
+           <div class="a1"><a href="#"><img src="pics/2.jpg"height="180"width="300"></a></div>
+                <h2>Agency</h2>
+                <p>A one page agency theme.</p>
+                <a class="check" href="#">查看</a>
+        </li>
+        <li>
+            <div class="a1"><a href="#"><img src="pics/3.jpg"height="180"width="300"></a></div>
+                <h2>Freelancer</h2>
+                <p>A one page Freelancer theme.</p>
+                <a class="check" href="#">查看</a>
+        </li>
+	   <li>
+		    <div class="a1"><a href="#"><img src="pics/4.jpg"height="180"width="300"></a></div>
+			<h2>Grayscale</h2>
+                <p>A multipurpose one page theme.</p>
+                <a class="check" href="#">查看</a>
+        </li>
+        <li>
+         	<div class="a1"><a href="#"><img src="pics/5.jpg"height="180"width="300"></a></div>
+         		<h2>Landing Page</h2>
+                    <p>A clean, functional landing page theme.</p>
+                    <a class="check" href="#">查看</a>
+        </li>
+        <li>
+            <div class="a1"><a href="#"><img src="pics/6.jpg"height="180"width="300"></a></div>
+             	<h2>Stylih Porfolio</h2>
+                <p>A stylish Bootstrap portfolio theme.</p>
+             	<a class="check" href="#">查看</a>
+        </li>
+	    <li>
+		    <div class="a1"><a href="#"><img src="pics/7.jpg"height="180"width="300"></a></div>
+			    <h2>Full Width Pics</h2>
+			    <p>Full width picture backgrounds.</p>
+			    <a class="check" href="#">查看</a>
+		</li>
+        <li>
+            <div class="a1"><a href="#"><img src="pics/8.jpg"height="180"width="300"></a></div>
+               <h2>One Page Wonder</h2>
+               <p>A simple one page website template.</p>
+               <a class="check" href="#">查看</a>
+        </li>
+       <li>
+          <div class="a1"><a href="#"><img src="pics/9.jpg"height="180"width="300"></a></div>
+            <h2>Half Slider</h2>
+            <p>A half page image slider template.</p>
+            <a class="check" href="#">查看</a>
+       </li>
+       <li>
+        <div class="a1"><a href="#"><img src="pics/10.jpg"height="180"width="300"></a></div>
+            <h2>Full Slider</h2>
+            <p>A full page image slider template.</p>
+            <a class="check" href="#">查看</a>
+      </li>
+</ul>
 </div>
 </div>
 </div>
 
 <div id="footer">
-<p><span class="bigger">想更详细的了解我？</span></p>
-<p>下载简历，打我电话找我吧</p>
-</div>	
-
-<div id="last">
-<hr/>
-<p>模板来自<a href="http://startbootstrap.com/template-categories/landing-pages/">Start Bootstrap</a>.</p>	
+	<p><span class="bigger">想更详细的了解我？</span></p>
+    <p>下载简历，打我电话找我吧</p>
 </div>
 
+<div id="footer-note">
+	<div class="line"></div>
+	<p>模板来自<a href="http://startbootstrap.com/template-categories/landing-pages/">Start Bootstrap</a>.</p>	
+</div>
 </body>
 </html>

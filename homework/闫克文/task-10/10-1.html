@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>10-1</title>
+	<style type="text/css">
+	html,body,ul,li{
+		padding: 0;
+		margin: 0;
+		font-family: "微软雅黑";
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+		display: inline-block;
+	}
+	#header{
+		height: 50px;
+		background-color: #333;
+	}
+	#header img{
+		height: 40px;
+		margin-left: 220px;
+	}
+	#header .nav {
+		float: right;
+		padding-right: 210px;
+	}
+	#header .nav a,#footer .bottom a{		
+		height: 50px;
+		line-height: 50px;
+		margin-right: 15px;
+		color: white;
+	}
+	#content{
+		margin: 0 auto;
+   	 	width: 910px;
+    	background-color: #ccc;
+	}
+	#content h1,p{
+		padding-left: 20px;
+	}
+	#content .sides-left{
+		float: left;
+		width: 200px;
+		height: 500px;
+		margin-top:10px;
+		margin-bottom: 5px;
+		background-color: #ccc
+	}
+	#content .sides-right{
+		width: 700px;
+		float: left;
+		margin-left: 10px;
+		margin-top:10px;
+		background-color: #ccc
+	}
+	#footer{
+		clear: both;
+		background-color: #333;
+	}
+	#footer .bottom {
+		margin-left: 220px;
+	}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<img src="logo.png">
+		<ul class="nav">
+			<li><a href="">技能</a></li>
+			<li><a href="">经历</a></li>
+			<li><a href="">作品</a></li>
+			<li><a href="">关于</a></li>
+		</ul>
+	</div>
+	<div id="content">
+		<div class="sides-left"></div>
+		<div class="sides-right">
+			<h1>我的作品</h1>
+			<p>一日不写代码</p>
+			<p>如隔三秋啊</p>
+			<p>如隔三秋</p>
+		</div>
+	</div>
+	<div id="footer">
+		<ul class="bottom">
+			<li><a href="">饥人谷</a></li>
+			<li><a href="">JSCODE</a></li>
+			<li><a href="">JSBIN</a></li>
+		</ul>
+	</div>
+</body>
+</html>

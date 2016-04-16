@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+
+</head>
+<body>
+	<ul class="ct">
+    <li data-img="img/新建文件夹/1.jpg">鼠标放置查看图片1</li>
+    <li data-img="img/新建文件夹/2.jpg">鼠标放置查看图片2</li>
+    <li data-img="img/新建文件夹/3.jpg">鼠标放置查看图片3</li>
+    <li data-img="img/新建文件夹/4.jpg">鼠标放置查看图片4</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+//补全代码，要求：当鼠标放置在li元素上，会在img-preview里展示当前li元素的data-img对应的图片。
+var show=document.querySelector(".img-preview");
+var ul=document.querySelectorAll("li");
+show.innerText="鼠标移动上面查看图片";
+for(var i=0;i<ul.length;i++){
+	ul[i].addEventListener("mouseenter",function(){
+		show.innerHTML='<img src="'+this.getAttribute("data-img") +'" />'
+	})
+}
+for(var i=0;i<ul.length;i++){
+	ul[i].addEventListener("mouseout",function(){
+		show.innerHTML="鼠标移动上面查看图片.";
+	})
+}
+</script>
+</body>
+</html>

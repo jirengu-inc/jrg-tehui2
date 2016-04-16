@@ -45,7 +45,42 @@ li{
 	display: block;
 	clear: both;
 }
+#topnav h1{
+	float: left;
+	font-size: 18px;
+	line-height: 53px;
+	font-weight: bold;
+	margin-right: 30px;
+}
+#topnav h1 a:hover{
+	color: #1F9ECD;
+}
 #topnav ul.navbar>li{
+	float: left;
+}
+#topnav ul.navbar>li>a{
+	display: inline-block;
+	height: 53px;
+	line-height: 53px;
+	margin-right: 30px;
+}
+#topnav .navbar li a:hover{
+	color: #333;
+}
+#topnav .navbar li:first-child{
+	position: relative;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+#topnav .navbar>li:first-child:hover>ul.nav-child{
+	display: block;
+}
+#topnav .navbar>li>a>span{
+	position: absolute;
+	left: 70px;
+	top: 22px;
+}
+/*#topnav ul.navbar>li{
 	float: left;
 }
 #topnav ul.navbar>li>a.nav-log{
@@ -53,8 +88,8 @@ li{
 }
 #topnav ul.navbar>li>a.nav-log:hover{
 	color: #1F9ECD;
-}
-#topnav .navbar>li>a{
+}*/
+/*#topnav .navbar>li>a{
 	display: inline-block;
 	height: 53px;
 	line-height: 53px;
@@ -74,7 +109,7 @@ li{
 	position: absolute;
 	left: 70px;
 	top: 22px;
-}
+}*/
 /*------topnav的下拉菜单------*/
 #topnav ul.nav-child{
 	position: absolute;
