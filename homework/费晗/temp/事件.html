@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+</head>
+<body>
+   <ul class="ct">
+	   	<li class=".item"><span class="s">1</span>1</li>
+	   	<li class=".item"><span class="s">3</span>3</li>
+	   	<li class=".item"><span class="s">4</span>4</li>
+	   	<li class=".item"><span class="s">2</span>2</li>
+   </ul>
+   <div id="ct1">
+	   <a href="#" class="btn">点我</a>
+   </div>
+
+</body>
+    <script>
+      /********对列表内容进行一个排序*******/
+    	var items = document.querySelectorAll('.item')
+    	var itemsArr = [];
+    	for (var i = 0; i < items.length; i++) {
+    		itemsArr.push(items[i]);
+    	}
+    	itemsArr.sort( function (a,b){
+            return parsetInt(a.children[0].innerText)-parsetInt(b.children[0].innerText)
+    	})
+    	reder();
+    	function reder(itemsArr){
+            for (var i = 0; i < itemsArr.length; i++) {
+            	document.querySelectorAll('.ct').appendChild(itemsArr[i]);
+            }
+    	}
+         /******事件*******/
+        document.querySelector('.btn').onclick = function(e){
+        	console.log(e);//输出事件
+        	console.log(this);//代表当前元素
+        	console.log(this.innerText);
+        	console.log("click me...");
+        	
+        }
+        // document.querySelector('#ct1').onclick = function(){
+        // 	console.log(this);
+        // 	console.log('in ct1...');
+        // }   //事件的冒泡
+        var btn = document.querySelector('#ct1');
+        btn.addEventListener('click',function() {
+        	console.log(this.id);
+        	console.log('in ct1...');
+        },false);//事件冒泡方式,从里面出来
+         document.querySelector('#ct1').addEventListener('click',function() {
+          console.log(this.id);
+          console.log('in ct1...');
+        },true);//事件捕获方式，从外面进入
+        var btn = document.querySelector('#ct1');
+            btn.addEventListener('click',function() {
+              console.log(this.id);
+              console.log(this);  //代表事件本身
+              console.log('in ct1...');
+        },false);
+        btn.attachEvent('onclick',function(e){
+             console.log(this);  //代表当前window
+             console.log('click me..');
+        });
+        bindEvent(btn,'click',function(){});
+        function blindEvent(el,type,handler){
+          if(btn.addEventListener){
+              btn.addEventListener(type,handler,false);
+          }else{
+            btn.attachEvent('on'+type,handler);
+          }
+        }
+    </script>
+
+</html>

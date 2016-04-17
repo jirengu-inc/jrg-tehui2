@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>char</title>
+</head>
+<body>
+    <script>
+// //         var longString = 'long \
+// //         long \
+// //         long \
+// //         string';
+// //         //longString  
+// //         //"long long long string"
+// // /*上面代码表示，加了反斜杠以后，原来写在一行的字符串，可以分成多行，效果与写在同一行完全一样。注意，反斜杠的后面必须是换行符，而不能有其他字符（比如空格），否则会报错。*/
+// //         var str1="Did she say \"hello\"?";
+// //         //"Did she say "hello"?"
+// //         /*如果要在单引号字符串的内部，使用单引号（或者在双引号字符串的内部，使用双引号），就必须在内部的单引号（或者双引号）前面加上反斜杠，用来转义。*/
+// //         var longString1 = 'long'
+// //         +'long'
+// //         +'long'
+// //         +'string';
+// //         //"longlonglongstring"
+// //         /*连接运算符（+）可以连接多个单行字符串，用来模拟多行字符串*/
+// //         var longString2 = (function (){/*
+// //          line 1
+// //          line 2
+// //          line 3
+// //          line 4
+// //         */}).toString().split('\n').slice(1,-1).join('\n')
+// //         //"line 1 line 2 line 3"
+// //         /*利用多行注释，生成多行字符串的变通方法。*/
+ /*字符串添加类。*/
+//  var obj = {
+//   className: 'open menu'
+// }  
+//    function addClass(arr,val){ 
+//    	var tem=arr.className.split(' '); //把arr对象转换成字符串数组
+//    	  if (tem.indexOf(val) === -1){  //判断数组内是否有指定的元素val
+//           tem.push(val);  //没有则在原数组后面添加val
+//           arr.className=tem.join(' ');
+//           return arr.className;
+//    	  }else{  //数组内有指定的元素val，直接返回原数组；
+//           tem = arr.className;
+//           return arr.className;
+//    	  }
+//   }
+//       addClass(obj, 'new') // obj.className='open menu new'
+//       addClass(obj, 'open')  // 因为open已经存在，此操作无任何办法
+//       addClass(obj, 'me') // obj.className='open menu new me'
+//       console.log(obj.className)  // "open menu new me"  
+
+//   function removeClass(arr,val){   //arr为对象val指定的元素
+//    	var tem=arr.className.split(' ');  //把arr对象转换成字符串数组
+//    	  if ( tem.indexOf(val) > -1 ){  //判断数组内是否有指定的元素val
+//           var b=tem.filter( function(e) {
+//           	return e !== val;   //返回数组内不与元素val相等的其他子元素，不改变原字符串数组；
+//           });
+//           tem.className=b.join(' ');
+//           return tem.className;    
+//    	  }else{  //数组内没有指定的元素val，直接返回原数组；
+//           return arr.className;
+//    	  }
+
+//   }    
+// console.log(removeClass(obj, 'open'));// obj.className='menu new me'
+// console.log(removeClass(obj, 'blabla'));  // 不变  
+ 
+//  function camelize(str){
+//       var tmp = str.split('-');  /*把str转换成字符串数组["backround", "color"]*/
+//       for (var i = 1; i < tmp.length; i++) {  //从下标为1的元素开始color
+//       	var tmp2 = tmp[i].split('');//下标为1的元素分割成字母
+//       	tmp2[0] = tmp2[0].toUpperCase(); //第一个字母大写
+//       	tmp[i] = tmp2.join('');   //连接所有字符串
+//       }
+//       return tmp.join('')
+//  }
+//   console.log(camelize("background-color") );
+//   console.log(camelize("list-style-image") );
+
+// arr = ["a", 1, "b", 2];
+// //对原数组进行操作，不需要返回值
+// function filterNumericInPlace(str){
+//      	arr=str.filter(function(e){
+//      	 return (typeof e =='number');
+//      	 });
+// }
+// filterNumericInPlace(arr);
+// console.log(arr); 
+
+// var john = { name: "John Smith", age: 23 }
+// var mary = { name: "Mary Key", age: 18 }
+// var bob = { name: "Bob-small", age: 6 }
+// var people = [ john, mary, bob ]
+// function ageSort(obj){ 
+//   return arr.sort(function(v1,v2){
+// 	return v1.age-v2.age;
+//   });
+// }
+// ageSort(people);
+
+
+//   var john = { name: "John Smith", age: 23 }
+//   var mary = { name: "Mary Key", age: 18 }
+//   var bob = { name: "Bob-small", age: 6 }
+//   var people = [ john, mary, bob ]
+//   ageSort(people) // [ bob, mary, john ]
+//   function ageSort(obj){
+//      return obj.sort(function(a,b){
+//         return(a.age-b.age);
+//         });
+//   }
+// function ucFirst(str){
+//     str = str.split('');
+//     for (var i = 0; i < str.length; i++) {
+//     	str[0]=str[0].toUpperCase();
+//     	return str=str.join('');
+//     }
+// }
+// var a= 'hello';
+// ucFirst(a);
+
+// function truncate(str, maxlength){
+// 	str = str.split('');
+// 	if (str.length>maxlength) {
+// 		str=str.slice(0,maxlength);
+// 		str.push("...");
+//         return str.join('');
+// 	}else{
+// 		return str.join('');
+// 	}
+// }
+// // truncate("Did she say hello?", 33);
+// // truncate("Did she say hello?", 13);
+// // truncate("hello, this is hunger valley,", 10) == "hello, thi...";
+// // truncate("hello world", 20) == "hello world"
+
+// //****************函数如下**********************
+// function truncate (str,maxlength) {
+//      if(str.length > maxlength){
+//         return(str.slice(0,maxlength) + "...");
+//      }
+//      return str;
+// }
+
+// // truncate("hello, this is hunger valley,", 10) == "hello, thi...";
+// // truncate("hello world", 20) == "hello world"
+// var a =1.23;
+// var b =1.679;
+// limit2( a );//1.23
+// limit2( b ); //1.68
+// function limit2(num){
+//      return num = (Math.round(num*100))/100;
+// }
+//   function randomArr(min,max,len){
+//   	  var a=[];
+//       for (var i = 0; i < len; i++) {
+//       	a.push ( Math.floor(Math.random()*(max-min+1)+min) )
+//       }
+//   	  return a;
+//   }
+// var arr1 = randomArr(10,11,100);
+// console.log(arr1);
+// console.log(randomArr(6,2,3));
+//   function numArray (len,min,max) {
+//      var arr = [];
+//      for(var i=0;i<len;i++){
+//         arr.push(Math.floor(Math.random()*(max-min+1)+min))
+//      }
+//      return arr;
+// }
+// var arr1 = numArray(10,11,100);
+// console.log(arr1);
+// console.log(numArray(6,2,3));
+// // arr = ["a", -1, 2, "b"];
+// // arr= filter(arr, function(val) { return val > 0 }); // arr = [2] 过滤出大于0的整数 arr=filter(arr,isNumeric) ; 
+// // arr = [-1, 2], 过滤出数字
+// function filter(arr,func){
+// 	return arr=arr.filter(func);
+// }
+// function isNumeric(a,b){
+// 	return typeof a==="number";
+// }
+// function filterNumeric(arr){
+//        for (var i = 0; i < arr.length; i++) {
+//        	if (typeof arr[i]==='number') {
+//        		var b=[];
+//        		b=arr.slice(i,i+1);
+//        		return b;
+//        	}
+//        }
+//     }
+
+// a = ["a",1,"b",2,"c",3,5];
+// filterNumeric(a); 
+// // console.log(a); 
+
+// var arr = [ "test", 2, 1.5, false ];
+// function find(a,idx){
+//    return( a.indexOf(idx) );
+// }
+// find(arr, "test"); // 0
+// find(arr, 2); // 1
+// find(arr, 0); // -1
+
+// arr = ["a", 1, "b", 2,3];
+// function filterNumeric(array){
+//     newarr=[];
+//     for (var k in array){
+//         if(typeof array[k] === "number"){
+//             newarr.push(array[k]);
+//         }
+//     }
+//     return newarr;
+// }
+// newarr = filterNumeric(arr); 
+
+// function addClass(obj,str){
+
+//         var other = obj.className;
+
+//         if(other.indexOf(str)<0){
+//             obj.className=other.concat(" "+str);
+//         }
+
+//         return obj; 
+//     }
+//     function removerClass(obj,str){
+
+//         var other = obj.className;
+
+//         if(other.indexOf(str) >= 0){
+//             obj.className=other.replace(str,"").trim();
+//         }
+//         return obj;
+//     }
+// var john = { name: "John Smith", age: 23 }
+//         var mary = { name: "Mary Key", age: 18 }
+//         var bob = { name: "Bob-small", age: 6 }
+//         var people = [ john, mary, bob ]
+//         ageSort(people) // [ bob, mary, john ]
+//         function ageSort(a){
+//            return a.sort(function(a,b){
+//                 if(a.age>b.age){
+//                     return 1;
+//                 }
+//            })
+//         }
+
+
+// function myRandom (min,max) {
+//      return Math.floor(Math.random()*(max-min+1)+min);
+// }
+// console.log(myRandom(2,8));
+
+// arr = ["a", -1, 2, "b"];
+// arr=isNumeric(arr,isNumeric); // arr = [-1, 2], 过滤出数字
+// arr=filter(arr, function(val) { return val > 0 }); // arr = [2] 过滤出大于0的整数 
+// function isNumeric(el){
+//  return typeof el==='number';
+// }
+// function filter(arr,func){
+// 	return arr.filter(func);
+// }
+
+// arr = ["a", 1, "b", 2,4,'j'];
+// function filterNumericInPlace(str){
+//          // arr=str.filter(function(e){
+//          // return (typeof e ==='number');
+//          //  });
+//          for (var i = 0; i < str.length; i++) {
+//          	if (typeof str[i]!=='number') {
+//          		str.splice(i,1);
+//          	}
+//          }
+//          return str;
+// }
+// filterNumericInPlace(arr);
+// console.log(arr); 
+
+//  arr = ["a", "b"];
+//     arr.push( function() {alert(console.log('hello hunger valley')) } );
+//     arr[arr.length-1]()
+//      function fn(fn2){       //此时 fn2 的值是10
+//         var fn2;
+//         function fn2(){     //此时fn2是一个函数
+//             console.log('fnnn2');
+//         }
+//         console.log(fn2);   //  显示函数 function fn2(){}
+//         fn2 = 3;    //此时fn2的值不再是函数，而是数字3
+//         console.log(fn2);   //  3
+//         console.log(fn);    // 函数作用域中没有变量fn，会向上查询，再上一个作用域中fn是一个函数，因此会显示函数 function fn(){}
+//     }
+//     fn(10);
+// var obj={
+//          name:"hunger",
+//          sex:"男",
+//          age:24
+//         }
+//         for(var a in obj){
+//             console.log(a+":"+obj[a]+"\n");
+//         }
+var i=10;
+function fn(){
+	// var i;
+	console.log(i);
+	i=99;
+	function fn2(){
+		i=100;
+	}
+	
+	fn2();
+	console.log(i);
+}
+fn();
+console.log(i);
+
+var str =getIntv("2016-01-08");
+console.log(str);
+function getIntv(date){
+	var t=Date.parse(date);
+	var n=new Date();
+	var timeDif = 8*60*60*1000;
+	var time=t-n-timeDif;
+// d = 24*60*60*1000;  //1天
+	var days=Math.floor(time/24*60*60*1000),
+		t1 = time - days*(24*60*60*1000),
+		hours=Math.floor(t1/60*60*100),
+		t2 = t1 - hours*60*60*100,
+		mins = t2/60,
+		secs = t2%60;
+	return "距除夕还有" + days + "天" + hours + "时" + mins + "分" + secs + "秒";
+}
+
+
+
+</script>
+
+</body>
+</html>
