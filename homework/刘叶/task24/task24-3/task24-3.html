@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task24-3</title>
+</head>
+<link rel="stylesheet" type="text/css" href="task24-3.css">
+<body>
+    <div id="wrap">
+        <h2>注册账号</h2>
+        <h4>用户名</h4>
+        <input id="username" class="input" placeholder="用户名 ran 已经注册">
+        <p id='userTip' class="tip">只能是字母、数字、下划线，3-10个字符</p>
+        <h4>设置密码</h4>
+        <input id="password" class="input" placeholder="密码长度在6~15个字符">
+        <p id='passwordTip' class="tip">大写字母、小写字母、数字、下划线最少两种</p>
+        <h4>请再输一遍</h4>
+        <input id="enterAgain" class="input" placeholder="密码长度在6~15个字符">
+        <p id ="enterAgainTip" class="tip">大写字母、小写字母、数字、下划线最少两种</p>
+        <a href="" id="register">注册</a>
+    </div>
+    <script type="text/javascript">
+        var registerBtn = document.querySelector('#register'),
+            wrap = document.querySelector('#wrap'),
+            userNameIpt = document.querySelector('#username'),
+            userNameTip = document.querySelector('#userTip'),
+            passWordIpt = document.querySelector('#password'),
+            passWordTip = document.querySelector('#passwordTip'),
+            enterAgainIpt = document.querySelector('#enterAgain'),
+            enterAgainTip = document.querySelector('#enterAgainTip');
+
+        userNameIpt.addEventListener('change', function(){
+            testUseName()
+        });
+
+        passWordIpt.addEventListener('change', function(){
+            testPassWord();
+        });
+
+        enterAgainIpt.addEventListener('change', function(){
+            testEnterAgain();
+        });
+
+        registerBtn.addEventListener('click', function(){
+            if( testUseName() && testPassWord() && testEnterAgain() ){
+                console.log('系统正在注册中');
+                alert('系统正在注册中');
+            }
+        });
+
+        function testUseName(){
+            var username = userNameIpt.value;
+            if(!regName(username)){
+                userNameTip.innerText = '用户名还是有问题啊，再想想？';
+                addClass(userNameIpt, 'error');
+                return false;
+            }else{
+                userNameTip.innerText = '';
+                removeClass(userNameIpt, 'error');
+                return true;
+            }
+        }
+
+        function testPassWord(){
+            var password = passWordIpt.value;
+            if(!regPassword(password)){
+                passWordTip.innerText = '密码还是有点问题，再想想？';
+                addClass(passWordIpt, 'error');
+                return false;
+            }else{
+                passWordTip.innerText = '';
+                removeClass(passWordIpt, 'error');
+                return true;
+            }
+        }
+
+        function testEnterAgain(){
+            var enterAgain = enterAgainIpt.value;
+            if(!regPassword(enterAgain)){
+                enterAgainTip.innerText = '密码还是有点问题，再想想？';
+                addClass(enterAgainIpt, 'error');
+                return false;
+            }else if(enterAgain !== passWordIpt.value){
+                enterAgainTip.innerText = '两次输入不一致，请再次输入';
+                addClass(enterAgainIpt, 'error');
+                return false;
+            }
+            else{
+                enterAgainTip.innerText = '';
+                removeClass(enterAgainIpt, 'error');
+                return true;
+            }
+        }
+    </script>
+<script src="../mod/forClass.js"></script>
+<script src="../mod/reg.js"></script>
+</body>
+</html>
