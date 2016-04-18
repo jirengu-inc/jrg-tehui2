@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-26-2-5</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	.wrap select{
+		width: 100px;
+		padding: 5px 10px;
+		font-size: 16px;
+		padding-left: 25px;
+	}
+	.show{
+		color: #DD3A3A;
+		font-weight: bold;
+	}
+	.wrap{
+		width: 400px;
+		margin: 50px auto;
+		border: solid 2px #DD3A3A;
+		padding: 10px;
+		border-radius: 5px;
+	};
+/*.wrap select{
+		width: 120px;
+		height: 100%;
+		padding: 10px;
+	}*/
+
+
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+<div class="wrap">
+	<select name="" id="type">
+    	<option value="铅笔" ><span>铅笔</span></option>
+    	<option value="粉笔"><span>粉笔</span></option>
+    	<option value="蜡笔"><span>蜡笔</span></option>
+    	<option value="钢笔" selected><span>钢笔</span></option>
+    </select>
+    <span class="show"></span>
+</div>
+    
+    <script>
+    $(".show").text($("select option:selected").text());
+    $("#type").on("change",function(){
+    	console.log($("select option:selected").text());
+    	$(".show").text($("select option:selected").text());
+    })
+    </script>
+</body>
+</html>

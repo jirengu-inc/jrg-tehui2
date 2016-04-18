@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+  div { margin:5px; background:yellow; }
+  button { margin:5px; font-size:14px; }
+  p { margin:5px; color:blue; }
+  span { color:red; }
+  </style>
+  <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+  <div>A div</div>
+  <button>Get "blah" from the div</button>
+  <button>Set "blah" to "hello"</button>
+ 
+  <button>Set "blah" to 86</button>
+  <button>Remove "blah" from the div</button>
+  <p>The "blah" value of this div is <span>?</span></p>
+<script>
+$("button").on("click",function(){
+  var value;
+switch($("button").index(this)){
+  case 0:
+  value=$("div").data("blah");
+  break;
+  case 1:
+  $("div").data("blah","hello");
+  value="stored!"
+  break;
+}
+ $("span").text(""+value);
+})
+
+</script>
+ 
+</body>
+</html>
