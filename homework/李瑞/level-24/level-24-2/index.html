@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加载更多</title>
+	<style>
+	body,ul{
+		margin:0;
+		padding:0;
+		}
+	li{
+		list-style:none;
+		border:1px solid #ccc;
+		padding:10px;
+		margin:15px;
+	}
+	button{
+		padding:10px;
+		border:1px solid red;
+		color:red;
+	}
+	.btn{
+		background:transparent;
+		border:1px solid pink;
+		font-size:16px;
+		color:red;
+		border-radius:5px;
+		-webkit-borderr-radius:5px;
+		-moz-borderr-radius:5px;
+		margin:20px auto;
+		display: block;
+		cursor: pointer;
+		}
+		.btn:focus{
+			outline:none;
+		}
+
+	</style>
+</head>
+<body>
+	<ul id="list">
+		<li>
+			内容1
+		</li>
+		<li>
+			内容1
+		</li>
+	</ul>
+	<button type="button" name="button" class="btn">加载更多</button>
+</body>
+<script src="ajax.js">
+
+</script>
+<script type="text/javascript">
+	var btn=document.querySelector(".btn");
+	var ul=document.querySelector("#list");
+	start=3;
+	len=6;
+	isloading=false;
+	btn.addEventListener("click",function(){
+		if(isloading){
+			return;
+		}
+		isloading=true;
+		btn.innerText="加载中...";
+		btn.style.cursor="not-allowed"
+		ajax({
+				url:"test-24-2.php",
+				type:"get",
+				date:{
+					'start':start,
+					'len':len
+				},
+				success:function(data){
+					// console.log("1");
+					isloading=false;
+					onSuccess(data);
+					start+=6;
+					btn.innerText="加载更多";
+					btn.style.cursor="pointer";
+				},
+				error:function(){
+					isloading=false;
+					onError();
+					btn.innerText="加载更多";
+					btn.style.cursor="pointer";
+				}
+		});
+	})
+
+
+
+	function onSuccess(response) {
+			var list = document.getElementById("list");
+					for (var i = 0; i < response.list.length; i++) {
+							var li = document.createElement("li");
+							var liText = document.createTextNode(response.list[i]);
+							li.appendChild(liText);
+							list.appendChild(li);
+					}
+
+	}
+	function onError(){
+		alert("出错啦！");
+	}
+</script>
+
+
+</html>

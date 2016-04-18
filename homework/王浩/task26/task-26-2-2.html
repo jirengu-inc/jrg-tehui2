@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-26-2-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<style>
+
+	.wrap{
+		width: 300px;
+		height: 2000px;
+		background-color: #DD3A3A;
+	}
+	.fix{
+		position: fixed;
+		top: 100px;
+		left: 400px;
+		border: solid 2px #DD3A3A;
+		width: 100px;
+		height: 30px;
+		color: #DD3A3A;
+		text-align: center;
+		border-radius: 5px;
+		line-height: 30px;
+		font-weight: bold;
+	}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+
+</head>
+<body>
+    <div class="wrap"></div>
+    <div class="fix">0</div>
+    <script>
+    	$(window).scroll(function(){
+    		
+    		$(".fix").text($(window).scrollTop())
+    	})
+    </script>
+</body>
+</html>

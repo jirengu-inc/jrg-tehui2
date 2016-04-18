@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test</title>
+</head>
+<body>
+    <script type="text/javascript">
+     // var i=0;
+//      function sum(){
+//         setTimeout ( function(){
+//           i++;
+//           console.log(i);
+//           sum();
+
+// },1000);
+// }
+//延时1s执行代码
+   // setTimeout ( function(){
+   //     console.log(1);
+   // },1000);
+//每2s执行一次代码
+// var i=0;
+//    setInterval( function(){
+//        i++;
+//        console.log(i);
+//    },1000);
+//1,2,3,4......
+   //清除延时
+   // var delayer= setTimeout ( function(){
+   //     console.log("a");
+   // },3000);
+   // var clock= setInterval( function(){
+   //     var i=0;
+   //     i++;
+   //     console.log(i);
+   // },1000);
+   // console.log('delayer',delayer);
+   // console.log('clock',clock);
+   //调用延时函数
+   function stop(){
+   	clearInterval(clock);
+   	clearTimeout(delayer);
+   }
+    
+   var globalVar;
+   function outerFn(){
+   	  console.log("outerFn function");
+   	  function innerFn(){
+   	  	console.log("innerFn function");
+   	  }
+   	  // globalVar = innerFn;
+   	  return innerFn;
+   }
+   // outerFn(); /*调用outerFn时会修改全局变量globalVar，这时候它的引用变为innerFn，此后调用globalVar和调用innerFn一样。这时在outerFn外部直接调用innerFn仍然会导致错误，这是因为内部函数虽然通过把引用保存在全局变量中实现了逃脱，但这个函数的名字依然只存在于outerFn的作用域中*/
+   // innerFn();
+   // globalVar();
+   var fnRef = outerFn();  /*这里并没有在outerFn内部修改全局变量，而是从outerFn中返回了一个对innerFn的引用。通过调用outerFn能够获得这个引用，而且这个引用可以可以保存在变量中*/
+   fnRef();
+
+   var fnArr = []; 
+   for (var i = 0; i < 10; i ++) {
+      fnArr[i] = (function(num){
+        //var num = i;
+      	return function(){
+      		return num;
+      	}
+      })(i); 
+   } 
+   console.log( fnArr[3]() );
+
+//每隔一秒自加1
+ var i=0;
+ function count(){
+   setTimeout (function(){
+     i +=1;
+     console.log(i);
+     count();
+   },1000)
+ }
+ count();
+
+for(var i=0;i<5;i++){
+  (function(){
+    var s = i
+    setTimeout(function(){
+         console.log('delayer:' + s );
+    }, 0);
+  }());
+    console.log(i);
+}
+    </script>
+</body>
+</html>

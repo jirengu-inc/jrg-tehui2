@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-26-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	div{
+		border: 2px #DD3A3A solid;
+		border-radius: 5px;
+		padding: 10px;
+	}
+	div:hover{
+		color: #fff;
+		background-color: #DD3A3A;
+	}
+	div span{
+		font-weight: bold;
+	}
+</style>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+<body>
+    <div class="content"><span>内容1</span></div>
+    <div class="btn"><span>加载更多</span></div>
+    <script>
+    	var len = 3;
+    	var ready = true;
+    	$(".btn").on("click", function() {
+    		var start = $("div").length;
+    		if (!ready) {
+    			return;
+    		}
+    		ready = false;
+    		$(".btn").text("加载中...")
+    		$.ajax({
+    			url: "task-26-3_get.php",
+    			type: "post",
+    			datatype: "json",
+    			data: {
+    				start: start,
+    				len: len
+    			},
+    			success: function(data) {
+    				if (data && JSON.parse(data).status === "success") {
+    					var items = JSON.parse(data).items;
+                        
+    					for (var i = 0; i < items.length; i++) {
+    						$("div").eq($("div").length - 2).after('<div class="content"><span>' + items[i] + "</span></div>")
+    					}
+    				}else{
+                        console.log("error");
+                    }
+    				// if(data && )
+    			},
+    			error: function(data) {
+                    console.log("error");
+    			},
+    			complete: function() {
+    				ready = true;
+    				$(".btn").text("加载更多")
+    			}
+    		})
+    	})
+    </script>
+</body>
+</html>
