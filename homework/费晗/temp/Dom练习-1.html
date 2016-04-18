@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>事件代理</title>
+</head>
+<body>
+   <!-- <div id="ct1">
+	   <a href="#" class="btn">点我</a>
+   </div> -->
+
+   <!-- <a id="btn" href="http://www.xiami.com">点我</a>
+   
+   <a href="#">链接一</a>
+   <a href="#">链接二</a>
+   <a href="#">链接三</a>
+   <a href="#">链接四</a>
+ -->
+  <div id="wrap">
+	  <div class="d">Item 1</div>
+	  <div class="d">Item 2</div>
+	  <div class="d">Item 3</div>
+	  <a id="link" href="#">链接</a>
+  </div>
+  <button id="btn">添加</button>
+    <script>
+     // var btn = document.querySelector('#btn');
+     // btn.addEventListener('click',function(e){
+     // 	console.log('at btn...',e);
+     // 	e.preventDefault();//取消时间跳转行为
+     // 	// e.stopPropagation();//取消事件冒泡或下一次捕获
+     // 	console.log(this.innerText);
+     // 	console.log(e.target);
+     // 	//body...
+     // });
+     // // btn.attachEvent('onclick',function(e){
+
+     // // },true)
+     // document.body.addEventListener('click',function(e){
+     // 	console.log('at body...',e);
+     // 	console.log(this.innerText);//指向的是body的
+     // 	console.log(e.target);
+     // })
+     //方法1不推荐
+	  var wrap = document.getElementById("wrap"),
+	      ds = wrap.getElementsByClassName("d"),
+	      link = document.getElementById("link"),
+	      btn = document.getElementById("btn");
+	  // for(var i=0;i < ds.length; i++){
+	  //     ds[i].onclick = function(){
+	  //       console.log(this.innerHTML);
+	  //     }
+	  // }
+	  // link.onclick=function(){
+	  //   alert(1);
+	  // }
+	  //方法2事件代理
+	  wrap.onclick = function(e){
+	  	// console.log(e.target);
+	  	// if (e.target.id ==="link") {
+	  	// 	alert(1);
+	  	// }
+	  	var tget = e.target;
+	  	if (tget.id === "link") {
+	  		console.log('welcome');
+	  	}
+	  	if (hasClass(tget,"d")) {
+	  		console.log(e.target.innerHTML);
+	  	}
+	  }
+	    btn.onclick = function(){
+	      var node = document.createElement("div");
+	      node.setAttribute("class", "d");
+	      node.innerHTML = "hello" ;
+	      // node.onclick = function(){
+	      //     console.log(this.innerHTML);
+	      // }
+	      wrap.appendChild(node);
+	  }
+
+    </script>
+</body>
+</html>

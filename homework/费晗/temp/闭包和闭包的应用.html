@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>test</title>
+<style type="text/css">
+  li{
+       list-style-type: none;
+       border: 1px solid #eee;
+  }
+</style>
+</head>
+<body>
+<ul>
+  <li class="item">1</li>
+  <li class="item">2</li>
+  <li class="item">3</li>
+  <li class="item">4</li>
+</ul>
+
+    <script type="text/javascript">     
+//     var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//          fnArr[i] = function(){
+//              return i;
+//          }; 
+//     }
+//     console.log( fnArr[3]() ); //10
+// /*思路：*/
+//     var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//       (function(){
+//          fnArr[i] = function(){
+//              return i;  /*当前作用域下没有变量i，调用的是上一级(循环)里面的i*/
+//          }; 
+//       })()   /*立即执行函数，创建了10个闭包，执行的结果还是10*/
+//     }
+//     console.log( fnArr[3]() ); //10
+// //相当于
+// (function(){
+//   var a = 1;
+//   var i
+// })()
+
+// //方法一
+//     var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//       (function(n){
+//          // var n = n;
+//          fnArr[i] = function(){
+//              return n;  /*当前作用域下没有变量n，调用的是上一级(循环)里面的n*/
+//          }; 
+//       })(i)   
+//     }
+//       (function(n){
+//          var n = 0;
+//          fnArr[i] = function(){
+//              return n;  /*当前作用域下没有变量n，调用的是上一级(循环)里面的n*/
+//          }; 
+//       })(0)   
+//       (function(n){
+//          var n = 1;
+//          fnArr[i] = function(){
+//              return n;  
+//          }; 
+//       })(1) 
+// /****方法二****/
+// var fnArr = []; 
+// for (var i = 0; i < 10; i ++) {
+//   (function(n){
+//      var s = n;   //定义一个临时变量保存一下n的值
+//      fnArr[i] = function(){
+//          return s;  
+//      }; 
+//   })(i)   
+// }
+// //也可以这样写
+// var fnArr = []; 
+// for (var i = 0; i < 10; i ++) {
+//   (function(){
+//      var temp = i;   //定义一个临时变量保存一下n的值
+//      fnArr[i] = function(){
+//          return temp;  
+//      }; 
+//   })()   
+// }
+// /****方法三****/
+// var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//       (function(){
+//          var n = i;   //把每次循环i的值赋给n
+//          fnArr[i] = function(){
+//              return n;  
+//          }; 
+//       })()   
+//     }
+
+// /****方法四:一个函数里面return出另外一个函数****/
+// var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//          fnArr[i] = function(){   /*执行的结果为一个函数，需要立即执行一下，返回结果*/
+//             return function(){
+//                return i;
+//            }
+//          };
+//     }
+//     var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//          fnArr[i] = (function(){   //执行的结果为一个函数，需要立即执行一下，返回结果；
+//             return function(){
+//                return i;
+//            }
+//          })();
+//     }   
+// /*生成了一个闭包，需要定义一个变量保存一下每次循环的值；*/
+//   var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//          fnArr[i] = (function(){   /*执行的结果为一个函数，需要立即执行一下，返回结果*/
+//             var n = i;
+//             return function(){
+//                return n;
+//            }
+//          })();
+//     }
+// //也可以写成这样
+// var fnArr = []; 
+//     for (var i = 0; i < 10; i ++) {
+//          fnArr[i] = (function(n){   /*执行的结果为一个函数，需要立即执行一下，返回结果*/
+//             // var n = i;
+//             return function(){
+//                return n;
+//            }
+//          })(i)//返回值
+//     }  
+
+// /***************方法五：给函数绑定属性***************/
+// var fnArr = [];
+// for(i = 0; i < 10; i++){
+// //     fnArr[i] = function fn(){
+// //         return fn.idx;
+// //     }
+// //     fnArr[i].idx = i;
+// // }  
+//    (fnArr[i] = function fn(){
+//         return fn.i;
+//     }).i = i;
+// }      
+// console.log( fnArr[3]() );  //3  
+
+// /***************通过数组push方法：***************/
+// var fnArr = []; 
+// for (var i = 0; i < 10; i++) { 
+//   fnArr.push(i); 
+//   } 
+// console.log(fnArr[3]); //3
+var node = document.querySelectorAll('.item');
+for(var i=1; i<=node.length;i++){
+  node[i-1].onclick = (function(){
+    var n = i;
+    return function(){
+     console.log(n); 
+    }
+
+  })()
+}
+
+    </script>
+</body>
+</html>

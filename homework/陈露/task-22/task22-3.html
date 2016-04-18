@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>查看图片</title>
+<body>
+	<ul class="ct">
+    <li data-img="http://7xt1vz.com2.z0.glb.clouddn.com/002RGoXdgy6Pi02UAJI02&690.jpg">鼠标放置查看图片1</li>
+    <li data-img="http://7xt1vz.com2.z0.glb.clouddn.com/002RGoXdgy6Pi9LPInv99&690_meitu_3.jpg">鼠标放置查看图片2</li>
+    <li data-img="http://7xt1vz.com2.z0.glb.clouddn.com/15318343104_fa94ac4a1c_b_meitu_2.jpg">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+      var ct=document.querySelector('.ct'),
+          li=ct.querySelectorAll('li'),
+          div=document.querySelector('.img-preview')
+      for(var i=0;i<li.length;i++){
+          li[i].addEventListener('mouseenter',function(){
+              var img =this.getAttribute('data-img');
+              div.innerHTML='<img src="'+img+'">'
+          });
+      }
+
+</script> 
+
+</body>
+</html>
