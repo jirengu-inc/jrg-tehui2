@@ -4,10 +4,10 @@ body{
 #wrap{
     position: fixed;
     height: 550px;
-    width: 320px;
+    width: 340px;
     top:50%;
-    left: 50%;
-    margin-left: -160px;
+    left:50%;
+    margin-left: -200px;
     margin-top: -290px;
     border: 1px solid #fff;
     border-radius: 15px;
