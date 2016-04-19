@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>tab</title>
+<style>
+body,html,div,li,ul{
+   padding: 0;
+   margin: 0;
+   }
+   .wrap{
+   	border: 1px solid #ccc;
+   }
+   .wrap *{
+      box-sizing: border-box;
+   }
+   .wrap .tabs:after{
+   	content: "";
+   	display: block;
+   	clear: both;
+   }
+   .wrap .tabs li{
+      list-style-type: none;
+      float: left;
+      width: 33.3%;
+      text-align: center;
+      height: 30px;
+      line-height: 30px;
+      font-weight: bold;
+      border-right: solid 1px #ccc;
+      border-bottom: solid 1px #ccc;
+      cursor: pointer;
+   }
+    .wrap .tabs li:last-child{
+      border-right: none;
+    }
+   .wrap .tabs .active{
+   background-color: #eee;
+   }
+   .wrap .panel{
+      display: none;
+      height: 260px;
+      padding: 20px;
+   }
+   .wrap .active{
+      display: block;
+   }
+</style>
+</head>
+<body>
+<div class="wrap">
+       <ul class="tabs">
+         <li class="active">tab1</li>
+         <li>tab2</li>
+         <li>tab3</li>
+      </ul>
+      <div class="panel active">内容1</div>
+      <div class="panel">内容2</div>
+      <div class="panel">内容3</div>
+ </div>
+   <script>
+   var Utils = {
+      hasClass: function(ele,cls){
+         var reg = new RegExp('\\b'+cls+'\\b');
+         return ele.className.match(reg);
+      },
+      addClass:function(ele, cls){
+      if(ele.length && ele.length > 0){
+          for(var i=0; i<ele.length; i++){
+              Utils.singleAddClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleAddClass(ele, cls);
+      }  
+    },
+      trim: function(str){
+         return str.replace(/^\s+/,'').replace(/\s+$/,'');
+      },
+      removeClass:function(ele, cls){
+       if(ele.length && ele.length > 0){
+          for(var i=0;i<ele.length;i++){
+              Utils.singleRemoveClass(ele[i], cls); 
+          }
+      }else{
+          Utils.singleRemoveClass(ele, cls);
+      }   
+    },
+      singleAddClass: function(ele,cls){
+         if (Utils.hasClass(ele,cls)){
+            return true;
+         }
+         // ele.className +=' '+cls;
+            ele.className = Utils.trim(ele.className)+' '+ cls;
+        
+      },
+      singleRemoveClass: function(ele,cls){
+         ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b','g'),'');
+         var reg = new RegExp('\\b'+cls+'\\b','g');
+         ele.className = ele.className.replace(reg,'');
+      },
+      indexOf:function(ele){
+         var parent = ele.parentElement,
+             siblings = parent.children;
+         for (var i = 0; i < siblings.length; i++) {
+            if(ele===siblings[i]) {
+               return i;
+            }
+         }
+         return -1;
+      }
+   };
+   	var tabCt = document.querySelector(".tabs");
+        tabCt.addEventListener('click',function(e){
+         var target = e.target,
+             tabs= tabCt.children,
+             index = Utils.indexOf(target),
+             panels = document.querySelectorAll('.panel');
+             if (index > -1) {
+               Utils.removeClass(tabs,'active');
+               Utils.addClass(target,'active');
+               Utils.removeClass(panels,'active');
+               Utils.addClass(panels[index],'active');
+             }
+      });
+   </script>
+</body>
+</html>
