@@ -1,0 +1,50 @@
+body{
+    background-color: cadetblue;
+}
+#wrap{
+    position: fixed;
+    height: 550px;
+    width: 320px;
+    top:50%;
+    left: 50%;
+    margin-left: -160px;
+    margin-top: -290px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    background-color:lightskyblue;
+    text-align: center;
+    padding-top: 30px;
+    font-family:"Microsoft YaHei UI"
+}
+#wrap>h4{
+    margin-top: 45px;
+    margin-bottom: 5px;
+}
+.input{
+    padding:10px 35px;
+    text-align: center;
+}
+.tip{
+    font-size: 12px;
+    color: #000;
+    margin-top: 5px;
+}
+#register{
+    text-decoration: none;
+    border: 1px solid #ccc;
+    padding: 10px 20px;
+    display: inline-block;
+    margin-top: 40px;
+    background-color: #fff;
+    color: #000;
+    transition: 0.4s;
+}
+#register:hover{
+    background-color: #000;
+    color: #fff;
+    padding: 12px 40px;
+    transition: 0.3s;
+}
+.error{
+    border: 2px solid palevioletred;
+}
