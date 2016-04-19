@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>12-4双飞翼布局</title>
+	<style type="text/css">
+		#header{
+			height: 50px;
+			background:#ccc;
+		}
+		#main:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		#main .content{
+			width: 100%;
+			float: left;
+		}
+		#main .content .wrap{
+			margin-left: 200px;
+			/*margin-right: 200px;*/
+			margin-right: 0;
+			height: 400px;
+			background:red;
+		}
+		.side-left{
+			position: relative;
+			width: 200px;
+			height: 400px;
+			background:green;
+			float:left;
+			margin-left: -100%;
+		}
+		/*.side-right{
+			position: relative;
+			width: 200px;
+			height: 200px;
+			background:blue;
+			float: left;
+			margin-left: -200px;
+		}*/
+		#footer{
+			height: 50px;
+			background:#ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="main">
+		<div class="content">
+			<div class="wrap"></div>
+		</div>
+		<div class="side-left"></div>
+		<!-- <div class="side-right"></div> -->
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>
