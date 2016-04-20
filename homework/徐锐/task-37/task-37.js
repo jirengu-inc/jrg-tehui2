@@ -68,11 +68,10 @@ $(function () {
             _move = true;
             _x = e.pageX - parseInt($(this).find('.ct').css("left"));
 
-
             _y = e.pageY - parseInt($(this).find('.ct').css("top"));
             $(this).addClass('dragging');
 
-			return false;
+            return false;
         });
         $(document).on('mousemove',function (e) {
 
