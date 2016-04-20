@@ -42,12 +42,6 @@ $(function () {
         $('.button').on('click',function () {
             self.showDialog();
         });
-        $('.cancel').on('click',function () {
-            alert('disappear');
-        });
-        $('.confirm').on('click',function () {
-            alert('appear');
-        });
     };
 
     ModalDialog.prototype.showDialog = function () {
