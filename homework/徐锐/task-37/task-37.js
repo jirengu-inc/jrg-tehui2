@@ -29,7 +29,7 @@ $(function () {
 
     ModalDialog.prototype.bindEvents = function () {
         var self = this;
-        console.log(this);
+        // console.log(this);
         self.$tpl.find('.x').on('click',function () {
             self.removeDialog();
         });
@@ -63,7 +63,6 @@ $(function () {
         var _x, _y;//鼠标离控件左上角的相对位置
 
         $('.wrap').on('mousedown',function (e) {
-            console.log($(this));
             me = $(this);
             _move = true;
             _x = e.pageX - parseInt($(this).find('.ct').css("left"));
@@ -83,8 +82,10 @@ $(function () {
             }
 
         }).on('mouseup',function () {
-            _move = false;
-            me.removeClass('dragging');
+            if(_move) {
+                _move = false;
+                me.removeClass('dragging');
+            }
         });
     };
 
