@@ -78,6 +78,7 @@ $(function () {
             _y = e.pageY - parseInt($(this).find('.ct').css("top"));
             $(this).addClass('dragging');
 
+			return false;
         });
         $(document).on('mousemove',function (e) {
 
