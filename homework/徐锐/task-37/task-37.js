@@ -64,8 +64,8 @@ $(function () {
 
         $('.wrap').on('mousedown',function (e) {
             console.log($(this));
-            me = $(this);
             _move = true;
+            me = $(this);
             _x = e.pageX - parseInt($(this).find('.ct').css("left"));
 
 
