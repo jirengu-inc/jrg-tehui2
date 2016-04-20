@@ -7,6 +7,7 @@ if(key.test(str)){
     return true;
 }else{
   nametip.innerText="请输入正确的用户名"
+  addClass(username,"error");
   return false;
 }
 }
