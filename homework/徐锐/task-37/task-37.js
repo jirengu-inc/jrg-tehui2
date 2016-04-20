@@ -61,9 +61,10 @@ $(function () {
 
         var _move = false;
         var _x, _y;//鼠标离控件左上角的相对位置
+        var self = this;
 
         $('.wrap').on('mousedown',function (e) {
-            me = $(this);
+            self.me = $(this);
             _move = true;
             _x = e.pageX - parseInt($(this).find('.ct').css("left"));
 
@@ -78,13 +79,13 @@ $(function () {
                 var x = e.pageX - _x;//移动时根据鼠标位置计算控件左上角的绝对位置
                 var y = e.pageY - _y;
 
-                me.find('.ct').css({top: y, left: x});//控件新位置
+                self.me.find('.ct').css({top: y, left: x});//控件新位置
             }
 
         }).on('mouseup',function () {
             if(_move) {
                 _move = false;
-                me.removeClass('dragging');
+                self.me.removeClass('dragging');
             }
         });
     };
