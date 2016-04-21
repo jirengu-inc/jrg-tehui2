@@ -189,10 +189,25 @@ define(['jquery'],function($){
 			this.addArrowNav();
 			this.bindEvent("arrowNav");
 		},
+		resizeReload : function() {
+			var me = this;
+			$(window).on("resize",function() {
+				me.$node.children("li").width($(window).width());
+				me.singleWidth = me.$node.children("li").width();
+				me.totalWidth = me.singleWidth * me.total;
+				me.curIdx = 1;
+				me.isAnimate = false;
+				me.enabledDotNav = false;
+				me.allImgLoaded = false;
+				me.stopAutoPlay();
+				me.init();
+			})
+		},
 		init : function() {
 			this.onStart();
 			this.setImg(1);
 			this.autoPlay();
+			this.resizeReload();
 		}
 	};
 	return Carousel;
