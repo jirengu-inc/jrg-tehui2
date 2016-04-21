@@ -21,7 +21,6 @@ h3{
 }
 .container{
    width:250px;
-   height:200px;
    border-radius:5px;
    border:1px solid #ccc;
    position:fixed;
@@ -98,9 +97,10 @@ h3{
   </div>
 
 <script>
-   var btn=document.querySelector('button'),
-    container=document.querySelector('.container'),
-    modal=document.querySelector('#modal');
+  var btn=document.querySelector('button'),
+      cover=document.querySelector('.cover'),
+      container=document.querySelector('.container'),
+      modal=document.querySelector('#modal');
 
 
 var Utils={
@@ -117,25 +117,24 @@ hasClass :function (ele, cls){
 };
    
 
-
 btn.addEventListener('click',function(e){
-        e.stopPropagation();
         Utils.showModal(modal);
     });
-    
+
+
+cover.addEventListener('click',function(e){
+        Utils.hideModal(modal);
+    });    
     
 container.addEventListener('click',function(e){
-      e.stopPropagation();
-     if( Utils.hasClass(e.target, 'close') || Utils.hasClass(e.target, 'btn-cancel') ){
+     if( Utils.hasClass(e.target, 'close') || Utils.hasClass(e.target, 'btn-cancel')){
        Utils.hideModal(modal);
    } 
     
  });
     
-document.body.addEventListener('click', function(){
-     Utils.hideModal(modal);
-});
 
+    
 </script>
 
 
