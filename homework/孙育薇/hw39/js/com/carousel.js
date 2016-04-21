@@ -189,18 +189,24 @@ define(['jquery'],function($){
 			this.addArrowNav();
 			this.bindEvent("arrowNav");
 		},
+		resetVal: function() {
+			this.stopAutoPlay();
+			this.$node.children("li").width($(window).width());
+			this.singleWidth = this.$node.children("li").width();
+			this.totalWidth = this.singleWidth * this.total;
+		},
 		resizeReload : function() {
 			var me = this;
+			var clock;
 			$(window).on("resize",function() {
-				me.$node.children("li").width($(window).width());
-				me.singleWidth = me.$node.children("li").width();
-				me.totalWidth = me.singleWidth * me.total;
-				me.curIdx = 1;
-				me.isAnimate = false;
-				me.enabledDotNav = false;
-				me.allImgLoaded = false;
-				me.stopAutoPlay();
-				me.init();
+				if(clock) {
+					clearTimeout(clock);
+				}
+				clock = setTimeout(function() {
+					me.resetVal();
+					me.init();
+				},300);
+
 			})
 		},
 		init : function() {
