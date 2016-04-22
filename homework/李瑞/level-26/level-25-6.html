@@ -50,12 +50,11 @@
 <script>
 var str=2;
 var num=6;
+var isloading;//获取一个状态锁
 $(".btn").on("click",function(){
-	if($(this).data('key')){   //获取一个状态锁
-    return;
-  }
-  $(this).data('key', true)
-	$(this).text("正在弄。");
+	if(!isloading){   
+		isloading=true;
+    $(this).text("正在弄。");
 	$.ajax({
 		url:"level-26-6.php",
 		dataType:"json",
@@ -65,19 +64,22 @@ $(".btn").on("click",function(){
 		},
 		type:"post",
 		success:function(e){
-			$(".btn").data("key",false)
+			isloading=false;
 			onSuccess(e);
 			str+=6;
 			$(".btn").text("加载更多");
 			
 		},
 		error:function(){
-			$(".btn").data("key",false)
+			isloading=false;
 			alert("出错啦");
 			$(".btn").text("加载更多");
 			
 		}
 	})
+  }
+  
+	
 })
 
 function onSuccess(e){
