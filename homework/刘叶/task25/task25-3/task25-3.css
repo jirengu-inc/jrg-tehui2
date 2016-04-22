@@ -1,0 +1,91 @@
+body, ul, li,a,div,h2{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+img{
+    height: 210px;
+    width: 210px;
+}
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.tab-ct{
+    margin-top: 20px;
+}
+.tab-mod {
+    position: relative;
+    margin:20px;
+}
+.tab-mod h2{
+    margin:auto auto 20px 10px;
+    color: #666;
+}
+.tab-mod .panel-ct{
+    width: 700px;
+}
+.tab-mod .prod{
+    position: relative;
+    float: left;
+    border: 1px solid #ccc;
+    margin: 14px auto 4px 24px;
+    text-align: center;
+}
+.tab-mod .cover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.3);
+    transition: 0.5s;
+    opacity: 0;
+}
+.tab-mod .cover .btn{
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 8px;
+    text-align: center;
+    color: #ff0000;
+    background: #fff;
+}
+.tab-mod .cover:hover{
+    transition: 0.5s;
+    opacity: 1;
+}
+.tab-mod .prod-ct{
+    margin-left: -20px;
+    margin-top: -20px;
+}
+.tab-mod .prod-name{
+    margin: 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #000;
+}
+.tab-mod .prod-price{
+    text-align: center;
+    margin-bottom: 5px;
+    color: #ff0000;
+}
+#addBtn{
+    float: left;
+    padding: 10px 20px;
+    color: #ff0000;
+    border:1px solid #ff0000;
+    border-radius: 5px;
+    margin-left: 3px;
+    margin-top: 20px;
+}
