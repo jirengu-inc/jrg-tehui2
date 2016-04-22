@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <title>Exposure</title>
+    <style>
+        body,div,ul,li {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .exposure {
+            height: 500px;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<div class="exposure" id="exp1">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+</div>
+<div class="exposure" id="exp2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+</div>
+<div class="exposure" id="exp3">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+</div>
+<div class="exposure" id="exp4">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto at, dolores eum facilis id iusto laborum magni minima molestiae nam reiciendis repudiandae rerum tempora! Ducimus eaque illum maiores sequi tempora.
+</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    //曝光组件
+    var Exposure = (function() {
+        var exposed = false;
+        function isVisible($node) {
+            return ($(window).scrollTop() + $(window).width() > $node.offset().top);
+        }
+        function bind($target, handler) {
+            var clock1;
+            $(window).on("scroll", function() {
+                if (clock1) {
+                    clearTimeout(clock1);
+                }
+                clock1 = setTimeout(function() {
+                    if(isVisible($target)){
+                        handler.call($target);
+                    }
+                },300);
+            });
+        }
+        function one($target, handler) {
+            var clock2;
+            $(window).on("scroll", function() {
+                if (clock2) {
+                    clearTimeout(clock2);
+                }
+                clock2 = setTimeout(function() {
+                    if (exposed === true) {
+                        return false;
+                    }
+                    if (isVisible($target)) {
+                        exposed = true;
+                        handler.call($target);
+                    }
+                },300);
+            });
+        }
+        return {
+            bind: bind,
+            one: one
+        }
+    })();
+
+    //$target 是 jquery 对象
+    // 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target
+    var $target = $("#exp3");
+    Exposure.bind($target, function(){
+        console.log($(this));    // $target
+    });
+
+    // 当窗口滚动时，如果$target 出现在可见区域，执行回调函数里面的代码，且在回调函数内，$(this)代表$target。 仅执行一次回调函数，下次$target 曝光不再执行
+    Exposure.one($target, function() {
+        console.log($(this));    // $target
+    });
+</script>
+</body>
+</html>
