@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li{
+		padding:0;
+		margin:0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.ct>li{
+		border:1px solid black;
+		line-height: 40px;
+		height:40px;
+		margin-bottom:10px;
+		padding-left:20px;
+	}
+	.btn{
+		width:80px;
+		height:40px;
+		line-height: 40px;
+		border:1px solid #E27272;
+		border-radius: 5px;
+		text-align: center;
+		margin:40px auto;
+		cursor:pointer;
+	}
+	.hover{
+		background:green;
+		color:white;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="ct">
+			<li>内容1</li>
+			<li>内容2</li>
+		</ul>
+	</div>
+	<div class="btn">加载更多</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+var str=2;
+var num=6;
+$(".btn").on("click",function(){
+	if($(this).data('key')){   //获取一个状态锁
+    return;
+  }
+  $(this).data('key', true)
+	$(this).text("正在弄。");
+	$.ajax({
+		url:"level-26-6.php",
+		dataType:"json",
+		data:{
+			str:str,
+			num:num
+		},
+		type:"post",
+		success:function(e){
+			$(".btn").data("key",false)
+			onSuccess(e);
+			str+=6;
+			$(".btn").text("加载更多");
+			
+		},
+		error:function(){
+			$(".btn").data("key",false)
+			alert("出错啦");
+			$(".btn").text("加载更多");
+			
+		}
+	})
+})
+
+function onSuccess(e){
+	var tem=e.data;
+	if(e.status===1){
+		for(var i=0;i<tem.length;i++){
+			$(".ct").append("<li>"+tem[i]+"</li>");
+		}
+	}
+}
+
+
+
+$(".ct").on("mouseenter","li",function(){
+	$(this).addClass('hover');
+}).on("mouseleave","li",function(){
+	$(this).removeClass('hover')
+})
+
+
+	
+</script>
+</html>
