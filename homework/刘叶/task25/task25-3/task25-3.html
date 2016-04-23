@@ -60,7 +60,7 @@
                     </a>
                 </li>
             </ul>
-            <a id="addBtn" href="javascript:void(0)">添加</a>
+            <a id="addBtn" href="#">添加</a>
         </li>
     </ul>
 </div>
@@ -94,7 +94,7 @@
         var html = '';
         html += '<li class="prod">';
         html += '<div class="cover"><a class="btn" href="">立即购买</a></div>';
-        html += '<a href="javascript:void(0)">';
+        html += '<a href="#">';
         html += '<img src="'+prod.img+'" alt="">';
         html += '<div class="prod-name">'+prod.name+'</div>';
         html += '<div class="prod-price">'+prod.price+'</div>';
@@ -103,9 +103,9 @@
         return html;
     // 这里想起来了原来LV18那个女装冬款什么的，用数组push代码最后join成HTML代码那个题，做一个getTplStr()函数
     }
-    $addBtn.on('click', function(){
-    //本来准备用e.preventDefault()阻止默认行为的，但是因为我上一题里面直接被这个坑到了
-    //所以直接加了javascript:void(0)，这样就不会刷新或者跳Top了
+    $addBtn.on('click', function(e){
+    //直播课程听完了，老师说用e.preventDefault()阻止默认行为，比javascript:void(0)更好
+        e.preventDefault();
         $.each(ships, function(i,prod){
             var html = addMore(prod);
             $('.prod-ct').append(html);
