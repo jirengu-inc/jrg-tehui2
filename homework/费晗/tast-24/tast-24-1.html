@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>tast-24-1</title>
+</head>
+<body>
+    
+<input id="username" type="text" placeholder="username">
+<input id="password" type="text" placeholder="password">
+
+<button id="btn">获取信息</button>
+
+<script>
+    function ajax(opts){
+
+    	var xmlhttp = createAjax();
+
+		xmlhttp.onreadystatechange = function() {
+             if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+               var json = JSON.parse(xmlhttp.responseText);
+               opts.success(json);
+           }
+			if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
+				opts.error();
+			}
+		}
+
+		var dataStr = '';
+		for (var key in opts.data) {
+			dataStr += key + '=' + opts.data[key] + '&';  
+		}
+		dataStr = dataStr.substr(0,dataStr.length-1);
+
+		if (opts.type.toLowerCase() === 'post') {
+			xmlhttp.open(opts.type,opts.url,true);
+			xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+			xmlhttp.send(dataStr);
+		}
+		if (opts.type.toLowerCase() === 'get') {
+			xmlhttp.open(opts.type,opts.url + '?'+dataStr,true);
+			xmlhttp.send();
+		}
+    }
+
+    function createAjax(){     //浏览器兼容
+    	if (window.ActiveXObject) {
+    		try{
+    			XMLHttpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+    		}catch(e){
+    			XMLHttpRequest = new ActiveXObject("Msxml2.XMLHTTP");
+    		}
+    		return XMLHttpRequest;
+    	}else if(window.XMLHttpRequest){
+    		return new XMLHttpRequest();
+    	}else{
+    		return null;
+    	}
+    }
+document.querySelector('#btn').addEventListener('click', function(){
+    ajax({
+        url: 'getData.php',   //接口地址
+        type: 'get',               // 类型， post 或者 get,
+        data: {
+            username: document.getElementById("username").value,
+            password: 'abcd1234'
+        },
+        success: function(ret){
+            console.log(ret);       // {status: 0};
+        },
+        error: function(){
+           console.log('出错了')
+        }
+    })
+});
+
+</script>
+</body>
+</html>

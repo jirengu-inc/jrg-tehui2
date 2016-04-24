@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>tast-24-2</title>
+	<style>
+	    body,html,ul,li{
+	    	padding: 0;
+	    	margin: 0;
+	    	font-size: 16px;
+	    }
+		#ct li{
+			list-style: none;
+			padding: 10px;
+			margin: 10px;
+			border: 1px solid #ccc;
+		}
+		.btn{
+			display: inline-block;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			width: 80px;
+			font-size: 16px;
+			color: #e33;
+			background-color: #fff;
+			border: 1px solid #e33;
+			border-radius: 3px;
+			text-decoration: none; 
+		}
+		#load-more{
+			display: block;
+			margin: 15px auto;
+		}
+		#load-more img{
+			width: 40px;
+			height: 40px;
+		}
+</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+		<li>内容3</li>
+	</ul>
+	<a id="load-more" class="btn" href="#">加载更多</a>
+
+  <script src="modl/until-ajax.js"></script>
+    <script>
+    	var ct = document.getElementById("ct"),
+    	    loadMoreBtn = document.getElementById("load-more");
+    	var cur = 3;
+    	var isloading = false;   //设置一个状态锁，防止在加载的数据回来之前用户多次点击
+
+    	loadMoreBtn.addEventListener("click",function(e){
+    		e.preventDefault();   //阻止点击a链接页面跳转到顶部
+
+    		if (isloading) {
+	    	    return;
+	        }
+    		isloading = true;
+
+    		loadMoreBtn.innerHTML = '<img src="http://img5.imgtn.bdimg.com/it/u=1201086690,2017913237&fm=21&gp=0.jpg">';
+
+    		ajax({
+    			url: "loadMore.php",
+    			type: "get",
+    			data: {
+    				start: cur,
+    				len: 4    //每次加载的数量
+    			},
+    			success: function(json){
+    				onSuccess(json);
+    			},
+    			error: function(){
+    				onError();
+    			},
+    		});
+    	});
+
+    	function onSuccess(json){
+    		isloading = false;
+    		loadMoreBtn.innerText = "加载更多";
+    		if (json.status == 1) {
+    			append(json.data);
+    			cur +=4;
+    		}else{
+    			alert("数据获取失败");
+    		}
+    	}
+
+    	function onError(){
+    		isloading = false;
+    		loadMoreBtn.innerText = "加载更多";
+    		alert("请稍后再试");
+    	}
+
+    	function append(arr){
+    		for (var i = 0; i < arr.length; i++) {
+    			var li = document.createElement("li");
+    			li.innerText = arr[i];
+    			ct.appendChild(li);
+    		}
+    	}
+
+    </script>
+
+
+    </body>
+</html>
