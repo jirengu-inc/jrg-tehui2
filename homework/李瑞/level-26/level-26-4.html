@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.hover{
+		border-color:blue;
+	}
+	#wrap{
+		width:400px;
+		height:400px;
+		margin:100px auto;
+	}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<form action="" name="ceshi" >
+	<input type="text" id="text" placeholder="你想说的话">
+	<select name="select" id="selec">
+		<option value="武汉">武汉</option>
+		<option value="长沙">长沙</option>
+		<option value="深圳">深圳</option>
+		<option value="北京">北京</option>
+		<option value="上海">上海</option>
+	</select>
+	</form>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+"></script>
+<script>
+	$("#text").focus(function(){
+		$(this).addClass('hover');
+	}).on("keyup",function(){
+		$(this).val($(this).val().toUpperCase());
+		
+	}).on("blur",function(){
+		$(this).removeClass('hover');
+		console.log($("#text").val())
+	})
+	
+
+	$("#selec").on("change",function(){
+		var content=$(this).find("option:selected").val();
+		console.log(content)
+	})
+
+</script>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Carousel</title>
+    <style>
+        body,div,ul,li {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        .carousel {
+            position: relative;
+            height: 300px;
+            overflow: hidden;
+            float: left;
+            margin: 30px;
+        }
+
+        .carousel ul {
+            position: absolute;
+        }
+        .carousel ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .carousel li {
+            float: left;
+            list-style: none;
+        }
+        .carousel img {
+            width: 400px;
+        }
+    </style>
+</head>
+<body>
+<div class="carousel">
+    <ul>
+        <li><img src="img/1.jpg"></li>
+        <li><img src="img/2.jpg"></li>
+        <li><img src="img/3.jpg"></li>
+    </ul>
+</div>
+<div class="carousel">
+    <ul>
+        <li><img src="img/4.jpg"></li>
+        <li><img src="img/5.jpg"></li>
+        <li><img src="img/6.jpg"></li>
+    </ul>
+</div>
+<div class="carousel">
+    <ul>
+        <li><img src="img/7.jpg"></li>
+        <li><img src="img/8.jpg"></li>
+        <li><img src="img/9.jpg"></li>
+    </ul>
+</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+
+    //轮播组件
+    (function($) {
+        $.fn.carousel = function() {
+            $(this).each(function() {
+                function Carousel($node) {
+                    var curIdx = 1;
+                    var $item = $node.find("li");
+                    var $parentNode = $item.parent();
+                    var sglWidth = $item.width();
+                    var realCount = $item.length;
+                    var totalCount = realCount + 2;
+                    var totalWidth = sglWidth * totalCount;
+                    var clock;
+                    function addExtraItem() {
+                        $parentNode.append($item.first().clone());
+                        $parentNode.prepend($item.last().clone());
+                    }
+                    function onStart() {
+                        addExtraItem();
+                        $node.width(sglWidth);
+                        $parentNode.css({
+                            width: totalWidth,
+                            left: -sglWidth
+                        });
+                    }
+                    function play(n) {
+                        $parentNode.animate({
+                            left: -sglWidth * n
+                        });
+                    }
+                    function playPrev() {
+                        if (curIdx === 1) {
+                            curIdx = realCount + 1;
+                            $parentNode.css({
+                                left: -sglWidth * curIdx
+                            });
+                        }
+                        play(--curIdx);
+                    }
+                    function playNext() {
+                        if (curIdx === realCount) {
+                            curIdx = 0;
+                            $parentNode.css({
+                                left: 0
+                            });
+                        }
+                        play(++curIdx);
+                    }
+                    function autoPlay() {
+                        clock = setInterval(function() {
+                            playNext();
+                        },3000);
+                    }
+                    function stopAutoPlay() {
+                        clearInterval(clock);
+                    }
+                    function init() {
+                        onStart();
+                        autoPlay();
+                    }
+                    init();
+                }
+                return Carousel($(this));
+            });
+        }
+    })(jQuery);
+
+    // 要求：html 里有多个carousel，当调用时启动全部的 carousel
+
+    //方式1
+    //通过插件的方式启动所有轮播
+    $('.carousel').carousel();
+
+
+</script>
+</body>
+</html>

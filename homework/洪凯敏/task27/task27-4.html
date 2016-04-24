@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<style type="text/css">
+	html,body{
+		width: 100%;
+		height: 100%;
+		margin: 0px;
+		padding:0px;
+	}
+	ul,li{
+		margin:0px;
+		padding: 0px;
+		list-style: none;
+	}
+	.clearfix:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.clearfix:before{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.ct{
+		overflow: hidden;
+		width: 100%;
+		height: 100%;
+		background-color: #ccc;
+		position: relative;
+	}
+	.background{
+		height: 100%;
+		width: 100%;
+		position: absolute;
+		left: 0px;
+		top: 0px;
+	}
+	.background>li{
+		height: 100%;
+		float: left;
+		/*border: 1px red solid;*/
+		position: relative;
+		opacity: 0.7;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: cover;
+	}
+	.desc{
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		text-align: center;
+		transform: translate(-50%, -50%);
+	}
+	.nav-bg{
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+
+	}
+	.nav-bg li{
+        float: left;
+        width: 20px;
+        height: 10px;
+        margin: 0 5px;
+        border-radius: 10px;
+        background: #fff;
+        cursor: pointer;
+        z-index: 1;
+    }
+	
+	.nav-bg li.active{
+		background: #aaa;
+
+	}
+
+</style>
+</head>
+<body>
+    <div class="ct">
+    	<ul class="background clearfix">
+    		<li data-img="backgroud/001.jpg">
+    			<div class="desc">
+    				<h3>摔倒了又有什么呢,再站起来就行了.</h3>
+    				<p>——木藤亚也《一公升的眼泪》</p>
+    			</div>
+    		</li>
+    		<li data-img="backgroud/002.jpg">
+    			<div class="desc">
+    				<h3>不要着急,不要贪心,不要放弃,谁都是一步一步走出来的.</h3>
+    				<p>——木藤亚也《一公升的眼泪》</p>
+    			</div>
+    		</li>
+    		<li data-img="backgroud/003.jpg">
+    			<div class="desc">
+    				<h3>人不是活在过去的,做现在力所能及的事就可以了.</h3>
+    				<p>——木藤亚也《一公升的眼泪》</p>
+    			</div>
+    		</li>
+    		<li data-img="backgroud/004.jpg">
+    			<div class="desc">
+    				<h3>我的人生正如未开的花蕾,想在这青春的开始,不留后悔的好好珍惜.</h3>
+    				<p>——池内亚也《一公升的眼泪》</p>
+    			</div>
+    		</li>
+    	</ul>
+    	<ul class="nav-bg">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+    <script type="text/javascript">
+    	//初始化工作
+	   	var $ct = $(".ct");
+	    var $imgCt = $(".background");
+	    var $img = $(".background li");
+	    var $bullet = $(".nav-bg li");
+	    var $navBg = $(".nav-bg");
+	    var $imgCount = $imgCt.children().size()+2;
+	    var $curIdx = 1;
+	    var isAnimate = false;
+	    //如果窗口大小发生变化
+	    var $width = $(window).width();
+	    //console.log($width);
+	    
+	    //设置背景图宽度
+	    $img.width($width);
+	    //clone首尾节点    
+	    $imgCt.prepend($img.eq($img.length-1).clone());
+    	$imgCt.append($img.eq(0).clone());
+    	//设置背景图容器的宽度
+    	widthCt=$imgCount*$width;
+    	$imgCt.css({
+    		left:"-"+$width+"px",
+    		width:widthCt+"px"
+
+    	});
+
+    	var $img=$(".background li");//由于结构改变重新设置$img的值
+    	//抽象出来加载图片的函数
+    	function loadImg(index){//注这边的index取值在0-5
+    		var imgUrl=$img.eq(index).attr("data-img");
+    		$img.eq(index).css("background-image","url("+imgUrl+")");
+    	};
+    	//抽象出按钮跳转的函数
+  		function buttleSkip(index){//注这边的index取值在0-3
+  			$bullet.removeClass("active");
+  			$bullet.eq(index).addClass("active");
+  		}
+
+  		//抽象出图片跳转的函数
+  		function imgSkip(index){//注这边的index取值在0-5
+  			var leftValue="-"+(index*$width)+"px";
+  			loadImg(index);//还有一种当用户不等轮播，直接跳转的情况
+  			$imgCt.animate({
+  				left:leftValue
+  			},function(){
+  				if(index===0){
+  					loadImg(index);
+  					index=4;
+  					$curIdx=index;
+  					loadImg(index);
+  					leftValue="-"+(index*$width)+"px";
+  					$imgCt.css("left",leftValue);
+  				}
+  				if(index===5){
+  					loadImg(index);
+  					index=1;
+  					$curIdx=index;
+  					loadImg(index);
+  					leftValue="-"+(index*$width)+"px";
+  					$imgCt.css("left",leftValue);
+  				}
+  				buttleSkip(index-1);
+  			});
+  			
+  		}
+
+  		//设置往下跳转的函数
+  		function playNext(){
+  			$curIdx++;
+  			$curIdx=$curIdx%$imgCount;
+  			//console.log($curIdx);
+  			imgSkip($curIdx);
+  		}
+
+  		//设置往上跳转的函数
+  		function playPre(){
+  			$curIdx--;
+  			if($curIdx<0){$curIdx+$imgCount;}
+  			imgSkip($curIdx);
+  		}
+
+  		//自动轮播函数
+  		function autoPlay(){
+  			setInterval(playNext, 2000);
+  		}
+
+  		loadImg($curIdx);
+  		autoPlay();
+  		$navBg.on("click","li",function(){
+  			imgSkip($(this).index()+1);
+  		});
+
+    </script>
+</body>
+</html>

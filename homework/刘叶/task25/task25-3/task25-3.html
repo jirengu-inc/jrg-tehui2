@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task25-3</title>
+</head>
+<body>
+<link href="task25-3.css" type="text/css" rel="stylesheet">
+<div class="tab-mod">
+    <h2>驱逐舰</h2>
+    <ul class="panel-ct clearfix">
+        <li class="panel">
+            <ul class="prod-ct clearfix">
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/Burke.jpg" alt="阿利伯克">
+                        <div class="prod-name">Burke Class Destroyer</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                    </li>
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/Atago.jpg" alt="爱宕">
+                        <div class="prod-name">Atago Class Destroyer</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/KDX3_DDG991.jpg" alt="世宗大王">
+                        <div class="prod-name">Sejong the Great</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/052D.jpg" alt="052D">
+                        <div class="prod-name">Type 052D destroyer</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/HMS_Daring_D32.jpg" alt="果敢">
+                        <div class="prod-name">Daring Class Destroyer</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                </li>
+                <li class="prod">
+                    <div class="cover"><a class="btn" href="">立即购买</a></div>
+                    <a href="#">
+                        <img src="img/Horizon_D621.jpg" alt="地平线">
+                        <div class="prod-name">Horizon-class Destoryer</div>
+                        <div class="prod-price">$ ********</div>
+                    </a>
+                </li>
+            </ul>
+            <a id="addBtn" href="#">添加</a>
+        </li>
+    </ul>
+</div>
+<script src="../jQuery/jquery-1.12.3.min.js"></script>
+<script type="text/javascript">
+    var $prod_ct = $('.prod-ct'),
+        $addBtn = $('#addBtn');
+    var ships = [
+        {
+            img: 'img/LittoralCombat%20.jpg',
+            name: 'LCS-2',
+            price: '$ ********'
+        },{
+            img: 'img/LittoralCombat%20.jpg',
+            name: 'LCS-2',
+            price: '$ ********'
+        },{
+            img: 'img/LittoralCombat%20.jpg',
+            name: 'LCS-2',
+            price: '$ ********'
+        }
+    ];
+    /*<li class="prod">
+         <div class="cover"><a class="btn" href="">立即购买</a></div>
+         <a href="#">
+         <img src="img/LittoralCombat%20.jpg" alt="独立">
+         <div class="prod-name">LCS-2</div> <div class="prod-price">$ ********</div>
+         </a>
+     </li>*/
+    function addMore(prod){
+        var html = '';
+        html += '<li class="prod">';
+        html += '<div class="cover"><a class="btn" href="">立即购买</a></div>';
+        html += '<a href="#">';
+        html += '<img src="'+prod.img+'" alt="">';
+        html += '<div class="prod-name">'+prod.name+'</div>';
+        html += '<div class="prod-price">'+prod.price+'</div>';
+        html += '</a>';
+        html += '</li>';
+        return html;
+    // 这里想起来了原来LV18那个女装冬款什么的，用数组push代码最后join成HTML代码那个题，做一个getTplStr()函数
+    }
+    $addBtn.on('click', function(e){
+    //直播课程听完了，老师说用e.preventDefault()阻止默认行为，比javascript:void(0)更好
+        e.preventDefault();
+        $.each(ships, function(i,prod){
+            var html = addMore(prod);
+            $('.prod-ct').append(html);
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.wrap{
+			width:200px;
+			background:red;
+			height:1100px;
+		}
+		.btn{
+			width:150px;
+			height:40px;
+			line-height: 40px;
+			border:5px solid green;
+			border-radius: 10px;
+			position: absolute;
+			top:70%;
+			left:20%;
+		}
+	</style>
+</head>
+<body>
+	<div class="btn"></div>
+	<div class="wrap"></div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+"></script>
+<script>
+	$(window).on("scroll",function(){
+		$(".btn").text("垂直滚动距离为:"+$(this).scrollTop())
+	})
+</script>
+</html>
