@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task28</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script defer type="text/javascript" src="JS/stickup.js"></script>
+<style type="text/css">
+	.clearfix:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.clearfix:before{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	#header{
+		background-color: red;
+		height: 100px;
+		text-align: center;
+		line-height: 100px;
+	}
+	.nav{
+		background-color: blue;
+		height: 50px;
+		margin-top:10px;
+	}
+	.content{
+		background-color: #ccc;
+		padding: 10px;
+	}
+	.aside,.main{
+		float: left;
+	}
+	.aside{
+		height: 300px;
+		width: 20%;
+		background-color: green;
+	}
+	.main{
+		background-color: #fff;
+		width: 80%;
+		height: 800px;
+	}
+	#footer{
+		background-color: #555;
+	}
+</style>
+</head>
+<body>
+    <div id="header">header</div>
+    <div class="nav">nav</div>
+    <div class="content clearfix">
+    	<div class="aside">aside</div>
+    	<div class="main">main</div>
+    </div>
+    <div id="footer">footer</div>
+    <script type="text/javascript">
+    	$(".nav").stickup();
+    </script>
+</body>
+</html>
