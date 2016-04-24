@@ -186,8 +186,7 @@
 				for(var i = 0;i < idx;i++){
 					$imgct.prepend($imgct.children().last());
 				}//做完这个之后窗口看到的不再是格子nowView
-				// $imgct.css('left','-(itemWidth*idx)'); 这个好像不太行
-				$imgct.css({left:-(itemWidth*idx)});//让窗口看到的还是当前格子nowView
+				$imgct.css('left',-(itemWidth*idx)); //让窗口看到的还是当前格子nowView
 				$imgct.animate({ left:'+=' + (idx*itemWidth) },function () {
 					nowView = (itemNum+nowView-idx)%itemNum;
 					bulletActive();
@@ -207,7 +206,7 @@
 					for(var i = 0; i < idx; i++){
 						$imgct.append($imgct.children().first());
 						}//做完这个之后窗口看到的不再是格子nowView
-					$imgct.css('left','0'); //让窗口看到的还是格子nowView
+					$imgct.css('left',0); //让窗口看到的还是格子nowView
 					bulletActive();
 					ready = false;
 				});		
