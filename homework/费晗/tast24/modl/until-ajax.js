@@ -14,15 +14,11 @@ function ajax(opts) {
     xmlhttp.onreadystatechange = function() {
         
          if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-                    //为解决SAE实名认证问题增加了3行
-                    var rawResponse = xmlhttp.responseText;
-                    var fixedResponse = rawResponse.replace(/<script.*<\/script>$/,"");
-                    var json = JSON.parse(fixedResponse);
-                  //  var json = JSON.parse(xmlhttp.responseText);
-                    opts.success(json);
+            var json = JSON.parse(xmlhttp.responseText);
+            opts.success(json);
                 }
         if (xmlhttp.readyState == 4 && xmlhttp.status == 404) {
-             opts.error();
+            opts.error();
         }
     };
 
