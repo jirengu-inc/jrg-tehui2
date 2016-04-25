@@ -1,4 +1,5 @@
 //stickup插件
+(function ($) {
 $.fn.stickup = function (handler) {
 	 var $cur = this,
 	 	 curHeight = $cur.height(),
@@ -50,3 +51,4 @@ $.fn.stickup = function (handler) {
 	}
 };
 
+})($)
