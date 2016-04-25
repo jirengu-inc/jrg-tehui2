@@ -1,4 +1,5 @@
-//stickup插件
+//为jQuery对象扩展一个stickup插件
+
 (function ($) {
 $.fn.stickup = function (handler) {
 	 var $cur = this,
@@ -51,4 +52,4 @@ $.fn.stickup = function (handler) {
 	}
 };
 
-})($)
+})(jQuery)
