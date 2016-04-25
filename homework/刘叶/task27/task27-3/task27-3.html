@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无限滚动轮播</title>
+</head>
+
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+    }
+    body{
+        background-color: #666;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    .wrap{
+        position: relative;
+        margin: 100px auto;
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+    }
+    .wrap .ct {
+        position: absolute;
+    }
+    .ct li {
+        float: left;
+    }
+    .ct li img{
+        width: 400px;
+        height: 300px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    .bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .bullet li{
+        display: inline-block;
+        width: 25px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    .bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content:'';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+<div class="wrap">
+    <ul class="ct clearfix">
+        <li><img src="img/fujisan.png"></li>
+        <li><img src="img/moe.png"></li>
+        <li><img src="img/kyoto.jpg"></li>
+        <li><img src="img/sushi.png"></li>
+    </ul>
+    <a class="arrow pre" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet clearfix">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var $ct = $('.ct'),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $items = $ct.children(),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().length;
+
+    $ct.prepend($items.last().clone());
+    $ct.append($items.first().clone());
+    var imgTrueCount = $ct.children().length;
+    $ct.css({
+        left:0-imgWidth,
+        width:imgTrueCount * imgWidth//这里我一开始写成了imgTrueCount*imgTrueCount,找了半天都找不出错误，所有的图片直接就全部跑到下面去了,没有横过来；
+    });
+
+
+    var nowIdx = 0;
+    var isAnimate = false;
+
+    $next.on('click', function(){
+        playNext();
+    });
+
+    $pre.on('click', function(){
+        playPre();
+    });
+
+    $bullet.find('li').on('click', function(){
+        var idx = $(this).index();
+        if(idx > nowIdx){
+            playNext(idx-nowIdx);
+        }
+        else if(idx < nowIdx){
+            playPre(nowIdx-idx);
+        }
+    });
+
+
+    function playNext(idx){
+        var idx = idx||1;
+        if(!isAnimate){
+            isAnimate = true;
+            $ct.animate({left:'-=' + (imgWidth*idx)},function(){
+                nowIdx = (nowIdx+idx)%imgCount;
+                if(nowIdx === 0){
+                    $ct.css({left:-imgWidth});
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+    function playPre(idx){
+        var idx = idx||1;
+        if(!isAnimate){
+            isAnimate = true;
+            $ct.animate({left:'+=' + (imgWidth*idx)},function(){
+                nowIdx = (imgCount+nowIdx-idx)%imgCount;
+                if(nowIdx === (imgCount-1)){
+                    $ct.css({left:-imgWidth*imgCount});
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+    function setBullet(){
+        $bullet.find('li').removeClass('active').eq(nowIdx).addClass('active');
+        console.log('nowIdx:'+nowIdx);
+    }
+    function autoPlay(){
+        setInterval(function(){
+            playNext();
+        }, 2500);
+    }
+
+    autoPlay();
+</script>
+</body>
+</html>
