@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>task</title>
+<style type="text/css">
+.modal-dialog{
+    display: none;
+    }
+    .bt{
+        display: inline-block;
+        padding: 3px 6px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+    
+    a{
+        text-decoration: none;
+        color: #333;
+    }
+    .cover{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        opacity: 0.4;
+        z-index: 99;
+    }
+    .modal-ct{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -webkit-transform: translate(-50%, -50%);
+        width: 400px;
+        border-radius: 3px;
+        background: #fff;
+        z-index: 100;
+        }
+     .header{
+         position: relative;
+         height: 36px;
+         line-height: 36px;
+         border-bottom: 1px solid #ccc;}
+            
+     h3{
+         margin: 0;
+         padding-left: 10px;
+         font-size: 16px;
+       }
+     .close{
+         position: absolute;
+         right: 10px;
+         top: 10px;
+       }
+        
+     .content{
+         padding: 10px;
+       }
+     .footer{
+         padding: 10px;
+         border-top: 1px solid #eee;
+       }
+     .footer:after{
+         content: '';
+         display: block;
+         clear: both;
+       }
+            
+     .btn{
+          float: right;
+          margin-left: 10px;
+       }
+  
+
+
+
+</style>
+</head>
+<body>
+<div class="btn-group">
+        <button id="btn-modal">点我1</button>
+    </div>
+
+
+    <div id="modal-1" class="modal-dialog">
+      <div class="cover"></div>
+      <div class="modal-ct">
+        <div class="header">
+          <h3>我是标题1</h3>
+          <a class="close" href="#">×</a>
+        </div>
+        <div class="content">
+            <p>我是内容1</p>
+            <p>我是内容1</p>
+        </div>
+        <div class="footer">
+          <a class="btn btn-confirm" href="#">确定</a>
+          <a class="btn btn-cancel" href="#">取消</a>
+        </div>
+      </div>  
+    </div>
+<script>
+var btn = document.querySelector('#btn-modal'),
+    modal = document.querySelector('#modal-1'),
+    modalCt = document.querySelector('#modal-1 .modal-ct');
+
+btn.addEventListener('click', function(e){
+    e.stopPropagation();
+    showModal(modal);
+});
+
+modalCt.addEventListener('click', function(e){
+   e.stopPropagation();
+   if( hasClass(e.target, 'close') || hasClass(e.target, 'btn-cancel') || hasClass(e.target,'btn-confirm') ){
+       hideModal(modal);
+   } 
+});
+
+document.body.addEventListener('click', function(){
+    hideModal(modal);
+});
+
+
+
+function showModal(modal){
+    modal.style.display = 'block';
+}
+function hideModal(modal){
+    modal.style.display = 'none';
+}
+function hasClass (ele, cls){
+    return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+}
+
+</script>
+</body>
+</html>
