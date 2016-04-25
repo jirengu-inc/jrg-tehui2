@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fadeIn&fadeOut轮播</title>
+</head>
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+    }
+    body{
+        background-color: #666;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    .wrap{
+        position: relative;
+        margin: 3px auto;
+        width: 400px;
+        height: 300px;
+
+    }
+    .ct {
+        position: relative;
+    }
+    .ct li {
+        position: absolute;
+        display: none;
+    }
+    .ct li img{
+        width: 400px;
+        height: 300px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    .bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .bullet li{
+        display: inline-block;
+        width: 30px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    .bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content: '';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+    <div id="carousel1" class="wrap">
+        <ul class="ct" class="clearfix">
+            <li><img src="img/donut.png"></li>
+            <li><img src="img/hot_dog.png"></li>
+            <li><img src="img/mojito.png"></li>
+            <li><img src="img/ice_cream.png"></li>
+        </ul>
+        <a class="arrow pre" href="#"><</a>
+        <a class="arrow next" href="#">></a>
+        <ul class="bullet clearfix">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="carousel2" class="wrap">
+        <ul class="ct" class="clearfix">
+            <li><img src="img/donut.png"></li>
+            <li><img src="img/hot_dog.png"></li>
+            <li><img src="img/mojito.png"></li>
+            <li><img src="img/ice_cream.png"></li>
+        </ul>
+        <a class="arrow pre" href="#"><</a>
+        <a class="arrow next" href="#">></a>
+        <ul class="bullet clearfix">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <div id="carousel3" class="wrap">
+        <ul class="ct" class="clearfix">
+            <li><img src="img/donut.png"></li>
+            <li><img src="img/hot_dog.png"></li>
+            <li><img src="img/mojito.png"></li>
+            <li><img src="img/ice_cream.png"></li>
+        </ul>
+        <a class="arrow pre" href="#"><</a>
+        <a class="arrow next" href="#">></a>
+        <ul class="bullet clearfix">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        function carousel(id,delay,loop){
+            var target = $(id);
+            var $ct = target.children('.ct'),
+                    $pre = target.children('.pre'),
+                    $next = target.children('.next'),
+                    $items = $ct.children(),
+                    $bullet = target.children('.bullet'),
+                    imgCount = $ct.children().length;
+
+            var nowIdx = 0;
+            var isAnimate = false;
+
+            $next.on('click', function(){
+                playNext();
+            });
+
+            $pre.on('click', function(){
+                playPre();
+            });
+
+            $bullet.find('li').on('click', function(){
+                var idx = $(this).index();
+                play(idx);
+            });
+
+            function playNext(){
+                play( (nowIdx+1)%imgCount );
+            }
+            function playPre(){
+                play( (imgCount+nowIdx-1)%imgCount );
+            }
+            function play(idx){
+                if(isAnimate) return;
+                isAnimate = true;
+                $items.eq(nowIdx).fadeOut(delay);
+                $items.eq(idx).fadeIn(delay, function(){
+                    isAnimate = false;
+                });
+                nowIdx = idx;
+                setBullet();
+            }
+            function setBullet(){
+                $bullet.children().removeClass('active').eq(nowIdx).addClass('active');
+            }
+            function autoPlay(){
+                setInterval(function(){
+                    playNext();
+                }, loop);
+            }
+
+            play(0);
+            autoPlay();
+        }
+        //我不知道这种思路对不对,感觉这么做可以,效果是可以,就不知道这么做对不对,
+        //这里是需要把数据限定在调用对象的体内,将数据的走向和行为笼罩起来,不相互干扰;
+        //就想把他封装成函数,
+        //carousel(id,delay,loop),还可以控制消失出现的速度和切换的速度
+        carousel(carousel1,600,2400);
+        carousel(carousel2,600,1600);
+        carousel(carousel3,600,800);
+    </script>
+</body>
+</html>
