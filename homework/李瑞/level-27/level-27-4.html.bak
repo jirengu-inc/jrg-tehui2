@@ -86,6 +86,7 @@
 	.btn li.active{
 		background:white;
 	}
+
 	</style>
 </head>
 <body>
@@ -122,9 +123,8 @@
 	var key=false//设置状态锁
 	var imgWidth=$(".ct-img").find("img").width();//图片宽度
 	var imgNum=$(".ct-img").children().size();//图片个数
-	$ct.css({
-		"width":imgWidth*imgNum
-	})
+	$ct.css("width",imgNum*imgWidth)
+	
 	$prev.on("click",function(){
 		playPrev();
 	})
@@ -142,6 +142,7 @@
 			setTimeout(autoplay(),3000)
 		}
 	})
+
 	
 	function playNext(tem){
 		var idx=tem||1;
@@ -149,20 +150,19 @@
 			return;
 		}
 		key=true;
-		$ct.animate({
-			"left":"-="+imgWidth*idx
-		},function(){
 		for(var i=0;i<idx;i++){
 			$ct.append($ct.children().first())
 		}
-		$ct.css("left",0);
+		$ct.css("left","+="+imgWidth*idx);
+		$ct.animate({
+			"left":"-="+imgWidth*idx
+		},function(){
 			key=false;
 			num=(num+idx)%imgNum;
 			setButton(num);
 		})
-		
-
 	}
+
 	function playPrev(tem){
 		var idx=tem||1;
 		if(key===true){
@@ -191,6 +191,7 @@
 				playNext();
 			},2000)
 		}
+
 		function autostop(){
 			clearInterval(atuo);
 		}
