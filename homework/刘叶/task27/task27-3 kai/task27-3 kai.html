@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>append$prepend挪动DOM轮播</title>
+</head>
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+    }
+    body{
+        background-color: #666;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    .wrap{
+        position: relative;
+        margin: 100px auto;
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+    }
+    .wrap .ct {
+        position: absolute;
+        /*如果这里不设置absolute的话,后面哪个重置镜头位置和固定镜头位置就不用设置,就是动画效果不好*/
+    }
+    .ct li img{
+        float: left;
+        width: 400px;
+        height: 300px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    .bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .bullet li{
+        display: inline-block;
+        width: 25px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    .bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content:'';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+<div class="wrap">
+    <ul class="ct clearfix">
+        <li><img data-img='0' src="img/hot_dog.png"></li>
+        <li><img data-img='1' src="img/ice_cream.png"></li>
+        <li><img data-img='2' src="img/mojito.png"></li>
+        <li><img data-img='3' src="img/donut.png"></li>
+    </ul>
+    <a class="arrow pre" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet clearfix">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var $wrap = $('.wrap'),
+            $ct = $('.ct'),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $items = $ct.children(),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().length;
+
+        var isAnimate = false,//状态锁
+            nowIdx = 0;//这里可以控制一开始的时候,需要展现哪个图
+
+        $ct.css({width: imgWidth * imgCount});
+
+        $pre.on('click',function () {
+            playPre();
+        });
+        $next.on('click',function () {
+            playNext();
+        });
+
+        $bullet.find('li').on('click',function(){
+            var idx = $(this).index();
+            if (idx < nowIdx){
+                playPre(nowIdx-idx);
+            }
+            else if (idx > nowIdx){
+                playNext(idx-nowIdx);
+            }
+        });
+
+        function playPre (idx) {
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                //一开始只考虑到了点击pre和next时prepend last 和 append first,
+                // 但是这样每次只能满足移动一次,所以就用了遍历,正好符合挪动的次数
+                for(var i = 0;i < idx;i++){
+                    $ct.children().last().prependTo($ct);
+                }
+                $ct.css('left',-(imgWidth*idx));
+                //因为.ct,我设置的position:absolute,这里就要先重设镜头和图片队列的相对位置,要不然镜头会跑得越来越远
+                $ct.animate({ left:'+=' + (imgWidth*idx) },function () {
+                    nowIdx = (imgCount+nowIdx-idx)%imgCount;
+                    setBullet();
+                    isAnimate = false;
+                });
+            }
+        }
+
+        function playNext(idx){
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                $ct.animate({ left:'-=' + (imgWidth*idx) },function () {
+                    nowIdx = (nowIdx+idx)%imgCount;
+                    for(var i = 0; i < idx; i++){
+                        $ct.children().first().appendTo($ct);
+                    }
+                    $ct.css('left',0); //还是因为position:absolute,要固定镜头位置
+                    setBullet();
+                    isAnimate = false;
+                });
+            }
+        }
+
+        function setBullet(){
+            $bullet.find('li').removeClass('active').eq(nowIdx).addClass('active');
+            console.log('nowIdx:'+nowIdx);
+        }
+
+        function autoPlay () {
+            setInterval(function(){
+                playNext();
+            }, 2500);
+        }
+
+        autoPlay();
+    </script>
+</body>
+</html>
