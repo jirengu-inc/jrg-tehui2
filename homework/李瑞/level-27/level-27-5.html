@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>全屏轮播</title>
+	<style>
+		html,body,ul,li,div{
+			margin:0;
+			padding:0;
+		}
+		li{
+			list-style: none;
+		}
+		html,body,#wrap,#wrap .ct,#wrap .ct-img,#wrap .ct-img div{
+			width:100%;
+			height:100%;
+		}
+		
+
+		.ct #img1{
+			background:url(http://f.hiphotos.baidu.com/zhidao/pic/item/d058ccbf6c81800a24c1d0a6b33533fa828b4775.jpg);
+			background-size:cover;
+		}
+		.ct #img2{
+			background:url(http://att.bbs.duowan.com/forum/201406/12/090002xntxqtn9pi5tbs0w.jpg);
+			background-size:cover;
+		}
+		.ct  #img3{
+			background:url(http://wow.tgbus.com/image/1003/04-3.jpg);
+			background-size: cover;
+		}
+		.ct  #img4{
+			background:url(http://ol.tgbus.com/news/UploadFiles_2374/201412/20141222110358379.jpg);
+			background-size:cover;
+		}
+		#wrap{
+			position: relative;
+			overflow: hidden;
+		}
+		.ct{
+			position: absolute;
+		}
+		.ct-img{
+			float:left;
+			position: relative;
+			height:100%;
+		}
+		.btn{
+			position: absolute;
+			left:50%;
+			transform:translateX(-50%);
+			bottom:20px;
+			cursor:pointer;
+		}
+		.btn li{
+			width:50px;
+			height:20px;
+			border-radius: 20px;
+			background:#aaa;
+			float:left;
+			margin-right:20px;
+		}
+		.btn li.active{
+			background:white;
+		}
+		.ct-img h3{
+			position: absolute;
+			top:50%;
+			left:50%;
+			transform:translate(-50%,-50%);
+		}
+		.ct-img h4{
+			position: absolute;
+			top:55%;
+			left:60%;
+			transform:translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="ct">
+			<li class="ct-img">
+				<div id="img1"></div>
+				<h3>生命本身毫无意义，只有死亡才能让人了解到人性的真谛</h3>
+				<h4>————阿尔萨斯</h3>
+			</li>
+			<li class="ct-img">
+				<div id="img2"></div>
+			</li>
+			<li class="ct-img">
+				<div id="img3"></div>
+			</li>
+			<li class="ct-img">
+				<div id="img4"></div>
+			</li>
+		</ul>
+		<ul class="btn">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		var $ct=$(".ct");
+		var num=0;
+		var key=false;
+		var $btn=$(".btn");
+		var imgNum=$(".ct").children().size();
+		var imgWidth=$(window).width();
+
+		$ct.prepend($ct.children().last().clone());
+		$ct.append($ct.children().eq(1).clone());
+		var newImg=$ct.children().size();
+		$ct.children().css({"width":imgWidth+"px"})
+		$ct.css({"width":(newImg*imgWidth+"px"),
+					"left":(0-imgWidth)+"px"})
+
+		autoplay();
+		function autoplay(){
+			auto=setInterval(function(){
+				playNext();
+			},2000)
+		}
+		function autostop(){
+			clearInterval(auto);
+		}
+
+		$btn.on("click","li",function(){
+			var tem=$(this).index();
+			if(tem<num){
+				playPrev(num-tem);
+			}if(tem>num){
+				playNext(tem-num);
+			}else if(tem===num){
+				autostop();
+				setTimeout(autoplay(),3000)
+			}
+		})
+		function playPrev(tem){
+			var idx=tem||1;
+			if(key===true){
+				return;
+			}
+			key=true;
+			$ct.animate({
+				"left":"+="+idx*imgWidth
+			},function(){
+				num=((imgNum+num-idx)%imgNum);
+				if(num===(imgNum-1)){
+					$ct.css({
+						'left':0-imgWidth*(imgNum-1)+"px"
+					})
+				}
+				key=false;
+				setButton(num);
+			})
+		}
+		function playNext(tem){
+			var idx=tem||1;
+			if(key===true){
+				return;
+			}
+			key=true;
+			$ct.animate({
+				"left":"-="+idx*imgWidth
+			},function(){
+				num=(num+idx)%imgNum;
+				if(num===0){
+					$ct.css({
+						'left':0-imgWidth+"px"
+					})
+				}
+				key=false;
+				setButton(num);
+			})
+		}
+		function setButton(num){
+			$btn.children().removeClass('active');
+			$btn.children().eq(num).addClass('active');
+		}
+	</script>
+</body>
+</html>

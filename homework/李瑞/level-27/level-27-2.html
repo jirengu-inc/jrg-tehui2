@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>一个页面三个轮播</title>
+		<style>
+		body,ul,li{
+			padding:0;
+			margin:0;
+		}
+		a{
+			text-decoration:none;
+			color:black;
+		}
+		li{
+			list-style: none;
+		}
+		#wrap>div{
+			width:300px;
+			height:210px;
+			overflow: hidden;
+			position: relative;
+			border:5px solid #aaa;
+			border-radius: 10px;
+			margin-bottom:50px;
+		}
+		.ct img{
+			width:300px;
+			height:210px;
+
+		}
+		.ct li{
+			position: absolute;
+			left:0;
+			top:0;
+			display: none;
+		}
+		.button{
+			width:30px;
+			height:30px;
+			line-height: 30px;
+			background:#aaa;
+			position: absolute;
+			top:50%;
+			margin-top:-15px;
+			border-radius: 30px;
+			text-align: center;
+			font-weight: bolder;
+			opacity: 0.7;
+		}
+		.button:hover{
+			opacity:1;
+			background:white;
+		}
+		.next{
+			right:10px;
+		}
+		.prev{
+			left:10px;
+		}
+		.footer-nav{
+			position: absolute;
+			left:50%;
+			-webkit-transform: translateX(-50%);
+			        transform: translateX(-50%);
+			bottom:20px;
+			padding:5px;
+			
+		}
+		.footer-nav li{
+			padding:5px;
+			float:left;
+			margin-right:10px;
+			border-radius: 5px;
+			background:white;
+			cursor:pointer;
+		}
+		.footer-nav li.active{
+			background:#aaa;
+			border-radius: 
+		}
+
+		
+		</style>
+	</head>
+	<body>
+		<div id="wrap">
+			<div class="box">
+				<ul class="ct ">
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt="图片1">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt="图片2">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt="图片3">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt="图片4">
+						</a>
+					</li>
+				</ul>
+
+				<a class="button prev " href="javascirpt:void(0)"><</a>
+				<a class="button next" href="javascirpt:void(0)">></a>
+				<ul class="footer-nav">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="box">
+				<ul class="ct ">
+					<li>
+						<a href="javascript:void(0)">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt="图片1">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt="图片2">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt="图片3">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt="图片4">
+						</a>
+					</li>
+				</ul>
+
+				<a class="button prev " href="javascirpt:void(0);"><</a>
+				<a class="button next" href="javascirpt:void(0);">></a>
+				<ul class="footer-nav">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+			<div class="box">
+				<ul class="ct">
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt="图片1">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt="图片2">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt="图片3">
+						</a>
+					</li>
+					<li>
+						<a href="javascript:void(0);">
+							<img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt="图片4">
+						</a>
+					</li>
+				</ul>
+
+				<a class="button prev " href="javascirpt:void(0);"><</a>
+				<a class="button next" href="javascirpt:void(0);">></a>
+				<ul class="footer-nav">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		</div>
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+	 var ct=$(".box");
+	 var curIdx=[];//存放轮播
+	 var key=[];//存放状态锁
+	 var settime=[]//存放定时器容器
+
+	 for(var i=0;i<ct.length;i++){
+	 	curIdx.push(0);//设置初始值
+	 	key.push(false)//设置状态锁
+	 	var next=ct.eq(i).find(".next");
+	 	var prev=ct.eq(i).find(".prev");
+	 	var button=ct.eq(i).find(".footer-nav li");
+
+	 		 play(ct.eq(i),0);
+	 		 setTime(ct.eq(i))
+	 	next.on("click",function(){
+	 		var tem=$(this).parents(".box");//确定是哪一个轮播
+	 		playNext(tem);
+	 	})
+	 	prev.on("click",function(){
+	 		var tem=$(this).parents(".box");
+	 		playPrev(tem);
+	 	})
+	 	button.on("click",function(){
+	 		var idx=$(this).index();//确定是哪一副图
+	 		var tem=$(this).parents(".box")//确定是哪一个轮播
+	 		if(tem[idx]===curIdx[tem]){//放置重复点击同一个，出现白屏
+	 			return;
+	 		}
+	 		play(tem,idx);
+	 	})
+	 } 
+
+	 function playPrev(tem){
+	 	var idx=tem.index();
+	 	var imgcount=tem.find(".ct li").size();
+	 	var num=((imgcount+(curIdx[idx]-1))%imgcount);
+	 	paly(tem,num)//对应环境下的,对应图片
+	 }
+	 function playNext(tem){
+	 	var idx=tem.index();//父级所对应的位置
+	 	var imgcount=tem.find(".ct li").size();
+	 	var num=((curIdx[idx]+1)%imgcount);
+	 	play(tem,num)
+	 }
+	 function play(tem,num){
+	 	var idx=tem.index();
+	 	if(key[idx]===true){
+	 		return;
+	 	}
+	 	key[idx]=true;
+	 	tem.find(".ct li").eq(curIdx[idx]).fadeOut(1000);
+	 	tem.find(".ct li").eq(num).fadeIn(1000, function() {
+	 		key[idx]=false;
+	 	});
+	 	curIdx[idx]=num;
+	 	setButton(tem);
+	 }
+	 function setButton(tem){
+	 	var idx=tem.index();
+	 	var now=tem.find(".footer-nav li");
+	 	now.removeClass('active');
+	 	now.eq(curIdx[idx]).addClass('active');
+	 };
+
+	 function setTime(tem){
+	 	var idx=tem.index();
+	 	settime[idx]=setInterval(function(){
+	 		playNext(tem);
+	 	},1000);
+
+	 function autotime(tem){
+	 	var idx=tem.index();
+	 	clearInterval(settime[idx]);
+	 }
+	 }
+	</script>
+</html>
