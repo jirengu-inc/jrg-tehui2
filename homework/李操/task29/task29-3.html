@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加载更多|Ajax GET</title>
+</head>
+<style>
+	ul,li{
+		margin:0;
+		padding: 0;
+		font-family: Microsoft YaHei;
+	}
+
+	#wrap li{	
+	  margin-left: auto;
+	  margin-right: auto;
+	  width: 1000px;
+	  list-style:none;
+	  border: 1px solid #32C3F4;
+	  border-radius: 5px;
+	  padding: 12px;
+	  margin-top: 10px;
+	  cursor:pointer;
+	}
+	#load{
+		text-decoration: none;
+		width: 40px;
+		height: 40px;
+		/*line-height: 40px;*/
+		/*text-align: center;*/
+		/*border:1px solid #64D214;*/
+		/*display: block;*/
+		margin:10px auto;
+		padding: 5px;
+		/*border-radius: 40px;*/
+		transition: 0.2s;
+	}
+	#load img{
+		width: 40px;
+		height: 40px;
+	}
+	.hover{
+	  background: #32C3F4;
+	  color: #fff;
+	}
+</style>
+<body>
+	<ul id="wrap">
+		<li>內容1</li>
+		<li>內容2</li>
+		<li>內容3</li>
+	</ul>
+	<div id="load"><img src="loading3.gif" /></div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script type="text/javascript" src="js/backtop.js"></script>
+	<script>
+		$(document).backtop();//调用backtop插件
+		$btn = $("#load");
+		$wrap = $("#wrap");
+		var start = 3; //初始li數目為3
+
+		beginLoad ();//打开页面加载可视范围内的图片
+
+		$wrap.on('mouseenter','li', function(){
+		  $(this).addClass('hover');
+		}).on('mouseleave', 'li', function(){
+		  $(this).removeClass('hover');
+		});
+
+		function beginLoad() {
+			  $.ajax({
+			    url: 'task26-3.php',
+			    dataType: 'json',
+			    type: 'get',
+			    data: {
+			      start: start,
+			      len: 15
+			    },
+			    success: function(ret){
+			    	whenSuccess(ret);
+			    },
+			    error: function(){
+			    	whenError();
+			    }
+			  });
+		}
+
+		function whenSuccess (ret){
+			  console.log(ret)
+			  if(ret.status == 1){
+			    append(ret.data);
+			    start += 5;
+			  }else{
+			    alert('failed to get data!');
+			  }
+			}
+
+		function whenError(){
+			  alert('Something Error!');
+			}
+
+		function append(arr) {
+		    for (var i = 0; i < arr.length; i++) {
+				$wrap.append('<li>' + arr[i] + '</li>');
+		    }
+		}
+
+		var clock;//设置延时，提高性能
+	    $(window).on('scroll',function () {
+	    	if (clock) {
+	    		clearTimeout(clock);
+	    	}
+	    	clock = setTimeout(function () {
+	    		if ( isVisiable($btn) ){
+	    			beginLoad();
+	    		}
+	    	},300);
+	    });
+
+	    //判断按钮是否出现在可视区域内
+	    function isVisiable ($node) {
+		      var scrollT = $(window).scrollTop(),//获取页面顶部到窗口顶部的滚动距离
+		          windowH = $(window).height(),//获取浏览器窗口高度
+		          offsetT = $node.offset().top;//获取该元素距页面顶部的距离
+
+		      if ( scrollT+windowH > offsetT ){
+		        return true;
+		      }else{
+		        return false;
+		      }
+	    }
+
+	</script>
+</body>
+</html>
