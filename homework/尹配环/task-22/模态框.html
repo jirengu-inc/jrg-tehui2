@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模态框</title>
+    <style>
+        * {
+            margin: 0;
+            padding:0;
+        }
+        html,body {
+            height:100%;
+            width:100%;
+        }
+        .ct {
+            display: none;
+        }
+        .cover {
+            position: absolute;
+            background-color: #ccc;
+            opacity: .5;
+            height: 100%;
+            width:100%;
+        }
+        .dialog {
+            position:absolute;
+            top:50%;
+            left:50%;
+            margin-top:-100px;
+            margin-left: -150px;
+            width: 300px;
+            /*height:200px;*/
+            background-color: white;
+            opacity: 1;
+        }
+        .dialog {
+            line-height: 30px;
+        }
+        .dialog>span {
+            position:absolute;
+            right: 10px;
+            top: 10px;
+            cursor: pointer;
+        }
+        .dialog>h4 {
+            padding: 10px;
+        }
+        .dialog>p {
+            padding-left: 10px;
+        }
+        .dialog>div {
+            text-align: right;
+            padding-right:10px;
+        }
+        .dialog>.line {
+            border:none;
+            height: 1px;
+            border-top:1px solid #ccc;
+        }
+        .dialog>.diabtn>a{
+            text-decoration: none;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ct">
+    <div class="cover"></div>
+    <div class="dialog">
+        <h4>我是标题</h4>
+        <span>×</span>
+        <hr>
+        <p>我是内容1</p>
+        <p>我是内容2</p>
+        <hr class="line">
+        <div class="diabtn"  >
+            <a href="#">取消</a>
+            <a href="#">确定</a>
+        </div>
+    </div>
+
+</div>
+    <button class="btn">点我1</button>
+
+
+<script>
+    var span = document.querySelector(".dialog>span");
+    var btnAs = document.querySelectorAll(".dialog>.diabtn>a");
+    var btn = document.querySelector(".btn");
+    var ct = document.querySelector(".ct");
+    var clickMe = function (e) {
+        e.preventDefault();
+        if (ct.className){
+            ct.className = "";
+        }else {
+            ct.className = "ct";
+        }
+    }
+    btn.addEventListener("click",clickMe,false);
+    span.addEventListener("click",clickMe,false);
+    for (var i = 0 ; i < btnAs.length ; i++) {
+        btnAs[i].addEventListener("click",clickMe,false);
+    }
+</script>
+</body>
+</html>
