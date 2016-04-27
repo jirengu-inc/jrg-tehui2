@@ -69,14 +69,14 @@
     <div class="cover"></div>
     <div class="dialog">
         <h4>我是标题</h4>
-        <span>×</span>
+        <span class = "close">×</span>
         <hr>
         <p>我是内容1</p>
         <p>我是内容2</p>
         <hr class="line">
         <div class="diabtn"  >
-            <a href="#">取消</a>
-            <a href="#">确定</a>
+            <a class="cancel" href="#">取消</a>
+            <a class="confirm" href="#">确定</a>
         </div>
     </div>
 
@@ -85,12 +85,13 @@
 
 
 <script>
-    var span = document.querySelector(".dialog>span");
-    var btnAs = document.querySelectorAll(".dialog>.diabtn>a");
+    var cover = document.querySelector(".cover");
+    var dialog = document.querySelector(".dialog");
     var btn = document.querySelector(".btn");
     var ct = document.querySelector(".ct");
     var clickMe = function (e) {
         e.preventDefault();
+        e.stopPropagation();
         if (hasClass(ct,"ct")){
             removeClass(ct,"ct");
         }else {
@@ -98,10 +99,12 @@
         }
     }
     btn.addEventListener("click",clickMe,false);
-    span.addEventListener("click",clickMe,false);
-    for (var i = 0 ; i < btnAs.length ; i++) {
-        btnAs[i].addEventListener("click",clickMe,false);
-    }
+    cover.addEventListener("click",clickMe,false);
+    dialog.addEventListener("click",function (e) {
+        if (hasClass(e.target,"close")||hasClass(e.target,"cancel")||hasClass(e.target,"confirm")){
+            clickMe(e);
+        }
+    })
 
 
     function hasClass (el,cls) {
