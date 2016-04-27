@@ -91,16 +91,29 @@
     var ct = document.querySelector(".ct");
     var clickMe = function (e) {
         e.preventDefault();
-        if (ct.className){
-            ct.className = "";
+        if (hasClass(ct,"ct")){
+            removeClass(ct,"ct");
         }else {
-            ct.className = "ct";
+            addClass(ct,"ct");
         }
     }
     btn.addEventListener("click",clickMe,false);
     span.addEventListener("click",clickMe,false);
     for (var i = 0 ; i < btnAs.length ; i++) {
         btnAs[i].addEventListener("click",clickMe,false);
+    }
+
+
+    function hasClass (el,cls) {
+        var reg = new RegExp("\\b" + cls + "\\b" , "g");
+        return reg.test(el.className);
+    }
+    function addClass (el,cls) {
+        return hasClass(el,cls)?el.className:(el.className += " " + cls);
+    }
+    function removeClass (el,cls) {
+        var reg = new RegExp("\\b" + cls + "\\b" , "g");
+        return hasClass(el,cls)?(el.className = el.className.replace(reg,"")):false;
     }
 </script>
 </body>
