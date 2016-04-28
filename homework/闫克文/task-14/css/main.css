@@ -9,7 +9,7 @@ h1,h2,h3,p,ul,li{
 	padding: 0; 
 }
 .container{
-	width: 900px;
+	width: 960px;
 	margin:0 auto;
 	text-align: center;	/*不知这个用在这里是否恰当*/
 }
@@ -129,13 +129,13 @@ h1,h2,h3,p,ul,li{
 	display: block;
 	clear: both;
 }
-#main .works .container ul{
+#main .works .container .container{
 	margin-left: -12px;
 }
-#main .works .container ul li:hover{
+#main .works .container .container li:hover{
 	opacity:0.5;
 }
-#main .works .container ul >li{
+#main .works .container .container >li{
 	float: left;
 	list-style: none;
 	margin-left: 25px;
