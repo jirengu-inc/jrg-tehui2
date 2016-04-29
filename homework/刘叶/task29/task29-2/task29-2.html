@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片的懒加载</title>
+    <style type="text/css">
+        body,#content,#img-content,li{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            margin: 0 auto;
+        }
+        img{
+            height: 300px;
+            width: 300px;
+        }
+        li{
+            list-style: none;
+            float: left;
+            padding: 10px;
+        }
+        #img-content{
+            width: 970px;
+        }
+        #des{
+            height: 200px;
+            color: #666;
+            font-size: 50px;
+            line-height: 200px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="des">懒加载的效果</div>
+        <ul id="img-content">
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/iphone6s.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/T2.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/Z5.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/le.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/S7.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/meizu.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+            <li class="item"><a href="#"><img src="img/loading.gif" img-data="img/huawei.jpg"></a></li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var isScroll;
+        $(window).on('scroll',function(){
+            if(isScroll){
+                clearTimeout(isScroll);
+            }
+            isScroll = setTimeout(function(){
+                console.log('执行checkVisible了一次');
+                checkVisible();
+                return true;
+            },300);
+        });
+
+            checkVisible();
+
+        function checkVisible(){
+            $('#img-content img').each(function(){
+                var $node = $(this);
+                if($node.attr('loaded')){
+                    return;
+                }//再遍历可见元素时,将已经加载过打上标签的给return掉,就不需要执行showImg()了
+                var $cur = $(this);
+                if(isVisible($cur)){
+                    showImg($cur);
+                }
+            });
+        }
+
+        function isVisible($node){
+           var offsetTop = $node.offset().top,
+               scrollTop = $(window).scrollTop(),
+               windowH = $(window).height();
+            if(scrollTop + windowH > offsetTop){
+                return true
+            }else{
+                return false;
+            }
+        }//判断元素是否到了可见状态
+
+        function showImg($node){
+            setTimeout(function(){
+                $node.attr('src',$node.attr('img-data'));
+            },500);
+            $node.attr('Loaded',true);
+        }//打上已经加载过的标签,下次不会执行showImg()
+    </script>
+</body>
+</html>
