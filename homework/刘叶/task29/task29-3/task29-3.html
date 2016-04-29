@@ -143,6 +143,8 @@
 
     function sendAjax($node){
         if($.data.isSend) return;
+        //这里是我最后发现的问题，到达按钮之后，等待延时器刚刚失效，ajax回来之前的空档
+        //稍微再滚动一下屏幕，就会造成发送了多次，就会append多次
         $node.html('<div class="loading"><img src="load.gif"></div>');
         $.data.isSend=true;
         $.ajax({
