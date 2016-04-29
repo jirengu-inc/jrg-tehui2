@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>到达一定距离，出现回到顶部</title>
+    <title>到达底部Ajax加载新元素</title>
 </head>
 <style type="text/css">
     body,.content,ul,li,div{
@@ -62,6 +62,10 @@
         width: 20%;
         background-color: #00a0d8;
     }
+    .loadBtn{
+        margin-bottom: 200px;
+        color: #ff4500;
+    }
 </style>
 <body>
     <div class="content">
@@ -85,25 +89,14 @@
     var $ct = $('.content'),
         $infoCt = $('.infoCt'),
         $loadBtn = $('.loadBtn');
+    var clock;
+    var start = 11;
 
     var $goTop =$('<a href="#" class="goTop">Top</a>');
         $goTop.appendTo($ct);
 
-    //探测滑动距离,发送ajax的元素是否可见,是否到达需要显示goTop的位置
-    $(window).on('scroll',function(){
-        if( isVisible($loadBtn) ){
-            sendAjax();
-            $loadBtn.attr('isSend',true);
-        }
-        var scrollTop = $(window).scrollTop();
-        if(scrollTop > 100){
-            $goTop.css('opacity',1)
-        }else{
-            $goTop.css('opacity',0)
-        }
-    });
 
-    //完成父容器事件代理,必须要给ajax回来添加的li再次绑定
+    //完成父容器事件代理,避免由ajax添加的新li无法绑定
     $infoCt.on('mouseover','li',function(){
         $(this).siblings().removeClass('active');
         $(this).addClass('active');
@@ -112,11 +105,35 @@
         $(this).removeClass('active');
     });
 
+
+    //探测滑动距离,发送ajax的元素是否可见,是否到达需要显示goTop的位置
+    $(window).on('scroll',function(){
+        //回到Top的功能保留了
+        var scrollTop = $(window).scrollTop();
+        if(scrollTop > 100){
+            $goTop.css('opacity',1)
+        }else{
+            $goTop.css('opacity',0)
+        }
+
+        //下面是发送ajax的区域
+        if(clock) clearTimeout(clock);
+        clock = setTimeout(function(){
+            if(!isVisible($loadBtn)) return;
+            sendAjax($loadBtn);
+        }, 300);
+        // 和懒加载里面一样，只要还在滚动就在不停的设置定时器又在清除定时器，直到停止滚动才会发送
+        // 我自己做到这个时候，也发现和上次防止重复点击不一样，滚轮滑动的计量标准和鼠标点击的计量标准不一样
+        // 我们判定他是否出现是以按钮的上边界来算的，但是load按钮是有高度的；
+        // 也就是说在滚动经过这段按钮高度的距离内，发送了多个ajax
+    });
+
+
     //判定是否到可见
     function isVisible($node){
-        var offsetTop = $node.offset().top,
-                scrollTop = $(window).scrollTop(),
-                windowH = $(window).height();
+        var offsetTop = $node.offset().top,//元素到页面顶部的偏移距离
+            scrollTop = $(window).scrollTop(),//页面垂直滚动的距离
+            windowH = $(window).height();//浏览器窗口高度
         if(scrollTop + windowH > offsetTop){
             return true
         }else{
@@ -124,13 +141,8 @@
         }
     }
 
-    //发送ajax,并给发送按钮加上状态锁,避免多次发送,并且改变样式
-    function sendAjax(){
-        if($(this).attr('isSend')){
-            return;
-        }
-        var start = 10;
-        $(this).html('<div class="loading"><img src="ajaxLoad.gif"></div>');
+    function sendAjax($node){
+        $node.html('<div class="loading"><img src="load.gif"></div>');
         $.ajax({
             url: 'getMore.php',
             dataType: 'json',
@@ -149,33 +161,31 @@
                 onComplete();
             }
         });
-        $(this).attr('isSend',false);
-    }
 
-    //ajax发送之后,具体的处理措施
-    function onSuccess(ret) {
-        if (ret.status === 1) {
-            append(ret.data);
-            start += 5;
-        } else {
-            alert('错误');
+        //ajax发送之后,具体的处理措施
+        function onSuccess(ret) {
+            if (ret.status === 1) {
+                append(ret.data);
+                start += 5;
+            } else {
+                alert('错误');
+            }
         }
-    }
 
-    function onError() {
-        alert('服务器出错了!');
-    }
-
-    function onComplete() {
-        $(this).html('<div class="loadBtn">向下滑动加载更多</div>');
-    }
-
-    function append(arr) {
-        for (var i = 0; i < arr.length; i++) {
-            $infoCt.append('<li>' + arr[i] + '</li>');
+        function onError() {
+            alert('服务器出错了!');
         }
-    }
 
+        function onComplete() {
+            $loadBtn.html('<div class="loadBtn">向下滑动加载更多</div>');
+        }
+
+        function append(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                $infoCt.append('<li>' + arr[i] + '</li>');
+            }
+        }
+    };
 </script>
 </body>
 </html>
