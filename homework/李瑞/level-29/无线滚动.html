@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无线滚动</title>
+	<style>
+	ul,li{
+		margin:0;
+		padding:0;
+	}
+	li{
+		list-style: none;
+	}
+	#ct li{
+		height:25px;
+		line-height: 25px;
+		padding:5px;
+		border:1px solid #ccc;
+		margin:0 auto;
+		margin-bottom:40px;
+		width:1000px;
+
+	}
+	#ct li.active{
+		background:green;
+		color:white;
+	}
+	#btn{
+		display:block;
+		height:40px;
+		width:100px;
+		line-height: 40px;
+		border:1px solid #F3B252;
+		background:white;
+		border-radius: 10px;
+		font-weight: bolder;
+		font-size:16px;
+		color:#47C9E6;
+		cursor: pointer;
+		margin:40px auto;
+		
+	}
+	#btn:focus{
+		outline:none;
+	}
+	</style>
+</head>
+<body>
+	<ul id="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<button id="btn">加载更多</button>
+	
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script src="top.js"></script>
+<script>
+goTop();
+
+		$btn = $("#btn");
+		$ct = $("#ct");
+		var str = 2; 
+		var clock;
+
+		goLoad ();
+
+		$ct.on('mouseenter','li', function(){
+		  $(this).addClass('active');
+		}).on('mouseleave', 'li', function(){
+		  $(this).removeClass('active');
+		});
+		
+		$(window).on("scroll",function(){
+			if(clock){
+				clearTimeout(clock);
+			}
+			clock=setTimeout(function(){
+				if(!isVisible($btn)){
+					return;
+				}
+				goLoad();
+			},400)
+		})
+		
+		function isVisible(e){
+			var top=$(e).offset().top;
+			var height=$(window).height();
+			var scrollT=$(window).scrollTop();
+			
+			console.log(height);
+			console.log(scrollT);
+			console.log(top);
+			if(scrollT+height>top){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
+		function goLoad(){
+			$.ajax({
+				url:"load.php",
+				dataType: 'json',
+				data:{
+					str:str,
+					num:6
+				},
+				type:"post",
+				success:function(e){
+					str+=6;
+					onSuccess(e);
+				},
+				erro:function(){
+					alert("出错啦");
+				}
+			})
+		}
+
+		function onSuccess(e){
+			var tem=e.data;
+			if(e.status===1){
+				for(var i=0;i<tem.length;i++){
+					$ct.append("<li>"+tem[i]+"</li>")
+				}
+			}else{
+				console.log("数据获取不到")
+			}
+		}
+		
+</script>
+</html>
