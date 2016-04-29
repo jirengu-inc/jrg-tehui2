@@ -121,7 +121,7 @@
         clock = setTimeout(function(){
             if(!isVisible($loadBtn)) return;
             sendAjax($loadBtn);
-        }, 300);
+        }, 200);
         // 和懒加载里面一样，只要还在滚动就在不停的设置定时器又在清除定时器，直到停止滚动才会发送
         // 我自己做到这个时候，也发现和上次防止重复点击不一样，滚轮滑动的计量标准和鼠标点击的计量标准不一样
         // 我们判定他是否出现是以按钮的上边界来算的，但是load按钮是有高度的；
@@ -142,7 +142,9 @@
     }
 
     function sendAjax($node){
+        if($.data.isSend) return;
         $node.html('<div class="loading"><img src="load.gif"></div>');
+        $.data.isSend=true;
         $.ajax({
             url: 'getMore.php',
             dataType: 'json',
@@ -184,6 +186,7 @@
             for (var i = 0; i < arr.length; i++) {
                 $infoCt.append('<li>' + arr[i] + '</li>');
             }
+            $.data.isSend = false;
         }
     };
 </script>
