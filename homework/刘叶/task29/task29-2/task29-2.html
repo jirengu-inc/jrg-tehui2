@@ -120,9 +120,7 @@
         }//判断元素是否到了可见状态
 
         function showImg($node){
-            setTimeout(function(){
-                $node.attr('src',$node.attr('img-data'));
-            },500);
+            $node.attr('src',$node.attr('img-data'));
             $node.attr('Loaded',true);
         }//打上已经加载过的标签,下次不会执行showImg()
     </script>
