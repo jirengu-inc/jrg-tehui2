@@ -35,14 +35,13 @@ li{
 	z-index: 10;
 	background-color: #222;
 }
-<<<<<<< HEAD
-=======
+
 #topnav ul.navbar:after{
 	content: "";
 	display: block;
 	clear: both;
 }
->>>>>>> 17fab76d13423ff37e319eb86af83c13015860bd
+
 #topnav li{
 	float: right;
 	height: 70px;
@@ -420,11 +419,8 @@ p{
 #footer .wrap-center>div{
 	display: inline-block;
 }
-<<<<<<< HEAD
-#footer .copy{
-=======
+
 #footer .copy span{
->>>>>>> 17fab76d13423ff37e319eb86af83c13015860bd
 	font-size: 14px;
 	font-weight: bold;
 	color: #222222;
