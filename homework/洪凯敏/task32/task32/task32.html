@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="JS/jquery-2.1.3.min.js"></script>
+	<style type="text/css">
+		body, ul, li, div, h4, p{
+			padding: 0px;
+			margin: 0px;
+			list-style: none;
+			box-sizing: border-box;
+		}
+		.ct{
+			width: 960px;
+			margin: 10px auto;
+		}
+		#waterfall{
+			position: relative;
+			width: 900px;
+		}
+		.item{
+			position: absolute;
+		    padding: 0 0 10px 0;
+		    margin: 10px;
+		    width: 280px;
+		    border:1px #ccc solid;
+		    transition:3s;
+		}
+		#waterfall .paragraph{
+		    font-size: 14px;
+		    line-height: 2;
+		    margin: 10px 15px 0;
+		    color: #ccc;
+		    font-family: "微软雅黑";
+		}
+		img {
+		    width: 260px;
+		    padding: 10px;
+		}
+		.header{
+			margin: 0px 10px;
+			padding: 10px 0px;
+			border-bottom: 1px solid #DBDBDB;
+
+		}
+		.loadmore{
+			visibility: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul id="waterfall">
+		</ul>
+		<div class="loadmore">这是看不到的部分</div>
+	</div>
+	<script type="text/javascript">
+
+		function isVisible($node){//判断元素是不是在可视范围内
+
+			var sTop = $(window).scrollTop();
+	        var wHeight = $(window).height();
+	        var thisTop = $node.offset().top;
+	        return (sTop + wHeight) > thisTop;
+		}
+
+		function addNode(res){//组装元素进文档中
+			var $node;
+			var str="";
+			//var defer=$.Deferred();链式调用可以研究研究
+			for(var i=0;i<res.length;i++){
+	            str += '<li class="item">';
+	            str += '<a href="'+ res[i].url +'"><img src="' + res[i].img_url + '" alt=""></a>';
+	            str += '<h4 class="header">'+ res[i].short_name +'</h4>';
+	            str += '<p class="paragraph">'+res[i].short_intro+'</p>';
+	            str += '</li>';
+			}
+			$node = $(str);
+        	$('#waterfall').append($node);
+        	$node.find("img").on("load",function(){
+        		//需要一个变量来控制
+        		waterfall($(this).parents("li"));
+        	});
+		}
+		function pageCols($node){//获得一个页面数组
+			var cols=[];
+			var nodeW=300;
+			var colnum=Math.floor($node.width()/nodeW);
+			for (var i=0;i<colnum;i++){
+				cols.push(0);
+			}
+			return cols;
+		}
+		function waterfall($node){//对新增的单个元素进行瀑布流布局
+
+			//找到最小的列，决定top
+			var min=Math.min.apply(null,cols);
+			//决定left
+			var index=cols.indexOf(min);
+
+			$node.css({
+				left:index*($node.outerWidth(true)),
+				top:min
+			});
+			cols[index]=min+$node.outerHeight(true);	
+			//扩展父元素的高度
+			$node.parent().height(Math.max.apply(null,cols));
+		}
+		//请求ajax封装
+		function request(){
+			if(isLoad){return;}
+			isLoad=true;
+	        $.ajax({
+	        	method:"get",
+	            url: 'http://platform.sina.com.cn/slide/album_tech',
+	            dataType: 'jsonp',
+	            jsonp:"jsoncallback",
+	            data: {
+	                app_key: '1271687855',
+	                num: perPageCount,
+	                page: curPage
+	            },
+	            complete:function(){
+		            isLoad=false;
+	            }
+	        }).done(function (ret) {
+
+	        	// 图片加载没有完成，导致元素高度不准确。
+	            if(ret && ret.status && ret.status.code == '0'){
+	               	var $node=addNode(ret.data);
+	               	++curPage;
+	            } else {
+	                console.log('error');
+	            }
+	        }).fail(function(){
+	        	alert("ajax失败");
+	        });
+		}
+		//初始化页面
+		function checkShow(){
+			if(isVisible($load)){
+				request();
+			}
+		}
+		//这是主体流程
+		var cols=pageCols($("#waterfall"));
+		var curPage = 1;
+	    var perPageCount = 10;//获得页面数组
+	    var isLoad=false;
+	    var $load=$(".loadmore");
+
+	    //初始化页面
+	    checkShow();
+	    //绑定事件,事件绑定有单独的队列
+	    $(window).on("scroll",function(){
+	    	checkShow();
+	    	console.log("load...");
+	    });
+
+		
+	</script>
+</body>
+</html>
