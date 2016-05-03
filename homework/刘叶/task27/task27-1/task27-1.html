@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>fadeIn&fadeOut轮播</title>
+</head>
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+    }
+    body{
+        background-color: #666;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    #wrap{
+        position: relative;
+        margin: 100px auto;
+        width: 480px;
+        height: 360px;
+
+    }
+    #ct {
+        position: relative;
+    }
+    #ct li {
+        position: absolute;
+        display: none;
+    }
+    #ct li img{
+        width: 480px;
+        height: 360px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    #bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    #bullet li{
+        display: inline-block;
+        width: 30px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    #bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content: '';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+    <div id="wrap">
+        <ul id="ct" class="clearfix">
+            <li><img src="img/haunted.png"></li>
+            <li><img src="img/mountains.png"></li>
+            <li><img src="img/route-66.png"></li>
+            <li><img src="img/seattle.png"></li>
+        </ul>
+        <a class="arrow pre" href="#"><</a>
+        <a class="arrow next" href="#">></a>
+        <ul id="bullet" class="clearfix">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var $ct = $('#ct'),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $items = $ct.children(),
+            $bullet = $('#bullet'),
+            imgCount = $ct.children().length;
+
+        var nowIdx = 0;
+        var isAnimate = false;
+        
+        $next.on('click', function(){
+            playNext();
+        });
+
+        $pre.on('click', function(){
+            playPre();
+        });
+
+        $bullet.find('li').on('click', function(){
+            var idx = $(this).index();
+            play(idx);
+        });
+
+        function playNext(){
+            play( (nowIdx+1)%imgCount );
+        }
+        function playPre(){
+            play( (imgCount+nowIdx-1)%imgCount );
+            //这里加imgCount是为了再保证nowIdx不为负值的同时,也不会影响取余么?
+        }
+        function play(idx){
+            if(isAnimate) return;
+            isAnimate = true;
+            $items.eq(nowIdx).fadeOut(600);
+            $items.eq(idx).fadeIn(600, function(){
+                isAnimate = false;
+            });
+            nowIdx = idx;
+            setBullet();
+        }
+        function setBullet(){
+            $bullet.children().removeClass('active').eq(nowIdx).addClass('active');
+            console.log('nowIdx:'+nowIdx);
+        }
+        function autoPlay(){
+            setInterval(function(){
+                playNext();
+            }, 2500);
+        }
+
+        play(0);
+        autoPlay();
+    </script>
+</body>
+</html>

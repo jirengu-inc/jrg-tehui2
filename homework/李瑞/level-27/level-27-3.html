@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播</title>
+	<style>
+	body,ul,li{
+		padding:0;
+		margin:0;
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+	li{
+		list-style: none;
+	}
+	#head{
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	#wrap{
+		width:400px;
+		height:300px;
+		position: relative;
+		margin:0 auto;
+		border:10px solid black;
+		border-radius: 20px;
+	}
+	.ct{
+		position: relative;
+		width:400px;
+		height:300px;
+		overflow: hidden;
+	}
+	.ct-img{
+		position:absolute;
+	}
+	.ct-img li{
+		float:left;
+	}
+	.ct-img img{
+		width:400px;
+		height:300px;
+	}
+	.arrow{
+		width:30px;
+		height:30px;
+		position: absolute;
+		top:50%;
+		margin-top:-15px;
+		border-radius: 30px;
+		text-align:center;
+		line-height: 30px;
+		background:#aaa;
+		opacity: 0.8;
+		display: none;
+	}
+	.arrow:hover{
+		background:white;
+		opacity: 1;
+	}
+	#wrap:hover >.arrow{
+		display: block;
+	}
+	.prev{
+		left:10px;
+	}
+	.next{
+		right:10px;
+	}
+	.btn{
+		position:absolute;
+		left:50%;
+		transform:translateX(-50%);
+		bottom:20px;
+	}
+	.btn>li{
+		width:20px;
+		height:10px;
+		border-radius:10px;
+		float:left;
+		margin-right: 10px;
+		background:#aaa;
+	}
+	.btn li.active{
+		background:white;
+	}
+
+	</style>
+</head>
+<body>
+	<div id="head">
+		<h1>无缝轮播(不改变DOM顺序)</h1>
+	</div>
+	<div id="wrap">
+		<div class="ct">
+			<ul class="ct-img">
+			<li><a href="javascript:void(0)"><img src="http://img1.cache.netease.com/catchpic/3/35/35ABB48BBD56C5EF7C3145B5F454CC43.jpg" alt="图片1"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://h.hiphotos.baidu.com/zhidao/pic/item/8cb1cb1349540923820e17559358d109b3de49b1.jpg" alt="图片2"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://i-7.vcimg.com/trim/9e31eba64ca3460d72688e7c96ecd741328963/trim.jpg" alt="图片3"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://p17.qhimg.com/bdm/1600_900_85/d/_open360/game1012/8.jpg" alt="图片4"></a></li>
+		</ul>
+		</div>
+		<a class="arrow prev"href="javascript:void(0)"><</a>
+		<a class="arrow next"href="javascript:void(0)">></a>
+		<ul class="btn">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	var $ct=$(".ct-img");
+	var $prev=$(".prev");
+	var $next=$(".next");
+	var $btn=$(".btn");
+	var num=0//初始值设置为0;
+	var key=false//设置状态锁
+	var imgWidth=$(".ct-img").find("img").width();//图片宽度
+	var imgNum=$(".ct-img").children().size();//图片个数
+
+	$ct.prepend($ct.children().last().clone())//先把最后一个放在第一
+	$ct.append($ct.children().eq(1).clone())  //再把第2个放在最后
+	var newImg=$(".ct-img").children().size()//
+	$ct.css({
+		"width":newImg*imgWidth,
+		"left":0-imgWidth
+	})
+
+	
+	$prev.on("click",function(){
+		playpre();
+	});
+
+	$next.on("click",function(){
+		playnext();
+	});
+
+	$btn.on("click","li",function(){
+		var tem=$(this).index();
+		if(tem>num){
+			playnext(tem-num)
+		}else if(tem<num){
+			playpre(num-tem);
+		}else if(tem===num){
+			autostop();
+			setTimeout(autoplay(),3000)
+		}
+	})
+
+	function playpre(tem){
+		var idx=tem ||1;
+		if(key===true){
+			return
+		}
+		key=true;
+		$ct.animate({
+			"left":"+="+(idx*imgWidth)
+		},1000,function(){
+			num=((imgNum+num-idx)%imgNum)
+			if(num===(imgNum-1)){
+				$ct.css({"left":0-imgWidth*imgNum})
+			}
+			key=false;
+			setButton(num);
+		})
+
+		
+	}
+
+	function playnext(tem){
+		var idx=tem ||1;
+		if(key ===true){
+			return;
+		}
+		key=true;
+		$ct.animate({
+			"left":"-="+(idx*imgWidth)
+		},1000,function(){
+			num=(num+idx)%imgNum;
+			if(num===0){
+				$ct.css({"left":0-imgWidth});
+			}
+			key=false;
+			setButton(num);
+		})
+	}
+	function setButton(tem){
+		$btn.children().removeClass('active');
+		$btn.children().eq(tem).addClass('active');
+	}
+	function autostop(){
+		clearInterval(auto);
+	}
+	function autoplay(){
+		auto=setInterval(function(){
+			playnext()
+		},2000)
+	}
+	
+</script>
+</html>
