@@ -63,6 +63,12 @@
     <script src="js/jquery-2.2.3.min.js" type="text/javascript"></script>
     <script type="text/javascript">
         waterfall(); 
+
+        //resize 侦测浏览器窗口变化，有变化重新计算和布局
+         $(window).on('resize',function () {
+             waterfall(); 
+        })      
+
         function waterfall () {     
             var itemW = $('.item').outerWidth(true),
         		windowW = $(window).width(),
@@ -93,9 +99,7 @@
                 colNowHeight[minCol] += $this.outerHeight(true);
         	});
         } 
-        $(window).on('resize',function () {
-             waterfall(); 
-        })
+
     </script>
 </body>
 </html>

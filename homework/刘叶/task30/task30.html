@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task30</title>
+    <style type="text/css">
+        body,.item.content{
+            margin: 0;
+            padding: 0;
+        }
+        .content{
+            position: relative;
+            margin: 10px;
+            font-size: 20px;
+            color: #fff;
+        }
+        .item{
+            margin-bottom: 10px;
+            margin-right: 10px;
+            width: 200px;
+            position: absolute;
+            transition: all 1s;
+            border-radius: 5px;
+        }
+        .h1{
+            height: 100px;
+            background-color: #f4b300;
+        }
+        .h2{
+            height: 200px;
+            background-color: #691BB8;
+        }
+        .h3{
+            height: 300px;
+            background-color:#f08080;
+        }
+        .h4{
+            height: 400px;
+            background-color: #006ac1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="item h1">1</div>
+        <div class="item h3">2</div>
+        <div class="item h2">3</div>
+        <div class="item h4">4</div>
+        <div class="item h2">5</div>
+        <div class="item h1">6</div>
+        <div class="item h2">7</div>
+        <div class="item h3">8</div>
+        <div class="item h4">9</div>
+        <div class="item h2">10</div>
+        <div class="item h1">11</div>
+        <div class="item h2">12</div>
+        <div class="item h4">13</div>
+        <div class="item h2">14</div>
+        <div class="item h1">15</div>
+        <div class="item h2">16</div>
+        <div class="item h4">17</div>
+        <div class="item h2">18</div>
+        <div class="item h1">19</div>
+        <div class="item h4">20</div>
+    </div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(window).on('resize', function(){
+        render();
+    });
+    function render(){
+        var ctWidth = $(window).width(),
+            itemWidth = $('.item').outerWidth(true),
+            colNum = Math.floor(ctWidth/itemWidth);
+
+        var colSumHeight = [];
+        for(var i=0;i<colNum;i++){
+            colSumHeight.push(0);
+        }
+        $('.item').each(function(){
+            var $node = $(this);
+            var idx = 0,
+                minSumHeight = colSumHeight[0];
+            for(var i=0;i<colSumHeight.length;i++){
+                if(colSumHeight[i]<minSumHeight){
+                    idx=i;
+                    minSumHeight=colSumHeight[i];
+                }
+            }
+            $node.css({
+                left:itemWidth*idx,
+                top:minSumHeight
+            });
+            colSumHeight[idx] = $node.outerHeight(true) + colSumHeight[idx];
+        })
+    }
+    render();
+</script>
+</body>
+</html>
