@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title> 
+	<style>
+		dd {
+			padding:0;
+			margin:0;
+		}
+		.ct:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		dt{
+			float: left;
+			width: 80px;
+			height:40px;
+		}
+		.inputBox {
+			height: 20px;
+			line-height: 20px;
+			padding-left: 10px;
+			margin-left: 10px;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+		}
+		p {
+			margin-left: 90px;
+		}
+		.bad {
+			border: 1px solid red;
+
+		}
+	</style>
+</head>
+<body>
+<h2>注册</h2>
+<dl class="ct">
+	<dt>用户名：</dt>
+	<dd><input id="name" class="inputBox" type="text" placeholder="用户名hunger以注册"></dd>
+	<p>只能是字母、数字、下划线，3-10个字符</p>
+	<dt>密码：</dt>
+	<dd><input id="pwd" class="inputBox" type="password" placeholder="密码"></dd>
+	<p>大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+	<dt>在输一次：</dt>
+	<dd><input id="pwd2" class="inputBox" type="password" placeholder="密码"></dd>
+	<p><button>注册</button></p>
+</dl>
+<script src="util.js"></script>
+<script>
+var username = document.querySelector("#name");
+var pwd = document.querySelector("#pwd");
+var pwd2 = document.querySelector("#pwd2");
+var btn = document.querySelector(".ct button");
+var ps = document.querySelectorAll(".ct p");
+var isLoad = false ;
+var isOk = 0;					//等于3 菜可点。
+username.addEventListener("blur",function(){
+	if (!formatName(username.value)){
+		addClass(username,"bad");
+		ps[0].innerText = "用户名格式不正确";		
+		return;
+	}
+
+	ajax({
+		url:"yanzheng.php",
+		type:"post",
+		data:{
+			username:username.value
+		},
+		success:function(ret){
+			onNameSuccess(ret);
+		},
+		errow:function(){
+			alert("系统出错");
+		},
+	});
+
+});
+
+function onNameSuccess(ret){
+	console.log(ret);
+	if (ret.result == 0) {
+		removeClass(username,"bad");
+		ps[0].innerText = "用户名可以使用";
+		isOk ++ ;
+	} else if (ret.result == 1) {
+		addClass(username,"bad");
+		ps[0].innerText = "用户名已被注册";
+	}
+}
+function formatName(str){
+	var reg = /^\w{3,10}$/;
+	return reg.test(str);
+}
+function formatPwd(str){
+	var num = 0 ;
+	if (!/^.{6,15}$/.test(str)) return false;
+	if (/[A-Z]/.test(str)) num++;
+	if (/[a-z]/.test(str)) num++;
+	if (/[0-9]/.test(str)) num++;
+	if (/-/.test(str)) num++;
+	if (num>=2) return true;
+}
+pwd.addEventListener("blur",function(){
+	if (formatPwd(pwd.value)){
+		removeClass(pwd,"bad");
+		ps[1].innerHTML = "<br/>";
+		isOk ++ ;
+	} else {
+		addClass(pwd,"bad");
+		ps[1].innerText = "密码格式错误";
+	}
+});
+pwd2.addEventListener("blur",function(){
+	if (pwd2.value === pwd.value){
+		removeClass(pwd2,"bad");
+		isOk ++ ;
+	} else {
+		addClass(pwd2,"bad");
+	}
+});
+btn.addEventListener("click",function(){
+	if (isLoad) return;
+	isLoad = true;
+	if (isOk != 3) return;
+	ajax({
+		url:"zhuce.php",
+		type:"post",
+		data:{
+			username:username.value,
+			password:pwd.value
+		},
+		success:function (ret){
+			console.log("注册完成");
+			alert(ret.result);
+		},
+		error:function(){
+			alert("出错了");
+		},
+	});
+
+
+
+})
+
+
+//--------------------------------------------------
+/*
+传参格式 
+{
+	url:"3.php",
+	type:"get",
+	data:{
+		key:value
+	},
+	sucess:function(){},
+	error:function(){},
+}
+返回格式
+{
+	result:0          //0:可以使用  1:已被使用
+}
+*/
+	
+</script>
+</body>
+</html> 
