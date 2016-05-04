@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQueryDemo</title>
+    <style>
+        .box{
+            position:relative;
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+
+    </style>
+    <script src="jquery-1.11.3/jquery.js"></script>
+</head>
+<body>
+<div class="box"></div>
+<select name="o" id="id">
+    <option value="man">nan</option>
+    <option value="feman">nv</option>
+</select>
+<button>dfsf</button>
+<script>
+    var box = $(".box");
+    $("button").on("click",function (e) {
+        box.animate({'width':'300px','height':'300px'},{setp:function (a, b) {
+            console.log("a,b: "+a+","+b);
+        }});
+    });
+    var sel = $("#id");
+</script>
+</body>
+</html>
