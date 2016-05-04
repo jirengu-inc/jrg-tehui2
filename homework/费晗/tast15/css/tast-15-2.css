@@ -225,13 +225,17 @@ p{
 	text-align: center;
 }
 #about ul{
-	/*
-	width: 1140px;
-	margin: 0 auto;
-	*/
 	margin-top: 80px;
 	margin-bottom: 100px;
 	}
+#about ul::before{
+	content: '';
+	position: absolute;
+	top: 400px;
+	bottom: 0;
+	background-color: #eee;
+	width: 2px;
+}
 #about li{
 	margin-bottom: 120px;
 	position: relative;
@@ -292,7 +296,6 @@ p{
 }
 #team .wrap-center{
 	text-align: center;
-
 }
 #team ul:after{
 	content: "";
@@ -349,7 +352,7 @@ p{
 #contact{
 	position: relative;
 	width: 100%;
-	height: 630px;
+	height: 690px;
 	-webkit-background-size: contain;
     -moz-background-size: contain;
     background-size: contain;
@@ -365,7 +368,7 @@ p{
 }
 #contact .fs{
 	margin: 0 auto;
-	margin-top: 75px;
+	margin-top: 50px;
 	width: 1140px;
 	position: relative;
 }
@@ -405,7 +408,7 @@ p{
 	border: none;
 	text-transform: uppercase;
 	background-color: #fed136;
-	margin-bottom: 100px;
+	margin-top: 30px;
 }
 #contact .fs .submit:hover{
 	background-color: #fec503;
