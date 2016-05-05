@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task7-2表单</title>
+  <style>
+  div{
+    margin:5px;
+    font-weight:bold;
+    font-size:16px;
+  }
+  </style>
+</head>
+<body>
+	<form action="">
+      <div>
+		    姓名：<input type="text" name="user" value="" placeholder="用户名" maxlength="10">
+      </div>
+      <div>
+        密码：<input type="password" name="password" value="" placeholder="请输入至少8位字母数字">
+      </div>
+      <div>
+        性别：<input type="radio" name="sex" value="male" checked>男
+              <input type="radio" name="sex" value="female">女
+      </div>
+      <div>
+          取向：<input type="radio" name="target" value="male">男
+              <input type="radio" name="target" value="female" checked>女
+      </div>
+      <div>
+          爱好；<input type="checkbox" name="dota" value="">dota
+              <input type="checkbox" name="travel" value="" checked>旅游
+              <input type="checkbox" name="pet" value="" checked="">pet 
+      </div>
+      <div>
+          评论：<textarea rows="10" cols="40" name="manywords" placeholder="ddd"></textarea>
+      </div>
+      <div>
+          我的car:<select name="mycar">
+        	 <option value="audi" selected="">Audi</option>
+        	 <option value ="volvo">Volvo</option>
+             <option value ="saab">Saab</option>
+             <option value="opel">Opel</option>
+        </select>
+        <button type="submit">提交</button>
+      </div>
+	</form>
+</body>
+</html>

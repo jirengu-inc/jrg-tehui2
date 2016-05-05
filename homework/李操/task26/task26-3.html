@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>加载更多|Ajax GET</title>
+</head>
+<style>
+	ul,li{
+		margin:0;
+		padding: 0;
+		font-family: Microsoft YaHei;
+	}
+	#wrap li{	
+	  list-style:none;
+	  border: 1px solid #32C3F4;
+	  padding: 10px;
+	  margin-top: 10px;
+	  cursor:pointer;
+	}
+	#load{
+		text-decoration: none;
+		color: #64D214;
+		width: 80px;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		border:1px solid #64D214;
+		display: block;
+		margin:10px auto;
+		padding: 5px;
+		border-radius: 3px;
+		transition: 0.2s;
+	}
+	#load img{
+		width: 25px;
+		height: 25px;
+	}
+	.hover{
+	  background: #32C3F4;
+	  color: #fff;
+	}
+</style>
+<body>
+	<ul id="wrap">
+		<li>內容1</li>
+		<li>內容2</li>
+	</ul>
+	<a href="#" id="load">加載更多</a>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$btn = $("#load");
+		$wrap = $("#wrap");
+		var start = 2; //初始li數目為2
+
+		$wrap.on('mouseenter','li', function(){
+		  $(this).addClass('hover');
+		}).on('mouseleave', 'li', function(){
+		  $(this).removeClass('hover');
+		});
+
+		$btn.on('click', function(e) {
+		   	  e.preventDefault();
+	   	      if($(this).data('ready')){ 
+			     return;
+			  }
+		   	  $(this).data('ready', true).html('<img src="loading3.gif" />'); 
+			  $.ajax({
+			    url: 'task26-3.php',
+			    dataType: 'json',
+			    type: 'get',
+			    data: {
+			      start: start,
+			      len: 5
+			    },
+			    success: function(ret){
+			    	whenSuccess(ret);
+			    },
+			    error: function(){
+			    	whenError();
+			    }
+			  });
+		});
+
+		function whenSuccess (ret){
+			  $btn.data('ready', false).text('加载更多');
+			  console.log(ret)
+			  if(ret.status == 1){
+			    append(ret.data);
+			    start += 5;
+			  }else{
+			    alert('failed to get data!');
+			  }
+			}
+
+		function whenError(){
+			  $btn.data('ready', false).text('加载更多');
+			  alert('Something Error!');
+			}
+
+		function append(arr) {
+		    for (var i = 0; i < arr.length; i++) {
+				$wrap.append('<li>' + arr[i] + '</li>');
+		    }
+		}
+
+	</script>
+</body>
+</html>

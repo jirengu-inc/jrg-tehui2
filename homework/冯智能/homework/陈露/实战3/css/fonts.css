@@ -1,0 +1,69 @@
+
+@font-face{
+	font-family: Droidserif;
+	src:url("../fonts/droidserif-italic-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: Droidserif;
+	src:url("../fonts/droidserif-italic-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: Droidserif;
+	src:url("../fonts/droidserif-italic-webfont.svg");/*SVG file for iPhoe*/
+}
+
+@font-face{
+	font-family: Kaushanscript;
+	src:url("../fonts/kaushanscript-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: Kaushanscript;
+	src:url("../fonts/kaushanscript-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: Kaushanscript;
+	src:url("../fonts/kaushanscript-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+
+
+@font-face{
+	font-family: Montserrat;
+	src:url("../fonts/montserrat-bold-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: Montserrat;
+	src:url("../fonts/montserrat-bold-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: Montserrat;
+	src:url("../fonts/montserrat-bold-webfont.svg");/*SVG file for iPhoe*/
+}
+
+
+@font-face{
+	font-family: Montserrat-Regular;
+	src:url("../fonts/montserrat-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: Montserrat-Regular;
+	src:url("../fonts/montserrat-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: Montserrat-Regular;
+	src:url("../fonts/montserrat-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+
+
+@font-face{
+	font-family: Robotoslab;
+	src:url("../fonts/robotoslab-regular-webfont.ttf");/*TTF file for CSS3 browsers*/
+}
+@font-face{
+	font-family: Robotoslab;
+	src:url("../fonts/robotoslab-regular-webfont.eot");/*EOT file for IE*/
+}
+@font-face{
+	font-family: Robotoslab;
+	src:url("../fonts/robotoslab-regular-webfont.svg");/*SVG file for iPhoe*/
+}
+

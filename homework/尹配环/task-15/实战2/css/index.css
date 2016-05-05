@@ -1,0 +1,197 @@
+/***********************通用**********************/
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+	color:#666;
+}
+.smalfont {
+	font-size:14px;
+	color: #777;
+}
+.wrap {
+	width: 1000px;
+	margin:0 auto;	
+}
+.line{
+	height: 1px;           					/*<hr>的用法，先设置个高度*/
+	border:none;
+	border-top:1px solid #eee;
+	margin-top:.7rem;
+	margin-bottom: .5rem;
+}
+.btn {
+	display: inline-block;
+	box-sizing: border-box;
+	padding:3px 10px;
+	margin:0;
+	border:1px solid #ccc;
+	border-radius: 3px;
+	cursor: pointer;
+	text-align: center;
+}
+.btn:hover {
+	background-color: #ccc;
+}
+/***********************顶部菜单**********************/
+#menu {
+	line-height: 50px;
+}
+#menu>a {
+  float: left;
+  font-size: 1.3rem;
+  color: black;
+  line-height: 50px;
+  margin-right:1.5rem;
+}
+#menu>ul {
+	margin:0;
+	line-height: 50px;
+}
+#menu>ul>li {
+	padding-right: 1.2rem;
+}
+#menu>ul>li {
+	display:inline-block;
+}
+#menu>ul>li>a:hover {
+	color: black;
+}
+
+#menu>ul>li:first-child {						/*我的作品*/
+	position: relative;     					/*给子菜单提供定位基准*/
+}
+#menu>ul>li:first-child:hover .dropmenu {
+	display: block;										/*鼠标滑过显示子菜单*/
+}
+.caret {														/*向下的小箭头*/
+	display: inline-block;
+	width: 0;
+	height: 0;
+	border-top:4px solid black;
+	border-left:4px solid transparent;
+	border-right: 4px solid transparent;
+  padding-top: 2px;
+}
+/***********************下啦菜单**********************/
+.dropmenu {
+  display: none; 
+  position: absolute;								/*绝对定位脱离文档流*/
+  left: -1rem;
+  width: 11rem;
+  line-height: 1.8rem;
+  word-spacing: 3px;
+  padding-top:5px;
+  padding-left:0;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  background-color: white;
+}
+.dropmenu>li>i {
+	margin-left: 1.2rem;								/*子菜单左留白*/
+}
+.dropmenu>li:hover {
+	background-color: #ccc;
+}
+.dropmenu>li:last-child {			/*最后一个li的字号*/
+	font-size: .7rem;
+	color:#999;
+}
+.dropmenu>li:last-child:hover {
+	background-color: inherit;				/*去掉最后一个li的hover效果*/
+}
+/***********************header**********************/
+#header {
+	line-height: 2;
+	padding:2rem 0;
+	background-color: #B84D45;
+}
+#header h1,#header p {
+	color:white;
+	margin: 0;
+}
+#header h1 {
+	font-size: 2.5rem;
+}
+#header p {
+	font-size: 1.1rem;
+}
+/***********************nav**********************/
+#nav {
+	margin-top:2.5rem;
+}
+#nav>.wrap {
+	padding:.5rem 0;
+	border-radius: 5px;
+	background-color: #eee;
+}
+#nav a {
+	padding-left:1rem;
+	color: red;
+}
+#nav a:hover,#copyright a:hover{
+	color:#B84D45;
+	text-decoration: underline;
+}
+
+/***********************photolist**********************/
+
+#photolist {
+
+}
+#photolist .items {
+	padding:0;
+	margin-right: -20px;           /*相当于父元素增加20px；*/
+	/*overflow: hidden;*/						/*可以隐藏多余的部分*/
+}
+.items:after {
+	content: "";
+	display:block;
+	clear: both;
+}
+.items>li {
+	box-sizing: border-box;
+	float: left;
+	width: 320px;                 	/*（1000-20*2）/3 */
+	margin-right: 20px;							/*最后一个元素右面会多出20px；父元素设置-margin让留出20px；*/
+	margin-bottom: 20px;
+	padding-top:5px;
+	padding-bottom: 33px;
+	text-align: center;
+	border:1px solid #ccc;
+	border-radius: 5px;
+}
+.items>li img {
+	width: 310px;
+}
+.items>li>a:hover {
+	opacity: .7;
+}
+.items>li>h2,.items>li>p {
+	color:#555;
+}
+/***********************footer**********************/
+#footer {
+	margin-top: 35px;
+	padding: 20px;
+	background-color: #B84D45;
+	text-align: center;
+	color:white;
+}
+#footer h2 {
+	margin-bottom: 10px;
+}
+#footer p {
+	margin-top: 10px;
+}
+/***********************copyright**********************/
+#copyright {
+	text-align: center;
+}
+#copyright a {
+	color:red;
+}
+
+
+

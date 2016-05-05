@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流</title>
+    <style>
+        #waterfall {
+            position: relative;
+        }
+        #waterfall li {
+            position: absolute;
+            width: 200px;
+            margin: 5px;
+            list-style: none;
+            transition: all 1s;
+        }
+        #waterfall li.h1 {
+            height: 200px;
+            background: #f4b300;
+        }
+        #waterfall li.h2 {
+            height: 400px;
+            background: #006ac1;
+        }
+        #waterfall li.h3 {
+            height: 300px;
+            background: #691bb8;
+        }
+    </style>
+    <script src="../hw26/jquery.js"></script>
+</head>
+<body>
+<ul id="waterfall">
+    <li class="h1">1</li>
+    <li class="h2">2</li>
+    <li class="h3">3</li>
+    <li class="h1">4</li>
+    <li class="h1">5</li>
+    <li class="h2">6</li>
+    <li class="h2">7</li>
+    <li class="h3">8</li>
+    <li class="h1">9</li>
+    <li class="h2">10</li>
+    <li class="h2">11</li>
+    <li class="h2">12</li>
+    <li class="h3">13</li>
+    <li class="h3">14</li>
+</ul>
+<script>
+    var waterfall = {
+        $item: $("#waterfall li"),
+        itmWidth: $("#waterfall li").outerWidth(true),
+        windowWidth: $(window).width(),
+        count: 0,
+        heightArr: []
+    };
+
+    waterfall.resetArr = function() {
+        this.windowWidth = $(window).width();
+        this.count = parseInt(this.windowWidth / this.itmWidth);
+        this.heightArr = [];
+        for (var i = 0; i < this.count; i++) {
+            this.heightArr.push(0);
+        }
+    };
+
+    waterfall.placeItem = function() {
+        this.resetArr();
+        this.$item.each(function() {
+            var minHeight = Math.min.apply({}, waterfall.heightArr);
+            var idx = waterfall.heightArr.indexOf(minHeight);
+            $(this).css({
+                "top": minHeight,
+                "left": waterfall.itmWidth * idx
+            });
+            waterfall.heightArr[idx] += $(this).outerHeight(true);
+        });
+    };
+
+    waterfall.init = function() {
+        this.placeItem();
+    };
+
+    waterfall.init();
+
+    $(window).on("resize", function() {
+        waterfall.placeItem();
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task27-4|全屏轮播</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<style type="text/css">
+	html,body,ul,li{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	html, body,.carousel,.img-ct{
+		height: 100%;
+		width: 100%;
+	}
+	.carousel{
+		position: relative;
+		overflow: hidden;
+	}
+	.carousel .img-ct{
+		position: absolute;
+	}
+	.carousel .img-ct:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.carousel .item{
+		float: left;
+		position: relative;
+		height: 100%;
+	}
+	.carousel .item .bgimg{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		/*background: url('../img/bg.jpg') no-repeat center center;*/
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-size: cover;
+	}
+	.carousel .item .content{
+		font-family: Microsoft YaHei;
+		position: absolute;
+		width: 300px;
+		height: 300px;
+		border-radius: 300px;
+		background-color: rgba(0,0,0,0.3);
+		color: #fff;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%,-50%);
+		text-align: center;
+	}
+	.carousel .item .content h2{
+		font-size: 30px;
+		margin-top: 120px;
+	}
+	.carousel .item .content p{
+		font-size: 20px;
+	}
+	.carousel .bullet{
+		position: absolute;
+		bottom: 20px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.carousel .bullet:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.carousel .bullet li{
+	    width: 24px;
+	    height: 24px;
+	    border-radius: 24px;
+	    line-height: 24px;
+	    text-align: center;
+	    font-size: 14px;
+	    font-family: Microsoft YaHei;
+	    color: #fff;
+	    background: #686767;
+	    opacity: 0.5;
+	    float: left;
+	    margin: 0 8px; 
+	    cursor: pointer;		
+	}
+	.carousel .bullet li.active{
+	    background: #1E1E1E;
+	    opacity: 0.7;
+	}
+</style>
+</head>
+<body>
+	<div class="carousel">
+	    <ul class="img-ct">
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-1.jpg"></div>
+	    		<div class="content">
+	    			<h2>WHEN IT RAINS</h2>
+	    			<p>look for rainbows</p>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-2.jpg"></div>
+	    		<div class="content">
+	    			<h2>WHEN IT'S DARK</h2>
+	    			<p>look for stars</p>
+	    		</div>
+	    	</li>	    	
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-3.jpg"></div>
+	    		<div class="content">
+	    			<h2>THE WORLD IS BIG</h2>
+	    			<p>big but a heart</p>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-4.jpg"></div>
+	    		<div class="content">
+	    			<h2>GO FAR</h2>
+	    			<p>far away but a dream</p>
+	    		</div>
+	    	</li>
+	    	<li class="item">
+	    		<div class="bgimg" bgimg-url="http://7xrvo9.com1.z0.glb.clouddn.com/business/black-and-white-cup-hand-mug.jpg"></div>
+	    		<div class="content">
+	    			<h2>JUST NOW</h2>
+	    			<p>have a try</p>
+	    		</div>
+	    	</li>	 
+	    </ul>
+	    <ul class="bullet">
+	    	<li class="active">1</li>
+	    	<li>2</li>
+	    	<li>3</li>
+	    	<li>4</li>
+	    	<li>5</li
+	    </ul>
+	</div>
+	<script type="text/javascript">
+		var $imgct = $('.img-ct'),
+			$items = $imgct.children(),
+			$bullet = $('.bullet'),
+			itemWidth = $(window).width(),
+			itemNum = $items.length,//item数量，方便拓展
+			ready = false, //设置状态锁
+			nowView = 0; //当前显示第几个item
+
+		$imgct.prepend($items.last().clone());
+		$imgct.append($items.first().clone());
+
+		$imgct.find('.item').css('width',itemWidth);
+		$imgct.find('.bgimg').css('width',itemWidth);
+		
+		var realitemNum = $imgct.children().length;
+
+		$imgct.css(
+			{
+				left: 0 - itemWidth,
+				width: itemWidth * realitemNum
+			}); 
+
+		autoPlay();//自动轮播
+		addUrl(1);//先加载出来第一张背景图
+
+		// $bullet.find('li').on('mouseover',function () { //mouseover延时处理的问题尚待解决
+		$bullet.find('li').on('click',function () {
+			var idx = $(this).index();
+			if (idx < nowView) {
+				playPre(nowView-idx);
+			}
+			else if (idx > nowView) {
+				playNext(idx-nowView);
+			}
+		});
+
+		function autoPlay () {
+			clock = setInterval(function(){
+				playNext();
+			}, 3000);	
+		}	
+
+		function stopAuto () {
+				 clearInterval(clock) ;
+			}	
+
+		function playPre (idx) {
+			var idx = idx || 1;//有传入参数取此参数，无则默认取1
+			if(!ready){
+				ready = true;
+				addUrl(nowView);
+				$imgct.animate({ left:'+=' + (idx*itemWidth) },function () {
+					nowView = (itemNum+nowView-idx)%itemNum;
+					if(nowView === (itemNum-1)){
+						$imgct.css({left: 0-itemWidth*itemNum});
+					}
+					bulletActive();
+					ready = false;
+				});
+			}			
+		}
+
+		function playNext (idx) {
+			var idx = idx || 1;
+			if(!ready){
+				ready = true;
+				addUrl(nowView+2);
+				$imgct.animate({ left:'-=' + (idx*itemWidth) },function () {
+					nowView = (nowView+idx)%itemNum;
+					if(nowView === 0){
+						$imgct.css({left: 0 - itemWidth});
+						nowView = 0;
+					} 
+					bulletActive();
+					ready = false;
+				});		
+			}	
+		}
+
+		function bulletActive () {
+			 $bullet.children().removeClass("active").eq(nowView).addClass("active");
+		}
+
+		//提高性能，避免一下子加载所有图片造成页面卡滞
+		function addUrl(idx){
+			var $node = $imgct.children().eq(idx)
+				$bgImg = $node.find('.bgimg'),
+			$bgImg.css('background-image', 'url('+ $bgImg.attr('bgimg-url') +')');
+		}
+	</script>
+</body>
+</html>

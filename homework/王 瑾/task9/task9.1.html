@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>JS Bin</title>
+<style type="text/css">
+    a{
+      text-decoration:none;
+      color:black;
+    }
+    a:hover{
+      color:purple;
+    }
+   ul{
+    margin:0;
+    padding:0;
+  }
+   ul li{
+      display:inline-block;
+      list-style:none;
+      font-family:"Microsoft Yahei";
+      height:40px;
+      padding-left:30px;
+      line-height:40px;
+ background:url(http://csssprites.com/results/4206cdfbe88a303bf0c10c7bf85368e9/result.png) 0 0 no-repeat;
+    }
+  .forward{
+    background-position: 0px 0px;
+  }
+  .forward:hover{
+    background-position: -1px -135px;
+    cursor:pointer;
+  }
+  .start{
+    background-position: 0px -45px;
+  }
+  .start:hover{
+    background-position: -5px -186px;
+    cursor:pointer;
+  }
+  .stop{
+    background-position: -5px -90px;
+  }
+  .stop:hover{
+    background-position: -1px -228px;
+    cursor:pointer;
+  }
+      </style>
+  </head>
+  <body>
+    <ul>
+    <li class="forward"><a href="#">前进</a></li>
+    <li class="start"><a href="#">开始</a></li>
+    <li class="stop"><a href="#">停止</a></li>
+  </ul>
+</body>
+</html>

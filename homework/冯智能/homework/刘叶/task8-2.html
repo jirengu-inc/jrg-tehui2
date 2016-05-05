@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task8-2</title>
+</head>
+<style type="text/css">
+    *{
+        margin: 0;
+        padding: 0;
+        font-family: '微软雅黑', Helvetica, Arial, sans-serif;
+    }
+    .nav{
+        background-color:#000000;
+        opacity: 0.88;
+        margin-bottom: 30px;
+    }
+    .nav li{
+        display: inline-block;
+        list-style: none;
+        margin-top: 0px;
+        margin-left: 20px;
+        padding: 10px 20px;
+        font-size: 20px;
+    }
+    .nav a{
+        text-decoration: none;
+        color: #008000;
+    }
+    .title{
+        color: #228b22;
+        font-size: 30px;
+        text-align: center;
+    }
+    .desc{
+        color: #808080;
+        font-size: 14px;
+        margin-bottom: 20px;
+    }
+    .hr{
+        border: 1px dashed #808080;
+        margin-top:5px;
+        margin-bottom: 20px;
+    }
+    #content>p{
+        margin-bottom: 20px;
+        text-indent: 2em;
+    }
+    #content>h3{
+        text-indent: 1em;
+    }
+    /*tree这里,是需要树状折叠菜单还是就是这样的啊?如果是需要可以点开的,那我等于偷懒了O(∩_∩)O~*/
+    .tree{
+        text-indent: 2em;
+    }
+    .tree a{
+        color: #32cd32;
+    }
+    .open ul{
+        margin: 5px auto;
+        text-indent: 4em;
+    }
+    .open li{
+        margin: 3px auto;
+        color: #808080;
+    }
+    .tree > li:before {
+        content: "+ ";
+    }
+
+    .tree li.open:before {
+        content: "- ";
+    }
+
+    li.has-child:nth-child(2) ul {
+        display: none;
+    }
+</style>
+<body>
+<div id="header">
+    <ul class="nav">
+        <li><a href="http://www.jirengu.com/">首页</a></li>
+        <li><a href="http://www.jirengu.com/app/teacher/index">简介</a></li>
+        <li><a href="http://jscode.me/works">作品</a></li>
+        <li><a href="http://www.jirengu.com/index.php?app=classroom&mod=About&act=about">关于</a></li>
+    </ul>
+</div>
+<div id="content">
+    <h1 class="title">前端学习</h1>
+    <p class="desc">这是我的前端学习笔记</p>
+    <h3>第一章</h3>
+    <div class="hr"></div>
+    <p>不要慌,知乎的应届生,都是一个人一天,就可以写出整个京东所有页面
+        ,大神都在谈笑风生,too young,too simple<span class="text-less"> 哈哈哈</span> 哈哈哈
+    </p>
+    <h3>第二章</h3>
+    <div class="hr"></div>
+    <p>这是我的前端学习笔
+        记这是我的前端学习笔
+        记这是我的<span class="text-less"> 特别的</span>前端学习笔记这是
+        我的前端学习,笔记这是我, 的前端,
+        学习笔记
+    </p>
+    <ul class="tree">
+        <li class="open has-child">
+            <a href="#">记笔记</a>
+            <ul>
+                <li>jscode</li>
+                <li>博客</li>
+                <li>Github</li>
+            </ul>
+        </li>
+        <li class="has-child">
+            <a href="#">做作业</a>
+            <ul>
+                <li>jscode</li>
+                <li>博客</li>
+                <li>Github</li>
+            </ul>
+        </li>
+        <li><a href="#">多思考</a></li>
+        <li><a href="#">多练习</a></li>
+    </ul>
+</div>
+<div id="footer"></div>
+
+</body>
+</html>

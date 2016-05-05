@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-27-4</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta http-equiv="refresh" content="0;url=http://www.erheizi.com/jirengu/task-27/task-27-4.html">
+<link href="" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+	html,body,div,ul,li{		
+		padding: 0;
+		margin: 0;
+	}
+	li{
+		list-style-type: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	html,body,.carousel,.wrap,.wrap li{
+		width: 100%;
+		height: 100%;
+	}
+	.carousel{
+		position: relative;
+		overflow: hidden;
+	}
+	.wrap{
+		position: absolute;
+	}
+	.wrap li{
+		float: left;
+		background-size: cover;
+		background-repeat: no-repeat;
+		opacity: 0.8;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+	.opt{
+		position: absolute;
+		bottom: 100px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.opt:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.opt li{
+		float: left;
+		margin: 0 10px;
+		width: 50px;
+		height: 8px;
+		background-color: #999;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+	li.active{
+		background-color: #E04C4C;
+	}
+</style>
+</head>
+<body>
+    <div class="carousel">
+    	<ul class="wrap"></ul>
+    	<ul class="opt"></ul>  	
+    </div>
+    <script>
+		$.ajax({
+			url: "task-27-4_get.php",
+			type: "get",
+			data: {
+				"status": "1"
+			},
+			success: function(data) {
+				if (data && JSON.parse(data)[0].status === "success") {
+					var json = JSON.parse(data)[1];
+					var num = JSON.parse(data)[2].num;
+					$(".wrap").empty().append(addData(json));
+					$(".opt").empty().append(optData(num));
+				}
+			},
+			error: function(data) {
+				console.log("error");
+			},
+			complete: function() {
+				listCt();
+			}
+		});
+
+		function addData(json) {
+			var str = "";
+			for (var key in json) {
+				str +=
+					"<li data-bg-img=" + json[key] + ">" + '<a href="#"></a></li>';
+			}
+			return str;
+		}
+
+		function optData(num){
+			var str="";
+			for(var i=0;i<num;i++){
+				str +="<li></li>";
+			}
+			return str;
+		}
+
+		 //全部都是全局变量
+		function listCt() {
+			$wrap = $(".wrap");
+			$child = $wrap.children();
+			imgWidth = $(window).width();
+			imgCount = $child.length;
+			$wrap.append($child.first().clone());
+			$wrap.prepend($child.last().clone());
+			var imgRealCount = $wrap.children().length;
+			$wrap.css({
+				left: -imgWidth,
+				width: imgRealCount * imgWidth
+			});
+			$(".wrap li").css({
+				width: imgWidth
+			});
+			$(".opt li").removeClass("active").eq(0).addClass("active");
+			var dataImg = $wrap.children().eq(1).data("bgImg");
+			$wrap.children().eq(1).css({
+				"background-image": "url(" + dataImg + ")"
+			});
+			$opt = $(".opt li");
+			wrapIdx = 0;
+			$opt.on("click", function() {
+				var idx = $(this).index();
+				if (idx > wrapIdx) {
+					playNext(idx - wrapIdx);
+				} else if (wrapIdx > idx) {
+					playPre(wrapIdx - idx);
+				}
+			});
+
+		}
+
+		start();
+		var clock;
+
+		function start() {
+			clock = setInterval(function() {
+				playNext(1);
+			}, 3000)
+		}
+		function stop() {
+			clearInterval(clock);
+		}
+
+		function playNext(idx) {
+			if (!$wrap.is(":animated")) {
+				stop();
+				animateNext(idx);
+				bgImgData(idx);
+			}
+		}
+
+		 //这个只管内容，不管动画切换
+		function bgImgData(idx) {
+			var long = idx; //必须传入参数；			
+			var idx = idx;
+			if (wrapIdx === -1 || wrapIdx === (imgCount-1)) {
+				$dataBgImg = $wrap.children().eq(0).data("bgImg");
+				$wrap.children()
+					.eq(0)
+					.css({
+						"background-image": "url(" + $dataBgImg + ")"
+					});
+				$dataBgImg = $wrap.children().eq(imgCount).data("bgImg");
+				$wrap.children()
+					.eq(imgCount)
+					.css({
+						"background-image": "url(" + $dataBgImg + ")"
+					});
+				$dataBgImg = $wrap.children().eq(imgCount + 1).data("bgImg");
+				$wrap.children()
+					.eq(imgCount + 1)
+					.css({
+						"background-image": "url(" + $dataBgImg + ")"
+					});
+			} else if (long > 1) {
+				for (var i = 1; i <= long; i++) {
+					$dataBgImg = $wrap.children().eq(i + 1).data("bgImg");
+					$wrap.children()
+						.eq(i + 1)
+						.css({
+							"background-image": "url(" + $dataBgImg + ")"
+						});
+				}
+			} else {
+				$dataBgImg = $wrap.children().eq(wrapIdx + 1).data("bgImg");
+				$wrap.children()
+					.eq(wrapIdx + 1)
+					.css({
+						"background-image": "url(" + $dataBgImg + ")"
+					});
+			}
+
+		}
+
+		 //这个只管动画切换，不管内容
+		function animateNext(idx) {
+			var long = idx; //必须传入参数；
+			wrapIdx += long;
+			if (long === (imgCount - 1)) {
+				$wrap.animate({
+					left: 0
+				}, 1000, function() {
+					$wrap.css({
+						left: 0 - imgWidth * imgCount
+					});
+				});
+
+			} else if (wrapIdx === imgCount) {
+				wrapIdx = 0;
+				$wrap.animate({
+					left: 0 - imgWidth * (imgCount + 1)
+				}, 1000, function() {
+					$wrap.css({
+						left: -imgWidth
+					});
+
+				});
+
+			} else {
+
+				$wrap.animate({
+					left: "-=" + imgWidth * long
+				}, 1000);
+			}
+			$opt.removeClass("active").eq(wrapIdx).addClass("active");
+			start();
+		}
+
+		function playPre(idx) {
+			if (!$wrap.is(":animated")) {
+				stop();
+				animatePre(idx);
+				bgImgData(idx);
+				start();
+			}
+		}
+
+		//这个只管动画切换，不管内容
+		function animatePre(idx) {
+			var long = idx;
+			wrapIdx -= long;
+			if (wrapIdx === -1) {
+				$wrap.animate({
+					left: 0
+				}, 1000, function() {
+					$wrap.css({
+						left: -imgWidth * imgCount
+					});
+					wrapIdx = imgCount - 1;
+				});
+			} else if (long === (imgCount - 1)) {
+				$wrap.animate({
+					left: -imgWidth * (imgCount + 1)
+				}, 1000, function() {
+					$wrap.css({
+						left: -imgWidth
+					});
+					wrapIdx = 0;
+				});
+			} else {
+				$wrap.animate({
+					left: "+=" + imgWidth * long
+				}, 1000);
+			}
+			$opt.removeClass("active").eq(wrapIdx).addClass("active");
+		}
+    </script>
+</body>
+</html>

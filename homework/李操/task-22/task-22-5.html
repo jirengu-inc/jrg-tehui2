@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-22-5</title>
+	<style>
+		body,html{
+			margin: 0;
+			padding: 0;
+			width: 100%;
+			height: 100%;
+		}
+		a{
+			text-decoration: none;
+		}
+		.cover{
+			display: none;
+			background-color: #333;
+   			opacity: 0.5;
+   			width: 100%;
+   			height: 100%;
+   			position: fixed;
+            top: 0;
+            left: 0;
+   			z-index: 1;
+		}
+		.box{
+            width: 400px;
+			position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 2px;
+            background: #fff;
+            z-index: 2;
+		}
+		.header {
+            position: relative;
+            height: 40px;
+            line-height: 40px;
+            border-bottom: 1px solid #ccc;
+        }
+        h3{
+        	margin: 0;
+        	padding: 0;
+        }
+        .xClose{
+            position: absolute;
+            right: 20px;
+            top: 10px;
+            line-height: 1;
+        }
+        .content{
+        	border-bottom: 1px solid #ccc;
+        }
+        .btn{
+        	float: right;
+        	margin: 10px;
+        }
+	</style>
+</head>
+<body>
+	<button class="btn1">Clich Me</button>
+		<div class="cover close">
+			<div class="box">
+				<div class="header">
+					<h3>我是标题</h3>
+					<a href="#" class="xClose">X</a>
+				</div>
+				<div class="content">
+					<p>我是内容</p>
+					<p>我是内容</p>
+				</div>
+				<div class="footer">
+					<a href="#" class="btn cancel">取消</a>
+					<a href="#" class="btn">确认</a>
+				</div>
+			</div>
+		</div>
+</body>
+
+<script>
+	var btnClick = document.querySelector('.btn1'),
+		modal = document.querySelector('.cover');
+
+	btnClick.addEventListener('click', function (e) {
+		 display();
+	});
+
+	modal.addEventListener('click', function (e) {
+		  if( hasClass(e.target, 'close') || hasClass(e.target, 'cancel') || hasClass(e.target, 'xClose') ){
+		  	close();
+		  }
+	});
+
+ 	function hasClass (ele, cls){
+            return ele.className.match(new RegExp('\\b'+cls+'\\b'));
+    }
+	function display(){
+		modal.style.display = "block";
+	}
+	function close(){
+		modal.style.display = "none";
+	}
+</script>
+</html>

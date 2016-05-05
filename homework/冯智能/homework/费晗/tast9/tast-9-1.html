@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>tast-9-1</title>
+<style type="text/css">
+/*插入雪花背景图片*/
+ul.button .icon{
+	background: url(http://csssprites.com/results/8a2a275ede367a981f00a8e52d0a6b49/result.png) 0 0 no-repeat;
+	padding: 0 32px;
+}
+ul{
+ 	list-style-type: none;
+ }
+.button li{
+	display: inline-block;
+}
+.button li a{
+	text-decoration: none;
+    color: #000;
+	font-family: "微软雅黑",sans-serif;
+	font-size: 22px;
+}
+/*定位雪花背景图片*/
+ul.button .next{
+	background-position: 0 -2px;
+}
+ul.button .start{
+	background-position: 2px -45px;
+}
+ul.button .stop{
+	background-position: -3px -92px;
+}
+/*定位鼠标经过相对应的雪花背景图片时的样式*/
+ul.button .next:hover{
+	background-position: -1px -137px;
+	color: #a65dbf;
+}
+ul.button .start:hover{
+	background-position: -3px -186px;
+	color: #a65dbf;
+}
+ul.button .stop:hover{
+	background-position: 1px -230px;
+	color: #a65dbf;
+}
+</style>
+</head>
+<body>
+  <ul class="button">
+    <li><a class="icon next" href="#">前进</a></li>
+    <li><a class="icon start" href="#">开始</a></li>
+    <li><a class="icon stop" href="#">停止</a></li>
+  </ul>
+</body>
+</html>

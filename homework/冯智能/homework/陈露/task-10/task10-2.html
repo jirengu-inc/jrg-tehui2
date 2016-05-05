@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task10-2背景图</title>
+	<style>
+	   .box{
+	   	width: 320px;
+	   	height: 180px;
+	   	border:1px solid #ccc;
+	   	position: relative;
+	   	margin: 30px;
+	   }
+	   .first::before{
+	    content: "";
+	    border-bottom:20px solid #ccc;
+	    border-left: 20px solid transparent;
+	    border-right:20px solid transparent;
+        position: absolute;
+        top: -20px;
+        left: 20px;
+	   }
+	   .second::before{
+	   	content: "";
+	   	border-top:20px solid red;
+	    border-bottom:20px solid transparent;
+	    border-left: 20px solid transparent;
+	    border-right:20px solid red;
+        position: absolute;
+        right: -1px;  
+        top:-1px;
+	   }
+	   .third div{
+	    width: 0px;
+		height: 0px;
+		border-width: 0px 20px 20px 20px;
+   		border-style: solid;
+		border-color: #CCC transparent;
+		position:absolute;
+		top: -20px;
+		left: 20px;
+	   }
+       .third div:last-child{
+        border-color: #fff transparent;
+		top: -18px;
+       }
+	</style>
+</head>
+<body>
+  <div class="box first"></div>
+  <div class="box second"></div>
+  <div class="box third">
+  	   <div></div>
+  	   <div></div>
+  </div>
+</body>
+</html>

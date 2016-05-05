@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>append$prepend挪动DOM轮播</title>
+</head>
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+    }
+    body{
+        background-color: #666;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    .wrap{
+        position: relative;
+        margin: 100px auto;
+        width: 400px;
+        height: 300px;
+        overflow: hidden;
+    }
+    .wrap .ct {
+        position: absolute;
+        /*如果这里不设置absolute的话,图片队列不能横过来了*/
+    }
+    .ct li img{
+        float: left;
+        width: 400px;
+        height: 300px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    .bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .bullet li{
+        display: inline-block;
+        width: 25px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    .bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content:'';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+<div class="wrap">
+    <ul class="ct clearfix">
+        <li><img data-img='0' src="img/tifa.png"></li>
+        <li><img data-img='1' src="img/cloud.png"></li>
+        <li><img data-img='2' src="img/yuffie.png"></li>
+        <li><img data-img='3' src="img/barret.png"></li>
+    </ul>
+    <a class="arrow pre" href="#"><</a>
+    <a class="arrow next" href="#">></a>
+    <ul class="bullet clearfix">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        var $wrap = $('.wrap'),
+            $ct = $('.ct'),
+            $pre = $('.pre'),
+            $next = $('.next'),
+            $items = $ct.children(),
+            $bullet = $('.bullet'),
+            imgWidth = $items.width(),
+            imgCount = $ct.children().length;
+
+        var isAnimate = false,//状态锁
+            nowIdx = 0;//这里可以控制一开始的时候,需要展现哪个图
+
+        $ct.css({width: imgWidth * imgCount});
+
+        $pre.on('click',function () {
+            playPre();
+        });
+        $next.on('click',function () {
+            playNext();
+        });
+
+        $bullet.find('li').on('click',function(){
+            var idx = $(this).index();
+            if (idx < nowIdx){
+                playPre(nowIdx-idx);
+            }
+            else if (idx > nowIdx){
+                playNext(idx-nowIdx);
+            }
+        });
+
+        function playPre (idx) {
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                //一开始只考虑到了点击pre和next时prepend last 和 append first,
+                // 但是这样每次只能满足移动一次,所以就用了遍历,正好符合挪动的次数
+                for(var i = 0;i < idx;i++){
+                    $ct.children().last().prependTo($ct);
+                }
+                $ct.css('left',-(imgWidth*idx));
+                //因为.wrap是一个镜头，是不动的，这个镜头一开始对准了nowIdx图,要发生向前移动时，
+                //会先抽走.ct的最后一个li的DOM，添加到最前面的时候，相当于将原来镜头对准的图向后顺延了一样，
+                //其实这里就已经够了,css操作和animate操作都可以不要了,就是动画效果是闪现的,为什么是闪现的?
+                //这类似插队一样，后面的跑到前面来，本来一个固定的镜头看着你，就会因为顺位变化，镜头就会看着你的前面一个人
+                //但是这种效果是是DOM操作，特别快，造成闪现，所以需要用.css这种也很快的方法给修补回来
+                //这种修补类似与把你的整个队伍向前推动一个距离，让你再次回到镜头下面，一切发生的太快，镜头依旧看着你,仿佛没有插队
+                //接下来运行到animate操纵整个队伍，向右边缓慢移动，让镜头慢慢对准你前面的那一位，就出现了一个过渡的动画
+                $ct.animate({ left:'+=' + (imgWidth*idx) },function () {
+                    nowIdx = (imgCount+nowIdx-idx)%imgCount;
+                    setBullet();
+                    isAnimate = false;
+                });
+            }
+        }
+
+        function playNext(idx){
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                $ct.animate({ left:'-=' + (imgWidth*idx) },function () {
+                    nowIdx = (nowIdx+idx)%imgCount;
+                    for(var i = 0; i < idx; i++){
+                        $ct.children().first().appendTo($ct);
+                    }
+                    $ct.css('left',0); 
+                    //相当于animate把整个图片队列向左边推动之后,需要重新用css操作DOM极快的把队伍拉回来
+                    //如果不拉回来,镜头里面就会显示,动画效果挪动到你需要的图片上,但是瞬间闪到下idx个图上
+                    //因为DOM在appendTo之后,镜头会对准重组之后的队列里面本应该对着的下idx个图,如果不修正,图就会跑没了
+                    //为了避免这种状况,需要重新将队伍给拉回来,让nowIdx的图回到固定镜头.wrap下面
+                    setBullet();
+                    isAnimate = false;
+                });
+            }
+        }
+
+        function setBullet(){
+            $bullet.find('li').removeClass('active').eq(nowIdx).addClass('active');
+            console.log('nowIdx:'+nowIdx);
+        }
+
+        function autoPlay () {
+            setInterval(function(){
+                playNext();
+            }, 2500);
+        }
+
+        autoPlay();
+    </script>
+</body>
+</html>

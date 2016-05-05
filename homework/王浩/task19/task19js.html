@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-19</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+</head>
+<body>
+    <script>
+     // 距除夕还有 20 天 15 小时 20 分 10 秒
+    	// function getIntv(str){
+    	// 	var nowTime=new Date().getTime();
+    	// 	console.log(nowTime);
+    	// 	var toTime=Date.parse(str);
+    	// 	console.log(toTime);
+    	// 	var count=((toTime-nowTime)/1000/60/60-8)/24;
+    	// 	console.log(count);
+    	// 	count=Math.round(count*100)/100;
+    	// 	console.log(count);
+    	// 	var day=Math.round(count);
+    	// 	var hour=Math.round((count-day)*24);
+    	// 	var minute=Math.round(((count-day)*24-hour)*60);
+    	// 	var second=Math.round((((count-day)*24-hour)*60-minute)*60)
+    	// 	var result="距除夕还有 "+day+" 天 "+hour+" 小时 "+minute+" 分 "+second+" 秒 ";
+    	// 	console.log(result);
+    	// 	return result;
+    	// }
+    	// 
+    	
+
+
+    	// 这个方法我忽略了月份和年份的影响，只看到了天/时分秒；所以只能判断一个月以内的时间；
+    	// function getIntv(str){
+    	// 	var nowTime=new Date();
+    	// 	console.log(nowTime.getDate());
+    	// 	var toTime=new Date(str);
+    	// 	console.log(toTime);
+    		
+    	// 	var day=toTime.getDate()-nowTime.getDate();
+    	// 	var hour=toTime.getHours()-nowTime.getHours()-8;
+    	// 	var minute=toTime.getMinutes()-nowTime.getMinutes();
+    	// 	var second=toTime.getSeconds()-nowTime.getSeconds();
+    	// 	var result="距除夕还有 "+day+" 天 "+hour+" 小时 "+minute+" 分 "+second+" 秒 ";
+    	// 	console.log(result);
+    	// 	return result;
+    	// }
+    	// var str = getIntv("2016-08-08");
+    	// 
+    	// 
+    	
+    	// 年和月份转换天，这个值是不确定的，因为月份有28天、30天、31天，所以从年到月到天，这个是不可行的。
+    	// 感觉还是得从数值下手。
+    	// 
+    	// function getIntv(str) {
+    	//     var nowTime = new Date().getTime();
+    	//     var toTime = new Date(str);
+    	//     var count = toTime / 1000 / 60 / 60 / 24 - nowTime / 1000 / 60 / 60 / 24 - 8 / 24;
+    	//     var day = parseInt(count);
+    	//     var hour = parseInt((count - day) * 24);
+    	//     var minute = parseInt(((count - day) * 24 - hour) * 60);
+    	//     var second = parseInt((((count - day) * 24 - hour) * 60 - minute) * 60)
+    	//     var result = "距除夕还有 " + day + " 天 " + hour + " 小时 " + minute + " 分 " + second + " 秒 ";
+    	//     console.log(result);
+    	//     return result;
+    	// }
+    	// var str = getIntv("2016-03-22");
+
+    	
+		// function getChsDate(str){
+		// 	var newDate=new Date(str);
+		// 	// console.log(newDate);
+		// 	var year=newDate.getFullYear();
+		// 	var month=newDate.getMonth()+1;
+		// 	var date=newDate.getDate();
+		// 	//给月/日数字小于10的前面添加——0；
+		// 	function plusZero(num){
+		// 		if(num<10){
+		// 			num="0"+num;
+		// 		}
+		// 		return num;
+		// 	}
+		// 	month = plusZero(month);
+		// 	date=plusZero(date);	
+		// 	var result=[year,month,date];	//result的length长度固定为3；
+		// 	for(var i=0;i<result.length;i++){
+		// 		result[i]=result[i].toString();
+		// 		// console.log(result);	//["2015", "01", "08"]
+		// 		var splitNum=result[i].split("");
+		// 		// console.log(splitNum);	//["2", "0", "1", "5"]
+		// 		var j=result[i].length;
+		// 		// console.log(j);		//4,2,2
+		// 		for(var k=0;k<j;k++){
+		// 			switch(splitNum[k]){	//简单类型和引用类型，需要空数组复制；
+		// 				case "0":
+		// 				splitNum[k]="零";	
+		// 				break;
+		// 				case "1":
+		// 				splitNum[k]="壹";	
+		// 				break;
+		// 				case "2":
+		// 				splitNum[k]="贰";	
+		// 				break;
+		// 				case "3":
+		// 				splitNum[k]="叁";	
+		// 				break;
+		// 				case "4":
+		// 				splitNum[k]="肆";	
+		// 				break;
+		// 				case "5":
+		// 				splitNum[k]="伍";	
+		// 				break;
+		// 				case "6":
+		// 				splitNum[k]="陆";	
+		// 				break;
+		// 				case "7":
+		// 				splitNum[k]="柒";	
+		// 				break;
+		// 				case "8":
+		// 				splitNum[k]="捌";	
+		// 				break;
+		// 				case "9":
+		// 				splitNum[k]="玖";	
+		// 				break;
+		// 			}
+		// 			// console.log(splitNum);
+					
+		// 		}
+				
+		// 		// console.log(splitNum);
+		// 		result[i]=splitNum.join("");
+		// 		// return splitNum;
+				
+		// 	}
+		// 	// var result=year+" 年 "+month+" 月 "+date+" 日 ";
+		// 	// console.log(result);
+		// 	var output= result[0]+" 年 "+result[1]+" 月 "+result[2]+" 日 ";
+		// 	// console.log(output);
+		// 	return output;
+		// }
+		// var str = getChsDate('2015-01-08');
+		// console.log(str);  // 二零一五年一月八日//20壹5 年 0壹 月 08 日
+
+		// function getChsDate(str){
+		// 	var newDate=new Date(str);
+		// 	// console.log(newDate);
+		// 	var year=newDate.getFullYear();
+		// 	var month=newDate.getMonth()+1;
+		// 	var date=newDate.getDate();
+		// 	//给月/日数字小于10的前面添加——0；
+		// 	// function plusZero(num){
+		// 	// 	if(num<10){
+		// 	// 		num="0"+num;
+		// 	// 	}
+		// 	// 	return num;
+		// 	// }
+		// 	// month = plusZero(month);
+		// 	// date=plusZero(date);	
+		// 	var result=[year,month,date];	//result的length长度固定为3；
+		// 	for(var i=0;i<result.length;i++){
+		// 		result[i]=result[i].toString();
+		// 		// console.log(result);	//["2015", "01", "08"]
+		// 		var splitNum=result[i].split("");
+		// 		// console.log(splitNum);	//["2", "0", "1", "5"]
+		// 		var j=result[i].length;
+		// 		// console.log(j);		//4,2,2
+		// 		for(var k=0;k<j;k++){
+		// 			switch(splitNum[k]){	//简单类型和引用类型，需要空数组复制；
+		// 				case "0":
+		// 				splitNum[k]="零";	
+		// 				break;
+		// 				case "1":
+		// 				splitNum[k]="一";	
+		// 				break;
+		// 				case "2":
+		// 				splitNum[k]="二";	
+		// 				break;
+		// 				case "3":
+		// 				splitNum[k]="三";	
+		// 				break;
+		// 				case "4":
+		// 				splitNum[k]="四";	
+		// 				break;
+		// 				case "5":
+		// 				splitNum[k]="五";	
+		// 				break;
+		// 				case "6":
+		// 				splitNum[k]="六";	
+		// 				break;
+		// 				case "7":
+		// 				splitNum[k]="七";	
+		// 				break;
+		// 				case "8":
+		// 				splitNum[k]="八";	
+		// 				break;
+		// 				case "9":
+		// 				splitNum[k]="九";	
+		// 				break;
+		// 			}
+		// 			// console.log(splitNum);
+					
+		// 		}
+				
+		// 		// console.log(splitNum);
+		// 		result[i]=splitNum.join("");
+		// 		// return splitNum;
+				
+		// 	}
+		// 	// var result=year+" 年 "+month+" 月 "+date+" 日 ";
+		// 	// console.log(result);
+		// 	var output= result[0]+" 年 "+result[1]+" 月 "+result[2]+" 日 ";
+		// 	// console.log(output);
+		// 	return output;
+		// }
+		// var str = getChsDate('2015-01-08');
+		// console.log(str);  // 二零一五年一月八日//20壹5 年 0壹 月 08 日
+
+
+
+
+		// function getChsDate(str){
+		// 	var newDate=new Date(str);
+		// 	//转换为日期数值类型
+		// 	//console.log(newDate) Thu Jan 08 2015 08:00:00 GMT+0800 (ä¸­å½æ åæ¶é´)；
+		// 	var year=newDate.getFullYear();
+		// 	//读取年份；
+		// 	var month=newDate.getMonth()+1;
+		// 	//读取月份，注意月份的索引是从0开始，所以要在索引上加1；
+		// 	var date=newDate.getDate();
+		// 	//读取日；
+		// 	var hour=newDate.getHours();
+		// 	// console.log(hour);
+		// 	var minute=newDate.getMinutes();
+		// 	var second=newDate.getSeconds();
+		// 	var result=[year,month,date,hour,minute,second];	
+		// 	//把年月日赋值给result数组；
+		// 	for(var i=0;i<result.length;i++){
+		// 		result[i]=result[i].toString();
+		// 		//遍历result数值，并且把数值内部元素转换为字符串string；
+		// 		// console.log(result);	//["2015", "01", "08"]
+		// 		var splitNum=result[i].split("");
+		// 		//把数值元素继续分割为数值；
+		// 		// console.log(splitNum);	//["2", "0", "1", "5"]
+		// 		var j=result[i].length;
+		// 		//得到数值元素的length值；
+		// 		// console.log(j);		//4,2,2
+		// 		for(var k=0;k<j;k++){
+		// 			//通过for变量元素内部的每一个数字；
+		// 			switch(splitNum[k]){
+		// 			//通过switch来替换数字为文字；
+		// 				case "0":
+		// 				splitNum[k]="零";	
+		// 				break;
+		// 				case "1":
+		// 				splitNum[k]="一";	
+		// 				break;
+		// 				case "2":
+		// 				splitNum[k]="二";	
+		// 				break;
+		// 				case "3":
+		// 				splitNum[k]="三";	
+		// 				break;
+		// 				case "4":
+		// 				splitNum[k]="四";	
+		// 				break;
+		// 				case "5":
+		// 				splitNum[k]="五";	
+		// 				break;
+		// 				case "6":
+		// 				splitNum[k]="六";	
+		// 				break;
+		// 				case "7":
+		// 				splitNum[k]="七";	
+		// 				break;
+		// 				case "8":
+		// 				splitNum[k]="八";	
+		// 				break;
+		// 				case "9":
+		// 				splitNum[k]="九";	
+		// 				break;
+		// 			}
+		// 			// console.log(splitNum);
+		// 			// ["二", "0", "1", "5"]
+		// 			// ["二", "零", "1", "5"]
+		// 			// ["二", "零", "一", "5"]
+		// 			// ["二", "零", "一", "五"]
+		// 			// ["一"]
+		// 			// ["八"]
+		// 		}
+				
+		// 		// console.log(splitNum);
+		// 		// 查看改变后的数值元素
+		// 		// ["二", "零", "一", "五"]
+		// 		// ["一"]
+		// 		// ["八"]
+		// 		result[i]=splitNum.join("");
+		// 		// 把元素的数值重新合并为字符串；
+		// 		// console.log(result[i]);
+		// 		// "二零一五";
+		// 		// "一";
+		// 		// "八";
+		// 	}
+			
+		// 	// console.log(result);
+		// 	// 查看新生成的数组
+		// 	// ["二零一五", "一", "八"]
+		// 	var output= result[0]+" 年 "+result[1]+" 月 "+result[2]+" 日 "+result[3]+" 时 "+result[4]+" 分 "+result[5]+" 秒 ";
+		// 	// console.log(output);
+		// 	// 最后查看输出的结果
+		// 	// 二零一五 年 一 月 八 日 
+		// 	// 满足需求，over！！！
+		// 	return output;
+		// }
+		// var str = getChsDate('2015-01-08,12:23:40');
+		// console.log(str);  // 二零一五 年 一 月 八 日 一二 时 二三 分 四零 秒 
+
+
+		// function getLastNDays(num) {
+		//     var nowDate = new Date().getTime();
+		//     // console.log(nowDate);
+		//     // 获取当前日期数值
+		//     // 1458542349577
+		//     var value = nowDate - (+num) * 24 * 60 * 60 * 1000;
+		//     // console.log(value);
+		//     // 解析输入的天数转换为毫秒数；
+		//     // 然后从当前数值中减去天数，就是所需日期值；
+		//     // 1426574349577；
+		//     var year = new Date(value).getFullYear();
+		//     // console.log(year);
+		//     // 获取年份；
+		//     // 2016
+		//     var month = new Date(value).getMonth() + 1;
+		//     // console.log(month);
+		//     // 获取月份，并给月份值+1；
+		//     // 3
+		//     var day = new Date(value).getDate();
+		//     // console.log(day);
+		//     // 获取日
+		//     // 14
+		//     var result = year + " - " + month + " - " + day;
+		//     console.log(result);
+		//     // 输出所求值；
+		//     // "2016 - 3 - 14"
+		//     return result;
+		// }
+		// var lastWeek = getLastNDays(7); // "2016 - 3 - 14"
+		// var lastMonth = getLastNDays(30); //"2016 - 2 - 20"
+
+
+// 		var Runtime = (function(){
+//     //code here ...
+//     console.log(Date());
+//     return {
+//         start: function(){
+//         	console.log(Date());
+//               //code here ...
+//         },
+//         end: function(){
+//         	console.log(Date());
+//              //code here ...
+//         },
+//         get: function(){
+//         	console.log(Date());
+//              //code here ...
+//         }
+//     };
+// }());
+// Runtime.start();
+// //todo somethint
+// Runtime.end();
+// console.log(  Runtime.get() );
+
+
+
+// function fact(num){
+// 	if(num<1){
+// 		return 0;
+// 	}
+// 	else{
+// 	var a=num+fact(num-1);
+// 	console.log(a);
+// 	return a;
+// 	}
+// }
+// // var anotherFact = fact; 
+// // fact = null; 
+// console.log(fact(4)); //24 
+// 10101 20101
+// 100~200的 递加；
+// function upStar(num){
+// 	if(num<0){
+// 		return 0;	
+// 		//如果num小于100，则值为0；
+// 	}
+// 	else{
+// 		return num*(num-1)
+// 		// return num+upStar(num-1)
+// 		//num200递减到100的值的递加；
+// 	}
+	
+// }
+// console.log(upStar(200))	//15150
+// 2198
+// 2*X+1*Y=200
+// 0<=x<=100;	2 最多出现100次
+// 0<=y<=200;
+
+// （5-1）×（5-1-2）
+// (num-1)*(num-1-2) 
+// (num-1)	1;	
+// (num-1)*(num-1-2)	2
+// (num-1)*(num-1-2)*(num-1-2*2)	3
+// (num-1)*(num-1-2)*(num-1-2*2)(num-1-2*3)	4
+// 
+
+// if(x<0||y<0){
+// 	return 0;
+// }
+// else{
+
+// }
+// 100,200,
+// 199
+
+// 2X+Y=
+// 走俩步的次数，
+
+// 5+5*4+5*4*3+5*4*3*2
+// // num+num*(num-1)
+// 2
+
+// 1
+// (200-1)		1
+// (200-1)*(200-1-2)		2
+// (200-1)*(200-1-2*1)*(200-1-2*2)		3
+// (200-1)*(200-1-2*1)*(200-1-2*2)*(200-1-2*3)		4
+// (200-1)*(200-1-2*1)*(200-1-2*2)*(200-1-2*3)*(200-1-2*4)		5
+
+// ^^^^^^^^^^
+// 100
+
+// function fact(num){
+// 	if(num<1){
+// 		return 1;
+// 	}
+// 	else{
+// 	return	num*fact(num-1);
+// 	}
+
+// }
+// console.log(fact(99));
+
+// (200-2*1)		1
+// (200-2*1)*()
+
+// 6
+// 0	1
+// 1	5	6-1
+// 2	3+2+1=6		（6/2）+4/2+2/2
+// 3	1		6/（3×2）
+
+// 8
+// 0	1
+// 1	7
+// 2	5+4+3+2+1=15
+// 3	10
+// 4	1
+
+
+// function upStairs(num){
+// 	if(num===1){
+// 		return 1;
+// 	}
+// 	else if(num===2){
+// 		return 2;
+// 	}
+// 	else{
+// 		return upStairs(num-1)+upStairs(num-2);
+// 	}
+// }
+// console.log(upStairs(10));
+//参考的同学作业，
+//对于递归还是不太懂；
+//还是需要多多了解一下；
+//
+//
+
+// function upperDate(str){
+// var chr=["零","一","二","三","四","五","六","七","八","九","十","十一","十二","十三","十四","十五","十六","十七","十八","十九","二十","二十一","二十二","二十三","二十四","二十五","二十六","二十七","二十八","二十九","三十","三十一"]
+
+// var val=str.split("-");
+// // console.log(val[0]);	2015
+// var year=val[0].split("");
+// // console.log(year);	["2", "0", "1", "5"]
+// var month=val[1];
+// // console.log(month);	12
+// var date=val[2];
+// // console.log(date);	24
+// var result=(chr[+year[0]]+chr[+year[1]]+chr[+year[2]]+chr[+year[3]])+" 年 "+chr[+month]+" 月 "+chr[+date]+" 日";
+// return result;
+// //二零一五 年 十二 月 二十四 日
+// }
+// var nowDate="2015-12-24";
+// console.log(upperDate(nowDate));	
+// //二零一五 年 十二 月 二十四 日
+
+// 自动生成大写数字
+function upDate(num) {
+    var arr = ["十", "一", "二", "三", "四", "五", "六", "七", "八", "九"];
+    var str = ""
+    str = str + num;
+    var result;
+    if (+str < 10) {
+        result = arr[+str.charAt(0)] + ",";
+    } else if (str == 10) {
+        result = arr[0] + ",";
+    } else if (str < 20) {
+        result = arr[0] + arr[+str.charAt(1)] + ",";
+    } else if (str == 20 || str == 30 | str == 40 || str == 50 || str == 60 || str == 70 || str == 80 || str == 90) {
+        result = arr[+str.charAt(0)] + arr[+str.charAt(1)] + ",";
+    } else {
+        result = arr[+str.charAt(0)] + arr[0] + arr[+str.charAt(1)] + ",";
+    }
+    return result;	//"二十三",
+}
+// 把upDate()函数生成的字符组合成为数组集合
+function plusNum(num) {
+    var result = "";
+    for (var i = 1; i <= (+num); i++) {
+        result += upDate(i);
+    }
+    result = result.split(",");
+    result.pop();
+    result.unshift("零");
+    return result;
+}
+// console.log(plusNum(31));
+//	["零", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十", "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八", "十九", "二十", "二十一", "二十二", "二十三", "二十四", "二十五", "二十六", "二十七", "二十八", "二十九", "三十", "三十一"]
+
+function upperDate(str) {
+    var chr = plusNum(31);
+    var val = str.split("-");	//2015
+    var year = val[0].split("");	//["2", "0", "1", "5"]
+    var month = val[1];		//12
+    var date = val[2];		//24
+    var result = (chr[+year[0]] + chr[+year[1]] + chr[+year[2]] + chr[+year[3]]) + " 年 " + chr[+month] + " 月 " + chr[+date] + " 日";
+    return result;
+}
+var nowDate = "2015-10-24";
+console.log(upperDate(nowDate));
+// 二零一五 年 十二 月 二十四 日
+
+// 自动生成大写数字
+
+
+
+
+
+    </script>
+    h1$*30
+</body>
+</html>

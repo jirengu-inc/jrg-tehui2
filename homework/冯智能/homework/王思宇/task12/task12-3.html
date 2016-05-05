@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>双翼布局 三栏布局</title>
+  <style>
+  .header,.footer{
+    height:50px;
+    background: #ccc;
+  }
+    .wrap{
+    margin:0 200px;          /*设置margin给预留出空间，左右分别是左右侧边栏的宽度*/
+    background-color: green;
+    min-height: 300px;
+}
+.ct:after{          /*给ct元素周围清除浮动*/
+    content: "";
+    display: block;
+    clear: both;
+}
+/*三栏元素均需设置左浮动*/
+.main{
+    width: 100%;       /*宽度100%以适应页面*/
+    float: left;
+}
+.left{
+    width: 200px;
+    min-height: 300px;
+    background-color: red;
+    float: left;
+    margin-left: -100%;       /*负margin定位到左上角，不需要使用相对定位*/
+}
+.right{
+    min-height: 300px;
+    width: 200px;
+    background-color: blue;
+    float: left;
+    margin-left: -200px;        /*负margin定位到右上角，不需要使用相对定位*/
+}
+ </style>
+  
+  </head>
+<body>
+
+<body>
+    <div class="header">header</div>
+    <div class="ct">
+        <div class="main">
+            <div class="wrap">中间部分</div>
+        </div>
+        <div class="left">left</div>
+        <div class="right">right</div>
+    </div>
+    <div class="footer">footer</div>
+</body>
+</body>
+</html>

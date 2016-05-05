@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-1</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <script>
+    function getElementsByClassName(parent, tagName, className) {
+        var aEls = parent.getElementsByTagName(tagName);
+        var arr = [];
+        for (var i = 0; i < aEls.length; i++) {
+            var aClassName = aEls[i].className.split(' ');
+            for (var j = 0; j < aClassName.length; j++) {
+                if (aClassName[j] == className) {
+                    arr.push(aEls[i]);
+                    break;
+                }
+            }
+
+        }
+        return arr;
+    }
+
+    function addEventHandler(element, eventType, handlerFunction) {
+        if (element.addEventListener) {
+            element.addEventListener(eventType, handlerFunction, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventType, handlerFunction);
+        }
+    }
+
+    function removeEventHandler(element, eventType, handlerFunction) {
+        if (element.removeEventListener) {
+            element.removeEventListener(eventType, handlerFunction, false);
+        } else if (element.detachEvent) {
+            element.detachEvent('on' + eventType, handlerFunction);
+        }
+    }
+
+    var oUl = getElementsByClassName(document, 'ul', 'ct');
+
+    addEventHandler(oUl[0], 'click', function(e) {
+        console.log(e.target.innerText);
+    });
+    </script>
+</body>
+
+</html>

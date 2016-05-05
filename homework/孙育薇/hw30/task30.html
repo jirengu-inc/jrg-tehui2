@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>瀑布流 | Task 30</title>
+    <style>
+        #waterfall {
+            position: relative;
+        }
+        #waterfall li {
+            position: absolute;
+            list-style: none;
+            width: 200px;
+            margin: 5px;
+            /* 不能在js中用animate(反应极慢),而是使用css的transition实现动画效果 */
+            transition: all 1s;
+        }
+        .h1 {
+            height: 200px;
+            background: #f4b300;
+        }
+        .h2 {
+            height: 400px;
+            background: #006ac1;
+        }
+        .h3 {
+            height: 300px;
+            background: #691bb8;
+        }
+    </style>
+    <!-- 放到body结束标签之前的话,打开页面时元素全都挤在左上角 -->
+    <script src="../hw26/jquery.js"></script>
+</head>
+<body>
+    <ul id="waterfall">
+        <li class="h1">1</li>
+        <li class="h2">2</li>
+        <li class="h3">3</li>
+        <li class="h1">4</li>
+        <li class="h1">5</li>
+        <li class="h2">6</li>
+        <li class="h2">7</li>
+        <li class="h3">8</li>
+        <li class="h1">9</li>
+        <li class="h2">10</li>
+        <li class="h2">11</li>
+        <li class="h2">12</li>
+        <li class="h3">13</li>
+        <li class="h3">14</li>
+    </ul>
+<script>
+    var $item = $("#waterfall").find("li");
+    var width = $item.outerWidth(true);
+    var winWidth;
+    var count;
+    var heightArr;
+
+    setItem();
+
+    $(window).on("resize", function() {
+        setItem();
+    });
+
+    function setItem() {
+        reRange();
+        $item.each(function(){
+            var minHeight = Math.min.apply(Math, heightArr);
+            var idx = heightArr.indexOf(minHeight);
+
+            $(this).css({
+                "left": width * idx,
+                "top": heightArr[idx]
+            });
+            heightArr[idx] += $(this).outerHeight(true);
+        });
+    }
+
+    function reRange() {
+        winWidth = $(window).width();
+        count = parseInt(winWidth / width);
+        heightArr = [];
+        for (var i = 0; i < count; i++) {
+            heightArr.push(0);
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task10-2</title>
+	<style type="text/css">
+    .box {
+    	width:300px;
+    	height:150px;
+    	border:1px solid #ccc;
+        margin:30px 0;
+    }
+    .grey {
+    	width:0;
+    	height:0;
+    	border-bottom:20px solid #ccc;
+    	border-top:20px solid transparent;
+    	border-left:20px solid transparent;
+    	border-right:20px solid transparent;
+    	position:relative;
+    	top:-40px;
+    	left:10px;
+
+    }
+    
+    .right_red {
+    	position:relative;
+    }
+    .red {
+    	width:0;
+    	height:0;
+    	border-left:40px solid transparent;
+    	border-top:40px solid #f00;
+        position:absolute;
+        right:-1px;
+        top:-1px;
+    }
+    
+    .white {
+    	width:0;
+    	height:0;
+    	border-bottom:20px solid #fff;
+    	border-top:20px solid transparent;
+    	border-left:20px solid transparent;
+    	border-right:20px solid transparent;
+    	position:relative;    	
+    	top:-78px;
+    	left:10px;
+    }
+
+
+	</style>
+</head>
+<body>
+	<div class="box top_grey"><div class="grey"></div></div>
+	<div class="box right_red"><div class="red"></div></div>
+	<div class="box top_white"><div class="grey"></div><div class="white"></div>
+</div>
+</body>
+</html>

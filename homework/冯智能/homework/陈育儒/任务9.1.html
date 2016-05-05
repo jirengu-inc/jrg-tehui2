@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="zh-cn">
+	<head>
+		<title>任务9.1代码</title>
+		<meta charset="utf-8">
+		<meta name="author" content="erasec">
+		<style type="text/css">
+			body,ul{
+				margin:0;
+				padding:0;
+			}
+
+			.icon li{
+				display:inline-block;
+				line-height:40px;
+				list-style:none;
+				padding-left:30px;
+			}
+			.icon a{
+				text-decoration:none;
+				color:black;
+			}
+			.icon>li:hover a{
+				color:#90f;		
+			}
+			.forward,.start,.stop{
+				background:url(http://cl.ly/0H413T2X0g0q/result.png) 0 0 no-repeat;
+			}
+			.forward{				
+				background-position:0 0px;
+			}
+			.start{				
+				background-position:0px -42px;
+			}
+			.stop{				
+				background-position:-3px -88px;
+			}
+			.forward:hover{				
+				background-position:-1px -135px;
+
+			}
+			.start:hover{
+				
+				background-position:-5px -183px;
+			}
+			.stop:hover{
+				
+				background-position:1px -226px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="icon">
+			<li class="forward"><a href="#">前进</a></li>
+			<li class="start"><a href="#">开始</a></li>
+			<li class="stop"><a href="#">暂停</a></li>
+		</ul>
+		<div></div>
+	</body>
+</html>

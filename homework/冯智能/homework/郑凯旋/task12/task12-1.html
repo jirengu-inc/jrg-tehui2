@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task12-1</title>
+	<style>
+		body,div{
+			margin:0;
+			padding: 0;
+		}
+		#header,#footer{
+			min-height:40px;
+			background:#ccc;
+		}
+		#container {
+	        height:350px;
+	        padding: 0 200px;
+	    }
+		.main{
+			float:left;
+			width:100%;
+			height:350px;
+			background: green;
+		}
+		.leftsider{
+			width:200px;
+			float:left;
+			margin-left:-100%;
+			height:200px;
+			background: red;
+			position:relative;
+			left:-200px;
+
+		}
+		.rightsider{
+			width:200px;
+			float:left;
+			margin-left:-200px; 
+			height:200px;
+			background: yellow;
+			position: relative;
+			left:200px;
+		}
+	
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="container">
+		<div class="main"></div>
+		<div class="leftsider">左侧边栏，固定宽度</div>
+		<div class="rightsider">右侧边栏，固定宽度</div>
+	</div>
+	<div id="footer"></div>
+</body>
+</html>

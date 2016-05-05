@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>页面布局</title>
+<style type="text/css">
+.box{
+  border: 1px solid #ccc;
+}
+.header{
+  height: 40px;
+  text-align: left;
+  padding-left: 10px;
+  font-size: 16px;
+  color: #f00;
+  border-bottom: 1px solid #ccc;
+}
+.content{
+  height: 100px;
+}
+.content a{
+  text-decoration: none;
+  color: blue;
+  transition: color 0.3s;
+}
+.content a:hover{
+  color: red;
+}
+.footer{
+  height: 50px;
+  text-align: center;
+}
+.footer .btn{
+  border: 1px solid #ccc;
+  background-color: #eee;
+  padding: 4px 3px;
+  display: inline-block;
+  text-decoration: none;
+  border-radius: 3px;/*W3C syntax*/
+  -webkit-border-radius: 3px;  //针对webkit内核的浏览器设置圆角
+  -moz-border-radius: 3px;   //针对火狐浏览器设置圆角
+
+}
+</style>
+</head>
+<body>
+    <div class="box">
+    <div class="header">
+      <h3>我是标题</h3>
+      <a class="close" title="关闭" href="#">X</a>
+    </div>
+    <div class="content">
+          <h3>欢迎来到  <a href="http://jirengu.com">饥人谷</a></h3>
+          <p> 在这个大家庭你能快乐的学到更多前端技能</p>
+    </div>
+        <div class="footer">
+            <a class="btn btn-cancel" href="">取消</a>
+            <a class="btn btn-confirm" href="">确认</a>
+        </div>
+  </div>
+</body>
+</html>

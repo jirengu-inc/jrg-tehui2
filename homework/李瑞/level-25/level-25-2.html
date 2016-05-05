@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>level25-2</title>
+		<style>
+		body,ul,li,a{
+			padding:0;
+			margin:0;
+			box-sizing:border-box;
+			font-family: "微软雅黑";
+			font-size:14px;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		li{
+			list-style:none;
+		}
+		.clear:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		.clear{
+			*zoom:1;
+		}
+		#wrap{
+			width:240px;
+			border:1px solid black;
+			border-radius: 5px;
+		}
+		.wrap-nav>li{
+			float:left;
+			height:30px;
+			line-height: 30px;
+			text-align: center;
+			width:80px;
+		}
+		.wrap-nav-list:after{
+			content:"|";
+			float:right;
+		}
+		.btn{
+			display: block;
+			width:80px;
+			height:40px;
+			line-height: 40px;
+			border:1px solid red;
+			background:white;
+			text-align: center;
+			border-radius: 5px;
+			margin:0 auto;
+			position: absolute;
+			left:50%;
+			top:50%;
+			margin-left:-40px;
+			margin-top:-20px;
+		}
+		.wrap-show-content{
+			width:240px;
+			height:240px;
+			text-align: center;
+			border:1px solid #aaa;
+		}
+		.wrap-show-mask{
+			position: absolute;
+			width:242px;
+			height:242px;
+			background-color:rgba(96,96,96,0.8);
+			/*opacity: 0.7;*/
+			display: none;
+			
+		}
+		strong{
+			color:red;
+		}
+		.wrap-show-list{
+			width:768px;
+			border:1px solid black;
+		}
+		.wrap-show-list{
+		}
+		.wrap-show-list>li{
+			float:left;
+		}
+		.wrap-show-list>li:nth-child(1),.wrap-show-list>li:nth-child(2){
+			margin-right:20px;
+		}
+		.wrap-show-list>li:nth-child(4),.wrap-show-list>li:nth-child(5){
+			margin-right:20px;
+		}
+		.wrap-show-list>li:nth-child(1),.wrap-show-list>li:nth-child(2),
+		.wrap-show-list>li:nth-child(3){
+			margin-bottom:20px;
+		}
+		.wrap-show-gem,.wrap-show-gold{
+			position: absolute;
+			left:0;
+			top:32px;
+			visibility:hidden;
+		}
+		.wrap-show-hot{
+			visibility:hidden;
+		}
+		
+		.hover a{
+			color:red;
+		}
+		.hover {
+			background:#eee;
+		}
+		.show{
+			visibility:visible ;
+		}
+
+		</style>
+	</head>
+	<body>
+		<div id="content">
+			<div id="wrap" class="clear">
+				<ul class="wrap-nav clear">
+					<li class="wrap-nav-list  ">
+						<a href="#">热门</a>
+					</li>
+					<li class="wrap-nav-list ">
+						<a href="#">珠宝首饰</a>
+					</li>
+					<li class="">
+						<a href="#">奢侈品</a>
+					</li>
+				</ul>
+			</div>
+			<div class="show-list clear">
+				<div class="wrap-show-hot show">
+					<ul class="wrap-show-list clear">
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask ">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/1.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="wrap-show-gem">
+					<ul class="wrap-show-list clear">
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="wrap-show-gold">
+					<ul class="wrap-show-list clear">
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/3.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/3.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/3.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/3.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+						<li>
+							<div class="wrap-show-mask">
+								<a class="btn" href="#">立即抢购</a>
+							</div>
+							<div class="wrap-show-content">
+								<a href="#"><img src="img/2.jpg" alt="热门"></a>
+								<h4>藏美千足金和田玉金镶玉路路通吊坠</h4>
+								<strong>￥1699.00</strong>
+							</div>
+						</li>
+					</ul>
+			
+		</div>
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+	"></script>
+	<script>
+		var wrap=$("#wrap");
+		var btn=wrap.find("li");
+		btn.on("click",function(){
+			$(this).addClass("hover");
+			$(this).siblings().removeClass("hover");
+			$(this).parents("#content").find(".show-list>div").removeClass("show")
+			$(this).parents("#content").find(".show-list>div").eq($(this).index()).addClass("show")
+		})
+		$("li").on("mousemove",function(){
+			$(this).find('.wrap-show-mask').show();
+		})
+		$("li").on("mouseleave",function(){
+			$(this).find('.wrap-show-mask').hide();
+		})
+	//问题：点奢侈品2的时候页面跳到了顶部，可能是什么原因？如何解决、
+	//可能是 a标签里面的里面的href="#",导致点击时跳回顶部
+	//解决方法：
+	//设置一个事件
+	$('.wrap-nav a').click(function (e) {
+         e.preventDefault();
+    });
+	//或者 使得 href="javascript:void(0)"
+	</script>
+</html>

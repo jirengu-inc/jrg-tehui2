@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-2</title>
+</head>
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容"/>
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <script>
+/*        window.onload = function () {
+
+            var oLi = document.getElementsByTagName('li');
+            var oBtn1 = document.getElementById('btn-add-start');
+            var oBtn2 = document.getElementById('btn-add-end');
+            var oUl = document.getElementsByClassName('ct');
+            var oInput = document.getElementsByClassName('ipt-add-content');
+
+
+            function showTxt (){
+                for(var i = 0; i < oLi.length; i++){
+                    oLi[i].addEventListener('click', function () {
+                        console.log(this.innerText);
+                    });
+                }
+            }
+
+            oBtn1.onclick = function () {
+                var oNode = document.createElement('li');
+                oUl[0].insertBefore(oNode,oLi[0]);
+                oNode.innerHTML = oInput[0].value;
+                showTxt();
+            };
+
+            oBtn2.onclick = function () {
+                var oNode = document.createElement('li');
+                oUl[0].appendChild(oNode);
+                oNode.innerHTML = oInput[0].value;
+                showTxt();
+            };
+
+        }
+
+        任务存在的问题：
+        1,showTxt函数的使用，这一步偷懒了，直接照搬了前一个任务的代码，然后发现对于新生成的li，点击无法在控制台输出，所以在下面两个事件中各添加了一次调用。（下下策）并没有去思考更好的解法，看到老师的代码才。。。面壁思过。。然后这里面暴露出来的问题还有对event的理解问题，我再去琢磨一下。
+        2,我在按钮的事件中使用的是DOM0级的方式，但是存在的问题是没办法给一个事件添加多个函数，所以优先使用DOM2级的方式。
+        3,检查元素的方式使用问题，getElementsBy...传回的是一个类数组的对象，仍然需要通过[]来访问元素，在能够使用querySelector的情况下优先使用querySelector，因为更加方便。
+        4,……
+*/
+        window.onload = function () {
+            var ct = document.querySelector('.ct'),
+                    addStartBtn = document.querySelector('#btn-add-start'),
+                    addEndBtn = document.querySelector('#btn-add-end'),
+                    ipt = document.querySelector('.ipt-add-content');
+
+            ct.addEventListener('click', function(e){
+                if(e.target.tagName.toLowerCase() === 'li'){
+                    console.log(e.target.innerText);
+                }
+            });
+            //这一步真是写的太漂亮了，膜拜。。
+
+            addEndBtn.addEventListener('click', function(){
+                var li = document.createElement('li');
+                li.innerText = ipt.value;
+                ct.appendChild(li);
+            });
+
+            addStartBtn.addEventListener('click', function(){
+                var li = document.createElement('li');
+                li.innerText = ipt.value;
+                ct.insertBefore(li,ct.firstChild);
+            });
+        }
+    </script>
+</body>
+</html>

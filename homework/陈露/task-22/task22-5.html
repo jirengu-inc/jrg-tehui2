@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>模态框</title>
+   <style>
+   button{
+  border-radius:3px;
+}
+a{
+  text-decoration:none;
+  color:black;
+  float:right;
+  margin-right:5px;
+}
+h3{
+  float:left;
+}
+#modal{
+  display:none;
+}
+.container{
+   width:250px;
+   border-radius:5px;
+   border:1px solid #ccc;
+   position:fixed;
+   top:50%;
+   left:50%;
+   transform: translate(-50%, -50%);
+   background:#fff;
+   z-index: 100;
+   
+}
+ 
+.header{
+  padding:5px;
+  border-bottom:1px solid #ccc;
+}
+.header a{
+  margin-top:20px;
+}
+
+.header:after{
+  content:'';
+  height:0;
+  display:table;
+  clear:both;
+}
+.content{
+  padding:5px;
+  border-bottom:1px solid #eee;
+}
+.footer{
+      padding: 10px;
+      border-top: 1px solid #eee;
+   }
+.footer:after{
+  content:'';
+  height:0;
+  display:table;
+  clear:both;
+} 
+.cover{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #000;
+        opacity: 0.4;
+        z-index: 99;
+ } 
+
+
+
+   </style>
+<body>
+      <div><button >点我</button></div>
+  <div id='modal' class='modal-table'>
+   <div class='cover'></div>
+    <div class='container'>
+       <div class='header'>
+            <h3>我是标题1</h3>
+         <a class='close' href="#">×</a>
+       </div>
+       <div class="content" >
+          <p>我是内容1</p>
+          <p>我是内容2</p>
+       </div>
+       <div class="footer">
+          <a class='confirm' href='#'>确定</a>
+           <a class='btn-cancel' href='#'>取消</a>
+          
+       </div>
+    </div>
+    
+  </div>
+
+<script>
+  var btn=document.querySelector('button'),
+      cover=document.querySelector('.cover'),
+      container=document.querySelector('.container'),
+      modal=document.querySelector('#modal');
+
+
+var Utils={
+ showModal:function(modal){
+    modal.style.display = 'block';
+},
+hideModal:function (modal){
+    modal.style.display = 'none';
+},
+hasClass :function (ele, cls){
+    return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+},
+
+};
+   
+
+btn.addEventListener('click',function(e){
+        Utils.showModal(modal);
+    });
+
+
+cover.addEventListener('click',function(e){
+        Utils.hideModal(modal);
+    });    
+    
+container.addEventListener('click',function(e){
+     if( Utils.hasClass(e.target, 'close') || Utils.hasClass(e.target, 'btn-cancel')){
+       Utils.hideModal(modal);
+   } 
+    
+ });
+    
+
+    
+</script>
+
+
+</body>
+</html>

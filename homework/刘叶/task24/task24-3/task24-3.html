@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task24-3</title>
+</head>
+<link rel="stylesheet" type="text/css" href="task24-3.css">
+<body>
+<div id="wrap">
+    <h2>注册账号</h2>
+    <h4>用户名</h4>
+    <input id="userName" class="input" placeholder="用户名 ran 已经注册">
+    <p id='userTip' class="tip">只能是字母、数字、下划线，3-10个字符</p>
+    <h4>设置密码</h4>
+    <input id="passWord" class="input" placeholder="密码长度在6~15个字符">
+    <p id='passWordTip' class="tip">大写字母、小写字母、数字、下划线最少两种</p>
+    <h4>请再输一遍</h4>
+    <input id="enterAgain" class="input" placeholder="密码长度在6~15个字符">
+    <p id ="enterAgainTip" class="tip">大写字母、小写字母、数字、下划线最少两种</p>
+    <a href="" id="register">注册</a>
+</div>
+<script type="text/javascript">
+    var registerBtn = document.querySelector('#register'),
+            wrap = document.querySelector('#wrap'),
+            userNameIpt = document.querySelector('#userName'),
+            userNameTip = document.querySelector('#userTip'),
+            passWordIpt = document.querySelector('#passWord'),
+            passWordTip = document.querySelector('#passWordTip'),
+            enterAgainIpt = document.querySelector('#enterAgain'),
+            enterAgainTip = document.querySelector('#enterAgainTip');
+
+    userNameIpt.addEventListener('change', function(){
+        if ( testUseName() ){
+            ajax({
+                url: 'userName.php',
+                type: 'post',
+                data :{
+                    userName:userNameIpt.value
+                },
+                success:function (responseText) {
+                    console.log('success已经接收到数据了');
+                    reCheck(responseText);
+                },
+                error:function () {
+                    console.log('后台连接错误');
+                }
+            });
+        }else{
+            addClass(userNameIpt,'error');
+        }
+    });
+
+    passWordIpt.addEventListener('change', function(){
+        testPassWord()
+    });
+
+    enterAgainIpt.addEventListener('change', function(){
+        testEnterAgain();
+    });
+
+    registerBtn.addEventListener('click', function(){
+        if( testUseName() && testPassWord() && testEnterAgain() && reCheck()){
+            console.log('系统正在注册中');
+            alert('注册成功');
+        }
+    });
+
+    function testUseName(){
+        var userName = userNameIpt.value;
+        if(!regName(userName)){
+            userNameTip.innerText = '用户名还是有问题啊，再想想？';
+            addClass(userNameIpt, 'error');
+            console.log('本地：用户名输入格式错了，没有发送Ajax' );
+            return false;
+
+        }else{
+            userNameTip.innerText = '';
+            removeClass(userNameIpt, 'error');
+            console.log('本地：用户名输入格式对了');
+            return true;
+        }
+    }
+    function testPassWord(){
+        var passWord = passWordIpt.value;
+        if(!regPassword(passWord)){
+            passWordTip.innerText = '密码还是有点问题，再想想？';
+            addClass(passWordIpt, 'error');
+            console.log('本地：密码格式不对');
+            return false;
+        }else{
+            passWordTip.innerText = '';
+            removeClass(passWordIpt, 'error');
+            console.log('本地：密码符合要求');
+            return true;
+        }
+    }
+    function testEnterAgain(){
+        var enterAgain = enterAgainIpt.value;
+        if(!regPassword(enterAgain)){
+            enterAgainTip.innerText = '';
+            addClass(enterAgainIpt, 'error');
+            console.log('本地：再次输入的密码格式不对');
+            return false;
+        }else if(enterAgain !== passWordIpt.value){
+            enterAgainTip.innerText = '本地：两次输入不一致，请再次输入';
+            addClass(enterAgainIpt, 'error');
+            console.log('本地：两次输入不一样');
+            return false;
+        }
+        else{
+            enterAgainTip.innerText = '会员账号，点击就送';
+            removeClass(enterAgainIpt, 'error');
+            return true;
+        }
+    }
+    function reCheck(responseText){
+        if( responseText.data == true ){
+            console.log('Ajax：数据回来了，用户名未被注册');
+            return true;
+        }else if( responseText.data == false ){
+            addClass(userNameIpt,'error');
+            userNameIpt.value = '这个用户名已经被注册了';
+            console.log('Ajax：数据回来了，用户名已被注册');
+            return false;
+        }
+        else{
+            console.log('本地：Ajax还没回来，着急什么');
+            return false;
+        }
+    }
+    // 这里设定一个最终状态确认，只有当ajax数据之后，并且这个反馈是true的时候，这里才会是true，最终的提交才会提示注册成功
+</script>
+<script src="../mod/forClass.js"></script>
+<script src="../mod/reg.js"></script>
+<script src="../mod/ajaxMod.js"></script>
+</body>
+</html>

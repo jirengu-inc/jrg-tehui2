@@ -1,0 +1,166 @@
+.html,body{
+	margin:0;
+	padding: 0;
+	font-family: "微软雅黑";
+}
+ul{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+header{
+	width: 100%;
+	height: 50px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 1000;
+}
+.nav{
+	width: 1000px;
+	height: 100%;
+	margin: 0 auto;
+}
+.nav a{
+	color: #000;
+}
+.nav .logo{
+	font-size: 20px;
+	font-weight: bold;
+}
+.nav_list li{
+	display: inline-block;
+	line-height: 50px;
+	padding-right: 30px;
+}
+.nav_list{
+	display: inline-block;
+	line-height: 50px;
+	margin: 0;
+}	
+.dropdown{
+	position: relative;
+}
+.dropmenu{
+	position: absolute;
+	left: 0;
+	top: 100%;
+	display: none;
+	background-color: #fff;
+	padding: 0;
+}
+.dropmenu li{
+	display: block;
+	height: 40px;
+	width: 80px;
+	text-align: center;
+}
+.dropmenu li:hover{
+	background-color: #eee;
+}
+.dropmenu li:last-of-type{
+	border-top: 1px solid #000;
+}
+.dropdown:hover .dropmenu{
+	display:block;
+}
+.top{
+	width: 100%;
+	height: 300px;
+	background-color: #B84D45;
+	position: relative;
+	margin-bottom: 40px;
+	margin-top: 50px;
+}	
+
+.top_center{
+	width: 1000px;
+	height: 150px;
+	margin: 0 auto;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-top: -75px;
+	margin-left: -500px;
+	color: #fff;
+}
+	
+.content{
+	margin: 0 auto;
+	width: 1000px;
+}
+.top_bar{
+	height: 30px;
+	width: 100%;
+	background-color: #F5F5F5;
+	border-radius: 5px;
+}
+.top_bar a,.top_bar p{
+	display: inline-block;
+	margin: 0;
+	padding:0 10px;
+	line-height: 30px;
+}
+.top_bar a{
+	padding-left: 20px;
+	color:#b84d45;
+}
+.item_container{
+	padding-left: 0;
+}
+.item_container li{
+	padding: 5px;
+	margin:8px;
+	margin-bottom: 40px;
+	display: inline-block;
+	border: 1px solid #DDDDDD;
+	border-radius: 5px;
+	text-align: center;
+}
+.item_container img{
+	width: 300px;
+	height: 230px;
+}
+.item_container img:hover{
+	opacity: 0.7;
+}
+.item_container .btn{
+	width: 50px;
+	height: 35px;
+	margin: 10px auto;
+	border:1px solid #eee;
+	border-radius: 5px;
+	display: inline-block;
+	line-height: 35px;
+	color: #000;
+}
+.item_container .btn:hover{
+	background-color: #E6E6E6;
+}
+.footer{
+	background-color: #B84D45;
+	padding: 50px;
+	margin-top: 50px;
+
+}
+.footer h4,.footer h2{
+	text-align: center;
+	color: #fff;
+}
+hr{
+	width: 1000px;
+}
+.info{
+	padding: 50px 0;
+	text-align: center;
+}
+.from p,.from a{
+	display: inline-block;
+
+}
+.from a{
+	color: #B84D45;
+}

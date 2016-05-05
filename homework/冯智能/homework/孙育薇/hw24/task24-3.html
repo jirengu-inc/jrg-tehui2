@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>注册验证 | Task 24-3</title>
+    <style>
+        h4, form {
+            margin-left: 20px;
+        }
+        input {
+            padding-left: 10px;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            background: transparent;
+        }
+        input[type="submit"] {
+            display: block;
+            margin: 10px 8.5em;
+            padding: 0 8px;
+            cursor: pointer;
+        }
+        input[type="submit"]:active {
+            background: #3879d9;
+        }
+        input[type="submit"]:focus {
+            outline: none;
+        }
+        label {
+            width: 6em;
+            display: inline-block;
+        }
+        .notice {
+            font-size: 10px;
+            color: #aaa;
+            padding-left: 8.5em;
+            height: 20px;
+        }
+        input.warning {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+    <h4>注册</h4>
+    <form action="reg.php" method="post">
+        <label for="username">用户名：</label>
+        <input id="username" type="text" name="username" placeholder="用户名(hunger已存在)">
+        <p id="usr-notice" class="notice">只能是字母、数字、下划线，3-10个字符</p>
+        <label for="password">密码：</label>
+        <input id="password" type="password" name="password">
+        <p id="pw-notice" class="notice">大写字母、小写、数字、下划线最少两种，6-15个字符</p>
+        <label for="repeat">重复密码：</label>
+        <input id="repeat" type="password" name="repeat" placeholder="再输入一次密码">
+        <p id="rpt-notice" class="notice"></p>
+        <input id="submit" type="submit" name="submit" value="注册">
+    </form>
+    <script>
+        //全局变量
+        var username = document.getElementById("username");
+        var password = document.getElementById("password");
+        var repeat = document.getElementById("repeat");
+        var usrNotice = document.getElementById("usr-notice");
+        var pwNotice = document.getElementById("pw-notice");
+        var rptNotice = document.getElementById("rpt-notice");
+        var submit = document.getElementById("submit");
+
+        function addClass(el, cls) {
+            var str = el.className;
+            if (str.search(cls) !== -1) {
+                return false;
+            } else {
+                if (str === "") {
+                    el.className = str.concat(cls);
+                } else {
+                    var tmp = el.className.split(" ");
+                    tmp.push(cls);
+                    el.className = tmp.join(" ");
+                }
+            }
+        }
+
+        function removeClass(el, cls) {
+            var str = el.className;
+            if (str.search(cls) === -1) {
+                return false;
+            } else {
+                var tmp = el.className.split(" ");
+                var location = find(tmp, cls);
+                tmp.splice(location, 1);
+                el.className = tmp.join(" ");
+            }
+        }
+
+        function getHTTPObject() {
+            if (typeof XMLHttpRequest === "undefined") {
+                try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+                catch (e) {}
+                try { return new ActiveXObject("Msxml.2.XMLHTTP.3.0"); }
+                catch (e) {}
+                try { return new ActiveXObject("Msxml.2.XMLHTTP.6.0"); }
+                catch (e) {}
+                return false;
+            }
+            return new XMLHttpRequest();
+        }
+
+        function addEvent(node, type, handler) {
+            if (!node) return false;
+            if (node.addEventListener) {
+                node.addEventListener(type, handler, false);
+                return true;
+            } else if (node.attachEvent) {
+                node.attachEvent('on' + type, handler);
+                return true;
+            }
+            return false;
+        }
+
+        function ajax(opts){
+            var request = getHTTPObject();
+            if (request) {
+                var data = "";
+                for (var key in opts.data) {
+                    data += key + "=" + opts.data[key] + "&";
+                }
+                data = data.substr(0, data.length-1);
+                if (opts.type.toLowerCase() === "get") {
+                    request.open(opts.type, opts.url + "?" + data, true);
+                    request.send();
+                } else if (opts.type.toLowerCase() === "post") {
+                    request.open(opts.type, opts.url, true);
+                    request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                    request.send(data);
+                }
+                request.onreadystatechange = function() {
+                    if (request.readyState === 4 && request.status === 200) {
+                        //为解决SAE实名认证问题增加了3行
+                        var rawResponse = request.responseText;
+                        var fixedResponse = rawResponse.replace(/<script.*<\/script>$/,"");
+                        var response = JSON.parse(fixedResponse);
+//                    var response = JSON.parse(request.responseText);
+                        opts.success(response);
+                    }
+                    if (request.readyState === 4 && request.status === 404) {
+                        opts.error();
+                    }
+                }
+            } else {
+                return false;
+            }
+            //
+        }
+
+        function checkUsername(name, isExisted) {
+            if (isExisted) {
+                addClass(username, "warning");
+                usrNotice.innerText = "用户名已经存在";
+                return false;
+            } else {
+                if ((/\w{3,10}/g).test(name)) {
+                    removeClass(username, "warning");
+                    usrNotice.innerText = "用户名可用";
+                    return true;
+                } else {
+                    addClass(username, "warning");
+                    usrNotice.innerText = "用户名格式不正确";
+                    return false;
+                }
+            }
+        }
+
+        function checkPassword(pw) {
+            if(pw) {
+                //如果不在6-15范围内,return false
+                if ((pw.length > 15 || pw.length < 6)
+                    //如果不在大小写数字下划线范围内,return false
+                    || ((/[^\w]/g).test(pw))
+                    //如果只有大写或只有...return false
+                    || ((/(^[A-Z]*$)|(^[a-z]*$)|(^[0-9]*$)|(^_*$)/g).test(pw)))
+                {
+                    pwNotice.innerText = "密码格式不正确";
+                    addClass(password, "warning");
+                    return false;
+                }
+                else {
+                    pwNotice.innerText = "";
+                    removeClass(password, "warning");
+                    return true;
+                }
+            }
+        }
+
+        function checkRepeat(rpt, pw) {
+            if (rpt) {
+                if (rpt === pw) {
+                    rptNotice.innerText = "";
+                    removeClass(repeat, "warning");
+                    return true;
+                } else {
+                    rptNotice.innerText = "两次密码输入不一致";
+                    addClass(repeat, "warning");
+                    return false;
+                }
+            }
+        }
+
+        addEvent(username, "blur", function() {
+            ajax({
+                type: "post",
+                url: "reg.php",
+                data: {"username": username.value},
+                success: function(response) {
+                    checkUsername(response["username"], response["is_existed"]);
+                },
+                error: function(){
+                    usrNotice.innerText = "检查用户名出现错误";
+                }
+            });
+        });
+
+        addEvent(password, "blur", function(){
+                checkPassword(password.value);
+        });
+
+        addEvent(repeat, "blur", function(){
+            if (repeat.value !== "") {
+                checkRepeat(repeat.value, password.value);
+            }
+        });
+
+        addEvent(submit, "click", function(e) {
+            e.preventDefault();
+            ajax({
+                type: "post",
+                url: "reg.php",
+                data: {"username": username.value},
+                success: function(response) {
+                    if ( checkUsername(response["username"], response["is_existed"])) {
+                        if (!password.value) {
+                            pwNotice.innerText = "密码格式不正确";
+                            addClass(password, "warning");
+                        } else if (checkPassword(password.value)) {
+                            if (!repeat.value) {
+                                rptNotice.innerText = "密码格式不正确";
+                                addClass(repeat, "warning");
+                            } else if (checkRepeat(repeat.value, password.value)) {
+                                alert("正在注册");
+                            }
+                        }
+                    }
+                },
+                error: function(){
+                    rptNotice.innerText = "提交出现错误";
+                }
+            });
+        });
+    </script>
+</body>
+</html>

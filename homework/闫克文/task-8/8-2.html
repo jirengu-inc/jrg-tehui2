@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>8-2</title>
+	<style type="text/css">
+		body{
+			font-family: "微软雅黑";  /*页面字体*/
+		
+		}
+		.nav{
+			background-color: #444;  /*导航背景色*/
+				padding:0;
+			margin:0;
+		}
+		.nav li,a{
+			display: inline-block;
+			text-decoration: none;	/*去下划线*/
+			color: green;
+			padding: 5px 1px;
+			font-weight: bold;
+		}		
+		.title{
+			color: green;
+			text-align: center;
+		}
+		.desc{
+			color: #caf;
+			margin: 1px 20px;
+		}
+		#content h3{
+			font-size: 30px;   /*标题字体大小*/
+		}
+		#content p{
+			text-indent: 20px; /*正文缩进*/
+		}
+		.tree{
+			list-style: none;
+		}
+		.has-child ul li{
+			list-style: none;
+			color: gray;
+		}
+		#content > h3:first-of-type{
+			border-bottom:dotted;      /*第一章的下划线*/
+		}
+		#content > h3:nth-of-type(2){
+			border-bottom:dotted;		/*第二章的下划线*/
+		}
+		#content .tree .open a::before{
+			content: "-";
+			color: black;				/*添加展开标记*/
+		}
+		.tree > li~li:before{
+			content: "+";				/*添加折叠标记*/
+			color: black;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+        <ul class="nav">
+          <li><a href="">首页</a></li>
+          <li><a href="">简介</a></li>
+          <li><a href="">作品</a></li>
+          <li><a href="">关于</a></li>
+        </ul>
+    </div>
+    <div id="content">
+        <h1 class="title">前端学习</h1>
+        <p class="desc">这是我的前端学习笔记</p>
+        <h3>第一章</h3>
+        <p>这是我的前端学习笔
+            记这是我是<span class="text-less"> 特别的</span> 的前端学习笔
+            记这是我的前端学习笔记这是
+            我的前端学习,笔记这是我, 的前端, 
+            学习笔记
+        </p>
+        <h3>第二章</h3>
+        <p>这是我的前端学习笔记这是我的前端学习笔记这是我的
+        <span class="text-less">特别的</span>
+        前端学习笔记这是我的前端学习,笔记这是我, 的前端,学习笔记
+        </p>
+        <ul class="tree">
+          <li class="open has-child">
+            <a href="#">记笔记</a>
+            <ul>
+              <li>jscode</li>
+              <li>博客</li>
+              <li>Github</li>
+            </ul>
+          </li>
+          <li class="has-child">
+              <a href="#">做作业</a>
+              <ul>
+                  <li>jscode</li>
+                  <li>博客</li>
+                  <li>Github</li>
+                </ul>
+          </li>
+          <li><a href="#">多思考</a></li>
+          <li><a href="#">多练习</a></li>
+        </ul>
+    </div>
+    <div id="footer"></div>
+</body>
+</html>
