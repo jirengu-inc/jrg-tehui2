@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task22-5</title>
+    <style>
+        *{
+            margin: 0;
+            padding:0;
+        }
+        .cover{
+            display: none;
+            width: 100%;
+            height: 100%;
+            position:fixed;
+            top: 0;
+            left: 0;
+            background-color: #fcc;
+        }
+        .dialog{
+            box-sizing: border-box;
+            position:absolute;
+            top: 50%;
+            left: 50%;
+            vertical-align: middle;
+            background-color: #fff;
+            width: 300px;
+            height: 180px;
+            border: 1px solid #ccc;
+            margin-top: -90px;
+            margin-left: -150px;
+            text-align: left;
+        }
+        .title{
+            box-sizing: border-box;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            border-bottom:1px solid #ccc;
+            padding-left: 20px;
+        }
+        .title a{
+            text-decoration: none;
+            color: #333;
+            margin-left:160px;
+            font-size: 20px;
+        }
+        .content{
+            box-sizing: border-box;
+            width: 300px;
+            height: 50px;
+            line-height: 50px;
+            padding-left: 20px;
+        }
+        .btndiv{
+            box-sizing: border-box;
+            width: 300px;
+            height: 30px;
+            text-align: right;
+            border-top:1px solid #ccc;
+        }
+        .btndiv a{
+            margin-right: 20px;
+            text-decoration: none;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn">点我</button>
+    <div class="cover">
+        <div class="dialog">
+            <div class="title">
+                我是标题1
+                <a href="" class="cancle">×</a>
+            </div>
+            <div class="content">我是内容1</div>
+            <div class="content">我是内容2</div>
+            <div class="btndiv">
+                <a href="" class="cancle">取消</a>
+                <a href="" class="confirm">确定</a>
+            </div>
+        </div>
+    </div>
+    <script>
+        var btn = document.querySelector('.btn');
+        var cover = document.querySelector('.cover');
+        var dialog = document.querySelector('.dialog');
+        var confirm = document.querySelector('.confirm');
+        var cancle = document.querySelectorAll('.cancle');
+        btn.addEventListener("click",function () {
+            cover.style.display = "block";
+        });
+        cover.addEventListener("click",function () {
+            cover.style.display = "none";
+        });
+        dialog.addEventListener("click",function (e) {
+            e.stopPropagation();
+        });
+        confirm.addEventListener("click",function (e) {
+            e.preventDefault();
+        });
+        cancle[0].addEventListener("click",function (e) {
+            e.preventDefault();
+            cover.style.display = "none";
+        });
+        cancle[1].addEventListener("click",function (e) {
+            e.preventDefault();
+            cover.style.display = "none";
+        })
+    </script>
+</body>
+</html>
