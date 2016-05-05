@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>懒加载、瀑布流、AJAX</title>
+    <style type="text/css">
+        body,div,ul,li{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft YaHei UI",monospace;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        .title{
+            height: 50px;
+            color: #fff;
+            line-height: 50px;
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            background-color:rgba(0,0,0,0.8);
+        }
+        .title:after{
+            content: '';
+            display: block;
+            width: 100%;
+            height: 0;
+        }
+        .waterfall-ct{
+            text-align: center;
+            margin: 0 auto;
+            width: 1200px;
+        }
+        .pic-ct{
+            position: relative;
+        }
+        .pic-ct .item{
+            width: 362px;
+            position: absolute;
+            margin: 10px;
+            border: 1px solid #666;
+        }
+        .active{
+            color: #fff;
+            background-color:rgba(0,0,0,0.8);
+            transition: 0.5s;
+            cursor: pointer;
+        }
+        .pic-ct .item img{
+            width: 360px;
+        }
+        .loadMore{
+            visibility: hidden;
+            height: 10px;
+        }
+        .hide{
+            display: none;
+        }
+        .loading{
+            position: fixed;
+            opacity: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrap">
+        <div class="title">下面是懒加载、AJAX，瀑布流的展示</div>
+        <div class="loading"><img src="loading.gif"></div>
+        <div class="waterfall-ct">
+            <ul class="pic-ct">
+                <li class="item hide"></li>
+                <!--<li class="item">-->
+    			    <!--<a href="#" class="link">-->
+    				    <!--<img src="http://xxxxx">-->
+    			    <!--</a>-->
+    			    <!--<h4 class="header">标题</h4>-->
+    			    <!--<p class="desp">内容</p>-->
+    		    <!--</li>-->
+            </ul>
+        </div>
+        <div class="loadMore"></div>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="goTop.js"></script>
+    <!--麻烦老师看一下这个goTop.js，换了一种写法，就是老师讲课总用的那种写法-->
+    <script type="text/javascript">
+
+        GoTop.init();
+        $('.pic-ct').on('mouseover','li',function(){
+            $(this).siblings().removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.pic-ct').on('mouseleave','li',function(){
+            $(this).removeClass('active');
+        });
+
+
+
+        //滚动时候随时检查目标元素是否可见
+        var clock;
+        var $loadMore =$('.loadMore');
+        $(window).on('scroll',function(){
+            clearTimeout(clock);
+            clock = setTimeout(function(){
+                checkShow();
+            },200);
+        });
+        checkShow();
+        //判断是否可见才发送
+        function checkShow(){
+            if(isShow($loadMore)){
+                console.log('loadMore已经被看见了');
+                sendAjax();
+            }
+        }
+        function isShow($node){
+            var scrollH = $(window).scrollTop(),
+                winH = $(window).height(),
+                top = $node.offset().top;
+            return (top < winH + scrollH);
+        }
+
+
+
+        //AJAX发送数据
+        var curPage = 1,
+            length = 10;
+        function sendAjax(){
+            console.log('开始发送AJAX');
+            $('.loading').animate({opacity:1},100);
+            $.ajax({
+                url:'http://platform.sina.com.cn/slide/album_tech',
+                type: 'get',
+                dataType:'jsonp',
+                jsonp:'jsoncallback',
+                data:{
+                    app_key:'1271687855',
+                    format:'json',
+                    size:'img',
+                    num:length,
+                    page:curPage
+                },
+                success:function(ret){
+                    if(ret.status.code === '0'){
+                        onSuccess(ret.data);
+                    }
+                },
+                error: function () {
+                    onError();
+                }
+            });
+        }
+
+
+
+        //这一步将主要是渲染：
+        //     1.把AJAX拿回来的数据拆分评价成字符串
+        //     2.要等图片的本身都加载好了之后，在进行瀑布流布局
+        function onSuccess(nodelist){
+            console.log('AJAX数据回来了');
+            curPage++;
+            var $nodes = renderData(nodelist),//将AJAX带回来的数据，先append到页面
+                deferreds = [];//这个空数组是用来存放每一个图片加载状态的吧？？
+
+            $nodes.find('img').each(function () {
+                var defer = $.Deferred();//新建一个deferred对象
+                $(this).load( function () {
+                    console.log('图片加载好了一个');
+                    defer.resolve();//每当一个图片加载好之后，就改变对应deferred对象的执行状态
+                });
+                deferreds.push(defer);//把每个图片加载的状态都PUSH进来，当他完成之后，就证明图片都已经加载好了
+                console.log('将这个deferred对象Push进状态数组');
+            });
+            $.when.apply(null, deferreds).done(function () {
+                console.log('所有的图片都已经加载完成');
+                waterFall($nodes);
+                //当图片全部加载完成之后，再将$nodes推入waterFall进行瀑布流布局，这样就不怕高度出现错误
+            })
+        }
+
+        function onError(){
+            console.log('错误');
+        }
+
+
+
+        //做好瀑布流布局的前期准备
+        var colSumHeight = [];
+        var ctWidth = $('.pic-ct').width(),
+            itemWidth = $('.item').outerWidth(true),
+            colNum = Math.floor(ctWidth/itemWidth);
+
+        for(var i=0;i<colNum;i++){
+            colSumHeight.push(0);
+        }
+        //为已经append到页面上，高度已经确定的元素执行瀑布流布局
+        function waterFall($nodes){
+            console.log('这批瀑布流布局开始');
+            $nodes.each(function(){
+                var $cur =$(this);
+                var idx = 0,
+                    minSumHeight = colSumHeight[0] ;
+
+                for(var i= 0;i<colSumHeight.length;i++){
+                    if(colSumHeight[i]<minSumHeight){
+                        idx=i;
+                        minSumHeight=colSumHeight[i];
+                    }
+                }
+                $cur.css({
+                    left:itemWidth*idx,
+                    top:minSumHeight
+                });
+                colSumHeight[idx] = $cur.outerHeight(true)+colSumHeight[idx];
+                //这里就是每布局一个，就更新一下数组的新高度，以免后续的出错
+                $('.pic-ct').height(Math.max.apply(null,colSumHeight));
+                //找出队列里面最大的元素，让容器的高度等于队列最长，免得容器高度塌陷，为别的地方的布局带来麻烦
+                $(this).animate({opacity:1},500);
+                console.log('完成一个布局');
+            });
+            $('.loading').animate({opacity:0},300);
+            console.log('这批瀑布流布局完成');
+        }
+
+
+
+        //将AJAX取得的数据，拼接字符串，放到页面上
+        function renderData(items){
+            var tpl = '',
+                $nodes;
+            console.log('开始组装字符串');
+//        <li class="item">
+//            <a href="#" class="link"><img src="http://xxxxx" alt=""</a>
+//            <h4 class="header">标题</h4>
+//            <p class="desp">内容</p>
+//        </li>
+            for(var i = 0;i<items.length;i++){
+                tpl += '<li class="item">';
+                tpl += '  <a href="' +items[i].url+  '" class="link"><img src="'  +items[i].img_url+  '" alt=""></a>';
+                tpl += '  <h4 class="header">' +items[i].short_name+ '</h4>';
+                tpl += '  <p class="desp">' +items[i].short_intro+ '</p>';
+                tpl += '</li>';
+            }
+            //此时图片的src的网址上去了，图片本身可能还没到，但是宽度被css设定好了，就剩下内容加载完成之后的高度
+            console.log('字符串组装完成');
+            $nodes = $(tpl);
+            $nodes.css('opacity',0);
+            $('.pic-ct').append($nodes);
+            console.log('已经append到页面的指定容器');
+            return $nodes;
+        }
+    </script>
+</body>
+</html>
