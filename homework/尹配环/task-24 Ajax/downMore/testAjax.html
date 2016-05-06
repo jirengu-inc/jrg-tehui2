@@ -72,7 +72,7 @@ btn.addEventListener("click",function(e){
 		type:"post",
 		data:{
 			start:cur,
-			len:6,
+			len:6
 		},
 		success:function(ret){
 			isLoading = false;
@@ -84,7 +84,7 @@ btn.addEventListener("click",function(e){
 			isLoading = false;
 
 			alert("系统异常");
-		},
+		}
 	});
 });
 function onSucess(ret){
