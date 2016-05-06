@@ -34,15 +34,15 @@ var GoTop = {
         me.$goTop.css({
             'display':'none',
             'position': 'fixed',
-            'color': 'red',//这里为什么字体就是没有颜色呢？
+            'color': '#fff',//这里为什么字体就是没有颜色呢？
             'right':'5%',
             'top':'85%',
-            'height': '60',
-            'width': '60',
-            'line-height': '60',
+            'line-height':'60px',
+            'height': '60px',
+            'width': '60px',
             'border-radius': '50%',
-            'padding': '20',
-            'font-size': '30',
+            'padding': '20px',
+            'font-size': '30px',
             'background-color':'rgba(52, 52, 52, .4)',
             'z-index':'7'
         })
