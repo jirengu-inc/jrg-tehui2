@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<title>模态框</title>
    <style>
-   button{
+button{
   border-radius:3px;
 }
 a{
@@ -99,7 +99,6 @@ h3{
 <script>
   var btn=document.querySelector('button'),
       cover=document.querySelector('.cover'),
-      container=document.querySelector('.container'),
       modal=document.querySelector('#modal');
 
 
@@ -126,13 +125,7 @@ cover.addEventListener('click',function(e){
         Utils.hideModal(modal);
     });    
     
-container.addEventListener('click',function(e){
-     if( Utils.hasClass(e.target, 'close') || Utils.hasClass(e.target, 'btn-cancel')){
-       Utils.hideModal(modal);
-   } 
-    
- });
-    
+
 
     
 </script>
