@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-28-2</title>
+    <style>
+        .warp {
+            width:900px;
+            margin: 0 auto;
+        }
+        .header {
+            height: 50px;
+            margin-bottom: 20px;
+            background-color: red;
+        }
+        .nav {
+            height: 30px;
+            background-color: yellow;
+        }
+        .ct {
+            margin-bottom: 20px;
+        }
+        .ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .aside,.mainBox {
+            float:left;
+        }
+        .mainBox {
+            width: 100%;
+        }
+        .aside {
+            width: 100px;
+            height: 300px;
+            margin-left: -100%;
+            background-color: #00AA88;
+        }
+        .main {
+            margin-left: 120px;
+            background-color: #1e347b;
+        }
+    </style>
+</head>
+
+<body>
+<div class="warp">
+    <div class="header">header</div>
+    <div class="nav">nav1</div>
+    <div class="ct">
+        <div class="mainBox">
+            <div class="main">main1</div>
+        </div>
+        <div class="aside">aside1</div>
+    </div>
+
+    <div class="nav">nav2</div>
+    <div class="ct">
+        <div class="mainBox">
+            <div class="main">main2</div>
+        </div>
+        <div class="aside">aside2</div>
+    </div>
+
+    <div class="nav">nav3</div>
+    <div class="ct">
+        <div class="mainBox">
+            <div class="main">main3</div>
+        </div>
+        <div class="aside">aside3</div>
+    </div>
+
+    <div class="nav">nav4</div>
+    <div class="ct">
+        <div class="mainBox">
+            <div class="main">main4</div>
+        </div>
+        <div class="aside">aside4</div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $.fn.stick = function (handler) {
+
+        var $node = this,
+                nodeWidth = $node.width(),
+                nodeHeight = $node.height(),
+                nodeLeft = $node.offset().left,
+                nodeTop = $node.offset().top,
+                $nodeClone = $node.clone();
+        $nodeClone.css ({
+            'position':'fixed',
+            'top':0,
+            'left':nodeLeft,
+            'width':nodeWidth,
+            'height':nodeHeight,
+            'opacity':0
+        });
+
+        $node.after($nodeClone);
+
+        $(window).on("resize",function (e) {
+            nodeWidth = $node.width();
+            nodeHeight = $node.height();
+            nodeLeft = $node.offset().left;
+            nodeTop = $node.offset().top;
+
+            $nodeClone.css ({
+                'left':nodeLeft,
+                'width':nodeWidth,
+                'height':nodeHeight,
+            });
+
+        });
+        $(window).on("scroll",function (e) {
+            var winScroll = $(this).scrollTop();
+
+            if (winScroll >= nodeTop) {
+                setFixed();
+            } else if (winScroll < nodeTop) {
+                clearFixed();
+            }
+        });
+
+        function setFixed() {
+            $nodeClone.data('isFixed',true);
+            $node.css({'opacity':0});
+            $nodeClone.css({'opacity':1});
+        }
+        function clearFixed() {
+            if ($nodeClone.data('isFixed')){
+                $nodeClone.data('isFixed',false);
+                $node.css({'opacity':1});
+                $nodeClone.css({'opacity':0});
+            }
+
+        }
+
+    }
+
+    $(".nav").each(function(index,el){
+        $(this).stick();
+    })
+
+</script>
+</body>
+</html>

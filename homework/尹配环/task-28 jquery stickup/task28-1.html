@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task28-1 </title>
+    <style>
+        #header {
+            height: 100px;
+            line-height: 100px;
+            text-align: center;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+        #nav {
+            height: 50px;
+            background-color: blue;
+        }
+        #contener {
+            padding:10px;
+            background-color: #ccc;
+        }
+        #contener:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+        #aside,#warp {
+            float:left;
+        }
+        #warp {
+            width: 100%;
+        }
+        #aside {
+            width:100px;
+            height: 200px;
+            margin-left: -100%;
+            background-color: yellow;
+        }
+        #main {
+            height: 800px;
+            margin-left: 100px;
+            background-color: green;
+        }
+        #footer {
+            height: 20px;
+            background-color: #00AA88;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">header</div>
+<div id="nav">nav</div>
+<div id="contener">
+    <div id="warp">
+        <div id="main">main</div>
+    </div>
+    <div id="aside">aside</div>
+
+</div>
+<div id="footer">footer</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $.fn.stick = function (handler) {
+
+        var $node = this,
+                nodeWidth = $node.width(),
+                nodeHeight = $node.height(),
+                nodeLeft = $node.offset().left,
+                nodeTop = $node.offset().top,
+                $nodeClone = $node.clone();
+        $nodeClone.css ({
+            'position':'fixed',
+            'top':0,
+            'left':nodeLeft,
+            'width':nodeWidth,
+            'height':nodeHeight,
+            'opacity':0
+        });
+
+        $node.after($nodeClone);
+
+        $(window).on("resize",function (e) {
+            nodeWidth = $node.width();
+            nodeHeight = $node.height();
+            nodeLeft = $node.offset().left;
+            nodeTop = $node.offset().top;
+
+            $nodeClone.css ({
+                'left':nodeLeft,
+                'width':nodeWidth,
+                'height':nodeHeight,
+            });
+
+        });
+        $(window).on("scroll",function (e) {
+            var winScroll = $(this).scrollTop();
+
+            if (winScroll >= nodeTop) {
+                setFixed();
+            } else if (winScroll < nodeTop) {
+                clearFixed();
+            }
+        });
+
+        function setFixed() {
+            $nodeClone.data('isFixed',true);
+            $node.css({'opacity':0});
+            $nodeClone.css({'opacity':1});
+        }
+        function clearFixed() {
+            if ($nodeClone.data('isFixed')){
+                $nodeClone.data('isFixed',false);
+                $node.css({'opacity':1});
+                $nodeClone.css({'opacity':0});
+            }
+
+        }
+
+    }
+
+$("#nav").stick();
+
+
+</script>
+</body>
+</html>
