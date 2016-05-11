@@ -7,30 +7,48 @@
         body {
             background-color: #0dcecb;
         }
-        #loading-beats, #loading-beats:before, #loading-beats:after {
+        .loading-beats, .loading-beats:before, .loading-beats:after {
             width: 10px;
             height: 40px;
             background-color: #fff;
-            animation: beats 1s ease-in-out infinite;
         }
-        #loading-beats:before, #loading-beats:after {
+        #lb-1, #lb-1:before, #lb-1:after {
+            animation: beats1 1s ease-in-out infinite;
+        }
+        #lb-2, #lb-2:before, #lb-2:after {
+            animation: beats2 1s ease-in-out infinite;
+        }
+        .loading-beats:before, .loading-beats:after {
             position: absolute;
             content: "";
         }
-        #loading-beats {
+        #lb-1, #lb-2 {
             position: relative;
             margin: 40px 60px;
             float: left;
             animation-delay: .2s;
         }
-        #loading-beats:before {
+        .loading-beats:before {
             left: -15px;
         }
-        #loading-beats:after {
+        #lb-1:after, #lb-2:after {
             left: 15px;
             animation-delay: .4s;
         }
-        @keyframes beats {
+
+        @keyframes beats1 {
+            0%, 100% {
+                height: 40px;
+                box-shadow: 0 0 #fff;
+            }
+            20% {
+                height: 50px;
+                box-shadow: 0 -20px #fff;
+            }
+
+        }
+
+        @keyframes beats2 {
             0%, 100% {
                 height: 40px;
                 background-color: #0dcecb;
@@ -65,7 +83,8 @@
     </style>
 </head>
 <body>
-<div id="loading-beats"></div>
+<div class="loading-beats" id="lb-1"></div>
+<div class="loading-beats" id="lb-2"></div>
 <div id="loading-circle"></div>
 </body>
 </html>
