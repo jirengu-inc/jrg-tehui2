@@ -2,7 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f395af62-8463-4d8e-809d-12b02ad1d98d" name="Default" comment="">
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+<<<<<<< HEAD
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/homework/孙育薇/hw44/task44-1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/homework/孙育薇/hw44/task44-2.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/homework/孙育薇/hw44/task44-3.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw22/hw22.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw22/hw22.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw37/dialogv2.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw37/dialogv2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/孙育薇/hw42/index.html" afterPath="$PROJECT_DIR$/homework/孙育薇/hw42/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/李操/task29/task29-2.html" afterPath="$PROJECT_DIR$/homework/李操/task29/task29-2.html" />
+=======
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-1.html" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-2.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/尹配环/task-26-jquery ajax/task-26-1.html" afterPath="$PROJECT_DIR$/homework/尹配环/task-26-jquery ajax/task-26-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-2 threefadeIn.html" afterPath="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-2 threefadeIn.html" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
     </list>
     <ignored path="jrg-tehui2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,22 +42,88 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
       <file leaf-file-name="jquery Ajax.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/homework/尹配环/task-29 jquery lazyLoad/jquery Ajax.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="167">
               <caret line="91" column="30" selection-start-line="91" selection-start-column="30" selection-end-line="91" selection-end-column="30" />
+=======
+<<<<<<< HEAD
+      <file leaf-file-name="task27-4 fullWindow.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4 fullWindow.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="4727">
+              <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+              <folding />
+=======
+      <file leaf-file-name="task28-1.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="64" column="0" selection-start-line="64" selection-start-column="0" selection-end-line="120" selection-end-column="5" />
+              <folding>
+                <element signature="e#1444#2997#0" expanded="false" />
+              </folding>
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+            </state>
+          </provider>
+        </entry>
+      </file>
+<<<<<<< HEAD
+      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw43/index.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="668">
+              <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="task44-1.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="145">
+              <caret line="211" column="23" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task44-2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="754">
+              <caret line="25" column="65" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="65" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task44-3.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-3.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2030">
+              <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+              <folding />
+=======
       <file leaf-file-name="task28-2.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-2.html">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="-52">
               <caret line="116" column="11" selection-start-line="116" selection-start-column="11" selection-end-line="116" selection-end-column="11" />
               <folding />
+=======
+            <state relative-caret-position="524">
+              <caret line="82" column="0" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding>
+                <element signature="e#1932#3485#0" expanded="false" />
+              </folding>
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
             </state>
           </provider>
         </entry>
@@ -66,6 +151,12 @@
         <option value="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-3 don't Dom.html" />
         <option value="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4.html" />
         <option value="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4 fullWindow.html" />
+<<<<<<< HEAD
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw43/index.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw44/task44-1.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw44/task44-3.html" />
+        <option value="$PROJECT_DIR$/homework/孙育薇/hw44/task44-2.html" />
+=======
         <option value="$PROJECT_DIR$/homework/尹配环/task-26-jquery ajax/task-26-1.html" />
         <option value="$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-2 threefadeIn.html" />
         <option value="$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-1.html" />
@@ -73,7 +164,11 @@
         <option value="$PROJECT_DIR$/homework/尹配环/task-29 jquery lazyLoad/LazyLoad.html" />
         <option value="D:/NewSate/add.php" />
         <option value="$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-2.html" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/homework/尹配环/task-29 jquery lazyLoad/jquery Ajax.html" />
+=======
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
       </list>
     </option>
   </component>
@@ -83,10 +178,10 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+    <option name="x" value="4" />
+    <option name="y" value="23" />
+    <option name="width" value="1436" />
+    <option name="height" value="877" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -113,31 +208,56 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="ProjectPane">
+<<<<<<< HEAD
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+<<<<<<< HEAD
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="jrg-tehui2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+              <option name="myItemId" value="Homework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="jrg-tehui2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+              <option name="myItemId" value="Homework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -147,11 +267,19 @@
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="jrg-tehui2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+              <option name="myItemId" value="Homework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -159,17 +287,29 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="尹配环" />
+=======
+              <option name="myItemId" value="孙育薇" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="jrg-tehui2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+              <option name="myItemId" value="Homework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -177,21 +317,37 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="尹配环" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="task-29 jquery lazyLoad" />
+=======
+              <option name="myItemId" value="孙育薇" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hw44" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="jrg-tehui2" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jrg-tehui2" />
+=======
+              <option name="myItemId" value="Homework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Homework" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -199,17 +355,30 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+<<<<<<< HEAD
               <option name="myItemId" value="尹配环" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="task-28 jquery stickup" />
+=======
+              <option name="myItemId" value="孙育薇" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hw43" />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
+<<<<<<< HEAD
+=======
+=======
+        <subPane />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
     </panes>
   </component>
@@ -317,15 +486,33 @@
       <workItem from="1462584120875" duration="12797000" />
       <workItem from="1462632593069" duration="95000" />
       <workItem from="1462666690173" duration="40106000" />
+<<<<<<< HEAD
+      <workItem from="1462781190844" duration="9376000" />
+      <workItem from="1462861188091" duration="2829000" />
+      <workItem from="1462870564213" duration="8239000" />
+=======
       <workItem from="1462781190844" duration="17348000" />
       <workItem from="1462842045138" duration="625000" />
+<<<<<<< HEAD
       <workItem from="1462843644128" duration="12011000" />
       <workItem from="1462929197527" duration="15836000" />
+=======
+      <workItem from="1462843644128" duration="7525000" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="104978000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="79602000" />
+=======
+    <option name="totallyTimeSpent" value="84656000" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -337,25 +524,36 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18601191" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+    <frame x="4" y="23" width="1436" height="877" extended-state="0" />
+    <editor active="true" />
+    <layout>
+<<<<<<< HEAD
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1590106" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.12946428" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32786885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32626426" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -379,6 +577,17 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4 fullWindow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4727">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw43/index.html">
+=======
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1326">
@@ -387,16 +596,31 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-3 don't Dom.html">
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4 fullWindow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+=======
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-28 jquery stickup/task28-1.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+          <folding>
+            <element signature="e#1444#2997#0" expanded="false" />
+          </folding>
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
         </state>
       </provider>
     </entry>
@@ -463,6 +687,13 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27 - 4 full window.html" />
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-3 has DOM.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="148" column="15" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="15" />
+=======
     <entry file="file://$PROJECT_DIR$/homework/尹配环/readme.md">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -474,11 +705,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-867">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-09/task-09-1.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="471">
+          <caret line="149" column="9" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="9" />
+=======
         <state relative-caret-position="-51">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -509,11 +745,24 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="96">
           <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="106" selection-end-column="8" />
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-1 fadeIn.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="271">
+          <caret line="121" column="25" selection-start-line="121" selection-start-column="25" selection-end-line="121" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4.html" />
+    <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-4 fullWindow.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4727">
+          <caret line="163" column="0" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
+=======
         <state relative-caret-position="444">
           <caret line="118" column="11" selection-start-line="118" selection-start-column="11" selection-end-line="118" selection-end-column="11" />
         </state>
@@ -530,20 +779,69 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="235">
           <caret line="173" column="38" selection-start-line="173" selection-start-column="38" selection-end-line="173" selection-end-column="38" />
+<<<<<<< HEAD
+=======
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+          <folding />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-27 jquery lb/task27-3 don't Dom.html">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="253">
+          <caret line="84" column="16" selection-start-line="84" selection-start-column="16" selection-end-line="84" selection-end-column="16" />
+=======
         <state relative-caret-position="949">
           <caret line="138" column="17" selection-start-line="138" selection-start-column="17" selection-end-line="138" selection-end-column="17" />
+<<<<<<< HEAD
+=======
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+          <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw43/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="668">
+          <caret line="50" column="5" selection-start-line="50" selection-start-column="5" selection-end-line="50" selection-end-column="5" />
+          <folding />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-3.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2030">
+          <caret line="70" column="7" selection-start-line="70" selection-start-column="7" selection-end-line="70" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="754">
+          <caret line="25" column="65" selection-start-line="25" selection-start-column="53" selection-end-line="25" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/homework/孙育薇/hw44/task44-1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="145">
+          <caret line="211" column="23" selection-start-line="211" selection-start-column="23" selection-end-line="211" selection-end-column="23" />
+=======
     <entry file="file://$PROJECT_DIR$/homework/尹配环/task-15/实战2/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1054">
           <caret line="22" column="45" selection-start-line="22" selection-start-column="45" selection-end-line="22" selection-end-column="45" />
+<<<<<<< HEAD
+=======
+>>>>>>> d12af6c800f724446a0ce33f53e67039a28b55c5
+          <folding />
+>>>>>>> 253f76de8d3157a3ba811128836a2771cf6afce8
         </state>
       </provider>
     </entry>

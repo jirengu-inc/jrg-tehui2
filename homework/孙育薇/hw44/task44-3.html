@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Loading</title>
+    <style>
+        body {
+            background-color: #0dcecb;
+        }
+        #loading-beats, #loading-beats:before, #loading-beats:after {
+            width: 10px;
+            height: 40px;
+            background-color: #fff;
+            animation: beats 1s ease-in-out infinite;
+        }
+        #loading-beats:before, #loading-beats:after {
+            position: absolute;
+            content: "";
+        }
+        #loading-beats {
+            position: relative;
+            margin: 40px 60px;
+            float: left;
+            animation-delay: .2s;
+        }
+        #loading-beats:before {
+            left: -15px;
+        }
+        #loading-beats:after {
+            left: 15px;
+            animation-delay: .4s;
+        }
+        @keyframes beats {
+            0%, 100% {
+                height: 40px;
+                background-color: #0dcecb;
+                box-shadow: 0 0 #0dcecb;
+            }
+            20% {
+                height: 50px;
+                background-color: #fff;
+                box-shadow: 0 -20px #fff;
+            }
+
+        }
+        #loading-circle {
+            margin: 40px auto;
+            width: 120px;
+            height: 120px;
+            background-color: #0dcecb;
+            border-radius: 100%;
+            border: 15px solid #3dd8d5;
+            border-top-color: white;
+            animation: rotation 1s infinite linear;
+            box-sizing: border-box;
+        }
+        @keyframes rotation{
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+<div id="loading-beats"></div>
+<div id="loading-circle"></div>
+</body>
+</html>
