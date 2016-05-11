@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS 3</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        #radius-box {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+            height: 120px;
+            border: 1px solid #facc65;
+            border-radius: 100%;
+            padding-left: 9px;
+            padding-top: 9px;
+            transform: rotate(-45deg) scale(.8) translateY(20%);
+            box-shadow: 0 0 10px #facc65;
+        }
+        #radius-box:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        #radius-box div{
+            width: 50px;
+            height: 50px;
+            border: 1px solid #facc65;
+            float: left;
+            box-shadow: 0 0 2px #facc65;
+
+        }
+        #radius-1, #radius-4 {
+            border-radius: 100% 0;
+        }
+        #radius-2, #radius-3 {
+            border-radius: 0 100%;
+        }
+        #baseball {
+            position: absolute;
+            top: 20px;
+            left: 200px;
+            margin: 20px;
+            width: 200px;
+            height: 200px;
+            border: 5px solid #ccc;
+            border-radius: 100%;
+            transform: perspective(50px);
+        }
+        #baseball div {
+            border-radius: 90% 0;
+            width: 100px;
+            height: 100px;
+            border: 5px dashed #ccc;
+            position: relative;
+        }
+        #part-1 {
+            transform: scale(1.1);
+        }
+        #part-2 {
+            left: 89px;
+            top: -9px;
+            transform: scale(1.1) rotate(1deg);
+        }
+        #rainbow {
+            height: 100px;
+            position: absolute;
+            top: 200px;
+            left: 20px;
+        }
+        #rainbow-hot-part {
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background: red;
+            box-shadow: 0 -2px 15px red;
+        }
+        #rainbow-hot-part:before {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: orange;
+            transform: scale(0.9);
+            position: relative;
+            top: 5px;
+            box-shadow: 0 -2px 15px orange;
+        }
+        #rainbow-hot-part:after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: yellow;
+            transform: scale(0.8);
+            position: relative;
+            top: -90px;
+            box-shadow: 0 -2px 15px yellow;
+        }
+        #rainbow-center-part {
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: green;
+            position: relative;
+            transform: scale(0.7);
+            top: -85px;
+            box-shadow: 0 -2px 15px green;
+        }
+        #rainbow-center-part:before {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: cyan;
+            position: relative;
+            transform: scale(0.8);
+            top: 10px;
+            box-shadow: 0 -2px 15px cyan;
+        }
+        #rainbow-center-part:after {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: blue;
+            position: relative;
+            transform: scale(0.7);
+            top: -85px;
+            box-shadow: 0 -2px 15px blue;
+        }
+        #rainbow-cold-part {
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: purple;
+            position: relative;
+            transform: scale(0.4);
+            top: -170px;
+            box-shadow: 0 -2px 15px purple;
+        }
+        #rainbow-cold-part:before {
+            content: "";
+            display: block;
+            width: 200px;
+            height: 100px;
+            border-radius: 200px 200px 0 0;
+            background-color: #fff;
+            transform: scale(0.7);
+            position: relative;
+            top: 15px;
+            box-shadow: 0 -2px 15px #fff;
+        }
+
+        #dear-opera {
+            position: absolute;
+            top: 300px;
+            left: 100px;
+            margin: 20px;
+            height: 300px;
+            width: 270px;
+            background: linear-gradient(0deg,#a62f20 0%, #852418 25%, #ba3523 50%,#ed473f 75%, #f08185);
+            border-radius: 135px/150px;
+            border: 1px solid #f2a4a0;
+
+        }
+        #dear-opera:hover {
+            animation: walk 5s;
+            animation-timing-function: linear;
+        }
+        #dear-opera:after {
+            content: "";
+            display: block;
+            height: 300px;
+            width: 270px;
+            background: linear-gradient(0deg,#a62f20 0%, #852418 25%, #ba3523 50%,#ed473f 75%, #f08185);
+            border-radius: 135px/150px;
+            position: relative;
+            top: -115px;
+            z-index: 1;
+        }
+
+        #opera-inner {
+            width: 270px;
+            height: 120px;
+            background: white;
+            border-radius: 140px/60px;
+            transform: rotate(90deg);
+            position: relative;
+            z-index: 2;
+            top: 90px;
+            background: linear-gradient(45deg,#a62f20 0%, #852418 25%, #d84534 50%,#e36359 75%, #f08185);
+        }
+        #opera-inner:after {
+            content: "";
+            display: block;
+            width: 270px;
+            height: 120px;
+            background: #fff;
+            border-radius: 140px/60px;
+            transform: scale(0.93);
+            position: relative;
+            z-index: 2;
+        }
+
+        #opera-notice {
+            position: absolute;
+            left: 90px;
+            top: 320px;
+        }
+        
+        @keyframes walk {
+            0% {
+                transform: rotate(0deg);
+            }
+            10% {
+                transform: rotate(72deg);
+                left: 150px;
+            }
+            20% {
+                transform: rotate(144deg);
+                left: 200px;
+            }
+            30% {
+                transform: rotate(216deg);
+                left: 250px;
+            }
+            40% {
+                transform: rotate(288deg);
+                left: 300px;
+            }
+            50% {
+                transform: rotate(360deg);
+                left: 350px;
+            }
+            60% {
+                transform: rotate(288deg);
+                left: 300px;
+            }
+            70% {
+                transform: rotate(216deg);
+                left: 250px;
+            }
+            80% {
+                transform: rotate(144deg);
+                left: 200px;
+            }
+            90% {
+                transform: rotate(72deg);
+                left: 150px;
+            }
+            100% {
+                transform: rotate(0deg);
+                left: 100px;
+            }
+        }
+
+        .container {
+            width: 210px;
+            height: 210px;
+            position: relative;
+            margin: 80px auto 40px;
+            perspective: 1100px;
+        }
+
+
+        @keyframes rotation {
+            0% {
+                transform: translateZ( -200px)  rotateY(0deg);
+            }
+            17% {
+                transform: translateZ( -200px) rotateY(-90deg);
+            }
+            34% {
+                transform: translateZ(-200px) rotateX(90deg);
+            }
+            50% {
+                transform: translateZ(-200px) rotateY(-180deg);
+            }
+            67% {
+                transform: translateZ(-200px) rotateY(-270deg);
+            }
+            84% {
+                transform: translateZ( -200px) rotateX(-90deg);
+            }
+            100% {
+                transform: translateZ( -200px) rotateY(360deg);
+            }
+        }
+        #cube {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            transition: transform 1s;
+            animation: rotation 10s infinite;
+        }
+        #cube figure {
+            display: block;
+            position: absolute;
+            width: 186px;
+            height: 186px;
+            left: 0;
+            top: 0;
+            border: 2px solid black;
+            line-height: 186px;
+            font-size: 80px;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            margin: 0;
+        }
+        #cube figure:nth-child(1) {
+            background: hsla( 0, 100%, 50%, 0.9);
+        }
+        #cube figure:nth-child(2) {
+            background: linear-gradient(180deg, hsla( 0, 100%, 50%, 0.9), hsla( 60, 100%, 50%, 0.9));
+        }
+        #cube figure:nth-child(3) {
+            background: linear-gradient(0deg, hsla( 120, 100%, 50%, 0.9), hsla( 60, 100%, 50%, 0.9), hsla( 0, 100%, 50%, 0.9));
+        }
+        #cube figure:nth-child(4) {
+            background: linear-gradient(90deg, hsla( 180, 100%, 50%, 0.9), hsla( 120, 100%, 50%, 0.9), hsla( 60, 100%, 50%, 0.9), hsla( 0, 100%, 50%, 0.9));
+        }
+        #cube figure:nth-child(5) {
+            background: linear-gradient(60deg, hsla( 240, 100%, 50%, 0.9) 5%, hsla( 180, 100%, 50%, 0.9) 60%, hsla( 120, 100%, 50%, 0.9) 60%, hsla( 60, 100%, 50%, 0.9)  80%, hsla( 0, 100%, 50%, 0.9) 90%);
+        }
+        #cube figure:nth-child(6) {
+            background: linear-gradient(45deg, hsla( 240, 100%, 50%, 0.9), hsla( 180, 100%, 50%, 0.9), hsla( 120, 100%, 50%, 0.9), hsla( 60, 100%, 50%, 0.9), hsla( 0, 100%, 50%, 0.9), hsla( 300, 100%, 50%, 0.9));
+        }
+        #cube figure:nth-child(1) {
+            transform: rotateY(0deg) translateZ(93px);
+        }
+        #cube figure:nth-child(2) {
+            transform: rotateY(90deg) translateZ(93px);
+        }
+        #cube figure:nth-child(3) {
+            transform: rotateX(270deg) translateZ(93px);
+        }
+
+        #cube figure:nth-child(4) {
+            transform: rotateY(180deg) translateZ(93px);
+        }
+
+        #cube figure:nth-child(5) {
+            transform: rotateY(270deg) translateZ(93px);
+        }
+
+        #cube figure:nth-child(6) {
+            transform: rotateX(90deg) translateZ(93px);
+        }
+    </style>
+</head>
+<body>
+<!-- 只是想玩一下 border-radius 结果弄出个像铜钱一样的东西 -->
+<div id="radius-box">
+    <div id="radius-1"></div>
+    <div id="radius-2"></div>
+    <div id="radius-3"></div>
+    <div id="radius-4"></div>
+</div>
+<!-- CSS3 棒球 xD -->
+<div id="baseball">
+    <div id="part-1"></div>
+    <div id="part-2"></div>
+</div>
+<!-- 并不是很满意但舍不得删的彩虹 -->
+<div id="rainbow">
+    <div class="rainbow-part" id="rainbow-hot-part"></div>
+    <div class="rainbow-part" id="rainbow-center-part"></div>
+    <div class="rainbow-part" id="rainbow-cold-part"></div>
+</div>
+<!-- 简单复刻 Opera 旧版 logo -->
+<div id="dear-opera">
+    <div id="opera-inner"></div>
+    <div id="opera-notice">Hover me! ↑</div>
+</div>
+<!-- 之前 3D 木马公开课后做的, 放过来之后添加了背景渐变 -->
+<section class="container">
+    <div id="cube">
+        <figure>1</figure>
+        <figure>2</figure>
+        <figure>3</figure>
+        <figure>4</figure>
+        <figure>5</figure>
+        <figure>6</figure>
+    </div>
+</section>
+</body>
+</html>
