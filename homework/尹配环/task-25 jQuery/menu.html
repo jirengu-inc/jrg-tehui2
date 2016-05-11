@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>弹出菜单</title>
+    <style>
+        ul {
+            padding:0;
+            margin:0;
+        }
+        li {
+            list-style: none;
+        }
+        .ct {
+            width: 200px;
+        }
+        .ct>li {
+            position: relative;
+            box-sizing: border-box;
+            padding:10px;
+            padding-left: 20px;
+            border-bottom: 1px solid red;
+            background-color: #BC1D49;
+            color: white;
+        }
+        .ct>li>span {
+            margin-left: 80px;
+            font-size: .8rem;
+        }
+        .ct>li:last-child {
+            border: none;
+        }
+        .childMenu {
+            position: absolute;
+            width: 180px;
+            top:0;
+            left: 100%;
+            display: none;
+            border: 1px solid #ccc;
+        }
+        .childMenu:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .childMenu>li {
+            box-sizing: border-box;
+            float:left;
+            width: 80px;
+            padding:10px;
+            padding-left:20px;
+            color:black;
+        }
+    </style>
+</head>
+<body>
+<ul class = "ct">
+    <li>珠宝玉器<span>＞</span>
+        <ul class = "childMenu">
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+        </ul>
+    </li>
+    <li>珠宝玉器<span>＞</span>
+        <ul class = "childMenu">
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+        </ul>
+    </li>
+    <li>珠宝玉器<span>＞</span>
+        <ul class = "childMenu">
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+        </ul>
+    </li>
+    <li>珠宝玉器<span>＞</span>
+        <ul class = "childMenu">
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+        </ul>
+    </li>
+    <li>珠宝玉器<span>＞</span>
+        <ul class = "childMenu">
+            <li>珠宝</li>
+            <li>玉器</li>
+            <li>黄金</li>
+            <li>白银</li>
+        </ul>
+    </li>
+</ul>
+<script src="jquery-1.11.3/jquery.js"></script>
+<script>
+    $(".ct>li").on("mouseenter",function (e) {
+        e.stopPropagation();
+        $(".childMenu",$(this)).show();
+    });
+    $(".ct>li").on("mouseleave",function (e) {
+        e.stopPropagation();
+        $(".childMenu",$(this)).hide();
+    });
+</script>
+</body>
+</html>

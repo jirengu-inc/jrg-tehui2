@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-26-1</title>
+    <style>
+        button {
+            position: relative;
+            width:200px;
+            height:200px;
+        }
+
+        .box {
+            border: 1px solid red;
+            width: 300px;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<button>
+    点我变色
+</button>
+<br>
+<p>滚动条下拉了以下距离：</p>
+<p class="scoll-top"></p>
+<br>
+<div class="box">放上来背景变红 移走变白</div>
+<br>
+<input type="text" name="txt">
+<p class="in-text"></p>
+<br>
+<select name="select-job" id="sel">
+    <option value="火系魔法师">火系魔法师</option>
+    <option value="召唤师">召唤师</option>
+    <option value="战士">战士</option>
+</select>
+<span>您选择的职业是：</span>
+<span class="job"></span>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="jquery-color.js"></script>
+<script>
+    $("button").on ("click",function (e) {
+        $(this).animate({
+            backgroundColor:"red"
+        },800).animate({
+            backgroundColor:"blue"
+        },800);
+    });
+    $(".box").on("mouseenter",function (e) {
+        $(this).css("backgroundColor","red");
+    }).on("mouseleave",function (e) {
+        $(this).css("backgroundColor","white");
+    });
+    $(document).on("scroll",function (e) {
+        $(".scoll-top").text($(document).scrollTop());
+    });
+    $("input[type=text]").on("keyup",function (e) {
+        $(this).val($(this).val().toUpperCase());
+        $(".in-text").text($(this).val().toUpperCase());
+    }).on("focus",function (e) {
+        $(this).css({
+            'outlineColor':"blue"
+        });
+    });
+    $("#sel").on("change",function (e) {
+        $(".job").text($(this).val());
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Gradient</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        #gradient {
+            position: relative;
+            height: 100%;
+            width: 100%;
+            background: url(http://o6lfu46u4.bkt.clouddn.com/public-domain-images-free-stock-photos-002.jpg) center center no-repeat;
+            background-size: cover;
+        }
+        #gradient:before, #gradient:after {
+            content: "";
+            position: absolute;
+            width: 50%;
+            height: 100%;
+        }
+        #gradient:before {
+            background: linear-gradient(135deg, rgba(50, 130, 219, 0.8), rgba(0, 0, 255, 0.4) 40%, rgba(255,255,255, 0.2) 80%);
+        }
+        #gradient:after {
+            right: 0;
+            background: linear-gradient(-135deg, rgba(50, 130, 219, 0.8), rgba(0, 0, 255, 0.4) 40%, rgba(255,255,255, 0.2) 80%);
+        }
+    </style>
+</head>
+<body>
+<div id="gradient"></div>
+</body>
+</html>

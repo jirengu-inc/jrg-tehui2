@@ -255,15 +255,24 @@
 	<div class="contact-wrap">
 		<h3>CONTACT US</h3>
 		<p>Lorem ipsum dolor sit amet consectetur.</p>
-		<div class="message clearfix">
-		  <input type="text" placeholder="YOUR NAME*"></input>
-		  <input type="text" placeholder="YOUR MAIL*"></input>
-		  <input type="text" placeholder="YOUR PHONE*"></input>
-		  <textarea name="" id="" cols="" rows="" placeholder="YOUR MASSAGE*"></textarea>
-		  <a href="#">SEND MESSAGE</a>
-		  </div>
+		<form action="">
+		<div class="clearfix">
+			<div class="input">
+			    <input type="text" name="username" id="name" placeholder="YOUR NAME *">
+			    <input type="text" name="useremail" id="email" placeholder="YOUR NAME *">
+			    <input type="text" name="userphone" id="phone" placeholder="YOUR NAME *">
+		    </div>
+			<div class="textarea">
+			<textarea name="usermessage" id="message" cols="30" rows="10" placeholder="YOUR MESSAGE *"></textarea>
+			</div>
+		</div>
+			<div class="submit">
+				<input type="submit" value="SEND MESSAGE">
+			</div>
+		</form>
 	</div>
 </div>
+
 <div id="footer">
 	<div class="footer-wrap">
 		<p>Copyright © Your Website 2014</p>
