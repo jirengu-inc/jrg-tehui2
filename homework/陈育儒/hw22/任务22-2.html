@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+	<head>
+		<title>任务22-2</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<ul class="ct">
+	    <li>这里是</li>
+	    <li>饥人谷</li>
+	    <li>前端6班</li>
+		</ul>
+		<input class="ipt-add-content" placeholder="添加内容"/>
+		<button id="btn-add-start">开头添加</button>
+		<button id="btn-add-end">结尾添加</button>
+	<script>
+   	var ct = document.querySelector('.ct');
+   	ct.addEventListener('click',function(e){
+	  	console.log(e.target.innerText);})
+   	
+   	var btnStart=document.querySelector('#btn-add-start');
+   	var btnEnd=document.querySelector('#btn-add-end');
+   	var input=document.querySelector('.ipt-add-content');
+   
+   	btnStart.addEventListener('click',function(){
+   		var firstLi = ct.firstElementChild;
+			if(input.value){//如果元素不是空的
+   			var li=document.createElement("li");//创建一个空li标签
+		   	li.innerText = input.value;//将input里面的值复制一份给innerText
+		   	ct.insertBefore(li,firstLi);//在ct的第一个孩子前面添加这个li
+   		}
+   	});
+
+   	btnEnd.addEventListener("click",function(){
+   		var li = document.createElement("li");
+   		if(input.value){
+   			var li=document.createElement("li");
+	   		li.innerText=input.value;
+	   		ct.appendChild(li);
+   		}
+   	});
+
+	</script>
+	</body>
+</html>

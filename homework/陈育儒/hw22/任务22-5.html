@@ -1,0 +1,92 @@
+<!doctype html>
+<html>
+	<head>
+		<title>任务22-5</title>
+		<meta charset="utf-8">
+		<style>
+			html,body,div,p,span,a{
+				margin:0;
+				padding:0;
+			}
+			body{
+				color:#666;
+			}
+			a{
+				text-decoration:none;
+				color:#666;
+			}
+			.modalct{
+				display:none;
+			}
+			.modal{
+				width:300px;
+				height:100px;
+				border:1px solid #666;
+				border-radius:5px;
+				position:absolute;
+				top:200px;
+				left:100px;
+				background:#fff;
+			}
+			.modal:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.close{
+				float:right;
+				margin-right:8px;
+			}
+			.btns{
+				float:right;
+				margin-right:10px;
+			}
+			.btns:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.cover{
+				width:500px;
+				height:500px;
+				background:#eee;
+			}
+		</style>
+	</head>
+	<body>
+		
+		<button class="btn">点我</button>
+		<div class="modalct">
+			<div class="cover"></div>
+			<div class="modal">
+				<span class="title">这里是饥人谷</span>
+				<a href="#" class="close">x</a>
+				<hr>
+				<p>你好</p><p>这里是饥人谷</p>
+				<div class="btns">
+					<a href="#" class="cancel">取消</a>
+					<a href="#" class="confirm">确定</a>
+				</div>
+			</div><!-- div.dialog-->
+		</div>
+	<script>
+		var btn = document.querySelector('.btn'),
+		    modalct = document.querySelector('.modalct'),
+		    cancel = document.querySelector('.cancel'),
+		    close = document.querySelector('.close'),
+		    cover = document.querySelector('.cover');
+
+		btn.addEventListener('click',function(e){
+			e.stopPropagation();
+			modalct.style.display="block";
+		});
+		modalct.addEventListener('click',function(e){
+			e.preventDefault();//阻止a链接的跳转行为
+			// console.log(e.target);
+			if(e.target===cancel||e.target===close||e.target===cover){
+				modalct.style.display="none";
+			}
+		})
+	</script>
+	</body>
+</html>
