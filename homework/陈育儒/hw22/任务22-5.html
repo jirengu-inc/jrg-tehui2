@@ -8,67 +8,90 @@
 				margin:0;
 				padding:0;
 			}
-			body{
-				color:#666;
-			}
 			a{
 				text-decoration:none;
-				color:#666;
-			}
-			.modalct{
+				color:#999;
+		  }
+		  .modalct{
+				position:relative;
 				display:none;
+		  }
+		  .modal-dialog{
+		  	width:330px;
+		  	height:200px;
+		  	background:white;
+		  	border:1px solid #999;
+		  	border-radius:6px;
+		  	margin-left:30px;
+		  	color:#999;
+		  	position:absolute;
+		  	top:130px;
+		  	left:70px;
+		  }
+		  .mod-header{
+		  	height:30px;
+		  	line-height:30px;
+		  	border-bottom:1px solid #999;
+		  	border-radius:6px;
+		  }
+		  .mod-header span{
+		  	margin-left:10px;
+		  }
+		  .close{
+		  	margin-left:200px;
+		  }
+		  .mod-main{
+		  	margin-left:10px;
+		  	margin-top:10px;
+		  }
+		  .mod-footer{
+		  	margin-top:70px;
+		  	margin-left:220px;
+		  }
+		  .cover{
+		  	width:500px;
+		  	height:400px;
+		  	background:#ccc;
+		  }
+			.text{
+				line-height:1.5;
 			}
-			.modal{
-				width:300px;
-				height:100px;
-				border:1px solid #666;
-				border-radius:5px;
-				position:absolute;
-				top:200px;
-				left:100px;
-				background:#fff;
-			}
-			.modal:after{
-				content:'';
-				display:block;
-				clear:both;
-			}
-			.close{
-				float:right;
-				margin-right:8px;
-			}
-			.btns{
-				float:right;
-				margin-right:10px;
-			}
-			.btns:after{
-				content:'';
-				display:block;
-				clear:both;
-			}
-			.cover{
-				width:500px;
-				height:500px;
-				background:#eee;
-			}
+		  .btns .btn{
+		  	padding:5px;
+		  	line-height:30px;
+		  	border:1px solid;
+		  	border-radius:3px;
+		  }
+		  .btns .btn:hover{
+		  	background:#eee;
+		  }
 		</style>
 	</head>
 	<body>
 		
 		<button class="btn">点我</button>
+		
 		<div class="modalct">
 			<div class="cover"></div>
-			<div class="modal">
-				<span class="title">这里是饥人谷</span>
-				<a href="#" class="close">x</a>
-				<hr>
-				<p>你好</p><p>这里是饥人谷</p>
-				<div class="btns">
-					<a href="#" class="cancel">取消</a>
-					<a href="#" class="confirm">确定</a>
+			<div class="modal-dialog">
+				<div class="mod-header">
+			  	<span>这里是饥人谷</span><a href=""class="close">X</a>
 				</div>
-			</div><!-- div.dialog-->
+				<div class="mod-main">
+					<div class="text">
+						<p>你好</p>
+						<p>这里是饥人谷</p>
+					</div>
+				</div>
+				<div class="mod-footer">
+					<div class="btns">
+						<a href="#" class="cancel btn">取消</a>
+						<a href="#" class="confirm btn">确定</a>
+					</div>
+				</div><!--mod-footer-->
+			</div><!--modal-dialog-->
 		</div>
+
 	<script>
 		var btn = document.querySelector('.btn'),
 		    modalct = document.querySelector('.modalct'),
