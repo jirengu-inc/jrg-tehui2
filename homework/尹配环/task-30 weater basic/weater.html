@@ -61,7 +61,7 @@
 
 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-
+/*
     function rander ($ct) {
         var $node = $ct.children(".item"),
                 $nodeW = $node.outerWidth(true),  //元素宽度
@@ -93,13 +93,73 @@
         })
 
     }
-
     var $ct = $(".ct");
     rander($ct);
+*/
+var Weaterfall = {
+    init:function ($ct,listArr) {
+        this.$ct = $ct;
+        this.$nodes = $ct.find('.item');
+        this.nodeW = this.$nodes.outerWidth(true);
+        this.listArr = listArr;
 
-    $(window).on("resize" , function (e) {
-        rander($ct);
-    })
+        this.initArr();
+        this.setCss();
+
+
+    },
+    initArr:function () {
+        var me = this;
+        var len = me.listArr.length;
+
+        if (len == 0) {            //初次使用列高度数组，全部初始化为0
+            var colNum = parseInt(me.$ct.width() / me.$nodes.outerWidth(true));
+            for (var i=0; i<colNum ; i++){
+                me.listArr.push(0);
+            }
+        }
+    },
+    setCss:function () {
+        var me =this;
+
+        me.$nodes.each(function (index, el) {
+            me.findMin();
+            var $cur = $(this);
+            console.log($cur +" , "+ $cur.height());
+            $cur.css({
+                left: me.nodeW * me.idx,
+                top:me.min
+            });
+            me.listArr[me.idx] += $cur.outerHeight(true);
+
+        });
+    },
+    findMin:function () {
+        var me = this;
+        me.min = me.listArr[0];
+        me.idx = 0;
+
+        for (var key in me.listArr){
+            if (me.listArr[key] < me.min) {
+                me.min = me.listArr[key];
+                me.idx = key;
+            }
+        }
+    }
+};
+
+function rander2() {
+    var $nodes = $('.ct');
+    var arr = [];
+    Weaterfall.init($nodes,arr);
+}
+rander2();
+$(window).on("resize" , function (e) {
+    rander2();
+});
+
+
+
 </script>
 </body>
 </html>
