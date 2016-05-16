@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task24</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css">
+	<style>
+		p {
+			border: 1px solid #000;
+			border-radius: 5px;
+			transition: background 0.3s;
+			padding: 10px;
+		}
+		p:hover {
+			background-color: #fcc;
+			color: #fff;
+		}
+		.btn {
+			display: block;
+			width: 100px;
+			border: 1px solid #000;
+			margin: 0 auto;
+			padding: 10px;
+			background-color: #fff;
+			transition: background 0.3s;
+		}
+		.btn:hover {
+			background-color: #fcc;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<p>内容1</p>
+		<p>内容2</p>
+	</div>
+	<button class="btn">加载更多</button>
+	<script src="ajax.js"></script>
+	<script>
+	var ct = document.querySelector(".wrap");
+    var btn = document.querySelector(".btn");
+    var curs = 2;
+    var islocked = false;//设置一个状态锁
+    btn.addEventListener("click",function () {
+        if(islocked){   //判断状态是否锁上，一旦锁上终止函数，不与后台交互
+            return;
+        }
+        islocked = true;//产生AJAX前立刻上锁，防止用户多次点击
+        ajax({
+            url: 'task-24.php',
+            type: 'get',
+            data: {
+                present:curs,
+                len: 3
+            },
+            success: function(json){
+                onSuccess(json);
+            },
+            error: function(){
+                onError();
+            }
+        });
+    });
+    function onSuccess(json) {
+        for (var i =0;i<json.data.length;i++){
+            var p = document.createElement("p");
+            p.innerText=""+json.data[i];
+            ct.appendChild(p);
+        }
+        curs +=3;
+        islocked = false;//开锁
+    }
+    function onError() {
+        alert("异常");
+        islocked = false;//开锁
+    }
+	</script>
+</body>
+</html>
