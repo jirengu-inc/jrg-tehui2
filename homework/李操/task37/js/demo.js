@@ -5,7 +5,7 @@ $('.btn1').on('click',function () {
 
 
 $('.btn2').on('click',function () {
-	 $(this).goDialog('<a href="http://licao404.coding.io">My Blog</a>');
+	 $(this).goDialog('By <a href="http://licao404.coding.io">Gardon Lee</a>');
 });
 
 
@@ -23,7 +23,7 @@ $('.btn3').on('click',function(){
 });
 
 
-var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+var tpl = '<ul><li>List-1</li><li>List-2</li><li>List-3</li><li>List-4</li></ul>';
 $('.btn4').on('click',function(){
   $(this).goDialog({
     title: 'Message',
