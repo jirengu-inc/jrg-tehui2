@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+
+		}
+		ul,li{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		html,body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.clearfix:before{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.img-list{
+	    	position: absolute;
+	    	left: 0px;
+	    	top: 0px;
+		}
+	    .img-list>li{
+	    	display: inline-block;
+	    	float: left;
+
+	    }
+	    .view{
+	    	overflow: hidden;
+			width: 341px;
+	    	height: 582px;
+	    	position: relative;
+	    }
+	    .btn-left,.btn-right{
+			position: absolute;
+			z-index: 1;
+			background-color: #999;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			height: 40px;
+			width: 40px;
+			opacity: 0.8;
+			cursor: pointer;
+			top: 50%;
+			margin-top: -20px;
+	    }
+	    .btn-left:hover,.btn-right:hover{
+	    	opacity: 1;
+	    }
+	    .btn-left{
+	    	left: 10px;
+	    }
+	    .btn-right{
+	    	right: 10px;
+	    }
+	    .btn-left>a,.btn-right>a{
+	    	font-family: "微软雅黑";
+	    	color: #fff;
+	    	font-size: 20px;
+
+	    }
+	    .bottom-nav{
+	    	position: absolute;
+	    	bottom: 10px;
+	    	left: 50%;
+	    }
+	    .bottom-nav>li{
+			display: inline-block;
+			background: #fff;
+			border-radius: 5px;
+			opacity: 0.8;
+
+	    }
+	    .bottom-nav>li>a{
+	    	display:block;
+			width: 30px;
+			height: 10px;
+			border-radius: 5px;
+	    }
+	    .active{
+	    	background: #aaa;
+	    }
+/*	    .bottom-nav>li>a:hover{
+	    	background: red;
+	    }*/
+	</style>
+</head>
+<body>
+	<div class="view">
+		<ul class="img-list clearfix">
+			<li><a href="javascript:void(0);"><img src="img/Assassin.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Berserker.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Avenger.jpg"></a></li>
+		</ul>
+		<div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+			//获取需要操作的元素节点
+			var $view=$(".view");
+			var $imgs=$(".img-list");
+			var $left=$(".btn-left");
+			var $right=$(".btn-right");
+			var $nav=$(".bottom-nav");
+			var shift=$imgs.find("li").width();
+			var curindx=0;//初始化当前选择的图片
+			var isAnimate=false;//重复按钮锁
+
+			//设置底部导航水平居中
+			var $navWidth=$nav.width();
+			var setMargin="-"+($navWidth/2)+"px";
+			$nav.css("margin-left",setMargin);
+
+			//设置img水平排列
+			var imgsWidth=shift*($imgs.find("li").size());
+			$imgs.css("width",imgsWidth+"px");
+
+			//操作DOM换到上一个节点
+			function playNext(time){
+				if(isAnimate) return;
+
+				if(time!==0){
+					time=400;
+				}
+				isAnimate=true;
+				++curindx;
+				curindx=curindx%($imgs.children().size());
+				//从动画完成的函数中剥离出来，因为动画是一个队列，总会在代码的最后执行。
+				$imgs.animate({
+				 	left:"-"+shift+"px"
+				 },time,function(){
+				 	var temp=$imgs.find("li").first();
+				 	$imgs.append(temp);
+				 	$imgs.css("left","0px"); 
+				 	isAnimate=false;
+				 });
+			}
+			//操作DOM切换到上一个节点
+			function playPre(time){
+				if(isAnimate) return;
+				if(time!==0){
+					time=400;
+				}//设置time的默认值，不能通过A||B这样的方式。
+				isAnimate=true;
+				--curindx;
+				var temp=$imgs.find("li").last();
+				$imgs.prepend(temp);
+				$imgs.css("left","-"+shift+"px");
+				$imgs.animate({
+					left:"0px"
+				},time,function(){
+					if(curindx<0){
+						curindx=$imgs.children().size()+curindx%$imgs.children().size();
+					}
+					isAnimate=false;
+					//buttonColor(curindx);
+				});
+
+			}
+			//给跳转的Node设置独特的标记
+			// for(var i=0;i<$imgs.children().size();i++){
+			// 	$imgs.find("li").eq(i).attr("inde",i);
+			// }
+			//
+			// function nextSkip(index){
+			// 	curindx=index || curindx;
+			// 	for(var i=0;i<$imgs.children().size();i++){
+			// 		if($imgs.find("li").eq(i).attr("inde")==curindx){
+			// 		  //获取当前想要指向的节点之前有多少个节点。
+			// 		  var prevq=$imgs.find("li").eq(i).prevAll().size();
+			// 		  break;
+			// 		}
+			// 	}
+			// $imgs.animate({
+			// 		 left:"-"+shift*prevq+"px"//向左移动那么多的节点
+			// 	},function(){
+			// 		//把当前节点之前的节点添加到后面去
+			// 		var curNode=$imgs.find("li").eq(prevq);
+			// 		var perNode=curNode.prevAll();
+			// 		$imgs.append(perNode);
+			// 		$imgs.append(curNode);
+			// 		$imgs.css("left","0px");
+			// 		buttonColor(curindx);
+			// 	})
+			// }
+			//根据index改变button的颜色
+			function buttonColor(index){
+				$nav.find("li").eq(index).find("a").addClass("active");
+				$nav.find("li").eq(index).siblings().find("a").removeClass("active");
+			}
+			$right.on("click",function(){
+				playNext();//这边分离的目的是为了设置底部导航栏的跳转
+				buttonColor(curindx);
+			});
+			$left.on("click",function(){
+				playPre();
+				buttonColor(curindx);
+			});
+			//设置底部导航栏跳转。
+			$nav.on("click","li",function(){
+					//该代码抽象封装成函数更好！
+					var $this=$(this);
+					var tarIndex=$this.index();
+					var len;//获得与目标的差数
+					if (tarIndex-curindx==0) {return;}//正好在当前位置，不管。
+					if(tarIndex-curindx>0){//在当前位置后面
+						len=tarIndex-curindx;
+						for(var i=0;i<len;i++){
+							isAnimate=false;//强制打开重复锁
+							playNext(0);
+						}
+					}else/*在当前位置前面*/{
+						len=-(tarIndex-curindx);
+						for(var i=0;i<len;i++){
+							isAnimate=false;
+							playPre(0);
+						}
+					}
+					buttonColor(curindx);
+			});
+			//自动轮播;
+			var stopv=setInterval(function(){
+				playNext();//这边分离的目的是为了设置底部导航栏的跳转
+				console.log(curindx);
+				buttonColor(curindx);
+			},1000);
+
+
+
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stickup</title>
+	<style>
+	#wrap{
+		width:1000px;
+		margin:0 auto;
+	}
+	#wrap>div{
+		margin-bottom:40px;
+	}
+
+	#head{
+		height:50px;
+		line-height: 50px;
+		background:red;
+		text-align: center;
+	}
+	
+	.clear:after{
+		content:"";
+		display: block;
+		clear:both;
+	}
+	.nav{
+		height:30px;
+		background:yellow;
+		border:1px solid black;
+		text-align: center;
+	}
+	.left{
+		width:300px;
+		height:500px;
+		float:left;
+		margin-right:20px;
+		background:red;
+	}
+	.main{
+		width:680px;
+		height:500px;
+		float:left;
+		background:green;
+	}
+	.pink{
+		background:pink;
+	}
+	.green{
+		background:green;
+	}
+	.red{
+		background:red;
+	}
+	</style>
+</head>
+<body>
+<div id="wrap">
+	<div id="head">header</div>
+	<div class="content1 clear">
+		<div class="nav">nav1</div>
+		<div class="left ">aside1</div>
+		<div class="main pink">main1</div>
+	</div>
+	<div class="content2 clear">
+		<div class="nav">nav2</div>
+		<div class="left">aside2</div>
+		<div class="main">main2</div>
+	</div>
+	<div class="content3 clear">
+		<div class="nav">nav3</div>
+		<div class="left pink">aside3</div>
+		<div class="main">main3</div>
+	</div>
+	<div class="content4 clear">
+		<div class="nav">nav4</div>
+		<div class="left">aside4</div>
+		<div class="main green">main4</div>
+	</div>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script src="stickup.js"></script>
+<script>
+	$(".nav").each(function(){
+		$(this).stick();
+	})
+</script>
+</html>

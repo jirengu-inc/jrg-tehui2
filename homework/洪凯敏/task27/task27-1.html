@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<style type="text/css">
+		a{
+			text-decoration: none;
+
+		}
+		ul,li{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		html,body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.clearfix:before{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.img-list{
+	    	position: relative;
+		}
+	    .img-list>li{
+	    	display: inline-block;
+	    	position: absolute;
+	    	top: 0px;
+	    	left: 0px;
+
+	    }
+	    .view{
+	    	overflow: hidden;
+			width: 341px;
+	    	height: 582px;
+	    	position: relative;
+	    	background-color: #999;
+	    }
+	    .btn-left,.btn-right{
+			position: absolute;
+			z-index: 1;
+			background-color: #999;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			height: 40px;
+			width: 40px;
+			opacity: 0.8;
+			cursor: pointer;
+			top: 50%;
+			margin-top: -20px;
+	    }
+	    .btn-left:hover,.btn-right:hover{
+	    	opacity: 1;
+	    }
+	    .btn-left{
+	    	left: 10px;
+	    }
+	    .btn-right{
+	    	right: 10px;
+	    }
+	    .btn-left>a,.btn-right>a{
+	    	font-family: "微软雅黑";
+	    	color: #fff;
+	    	font-size: 20px;
+
+	    }
+	    .bottom-nav{
+	    	position: absolute;
+	    	bottom: 10px;
+	    	left: 50%;
+	    }
+	    .bottom-nav>li{
+			display: inline-block;
+			width: 30px;
+			height: 10px;
+			background: #fff;
+			border-radius: 5px;
+			opacity: 0.8;
+
+	    }
+	    .bottom-nav>li>a{
+	    	display:block;
+			width: 30px;
+			height: 10px;
+			border-radius: 5px;
+	    }
+	    .active{
+	    	background: #aaa;
+	    }
+</style>
+</head>
+<body>
+    <div class="view">
+    	<ul class="img-list">
+    		<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+    	</ul>
+	    <div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+    <script type="text/javascript">
+		//获取需要操作的元素节点
+		var $view=$(".view");
+		var $imgs=$(".img-list");
+		var $left=$(".btn-left");
+		var $right=$(".btn-right");
+		var $nav=$(".bottom-nav");
+		var shift=$imgs.find("li").width();
+		var curindx=0;//初始化当前选择的图片
+		var isAnimate=false;//重复按钮锁
+		var $lis=$imgs.find("li");
+
+		//设置底部导航水平居中
+		var $navWidth=$nav.width();
+		var setMargin="-"+($navWidth/2)+"px";
+		$nav.css("margin-left",setMargin);
+		//初始化轮播图
+		$lis.hide();
+		$lis.first().show();
+
+		//设置设置底部导航的按钮跳转
+		function btnColor(index){
+			var $select=$nav.find("li").eq(index);
+			//console.log($select);
+			$select.find("a").addClass("active");
+			$select.siblings().find("a").removeClass("active");
+
+		}
+		//设置下一张图片的方法
+		function playNext(){
+			if (isAnimate) return;
+			//curindx=index || 0;
+			//++curindx;
+			isAnimate=true;
+			var amout=$lis.size();
+			//console.log($lis);
+			$lis.eq(curindx++).fadeOut(function(){
+				btnColor(curindx%amout);
+			});//not grace
+			curindx=curindx%amout;
+			$lis.eq(curindx).fadeIn(function(){
+				isAnimate=false;
+			});				
+		}
+		//设置上一张图片的方法
+		function playPre(){
+			if (isAnimate) return;
+			isAnimate=true;
+			var amout=$lis.size();
+			--curindx;
+			if(curindx<0)
+			curindx=curindx+amout;//对于负数的处理，感觉不够优雅
+			$lis.fadeOut(function(){
+				btnColor(curindx);
+			});
+			$lis.eq(curindx).fadeIn(function(){
+				isAnimate=false;
+			});	
+		}
+		//设置跳转函数
+		function skip(index){
+			if (isAnimate) return;
+			isAnimate=true;
+			$imgs.find("li").fadeOut(function(){
+				 btnColor(index);
+			});
+			$imgs.find("li").eq(index).fadeIn(function(){
+				isAnimate=false;
+			});
+		}
+		//自动轮播
+		setInterval(function(){
+			playNext();
+		},1000);
+		$right.on("click",playNext);
+		$left.on("click",playPre);
+    	$nav.on("click","li",function(){
+    		skip($(this).index());
+    	});
+    </script>
+</body>
+</html>

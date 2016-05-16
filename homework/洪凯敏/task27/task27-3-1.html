@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+
+		}
+		ul,li{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		html,body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.clearfix:before{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.img-list{
+	    	position: absolute;
+	    	left: -341px;
+	    	top: 0px;
+		}
+	    .img-list>li{
+	    	display: inline-block;
+	    	float: left;
+
+	    }
+	    .view{
+	    	overflow: hidden;
+			width: 341px;
+	    	height: 582px;
+	    	position: relative;
+	    }
+	    .btn-left,.btn-right{
+			position: absolute;
+			z-index: 1;
+			background-color: #999;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			height: 40px;
+			width: 40px;
+			opacity: 0.8;
+			cursor: pointer;
+			top: 50%;
+			margin-top: -20px;
+	    }
+	    .btn-left:hover,.btn-right:hover{
+	    	opacity: 1;
+	    }
+	    .btn-left{
+	    	left: 10px;
+	    }
+	    .btn-right{
+	    	right: 10px;
+	    }
+	    .btn-left>a,.btn-right>a{
+	    	font-family: "微软雅黑";
+	    	color: #fff;
+	    	font-size: 20px;
+
+	    }
+	    .bottom-nav{
+	    	position: absolute;
+	    	bottom: 10px;
+	    	left: 50%;
+	    }
+	    .bottom-nav>li{
+			display: inline-block;
+			width: 30px;
+			height: 10px;
+			background: #fff;
+			border-radius: 5px;
+			opacity: 0.8;
+
+	    }
+	    .bottom-nav>li>a{
+	    	display:block;
+			width: 30px;
+			height: 10px;
+			border-radius: 5px;
+	    }
+	    .active{
+	    	background: #aaa;
+	    }
+/*	    .bottom-nav>li>a:hover{
+	    	background: red;
+	    }*/
+	</style>
+</head>
+<body>
+	<div class="view">
+		<ul class="img-list clearfix">
+			<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Caster.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Rider.jpg"></a></li>
+		</ul>
+		<div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+			//获取需要操作的元素节点
+			var $view=$(".view");
+			var $imgs=$(".img-list");
+			var $left=$(".btn-left");
+			var $right=$(".btn-right");
+			var $nav=$(".bottom-nav");
+			var shift=$imgs.find("li").width();
+			var curindx=1;//初始化当前选择的图片
+			var isAnimate=false;//重复按钮锁
+
+			//设置底部导航水平居中
+			var $navWidth=$nav.width();
+			var setMargin="-"+($navWidth/2)+"px";
+			$nav.css("margin-left",setMargin);
+
+			//设置img水平排列
+			var imgsWidth=shift*($imgs.find("li").size()+2);//这边由于要clone2个节点
+			$imgs.css("width",imgsWidth+"px");
+
+			//clone首尾节点
+			var $head=$imgs.find("li").first().clone();
+			var $tail=$imgs.find("li").last().clone();
+			$imgs.prepend($tail);
+			$imgs.append($head);
+
+			//随着滚动变色的底部导航栏函数
+			function changeColor(index){
+				$nav.find("li").eq(index).find("a").addClass("active");
+				$nav.find("li").eq(index).siblings().find("a").removeClass("active");
+			}
+			//设置下一个的函数
+			function nextImg(){
+				if(isAnimate) return;
+				isAnimate=true;
+				++curindx;
+				var leftValue=curindx*shift;//计算要偏移的距离
+				$imgs.animate({
+					left:"-"+leftValue+"px"
+				},function(){
+					isAnimate=false;
+					if(curindx==6){
+						$imgs.css("left","-"+shift+"px");
+						curindx=1;
+
+					}
+					changeColor(curindx-1);
+				});
+			}
+			//设置上一个的函数
+			function prevImg(){
+				if(isAnimate) return;
+				isAnimate=true;
+				--curindx;
+				//curindx=curindx+$imgs.children().size();
+				var leftValue=curindx*shift;//计算要偏移的距离
+				$imgs.animate({
+					left:"-"+leftValue+"px"
+				},function(){
+					isAnimate=false;
+					if(curindx==0){
+						curindx=$imgs.children().size()-2;
+						$imgs.css("left","-"+(shift*curindx)+"px");
+					}
+					changeColor(curindx-1);
+				});
+			}
+			//设置跳转到指定位置的函数
+			function skip(index){
+				if(isAnimate||index>$imgs.children().size()-2||index<1) return;
+				isAnimate=true;
+				curindx=index||1;
+				var leftValue=curindx*shift;
+				$imgs.animate({
+					left:"-"+leftValue+"px"
+				},function(){
+					isAnimate=false;
+				});
+			}
+			//设置右键触发事件
+			$right.on("click",nextImg);
+			$right.on("mouseenter",function(){
+				clearInterval(stopv);
+			}).on("mouseleave",function(){
+				stopv=setInterval(nextImg,1000);
+			});
+			//设置左键触发事件
+			$left.on("click",prevImg);
+			$left.on("mouseenter",function(){
+				clearInterval(stopv);
+			}).on("mouseleave",function(){
+				stopv=setInterval(nextImg,1000);
+			});
+			//自动轮播
+			var stopv=setInterval(nextImg,1000);
+			//设置底层导航栏的点击事件
+			$nav.on("click","li",function(){
+				var $this=$(this);
+				changeColor($this.index());
+				skip($this.index()+1);
+			});
+
+
+
+
+
+
+
+	</script>
+</body>
+</html>

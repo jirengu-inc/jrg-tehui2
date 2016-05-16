@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 32 实战</title>
+    <style>
+        ul {
+            padding:0;
+            maring:0;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            vertical-align:bottom;
+        }
+        .wrap {
+            width: 900px;
+            margin:0 auto;
+        }
+        .ct {
+            position: relative;
+        }
+        .ct>.item {
+            position:absolute;
+            width:260px;
+            padding:9px;
+            margin:10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .item>a img {
+            width:260px;
+        }
+        .item h4 {
+            margin:10px 0 5px 0;
+        }
+        .item p {
+            font-size: 12px;
+            padding-right:15px;
+        }
+        .item hr {
+            border: none;
+            border-top:1px solid #ccc;
+        }
+        .item p,.item hr {
+            color:#7D7272;
+        }
+        .token {
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="ct">
+        <!--<li class="item">-->
+            <!--<a href="http://comment5.news.sina.com.cn/comment/skin/default.html?channel=kj&newsid=slidenews-album-453-69032">-->
+                <!--<img src="http://www.sinaimg.cn/dy/slidenews/5_img/2016_19/453_78110_620237.jpg" alt="">-->
+            <!--</a>-->
+            <!--<h4>大胆小青蛙骑在鳄鱼头上</h4>-->
+            <!--<hr>-->
+            <!--<p>一只大胆的小青蛙趴在一条咸水鳄的鼻子上，爪子还伸到了它的嘴里。</p>-->
+        <!--</li>-->
+    </ul>
+    <div class="token">我看不见</div>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="js/exposure.js"></script>
+<script src="js/weaterfall.js"></script>
+<script>
+    var $ct = $(".ct");
+    console.log($ct.find(".item"));
+    console.log($ct.find(".item").height());
+    var listArr = [];
+    var num = 4,curPage = 1;
+    Exposure.init($('.token'),load); //懒加载
+
+    function load(ret) {
+        $.ajax({
+            url:"http://platform.sina.com.cn/slide/album_tech",
+            type:"get",
+            dataType:"jsonp",
+            jsonp:"jsoncallback",
+            data:{
+                app_key:"1271687855",
+                format:"json",
+                size:"img",
+                num :num,
+                page:curPage++
+            },
+            success:function (ret) {
+                if (ret.status.code == 0){
+                    onSuccess(ret.data);
+                }
+            }
+        });
+    }
+    function onSuccess(data) {
+        $ct.append(createDom(data));    //组合DOM
+
+        console.log($ct.find(".item").outerHeight(true));   //老师这里获取不到正确的高度，不知道什么原因。。
+
+        Weaterfall.init($ct,listArr);        //瀑布流布局
+    }
+    function createDom(dataArr) {
+        var temp = "",
+                $nodes ;
+
+        for(var i=0; i<dataArr.length; i++){
+            temp += '<li class="item">';
+            temp +=     '<a href=' + dataArr[i].cmnt_url + '>';
+            temp +=         '<img src='+ dataArr[i].img_url +' alt="">';
+            temp +=     '</a>';
+            temp +=     '<h4>' + dataArr[i].short_name + '</h4>';
+            temp +=     '<hr>';
+            temp +=     '<p>' + dataArr[i].short_intro+ '</p>';
+            temp += '</li>';
+        }
+        $nodes = $(temp);
+        return $nodes;
+    }
+</script>
+</body>
+</html>

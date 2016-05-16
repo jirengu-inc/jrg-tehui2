@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task22-4</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .clear:after{
+            content: '';
+            display:block;
+            clear:both;
+        }
+        li{
+            box-sizing: border-box;
+            list-style: none;
+            width: 33.3333333333%;
+            height: 100px;
+            border: 1px solid #ccc;
+            text-align: center;
+            line-height: 100px;
+            float:left;
+        }
+
+        .wrap{
+            width: 300px;
+            height: 400px;
+            margin: 0 auto;
+            position:relative;
+            border: 1px solid #ccc;
+        }
+        .panel{
+            width: 300px;
+            height: 300px;
+            display: none;
+        }
+        div.panel{
+            position:absolute;
+            top: 100px;
+            left: 0px;
+            background-color: #fff;
+        }
+        .active{
+            background-color: #ccc;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+    <ul class="tabs clear">
+        <li class="active">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+    <div class="panel active">内容1</div>
+    <div class="panel">内容2</div>
+    <div class="panel">内容3</div>
+</div>
+<script>
+    var tabct = document.querySelector('.tabs'),
+        oLi = tabct.getElementsByTagName('li'),
+        oDiv = document.querySelector('.wrap').querySelectorAll('.panel');
+    for(var i=0;i<oLi.length;i++) {
+        oLi[i].index = i;
+        oLi[i].onclick = function() {
+            for(var i=0;i<oLi.length;i++) {
+                oLi[i].className = '';
+                oDiv[i].style.display = 'none';
+            }
+            this.className = 'active';
+            oDiv[this.index].style.display = 'block';
+        }
+    }
+
+// var tabCt = document.querySelector('.tabs');
+
+// tabCt.addEventListener('click', function(e){
+//    var target = e.target,
+//        tabs = tabCt.children,
+//        index = Utils.indexOf(target),
+//        panels = document.querySelectorAll('.panel');
+
+//    if(index > -1){
+//        Utils.removeClass(tabs, 'active');
+//        Utils.addClass(target, 'active');
+//        Utils.removeClass(panels, 'active');
+//        Utils.addClass(panels[index], 'active');
+//    } 
+// });
+// /* ******************************************** */
+// var Utils = {
+
+//     hasClass: function(ele, cls){
+//         return !!ele.className.match(new RegExp('\\b'+cls+'\\b'));
+//     },
+    
+//     addClass:function(ele, cls){
+//       if(ele.length && ele.length > 0){
+//           for(var i=0; i<ele.length; i++){
+//               Utils.singleAddClass(ele[i], cls); 
+//           }
+//       }else{
+//           Utils.singleAddClass(ele, cls);
+//       }  
+//     },
+    
+//     removeClass:function(ele, cls){
+//        if(ele.length && ele.length > 0){
+//           for(var i=0; i<ele.length; i++){
+//               Utils.singleRemoveClass(ele[i], cls); 
+//           }
+//       }else{
+//           Utils.singleRemoveClass(ele, cls);
+//       }   
+//     },
+    
+//     singleAddClass: function(ele, cls){
+//         if(Utils.hasClass(ele,cls)) return;
+//         ele.className += ' ' + cls;
+//     },
+    
+//     singleRemoveClass: function(ele, cls){
+//         ele.className = ele.className.replace(new RegExp('\\b'+cls+'\\b', 'g'), '');
+//     },
+    
+//     indexOf: function(ele){
+//         var parent = ele.parentElement,
+//             siblings = parent.children;
+//         for(var i=0; i<siblings.length; i++){
+//             if(ele === siblings[i]) return i;
+//         }
+//         return -1;
+//     }
+// };
+    
+</script>
+
+</body>
+</html>

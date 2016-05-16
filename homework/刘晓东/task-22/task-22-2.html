@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-2</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li>这里是</li>
+        <li>饥人谷</li>
+        <li>前端6班</li>
+    </ul>
+    <input class="ipt-add-content" placeholder="添加内容" />
+    <button id="btn-add-start">开头添加</button>
+    <button id="btn-add-end">结尾添加</button>
+    <script>
+    function getElementsByClassName(parent, tagName, className) {
+        var aEls = parent.getElementsByTagName(tagName);
+        var arr = [];
+        for (var i = 0; i < aEls.length; i++) {
+            var aClassName = aEls[i].className.split(' ');
+            for (var j = 0; j < aClassName.length; j++) {
+                if (aClassName[j] == className) {
+                    arr.push(aEls[i]);
+                    break;
+                }
+            }
+
+        }
+        return arr;
+    }
+
+    function addEventHandler(element, eventType, handlerFunction) {
+        if (element.addEventListener) {
+            element.addEventListener(eventType, handlerFunction, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventType, handlerFunction);
+        }
+    }
+
+    function removeEventHandler(element, eventType, handlerFunction) {
+        if (element.removeEventListener) {
+            element.removeEventListener(eventType, handlerFunction, false);
+        } else if (element.detachEvent) {
+            element.detachEvent('on' + eventType, handlerFunction);
+        }
+    }
+
+    var oUl = getElementsByClassName(document, 'ul', 'ct');
+    var oinput = getElementsByClassName(document, 'input', 'ipt-add-content');
+    addEventHandler(oUl[0], 'click', function(e) {
+        console.log(e.target.innerText);
+    });
+
+    var oBtn = document.getElementsByTagName('button');
+    addEventHandler(oBtn[0], 'click', function() {
+        var oLi = document.createElement('li');
+        oLi.innerText = oinput[0].value;
+        if (oLi.innerText) {
+            oUl[0].insertBefore(oLi, oUl[0].children[0]);
+        }
+        oinput[0].value = '';
+    });
+    addEventHandler(oBtn[1], 'click', function() {
+        var oLi = document.createElement('li');
+        oLi.innerText = oinput[0].value;
+        if (oLi.innerText) {
+            oUl[0].appendChild(oLi);
+        }
+        oinput[0].value = '';
+
+    });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-3</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <ul class="ct">
+        <li data-img="http://img4.imgtn.bdimg.com/it/u=1220247882,2897676880&fm=21&gp=0.jpg">鼠标放置查看图片1</li>
+        <li data-img="http://img1.imgtn.bdimg.com/it/u=2468413383,2378712674&fm=21&gp=0.jpg">鼠标放置查看图片2</li>
+        <li data-img="http://img2.imgtn.bdimg.com/it/u=3494980167,4088219007&fm=21&gp=0.jpg">鼠标放置查看图片3</li>
+    </ul>
+    <div class="img-preview"></div>
+    <script>
+    function addEventHandler(element, eventType, handlerFunction) {
+        if (element.addEventListener) {
+            element.addEventListener(eventType, handlerFunction, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventType, handlerFunction);
+        }
+    }
+    var ct = document.querySelector('.ct'),
+        childs = ct.querySelectorAll('li'),
+        preview = document.querySelector('.img-preview');
+
+
+    addEventHandler(ct, 'mousemove', function(e) {
+        var dataImg = e.target.getAttribute('data-img');
+        preview.innerHTML = '<img src="' + dataImg + '">'
+    })
+    </script>
+</body>
+
+</html>

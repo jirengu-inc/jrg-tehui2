@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-26-2</title>
+    <style>
+        .warp {
+            margin:0;
+            padding:0;
+        }
+        .warp>li {
+            list-style:none;
+            border:1px solid #ccc;
+            padding:10px;
+            margin-bottom: 10px;
+        }
+        .btn {
+            box-sizing: border-box;
+            display: block;
+            padding:0;
+            margin:0 auto;
+            width: 80px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+            border:1px solid #2B82EE;
+            border-radius:3px;
+            color: #2B82EE;
+        }
+        .btn img {
+            width: 38px;
+            height:38px;
+        }
+    </style>
+</head>
+<body>
+<ul class="warp">
+    <li>内容1</li>
+    <li>内容2</li>
+</ul>
+<div class="btn">加载更多</div>
+
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script src="jquery-color.js"></script>
+<script>
+    var isLoad = false;
+    var cur = 2;
+    var len = 6;
+
+    $(".warp").on("mouseenter","li",function (e) {
+        $(this).css("backgroundColor","blue");
+    }).on("mouseleave","li",function (e) {
+        $(this).css("backgroundColor","white");
+    });
+    $(".btn").on("click",function (e) {
+        if (isLoad == true){return;}
+        isLoad = true;
+
+        $(this).html("<img src='http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif'>");
+        $.ajax({
+            url:"abc.php",
+            method:"GET",
+            data:{
+              start:cur,
+              len:len
+            },
+            dataType:"json",
+            success:function (e) {
+                onSuccess(e);
+            },
+            error:function (e) {
+                onError(e);
+            },
+            complete:function () {
+                isLoad = false;
+                cur +=len;
+                $(".btn").text("加载更多");
+            }
+        });
+    });
+
+    function onSuccess(e) {
+        if (e.status == 1) {
+            for(var key in e.data) {
+                $("<li>" + e.data[key] + "</li>").appendTo($(".warp"));
+            }
+        }
+    }
+    function onError(e) {
+        console.log("出错了");
+    }
+</script>
+</body>
+</html>

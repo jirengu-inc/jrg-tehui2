@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title></title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="1.png">鼠标放置查看图片1</li>
+    <li data-img="2.png">鼠标放置查看图片2</li>
+    <li data-img="3.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script>
+	var oct = document.querySelector(".ct"),
+		preview = document.querySelector(".img-preview");
+
+	oct.addEventListener("click",function(e){
+		if(e.target.tagName.toLowerCase() === "li"){
+		var data = e.target.getAttribute("data-img");
+		preview.innerHTML = '<img src="'+data+'">'}
+	})
+</script>
+</body>
+</html>

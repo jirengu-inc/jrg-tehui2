@@ -1,0 +1,168 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-4</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    .box {
+        width: 500px;
+        margin: 50px auto;
+    }
+    
+    .box div {
+        position: absolute;
+        margin-top: -1px;
+        width: 302px;
+        height: 200px;
+        border: 1px solid #000;
+        background: #999;
+    }
+    
+    ul {
+        overflow: hidden;
+        width: 304px;
+    }
+    
+    ul li {
+        list-style: none;
+        float: left;
+        width: 100px;
+        border: 1px solid #000;
+        margin-right: -1px;
+    }
+    
+    .active {
+        background: red;
+    }
+    
+    .show {
+        display: block;
+    }
+    
+    .hidden {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <ul class="ct">
+            <li>tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div>内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+    <script>
+    function addclass(obj, className) {
+        if (!obj.className) {
+            obj.className = className;
+        } else {
+            var arrClassName = obj.className.split(' ');
+
+            var _index = arrIndexOf(arrClassName, className);
+            if (_index == -1) {
+                obj.className += ' ' + className;
+            }
+
+        }
+    }
+
+    function removeclass(obj, className) {
+        if (obj.className) {
+            var arrClassName = obj.className.split(' ');
+            var _index = arrIndexOf(arrClassName, className);
+            if (_index != -1) {
+                arrClassName.splice(_index, 1)
+                obj.className = arrClassName.join(' ');
+            }
+        }
+    }
+
+    function arrIndexOf(arr, v) {
+        for (var i = 0; i < arr.length; i++) {
+            if (arr[i] == v) {
+                return i;
+            }
+
+        }
+        return -1;
+    }
+
+    function addEventHandler(element, eventType, handlerFunction) {
+        if (element.addEventListener) {
+            element.addEventListener(eventType, handlerFunction, false);
+        } else if (element.attachEvent) {
+            element.attachEvent('on' + eventType, handlerFunction);
+        }
+    }
+
+    function removeEventHandler(element, eventType, handlerFunction) {
+        if (element.removeEventListener) {
+            element.removeEventListener(eventType, handlerFunction, false);
+        } else if (element.detachEvent) {
+            element.detachEvent('on' + eventType, handlerFunction);
+        }
+    }
+    var ct = document.querySelector('.ct'),
+        lis = ct.querySelectorAll('li'),
+        box = document.querySelector('.box'),
+        divs = box.querySelectorAll('div');
+
+    // //method:1
+    // for (var i = 0; i < lis.length; i++) {
+    //     lis[i].index = i;
+    //     lis[i].onclick = function() {
+    //         for (var i = 0; i < lis.length; i++) {
+    //             removeclass(lis[i], 'active');
+    //             divs[i].style.display = 'none';
+    //         }
+    //         addclass(this, 'active');
+    //         divs[this.index].style.display = 'block';
+    //     };
+    // }
+    //method:2
+    for (var i = 0; i < lis.length; i++) {
+
+        (function(index) {
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length; i++) {
+                    removeclass(lis[i], 'active');
+                    divs[i].style.display = 'none';
+                }
+                addclass(this, 'active');
+                divs[index].style.display = 'block';
+            }
+        })(i);
+
+    }
+    //method:3
+    for (var i = 0; i < lis.length; i++) {
+
+        lis[i].onclick = (function(index) {
+            return function() {
+                for (var i = 0; i < lis.length; i++) {
+                    removeclass(lis[i], 'active');
+                    divs[i].style.display = 'none';
+                }
+                addclass(this, 'active');
+                divs[index].style.display = 'block';
+            }
+
+        })(i);
+
+    }
+    </script>
+</body>
+
+</html>

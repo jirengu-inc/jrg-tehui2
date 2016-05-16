@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task27-3 has DOM</title>
+    <style>
+        ul {
+            margin:0;
+            padding:0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        a>img {
+            vertical-align: bottom;
+        }
+
+        .wrap {
+            position: relative;
+            width:300px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .img-ct {
+            position: absolute;
+            /*width: 1800px;*/
+            /*left:-300px;*/
+        }
+        .img-ct:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .img-ct>li {
+            float: left;
+        }
+        .img-ct img {
+            width: 300px;
+            height: 200px;
+        }
+        .arrow {
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius:20px;
+            color:white;
+            background-color: #ccc;
+            opacity:.7;
+        }
+        .pre {
+            left:10px;
+        }
+        .next {
+            right:10px;
+        }
+        .arrow:hover {
+            opacity: 1;
+        }
+        .pointer {
+            position: absolute;
+            left:50%;
+            bottom:5px;
+            transform: translateX(-50%);
+        }
+        .pointer>li {
+            display: inline-block;
+            width: 30px;
+            height: 5px;
+            border-radius:10px;
+            background-color: white;
+            cursor:pointer;
+        }
+        .pointer>li.active {
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="wrap">
+    <ul class="img-ct">
+        <li><a href="#"><img src="img/11.jpg" alt="0"></a></li>
+        <li><a href="#"><img src="img/22.jpg" alt="1"></a></li>
+        <li><a href="#"><img src="img/33.jpg" alt="2"></a></li>
+        <li><a href="#"><img src="img/44.jpg" alt="3"></a></li>
+    </ul>
+    <a href="#" class="pre arrow"><</a>
+    <a href="#" class="next arrow">></a>
+    <ul class="pointer">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+    var $imgCt = $(".img-ct");
+    var $items = $imgCt.children();
+    var width = $items.width();
+    var $pre = $(".pre");
+    var $next = $(".next");
+    var $pointer = $(".pointer");
+    var curIndex = 0;
+    var clock;
+    var isLoad = false;
+
+//    $items.last().clone().prependTo($imgCt);
+//    $items.first().clone().appendTo($imgCt);
+
+    var imgCount = $imgCt.children().size();
+    $imgCt.css({
+        width:imgCount*width,
+        left:0
+    });
+
+    function play(num) {
+        if(isLoad) return;
+        isLoad = true;
+
+        var idx = (num + curIndex + imgCount)%imgCount;
+
+        if (num>=0){      //向右移动 num * width 的宽度
+            $imgCt.animate({left:"-=" + num * width},500,function () {
+                for (var i=0; i < num; i++) { //左边超出的 num 个 依次拿到 最后
+                    $imgCt.append($imgCt.children().first());
+                }
+                $imgCt.css({left:0});//拿走以后，位置改变了
+                isLoad = false;
+            });
+        }
+        if (num < 0) {   //向左移动  先拿后移
+            for (var i=0; i < -num; i++) {
+                $imgCt.prepend($imgCt.children().last());
+            }
+            $imgCt.css({left: width*num});
+            $imgCt.animate({left:0},500,function () {
+                isLoad = false;
+            });
+        }
+
+        $pointer.children().removeClass("active").eq(idx).addClass("active");
+        curIndex = idx;
+    }
+    function autoPlay(){
+        clock = setInterval('play(1)',2000);
+    }
+    function stopAuto(){
+        clearInterval(clock);
+    }
+    $pointer.on("click","li",function (e) {
+        var num = $(this).index() - curIndex;
+        play(num);
+    });
+    $pre.on("click",function (e) {
+        play(-1);
+    });
+    $next.on("click",function (e) {
+       play(1);
+    });
+    autoPlay();
+</script>
+
+
+
+</body>
+</html>

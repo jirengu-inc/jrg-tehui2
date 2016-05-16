@@ -1,0 +1,187 @@
+html,body{
+	padding: 0;
+	margin:0;
+	height: 100%;
+	font-family: "微软雅黑", "Helvetica Neue", Arial, sans-serif;
+}
+h1,h2,h3,p,ul,li{
+	margin:0;
+	padding: 0; 
+}
+.container{
+	width: 960px;
+	margin:0 auto;
+	text-align: center;	/*不知这个用在这里是否恰当*/
+}
+.btn{
+	display: inline-block;
+	width: 140px;
+    height: 50px;
+    margin:20px 0;
+    background: #000;
+    font-size: 16px;
+    color: #fff;
+    line-height: 50px;
+    opacity: 0.6;
+    text-decoration: none;   
+}
+.btn:hover {
+    opacity: 0.7;
+}
+.line{
+	width: 100px;
+	margin-bottom: 20px;
+    border-top: 1px solid #eee;   
+}
+.fa-stack-1x{
+	color: #337ab7;
+}
+#header{
+	display: table;
+	width: 100%;
+	height: 100%;
+	background: url(../img/bg.jpg) center center no-repeat  ;
+	background-size: cover;
+}
+#header .container{
+	display: table-cell;
+	vertical-align: middle;
+}
+#header .container >h1{
+	font-size: 60px;
+
+}
+#header .container p{
+	margin: 25px 0;
+	font-size: 22px;
+	
+}
+#main .desc h2{
+	margin-top: 80px;
+	font-size: 22px;
+	text-align: center;
+}
+#main .desc p{
+	margin-top: 20px;
+	margin-bottom: 80px;
+}
+#main .services{
+	width: 100%;
+	background:#337ab7;
+	color: #fff;
+}
+#main .services .btn{
+	width: 90px;
+	height: 30px;
+	border-radius: 2px;
+	background: #fff;
+	color: #000;
+	opacity: 0.8;
+	line-height: 30px;	
+}
+#main .services >h2{
+	padding-top: 60px;
+}
+#main .services .container h3{
+	padding-top: 10px;
+	padding-bottom: 20px;
+}
+#main .services .container p{
+	font-size: 14px;
+}
+#main .services .container:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+#main .services .container >li{
+	width: 210px;
+	margin-right:15px;
+	margin-top: 10px;
+	margin-bottom: 30px;
+	list-style: none;
+	float: left;
+	color: white;
+	text-align: center;	
+}
+
+#main .center-text{
+	width: 100%;
+	height: 400px;
+	background:url(../img/callout.jpg) center center no-repeat;
+	background-size: cover;	
+}
+#main .center-text >h1{
+	height: 400px;
+	color: #fff;
+	font-size: 40px;
+	line-height: 400px;
+	text-align: center;
+	
+}
+#main .works h3{
+	padding-top: 40px;
+	font-size: 25px;
+	text-align: center;
+}
+#main .works .container:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+#main .works .container .container{
+	margin-left: -12px;
+}
+#main .works .container .container li:hover{
+	opacity:0.5;
+}
+#main .works .container .container >li{
+	float: left;
+	list-style: none;
+	margin-left: 25px;
+	margin-top: 25px;
+}
+#main .works .container img{
+	width: 420px;
+}
+
+#main .works .container:after{
+	content:"";
+	display: block;
+	clear: both;
+}
+#main .works .resist{
+	width: 100%;
+	margin-top: 30px;
+	background:#337ab7;
+}
+#main .works .resist h3{
+	padding-top: 60px;
+	color:#fff;
+}
+#main .works .resist a:first-of-type{
+	margin: 20px 30px 60px;
+	background: #fff;
+	color: #000;
+	opacity: 1;	
+}
+#footer{
+	margin-top: 100px;
+	margin-bottom: 100px;
+}
+#footer .address{
+	margin:10px 0;
+}
+#footer >ul{
+	margin-left: -25px;
+}
+#footer .social>li{
+	display: inline-block;
+	margin:20px 0 40px 50px;
+	font-size: 40px;
+	color: blue;
+	text-align: center;
+}
+#footer .social>li a{
+	color:#337ab7; 
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task29-1 goBackTop</title>
+    <style>
+        .backToTop {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            padding:10px 20px;
+            border: 1px solid red;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<p>内容1</p>
+<p>内容2</p>
+<p>内容3</p>
+<p>内容4</p>
+<p>内容5</p>
+<p>内容6</p>
+<p>内容7</p>
+<p>内容8</p>
+<p>内容9</p>
+<p>内容10</p>
+<p>内容1</p>
+<p>内容2</p>
+<p>内容3</p>
+<p>内容4</p>
+<p>内容5</p>
+<p>内容6</p>
+<p>内容7</p>
+<p>内容8</p>
+<p>内容9</p>
+<p>内容10</p>
+<p>内容1</p>
+<p>内容2</p>
+<p>内容3</p>
+<p>内容4</p>
+<p>内容5</p>
+<p>内容6</p>
+<p>内容7</p>
+<p>内容8</p>
+<p>内容9</p>
+<p>内容10</p>
+<p>内容1</p>
+<p>内容2</p>
+<p>内容3</p>
+<p>内容4</p>
+<p>内容5</p>
+<p>内容6</p>
+<p>内容7</p>
+<p>内容8</p>
+<p>内容9</p>
+<p>内容10</p>
+<div class="backToTop">回到顶部</div>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    var $toTop = $(".backToTop");
+    $(window).on("scroll",function (e) {
+        if($(this).scrollTop() > 100) {
+            $toTop.css({'display':'block'});
+            $toTop.data("visiable",true);
+        } else {
+            if ($toTop.data("visiable")){
+                $toTop.css({'display':'none'});
+                $toTop.data("visiable",false);
+            }
+        }
+    });
+    $toTop.on("click",function (e) {
+        $(window).scrollTop(0);
+    })
+</script>
+</body>
+</html>

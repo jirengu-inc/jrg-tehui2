@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task25-1</title>
+</head>
+<link rel="stylesheet" type="text/css" href="task25-1.css">
+<body>
+    <ul id="mainList" class="mainList">
+        <li class="subList">
+            <a href="">珠宝玉器</a>
+            <ul class="list">
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玉石</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">水晶</a></li>
+            </ul>
+        </li>
+        <li class="subList">
+            <a href="">珠宝玉器</a>
+            <ul class="list">
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玉石</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">水晶</a></li>
+            </ul>
+        </li>
+        <li class="subList">
+            <a href="">珠宝玉器</a>
+            <ul class="list">
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玉石</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">水晶</a></li>
+            </ul>
+        </li>
+        <li class="subList">
+            <a href="">珠宝玉器</a>
+            <ul class="list">
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玉石</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">水晶</a></li>
+                <li><a href="">珍珠</a></li>
+                <li><a href="">彩蛋</a></li>
+            </ul>
+        </li>
+        <li class="subList">
+            <a href="">珠宝玉器</a>
+            <ul class="list">
+                <li><a href="">翡翠</a></li>
+                <li><a href="">玉石</a></li>
+                <li><a href="">玛瑙</a></li>
+                <li><a href="">水晶</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script src="../jQuery/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript">
+        var $subList = $('.subList'),
+            $list = $('.list');
+        $subList.hover(function(){
+            $(this).find('.list').css('display','block')
+        },function(){
+            $(this).find('.list').css('display','none')
+        });
+    </script>
+</body>
+</html>

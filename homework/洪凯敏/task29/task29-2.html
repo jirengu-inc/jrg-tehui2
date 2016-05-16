@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-2</title>
+	<style type="text/css">
+		body{
+			width:100%;
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+		}
+		ul,li{
+			list-style: none;
+			margin: 0px;
+			padding: 0px;
+		}
+		ul{
+			margin: 0 auto;
+			width: 740px;
+		}
+		li{
+			display: inline-block;
+			margin: 10px;
+		}
+
+
+	</style>
+	<script type="text/javascript" src="JS/jquery-2.1.3.min.js"></script>
+</head>
+<body>
+	<ul>
+		<li><img src="img/Caster.jpg" data-img="img/Caster.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Caster.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Archer.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Archer.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Rider.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Rider.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Lancer.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Lancer.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Berserker.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Berserker.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Assassin.jpg"></li>
+		<li><img src="img/Caster.jpg" data-img="img/Assassin.jpg"></li>
+	</ul>
+	<script type="text/javascript">
+		function isVisible($node){
+			var $win=$(window);
+			var winH=$win.height();
+			var winScroll=$win.scrollTop();
+			var offsetTop=$node.offset().top;
+			return winH+winScroll>offsetTop;
+		}
+
+		function loadImg($node){
+			var $img=$node.find("img");
+			var src=$img.attr("data-img");
+			if($img.data("toggle")==="show") return;
+			if(isVisible($node)){
+				$img.attr("src",src);
+				$img.data("toggle","show")
+			}
+		}
+		var lock;
+		$(window).on("scroll",function(){
+			if(lock){
+				clearTimeout(lock);
+				lock=null;
+			}
+			lock=setTimeout(function(){
+				var $lis=$("li");
+				$.each($lis,function(){
+					loadImg($(this));
+				});
+
+			},300);//延后执行
+			
+
+		});
+
+
+	</script>
+</body>
+</html>

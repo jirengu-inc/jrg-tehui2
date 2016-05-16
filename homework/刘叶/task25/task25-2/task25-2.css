@@ -1,0 +1,99 @@
+body, ul, li,a,div{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+li{
+    list-style: none;
+}
+a {
+    color: #000;
+    text-decoration: none;
+}
+.clearfix:after{
+    content:'';
+    display: block;
+    clear: both;
+}
+.tab-ct{
+    margin-top: 20px;
+}
+.tab-mod {
+    position: relative;
+    margin:20px;
+}
+.tab-mod .tab{
+    float: left;
+    border: 1px solid;
+    border-color:#ccc #ccc transparent #ccc;
+    border-radius: 2px;
+}
+.tab-mod .tab li{
+    float: left;
+    padding: 7px;
+}
+.tab-mod .tab li.active{
+    background: #ccc;
+    opacity: 0.8;
+}
+.tab-mod .tab li.active a{
+    color: #ff0000;
+}
+.tab-mod .panel-ct{
+    border: 1px solid #ccc;
+    width: 700px;
+}
+.tab-mod .panel {
+    display: none;
+}
+.tab-mod .panel.active {
+    display: block;
+}
+.tab-mod .prod{
+    position: relative;
+    float: left;
+    width: 213px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 24px auto 4px 24px;
+    text-align: center;
+}
+.tab-mod .cover{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0,0,0,0.3);
+    transition: 0.5s;
+    opacity: 0;
+}
+.tab-mod .cover .btn{
+    position: absolute;
+    top: 78%;
+    left: 47%;
+    border: 1px solid #ff0000;
+    border-radius: 5px;
+    padding: 10px 18px;
+    text-align: center;
+    color: #ff0000;
+    background: #fff;
+}
+.tab-mod .cover:hover{
+    transition: 0.5s;
+    opacity: 1;
+}
+.tab-mod .prod-ct{
+    margin-left: -20px;
+    margin-top: -20px;
+}
+.tab-mod .prod-name{
+    height: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: #000;
+}
+.tab-mod .prod-price{
+    text-align: left;
+    color: #ff0000;
+}
