@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com</title>
+	<style>
+		iframe{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button>获取数据</button>
+	<iframe src="//child.a.com/php/task/task-31/ajaxtest/domain/static_domain/child_a_com.html" frameborder="0"></iframe>
+	<script>
+	var domain = {
+		init: function(url){
+			document.domain = url;
+			this.frame = document.querySelector("iframe");
+			this.wrap = document.createElement("div");
+			this.value = new Object();
+			this.btn = document.querySelector("button");
+			this.collectData();
+		},
+		collectData: function(){
+			var me = this;
+			this.frame.onload = function(){
+				me.value = me.frame.contentDocument.body.querySelector("h3");
+				me.wrap.appendChild(me.value);
+				console.log(me.wrap)
+				me.showData();
+			}
+		},
+		showData: function(){
+			var me = this;
+			this.btn.addEventListener("click",function(){
+				console.log(me.wrap)
+				document.body.appendChild(me.wrap);
+			},false);
+		}
+	};
+	domain.init("a.com");
+	</script>
+</body>
+</html>

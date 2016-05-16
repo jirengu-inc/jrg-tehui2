@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com-postmessage</title>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button class="post-message">获取数据</button>
+	<script>
+		var postMessage = {
+			init: function(data, postUrl) {
+				this.data = data;
+				this.postUrl = postUrl;
+				this.btn = document.querySelector(".post-message");
+				this.addFrame(); //加载iframe
+			},
+
+			addFrame: function() {
+				this.frame = document.createElement("iframe");
+				this.frame.src = this.postUrl;
+				this.frame.style.display = "none";
+				this.btnClick(); //添加btn点击事件
+			},
+
+			btnClick: function() {
+				var me = this;
+				this.btn.addEventListener("click", function() {
+					document.body.appendChild(me.frame);
+					me.postData(); //发生message信息
+				}, false);
+			},
+
+			postData: function() {
+				var me = this;
+				this.frame.onload = function() {
+					me.frame.contentWindow.postMessage(me.data, me.postUrl);
+					me.collectData(); //收集回馈的信息
+				}
+			},
+
+			collectData: function() {
+				var me = this;
+				window.addEventListener("message", function(event) {
+					me.json = event.data;
+					me.handleData(); //整理数据
+				}, false);
+			},
+
+			handleData: function() {
+				this.table = document.createElement("table");
+				this.table.border = 1;
+				this.table.style.width = "100%";
+				this.thead = document.createElement("thead");
+				this.table.appendChild(this.thead);
+				this.tbody = document.createElement("tbody");
+				this.table.appendChild(this.tbody);
+				this.theadInit(); //添加表头
+				this.tbodyInit(); //添加tbody
+				document.body.insertBefore(this.table, this.btn);
+			},
+
+			theadInit: function() {
+				var thead = this.thead;
+				thead.insertRow(0);
+				thead.rows[0].insertCell(0);
+				thead.rows[0].cells[0].innerText = "NAME";
+				thead.rows[0].insertCell(1);
+				thead.rows[0].cells[1].innerText = "VALUE";
+			},
+
+			tbodyInit: function() {
+				var tbody = this.tbody,
+					json = this.json;
+				for (var key in json) {
+					tbody.insertRow([key - 1]);
+					tbody.rows[key - 1].insertCell(0);
+					tbody.rows[key - 1].cells[0].innerText = json[key]["name"];
+					tbody.rows[key - 1].insertCell(1);
+					tbody.rows[key - 1].cells[1].innerText = json[key]["value"];
+				}
+			}
+		};
+		var data = "get me data",	//发送的数据
+			postUrl = "http://b.com/php/task/task-31/ajaxtest/postMessage/b_com.html";	//获取数据的地址
+		postMessage.init(data, postUrl);
+	</script>
+</body>
+</html>

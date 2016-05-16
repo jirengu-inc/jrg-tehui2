@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>task-30</title>
+<link rel="stylesheet" href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css">
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<style>
+	.wrap{
+		width: 80%;
+		margin: 20px auto;
+		position: relative;
+		border: solid 1px #ccc;
+	}
+
+	.wrap .item{
+		position: absolute;
+		margin-top: 10px;
+		margin-right: 10px;
+		transition: all 1s;
+	}
+</style>
+</head>
+<body>
+	<div class="wrap"></div>
+	<!-- <p>wmsj100</p> -->
+	<script>
+		// 方案3: 把功能都绑定到一个对象上面
+	var WaterFall = {
+		init: function($ct) {
+			this.$ct = $ct; //把$ct绑定到this上面
+
+			this.ajax();
+			this.bind();
+
+		},
+
+		ajax: function() {
+			var me = this;
+			$.ajax({
+				url: "get.php",
+				type: "get",
+				dataType: "json",
+				data: {
+					"status": 1
+				},
+				success: function(data) {
+					if (data && data.status === "success") {
+						$(".wrap").append(me.handleJson(data.items));
+					}
+				},
+				error: function(data) {
+
+				},
+				complete: function(data) {
+					me.start();
+				}
+			});
+
+		},
+
+		handleJson: function(obj) {
+			var str = "";
+			for (var key in obj) {
+				str += '<div class="item" data-name=' + '"' + key + '" ' + 'style="' + 'width:' + JSON.parse(obj[key])[0] + 'px;' + 'height:' + JSON.parse(obj[key])[1] + 'px;' + 'background-color:' + JSON.parse(obj[key])[2] + '">' + key + '</div>'
+			}
+			return str;
+		},
+
+		bind: function() {
+			var me = this;
+			$(window).on("resize", function() {
+				me.start();
+			});
+		},
+
+		start: function() {
+			this.$items = this.$ct.find(".item");
+			this.itemWidth = this.$items.outerWidth(true);
+			this.colNum = parseInt(this.$ct.width() / this.itemWidth);
+			this.colSumHeight = [];
+			for (var i = 0; i < this.colNum; i++) {
+				this.colSumHeight.push(0);
+			}
+			this.traverse(this.colSumHeight);
+			// console.log(this.colSumHeight)
+		},
+
+		traverse: function(arr) {
+			var me = this;
+			// arr= [10,20,30,40]
+			me.$items.each(function(index) {
+
+				var obj = me.findIndex(arr),
+					idx = obj.idx,
+					minHeight = obj.minHeight;
+				me.arrangeElements(arr, $(this), idx, minHeight);
+				// console.log(idx,minHeight)
+			});
+		},
+
+		findIndex: function(arr) {
+			// var	arr= [50,20,30,40],
+			var idx = 0,
+				minHeight = arr[0];
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] < minHeight) {
+					idx = i;
+					minHeight = arr[i];
+
+				}
+			}
+
+			return {
+				minHeight: minHeight,
+				idx: idx
+			};
+		},
+
+		arrangeElements: function(arr, obj, idx, minHeight) {
+			var me = this;
+
+			obj.css({
+				"top": minHeight,
+				"left": idx * me.itemWidth
+			});			
+			arr[idx] += obj.outerHeight(true);
+			// arr[idx] += minHeight;
+			// 这个bug让我找了俩个小时,minHeight值为0
+			// 所以每次累加都是没效果的。
+			obj.parent().height(arr[idx]);
+			//撑开父元素，防止高度塌陷
+		}
+	}
+
+	WaterFall.init($(".wrap"));
+
+	//方案1
+	// ajax();
+	// function ajax(){
+	// 	$.ajax({
+	// 	url: "get.php",
+	// 	type: "get",
+	// 	dataType: "json",
+	// 	data: {"status": 1},
+	// 	success: function(data){
+	// 		if(data && data.status === "success"){
+	// 			$(".wrap").append(handleJson(data.items));
+	// 		}
+	// 	},
+	// 	error: function(data){
+
+	// 	},
+	// 	complete: function(data){
+	// 		render($(".item"));
+	// 	}
+	// 	});
+	// }
+
+	// function handleJson(obj){
+	// 	var str="";
+	// 	for(var key in obj){
+	// 		str += '<div class="item" data-name=' 
+	// 			+ '"' + key + '" ' + 'style="'
+	// 			+ 'width:' + obj[key][0] + 'px;'
+	// 			+ 'height:' + obj[key][1] + 'px;'
+	// 			+ 'background-color:' + obj[key][2] 
+	// 			+ '">' + key + '</div>'
+	// 	}
+	// 	return str;
+	// }
+
+	// function render(node){
+	// 	var itemWidth = node.outerWidth(true),
+	// 		width = node.parent().width(),
+	// 		colNum = parseInt(width/itemWidth),
+	// 		colSumHeight = [];
+	// 		for(var i=0;i<colNum;i++){
+	// 			colSumHeight.push(0);
+	// 		}
+
+	// 	node.each(function(){
+	// 		var idx = 0,
+	// 			minHeight = colSumHeight[0];
+	// 		for(var j=0;j<colNum;j++){
+	// 			if(colSumHeight[j] < minHeight){
+	// 				idx = j;
+	// 				minHeight = colSumHeight[j];
+	// 			}
+	// 		}
+	// 		$(this).css({
+	// 			"top": minHeight,
+	// 			"left": idx*itemWidth
+	// 		});
+	// 		colSumHeight[idx] += $(this).outerHeight();
+	// 		var height = $(this).outerHeight(true) + minHeight;
+	// 		 node.parent().height(height)
+	// 		 //设置父元素的高度以确保不会塌陷。
+	// 		console.log(height);
+	// 	})
+
+	// }
+
+	// $(window).on("resize",function(){
+	// 	render($(".item"));
+	// })
+	// 
+	// 方案2 使用闭包
+	// var water = (function() {
+	// 	function init() {
+	// 		ajax();
+
+	// 		function ajax() {
+	// 			$.ajax({
+	// 				url: "get.php",
+	// 				type: "get",
+	// 				dataType: "json",
+	// 				data: {
+	// 					"status": 1
+	// 				},
+	// 				success: function(data) {
+	// 					if (data && data.status === "success") {
+	// 						$(".wrap").append(handleJson(data.items));
+	// 					}
+	// 				},
+	// 				error: function(data) {
+
+	// 				},
+	// 				complete: function(data) {
+	// 					render($(".item"));
+	// 				}
+	// 			});
+	// 		}
+
+	// 		function handleJson(obj) {
+	// 			var str = "";
+	// 			for (var key in obj) {
+	// 				str += '<div class="item" data-name=' + '"' + key + '" ' + 'style="' + 'width:' + obj[key][0] + 'px;' + 'height:' + obj[key][1] + 'px;' + 'background-color:' + obj[key][2] + '">' + key + '</div>'
+	// 			}
+	// 			return str;
+	// 		}
+
+	// 		function render(node) {
+	// 			var itemWidth = node.outerWidth(true),
+	// 				width = node.parent().width(),
+	// 				colNum = parseInt(width / itemWidth),
+	// 				colSumHeight = [];
+	// 			for (var i = 0; i < colNum; i++) {
+	// 				colSumHeight.push(0);
+	// 			}
+
+	// 			node.each(function() {
+	// 				var idx = 0,
+	// 					minHeight = colSumHeight[0];
+	// 				for (var j = 0; j < colNum; j++) {
+	// 					if (colSumHeight[j] < minHeight) {
+	// 						idx = j;
+	// 						minHeight = colSumHeight[j];
+	// 					}
+	// 				}
+	// 				$(this).css({
+	// 					"top": minHeight,
+	// 					"left": idx * itemWidth
+	// 				});
+	// 				colSumHeight[idx] += $(this).outerHeight();
+	// 				var height = $(this).outerHeight(true) + minHeight;
+	// 				node.parent().height(height)
+	// 				//设置父元素的高度以确保不会塌陷。
+	// 				// console.log(height);
+	// 			})
+
+	// 		}
+
+	// 		$(window).on("resize", function() {
+	// 			render($(".item"));
+	// 		});
+	// 	}
+	// 	return {
+	// 		init: init
+	// 	}
+
+	// }());
+	// water.init();
+	</script>
+</body>
+</html>
