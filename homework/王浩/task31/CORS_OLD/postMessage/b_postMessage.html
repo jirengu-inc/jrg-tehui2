@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>b_postMessage</title>
+</head>
+<body>
+	this file is from b.com
+	<script>
+		window.addEventListener("message", function(event) {
+			document.body.innerHTML += event.data + "<br>";
+
+		}, false);
+	</script>
+</body>
+</html>

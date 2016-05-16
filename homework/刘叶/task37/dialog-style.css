@@ -1,0 +1,120 @@
+body,div,p,ul,li,a,input,h3,span{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+    color: #333333;
+}
+li{
+    list-style: none;
+}
+.dialog{
+    position: absolute;
+}
+.dialog-wrap{
+    width: 370px;
+    height: 200px;
+}
+.dialog-head{
+    color: #fff;
+    height: 40px;
+    padding: 5px;
+}
+.dialog-head h3{
+    line-height: 30px;
+    float: left;
+}
+.btn-close{
+    float:right;
+    line-height: 30px;
+    transition: 0.3s;
+}
+.btn-close:hover{
+    font-size: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.dialog-content{
+    height: 110px;
+    line-height: 110px;
+    background-color: #fff;
+    text-align: center;
+    overflow: hidden;
+}
+.dialog-footer{
+    height: 50px;
+    padding: 7px;
+    background-color: rgba(57,58,58,0.1)
+}
+.btn{
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+.btn-cancel{
+    float: right;
+    transition: 0.3s;
+}
+.btn-confirm{
+    float: left;
+    transition: 0.3s;
+}
+.btn-foot:hover{
+    transition: 0.3s;
+    padding: 10px 40px;
+    color: #000;
+}
+.command-zone{
+    text-align: center;
+    width: 100%;
+    height: 130px;
+    background-color:#fff;
+}
+.command-zone p{
+    margin:10px auto;
+    font-size: 30px;
+}
+.ipt{
+    padding: 5px 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+.dialog-zone{
+    background-color:rgba(236,237,236,1);
+    width: 100%;
+    height: 800px;
+}
+.create{
+    padding: 15px 30px;
+    float: left;
+    border-radius: 10px;
+    margin-left: 20px;
+    transition: 0.3s;
+}
+.create:hover{
+    color: #fff;
+    transition: 0.3s;
+}
+.creates{
+    margin: 0 auto;
+    width: 545px;
+}
+.btn1{
+    background-color: rgba(61,121,243,0.9);
+}
+.btn2{
+    background-color: rgba(240,91,112,0.9);
+}
+.btn3{
+    background-color: rgba(249,185,10,0.9);
+}
+.btn4{
+    background-color: rgba(51,166,75,0.9);
+}
+.clearfix{
+    content: '';
+    display: block;
+    clear: both;
+}

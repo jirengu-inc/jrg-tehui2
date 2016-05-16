@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com-cors</title>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button>获取数据</button>
+	<script>
+		var cors = {
+			init: function(url) {
+				this.url = url;
+				this.btn = document.querySelector("button");
+				this.btnClick();
+			},
+			btnClick: function() {
+				var me = this;
+				this.btn.addEventListener("click", function() {
+					me.ajax();
+				}, false);
+			},
+			ajax: function() {
+				var xhr = new XMLHttpRequest();
+				url = this.url,
+				me = this;
+				xhr.onreadystatechange = function() {
+					if (xhr.status === 200 && xhr.readyState === 4) {
+						me.json = JSON.parse(xhr.responseText);
+						me.handleData();
+					}
+				}
+				xhr.open("get", url, true);
+				xhr.send();
+			},
+			handleData: function() {
+				var json = this.json,
+					wrap = document.createElement("p");
+				for (var key in json) {
+					var strong = document.createElement("b");
+					strong.innerHTML = String(key) + ": ";
+					wrap.appendChild(strong);
+					var italic = document.createElement("i");
+					italic.innerHTML = String(json[key]) + "<br>";
+					wrap.appendChild(italic);
+				}
+				document.body.appendChild(wrap);
+			}
+		}
+		var url = "http://b.com/php/task/task-31/ajaxtest/cors/b_com.php";
+		cors.init(url);
+	</script>
+</body>
+</html>

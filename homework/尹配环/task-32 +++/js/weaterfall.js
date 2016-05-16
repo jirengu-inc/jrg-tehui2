@@ -10,10 +10,8 @@
 
 
 var Weaterfall = {
-    init:function ($ct,listArr) {
-        this.$ct = $ct;
-        this.$nodes = $ct.find('.item');
-        console.log(this.$nodes);
+    init:function ($nodes,listArr) {
+        this.$nodes = $nodes;
         this.nodeW = this.$nodes.outerWidth(true);
         this.listArr = listArr;
 
@@ -27,7 +25,7 @@ var Weaterfall = {
         var len = me.listArr.length;
 
         if (len == 0) {            //初次使用列高度数组，全部初始化为0
-            var colNum = parseInt(me.$ct.width() / me.$nodes.outerWidth(true));
+            var colNum = parseInt(me.$nodes.parent().width() / me.$nodes.outerWidth(true));
             for (var i=0; i<colNum ; i++){
                 me.listArr.push(0);
             }
@@ -37,8 +35,9 @@ var Weaterfall = {
         var me =this;
 
         me.$nodes.each(function (index, el) {
-            me.findMin();
             var $cur = $(this);
+
+            me.findMin();
             $cur.css({
                 left: me.nodeW * me.idx,
                 top:me.min
@@ -46,6 +45,7 @@ var Weaterfall = {
             me.listArr[me.idx] += $cur.outerHeight(true);
 
         });
+        console.log("瀑布流完成");
     },
     findMin:function () {
         var me = this;
