@@ -44,7 +44,7 @@
         $('.dialog-zone').append($nodes);
         return $nodes;
     };
-    Dialog.prototype.bind = function($nodes,e){
+    Dialog.prototype.bind = function($nodes){
         $nodes.children('.dialog-wrap').on('click','.mark',function(){
             $nodes.css({
                 display:'none'
