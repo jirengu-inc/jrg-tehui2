@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a_window_name</title>
+</head>
+<body>
+	a_window_name
+	<script>
+		var ifr = document.createElement("iframe");
+		ifr.src = "http://b.com/PHP/task/task-31/window_name/b_window_name.html";
+		ifr.style.display = "none";
+		document.body.appendChild(ifr);
+		var state = 0;
+
+		function loadfn() {
+			if (state === 1) {
+				var data = ifr.contentWindow.name;
+				console.log(JSON.parse(data));
+				// setTimeout(function(){
+				ifr.contentWindow.document.write("");
+				ifr.contentWindow.close();
+				document.body.removeChild(ifr);
+				// },0)
+				handleJson(data);
+
+			} else if (state === 0) {
+				state = 1;
+				ifr.contentWindow.location = "http://a.com/PHP/task/task-31/window_name/a_proxy.html";
+			}
+		}
+		ifr.onload = function() {
+			loadfn();
+		}
+
+		function handleJson(obj) {
+			var str = "";
+			var obj = JSON.parse(obj);
+			for (var key in obj) {
+				str += "<div class=" + key + ' style="background-color:' + obj[key] + '"' + ">" + obj[key] + "</div>";
+			}
+			console.log(str);
+			document.body.innerHTML += str;
+		}
+	</script>
+</body>
+</html>
