@@ -31,17 +31,18 @@ var Exposure = {
         var me = this;
         me.$target.each(function () {
             var $cur = $(this);
-            if ($cur.data("isLoad") == "loaded") return; //如果已经载入，直接跳过
+            if (!me.isDone($cur)) return; //如果上次事件未执行完毕，直接跳过
             if (me.isShow($cur)){
+                console.log("调用了函数");
                 me.handler && me.handler.call(this,this);//作用域、参数 为当前元素，$cur
-                $cur.data("isLoad","loaded");
             }
         });
     },
     isShow:function ($node) {
         return this.$win.height() + this.$win.scrollTop() > $node.offset().top ;
     },
-    isLoad:function ($node) {
-        return $node.data("isLoad") == "loaded";
+    isDone:function ($node) {
+        console.log("isDone:" + $node.data("isDone"));
+        return $node.data("isDone");
     }
 };
