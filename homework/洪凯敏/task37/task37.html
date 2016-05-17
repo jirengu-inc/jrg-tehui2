@@ -34,9 +34,8 @@
 	.dialogue-ct{
 		/*background-color: red;*/
 		position: fixed;
-		top:50%;
+		top:10%;
 		left:50%;
-		transform: translateX(-50%);
 		box-shadow: 3px 3px 3px 1px #ccc;
 		border-radius: 5px;
 		overflow: hidden;
@@ -158,19 +157,21 @@
 			var $this=$(this);
 			var paddX=e.clientX-$this.offset().left;//获得鼠标在对话框的X轴偏移值.
 			var paddY=e.clientY-$this.offset().top;//获得鼠标在对话框的Y轴偏移值.
+			console.log(paddX);
+			console.log(paddY);
 			$this.data("paddX",paddX);
 			$this.data("paddY",paddY);
 			$this.addClass("dialogue-move");
 			isMove=true;
 		});
-		this.$dialog.on("mouseup",function(){
-			var $this=$(this);
-			$this.removeClass("dialogue-move");
+		$("body").on("mouseup",function(){
+
+			that.$dialog.removeClass("dialogue-move");
+			console.log("moving");
 			isMove=false;
 		});
 		$("body").on("mousemove",function(e){
 			var $dialog=that.$dialog;
-			console.log(isMove);
 			if(isMove){
 				$dialog.css({
 					left:(e.clientX-$dialog.data("paddX"))+"px",
