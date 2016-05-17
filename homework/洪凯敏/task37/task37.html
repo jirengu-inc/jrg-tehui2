@@ -64,6 +64,10 @@
 		cursor: pointer;
 
 	}
+	.dialogue-move{
+		cursor: move;
+		opacity: 0.7;
+	}
 </style>
 </head>
 <body>
@@ -156,18 +160,12 @@
 			var paddY=e.clientY-$this.offset().top;//获得鼠标在对话框的Y轴偏移值.
 			$this.data("paddX",paddX);
 			$this.data("paddY",paddY);
-			$this.css({
-				curor:"move",
-				opacity:0.7
-			});
+			$this.addClass("dialogue-move");
 			isMove=true;
 		});
 		this.$dialog.on("mouseup",function(){
 			var $this=$(this);
-			$this.css({
-				curor:"auto",
-				opacity:1
-			});
+			$this.removeClass("dialogue-move");
 			isMove=false;
 		});
 		$("body").on("mousemove",function(e){
