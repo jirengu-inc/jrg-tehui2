@@ -9,53 +9,47 @@
 <link href="https://cdn.bootcss.com/normalize/4.1.1/normalize.min.css" rel="stylesheet">
 <link href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
 <style>
-	* {
-		padding: 0;
-		margin: 0;
-	}
 	li {
 		list-style: none;
 	}
 	a {
 		text-decoration: none;
 	}
-	.nav {
-		background: red;
-		width: 200px;
-	}
-	.nav .iterm {
-		position: relative;
-	}
-	.nav .iterm-title {
-		display: block;
-		color: #fff;
-		font-size: 14px;
-		margin: 0 14px;
-		padding: 10px;
+	.iterm {
+		width: 160px;
+		background-color: red;
 		border-bottom: 1px dotted #ccc;
+		position: relative;
+		padding: 10px;
 	}
-	.nav .sub-iterm {
+	.iterm .iterm-title {
+		color: #fff;
+	}
+	.iterm i {
 		position: absolute;
-		top: 0;
-		left: 200px;
-		background: #fff;
-		border: 1px solid #ccc;
-		width: 210px;
-		font-size: 12px;
-		display: none;
-	}
-	.nav .sub-iterm li {
-		width: 55px;
-		float: left;
-		padding: 10px 20px;
-	}
-	.fa {
-		position: absolute;
-		top: 10px;
 		right: 10px;
 		color: #fff;
 	}
-	.nav .iterm.hover .sub-iterm {
+	.sub-iterm {
+		width: 200px;
+		position: absolute;
+		top: 0;
+		right: -242px;
+		display: none;
+		border: 1px solid #ccc;
+	}
+	.sub-iterm li {
+		float: left;
+		width: 97px;
+		text-align: center;
+	}
+	.sub-iterm li a {
+		color: #333;
+		display: inline-block;
+		padding: 10px;
+		font-weight: bold;
+	}
+	.active {
 		display: block;
 	}
 </style>
@@ -70,12 +64,6 @@
 			<li><a href="">玉石</a></li>
 			<li><a href="">宝石</a></li>
 			<li><a href="">水晶</a></li>
-			<li><a href="">玛瑙</a></li>
-			<li><a href="">珍珠</a></li>
-			<li><a href="">钻石</a></li>
-			<li><a href="">琥珀</a></li>
-			<li><a href="">和田</a></li>
-			<li><a href="">琥珀</a></li>
     	</ul>
     </li>
     <li class="iterm">
@@ -136,11 +124,11 @@
 
 	$(function(){
 		$('.nav .iterm').on('mouseenter',function(){
-			$(this).addClass('hover');
+			$(this).find('.sub-iterm').addClass('active');
 		});
 
 		$('.nav .iterm').on('mouseleave',function(){
-			$(this).removeClass('hover');
+			$(this).find('.sub-iterm').removeClass('active');
 		});
 	});
 </script>
