@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>无限轮播</title>
+	<meta charset="utf-8">
+	<meta name="description" content="">
+	<meta name="ketwords" content="">
+	<style type="text/css">
+		html,body,ul,li{
+			margin: 0;
+			padding: 0;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		img{
+			width: 300px;
+			height: 300px;
+		}
+		.img-ct li{
+			position: absolute;
+			/*display: none;*/
+		}
+		.carousel{
+			width: 300px;
+			height: 300px;
+			overflow: hidden;
+			position: relative;
+		}
+		.img-ct{
+			position: relative;
+		}
+		.img-ct:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.arrow{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			border-radius: 30px;
+			line-height: 30px;
+			text-align: center;
+			background-color: black;
+			opacity: 0.5;
+			top: 50%;
+			margin-top: -15px;
+			color: white;
+		}
+		.pre{
+			left: 10px;
+		}
+		.next{
+			right: 10px;
+		}
+	ul.bullet {
+			    position: absolute;
+		    bottom: 10px;
+		    left: 50%;
+		    transform: translateX(-50%);
+		}
+		ul.bullet li {
+		    width: 16px;
+		    height: 4px;
+		    border-radius: 2px;
+		    background: #fff;
+		    display: inline-block;
+		    cursor: pointer;
+		}
+
+		ul.bullet li.active {
+		    background: #666;
+		}
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="img-ct">
+			<li><a href="#"><img src="img/agency.jpg"></a></li>
+			<li><a href="#"><img src="img/creative.jpg"></a></li>
+			<li><a href="#"><img src="img/freelancer.jpg"></a></li>
+			<li><a href="#"><img src="img/grayscale.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</div>
+
+		<div class="carousel">
+		<ul class="img-ct">
+			<li><a href="#"><img src="img/agency.jpg"></a></li>
+			<li><a href="#"><img src="img/creative.jpg"></a></li>
+			<li><a href="#"><img src="img/freelancer.jpg"></a></li>
+			<li><a href="#"><img src="img/grayscale.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</div>
+
+		<div class="carousel">
+		<ul class="img-ct">
+			<li><a href="#"><img src="img/agency.jpg"></a></li>
+			<li><a href="#"><img src="img/creative.jpg"></a></li>
+			<li><a href="#"><img src="img/freelancer.jpg"></a></li>
+			<li><a href="#"><img src="img/grayscale.jpg"></a></li>
+		</ul>
+		<a href="#" class="pre arrow"><</a>
+		<a href="#" class="next arrow">></a>
+		<ul class="bullet">
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+			<li><a href="#"></a></li>
+		</ul>
+	</div>
+	<script src="jquery-2.2.3.min.js" type="text/javascript"></script>	
+	<script type="text/javascript">
+		function eachPlay(id){
+			var clock,
+				$ctIdx = $('.img-ct').eq(id),
+				$wrap = $ctIdx.parents('.carousel'),
+				// $items = $ct.children(),
+				$pre = $wrap.find('.pre'),
+				$next = $wrap.find('.next'),
+				$bullet = $wrap.find('.bullet'),
+				// imgWidth = $items.width(),
+				imgCount = $ctIdx.children().size();
+
+			var curIdx = 0;
+			var isAnimate = false;
+			$pre.on('click',function(){
+				playpre();
+			})
+
+			$next.on('click',function(){
+				playnext();
+			})
+			$bullet.on('click','li',function(e){
+				var idx = $(this).index();
+				play(idx);
+			})
+
+			play(3);
+			autoplay();
+
+			function play(idx){
+				if (isAnimate === true) {return;}
+				isAnimate = true;
+				$ctIdx.children().eq(curIdx).fadeOut(1000);
+				$ctIdx.children().eq(idx).fadeIn(1000,function(){
+					isAnimate = false;
+				})
+				curIdx=idx;
+				setbullet();
+			}
+
+			function playpre(){
+				play((imgCount+curIdx-1)%imgCount);
+			}
+
+			function playnext(){
+				play((curIdx+1)%imgCount);
+			}
+
+			function autoplay(){
+				clock = setInterval(function(){
+									playnext();
+				},2000)
+			}
+			function stopauto(){
+				clearInterval(clock);
+			}
+			function setbullet(){
+				$bullet.children().removeClass('active').eq(curIdx).addClass('active')
+			}
+
+			return {
+				'play':play,
+				'playnext':playnext,
+				'playpre':playpre,
+				'autoplay':autoplay,
+				'stopauto':stopauto
+			}
+}
+			$ct = $('.img-ct');
+			$ct.each(function(index){
+				var temp = eachPlay(index);
+				temp.autoplay();
+			})
+
+	</script>
+</body>
+</html>
