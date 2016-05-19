@@ -150,45 +150,56 @@
 
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script>
-    $.fn.lazyLoad = function(winHeight,winScrollTop){
-        var $node = this,
-                offsetTop = $node.offset().top;       //元素于页面顶部的距离
 
-        console.log("win+scr:"+ (winHeight + winScrollTop) +" " +offsetTop);
-        if (winHeight + winScrollTop > offsetTop) {
-            loadImg();
-        }
-        function loadImg() {
-            if (!$node.data("setImg")) {
-                $node.attr("src",$node.attr("data-img"));
-                $node.data("setImg",true);
-            }
+    var Exposure = {
+        init:function ($target,handler) {
+            this.$target = $target;
+            this.handler = handler;
+            this.$win = $(window);
+
+            this.bind();
+            this.checkShow();
+        },
+        bind:function () {      //绑定事件
+            var me = this;
+            var clock = null;
+            var delayTime = 300;
+
+            this.$win.on("scroll",function (e) {
+                clock && clearTimeout(clock);
+                clock = setTimeout(function () {
+                    me.checkShow();
+                },delayTime);
+            });
+        },
+        checkShow:function () {    //如果可见 执行回调函数，handler()
+            var me = this;
+            me.$target.each(function () {
+                var $cur = $(this);
+                if ($cur.data("isLoad") == "loaded") return; //如果已经载入，直接跳过
+                if (me.isShow($cur)){
+                    me.handler && me.handler.call(this,this);//作用域、参数 为当前元素，$cur
+                    $cur.data("isLoad","loaded");
+                }
+            });
+        },
+        isShow:function ($node) {
+            return this.$win.height() + this.$win.scrollTop() > $node.offset().top ;
+        },
+        isLoad:function ($node) {
+            return $node.data("isLoad") == "loaded";
         }
     };
+    function loadImg(el) {
+        $node = $(el);
+        $node.attr("src",$node.attr("data-img"));
+    }
+    var $items = $(".ct>li img");
 
-    var $items = $(".ct>li img"),
-            winH = $(window).height(),
-            winScr = $(window).scrollTop();
-    $items.each(function(index,el){
-        $(this).lazyLoad(winH,winScr);
-    });
-
-
-    var clock;
-    $(window).on("scroll",function(e){
-        if (clock){                     //每次触发事件 清除上次的 setTimeout 。 只有最后一次有效。
-            clearTimeout(clock);
-        }
-        clock = setTimeout(function(){
-            winH = $(window).height();
-            winScr = $(window).scrollTop();
-            $items.each(function(index,el){
-                $(this).lazyLoad(winH,winScr);
-            });
-        },300);
+    Exposure.init($items,loadImg);
 
 
-    })
+
 </script>
 </body>
 </html>

@@ -1,29 +1,92 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML >
 <html>
+
 <head>
-	<title>animate</title>
-	<style type="text/css">
-.squres{
-	background-color: red;
-	width: 200px;
-	height: 200px;
-	position: relative;
-}
-	</style>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <title>#</title>
+<style>
+     ul,li{
+     	margin: 0px;
+     	padding: 0px;
+     	list-style: none;
+     }   
+     a{
+     	text-decoration: none;
+     }
+     li{
+     	text-align: center;
+     	height: 40px;
+     	line-height: 40px;
+     	border-radius: 3px;
+     	border: 1px solid #ccc;
+     	margin-bottom: 15px;
+     }
+     .btn{
+     	border: 1px solid #ccc;
+     	width: 80px;
+     	height: 40px;
+     	line-height: 40px;
+     	border-radius: 3px;
+     	display: block;
+     	text-align: center;
+     	margin: 0 auto;
+     }
+     li:hover{
+     		background-color: green;
+     }
+     var $loadMoreBtn = $('#load-more'),
+     		 $ct = $('#ct');
+
+     var cur = 2;
+
+     $ct.on('mouseenter','li',function(){
+     	$(this).addClass('hover');
+     	}).on('mouseleave','li',function(){
+     		$(this).removeClass('hover');
+     		});
+
+     $loadMoreBtn.on('click',function(e){
+     	e.preventDefault();
+     	if($(this).data('isLoading')){
+     		return;
+     	}
+     	$(this).data('isLoading',true)
+     				 .html('<img src = 'loading.gif' />');
+     	$.ajax({
+     		url:'2.php',
+     		dataType:'json',
+     		type:'get',
+     		data:{
+     			start;cur,
+     			len:6
+     		},
+     		success:function(json){
+     			onSuccess(json);
+     		},
+     		error:function(){
+     			onError();
+     		}
+     	});			 
+     	});
+     function onError(){
+     	$loadMoreBtn.data('isLoading',false)
+     							.text('加载更多');
+     							alert('系统异常');
+     }
+
+     function(){
+     	for(var i = 0;i<arr.length;i++){
+     		$ct.append('<li>'+arr[i]+'<li>')
+     	}
+     }
+</style>
 
 </head>
 <body>
-<div class="squres"></div>
-<script src="jquery-2.2.3.min.js" type="text/javascript"></script>
-<script type="text/javascript">
-	$('.squres').on('click',function(){
-		$(this).animate({left:'+=500px',opacity:0.8},1500)
-		.fadeTo(1000,0.5)
-		.animate({top:'+=300px'},1500)
-		.delay(500)
-		.animate({width:'10',height:"10"},1500)
-		.fadeOut('slow');
-	});
-</script>
+  <ul>
+	  <li>内容1</li>
+	  <li>内容2</li>  
+  </ul>
+  <a id="load-more" class="btn" href="#">加载更多</a>
 </body>
 </html>

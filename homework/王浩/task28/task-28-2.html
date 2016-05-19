@@ -6,11 +6,11 @@
 <title>task-28-2</title>
 <meta name="description" content="">
 <meta name="keywords" content="">
-<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+
 <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <style>
 	#container{
-		width: 900px;
+		width: 80%;
 		margin: 0 auto;
 	}
 	#header{
@@ -57,6 +57,11 @@
 		background: blue;
 		min-height: 400px;
 	}
+	.cloneWrap:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
 </style>
 </head>
 <body>
@@ -88,27 +93,42 @@
 		var $static = $(".nav"),
 			$clone = $static.clone().css({
 				"margin": 0,
-				"opacity": 0,
 				"position": "fixed"
-			}),
-			$len = $static.length;
-		$("#container").prepend($clone);
-		var $arrTop = [];
-		var $arrLeft = [];
-		for (var i = 0; i < $len; i++) {
-			var $width = $static.eq(i).width(),
-				$height = $static.eq(i).height(),
-				$left = $static.eq(i).offset().left,
-				$top = $static.eq(i).offset().top;
-			$clone.eq(i).css({
-				"width": $width,
-				"top": $top,
-				"left": $left
 			});
-			$arrTop.push($top);
-			$arrLeft.push($left);
+			$("<div class='cloneWrap'></div>").appendTo($("#container"));
+			$clone.appendTo($(".cloneWrap"));
+			$len = $static.length;	
+		
+		function dataSize(){
+			$arrTop = [];
+			$arrLeft = [];
+			for (var i = 0; i < $len; i++) {
+				var $width = $static.eq(i).width(),
+					$height = $static.eq(i).height(),
+					$left = $static.eq(i).offset().left,
+					$top = $static.eq(i).offset().top;
+				$clone.eq(i).css({
+					"width": $width,
+					"top": $top,
+					"left": $left,
+					"display": "none"
+				});
+				$arrTop.push($top);
+				$arrLeft.push($left);
+			}
+			
 		}
+
+		//----------------------------------------
+		//存在的问题，如何知道目前的索引值
+		//------------------------------------
+
+
+		$(window).resize(function(){
+			dataSize();
+		});
 		$(window).on("scroll", function() {
+			dataSize();
 			var $scrollTop = $(window).scrollTop();
 			for (var j = 0; j < $arrTop.length; j++) {
 				if ($scrollTop > $arrTop[j]) {
@@ -116,14 +136,14 @@
 						"z-index": j,
 						"top": 0,
 						"left": $arrLeft[j],
-						"opacity": 1
+						"display": "block"
 					});
 					$static.eq(j).css({
 						"opacity": 0
 					});
 				} else if ($scrollTop < $arrTop[j]) {
 					$clone.eq(j).css({
-						"opacity": 0
+						"display": "none"
 					});
 					$static.eq(j).css({
 						"opacity": 1
@@ -131,8 +151,6 @@
 				}
 			}
 		});
-			
-    	
     </script>
 </body>
 </html>

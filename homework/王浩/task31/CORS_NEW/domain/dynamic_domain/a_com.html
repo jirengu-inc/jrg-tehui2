@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>a.com</title>
+		<meta name="description" content="">
+		<meta name="keywords" content="">
+		<link href="" rel="stylesheet">
+	</head>
+	<body>
+		<h3>a.com</h3>
+		<button>获取数据</button>
+		<!-- <iframe src="" frameborder="0"></iframe> -->
+		<script>
+			var domain = {
+				init: function(url,dataUrl,label){
+					this.url = url;	//获取主域名
+					this.dataUrl = dataUrl;	//获取主域名下的子域名
+					this.label = label;	//获取要读取的标签
+					this.frame = document.createElement("iframe");
+					this.wrap = document.createElement("div");
+					this.btn = document.querySelector("button");
+					this.dataInit();	//初始化数据
+				},
+				dataInit: function(){
+					document.domain = this.url;	//设置domain
+					this.frame.src = this.dataUrl;	
+					this.frame.frameborder = 0;	//去除iframe的边框
+					this.frame.style.display = "none";	//隐藏iframe
+					document.body.appendChild(this.frame);	
+					this.collectInfo();
+				},
+				collectInfo: function(){
+					var me = this;
+					this.frame.onload = function(){	//等到iframe加载完成之后在执行操作
+						var value = me.frame.contentDocument.body.querySelector(me.label);
+						me.wrap.appendChild(value);
+						me.showData();
+					}
+				},
+				showData: function(){
+					var me = this;
+					this.btn.addEventListener("click",function(){
+						document.body.appendChild(me.wrap);
+					},false);
+				}
+			};
+			domain.init("a.com","http://child.a.com/php/task/task-31/ajaxtest/domain/dynamic_domain/child_a_com.html","h3");
+		</script>
+	</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com-window-name</title>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button class="frame-btn">获取数据</button>
+	<script>
+	var windowName = {
+		init: function(url, clientUrl) {
+			this.frame = document.createElement("iframe");
+			this.frame.src = url;
+			this.frame.style.display = "none";
+			this.btn = document.querySelector(".frame-btn");
+			this.clientUrl = clientUrl;
+			this.addFrame(); //加载b.com的iframe
+		},
+		addFrame: function() {
+			var me = this;
+			this.btn.addEventListener("click", function() {
+				document.body.appendChild(me.frame)
+				me.collectData(); //等待iframe加载完成进行重定向
+			}, false);
+		},
+		collectData: function() {
+			var state = 0,
+				me = this;
+			this.frame.onload = function() {
+				if (state) {
+					return;
+				}
+				state = 1;
+				me.frame.contentWindow.location = me.clientUrl;
+				me.trunWeb(); //把iframe地址转到a_client.com的代理地址
+			}
+		},
+		trunWeb: function() {
+			var state = 0,
+				me = this;
+			this.frame.onload = function() {
+				if (state) {
+					return;
+				}
+				state = 1;
+				me.data = me.frame.contentWindow.name;
+				me.showData(); //获取iframe的window.name
+				me.deleteFrame(); //删除iframe
+			}
+		},
+		showData: function() {
+			var label = document.createElement("p");
+			label.innerText = this.data;
+			document.body.insertBefore(label, this.btn); //打印数据
+		},
+		deleteFrame: function() {
+			this.frame.contentDocument.write = ""; //清空内容
+			this.frame.contentWindow.close(); //关闭由script创建的iframe窗口；
+			document.body.removeChild(this.frame); //从DOM树中去除iframe；
+		}
+	};
+	var url = "http://b.com/php/task/task-31/ajaxtest/window_name/b_com.html",	//目标数据网址
+		clientUrl = "http://a.com/php/task/task-31/ajaxtest/window_name/a_client.html";	//代理网址
+	windowName.init(url, clientUrl);
+	</script>
+</body>
+</html>
