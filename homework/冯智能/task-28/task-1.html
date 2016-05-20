@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>stickup</title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="">
+	<meta name="description" content="">
+	<style type="text/css">
+		
+		.header{
+			background-color: red;
+			height: 80px;
+			margin-bottom: 20px;
+		}
+		.nav{
+			background-color: blue;
+			height: 50px;
+		}
+		.content{
+			background-color: #ccc;
+			height: 800px;
+			padding: 20px;
+		}
+		.aside{
+			background-color: green;
+			height: 400px;
+			width: 100px;
+			float: left;
+		}
+		.main{
+			background-color: white;
+			margin-left: 100px;
+			height: 800px;
+		}
+		.footer{
+			background-color: gray;
+			height: 50px;
+		}
+	</style>
+</head>
+<body>
+<div class="header">header</div>
+<div class="nav">nav</div>
+<div class="content">
+	<div class="aside">aside</div>
+	<div class="main">main</div>
+</div>
+<div class="footer">footer</div>
+
+<script src="jquery-2.2.3.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var $nav = $('.nav'),
+			navWidth = $nav.width(),
+			navHeight = $nav.height(),
+			navLeft = $nav.offset().left,
+			navTop = $nav.offset().top;
+
+	var $clonenav = $nav.clone()
+											.css({'visibility':'hidden','display':'none'})
+											.insertBefore($nav)
+			$(window).on('scroll',function(){
+				var scrollTop = $(this).scrollTop();
+				if (scrollTop>=navTop) {
+					if (!isFixed()) {
+						setFixed();
+					}
+				}
+				else {
+					if(isFixed()){
+						unsetFixed();
+					}
+				}
+
+			});
+
+			function isFixed(){
+				return $nav.data('data-fixed');
+			}
+
+			function setFixed(){
+				$nav.data('data-fixed',true)
+						.css({
+							'position':'fixed',
+							'top':0,
+							'left':navLeft,
+							'width':navWidth,
+							'margin':0,
+							'z-index':1000
+						});
+				$clonenav.show();
+			}
+
+			function unsetFixed(){
+				$nav.data('data-fixed',false)
+						.removeAttr('style')
+				$clonenav.hide();
+			}
+</script>
+</body>
+</html>
