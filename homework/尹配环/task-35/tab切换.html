@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .box {
+            border: 1px solid #ccc;
+            width: 600px;
+        }
+        .box:after {
+            content: "";
+            display: block;
+            clear:both;
+        }
+        .btn {
+            float:left;
+            width:200px;
+            height:30px;
+            line-height: 30px;
+            text-align: center;
+            box-sizing: border-box;
+            border-right: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
+            cursor: pointer;
+        }
+        .btn:nth-child(3) {
+            border-right:none;
+        }
+        .content {
+            float:left;
+            padding:20px;
+            height:200px;
+            display: none;
+        }
+        .active {
+            background-color: #ccc;
+        }
+        .content.show{
+            display: block;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="btn active">tab1</div>
+        <div class="btn">tab2</div>
+        <div class="btn">tab3</div>
+        <div class="content show">内容1</div>
+        <div class="content">内容2</div>
+        <div class="content">内容3</div>
+    </div>
+
+
+</body>
+<script>
+
+    function TaggleTab(node) { //父元素box
+        this.node = node;
+        this.btns = btns = document.querySelectorAll(".btn");
+        this.contents = document.querySelectorAll(".content");
+
+        this.bind();
+    }
+    TaggleTab.prototype = {
+      bind:function () {
+          var me = this;
+          for (var i = 0 ; i < btns.length ; i++){
+              btns[i].addEventListener("click",function (e) {
+                  me.clear();
+
+                  var index = me.indexOf(e.target);
+                  e.target.className += " active";
+                  me.contents[index].className += " show";
+
+              },false);
+          }
+      },
+      clear:function (){
+          for (var i = 0 ; i < this.btns.length ; i++){
+              this.btns[i].className = this.btns[i].className.replace(/\bactive\b/g,"");
+          }
+          for (var i = 0 ; i < this.contents.length ; i++){
+              this.contents[i].className = this.contents[i].className.replace(/\bshow\b/g,"");
+          }
+      },
+        indexOf: function(ele){
+            var parent = ele.parentElement,
+                    siblings = parent.children;
+            for(var i=0; i<siblings.length; i++){
+                if(ele === siblings[i]) return i;
+            }
+            return -1;
+        }
+    };
+    var box = document.querySelector(".box");
+
+    var tab1 = new TaggleTab(box);
+</script>

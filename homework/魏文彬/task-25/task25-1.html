@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task25</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="https://cdn.bootcss.com/normalize/4.1.1/normalize.min.css" rel="stylesheet">
+<link href="http://apps.bdimg.com/libs/fontawesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+<style>
+	li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.iterm {
+		width: 160px;
+		background-color: red;
+		border-bottom: 1px dotted #ccc;
+		position: relative;
+		padding: 10px;
+	}
+	.iterm .iterm-title {
+		color: #fff;
+	}
+	.iterm i {
+		position: absolute;
+		right: 10px;
+		color: #fff;
+	}
+	.sub-iterm {
+		width: 200px;
+		position: absolute;
+		top: 0;
+		right: -242px;
+		display: none;
+		border: 1px solid #ccc;
+	}
+	.sub-iterm li {
+		float: left;
+		width: 97px;
+		text-align: center;
+	}
+	.sub-iterm li a {
+		color: #333;
+		display: inline-block;
+		padding: 10px;
+		font-weight: bold;
+	}
+	.active {
+		display: block;
+	}
+</style>
+</head>
+<body>
+<ul class="nav">
+    <li class="iterm">
+    	<a href="#" class="iterm-title">珠宝玉器</a>
+    	<i class="fa fa-angle-right"></i>
+    	<ul class="sub-iterm">
+    		<li><a href="">翡翠</a></li>
+			<li><a href="">玉石</a></li>
+			<li><a href="">宝石</a></li>
+			<li><a href="">水晶</a></li>
+    	</ul>
+    </li>
+    <li class="iterm">
+    	<a href="#" class="iterm-title">珠宝玉器</a>
+    	<i class="fa fa-angle-right"></i>
+    	<ul class="sub-iterm">
+    		<li><a href="">珍珠</a></li>
+			<li><a href="">钻石</a></li>
+			<li><a href="">琥珀</a></li>
+			<li><a href="">和田</a></li>
+			<li><a href="">琥珀</a></li>
+    	</ul>
+    </li>
+    <li class="iterm">
+    	<a href="#" class="iterm-title">珠宝玉器</a>
+    	<i class="fa fa-angle-right"></i>
+    	<ul class="sub-iterm">
+    		<li><a href="">珍珠</a></li>
+			<li><a href="">钻石</a></li>
+			<li><a href="">琥珀</a></li>
+			<li><a href="">和田</a></li>
+			<li><a href="">琥珀</a></li>
+    	</ul>
+    </li>
+    <li class="iterm">
+    	<a href="#" class="iterm-title">珠宝玉器</a>
+    	<i class="fa fa-angle-right"></i>
+    	<ul class="sub-iterm">
+    		<li><a href="">珍珠</a></li>
+			<li><a href="">钻石</a></li>
+			<li><a href="">琥珀</a></li>
+			<li><a href="">和田</a></li>
+			<li><a href="">琥珀</a></li>
+    	</ul>
+    </li>
+    <li class="iterm">
+    	<a href="#" class="iterm-title">珠宝玉器</a>
+    	<i class="fa fa-angle-right"></i>
+    	<ul class="sub-iterm">
+    		<li><a href="">珍珠</a></li>
+			<li><a href="">钻石</a></li>
+			<li><a href="">琥珀</a></li>
+			<li><a href="">和田</a></li>
+			<li><a href="">琥珀</a></li>
+    	</ul>
+    </li>
+</ul>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	// $(function(){
+	// 	$('.nav .iterm').on('mouseenter',function(){
+	// 		$(this).find('.sub-iterm').show();
+	// 	});
+	// 	$('.nav .iterm').on('mouseout',function(){
+	// 		$(this).find('.sub-iterm').hide();
+	// 	});
+	// });
+
+	$(function(){
+		$('.nav .iterm').on('mouseenter',function(){
+			$(this).find('.sub-iterm').addClass('active');
+		});
+
+		$('.nav .iterm').on('mouseleave',function(){
+			$(this).find('.sub-iterm').removeClass('active');
+		});
+	});
+</script>
+</body>
+</html>
