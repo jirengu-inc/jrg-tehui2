@@ -1,0 +1,125 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body,div,ul,li,h2,p,a{
+				margin:0;
+				padding:0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			a{
+				text-decoration:none;
+			}
+			.jewelct{
+				width:660px;
+				margin:0 auto;
+				padding-top: 10px;
+			}
+			.jewelct:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.jewelct .item li{
+				float:left;
+				width:210px;
+				height:210px;
+				margin-right:12px;
+				margin-bottom:12px;
+				border:1px solid #ccc;
+				text-align:center;
+				position:relative;
+			}
+			.jewelct .item-ct{
+				margin-right:-24px;
+				margin-top:15px;
+			}
+			.jewelct .item .prod-name{
+				text-align:left;
+				color:#666;
+				font-size:14px;
+				margin-top:10px;
+			}
+			.jewelct .item .prod-price{
+				text-align:left;
+				color:#f00;
+				margin:8px 0;
+			}
+			.jewelct .item .cover{
+				display:none;
+				width:100%;
+				height:100%;
+				background:#ccc;
+				position:absolute;
+				top:0;
+				left:0;
+				background-color:rgba(0,0,0,0.5);
+			}
+			.jewelct .item .link{
+				display:block;
+				width:70px;
+				height:20px;
+				line-height: 20px;
+				padding:6px;
+				border:1px solid;
+				border-radius:5px;
+				background:white;
+				color:#f00;
+				margin-top:86px;
+				margin-left:64px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="jewelct">
+			<h2 class="jewel-title">珠宝首饰</h2>
+			<div class="item-ct">
+				<ul class="item">
+					<li>
+						<div class="cover">
+							<a href="#" class="link">立即抢购</a>
+						</div>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+						<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>
+					</li>
+					<li>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+												<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>
+					</li>
+					<li>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+						<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>
+					</li>
+					<li>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+						<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>
+					</li>
+					<li>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+						<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>
+					</li>
+					<li>
+						<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="">
+						<div class="prod-name">藏美千足金和田玉金镶玉路路通吊坠</div>
+						<div class="prod-price">￥1699</div>						
+					</li>
+				</ul>
+			</div>
+		</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		$('.jewelct .item').on('mouseenter','li',function(){
+			$(this).find('.cover').show();
+		})
+	</script>
+	</body>
+</html>
