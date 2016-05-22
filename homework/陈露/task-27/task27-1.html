@@ -147,7 +147,7 @@ $bullet.find('li').on('click',function(){
 });
 
 play(0);
-// autoPlay();
+autoPlay();
 
 function play(idx){
      if (isAnimate) {
@@ -155,11 +155,9 @@ function play(idx){
      }
      isAnimate= true;
      $items.eq(curIdx).fadeOut(500);
-     // $items.eq(idx).fadeIn(500,function(){
-     // 	isAnimate=false;
-     // });
-     $items.eq(idx).fadeIn(500);
-     isAnimate=false;   
+     $items.eq(idx).fadeIn(500,function(){
+     	isAnimate=false;
+     }); 
      curIdx= idx;
      setBullet();
 }
