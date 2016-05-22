@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	全屏轮播</title>
+<style type="text/css">
+html,body,ul,li,p{
+	margin:0;
+	padding: 0;
+}
+html,body,#header,.carousel,.img-ct{
+	width: 100%;
+	height: 100%;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.carousel{
+	position: relative;
+	overflow: hidden;
+}	
+.carousel .img-ct{
+	position: absolute;
+}
+
+.carousel .img-ct:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.carousel .item{
+	position: relative;
+	float: left;
+	height: 100%;
+}
+
+.carousel .cover{
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+	opacity: 0.8;
+
+}
+
+.carousel .main{
+	position: absolute;
+	z-index: 1;
+	width: 600px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%,-50%);
+	color: white;
+	text-align: center;
+}
+
+.carousel .main h1{
+	font-size: 34px;
+}
+.carousel .main p{
+	font-size: 16px;
+	line-height: 2;
+}
+
+.carousel .bullet{
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.carousel .bullet li{
+	width: 28px;
+	height: 7px;
+	border-radius: 10px;
+	background-color: #fff;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.carousel .bullet li.active{
+	background-color: #666;
+}
+</style>
+</head>
+<body>
+<div id="header">
+		<div class="carousel">
+			<ul class="img-ct">
+
+		        <li class="item">
+		          <div class="cover" data-bg-img="http://7xt1vz.com1.z0.glb.clouddn.com/S01E01-5.jpg"></div>
+		          <div class="main">
+		            <h1>And who are you, the proud lord said,</h1> 
+		            <p>that I must bow so low?</p>
+		          </div>
+		        </li>
+		        <li class="item">
+		          <div class="cover" data-bg-img="http://7xt1vz.com1.z0.glb.clouddn.com/S01E01-6.jpg"></div>
+		          <div class="main">
+		            <h1>Only a cat of a different coat</h1> 
+		            <p>that's all the truth I know.</p>
+		          </div>
+		        </li>
+		        <li class="item">
+		          <div class="cover" data-bg-img="http://7xt1vz.com1.z0.glb.clouddn.com/S01E03-1.jpg"></div>
+		          <div class="main">
+		            <h1>In a coat of gold or a coat of red</h1> 
+		            <p>a lion still has claws,</p>
+		          </div>
+		        </li>
+		        <li class="item">
+		          <div class="cover" data-bg-img="http://7xt1vz.com1.z0.glb.clouddn.com/S01E01-4.jpg"></div>
+		          <div class="main">
+		            <h1>And mine are long and sharp, my lord,</h1> 
+		            <p>as long and sharp as yours.</p>
+		          </div>
+		        </li>
+			</ul>
+			<ul class="bullet">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>		
+	</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+var $ct=$('.img-ct'),
+    $items=$ct.children(),
+    $bullet=$('.bullet'),
+    imgWidth=$(window).width(),
+    imgCount=$items.size(),
+    curIdx=0,
+    isAnimate=false;
+  
+
+$ct.prepend($items.last().clone());
+$ct.append($items.first().clone());   //拷贝头尾两个li加进面板里
+$ct.find('.item').css('width',imgWidth);
+$ct.find('.cover').css('width',imgWidth);
+imgRealCount=$ct.children().size();
+$ct.css({left:0-imgWidth,width:imgRealCount*imgWidth});  //初始化面板的位置，从索引为1的图片开始，第0张是拷贝的，只是为了使用障眼法。
+
+
+
+$bullet.find('li').on('click',function(){
+	var idx = $(this).index();
+		if(idx > curIdx){
+			playNext(idx-curIdx);
+		}else if(idx < curIdx){
+			playPre(curIdx - idx);
+		}
+});
+
+setBg(1);     //初始化页面
+autoPlay();
+
+function autoPlay(){
+	clock=setInterval(function(){
+		playNext();
+	},3000);
+}
+function stopAuto(){
+   clearInterval(clock);
+}
+
+function setBg(idx){       //这里懒加载不太理解~。。
+	var idx= idx || 0,
+	    $node = $ct.children().eq(idx),
+	    $cover=$node.find('.cover'),
+	    imgUrl=$cover.attr('data-bg-img');
+   if($node.data('isBgSet')) return;
+   $cover.css('background-image','url('+imgUrl+')');
+   $node.data('isBgSet',true);
+}
+function setBullet(){
+ $bullet.find('li').removeClass('active')
+				   .eq(curIdx).addClass('active');
+}
+
+function playPre(idx){
+	 var idx = idx || 1;
+	 if(!isAnimate){
+	 	isAnimate=true;
+	 	setBg(curIdx);
+	 	$ct.animate({left:'+='+(imgWidth*idx)},function(){
+	 		curIdx=(imgCount+curIdx-idx)%imgCount;
+	 		if(curIdx === (imgCount-1)){
+	 			$ct.css({left:0-imgWidth*imgCount});
+	 		}
+	 		isAnimate= false;
+	 		setBullet();
+	 	})
+	 }
+}
+function playNext(idx){
+	var idx = idx || 1;
+	if(!isAnimate){
+		isAnimate=true;
+		setBg(curIdx+2);
+		$ct.animate({left:'-='+(imgWidth*idx)},function(){
+			curIdx=(curIdx+idx)%imgCount;
+			if(curIdx===0){
+				$ct.css({left:0-imgWidth});
+			}
+			isAnimate=false;
+			setBullet();
+		});
+	}
+}
+
+
+
+</script>
+</body>
+</html>
+

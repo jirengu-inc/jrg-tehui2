@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>图片懒加载</title>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+ul,li{
+	padding: 0;
+	margin: 0;
+}	
+
+.header{
+	width: 1200px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	font-size: 36px;
+	font-weight: bold;
+	margin: 0 auto;
+	background: #333;
+	color:white;
+	border-radius: 5px;
+}
+.ct{
+	width: 1200px;
+	margin:0 auto;
+}
+.ct:after{
+	content: '';
+	display: block;
+	clear: both;
+}
+.ct li{
+	list-style: none;
+	float: left;
+	margin: 50px;
+}
+.ct li img{
+	width: 300px;
+	height: 300px;
+}
+</style>
+</head>
+<body>
+<div class="header">Foreo     Luna</div>
+<ul class='ct'>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna3.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna3.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna3.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna4.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna4.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/luna4.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini1.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini2.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini3.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini3.jpg' alt=""></a></li>
+	<li><a href=""><img src="http://7xt1vz.com1.z0.glb.clouddn.com/loading.gif" data-src='http://7xt1vz.com1.z0.glb.clouddn.com/mini3.jpg' alt=""></a></li>
+
+
+</ul>
+
+<script>
+var clock;
+
+ checkShow();
+ $(window).on('scroll',function(){
+      if(clock){
+         clearTimeout(clock)
+      };
+      clock=setTimeout(function(){
+      	   checkShow();
+      	   console.log(1);
+      },300)
+ });
+
+function checkShow(){
+	$('.ct img').each(function(){
+		  var $cur=$(this);
+		  if ($cur.attr('isLoaded')) {
+		  	return;   
+		  }
+		 if(isShow($cur)){     //滚动的时候检测每一张图片，该图片位置如果已经显示了，就可以加载图片了
+		 	showImg($cur);
+		 }
+	});
+}
+
+function isShow($node){
+     var winH=$(window).height(),
+         scrollTop =$(window).scrollTop(),
+         offsetTop=$node.offset().top;
+    if(scrollTop+winH >= offsetTop ){
+          return true;
+    }else{
+         return false; 
+    }
+ }
+
+function showImg($node){
+	$node.attr('src',$node.attr('data-src'));
+	$node.attr('isLoaded',true);
+}
+</script>
+</body>
+</html>
