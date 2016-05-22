@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="">
+	<meta name="description" content="">
+	<style type="text/css">
+	ul,li,a{
+		margin: 0;
+		padding: 0;
+	}
+		li{
+			list-style: none;
+			border: 1px solid #ccc;
+			height: 40px;
+			line-height: 40px;
+			text-align: center;
+			margin: 15px;
+			border-radius: 5px;
+		}
+		a{
+			text-decoration: none;
+		}
+		#btn{
+			width: 90px;
+			height: 40px;
+			border-radius: 5px;
+			line-height: 40px;
+			border: 1px solid red;
+			margin: 10px auto;
+			display: block;
+			text-align: center;
+		}
+		.hover{
+			background-color: green;
+		}
+	</style>
+</head>
+<body>
+<ul class="ct">
+	<li>1</li>
+	<li>2</li>
+</ul>
+<a href="#" id="btn">点击加载</a>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+	var $ct = $('.ct'),
+			$btn = $('#btn'),
+			cur = 2,
+			clock;
+			load();
+			$(window).on('scroll',function(){
+				if (clock) {
+					clearTimeout(clock);
+				}
+
+				clock = setTimeout(function(){
+					if (!isVisible($btn)) {return;}
+					load();
+				},200);
+			});
+
+			$ct.on('mouseenter','li',function(){
+					$(this).addClass('hover');
+			}).on('mouseleave','li',function(){
+					$(this).removeClass('hover');
+			})
+
+			function load(){
+				$.ajax({
+					url:'add.php',
+					dataType:'json',
+					type:'post',
+					data:{
+						start:cur,
+						len:20
+					},
+					success:function(json){
+						onSuccess(json);
+					},
+					error:function(){
+						onError;
+					}
+
+				})
+			}
+
+			function onSuccess(json){
+				if (json.status === 1) {
+					append(json.data);
+					cur+=20;
+				}else{
+					alert('系统异常');
+				}	
+			}
+
+			function onError(){
+				alert('error');
+			}
+
+			function append(arr){
+				for(var i= 0;i<arr.length;i++){
+					$ct.append('<li>'+arr[i]+'</li>');
+				}
+			}
+
+			function isVisible($btn){
+				var btnsetH = $btn.offset().top,
+						winH = $(window).height(),
+						scroll = $(window).scrollTop(),
+						btnH = $btn.height();
+						if (winH+scroll>btnsetH) {
+							return true;
+						}else{
+							return false;
+						}
+
+			}
+
+</script>
+</body>
+</html>
