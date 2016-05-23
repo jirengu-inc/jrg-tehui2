@@ -102,8 +102,8 @@ require(['jquery','com/goTop','com/carouselFull','com/waterFallLayout','com/expo
                 waterFall.init($('.portfolio-content'),$('.portfolio-function'));
                 $nodes.animate({opacity:'1'},500,function(){
                     $(this).fadeIn(500);
+                    isSend = false;//解锁
                 });
-                isSend = false;//解锁
             });
         }
         //将php返回的数据，进行组装，并且放到页面上去
