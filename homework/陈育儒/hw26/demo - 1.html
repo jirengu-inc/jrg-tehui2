@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<style>
+div{
+  width:200px;
+  height:200px;
+  border:1px solid black;
+  margin:8px; 
+}
+.box{
+  color:black;
+  background-color:white;
+}
+
+</style>
+</head>
+<body>
+
+<div class="box">当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</div>
+<div class="box2">111</div>
+
+   <script>
+   //当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色
+    var $box = $('.box');
+   $box.on('click',function(){
+    $box.fadeTo('200','1',function(){
+      $box.css({'background-color':'red'});
+      (function(){
+        $box.fadeTo('400','1',function(){
+          $box.css({'background-color':'blue'})
+        })
+      }())
+    }
+   )});
+
+   //当窗口滚动时，获取垂直滚动距离
+   $(window).on('click',function(){
+    console.log($(window).scrollTop());
+   })
+
+  //获取$node 到根节点水平、垂直偏移距离
+  $('.box2').on('mouseenter',function(){
+    $(this).css('background','red');
+  });
+  $('.box2').on('mouseleave',function(){
+    $(this).css('background','white');
+  });
+
+
+   </script>
+
+</html>

@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body,div{
+				margin:0;
+				padding:0;
+			}
+			a{text-decoration: none;}
+			.ct{
+
+			}
+			.ct div{
+				border:1px solid #ccc;
+				margin:10px 0;
+				padding:10px;
+			}
+			.addmore{
+				display:block;
+				text-align:center;
+				width:70px;
+				margin:0 auto;
+				padding:10px 6px;
+				border:1px solid #f00;
+				border-radius:3px;
+				color:#f00;
+				opacity:.7;
+			}
+			.addmore:hover{
+				opacity:1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ct">
+			<div>内容1</div>
+			<div>内容2</div>
+		</div>
+		<div><a href="javascript:void(0)" class="addmore">加载更多</a></div>
+ <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+
+			var $ct=$('.ct');
+			var $btn=$('.addmore');
+			$ct.on('mouseenter','div',function(){
+				$(this).css({'background-color':'#eee','cursor':'pointer'});
+			});
+			$ct.on('mouseleave','div',function(){
+				$(this).css('background-color','');
+			})
+
+
+			/*{
+				url:"hw26.php",
+				type:'get',
+				data:{
+					
+				},
+				dataType:'json',
+				success:,
+				error:
+			}*/
+			var isload = false,//设置状态锁，防止重复点击
+					 start = 3;
+						 len = 6;
+			$btn.on('click',function(){
+				if(isload){
+					return;
+				}
+				$btn.text('正在加载');
+				isload = true;
+				var opts = {
+				url:"hw26.php",
+				type:'get',
+				data:{
+					start:start,
+					len:len
+				},
+				dataType:'json',
+				success:function(ret){
+					onSuccess(ret);
+				},
+				error:function(){
+					onError();
+				}
+			};
+				$.ajax(opts);
+			});
+
+			function onSuccess(ret){
+				// console.log(ret);
+				// console.log(start);
+				// console.log(isload);
+				if(ret.status===1){
+					var html="";
+					for(var i =0;i<ret.data.length;i++){
+						html += '<div>'+ret.data[i]+'</div>';
+					}
+					$ct.append(html);
+					$btn.text('加载更多');
+					isload = false;
+					start +=6;
+				}
+			}
+
+			function onError(){
+				isload = false;
+				alert('请检查程序和网络！')
+			}
+		</script>
+	</body>
+</html>
