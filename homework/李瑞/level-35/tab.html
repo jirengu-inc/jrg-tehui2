@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body,ul,li{
+			margin:0;
+			padding:0;
+			box-sizing:border-box;
+		}
+		.header{
+			margin:20px auto;
+			text-align: center;
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.clearfix:after{
+			content:"";
+			display: block;
+			clear:both;
+		}
+		.wrap{
+			width:300px;
+			margin:0 auto;
+			border:1px solid black;
+		}
+		.wrap_nav{
+			position: relative;
+			width:100%;
+		}
+		.wrap_nav li{
+			height:40px;
+			line-height:40px;
+			width:33.3%;
+			text-align: center;
+			background:red;
+			float:left;
+			cursor: pointer;
+		}
+		.wrap_nav li:nth-child(1){
+			background:yellow;
+		}
+		.wrap_nav li:nth-child(2){
+			background:pink;
+		}
+		.wrap_ct{
+			position: relative;
+			width:300px;
+			height:300px;
+		}
+		.wrap_ct li{
+			position: absolute;
+			opacity: 0;
+			display: none;
+			-webkit-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+		}
+		.wrap_ct li.show{
+			display: block;
+			opacity: 1;
+			-webkit-transition: all 1s;
+			-o-transition: all 1s;
+			transition: all 1s;
+		}
+		.wrap_ct img{
+			width:300px;
+			height:300px;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">tab切换</div>
+	<div class="wrap">
+		<ul class="wrap_nav clearfix">
+			<li>点我</li>
+			<li>点我！</li>
+			<li>还有我！</li>
+		</ul>
+		<ul class="wrap_ct">
+			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+		function show($ct){
+			this.$ct=$ct;
+			this.$wrap_nav=this.$ct.find(".wrap_nav");
+			this.$wrap_ct=this.$ct.find(".wrap_ct");
+		};
+		show.prototype={
+			init:function(){
+				var _this=this;
+				_this.bind();
+				_this.play(0);
+			},
+			bind:function(){
+				var _this=this;
+				_this.$wrap_nav.on("click","li",function(){
+					var tem=$(this).index();
+					_this.play(tem);
+				})
+			},
+			play:function(tem){
+				var _this=this;
+				_this.$wrap_ct.children().removeClass('show').eq(tem).addClass('show');
+			}
+		}
+		var node=$(".wrap"),
+			p1=new show(node);
+		p1.init();
+</script>
+</html>

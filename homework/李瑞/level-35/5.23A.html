@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>多组轮播</title>
+	<style>
+			body,ul,li{
+			margin:0;
+			padding:0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+	.header{
+			text-align:center;
+			padding:20px;
+		}
+	.wrap{
+		position: relative;
+		margin:0 auto;
+		width:230px;
+		height:300px;
+		overflow:hidden;
+	}
+	.wrap_ct{
+		position: absolute;
+	}
+	.wrap_ct li{
+		float:left;
+	}
+	.wrap_ct li img{
+		width:230px;
+		height:300px;
+	}
+	.arrow{
+		position: absolute;
+		width:30px;
+		height:30px;
+		background:#aaa;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 30px;
+		top:50%;
+		margin-top:-15px;
+		opacity: 0.5;
+		display: none;
+	}
+	.prev{
+		left:10px;
+	}
+	.prev:hover,.next:hover{
+		opacity: 1;
+		background:white;
+	}
+	.next{
+		right:10px;
+	}
+	.wrap:hover .arrow{
+		display: block;
+	}
+	.button{
+		position: absolute;
+		left:50%;
+		transform: translateX(-50%);
+		bottom:20px;
+	}
+	.button li{
+		width:10px;
+		height:10px;
+		border-radius: 10px;
+		background:#aaa;
+		float:left;
+		margin-right:10px;
+	}
+	.button li.active{
+		background:white;
+	}
+	</style>
+</head>
+<body>
+	<div class="header">多组轮播(不改变DOM方式)</div>
+	<div class="wrap">
+		<ul class="wrap_ct">
+			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+		</ul>	
+		<a href="#" class="arrow prev"><</a>
+		<a href="#" class="arrow next">></a>
+		<ul class="button">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+	<div class="wrap">
+		<ul class="wrap_ct">
+			<li><a href="#"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="#"><img src="img/4.jpg" alt=""></a></li>
+		</ul>	
+		<a href="#" class="arrow prev"><</a>
+		<a href="#" class="arrow next">></a>
+		<ul class="button">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	function show($ct){
+		this.$ct=$ct;
+		this.$prev=this.$ct.siblings('.prev');
+		this.$next=this.$ct.siblings(".next");
+		this.$button=this.$ct.siblings(".button")
+		this.num=0;
+		this.keyword=false;
+		this.imgNum=this.$ct.children().size();
+		this.$ct.prepend(this.$ct.children().last().clone());
+		this.$ct.append(this.$ct.children().eq(1).clone());
+		this.newImg=this.$ct.children().size();
+		this.imgWidth=this.$ct.find("img").width();
+	}
+	show.prototype={
+		init:function(){
+			var _this=this;
+			_this.$ct.css({
+				"width":_this.newImg*_this.imgWidth,
+				"left":0-_this.imgWidth
+			});
+			_this.bind();
+			_this.autoplay();
+		},
+		bind:function(){
+			var _this=this;
+			_this.$prev.on("click",function(){
+				_this.playPrev()
+			});
+			_this.$next.on("click",function(){
+				_this.playNext()
+			});
+			_this.$button.on("click","li",function(){
+				var tem=$(this).index();
+				if(tem<_this.num){
+					_this.playPrev(_this.num-tem);
+				}
+				if(tem>_this.num){
+					_this.playNext(tem-_this.num);
+				}
+				if(tme===_this.num){
+					return;
+				}
+			})
+		},
+		playNext:function(tem){
+			var _this=this;
+			if(_this.keyword){
+				return
+			}
+			_this.keyword=true;
+			var idx=tem||1;
+			_this.$ct.animate({"left":"-="+_this.imgWidth*idx},function(){
+				_this.num=(_this.num+idx)%_this.imgNum;
+				if(_this.num==0){
+					_this.$ct.css("left",0-_this.imgWidth)
+				}
+				_this.setButton();
+				_this.keyword=false;
+			});
+		},
+		playPrev:function(tem){
+			var _this=this;
+			if(_this.keyword){
+				return
+			}
+			_this.keyword=true;
+			var idx=tem||1;
+			_this.$ct.animate({"left":"+="+_this.imgWidth*idx},function(){
+				_this.num=(_this.imgNum+_this.num-idx)%_this.imgNum;
+				if(_this.num==_this.imgNum-1){
+					_this.$ct.css("left",0-_this.imgWidth*_this.imgNum)
+				}
+				_this.setButton();
+				_this.keyword=false;
+			});
+		},
+		setButton:function(){
+			var _this=this;
+			_this.$button.children().removeClass('active').eq(_this.num).addClass('active');
+		},
+		autoplay:function(){
+			var _this=this;
+			auto=setInterval(function(){
+				_this.playNext();
+			},1000)
+		},
+		stopplay:function(){
+			clearInterval(auto);
+		}
+	}
+	var p1=$(".wrap_ct").eq(0),
+		p2=$(".wrap_ct").eq(1)
+	var show1=new show(p1),
+		show2=new show(p2);
+	show1.init();
+	show2.init();
+</script>
+</html>
