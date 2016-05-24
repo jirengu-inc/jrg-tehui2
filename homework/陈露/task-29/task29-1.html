@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Go-Top</title>
+<style>
+
+.ct li{
+	list-style: none;
+	width: 800px;
+	height: 60px;
+	text-align: center;
+	line-height: 60px;
+	margin-bottom: 20px;
+	border-radius: 5px;
+	background: pink;
+	cursor: pointer;
+}
+
+.ct li:hover{
+	background: #e89bd5;
+	transition:0.5s;
+}
+.ct{
+	width: 800px;
+	margin: 0 auto;
+}
+.btn{
+		width: 50px;
+		height: 50px;
+		background: pink;
+		opacity: 0.6;
+		border:1px solid #e89bd5;
+		line-height: 50px;
+		text-align: center;
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		display: none;
+		cursor: pointer;
+		border-radius: 50%;
+		box-shadow: 2px 2px 2px #ccc;
+}
+.btn:hover{
+	    opacity: 1;
+}
+</style>	
+</head>
+<body>
+<div class='ct' >
+	<ul class='nav'>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+		<li>内容1</li>
+
+	</ul>
+</div>
+	<div class='btn'>top</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$(window).on('scroll',function(){
+    var scrollTop=$(window).scrollTop();
+	if (scrollTop>400) {
+		$('.btn').css('display','block');
+	}else{
+		$('.btn').css('display','none');
+	}
+goTop();
+
+});
+
+
+function goTop(){
+	$('.btn').on('click',function(){
+		$(window).scrollTop(0);
+	})
+}	
+</script>	
+</body>
+</html>

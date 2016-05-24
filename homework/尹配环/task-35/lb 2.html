@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>server-mock使用说明</title>
+    <style>
+        ul {
+            margin: 0;
+            padding:0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        .wrap {
+            width: 300px;
+            height: 200px;
+            position: relative;
+        }
+
+        .img-ct>li {
+            position: absolute;
+            display: none;
+        }
+        .img-ct>li:first-child {
+            display: list-item;
+        }
+        .img-ct img{
+            width: 100%;
+            height: 100%;
+            vertical-align: bottom;
+        }
+        .arrow {
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            border-radius:30px;
+            line-height: 30px;
+            text-align: center;
+            color:white;
+            background-color: #0a0a0a;
+            opacity:.8;
+        }
+        .arrow:hover {
+            opacity:1;
+        }
+        .pre {
+            left:10px;
+        }
+        .next {
+            right:10px;
+        }
+        .pointer {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .pointer>li {
+            display: inline-block;
+            width: 25px;
+            height: 5px;
+            border-radius:15px;
+            background-color:white;
+            cursor: pointer;
+        }
+        .pointer>li.active {
+            background-color: #1F496E;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="wrap">
+    <ul class="img-ct">
+        <li><a href="#"><img src="../task-27%20jquery%20lb/img/11.jpg" alt="0"></a></li>
+        <li><a href="#"><img src="../task-27%20jquery%20lb/img/22.jpg" alt="1"></a></li>
+        <li><a href="#"><img src="../task-27%20jquery%20lb/img/33.jpg" alt="2"></a></li>
+        <li><a href="#"><img src="../task-27%20jquery%20lb/img/44.jpg" alt="3"></a></li>
+    </ul>
+    <a href="#" class="arrow pre"><</a>
+    <a href="#" class="arrow next">></a>
+    <ul class="pointer">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+    function Carousel($node){ //$node 包含图片的ul
+        this.$node = $node;
+        this.$nodes = $node.find("li");
+        this.pageNum = this.$nodes.length;
+
+        var $parent = this.$node.parent();
+        this.$pointer = $parent.find(".pointer");
+        this.$pre = $parent.find(".pre");
+        this.$next = $parent.find(".next");
+
+        this.curPage = 0;
+        this.clock = null;
+        this.isAnimate = false;
+
+        this.autoPlay();
+        this.arrowEvent()
+    }
+    Carousel.prototype = {
+        play:function(index){
+            if (this.isAnimate) return;
+            this.isAnimate = true;
+            var me = this;
+            me.$nodes.eq(me.curPage).fadeOut(500);
+            me.$nodes.eq(index).fadeIn(500,function(){
+                me.curPage = index;
+                me.isAnimate = false;
+
+                me.$pointer.children().removeClass("active").eq(index).addClass("active");
+            });
+        },
+        playNext:function(){
+            this.play((this.curPage + 1) % this.pageNum);
+        },
+        playPre:function(){
+            this.play((this.curPage - 1 + this.pageNum) % this.pageNum);
+        },
+        autoPlay:function(){
+            var me = this;
+            this.clock = setInterval(function(){
+                me.playNext();
+            },2000);
+        },
+        stopAuto:function(){
+            if (this.clock) {
+                clearInterval(this.clock);
+            }
+        },
+        arrowEvent:function () {
+            var me = this;
+            this.$pre.on("click",function () {
+                me.playPre();
+            });
+            this.$next.on("click",function () {
+                me.playNext();
+            })
+        }
+
+    };
+
+    var $node1 = $('.img-ct').eq(0);
+//    var $node2 = $('.img-ct').eq(1);
+    var carousel1 = new Carousel($node1);
+//    var carousel2 = new Carousel($node2);
+</script>
+
+
+
+
+</body>
+</html>

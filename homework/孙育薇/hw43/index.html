@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drag and Drop</title>
+    <style>
+        ul {
+            border: 1px solid #dedede;
+        }
+        ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        li {
+            list-style: none;
+            margin: 10px;
+            padding: 10px;
+            border: 1px dashed #dedede;
+            background-color: #eee;
+            float: left;
+            cursor: move;
+        }
+    </style>
+</head>
+<body>
+<section id="category">
+<h3>全部</h3>
+<ul ondrop="drop(event)" ondragover="allowDrop(event)">
+    <li id="cate-car" draggable="true" ondragstart="drag(event)">汽车</li>
+    <li id="cate-province-zhejiang" draggable="true" ondragstart="drag(event)">浙江</li>
+    <li id="cate-tech" draggable="true" ondragstart="drag(event)">科技</li>
+    <li id="cate-mobilephone" draggable="true" ondragstart="drag(event)">手机</li>
+    <li id="cate-universe" draggable="true" ondragstart="drag(event)">宇宙</li>
+    <li id="cate-entertainment " draggable="true" ondragstart="drag(event)">娱乐</li>
+    <li id="cate-beauty" draggable="true" ondragstart="drag(event)">美妆</li>
+</ul>
+</section>
+<section id="subscription">
+<h3>订阅</h3>
+<ul ondrop="drop(event)" ondragover="allowDrop(event)">
+    <li id="cate-military" draggable="true" ondragstart="drag(event)">军事</li>
+</ul>
+</section>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("itemId",ev.target.id);
+    }
+    function drop(ev) {
+        ev.preventDefault();
+        var itemId = ev.dataTransfer.getData("itemId");
+        ev.target.appendChild(document.getElementById(itemId));
+    }
+</script>
+</body>
+</html>

@@ -12,6 +12,18 @@ html,body,ul,li,p,b,h1{
 	background: white;
 	border: 1px solid #eee;
 	z-index: 9;
+
+}
+.clearfix:after {
+ visibility:hidden;
+ display:block;
+ font-size:0;
+ content:" ";
+ clear:both;
+ height:0;
+}
+.clearfix {
+ zoom:1;
 }
 li{
 	list-style: none;
@@ -88,8 +100,6 @@ a{
 		font-size: 1.6em;
 		background: #B84D45;
 		border: 1px solid transparent;
-		position: relative;
-		top: 50px;
 	}
 	#header:after{
 		content:"";
@@ -100,14 +110,12 @@ a{
 	.headbox{
 		display: inline-block;
 		vertical-align: middle;
-		margin-left:160px;
-
+		margin: 0 auto;
 	}
 	.headbox h1{
 		margin-bottom: 10px;
 	}
 	#middle{
-		clear: both;
 		width: 1000px;
 		background-color: #eee;
 		margin:20px auto;
@@ -128,7 +136,7 @@ a{
 		margin: 0 auto;
 	}
 	.box{
-		width: 315px;
+		width: 317px;
 		height: 380px;
 		border: 1px solid #ddd;
 		text-align: center;
@@ -140,7 +148,7 @@ a{
 		opacity: 0.8;
 	}
 	img{
-		width: 300px;
+		width: 308px;
 		height: 230px;
 	}
 	.caption h3{

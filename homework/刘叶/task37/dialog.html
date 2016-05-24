@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>dialog</title>
+</head>
+<link rel="stylesheet" href="dialog-style.css" type="text/css">
+<body>
+    <div class="command-zone">
+        <p>同一个页面,多个Dialog</p>
+        <input class="title ipt" placeholder="在这里输入你的标题">
+        <input class="des ipt" placeholder="在这里输入你想说的话">
+        <ul class="creates clearfix">
+            <li><a href="#" class="btn1 create">click1</a></li>
+            <li><a href="#" class="btn2 create">click2</a></li>
+            <li><a href="#" class="btn3 create">click3</a></li>
+            <li><a href="#" class="btn4 create">click4</a></li>
+        </ul>
+    </div>
+    <div class="dialog-zone"></div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script type="text/javascript">
+    function Dialog(title,ipt){
+        this.title = title;
+        this.ipt = ipt;
+    }
+    Dialog.prototype.open = function(){
+        var htmls = '',
+            $nodes;
+        htmls += '<div class= "dialog clearfix">';
+        htmls += '  <div class = "dialog-wrap">';
+        htmls += '    <div class="dialog-head">';
+        htmls += '      <h3>' + this.title+ '</h3>';
+        htmls += '      <span class="mark btn-close">x</span>';
+        htmls += '    </div>';
+        htmls += '    <div class="dialog-content">' +this.ipt+ '</div>';
+        htmls += '    <div class="dialog-footer clearfix">';
+        htmls += '      <a href="#" class = "mark btn btn-cancel btn-foot">取消</a>';
+        htmls += '      <a href="#" class = "mark btn btn-confirm btn-foot">确定</a>';
+        htmls += '    </div>';
+        htmls += '  </div>';
+        htmls += '</div>';
+        $nodes = $(htmls);
+        $('.dialog-zone').append($nodes);
+        return $nodes;
+    };
+    Dialog.prototype.bind = function($nodes){
+        $nodes.children('.dialog-wrap').on('click','.mark',function(){
+            $nodes.css({
+                display:'none'
+            })
+        });
+        $nodes.on('mousedown',function(e){
+            $nodes.css({
+                opacity:'0.7',
+                cursor:'move'
+            });
+            $nodes.isDown = true;
+            $nodes.realX = e.pageX - $nodes.offset().left;
+            $nodes.realY = e.pageY - $nodes.offset().top;
+        });
+        $nodes.on('mouseup',function(){
+            $nodes.css({
+                opacity:'1'
+            });
+            $nodes.isDown = false;
+        });
+        $nodes.on('mousemove',function(e){
+            if($nodes.isDown){
+                $nodes.css({
+                    top: e.pageY-$nodes.realY,
+                    left: e.pageX -$nodes.realX
+                })
+            }
+        });
+    };
+    $('.command-zone .creates li').on('click',function(){
+        var $cur = $(this);
+        var index = $cur.index();
+        var title = $('.title').val()||'如果可以请下次设置一下标题';
+        var des = $('.des').val()||'如果可以请下次设置一下内容';
+        var creates = new Dialog(title,des);
+        var $nodes = creates.open();
+        var colorArr =['rgba(61,121,243,0.9)','rgba(240,91,112,0.9)','rgba(249,185,10,0.9)','rgba(51,166,75,0.9)'];
+        $nodes.find('.dialog-head').css({
+                backgroundColor:colorArr[index]
+            });
+        $nodes.find('.btn-foot').css({
+            backgroundColor:colorArr[index]
+            });
+        creates.bind($nodes);
+    });
+</script>
+</body>
+</html>

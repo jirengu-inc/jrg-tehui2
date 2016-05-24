@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<style>
+  div{
+
+
+  }
+  .input2{
+    outline:none;
+  }
+
+</style>
+</head>
+<body>
+<input type="text" class="input2">
+<div>
+  <select name="" id="choice">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="audi">audi</option>
+  </select>
+</div>
+   <script>
+   //输入框
+  var $ipt=$('.input2');
+  $ipt.on('focus',function(){
+    $ipt.css('border','1px solid blue')
+        .on('keyup',function(){
+          $ipt.val($ipt.val().toUpperCase());
+        })
+        .on('blur',function(){
+          $ipt.css('border','1px solid #aaa');
+          console.log($ipt.val());
+        })
+    })
+
+  //选择框
+  var $select=$('#choice');
+  $select.on('change',function(){
+    console.log($select.val());
+  })
+ 
+
+   </script>
+
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>	三个轮播</title>
+<style type="text/css">
+html,body,ul,li,p{
+	margin:0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.carousel{
+	position: relative;
+	width: 440px;
+	height: 440px;
+	overflow: hidden;
+	float: left;
+	margin:4px;
+}
+
+
+.carousel .img-ct{
+	position: relative;
+}
+.carousel .img-ct img{
+	width: 440px;
+	height:440px;
+}
+.carousel .img-ct:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.carousel .img-ct li{
+	position: absolute;
+	display: none;
+}
+.arrow{
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	line-height: 40px;
+	text-align: center;
+	background:pink;
+	color: white;
+	font-weight: bold;
+	box-shadow: 0 0 2px pink;
+	opacity: 1;
+
+}
+.arrow:hover{
+	opacity: 0.6;
+}
+.pre{
+	left: 10px;
+}
+.next{
+	right: 10px;
+}
+.carousel .bullet{
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.carousel .bullet li{
+	width: 28px;
+	height: 7px;
+	border-radius: 10px;
+	background-color: pink;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.carousel .bullet li.active{
+	background-color: #fff;
+}
+</style>
+</head>
+<body>
+	<div class="carousel caro1">	
+        <ul class="img-ct">
+           <li data-id='0'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l1.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='1'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l2.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='2'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l3.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='3'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l4.jpg" alt="">
+           </a>
+           </li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+
+        <ul class="bullet">
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+
+	</div>
+
+<div class="carousel caro2">	
+        <ul class="img-ct">
+           <li data-id='0'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l5.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='1'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l6.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='2'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l7.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='3'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l8.jpg" alt="">
+           </a>
+           </li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+
+        <ul class="bullet">
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+
+	</div>
+
+	<div class="carousel caro3">	
+        <ul class="img-ct">
+           <li data-id='0'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l9.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='1'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l1.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='2'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l2.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='3'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l3.jpg" alt="">
+           </a>
+           </li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+
+        <ul class="bullet">
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+
+	</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+for(var i = 0;i < $('.carousel').length;i++){
+		$carousel = $('.carousel').eq(i);
+		caroPlay ($carousel);
+	}
+
+function caroPlay (caroIdx) {
+	var $ct=caroIdx.children('.img-ct'),
+	    $items=$ct.children(),
+	    $pre =caroIdx.children('.pre'),
+	    $next=caroIdx.children('.next'),
+	    $bullet=caroIdx.children('.bullet'),
+	    imgWidth=$items.width(),
+	    imgCount=$items.size();
+
+
+var curIdx=0,
+    isAnimate=false;
+
+$pre.on('click',function(){
+	playPre();
+})
+
+$next.on('click',function(){
+	playNext();
+})
+
+$bullet.parents('div').find('.img-ct').find('li').on('click',function(){
+	var idx=$(this).index();
+	play(idx);
+});
+
+play(0);
+autoPlay();
+
+function play(idx){
+     if (isAnimate) {
+     	return;
+     }
+     isAnimate= true;
+     $items.eq(curIdx).fadeOut(500);
+     $items.eq(idx).fadeIn(500,function(){
+     	isAnimate=false;
+     })
+
+     curIdx= idx;
+     setBullet();
+}
+
+function autoPlay(){
+	clock=setInterval(function(){
+		playNext();
+	},2000)
+}
+function stopAuto(){
+   clearInterval(clock);
+}
+function setBullet(){
+	$bullet.children().removeClass('active')
+	                  .eq(curIdx).addClass('active');
+}
+
+function playPre(){
+	play((imgCount+curIdx-1)%imgCount);
+}
+function playNext(){
+	play((curIdx+1)%imgCount);
+}
+
+
+}
+
+</script>
+</body>
+</html>
+

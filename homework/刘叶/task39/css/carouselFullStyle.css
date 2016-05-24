@@ -1,0 +1,82 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+html, body, #header, #header .carousel, #header .img-ct{
+    height: 100%;
+    width: 100%;
+}
+.carousel{
+    position: relative;
+    width: 400px;
+    height: 300px;
+    overflow: hidden;
+}
+#header .img-ct{
+    position: absolute;
+}
+#header .item{
+    position: relative;
+    float: left;
+    height: 100%;
+}
+.clearfix{
+    content:'';
+    clear: both;
+    display: block;
+}
+#header .main{
+    position: absolute;
+    width: 600px;
+    left: 50%;
+    top: 50%;
+    z-index: 9;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-align: center;
+}
+#header .main h2{
+    font-size: 50px;
+    margin-bottom: 40px;
+}
+#header .main p{
+    font-size: 20px;
+    line-height: 20px;
+}
+
+#header .cover{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    opacity: 0.8;
+}
+.bullet{
+    position: absolute;
+    top:90%;
+    left: 50%;
+    transform:translateX(-50%);
+}
+.bullet li{
+    display: inline-block;
+    width: 25px;
+    height: 7px;
+    background-color: #666;
+    margin-left: 10px;
+    -webkit-border-radius: 40px;
+    -moz-border-radius: 40px;
+    border-radius: 40px;
+}
+ul.bullet li.active {
+    background: #fff;
+}

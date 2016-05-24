@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>stickup-多个</title>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+#wrap{  
+	    width: 960px;
+		margin: 0 auto;
+      
+	}
+#header{
+		height: 80px;
+		line-height: 80px;
+		text-align: center;
+		background-color: red;
+
+}
+
+#content{
+	min-height: 800px;
+	padding: 10px;
+	overflow: auto;
+	background: #ccc;
+}
+#content .nav{
+	height: 40px;
+	margin-top: 20px;
+	
+	line-height: 40px;
+	text-align: center;
+}
+.nav1{
+	background: yellow;
+}
+.nav2{
+	background: pink;
+}
+.nav3{
+	background: blue;
+}
+.nav4{
+	background:orange;
+}
+#content .aside{
+	float: left;
+	background: green;
+	width: 100px;
+	min-height: 400px;
+}
+#content .main{
+    background: white;
+    min-height: 800px;
+    overflow: auto; 
+    padding-left: 20px;
+}
+#footer{
+	min-height: 20px;
+	background: #333;
+}
+</style>	
+</head>
+<body>
+<div id="wrap">
+	<div id="header">header</div>
+	
+	<div id="content">
+		<div class="nav nav1">nav1</div>
+		<div class="aside">aside1</div>
+		<div class="main">main1</div>
+	</div>
+
+	<div id="content">
+		<div class="nav nav2">nav2</div>
+		<div class="aside">aside2</div>
+		<div class="main">main2</div>
+	</div>
+
+	<div id="content">
+		<div class="nav nav3">nav3</div>
+		<div class="aside">aside3</div>
+		<div class="main">main3</div>
+	</div>
+
+	<div id="content">
+		<div class="nav nav4">nav4</div>
+		<div class="aside">aside4</div>
+		<div class="main">main4</div>
+	</div>
+	
+	<div id="footer">footer</div>
+</div>
+<script>
+$(function(){
+
+$.fn.stick=function(handler){
+	var $cur=this,
+	     curH =$cur.height(),
+	     curW=$cur.width(),
+	     offsetTop =$cur.offset().top,
+	     offsetLeft=$cur.offset().left,
+	     onChange=handler ||function(){};
+
+ var $div=$cur.clone()
+              .css('opacity',0)
+              .insertBefore($cur)
+              .hide();
+
+$(window).on('scroll',function(){
+	var scrollTop =$(this).scrollTop();
+	if(scrollTop>=offsetTop){
+		if(!isFixed()){
+		    setFixed();
+		    onChange.call($cur);
+		}
+	}else{
+		if(isFixed()){
+			unsetFixed();
+		}
+	}
+});
+
+function isFixed(){
+	return !!$cur.attr('data-fixed');
+}
+
+function setFixed(){
+   $cur.attr('data-fixed',true)
+       .css({
+       	   'position':'fixed',
+       	   'top':0,
+       	   'left':'offsetLeft',
+       	   'z-index':999,
+       	   'width':curW,
+       	   'margin':0
+       });
+  $div.show();
+}
+
+function unsetFixed(){
+	$cur.removeAttr('data-fixed')
+	     .removeAttr('style');
+    $div.hide();
+}
+
+}
+
+
+$('.nav1').stick();
+$('.nav2').stick();
+$('.nav3').stick();
+$('.nav4').stick();
+})
+
+</script>
+</body>
+</html>

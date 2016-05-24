@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+	<head>
+		<title>任务22-4</title>
+		<meta charset="utf-8">
+		<style>
+			ul,li{
+				list-style:none;
+				margin:0;
+				padding:0;
+			}
+		
+			.wrap{
+				width:500px;
+				height:300px;
+				margin:0 auto;
+				border:1px solid #ccc;
+			}
+			.tabs{
+				text-align:center;
+				font-size:20px;
+			}
+			.tabs > li{
+				float:left;
+				width:33.2%;
+				height:30px;
+				line-height:30px;
+				border-bottom:1px solid #ccc;
+			}
+			.tabs:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.tabs .active{
+				background-color:#eee;
+			}
+			.tabs li:nth-child(2){
+				border-left:1px solid #ccc;
+				border-right:1px solid #ccc;
+			}
+			.panel{
+				height:268px;
+				display:none;
+				background-color:white;
+			}
+			.active{
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul class="tabs">
+				<li class="active">tab1</li>
+				<li class="">tab2</li>
+				<li class="">tab3</li>
+			</ul>
+			<div class="panel active">内容1</div>
+			<div class="panel">内容2</div>
+			<div class="panel">内容3</div>
+		</div>
+		<script>
+			var tabsCt = document.querySelector('.tabs');
+			var li = tabsCt.children;
+			var div = document.querySelectorAll('.panel');
+			tabsCt.addEventListener('click',function(e){
+				var target = e.target;
+				for(var i=0;i<li.length;i++){
+					li[i].className="";
+					div[i].className="panel";
+					if(li[i]===target){
+						li[i].className="active";
+						div[i].className=div[i].className+" "+"active";
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

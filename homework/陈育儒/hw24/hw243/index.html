@@ -1,0 +1,154 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body,div,ul,li,input,h2{
+				margin: 0;
+				padding: 0;
+			}
+			body{
+				font-family:'STHeiti','Microsoft YaHei','宋体','arial';
+				color:#333;
+			}
+			ul,li{
+				list-style:none;
+			}
+			a{
+				text-decoration: none;
+				color:#333;
+			}
+			.wrap{
+				width:400px;
+				height:330px;
+				margin:60px auto 0 auto;
+				border-radius:2px;
+				border:1px solid #ccc;
+				background:white;
+			}
+			.title{
+				margin-top:40px;
+				margin-bottom:40px;
+				text-align:center;
+			}
+			.register{
+				
+			}
+			.register li{
+				margin-bottom:4px;
+			}
+			.register li > span{
+				width:70px;
+				margin:0 10px 0 30px;
+				display:inline-block;
+				text-align:right;
+			}
+			.tip{
+				font-size:12px;
+				margin-left:115px;
+				color:#999;
+			}
+			.btn{
+				display:block;
+				padding: 5px;
+				width:60px;
+				border-radius: 8px;
+				margin:30px auto 0 auto;
+				border:1px solid #ccc;
+				text-align: center;
+			}
+			.btn:hover{
+				background:#eee;
+			}
+			.error{
+				border:1px solid red;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+			<h2 class="title">请填写注册信息</h2>
+				<ul class="register">
+					<form action="form.php" method="POST">
+					<li>
+						<span>用户名:</span>
+						<input type="text" name="username" maxlength="12" placeholder="hunger已经被注册">  
+					</li>
+					<li class="tip tip-name">用户名只能是字母,数字,下划线,6-12个字符</li>
+				</ul>
+				<ul class="register" id="pwdct">
+					<li>
+						<span>密码:</span>
+						<input type="password" name="pwd" placeholder="密码长度6-12" maxlength="12" ></li>
+					<li class="tip tip-pwd">密码包含大写字母,小写字母,数字,下划线至少两种</li>
+					<li>
+						<span>确认密码:</span>
+						<input type="password" name="pwd2" maxlength="12" placeholder="确认密码">
+					</li>
+					<li class="tip tip-pwd2"></li>
+				</ul>
+				<a href="#" class="btn">提交</a>
+				</form>
+		</div><!-- wrap -->
+		<script src="ajax.js"></script>
+		<script src="test.js"></script>
+		<script src="operaClass.js"></script>
+		<script>
+		var username=document.getElementsByName("username")[0];
+		var pass=document.getElementsByName("pwd")[0];
+		var again=document.getElementsByName("pwd2")[0];
+		var pwdct = document.getElementById('pwdct');
+		var tipname = document.querySelector('.tip-name'),
+				tippwd = document.querySelector('.tip-pwd'),
+				tippwd2 = document.querySelector('.tip-pwd2'),
+				btnsubmit = document.querySelector('.btn');
+
+			username.addEventListener('change',function(e){
+				// console.log(username.value);
+				e.stopPropagation();
+				testname();
+			});
+
+			// pass.addEventListener('change',function(e){
+			// 	e.stopPropagation();
+			// 	testpwd();
+			// });
+
+			// again.addEventListener('change',function(e){
+			// 	e.stopPropagation();
+			// 	testagain();
+			// })
+			pwdct.addEventListener('change',function(e){
+				var target = e.target;
+				// console.log(e.target);
+				if(target==pass){
+					testpwd();
+					if(again.value.length>0){
+						testagain();
+						// console.log(2);
+					}
+				}
+				if(target==again){
+					testagain();
+				}
+			})
+
+			btnsubmit.addEventListener('click',function(e){
+				e.preventDefault();
+				console.log(testname());
+				console.log(testpwd());
+				console.log(testagain());
+				if(testname()){
+					if(testpwd()&&testagain()){
+					alert("正在注册...");
+					}
+				}else{
+					alert("用户名不正确");
+				}
+			})
+
+
+		</script>
+	</body>
+</html>

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>加载内容</title>
+    <style>
+    ul,
+    li {
+        padding: 0;
+        margin: 0;
+    }
+    
+    li {
+        display: block;
+        list-style: none;
+        height: 40px;
+        border: 1px solid #ccc;
+        margin: 10px;
+        line-height: 40px;
+        text-indent: 10px;
+    }
+    
+    a {
+        padding: 10px;
+        text-decoration: none;
+        color: #e27272;
+        border: 1px solid #e27272;
+        border-radius: 3px;
+        display: block;
+        height: 20px;
+        width: 70px;
+        text-align: center;
+        line-height: 20px;
+        margin: 10px auto;
+    }
+    
+    </style>
+</head>
+
+<body>
+    <ul id="ct">
+        <li>内容1</li>
+        <li>内容2</li>
+    </ul>
+    <a id="load-more" href="#">加载更多</a>
+    <script src="ajax.js"></script>
+    <script>
+    var loadMoreBtn = document.getElementById('load-more'),
+        ct = document.getElementById('ct'),
+        cur = 2,
+        isLoading = false;
+    loadMoreBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        if (isLoading) {
+            return;
+        }
+        isLoading = true;
+        loadMoreBtn.innerHTML = "加载中"
+        ajax({
+            url: 'content.php',
+            type: 'get',
+            data: {
+                start: cur,
+                len: 3
+            },
+            success: function(json) {
+                onSuccess(json);
+            },
+            error: function() {
+                onError();
+            }
+        });
+    })
+
+    function onSuccess(json) {
+        isLoading = false;
+        loadMoreBtn.innerText = '加载更多';
+        if (json.status == 1) {
+            append(json.data);
+            cur += 3;
+        } else {
+            alert('加载失败');
+        }
+    }
+
+    function onError(json) {
+        isLoading = false;
+        loadMoreBtn.innerHTML = '加载更多';
+        alert('请稍后再试');
+    }
+
+    function append(arr) {
+        for (var i = 0; i < arr.length; i++) {
+            var li = document.createElement('li');
+            li.innerText = arr[i];
+            ct.appendChild(li);
+        }
+    }
+    </script>
+</body>
+
+</html>

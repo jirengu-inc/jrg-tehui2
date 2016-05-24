@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.dom</title>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button>获取数据</button>
+	<script>
+		var JSONP = {
+			init: function(url,func,name){
+				this.script = document.createElement("script");
+				this.script.src = url + "?data=" + func + "&name=" + name + "&url=" + location.host;
+				document.head.appendChild(this.script);
+				console.log(this.script)
+			},
+			tableStyle: function(data){
+				if(data && data["state"] === "1"){
+					this.json = data["value"];
+					this.dataInit();	//初始化json数据
+				}else{
+					console.log(data);
+				}
+			},
+			dataInit: function(json){
+				this.table = document.createElement("table");
+				this.table.border = 1;
+				this.table.width = "100%";
+				this.thead = document.createElement("thead");
+				this.table.appendChild(this.thead);
+				this.tbody = document.createElement("tbody");
+				this.table.appendChild(this.tbody);
+				this.theadInit();	//初始化表头
+				this.tbodyInit();	//初始化表格内容
+				this.showData();	//展示数据
+			},
+			theadInit: function(){
+				var thead = this.thead;
+				thead.insertRow(0);
+				thead.rows[0].insertCell(0);
+				thead.rows[0].cells[0].innerText = "NAME";
+				thead.rows[0].insertCell(1);
+				thead.rows[0].cells[1].innerText = "VALUE";
+			},
+			tbodyInit: function(){
+				var tbody = this.tbody,
+						json = this.json;
+				for(var key in json){
+					tbody.insertRow(key-1);
+					tbody.rows[key-1].insertCell(0);
+					tbody.rows[key-1].cells[0].innerText = json[key]["name"];
+					tbody.rows[key-1].insertCell(1);
+					tbody.rows[key-1].cells[1].innerText = json[key]["value"];
+				}
+			},
+			showData: function(){
+				var table = this.table;
+				var btn = document.querySelector("button");
+				btn.addEventListener("click",function(){
+					document.body.insertBefore(table,btn);
+				},false);
+			}
+		}
+		JSONP.init("http://b.com/php/task/task-31/ajaxtest/JSONP/b_com.php","tableStyle","JSONP");
+		//输入的值分别为目标网址、对数据的处理方式、对象名称
+	</script>
+</body>
+</html>

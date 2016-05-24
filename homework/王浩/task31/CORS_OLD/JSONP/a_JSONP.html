@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a_JSONP</title>
+</head>
+<body>
+	<p>this file is from the web a.com</p>
+
+	<script>
+		var script = document.createElement("script");
+		script.src = "//b.com/PHP/task/task-31/JSONP/b_JSONP.php?callback=jsonpData";
+		document.getElementsByTagName("head")[0].appendChild(script);
+
+		function jsonpData(obj){
+			var str = "";
+			var obj = JSON.parse(obj);
+			for(var key in obj){
+				str += "<div class=" + key + ' style="background-color:' + obj[key] +'"' + ">" + obj[key] + "</div>";
+			}
+			console.log(str);
+			document.body.innerHTML += str;
+		}
+	</script>
+</body>
+</html>

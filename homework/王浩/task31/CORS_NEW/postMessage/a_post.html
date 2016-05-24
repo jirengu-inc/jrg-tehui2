@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com-postmessage</title>
+</head>
+<body>
+	<h3>a.com</h3>
+	<button class="postmessage">获取数据</button>
+	<script>
+	var a;
+		var postmessage = {
+			init: function(sendData,postUrl){
+				this.sendData = sendData;
+				this.postUrl = postUrl;
+				this.btn = document.querySelector(".postmessage");
+				this.frame = document.createElement("iframe");
+				this.addFrame();
+			},
+			addFrame: function(){
+				var me = this;
+				this.btn.addEventListener("click",function(){
+					me.frame.src = me.postUrl;
+					document.body.appendChild(me.frame)
+				},false);
+				this.postData();
+			},
+			postData: function(){
+				var me = this;
+				this.frame.onload = function(){
+					me.frame.contentWindow.postMessage(me.sendData,me.postUrl);
+					me.collectData();
+				}
+			},
+			collectData: function(){
+				window.addEventListener("message",function(event){
+					console.log(event.data);
+				},false);
+				// console.log(this.frame.contentWindow)
+			}
+		};
+		var sendData = "get me data",
+				postUrl = "http://b.com/php/task/task-31/ajaxtest/postMessage/b_com.html";
+		postmessage.init(sendData,postUrl);
+	</script>
+</body>
+</html>

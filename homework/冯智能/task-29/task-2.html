@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<meta name="keyword" content="">
+	<meta name="description" content="">
+	<style type="text/css">
+		.img-ct{
+			width: 900px;
+			margin: 0 auto;
+		}
+		.img-ct li{
+			float: left;
+			width: 280px;
+			list-style: none;
+			margin: 10px;
+
+		}
+		img{
+			width: 280px;
+		}
+	</style>
+</head>
+<body>
+<ul class="img-ct">
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+	<li><img src="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/blank.jpg" data-img="creative.jpg"></li>
+
+</ul>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+var clock;
+$(window).on('scroll',function(){
+	if (clock) {
+		clearInterval(clock);
+	}
+	clock = setTimeout(function(){
+		showImg();
+	},1000)
+})
+showImg();
+function showImg(){
+	$('.img-ct img').each(function(){
+		var $cur = $(this);
+		if ($cur.attr('isloading')) {
+			return;
+		}
+		if (checkImg($cur)) {
+			show($cur);
+		}
+	})
+}
+
+function checkImg($el){
+	  var imgH = $el.offset().top,
+				winH = $(window).height(),
+				scroll = $(window).scrollTop();
+				if (scroll+winH>imgH) {
+					return true;
+				}else{
+					return false;
+				}
+}
+
+function show($el){
+	$el.attr('isloading',true);
+	$el.attr('src',$el.attr("data-img"));
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			.jewelct{
+				width:200px;
+				background: #b00;
+			}
+			.jewelct > li > a{
+				display:block;
+				color:#ffc;
+				margin-left:20px;
+			}
+			.jewelct>li{
+				position: relative;
+				width:100%;
+				height:40px;
+				line-height:40px;
+				border-bottom: 1px dotted #ffc;
+			}
+			.jewelct > li span{
+				margin-left:100px;
+			}
+			.jewelct .lastchild{
+				border:none;
+			}
+			.child{
+				width: 200px;
+				position: absolute;
+				border:1px solid #bbb;
+				top:0;
+				left:100%;
+				display: none;
+			}
+			.child li{
+				float: left;
+				width: 50px;
+				height: 30px;
+				margin-left:15px;
+				margin-bottom:10px;
+			}
+			.child > li > a{
+				color:#333;
+				padding:5px;
+			}
+			.child > li > a:hover{
+				background: #ccc;
+			}
+			.child:after{
+				content: '';
+				display: block;
+				clear: both;
+			}
+			.jewelct>li:hover .child{
+				display:block;
+			}
+		</style>
+	</head>
+	<body>
+		<ul class="jewelct">
+			<li><a href="#">珠宝玉器<span>></span></a></a>
+				<ul class="child">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>					
+				</ul>
+			</li>
+			<li><a href="#">珠宝玉器<span>></span></a>
+				<ul class="child">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+				</ul>
+			</li>
+			<li><a href="#">珠宝玉器<span>></span></a>
+				<ul class="child">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+				</ul>
+			</li>
+			<li><a href="#">珠宝玉器<span>></span></a>
+				<ul class="child">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+				</ul>
+			</li>
+			<li class="lastchild"><a href="#">珠宝玉器<span>></span></a>
+				<ul class="child">
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+					<li><a href="">翡翠</a></li>
+				</ul>
+			</li>
+		</ul>
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+		<script>
+			$('jewelct>li').on('mouseenter',function(){
+				$('.child').show();
+			});
+		</script>
+	</body>
+</html>
