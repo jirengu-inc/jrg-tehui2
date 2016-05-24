@@ -26,10 +26,10 @@
 				border:1px solid #f00;
 				border-radius:3px;
 				color:#f00;
-				opacity:.7;
-			}
-			.addmore:hover{
 				opacity:1;
+			}
+			.hover{
+				opacity:0.7;
 			}
 		</style>
 	</head>
@@ -44,12 +44,20 @@
 
 			var $ct=$('.ct');
 			var $btn=$('.addmore');
+			//内容的hover效果
 			$ct.on('mouseenter','div',function(){
 				$(this).css({'background-color':'#eee','cursor':'pointer'});
 			});
 			$ct.on('mouseleave','div',function(){
 				$(this).css('background-color','');
 			})
+			
+			//按钮hover效果
+			$btn.on('mouseenter',function(){
+				$btn.addClass('hover').on('mouseleave',function(){
+					$btn.removeClass('hover');
+				})
+			});
 
 
 			/*{
@@ -71,22 +79,21 @@
 				}
 				$btn.text('正在加载');
 				isload = true;
-				var opts = {
-				url:"hw26.php",
-				type:'get',
-				data:{
-					start:start,
-					len:len
-				},
-				dataType:'json',
-				success:function(ret){
-					onSuccess(ret);
-				},
-				error:function(){
-					onError();
-				}
-			};
-				$.ajax(opts);
+				$.ajax({
+					url:'hw26.php',
+					type:'get',
+					dataType:'json',
+					data:{
+						start:start,
+						len:len
+					},
+					success:function(ret){
+						onSuccess(ret);
+					},
+					error:function(){
+						onError();
+					}
+				});
 			});
 
 			function onSuccess(ret){
@@ -94,11 +101,15 @@
 				// console.log(start);
 				// console.log(isload);
 				if(ret.status===1){
-					var html="";
-					for(var i =0;i<ret.data.length;i++){
-						html += '<div>'+ret.data[i]+'</div>';
-					}
-					$ct.append(html);
+					$.each(ret.data,function(key){
+						var html = '<div>'+ret.data[key]+'</div>';
+						$ct.append(html)
+					})
+					// var html="";
+					// for(var i =0;i<ret.data.length;i++){
+					// 	html += '<div>'+ret.data[i]+'</div>';
+					// }
+					// $ct.append(html);
 					$btn.text('加载更多');
 					isload = false;
 					start +=6;
