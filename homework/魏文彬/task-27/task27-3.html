@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task27-3</title>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+    }
+    .wrapper {
+        width: 400px;
+        height: 300px;
+        position: relative;
+        overflow: hidden;
+    }
+    .img-wrap {
+        position: absolute;
+    }
+    .img-wrap:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+    .img-wrap li {
+        float: left;
+    }
+    .img-wrap li img {
+        width: 400px;
+        height: 300px;
+    }
+    .arrow{
+        display:block;
+        width:30px;
+        height:30px;
+        color:#fff;
+        font-weight: bold;
+        border-radius:50%;
+        background-color:rgba(0,0,0,0.5);
+        position:absolute;
+        top:50%;
+        margin-top:-15px;
+        text-align: center;
+        line-height:30px;
+        cursor:pointer;
+    }
+    .arrow:hover {
+        background-color:rgba(0,0,0,1);
+    }
+    .pre {
+        left: 10px;
+    }
+    .next {
+        right: 10px;
+    }
+    .bullet {
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+
+    }
+    .bullet li {
+        display: inline-block;
+        width:25px;
+        height:5px;
+        background-color:#fff;
+        opacity: 0.5;
+        border-radius:5px;
+        margin:0 4px;
+        cursor:pointer;
+    }
+    .bullet li.active{
+    background-color: #fcc;
+}
+</style>
+<body>
+<div class="wrapper">
+    <ul class="img-wrap">
+        <li data-id="0"><a href="#"><img src="imges/1.jpg"></a></li>
+        <li data-id="1"><a href="#"><img src="imges/2.jpg"/></a></li>
+        <li data-id="2"><a href="#"><img src="imges/3.jpg"/></a></li>
+        <li data-id="3"><a href="#"><img src="imges/4.jpg"/></a></li>
+    </ul>
+    <a class="pre arrow"> < </a>
+    <a class="next arrow"> > </a>
+    <ul class="bullet">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+$(function(){
+            var $imgWrap = $('.img-wrap'),
+                $items=$imgWrap.children(),
+                imgCount=$items.size(),
+                imgWidth = $items.width(),
+                $bullet=$('.bullet'),
+                $pre = $('.pre'),
+                $next = $('.next');
+
+        $imgWrap.prepend($items.last().clone());
+        $imgWrap.append($items.first().clone());
+        
+        imgRealCount = $imgWrap.children().length;
+        $imgWrap.css({left: 0-imgWidth,width: imgRealCount*imgWidth});
+
+
+        var curIdx = 0;
+        var isAnimate = false;
+        $pre.on('click',function(){
+            playPre();
+        });
+        $next.on('click',function(){
+            playNext();
+        });
+        $bullet.on('click','li',function(){
+            var idx = $(this).index();
+            if(idx>curIdx){
+                playNext(idx-curIdx);
+            }
+            if(curIdx>idx){
+                playPre(curIdx-idx);
+            }
+        });
+        autoPlay();
+        function playNext(idx){
+            var idx = idx || 1;
+            if(!isAnimate){
+                isAnimate = true;
+                $imgWrap.animate({left:'-='+(idx*imgWidth)},function(){
+                    curIdx = (curIdx + idx)%imgCount;
+                    if(curIdx === 0){
+                        $imgWrap.css({left: 0-imgWidth});
+                    }
+                    isAnimate =false;
+                    setBullet();
+                });
+            }
+
+        }
+        function playPre(idx){
+            var idx = idx || 1;
+            if(!isAnimate) {
+                isAnimate = true;
+                $imgWrap.animate({left: '+=' + (imgWidth * idx)}, function () {
+                    curIdx = (curIdx - idx + imgCount) % imgCount;
+                    if (curIdx === (imgCount - 1)) {
+                        $imgWrap.css({left: 0 - imgCount * imgWidth});
+                    }
+                    isAnimate = false;
+                    setBullet();
+                });
+            }
+        }
+        function setBullet(){
+            $bullet.find('li').removeClass('active').eq(curIdx).addClass('active');
+        }
+        function stopAuto(){
+            clearInterval(clock);
+        }
+        function autoPlay(){
+            clock = setInterval(function(){
+                playPre();
+            }, 3000);
+        }
+    });
+
+</script>
+</body>
+</html>

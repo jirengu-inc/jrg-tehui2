@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>tansk27</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.wrapper {
+		width: 400px;
+		height: 300px;
+		position: relative;
+		overflow: hidden;
+	}
+	.img-wrap li {
+		position: absolute;
+		display: none;
+	}
+	.img-wrap li img {
+		width: 400px;
+		height: 300px;
+	}
+	.arrow{
+	  	display:block;
+        width:30px;
+        height:30px;
+        color:#fff;
+        font-weight: bold;
+        border-radius:50%;
+        background-color:rgba(0,0,0,0.5);
+        position:absolute;
+        top:50%;
+        margin-top:-15px;
+        text-align: center;
+        line-height:30px;
+        cursor:pointer;
+    }
+    .arrow:hover {
+        background-color:rgba(0,0,0,1);
+    }
+    .pre {
+    	left: 10px;
+    }
+    .next {
+    	right: 10px;
+    }
+    .bullet {
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+
+    }
+    .bullet li {
+        display: inline-block;
+        width:25px;
+        height:5px;
+        background-color:#fff;
+        opacity: 0.5;
+        border-radius:5px;
+        margin:0 4px;
+        cursor:pointer;
+    }
+    .bullet li.active{
+	background-color: #fcc;
+}
+</style>
+</head>
+<body>
+    <div class="wrapper">
+    	<ul class="img-wrap">
+    		<li data-id=0><a href="#"><img src="imges/1.jpg" alt=""></a></li>
+    		<li data-id=1><a href="#"><img src="imges/2.jpg" alt=""></a></li>
+    		<li data-id=2><a href="#"><img src="imges/3.jpg" alt=""></a></li>
+    		<li data-id=3><a href="#"><img src="imges/4.jpg" alt=""></a></li>
+    	</ul>
+
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+	var $wrap = $(".wrapper"),
+		$imgwrap = $(".img-wrap"),
+		$items = $imgwrap.children(),
+		$pre = $(".pre"),
+		$next = $(".next"),
+		$bullet = $(".bullet"),
+		imgWidth = $items.width(),
+		imgCount = $items.size();
+
+	var curIdx = 0;
+	var	isAnimate = false;
+
+	$pre.on('click',function(){
+		playPre();
+	})
+	$next.on('click',function(){
+		playNext();
+	})
+	$bullet.find('li').on('click',function(){
+		var idx = $(this).index();
+		play(idx);
+	});
+	$wrap.on('mouseover',function () {
+		stopAuto();
+	}).on('mouseleave',function () {
+		autoPlay();
+	})		
+
+	play(0);
+	autoPlay();
+
+	function play(idx) {
+		if(isAnimate){
+            return;
+        };
+		isAnimate = true;
+		$items.eq(curIdx).fadeOut(500);
+		$items.eq(idx).fadeIn(500,function(){
+			isAnimate = false;
+		});
+		curIdx = idx;
+		setBullet();
+	}
+	function autoPlay() {
+		clock = setInterval(function(){
+			playNext();
+		},2000)
+	}
+	function stopAuto() {
+		clearInterval(clock);
+	}
+	function setBullet() {
+		$bullet.children().removeClass('active').eq(curIdx).addClass('active');
+	}
+	function playPre() {
+		play((imgCount+curIdx-1)%imgCount);
+	}
+	function playNext(){
+		play((curIdx+1)%imgCount);
+	}
+</script>
+</body>
+</html>
