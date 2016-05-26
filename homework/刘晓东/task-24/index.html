@@ -34,7 +34,6 @@
         line-height: 20px;
         margin: 10px auto;
     }
-    
     </style>
 </head>
 
@@ -44,8 +43,43 @@
         <li>内容2</li>
     </ul>
     <a id="load-more" href="#">加载更多</a>
-    <script src="ajax.js"></script>
+    
     <script>
+    function ajax(opts) {
+        var xmlhttp;
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest(); 
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP"); 
+        }
+
+
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 & xmlhttp.status == 200) {
+                var json = JSON.parse(xmlhttp.responseText);
+                opts.success(json); 
+            }
+            if (xmlhttp.readyState === 4 && xmlhttp.status === 404) {
+                opts.error(); 
+            }
+        }
+
+        var dataStr = '';
+        for (var key in opts.data) {
+            dataStr += key + '=' + opts.data[key] + '&'; 
+        }
+        dataStr = dataStr.substr(0, dataStr.length - 1); 
+
+        if (opts.type.toLowerCase() === 'get') {
+            xmlhttp.open(opts.type, opts.url + '?' + dataStr, true);
+            xmlhttp.send();
+        } else {
+            xmlhttp.open(opts.type, opts.url, true);
+            xmlhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+            xmlhttp.send(dataStr);
+        }
+    }
+
     var loadMoreBtn = document.getElementById('load-more'),
         ct = document.getElementById('ct'),
         cur = 2,
