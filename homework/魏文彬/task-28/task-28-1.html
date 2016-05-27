@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task28-1</title>
+	<style>
+		#header {
+			height: 50px;
+			line-height: 50px;
+			background-color: #fcc;
+		}
+		#navbar {
+			height: 50px;
+			margin-top: 10px;
+			background-color: #ccc;
+		}
+		#content {
+			height: 700px;
+			background-color: orange;
+			padding: 10px;
+		}
+		#content .aside {
+			height: 300px;
+			width: 100px;
+			background-color: lightgreen;
+			float: left;
+		}
+		#content .main {
+			height: 700px;
+			background-color: lightblue;
+			margin-left: 110px;
+		}
+		#footer {
+			height: 50px;
+			background-color: lightyellow;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="navbar">navbar</div>
+	<div id="content">
+		<div class="aside">aside</div>
+		<div class="main">main</div>
+	</div>
+	<div id="footer">footer</div>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+	<script>
+		var $nav = $("#navbar");
+		var navWidth = $nav.width(),
+			navHeight = $nav.height(),
+			navLeft = $nav.offset().left,
+			navTop = $nav.offset().top;
+		var $cloneNav = $nav.clone()
+							.css('opacity','0')
+							.insertBefore($nav)
+							.hide();
+							
+		$(window).on('scroll',function(){
+			var scrollTop = $(this).scrollTop();
+			if(scrollTop>=navTop) {
+				if(!isFixed()) {
+					setFixed();
+				}
+			}else {
+				if(isFixed()) {
+					unsetFixed();
+				}
+			}
+		});
+
+		function isFixed() {
+			return $nav.data('data-fixed');
+		}
+		function setFixed() {
+			$nav.data('data-fixed',true)
+				.css({
+					'position':'fixed',
+					'top':0,
+					'left':navLeft,
+					'width':navWidth,
+					'margin':0,
+					'z-index':1000
+				});
+				$cloneNav.show();
+		}
+		function unsetFixed() {
+			$nav.data('data-fixed',false)
+				.removeAttr('style');
+				$cloneNav.hide();
+		}
+	</script>
+</body>
+</html>
