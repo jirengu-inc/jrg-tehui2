@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ch">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+	<script type="text/javascript" src="task40-3.js"></script>
+	<style type="text/css">
+		a{
+			text-decoration: none;
+
+		}
+		ul,li{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		html,body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.clearfix:before{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.img-list{
+	    	position: absolute;
+	    	left: -341px;
+	    	top: 0px;
+		}
+	    .img-list>li{
+	    	display: inline-block;
+	    	float: left;
+
+	    }
+	    .carousel{
+	    	overflow: hidden;
+			width: 341px;
+	    	height: 582px;
+	    	position: relative;
+	    }
+	    .btn-left,.btn-right{
+			position: absolute;
+			z-index: 1;
+			background-color: #999;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			height: 40px;
+			width: 40px;
+			opacity: 0.8;
+			cursor: pointer;
+			top: 50%;
+			margin-top: -20px;
+	    }
+	    .btn-left:hover,.btn-right:hover{
+	    	opacity: 1;
+	    }
+	    .btn-left{
+	    	left: 10px;
+	    }
+	    .btn-right{
+	    	right: 10px;
+	    }
+	    .btn-left>a,.btn-right>a{
+	    	font-family: "微软雅黑";
+	    	color: #fff;
+	    	font-size: 20px;
+
+	    }
+	    .bottom-nav{
+	    	position: absolute;
+	    	bottom: 10px;
+	    	left: 50%;
+	    }
+	    .bottom-nav>li{
+			display: inline-block;
+			width: 30px;
+			height: 10px;
+			background: #fff;
+			border-radius: 5px;
+			opacity: 0.8;
+
+	    }
+	    .bottom-nav>li>a{
+	    	display:block;
+			width: 30px;
+			height: 10px;
+			border-radius: 5px;
+	    }
+	    .active{
+	    	background: #aaa;
+	    }
+/*	    .bottom-nav>li>a:hover{
+	    	background: red;
+	    }*/
+	</style>
+</head>
+<body>
+	<div class="carousel">
+		<ul class="img-list clearfix">
+			<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Caster.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Rider.jpg"></a></li>
+		</ul>
+		<div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+<!-- 	<div class="carousel">
+		<ul class="img-list clearfix">
+			<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Caster.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+			<li><a href="javascript:void(0);"><img src="img/Rider.jpg"></a></li>
+		</ul>
+		<div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div> -->
+	<script type="text/javascript">
+		// 方式1
+		// 通过插件的方式启动所有轮播
+		$('.carousel').carousel();
+
+
+		//方式2
+		//通过创建对象的方式启动所有轮播
+		// $('.carousel').each(function(){
+		//     new Carousel($(this));
+		// });
+	</script>
+</body>
+</html>
