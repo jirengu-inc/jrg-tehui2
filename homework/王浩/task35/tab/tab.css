@@ -1,0 +1,162 @@
+html,body,div,p,ul,li{
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft Yahei";
+	/*font-size: 16px;*/
+	/*color: #333;*/
+}
+li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+	/*color: #52687e;*/
+}
+.tab-box{
+	
+}
+.tab-btnWrap{
+	/*background-color: #F7F7F7;
+	border-radius: 4px 4px 0 0;
+	border: solid 1px #DBDEE1;*/
+}
+.tab-btnWrap:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.tab-layerF{
+	float: left;
+}
+.tab-layerF:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.tab-layerS{
+	float: left;
+	text-align: center;
+	/*border: solid 1px #F7F7F7;*/
+	position: relative;
+}
+/*.tab-layerS-active{
+	background-color: #fff;
+	border-top-color: #FF8400;
+	border-left-color: #DBDEE1;
+	border-right-color: #DBDEE1;
+	border-bottom-color: #fff;
+	padding-bottom: 1px;
+	margin-bottom: -1px;
+	padding-top: 1px;
+	margin-top: -1px;
+}*/
+/*.tab-layerS-first{
+	padding-left: 1px;
+	margin-left: -1px;
+	border-left-color: #fff;
+}*/
+.tab-btnEmpty{
+	position: absolute;
+	/*border-top: solid 2px #FF8400;*/
+	width: 100%;
+	top: 0;
+	left: 0;
+}
+.tab-btnLink{
+}
+.tab-btnLink:hover{
+	/*color: #FF8400;*/	
+}
+
+.tab-cont{
+	border: solid 1px #DBDEE1;
+	/*border: solid 1px #000;*/
+	/*border-top: none;*/
+	border-radius: 0 0 4px 4px;
+	position: relative;
+
+}
+.cont-list{
+	position: absolute;
+	/*border: solid 1px red;*/
+	display: none;
+}
+.show{
+	display: block;
+}
+.cont-layer{
+
+}
+.cont-layerF{
+
+}
+.cont-layerF:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.layerF-dev{
+	float: left;
+}
+.layerF-dev1{
+
+}
+
+.layerF-imgWrap{
+	position: relative;
+	/*font-size: 0;*/
+}
+.layerF-imgLink{
+	position: absolute;
+	opacity: 0;
+}
+.layerF-imgLink:hover{
+	opacity: 0.6;
+}
+.layerF-img{
+	vertical-align: bottom;
+}
+.layerF-dev2{
+	
+}
+.layerF-listWrap{
+	/*padding-top: 5px;*/
+}
+.layerF-list{
+	/*margin: 5px 0;*/
+	/*margin-top: 10px;*/
+}
+.layerF-link{
+	
+}
+.layerF-link:hover{
+	/*color: #ff8400;*/
+}
+.cont-imgPlay{
+	/*display: block;*/
+	vertical-align: bottom;
+}
+.cont-layerS{
+	
+}
+.cont-layerT{
+	
+}
+
+.cont2-listWrap{
+
+}
+.cont2-listWrap:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.cont2-list{
+	float: left;
+}
+.cont2-link{
+	/*margin-left: 10px;*/
+}
+.cont2-link:hover{
+	/*color: #FF8400;*/
+}

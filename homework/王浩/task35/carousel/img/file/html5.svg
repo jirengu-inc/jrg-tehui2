@@ -1,0 +1,21 @@
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+@font-face {
+  font-family: "ifont";
+  src: url("//at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("//at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("//at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg");
+}
+
+]]>
+  </style>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g class="transform-group" id="svg_1">
+   <g transform="translate(262, 154) scale(0.244141)" id="svg_2">
+    <path d="m1124.30896,98.64594l13.51819,-147.83398l-746.90237,0l39.68918,451.18027l517.04047,0l-18.60089,192.66l-166.43488,44.77197l-165.62384,-44.77197l-10.97675,-118.31042l-147.83398,0l18.60095,234.89056l305.83362,84.5152l3.40649,0l0,-0.86517l303.29224,-83.65002l42.23059,-459.6156l-544.13074,0l-12.65295,-152.91678l569.43665,0l0.10803,-0.05405zm-954.70261,-396.24268l1189.59311,0l-108.14478,1214.95313l-488.328,136.85736l-484.97552,-136.85736l-108.14478,-1214.95313l-0.00003,0z" fill="#272636" id="svg_3"/>
+   </g>
+  </g>
+ </g>
+</svg>

@@ -1,0 +1,29 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+ <!-- Created with Method Draw - http://github.com/duopixel/Method-Draw/ -->
+
+ <g>
+  <title>background</title>
+  <rect fill="#fff" id="canvas_background" height="202" width="202" y="-1" x="-1"/>
+  <g display="none" overflow="visible" y="0" x="0" height="100%" width="100%" id="canvasGrid">
+   <rect fill="url(#gridpattern)" stroke-width="0" y="0" x="0" height="100%" width="100%"/>
+  </g>
+ </g>
+ <g>
+  <title>Layer 1</title>
+  <defs>
+   <style type="text/css">
+    <![CDATA[
+@font-face { font-family: ifont; src: url("http://at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("http://at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("http://at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("http://at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg"); }
+
+]]>
+   </style>
+  </defs>
+  <g stroke="null" id="svg_7">
+   <g stroke="null" transform="matrix(0.39194780760815645,0,0,0.39194780760815645,-236.47570098089403,-263.9560807586357) " id="svg_4" class="transform-group">
+    <g stroke="null" id="svg_5" transform="translate(0,798.2025146484375) scale(0.1953125) ">
+     <path stroke="null" id="svg_6" fill="#ff8400" d="m4683.364859,379.709846l-510.675,0c-105.671,0 -191.328,85.654 -191.328,191.327l0,257.141c0,105.659 85.657,191.314 191.328,191.314l510.675,0c105.664,0 191.328,-85.654 191.328,-191.314l0,-257.141c0,-105.673 -85.665,-191.327 -191.328,-191.327zm-356.502,466.043l0,-299.001l305.169,151.041l-305.169,147.96z"/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>

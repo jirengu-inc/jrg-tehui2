@@ -1,0 +1,33 @@
+html,body,div,p{
+	margin: 0;
+	padding: 0;
+	font-family: "Microsoft Yahei";
+	font-size: 14px;
+}
+body{
+	min-height: 1200px;
+}
+.gotop-ct{
+	position: fixed;
+	bottom: 10px;
+	right: 10px;
+	display: none;
+}
+.gotop-target{
+	height:30px; 
+	width: 50px; 
+	line-height: 30px; 
+	padding: 5px 10px; 
+	color: #333; 
+	border-radius: 5px; 
+	border: solid 2px #E74C3C;
+	text-align: center;
+	font-weight: bold;
+	opacity: 0.5;
+	cursor: pointer;
+}			
+.gotop-target:hover{
+	color: #fff;
+	background-color: #E74C3C;
+	opacity: 1;
+}
