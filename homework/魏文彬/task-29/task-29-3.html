@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-1</title>
+	<style>
+		.wrapper p {
+			border: 1px solid #000;
+			border-radius: 5px;
+			transition: background 0.3s;
+			padding: 10px;
+		}
+		.hover {
+			background-color: lightblue;
+			color: #fff;
+		}
+		.btn {
+			width: 80px;
+			height: 50px;
+			line-height: 50px;
+			margin: 0 auto;
+			background-color: lightblue;
+			color: #fff;
+			border-radius: 8px;
+			cursor: pointer;
+			text-align: center;
+		}
+	/*	#go-top {
+			position: fixed;
+			bottom:10px;
+			right:10px;
+			background: lightblue;
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			border-radius: 50%;
+			text-align: center;
+			color: #fff;
+			cursor: pointer;
+			display: none;
+		}*/
+	</style>
+</head>
+<body>
+	<div class="wrapper">
+		<p>内容1</p>
+		<p>内容2</p>
+	</div>
+	<div class="btn">加载更多</div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	var $wrap = $(".wrapper"),
+		$btn = $(".btn"),
+		start = 2;
+	var clock;
+
+	getMore();
+
+	$wrap.on('mouseenter','p', function(){
+  		$(this).addClass('hover');
+	}).on('mouseleave', 'p', function(){
+  		$(this).removeClass('hover');
+	});
+
+	$(window).on('scroll', function(e){
+  		if(clock) clearTimeout(clock);
+  		clock = setTimeout(function(){
+    		if(!isVisible($btn)) return; 
+    		getMore();
+  		}, 300);
+	});
+
+
+	function getMore($none){
+		$.ajax({
+			url:"getMore.php",
+			dataType:'json',
+			type:'get',
+			data:{
+				start:start,
+				len:20
+			},
+			success:function(json){
+				onSuccess(json);
+			},
+			error:function(){
+				onError();
+			}
+		});
+	}
+
+	function onSuccess(e) {
+		console.log(e);
+		if(e.status === 1) {
+			for(var key in e.data) {
+				$('<p>'+e.data[key]+'</p>').appendTo($(".wrap"))
+			}
+		}else {
+			alert('error1');
+		}
+	}
+	function onError() {
+		alert("error2");
+	}
+
+	function isVisible($node){
+  	var winHeight = $(window).height(), 
+      	offsetTop = $node.offset().top,  
+      	scrollTop = $(window).scrollTop(); 
+  	if( (offsetTop > scrollTop)  && (offsetTop < scrollTop + winHeight ) ){
+    	return true;
+  	}
+  		return false;
+	}
+</script>
+<script>
+</script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-2</title>
+	<style>
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		.wrapper {
+			width: 1200px;
+			margin: 0 auto;
+		}
+		.wrapper:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.wrapper li {
+			list-style: none;
+			float: left;
+			margin: 10px;
+		}
+		img {
+			width: 380px;
+			height: 300px;
+		}
+	</style>
+</head>
+<body>
+	<ul class="wrapper">
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brd" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif" data-img="http://url.hoop8.com/bre" alt=""></a></li>
+		<li><a href="#"><img src="http://imgdata.hoop8.com/1605/9211857564337.gif " data-img="http://url.hoop8.com/brf" alt=""></a></li>
+	</ul>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	var clock;
+	checkShow();
+	$(window).on('scroll',function(){
+		if(clock) {
+			clearTimeout(clock);
+		};
+		clock = setTimeout(function(){
+			checkShow();
+		},3000)
+	});
+
+	function checkShow() {
+		$(".wrapper img").each(function(){
+			var $cur = $(this);
+			if($cur.attr('isLoaded')) {
+				return;
+			}
+			if(isShow($cur)) {
+				showImg($cur);
+			}
+		});
+	}
+
+	function isShow($node) {
+		var winHeight = $(window).height(),
+			scrollTop = $(window).scrollTop(),
+			offsetTop = $node.offset().top;
+		if(scrollTop+winHeight >= offsetTop ){
+          return true;
+    	}else{
+         return false; 
+    	}
+	}
+
+	function showImg($node) {
+		$node.attr('src',$node.attr('data-img'));
+		$node.attr('isLoaded',true);
+	}
+</script>
+</body>
+</html>
