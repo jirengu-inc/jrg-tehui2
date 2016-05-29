@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>index</title>
+<style>
+  .container{
+    width: 900px;
+    margin: 0 auto;
+	  text-align: center;
+  }
+.box{
+		border:1px solid black;
+		background-color: #ccc;
+		height:300px;
+		width:600px;
+		margin-top:20px;
+		margin: 50px auto;
+		color: black;
+		font-size: 30px;
+}
+</style>
+</head>
+<body>
+  <div class="container">
+   
+    <div class="box">
+    	<h3>获取个人信息</h3>
+        name：<input type="text" class='name'>
+
+        </br>
+    	age：  <input type="text" class='age'>
+        </br>
+ <!--        sex：  <input type="text" class='sex'>
+        </br> -->
+   <!--      place：<input type="text" class='place'>
+        </br> -->
+
+	 <button class='btn'>获取信息</button>
+    </div>
+
+  </div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+       var $name=$('.name'),
+           $place=$('.place'),
+           $age=$('.age'),
+           $sex=$('.sex'),
+           $btn=$('.btn');
+
+
+// 第一种写法
+
+$btn.on('click',function(){
+     $.ajax({
+     	url:'http://b.com/getData.php',
+     	type:'get',
+     	success:function(data){
+     		onSuccess(data);
+     	},
+     	error:function(){
+     		onError();
+     	}
+     });
+
+     function onSuccess(data){
+         data= JSON.parse(data);
+     	   $name.attr('value',data.name);
+  
+     	   $age.attr('value',data.age);
+
+     	   console.log(data);
+
+     }
+
+     function onError(){
+     	alert('获取信息失败~')
+     }
+})
+
+
+  	</script>
+</body>
+</html>
