@@ -132,7 +132,8 @@
         //0就是克隆最后一张，所以要-$imgWidth就是要显示的第1张，总宽度是6张的宽度，
         //overflow:hidden只显示父容器的宽度
 
-        $bullet.on('click',function(){
+        $bullet.on('click',function(e){
+            e.preventDefault();
             var idx = $(this).index()+1;//因为curIdx+1
             if(idx>$curIdx){
                 // console.log(idx)
