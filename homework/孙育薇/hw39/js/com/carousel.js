@@ -29,7 +29,7 @@ define(['jquery'],function($){
 		},
 		onStart : function() {
 			this.$node.css({
-				"left": -this.singleWidth,
+				"left": 0-this.singleWidth,
 				"width": this.totalWidth
 			});
 			this.$items.css("width", this.singleWidth);

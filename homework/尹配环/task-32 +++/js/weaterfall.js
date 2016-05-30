@@ -17,8 +17,6 @@ var Weaterfall = {
 
         this.initArr();
         this.setCss();
-
-
     },
     initArr:function () {
         var me = this;
