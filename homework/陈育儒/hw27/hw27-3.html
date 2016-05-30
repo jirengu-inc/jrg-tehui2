@@ -1,0 +1,187 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;	
+				padding: 0;
+			}
+			li{list-style: none;}
+			a{text-decoration: none;}
+/*			.clearfix:after{
+				content:'';
+				display: block;
+				clear: both;
+			}
+			.clearfix{
+				*zoom: 1;
+			}*/
+			
+			.ct{
+				margin:50px auto;
+				width:400px;
+				height:250px;
+				position: relative;
+				border:1px solid;
+				overflow:hidden;
+			}
+			.imgct{
+				position:relative;
+			}
+			.imgct li{
+				float:left;
+			}
+			.imgct li img{
+				width:400px;
+				height:250px;
+			}
+			.arrow{
+				position: absolute;
+				width:24px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				background:#111;
+				top:50%;
+				margin-top:-13px;
+				color:#fff;
+				opacity:.5;
+			}
+			.prev{
+				left:5px;
+			}
+			.next{
+				right:5px;
+			}
+			.arrow:hover{
+				opacity:0.9;
+			}
+			.bullet{
+				position:absolute;
+				bottom:5px;
+				left:50%;
+				transform: translateX(-50%);
+			}
+			.bullet li{
+				width:20px;
+				height:6px;
+				border-radius:2px;
+				background:#555;
+				float:left;
+				margin:0 6px;
+				cursor:pointer;
+			}
+			.bullet li.active{
+				background:#6d9eeb;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ct">
+			<ul class="imgct clearfix">
+				<li><a href="javascript:void(0)"><img src="1.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="2.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="3.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="4.jpg" alt=""></a></li>
+			</ul>
+			<a href="javascript:void(0)" class="prev arrow"><</a>
+			<a href="javascript:void(0)" class="next arrow">></a>
+			<ul class="bullet clearfix">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+
+		var $ct = $('.imgct');	//图片的容器
+		var $items = $ct.children();	//获取容器内所有的图片
+		var $prev = $('.prev');	//向前翻页
+		var $next = $('.next');	//向后翻页
+		var imgWidth = $items.width(); //图片的宽度，实际就是容器的宽度
+		var imgCount = $items.size(); //没克隆之前的图片的总数 4
+		var $bullet = $('.bullet'); //
+		var $bullets = $bullet.children(); //
+		var clock;
+
+		$ct.prepend($items.last().clone()); //克隆最后一张图片，并放入开头
+		$ct.append($items.first().clone()); //克隆最前一张图片，并放入结尾
+		imgRealCount = $ct.children().size(); //包含克隆的图片的总数 6
+		$ct.css({left:-imgWidth,width:imgRealCount*imgWidth});//初始化
+
+		var curIdx = 0,
+				isAnimate = false;
+
+		$prev.on('click',function(){
+			playPrev();
+		});
+		$next.on('click',function(){
+			playNext();
+		});
+
+		$bullet.find('li').on('click',function(){
+				var idx = $(this).index();
+				if(idx > curIdx){
+					playNext(idx - curIdx);
+				}else if(idx < curIdx){
+					playPrev(curIdx - idx);
+				}
+			});
+		
+		function playNext(idx){
+			var idx = idx || 1;
+			if(!isAnimate){
+				isAnimate = true;
+				$ct.animate({left:'-='+(imgWidth*idx)},function(){
+					curIdx = (curIdx+idx)%imgCount;
+					if(curIdx === 0){
+						$ct.css({left:0-imgWidth});
+					}
+					isAnimate = false;
+					setBullet();
+				})
+			}
+		}
+
+		function playPrev(idx){
+			var idx = idx|| 1;
+			if(!isAnimate){
+				isAnimate = true;
+				$ct.animate({left:'+='+ (imgWidth*idx)},function(){
+					curIdx = (imgCount+curIdx-idx)%imgCount;
+					if(curIdx === imgCount-1){
+						$ct.css({left:0-imgWidth*imgCount});
+					}
+					isAnimate = false;
+					setBullet(); 
+				})
+			}
+		}
+		
+		function setBullet(){
+			$bullets.removeClass('active')
+							.eq(curIdx).addClass('active');
+		}
+
+		function autoPlay(){
+			clock=setInterval(function(){
+				playNext();
+			},3000)
+		}
+
+		function stopAutoPlay(){
+			clearInterval(clock);
+		}
+		autoPlay();
+	</script>
+
+	</body>
+
+</html>
