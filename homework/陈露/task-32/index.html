@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>waterFull-lazyLoad-jsonp</title>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<style>
+	html,body,ul,li,p,div{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	ul,li{
+		list-style: none;
+	}
+  .wrap{
+  	width: 900px;
+		margin: 0 auto;
+  }
+	.clearfix:after{
+		content: '';
+		display: block;
+		clear: both;
+	}
+	.title{
+		width: 900px;
+		height: 50px;
+		text-align: center;
+		line-height: 50px;
+		font-size: 34px;
+		background: #ccc;
+		border:1px solid black;
+	}
+	.pic-ct{
+		position: relative;
+	}
+	.pic-ct .item{
+		position: absolute;
+		padding: 0 0 10px 0;
+		width: 280px;
+		margin: 10px;
+		border: 1px solid #DFDFDF;
+		background: #FFF;
+		opacity: 0;
+		transition: all .8s;
+	}
+	.pic-ct .item img{
+	    margin: 10px;
+	    width: 260px;
+	}
+	.pic-ct .item .header{
+		height: 25px;
+	    margin: 0 12px;
+	    border-bottom: 1px solid #DBDBDB;
+	}
+	.pic-ct .desp{
+		font-size: 12px;
+		line-height: 1.8;
+	  margin: 10px 15px 0;
+	  color: #777371;
+	}
+	.loadmore{
+		visibility: hidden;
+		height: 20px;
+	}
+	.hide{
+		display: none;
+	}
+</style>
+</head>
+<body>
+	<div class='wrap'>
+		<div class="title">新浪奇妙趣闻</div>
+		<div class="waterfull-ct">
+			<ul class="pic-ct">
+				<li class='item hide'></li>
+			</ul>
+			<div class="loadmore">我是看不见的</div>
+		</div>
+
+	</div>
+
+ <script src="goTop.js"></script>
+<script>
+     goTop.init();
+//鼠标滚轮滚动一次但是会触发多次，使用演示器提高性能，只在最后一次事件响应的时候执行checkShow。
+	var clock;
+	$(window).on('scroll',function(){
+		 if(clock){
+		 	clearTimeout(clock);
+		 }
+		 clock= setTimeout(function(){
+		 	checkShow();
+		 },100);
+	});
+
+checkShow();
+
+function checkShow(){
+	if(isShow($('.loadmore'))){
+		loadMore();
+	}
+}
+
+function isShow($el){
+	var scrollH = $(window).scrollTop(),
+	  	  winH = $(window).height(),
+	  	  top = $el.offset().top;
+  	  if(top < winH + scrollH){
+  	  	return true;
+  	  }else{
+  	  	return false;
+  	  }
+}
+
+//获取数据
+var curPage=1, 
+    len=10;
+ function loadMore(){
+ 	$.ajax({
+ 		url:'http://platform.sina.com.cn/slide/album_tech',
+ 		dataType:'jsonp',
+ 		jsonp:'jsoncallback',
+ 		data:{
+ 			app_key:'1271687855',
+ 			num:len,
+ 			page:curPage
+ 		},
+ 		success:function(ret){
+ 			if(ret.status.code == 0){
+ 				onSuccess(ret.data);
+ 			}
+ 		},
+ 		error:function(){
+ 			onError();
+ 		}
+ 	});
+ }
+
+ function onSuccess(nodeList){
+ 	console.log(nodeList);
+ 	var $nodes =renderData(nodeList);  //将生成的节点渲染到页面上
+    var defereds =[]; //存储图片加载状态
+
+    $nodes.find('img').each(function(){
+    	var defer = $.Deferred(); //新建一个deferred对象
+    $(this).load(function(){
+    	    defer.resolve();
+    }); //当图片加载完成后执行resolve
+    defereds.push(defer);
+    });
+    $.when.apply(null,defereds).done(function(){
+    	console.log('图片加载完毕');
+    	waterFallPlace($nodes);
+    });
+
+ }
+
+function onError(){
+	console.log('出错了~~');
+}
+ 
+ //瀑布流
+  var colSumHeight =[],
+      nodeWidth =$('.item').outerWidth(true),
+      colNum=parseInt($('.pic-ct').width()/nodeWidth);
+
+  for(var i=0;i<colNum;i++){
+  	 colSumHeight.push(0);
+  }
+
+  function waterFallPlace($nodes){
+  	$nodes.each(function(){
+  		var $cur =$(this);
+  		var idx =0,
+  		    minSumHeight =colSumHeight[0];
+
+  		for(var i=0;i<colSumHeight.length;i++){
+  			if(colSumHeight[i]<minSumHeight){
+  			idx=i;
+  			minSumHeight =colSumHeight[i];
+  		}
+  }
+
+  $cur.css({
+  	left:nodeWidth*idx,
+  	top:minSumHeight,
+  	opacity:1
+  });
+
+  colSumHeight[idx]= $cur.outerHeight(true)+colSumHeight[idx];
+  $('.pic-ct').height(Math.max.apply(null,colSumHeight));  //将容器的高度设置为队列里最大的元素，一面容器高度塌陷
+      });
+}
+
+
+function renderData(items){
+	var tpl='',
+	    $nodes;
+	for(var i=0;i<items.length;i++){
+		tpl +='<li class="item">';
+		tpl+=  ' <a href="'+ items[i].url +'" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+		tpl += ' <h4 class="header">'+ items[i].short_name +'</h4>';
+		tpl +='<p class="desp">'+items[i].short_intro+'</p>';
+		tpl +='</li>';
+	}
+	$nodes =$(tpl);
+	$('.pic-ct').append($nodes);
+	return $nodes;
+}
+</script>
+
+</body>
+</html>
