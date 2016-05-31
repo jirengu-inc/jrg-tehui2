@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+		<style>
+			#header,#footer{
+				height:50px;
+				background:blue;
+			}
+			#header{
+				margin-bottom:20px;
+			}
+			.main{
+				background:#ccc;
+				padding:10px;
+			}
+			.nav,.nav2{
+				height:60px;
+				background:pink;
+			}
+			.aside{
+				float:left;
+				width:80px;
+				height:100px;
+				background:yellow;
+			}
+			.main-content{
+				margin-left:90px;
+				height:550px;
+				background:white;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">header</div>
+		<div id="content">
+			
+			<div class="main">
+				<div class="nav">nav0</div>
+				<div class="aside">aside</div>
+				<div class="main-content">main content</div>
+			</div>
+			<div class="main">
+				<div class="nav">nav2</div>
+				<div class="aside">aside</div>
+				<div class="main-content">main content</div>
+			</div>
+			<div class="main">
+				<div class="nav">nav3</div>
+				<div class="aside">aside</div>
+				<div class="main-content">main content</div>
+			</div>
+			<div class="main">
+				<div class="nav">nav4</div>
+				<div class="aside">aside</div>
+				<div class="main-content">main content</div>
+			</div>
+		</div>
+		<div id="footer"></div>
+		<script>
+		$.fn.stick = function(){
+			// console.log(this);
+			var $cur=this;
+			var curW = $cur.width();
+			var curH = $cur.height();
+			var curTop = $cur.offset().top;
+			var curLeft = $cur.offset().left;
+
+			var $curClone = $cur.clone().insertBefore($cur)
+						.css({'opacity':0,'display':'none'});
+
+			$(window).on('scroll',function(){
+				var scrollTop = $(this).scrollTop();
+				if(scrollTop >= curTop ){
+					if(!isFixed()){
+						setFixed();
+					}
+				}else{
+					unsetFixed();
+				}
+			})			
+			function setFixed(){
+				$cur.data('data-fixed',true);
+				$cur.css({'position':'fixed',
+								'top':0,
+								'left':curLeft,
+								'width':curW,
+								'z-index':9
+				});
+				$curClone.show();
+			}
+
+			function unsetFixed(){
+				$cur.data('data-fixed',false);
+				$cur.removeAttr('style');
+				$curClone.hide();
+			}
+
+			function isFixed(){
+				return !!$cur.data('data-fixed');
+			}
+
+		}
+		
+		$('.nav').each(function(){
+			// console.log(this);
+			$(this).stick();
+		})
+		
+		//为每个.nav绑定stick()方法
+		/*$.fn.stick=function(){
+			var cur=this;这里的this指绑定的对象
+		*/}
+		</script>
+	</body>
+</html>
