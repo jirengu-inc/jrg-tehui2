@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com</title>
+</head>
+<body>
+	 <div class='ct'>
+	 	<button class="btn">获取数据</button>
+	 	<div class="wrap">
+	 		  <iframe src="//a.com/index2.html" frameborder="0"></iframe>
+	 	</div>
+	 </div>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>	 
+<script>
+       document.domain='a.com';
+       var $btn=$('.btn');
+       $btn.on('click',function(){
+       	   var $name=window.frames[0].name;
+       	   $('.wrap').append($name);
+       	                                            
+       })                    
+</script>
+</body>
+</html>
