@@ -119,17 +119,17 @@
         var $bullet = $('.bullet li');
         var imgCount = $imgCt.children().size();//4张
         var curIdx = 1;//第1张就是未克隆前的第1张
-        var $imgWidth = $(window).width();
+        var imgWidth = $(window).width();
         var clock;
         var isAnimate = false;
-        $img.css('width',$imgWidth);
+        $img.css('width',imgWidth);
 
         $imgCt.prepend($img.last().clone());
         $imgCt.append($img.first().clone());
 
         var imgRealCount = $imgCt.children().size();//实际上是6张包含克隆的2张
-        $imgCt.css({'left':-$imgWidth,'width':$imgWidth*imgRealCount});
-        //0就是克隆最后一张，所以要-$imgWidth就是要显示的第1张，总宽度是6张的宽度，
+        $imgCt.css({'left':-imgWidth,'width':imgWidth*imgRealCount});
+        //0就是克隆最后一张，所以要-imgWidth就是要显示的第1张，总宽度是6张的宽度，
         //overflow:hidden只显示父容器的宽度
 
         $bullet.on('click',function(e){
@@ -153,14 +153,14 @@
                 isAnimate = true;
                 setBg(curIdx+idx);
                 $imgCt.animate({
-                    'left':"-="+idx * $imgWidth//每次递增1张图片的宽度，以显示下一张
+                    'left':"-="+idx * imgWidth//每次递增1张图片的宽度，以显示下一张
                 },function(){
                     curIdx = curIdx +idx;
                 console.log('cur:'+curIdx);
                     if(curIdx === imgCount + 1){
                     //如果走到第5张,就复位到第1张
                         curIdx = 1;
-                        $imgCt.css('left',-$imgWidth);
+                        $imgCt.css('left',-imgWidth);
                     }
                     isAnimate = false;
                     // console.log(curIdx);
@@ -175,12 +175,12 @@
                 isAnimate = true;
                 setBg((curIdx + imgCount - idx)% imgCount);
                 $imgCt.animate({
-                    left:'+='+ idx * $imgWidth
+                    left:'+='+ idx * imgWidth
                 },function(){
                     curIdx = (imgCount + curIdx - idx) % imgCount;
                     if(curIdx === 0){
                         setBg(imgCount);
-                        $imgCt.css('left',-($imgWidth * imgCount));
+                        $imgCt.css('left',-(imgWidth * imgCount));
                         curIdx = imgCount;
                     }
                 isAnimate = false;
