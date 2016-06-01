@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>hw29-1</title>
+		<style>
+			.text p{
+				padding:5px;
+				color:#333
+			}
+			.gotop{
+				border:1px solid #f00;
+				border-radius:2px;
+				text-align:center;
+				width:70px;
+				padding:10px;
+				cursor:pointer;
+				position:fixed;
+				bottom:30px;
+				right:30px;
+				display:none;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="text">
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+			<p>内容</p>
+		</div>
+		<script>
+		var goTop = {
+			init:function(){
+				if($('.gotop').length>0){return;};
+				//如果已经创建了直接返回，不会再创建
+				var $back = $('<div class="gotop">回到顶部</div>');
+				$('body').append($back);
+				this.$back = $back;
+				//创建一个属性，并赋值$back
+				this.bind();
+				//通过this自身执行bind函数
+			},
+			bind:function(){
+				var self = this;
+				$(window).on('scroll',function(){
+					var offsetH = $('body').scrollTop();
+					if(offsetH > 100){
+						self.$back.show();
+					}
+					else{
+						self.$back.hide();
+					}
+				});
+				self.$back.on('click',function(){
+					$(window).scrollTop(0);
+				})
+			}
+		}
+		
+		goTop.init();
+			// var $backTop =$('<div class="gotop">回到顶部</div>');
+			// $('body').append($backTop);
+			// $(window).on('scroll',function(){
+			// 	var offsetH = $(window).scrollTop();
+			// 	// console.log(offsetH);
+			// 				
+			// 	if(offsetH > 100){
+			// 		// console.log(1);
+			// 		$backTop.show();
+			// 	}
+			// 	else{
+			// 		$backTop.hide();
+			// 	}
+			// });
+			// $('.gotop').on('click',function(){
+			// 	$(window).scrollTop(0);
+			// })
+			 
+			
+		</script>
+	</body>
+</html>
