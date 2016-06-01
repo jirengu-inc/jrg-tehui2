@@ -59,35 +59,6 @@
         ev.target.appendChild(document.getElementById(itemId));
     }
 
-
-    var all = document.querySelector('.category'),
-            rss = document.querySelector('.rss'),
-            tags = document.querySelectorAll('.category li');
-
-    for(var i=0; i<tags.length; i++){
-        tags[i].ondragstart=function(e){
-            e.dataTransfer.setData("class",e.target.className);
-        }
-    }
-
-    rss.ondragover = ondragover;
-    all.ondragover = ondragover;
-
-    rss.ondrop = ondrop;
-    all.ondrop = ondrop;
-
-    function ondragover(e){
-        e.preventDefault();
-    }
-
-    function ondrop(e){
-        e.preventDefault();
-        console.log(e.target.tagName )
-        if(e.target.tagName.toLowerCase() === 'li') return;
-        var cls=e.dataTransfer.getData("class");
-        e.target.appendChild(document.getElementsByClassName(cls)[0]);
-    }
-
 </script>
 </body>
 </html>
