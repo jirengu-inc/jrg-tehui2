@@ -1,0 +1,110 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			html,body,div,ul,li{
+				margin:0;
+				padding:0;
+			}
+			li{list-style:none;}
+			.item{position:relative;}
+			
+			.item li{
+				width:200px;
+				position:absolute;
+				margin:5px;
+				transition:all 0.5s;
+			}
+			.h1{
+				height:370px;
+				background:#f4b300;
+			}
+			.h2{
+				height:250px;
+				background:#aa00ff;
+			}
+			.h3{
+				height:150px;
+				background:#006ac1;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="ct">
+			<ul class="item">
+				<li class="h1"></li>
+				<li class="h3"></li>
+				<li class="h3"></li>
+				<li class="h2"></li>
+				<li class="h1"></li>
+				<li class="h2"></li>
+				<li class="h1"></li>
+				<li class="h3"></li>
+				<li class="h3"></li>
+				<li class="h2"></li>
+				<li class="h1"></li>
+				<li class="h1"></li>				
+				<li class="h1"></li>
+				<li class="h3"></li>
+				<li class="h3"></li>
+				<li class="h2"></li>
+				<li class="h1"></li>
+				<li class="h1"></li>
+			</ul>
+		</div>
+
+		<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script>
+
+		function render(){
+			var $items = $('.ct li');
+			//获取容器的所有子节点
+			var nodeWidth = $items.outerWidth(true);
+			//获取节点的宽度
+			var winWidth = $(window).width();
+			//窗口宽度
+			var colNum = Math.floor(winWidth/nodeWidth);
+			//下取整，确定每行显示多少列
+			var colSumHeight = [];
+			//存放每列的高度
+			
+			for(var i=0;i<colNum;i++){
+				colSumHeight.push(0);
+			}
+				
+				$items.each(function(){
+					
+					var $cur = $(this),
+						idx = 0,
+						minSumHeight = colSumHeight[0];;
+					//先设定一个最小值，用这个值去和其他比较
+					for(var i=0;i<colNum;i++){
+						if(colSumHeight[i]<minSumHeight){
+							//如果这个值大于其他的值
+							//把这个值赋给min
+							minSumHeight = colSumHeight[i];
+							// console.log(colSumHeight[i]);
+							idx = i;
+							//获取他的下标
+							// console.log(idx);
+						}
+					}
+					
+					$cur.css({
+						left:nodeWidth*idx,
+						top:minSumHeight
+					});
+					
+					colSumHeight[idx] = $cur.outerHeight(true)+minSumHeight;
+					//因为放在了idx，为了下次比较，需要叠加这个节点的高度和最小高度
+				});
+		}
+			render();
+			$(window).on('resize',function(){
+				render();
+			})
+		</script>
+	</body>
+</html>
