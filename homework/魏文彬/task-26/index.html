@@ -64,19 +64,19 @@
             },
             complete:function () {
                 isLoad = false;
-                cur +=len;
+                // cur +=len;
                 $(".btn").text("加载更多");
             }
         });
     });
     function onSuccess(e) {
         if (e.status == 1) {
-        	$.each(e.data,function(key,val){
-        		$('<p>'+e.data[key]+'</p>').appendTo($('.wrap'));
-        	})
-            // for(var key in e.data) {
-            //     $("<p>" + e.data[key] + "</p>").appendTo($(".wrap"));
-            // }
+        	// $.each(e.data,function(key,val){
+        	// 	$('<p>'+e.data[key]+'</p>').appendTo($('.wrap'));
+        	// })
+            for(var key in e.data) {
+                $("<p>" + e.data[key] + "</p>").appendTo($(".wrap"));
+            }
         }
     }
     function onError(e) {
