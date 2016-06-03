@@ -3,7 +3,6 @@
  */
 
 define(['jquery'],function($){
-
 	function Carousel($ct){
 		var me = this;
 		
@@ -52,7 +51,7 @@ define(['jquery'],function($){
 				}
 			});
 		}
-	}
+	};
 
 
 	Carousel.prototype.play = function (index){
@@ -104,7 +103,7 @@ define(['jquery'],function($){
         });
     };
 
-	return Carousel;
+	// return Carousel;
 });
 
 /*
