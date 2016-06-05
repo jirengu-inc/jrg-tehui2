@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task44-2</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	html,body{
+		height: 100%;
+		width: 100%;
+		padding: 0;
+		margin: 0;
+	}
+
+	#gradient{
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-image: url(img/045.jpg);
+	}
+	
+	#gradient:before{
+		content: "";
+		display: block;
+		position: absolute;
+		width: 50%;
+		left: 0;
+		top: 0;
+		bottom: 0;
+		background-image: linear-gradient(to top right, rgba(255,0,0,0), rgba(255,0,0,1));
+	}
+
+	#gradient:after{
+		content: "";
+		display: block;
+		position: absolute;
+		width: 50%;
+		right: 0;
+		top: 0;
+		bottom: 0;
+		background-image: linear-gradient(to top left, rgba(255,0,0,0), rgb(187, 61, 187));
+	}
+</style>
+</head>
+<body>
+    <div id="gradient"></div>
+</body>
+</html>
