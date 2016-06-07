@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>task29-1</title>
+	<title>task29-3</title>
 	<style>
 		.wrapper p {
 			border: 1px solid #000;
@@ -51,7 +51,7 @@
 <script>
 	var $wrap = $(".wrapper"),
 		$btn = $(".btn"),
-		start = 2;
+		start = 3;
 	var clock;
 
 	getMore();
@@ -61,19 +61,21 @@
 	}).on('mouseleave', 'p', function(){
   		$(this).removeClass('hover');
 	});
-
+	
+	//设置延时
 	$(window).on('scroll', function(e){
+
   		if(clock) clearTimeout(clock);
+
   		clock = setTimeout(function(){
     		if(!isVisible($btn)) return; 
-    		getMore();
+    			getMore();
   		}, 300);
 	});
-
-
-	function getMore($none){
+	
+	function getMore(){
 		$.ajax({
-			url:"getMore.php",
+			url:'getMore.php',
 			dataType:'json',
 			type:'get',
 			data:{
@@ -88,25 +90,29 @@
 			}
 		});
 	}
-
 	function onSuccess(e) {
-		console.log(e);
+		// console.log(e);
 		if(e.status === 1) {
-			for(var key in e.data) {
-				$('<p>'+e.data[key]+'</p>').appendTo($(".wrap"))
-			}
-		}else {
+			append(e.data);
+			start+=5;
+		}else{
 			alert('error1');
 		}
 	}
+	function append(arr) {
+		for (var i = 0; i < arr.length; i++) {
+			$wrap.append('<p>' + arr[i] + '</p>');
+		}
+	}
+
 	function onError() {
 		alert("error2");
 	}
-
+	//判断按钮是否出现在可视区域内
 	function isVisible($node){
-  	var winHeight = $(window).height(), 
-      	offsetTop = $node.offset().top,  
-      	scrollTop = $(window).scrollTop(); 
+  	var winHeight = $(window).height(), //获取浏览器窗口高度
+      	offsetTop = $node.offset().top,  //获取该元素距页面顶部的距离
+      	scrollTop = $(window).scrollTop(); //获取页面顶部到窗口顶部的滚动距离
   	if( (offsetTop > scrollTop)  && (offsetTop < scrollTop + winHeight ) ){
     	return true;
   	}

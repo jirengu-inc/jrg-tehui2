@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>drag drop</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	.ct{
+		border: 1px #000 solid;
+		min-height: 48px;
+	}
+	ul,li{
+		list-style: none;
+	}
+	.item{
+		display: inline-block;
+		padding: 10px;
+		margin: 5px;
+		background-color: #ccc;
+	}
+</style>
+</head>
+<body>
+	<span>可选事物</span>
+    <ul class="ct" >
+    	<li class="item" draggable="true" ondragstart="drag(event)" id="0">龙井虾仁</li>
+    	<li class="item" draggable="true" ondragstart="drag(event)" id="1">西湖醋鱼</li>
+    	<li class="item" draggable="true" ondragstart="drag(event)" id="2">东坡肉</li>
+    	<li class="item" draggable="true" ondragstart="drag(event)" id="3">红烧肘子</li>
+    	<li class="item" draggable="true" ondragstart="drag(event)" id="4">虾爆鳝背</li>
+    </ul>
+	<span>选中的事物</span>
+    <ul class="ct" ondrop="drop(event)" ondragover="allowDrop(event)" >
+    </ul>
+    <script type="text/javascript">
+    	function allowDrop(ev)
+		{
+			ev.preventDefault();
+		}
+		function drag(ev)
+		{
+			ev.dataTransfer.setData("Text",ev.target.id);
+		}
+
+		function drop(ev)
+		{
+			ev.preventDefault();
+			var data=ev.dataTransfer.getData("Text");
+			var target=document.getElementsByClassName("ct")[1];
+			target.appendChild(document.getElementById(data));
+		}
+    </script>
+</body>
+</html>

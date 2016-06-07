@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task44-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	div{
+		display: inline-block;
+		width: 100px;
+		height: 100px;
+		font-family: "微软雅黑";
+	}
+	
+	.radius{
+		text-align: center;
+		line-height: 100px;
+		position: absolute;
+		top:0;
+		left:0;
+		border-top-left-radius: 50px;
+		border-bottom-right-radius: 50px;
+		border-top-right-radius: 5px;
+		border-bottom-left-radius: 5px;
+		box-shadow:5px 5px 5px 0px black;
+		background-image: linear-gradient(to bottom right, rgba(255,0,0,0), rgba(255,0,0,1));
+		transition: all 1s 1s ease-out;
+	}
+	.radius:hover{
+		top:5px;
+		box-shadow: 0 0 0 0 #fff;
+	}
+	
+	@keyframes mymove{
+		25% {
+			transform: translate(100px,100px);
+		}
+
+		50%{
+			transform: translate(100px,100px) scale(2,2);
+		}
+
+		75%{
+			transform: translate(100px,100px) rotate(90deg);
+		}
+	}
+
+	@-webkit-keyframes mymove{
+		25% {
+			transform: translate(100px,100px);
+		}
+
+		50%{
+			transform: translate(100px,100px) scale(2,2);
+		}
+
+		75%{
+			transform: translate(100px,100px) rotate(90deg);
+		}
+
+
+	}
+
+	.animation{
+		position: absolute;
+		top: 0px;
+		left: 110px;
+		z-index: 2;
+		background-color: red;
+		animation: mymove 5s infinite reverse;
+		-webkit-animation:mymove 5s ease-in 1s infinite reverse;
+		animation-play-state: paused;
+		-webkit-animation-play-state:paused;
+	}
+
+	.animation:hover{
+		animation-play-state: paused;
+		-webkit-animation-play-state:running;
+	}
+	.demo{
+		position: absolute;
+		top: 0px;
+		left: 220px;
+		background-color: green;
+		-webkit-transform: rotateY(130deg);
+		transform:rotateY(130deg) translateX(-100px);
+		perspective: 200px;
+		-webkit-perspective:200px;
+	}
+</style>
+</head>
+<body>
+    <div class="radius">1S后按下效果</div>
+    <div class="animation">延时1S的2D动画,鼠标必须放置在图标上。。。</div>
+    <div class="demo">22222</div>
+</body>
+</html>

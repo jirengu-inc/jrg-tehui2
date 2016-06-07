@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box{
+				width:100px;
+				height:1000px;
+				background:#ccc;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<div class="box"></div>
+	<div class="box2">1</div>
+	<body>
+		<script>
+		var $box2 = $('.box2');
+
+			function isVisible($node){
+				var nodeOffsetH = $node.offset().top;
+				var winH = $(window).height();
+				var scrolTop = $(window).scrollTop();
+				if(nodeOffsetH<(winH+scrolTop)){return true;}
+				else{return false};
+			}
+			
+			$(window).on('scroll',function(){
+				console.log($box2.data('isVisibled'));
+				if(!$box2.data('isVisibled')){
+					if(isVisible($box2)){
+						console.log(true);
+						$box2.data('isVisibled',true);
+					}
+				}
+			})
+		</script>
+	</body>
+</html>

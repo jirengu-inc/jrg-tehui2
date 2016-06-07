@@ -6,6 +6,7 @@
     <style>
         ul {
             border: 1px solid #dedede;
+            min-height: 65px;
         }
         ul:after {
             content: "";
@@ -51,9 +52,13 @@
     }
     function drop(ev) {
         ev.preventDefault();
+        if(ev.target.tagName.toLowerCase() === "li") {
+            return false;
+        }
         var itemId = ev.dataTransfer.getData("itemId");
         ev.target.appendChild(document.getElementById(itemId));
     }
+
 </script>
 </body>
 </html>
