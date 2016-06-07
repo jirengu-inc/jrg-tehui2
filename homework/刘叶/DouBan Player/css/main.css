@@ -22,6 +22,7 @@ li{
     transition: 0.3s;
 }
 .litter{
+    display: none;
     height: 40px;
     width: 40px;
     animation:play 4s infinite;
@@ -43,7 +44,6 @@ li{
     to {transform: rotate(360deg);}
 }
 .player-main .main{
-    display: none;
     background-color:lightcoral;
     width: 250px;
 }
