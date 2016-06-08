@@ -9,7 +9,7 @@
 <body>
 <div id="player">
   <img class="litter" src="./pic/music.png">
-  <audio class="buff" src="" autoplay ></audio>
+  <div class="buff"></div>
   <div class="player-main">
     <div class="tab-bar">
         <div class="tab-ct clearfix">
@@ -72,9 +72,42 @@
 <script src="./js/com/tabChange.js"></script>
 <script src="./js/com/mark.js"></script>
 <script src="./js/com/getChannel.js"></script>
+<script src="./js/com/referKiller.js"></script>
 <script type="text/javascript">
-    $('.buff').attr('src','http://mr7.doubanio.com/4a94f3557b226597da4d7a29c0a4398f/0/fm/song/p2002142_64k.mp4');
-    $('.buff').play();
+
+    var Video = (function(){
+
+      var videoNode;
+      function init(){
+        $('.buff').html(videoHtml(''));
+        videoNode = $('.buff').find('iframe')[0].contentWindow.document.getElementById('video');
+      }
+
+
+      function setSrc(url){
+        videoNode.src=url;
+      }
+
+      function play(){
+        videoNode.play();
+      }
+
+      function stop(){
+        videoNode.stop();
+      }
+
+      init();
+
+      return {
+        videoNode: videoNode,
+        setSrc: setSrc,
+        play: play,
+        stop: stop
+      };
+    })()
+
+
+
     //可以移动
     Move.init($('#player'));
     //menu按钮控制侧边栏歌曲栏目可视状态切换
@@ -162,7 +195,10 @@
                 var sid = resource[0].sid;
                 var ssid = resource[0].ssid;
                 $('.cover').attr('src', bgPic);
-                $('.buff').attr('src', url);
+
+                Video.setSrc(url);
+                Video.play();
+
                 $('.lyric')[0].innerText = resource[0].artist;
                 $.post('http://api.jirengu.com/fm/getLyric.php',{ssid: ssid, sid:sid})
                         .done(function(lyric){
@@ -175,7 +211,7 @@
         });
     });
     //控制播放和暂停
-    var buff = $('.buff')[0];
+    var buff = Video.videoNode;
     buff.volume = 0.6;
     $('.play').on('click', function () {
         if (buff.paused) {
