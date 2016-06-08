@@ -9,7 +9,7 @@
 <body>
 <div id="player">
   <img class="litter" src="./pic/music.png">
-  <audio class="buff" src="http://mr7.doubanio.com/4a94f3557b226597da4d7a29c0a4398f/0/fm/song/p2002142_64k.mp4" autoplay ></audio>
+  <audio class="buff" src="" autoplay ></audio>
   <div class="player-main">
     <div class="tab-bar">
         <div class="tab-ct clearfix">
@@ -73,6 +73,8 @@
 <script src="./js/com/mark.js"></script>
 <script src="./js/com/getChannel.js"></script>
 <script type="text/javascript">
+    $('.buff').attr('src','http://mr7.doubanio.com/4a94f3557b226597da4d7a29c0a4398f/0/fm/song/p2002142_64k.mp4');
+    $('.buff').play();
     //可以移动
     Move.init($('#player'));
     //menu按钮控制侧边栏歌曲栏目可视状态切换
