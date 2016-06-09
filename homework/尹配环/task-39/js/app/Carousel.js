@@ -51,7 +51,7 @@ define(['jquery'],function($){
 				}
 			});
 		}
-	};
+	}
 
 
 	Carousel.prototype.play = function (index){
@@ -103,7 +103,7 @@ define(['jquery'],function($){
         });
     };
 
-	// return Carousel;
+	return Carousel;
 });
 
 /*
