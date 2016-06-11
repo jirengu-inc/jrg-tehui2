@@ -155,8 +155,8 @@
   			
   			$cur.css({
   				left:idx*itemW,
-  				top:minSumHeight,
-  				opacity:1
+  				top:minSumHeight
+  				// opacity:1 这条的作用不清除，我注释掉了，看不出有什么变化..
   			});
   			colSumHeight[idx] = $cur.outerHeight(true)+colSumHeight[idx];
   			$ct.height(Math.max.apply(null,colSumHeight));
