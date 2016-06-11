@@ -18,7 +18,6 @@
 		}
 		.wrap .items-ct{
 			position:relative;
-			border:1px solid;
 		}
 		.wrap .items-ct li{
 			position:absolute;
@@ -144,7 +143,7 @@
   	$nodes.each(function(){
   		var $cur = $(this);
   		
-      $cur.find('img').on('load',function(){
+      $(this).find('img').on('load',function(){
     			var idx = 0;
     			var minSumHeight = colSumHeight[0];
     			for(var i=0;i<colNum;i++){
@@ -167,7 +166,47 @@
   		})
   	});
   }
+ 
 
+ //回到顶部
+ var goTop ={
+  init:function(){
+    if($('.gotop').length>0){return}
+      var $back = $('<div class ="gotop">回到顶部</div>');
+      
+      //样式
+      $back.css({
+        position:'fixed',
+        display:'none',
+        bottom:'30px',
+        right:'30px',
+        border:'1px solid #ccc',
+        padding:'10px',
+        'border-radius':'3px',
+        cursor:'pointer'
+      })
+
+    $('body').append($back);
+    this.$back = $back;
+    this.bind();
+  },
+  
+  bind:function(){
+    var self = this;
+    $(window).on('scroll',function(){
+      var offsetH = $('body').scrollTop();
+      if(offsetH > 150){
+        self.$back.show();
+      }else{
+        self.$back.hide();
+      }
+    });
+    self.$back.on('click',function(){
+      $(window).scrollTop(0);
+    })
+  }
+ } 
+ goTop.init();
   </script>
 
 </body>
