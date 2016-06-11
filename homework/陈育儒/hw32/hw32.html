@@ -51,7 +51,7 @@
  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
   <script>
 
-sendAjax();
+  sendAjax();//初始数据
   var $load = $('.load');
 
   function isVisible($node){
@@ -94,15 +94,15 @@ sendAjax();
   	 	success:function(res){
   	 		if(res.status.code === '0'){
   	 			isLoad = false;
-  	 			onSuccess(res.data);
+  	 			onSuccess(res.data);//成功得到数据
   	 		}
   	 	}
   	 });
   }
 
   function onSuccess(data){
-  	var $nodes = renderData(data);
-  	waterFall($nodes);
+  	var $nodes = renderData(data);//得到渲染数据
+  	waterFall($nodes);//渲染节点
   	curPage++;
   }
 
@@ -119,7 +119,7 @@ sendAjax();
   	$nodes = $(tpl);
   	// console.log(tpl);
   	$ct.append($nodes);
-  	return $nodes;
+  	return $nodes;//返回数据
   }
 
   	
