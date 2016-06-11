@@ -22,6 +22,7 @@
 		}
 		.wrap .items-ct li{
 			position:absolute;
+      opacity:0;
 			width:270px;
 			padding:10px 10px;
 			margin:10px;
@@ -54,6 +55,7 @@
   sendAjax();//初始数据
   var $load = $('.load');
 
+//用于检查是否加载
   function isVisible($node){
 	  	var nodeOffsetH = $node.offset().top;
 		var winH = $(window).height();
@@ -70,8 +72,8 @@
   $(window).on('scroll',function(){
   	  	if(clock){clearTimeout(clock)}
   		clock = setTimeout(function(){
-  			if(isVisible($load)){
-  				sendAjax();
+  			if(isVisible($load)){//需要加载
+  				sendAjax();//加载数据
   			}
   		},200); 	
   });
@@ -141,24 +143,26 @@
   	
   	$nodes.each(function(){
   		var $cur = $(this);
-  		$cur.find('img').on('load',function(){
-  			var idx = 0;
-  			var minSumHeight = colSumHeight[0];
-  			for(var i=0;i<colNum;i++){
-  				console.log(i);
-  				if(minSumHeight>colSumHeight[i]){
-  					idx = i;
-  					console.log('i'+i);
-  					minSumHeight = colSumHeight[i];
-  				}
-  			}
+  		
+      $cur.find('img').on('load',function(){
+    			var idx = 0;
+    			var minSumHeight = colSumHeight[0];
+    			for(var i=0;i<colNum;i++){
+    				console.log(i);
+    				if(minSumHeight>colSumHeight[i]){
+    					idx = i;
+    					console.log('i'+i);
+    					minSumHeight = colSumHeight[i];
+    				}
+    			}
   			
   			$cur.css({
   				left:idx*itemW,
-  				top:minSumHeight
-  				// opacity:1 这条的作用不清除，我注释掉了，看不出有什么变化..
+  				top:minSumHeight,
+          opacity:1
   			});
-  			colSumHeight[idx] = $cur.outerHeight(true)+colSumHeight[idx];
+  		
+      	colSumHeight[idx] = $cur.outerHeight(true)+colSumHeight[idx];
   			$ct.height(Math.max.apply(null,colSumHeight));
   		})
   	});
