@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      body,html,ul,li{
+        padding:0;
+        margin:0;
+        font-size: 10px;
+      }
+      #ct li{
+        list-style: none;
+        padding: 10px;
+        margin: 10px;
+        border:1px solid #ccc;
+      }
+      #btn{
+        display: block;
+        height:40px;
+        line-height:40px;
+        text-align: center;
+        width:80px;
+        font-size: 16px;
+        color: #e33;
+        background-color: #fff;
+        border: 1px solid #e33;
+        border-radius: 3px;
+        text-decoration: none;
+        margin: 15px auto;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id='ct'>
+      <li>内容</li>
+      <li>内容</li>
+    </ul>
+    <a href="#" id='btn'>加载更多</a>
+    <script src="ajax.js"></script>
+    <script>
+      var ct=document.getElementsById('ct');
+      var btn=document.getElementById('btn');
+      var cur=3;
+      var isloading=false;
+      btn.addEventListener('click',function(e){
+        if(isloading){
+          return;
+        }
+        isloading=true;
+        btn.innerHTML='加载中'
+        ajax({
+          url:"loadMore.php",
+          type:"get",
+          data:{
+            start:cur,
+            len=4
+          },
+          success:function (json) {
+            isloading = false;
+            loadMoreBtn.innerText = "加载更多";
+            if (json.status == 1) {
+              append(json.data);
+              cur +=4;
+            }else{
+              alert("数据获取失败");
+            }
+          },
+          error:function(){
+            isloading = false;
+            loadMoreBtn.innerText = "加载更多";
+            alert("请稍后再试");
+          }
+        });
+      });
+      function append(arr){
+        for (var i = 0; i < arr.length; i++) {
+          var li = document.createElement("li");
+          li.innerText = arr[i];
+          ct.appendChild(li);
+        }
+      }
+    </script>
+  </body>
+</html>
