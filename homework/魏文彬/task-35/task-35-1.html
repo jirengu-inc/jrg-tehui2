@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>goTop</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	p {
+			border: 1px solid #000;
+			border-radius: 5px;
+			transition: background 0.3s;
+			padding: 10px;
+		}
+		p:hover {
+			background-color: lightblue;
+			color: #fff;
+		}
+		#go-top {
+			position: fixed;
+			bottom:10px;
+			right:10px;
+			background: lightblue;
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			border-radius: 50%;
+			text-align: center;
+			color: #fff;
+			font-weight: bold;
+			cursor: pointer;
+			display: none;
+		}
+</style>
+</head>
+<body>
+    <div>
+	    <p>内容1</p>
+		<p>内容2</p>
+		<p>内容3</p>
+		<p>内容4</p>
+		<p>内容5</p>
+		<p>内容6</p>
+		<p>内容7</p>
+		<p>内容8</p>
+		<p>内容9</p>
+		<p>内容10</p>
+		<p>内容11</p>
+		<p>内容12</p>
+		<p>内容1</p>
+		<p>内容2</p>
+		<p>内容3</p>
+		<p>内容4</p>
+		<p>内容5</p>
+		<p>内容6</p>
+		<p>内容7</p>
+		<p>内容8</p>
+		<p>内容9</p>
+		<p>内容10</p>
+		<p>内容11</p>
+		<p>内容12</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+    <script>
+    	function GoTop($ct) {
+    		this.ct = $ct;
+    		this.target = $('<div id="go-top">GoTop</div>');
+    	}
+    	GoTop.prototype.init= function() {
+    		this.createNode();
+    		this.bindEvent();
+    	}
+    	GoTop.prototype.createNode= function() {
+    		this.ct.append(this.target);
+    	}
+    	GoTop.prototype.bindEvent = function() {
+    		var that = this;
+    		$(window).on('scroll',function(){
+    			var offsetTop = $(window).scrollTop();
+    			if(offsetTop>=200){
+    				that.target.show();
+    				that.target.on('click',function(){
+    					$(window).scrollTop(0);				
+    				})
+    			}else {
+    				that.target.hide();
+    			}
+    		});
+    	}
+
+    	var goTop = new GoTop($('div'));
+    	goTop.init();
+    </script>
+</body>
+</html>

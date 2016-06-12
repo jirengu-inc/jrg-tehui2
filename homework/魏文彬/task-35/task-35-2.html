@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.wrapper {
+		width: 940px;
+		height: 529px;
+		position: relative;
+		overflow: hidden;
+	}
+	.img-wrap li {
+		position: absolute;
+		display: none;
+	}
+	.img-wrap li img {
+		width: 940px;
+		height: 529px;
+	}
+	.arrow{
+	  	display:block;
+        width:30px;
+        height:30px;
+        color:#fff;
+        font-weight: bold;
+        border-radius:50%;
+        background-color:rgba(0,0,0,0.5);
+        position:absolute;
+        top:50%;
+        margin-top:-15px;
+        text-align: center;
+        line-height:30px;
+        cursor:pointer;
+    }
+    .arrow:hover {
+        background-color:rgba(0,0,0,1);
+    }
+    .pre {
+    	left: 10px;
+    }
+    .next {
+    	right: 10px;
+    }
+    .bullet {
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+
+    }
+    .bullet li {
+        display: inline-block;
+        width:25px;
+        height:5px;
+        background-color:#fff;
+        opacity: 0.5;
+        border-radius:5px;
+        margin:0 4px;
+        cursor:pointer;
+    }
+    .bullet li.active{
+	background-color: #fcc;
+}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+    	<ul class="img-wrap">
+    		<li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+    	</ul>
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+    <div class="wrapper">
+    	<ul class="img-wrap">
+    		<li><a href="#"><img src="images/1.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/3.jpg" alt=""></a></li>
+    		<li><a href="#"><img src="images/4.jpg" alt=""></a></li>
+    	</ul>
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+   
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+    	 function Carousel($node){
+            this.imgCt = $node;
+            this.pre = this.imgCt.siblings('.pre');
+            this.next = this.imgCt.siblings('.next');
+            this.bullet = this.imgCt.siblings('.bullet');
+            this.items = this.imgCt.children();
+            this.imgCount = this.items.length;
+            this.curIdx = 0;
+            this.isAnimate = false;
+        }
+        Carousel.prototype = {
+            init : function(){
+                this.bind();
+                this.play(0);
+                this.autoPlay();
+            },
+
+            bind : function(){
+                var _this = this;
+                _this.pre.on('click', function(){
+                    _this.playPre();
+                });
+
+                _this.next.on('click', function(){
+                    _this.playNext();
+                });
+
+                _this.bullet.find('li').on('click', function(){
+                    var idx = $(this).index();
+                    _this.play(idx);
+                });
+            },
+
+            playPre : function(){
+                var _this = this;
+                _this.play( (_this.imgCount+_this.curIdx-1)%_this.imgCount );
+            },
+
+            playNext : function(){
+                var _this = this;
+                _this.play( (_this.curIdx+1)%_this.imgCount );
+            },
+
+            play : function(idx){
+                var _this = this;
+                if(_this.isAnimate) return;
+                _this.isAnimate = true;
+                _this.items.eq(_this.curIdx).fadeOut(500);
+                _this.items.eq(idx).fadeIn(500, function(){
+                    _this.isAnimate = false;
+                });
+                _this.curIdx = idx;
+                _this.setBullet(idx);
+            },
+
+            setBullet : function(idx){
+                var _this = this;
+                _this.bullet.children().removeClass('active').eq(idx).addClass('active');
+            },
+            autoPlay : function(){
+                var _this = this;
+                setInterval(function(){
+                    _this.playNext();
+                }, 2000);
+            }
+        };
+
+        var $node1 = $('.img-wrap').eq(0),
+            $node2 = $('.img-wrap').eq(1);
+        var carousel1 = new Carousel($node1),
+            carousel2 = new Carousel($node2);
+
+        carousel1.init();
+        carousel2.init();
+
+    </script>
+</body>
+</html>
