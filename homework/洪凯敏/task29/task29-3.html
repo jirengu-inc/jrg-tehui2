@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task26-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="JS/jquery-2.1.3.min.js"></script>
+<style type="text/css">
+	ul,li{
+		list-style: none;
+		margin:0px;
+		padding: 0px;
+	}
+	a{
+		text-decoration: none;
+		font-family: "微软雅黑";
+		color: #000;
+	}
+	li{
+		padding: 10px;
+		border:1px #ccc solid;
+		cursor: pointer;
+		margin: 10px;
+	}
+	li:hover{
+		background: green;
+	}
+	li:hover>a{
+		color: #fff;
+	}
+	.btn{
+		display: inline-block;
+		width: 80px;
+		height: 40px;
+		border:1px  rgb(226,114,114) solid;
+		color:rgb(226,114,114);
+		border-radius: 5px;
+		line-height: 40px;
+		margin: 10px;
+		text-align: center;
+	}
+	div{
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+    <ul>
+    	<li><a href="javascript:void(0);">内容1</a></li>
+    	<li><a href="javascript:void(0);">内容2</a></li>
+    	<li><a href="javascript:void(0);">内容3</a></li>
+    	<li><a href="javascript:void(0);">内容4</a></li>
+    	<li><a href="javascript:void(0);">内容5</a></li>
+    	<li><a href="javascript:void(0);">内容6</a></li>
+    	<li><a href="javascript:void(0);">内容7</a></li>
+    	<li><a href="javascript:void(0);">内容8</a></li>
+    	<li><a href="javascript:void(0);">内容9</a></li>
+    	<li><a href="javascript:void(0);">内容10</a></li>
+    	<li><a href="javascript:void(0);">内容11</a></li>
+    	<li><a href="javascript:void(0);">内容12</a></li>
+    	<li><a href="javascript:void(0);">内容13</a></li>
+    	<li><a href="javascript:void(0);">内容14</a></li>
+    	<li><a href="javascript:void(0);">内容15</a></li>
+    	<li><a href="javascript:void(0);">内容16</a></li>
+    	<li><a href="javascript:void(0);">内容17</a></li>
+    	<li><a href="javascript:void(0);">内容18</a></li>
+    	<li><a href="javascript:void(0);">内容19</a></li>
+    </ul>
+    <div><a href="javascript:void(0);" class="btn">加载更多</a></div>
+    <script type="text/javascript">
+    	var isLoad=true;
+    	function isVisible($node){
+			var $win=$(window);
+			var winH=$win.height();
+			var winScroll=$win.scrollTop();
+			var offsetTop=$node.offset().top;
+			return winH+winScroll>offsetTop;
+		}
+
+	    function loadmore(date){
+			var dateJson=JSON.parse(date);
+			var $ul=$("ul");
+			if(dateJson["status"]=="error"){
+				alert("传输出错！")
+				return;
+			}
+			for(var k in dateJson){
+				if(k!=="status"){
+					var newli="<li>"+dateJson[k]+"</li>";
+					$ul.append($(newli));
+				}
+			}
+		}
+
+		function sendAjax($node){
+			if(!isLoad) return;
+    		var start=$("li").size();
+    		var length=5;
+    		isLoad=false;
+    		$node.text("正在加载...");
+    		$.ajax({
+    			url:"load.php",
+    			data:{
+    				start:start,
+    				size:length
+    			},
+    			method:"post",
+    			complete:function(){
+    				isLoad=true;
+                    $node.text("加载更多");
+    			}
+    		}).done(loadmore).fail(function(){
+                alert("服务器忙！");
+            });
+		}
+
+ 		var lock;
+ 		var $btn=$(".btn");
+		$(window).on("scroll",function(){
+			if(lock){
+				clearTimeout(lock);
+				lock=null;
+			}
+			lock=setTimeout(function(){
+				if(isVisible($btn)){
+					sendAjax($btn)
+				}
+			},500);
+		});//延后执行
+			
+
+    </script>
+</body>
+</html>

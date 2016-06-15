@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task29-lazyLoad</title>
+    <style>
+        ul {
+            margin: 0;
+            padding:0;
+        }
+        li {
+            list-style: none;
+        }
+        img {
+            vertical-align: bottom;
+        }
+        .wrap {
+            width: 700px;
+            margin: 0 auto;
+            border: 1px solid #ccc;
+        }
+        .ct {
+            margin-left: -20px;
+
+        }
+        .ct:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+        .ct>li {
+            float:left;
+            margin-left: 20px;
+        }
+        .ct>li img {
+            width: 220px;
+            height: 405px;
+        }
+    </style>
+</head>
+<body>
+<!--http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif-->
+<div class="wrap">
+    <ul class="ct">
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <img src="http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif"
+                     data-img="http://kejian.jirengu.com/data/fe/%E8%AF%BE%E4%BB%B6/32-%E6%87%92%E5%8A%A0%E8%BD%BD/code/girl.jpg" alt="">
+            </a>
+        </li>
+    </ul>
+</div>
+
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+
+    var Exposure = {
+        init:function ($target,handler) {
+            this.$target = $target;
+            this.handler = handler;
+            this.$win = $(window);
+
+            this.bind();
+            this.checkShow();
+        },
+        bind:function () {      //绑定事件
+            var me = this;
+            var clock = null;
+            var delayTime = 300;
+
+            this.$win.on("scroll",function (e) {
+                clock && clearTimeout(clock);
+                clock = setTimeout(function () {
+                    me.checkShow();
+                },delayTime);
+            });
+        },
+        checkShow:function () {    //如果可见 执行回调函数，handler()
+            var me = this;
+            me.$target.each(function () {
+                var $cur = $(this);
+                if ($cur.data("isLoad") == "loaded") return; //如果已经载入，直接跳过
+                if (me.isShow($cur)){
+                    me.handler && me.handler.call(this,this);//作用域、参数 为当前元素，$cur
+                    $cur.data("isLoad","loaded");
+                }
+            });
+        },
+        isShow:function ($node) {
+            return this.$win.height() + this.$win.scrollTop() > $node.offset().top ;
+        },
+        isLoad:function ($node) {
+            return $node.data("isLoad") == "loaded";
+        }
+    };
+    function loadImg(el) {
+        $node = $(el);
+        $node.attr("src",$node.attr("data-img"));
+    }
+    var $items = $(".ct>li img");
+
+    Exposure.init($items,loadImg);
+
+
+
+</script>
+</body>
+</html>

@@ -40,12 +40,50 @@ li{
 	background-color: #fff;
 	color: #777777;
 }
-#topnav ul.navbar:after{
+.clearfix:after{
 	content: "";
 	display: block;
 	clear: both;
 }
+.clearfix{
+	*zoom: 1;
+}
+#topnav h1{
+	float: left;
+	font-size: 18px;
+	line-height: 53px;
+	font-weight: bold;
+	margin-right: 30px;
+}
+#topnav h1 a:hover{
+	color: #1F9ECD;
+}
 #topnav ul.navbar>li{
+	float: left;
+}
+#topnav ul.navbar>li>a{
+	display: inline-block;
+	height: 53px;
+	line-height: 53px;
+	margin-right: 30px;
+}
+#topnav .navbar li a:hover{
+	color: #333;
+}
+#topnav .navbar>li:first-child{
+	position: relative;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+#topnav .navbar>li:first-child:hover>ul.nav-child{
+	display: block;
+}
+#topnav .navbar>li>a>span{
+	position: absolute;
+	left: 70px;
+	top: 22px;
+}
+/*#topnav ul.navbar>li{
 	float: left;
 }
 #topnav ul.navbar>li>a.nav-log{
@@ -53,8 +91,8 @@ li{
 }
 #topnav ul.navbar>li>a.nav-log:hover{
 	color: #1F9ECD;
-}
-#topnav .navbar>li>a{
+}*/
+/*#topnav .navbar>li>a{
 	display: inline-block;
 	height: 53px;
 	line-height: 53px;
@@ -74,7 +112,7 @@ li{
 	position: absolute;
 	left: 70px;
 	top: 22px;
-}
+}*/
 /*------topnav的下拉菜单------*/
 #topnav ul.nav-child{
 	position: absolute;
@@ -111,7 +149,7 @@ li{
 	background-color: #fff;
 }
 /*------header------*/
-#header{
+/*#header{
 	background-color: #B84D45;
 	position: relative;
 	height: 300px;
@@ -122,12 +160,18 @@ li{
 	top: 105px;
 	left: 0;
 	right: 0;
+}*/
+#header{
+	background-color: #B84D45;
+	color: #fff;
+	padding: 40px 0;
 }
 #header .container h1{
 	font-size: 60px;
-	line-height: 60px;
+	/*line-height: 60px;*/
 	font-weight: normal;
 	font-family: "宋体";
+	margin-top: 40px;
 }
 #header .container p{
 	font-size: 24px;
@@ -145,7 +189,7 @@ li{
 	background-color: #f5f5f5;
 	border-radius: 5px;
 	padding: 10px 20px;
-	margin-top: 40px;
+	margin-top: 30px;
 	margin-bottom: 20px;
 }
 .main-title a{

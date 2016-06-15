@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-29-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css" rel="stylesheet">
+<style>
+	p{
+		margin: 40px 0;
+		font-size: 20px;
+	}
+	.goTop{
+		position: fixed;
+		right: 10px;
+		bottom: 10px;
+		padding: 10px 20px;
+		background: #fff;
+		color: #D14C4C;
+		border: solid 2px #D14C4C;
+		border-radius: 5px;
+	}
+	.goTop:hover{
+		background: #D14C4C;
+		color: #fff;
+	}
+
+</style>
+</head>
+<body>
+	<div class="wrap">
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+	    <p>hello world</p>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script>
+    	 // 方案1: 简单jquery
+    	 // var $goTop = $('<button class="goTop">回到顶部</button>');
+    	 // $goTop.appendTo($(".wrap"));
+    	 // $goTop.hide();
+    	 // $(window).on("scroll", function() {
+    	 // 	var scrollTop = $(window).scrollTop();
+    	 // 	if (scrollTop > 100) {
+    	 // 		$goTop.show();
+    	 // 	} else {
+    	 // 		$goTop.hide();
+    	 // 	}
+    	 // });
+    	 // $goTop.on("click", function() {
+    	 // 	$(window).scrollTop(0);
+    	 // })
+    	
+    	
+    	// 方案2: 简单jquery封装
+    	// var goTop = {
+    	// 	init: function(e) {
+    	// 		if ($(".goTop").length > 0) {
+    	// 			return;
+    	// 		}
+    	// 		$('<button class="goTop">回到顶部</button>').appendTo($(".wrap"));
+    	// 		this.$goTop = $(".goTop");
+    	// 		this.bind();
+    	// 	},
+    	// 	bind: function(e) {
+    	// 		this.$goTop.hide();
+    	// 		var $top = this.$goTop.offset().top;
+    	// 		if ($top > 100) {
+    	// 			this.$goTop.show();
+    	// 		} else {
+    	// 			this.$goTop.hide();
+    	// 		}
+
+    	// 		var me = this;
+    	// 		$(window).on("scroll", function() {
+    	// 			var scrollTop = $(window).scrollTop();
+    	// 			// console.log(scrollTop);
+    	// 			if (scrollTop > 100) {
+    	// 				me.$goTop.show();
+    	// 			} else {
+    	// 				me.$goTop.hide();
+    	// 			}
+    	// 		});
+    	// 		this.$goTop.on("click", function() {
+    	// 			$(window).scrollTop(0);
+    	// 		})
+    	// 	}
+    	// }
+    	// goTop.init();
+    	// goTop.init();
+    	// 
+    	// 方案3 函数闭包
+        var goTop = (function() {
+            $('<button class="goTop">回到顶部</button>').appendTo($(".wrap"));
+            var $goTop = $(".goTop");
+
+            function init() {
+                $goTop.hide();  //先隐藏按钮
+                $(window).on("scroll", function() {
+                    var scrollTop = $(window).scrollTop();
+                    if (scrollTop > 100) {
+                        $goTop.show();
+                    } else {
+                        $goTop.hide();
+                    }
+                });
+            }
+
+            $goTop.on("click", function() {
+                $(window).scrollTop(0);
+            })
+
+            return {
+                init: init
+            }
+        }());
+
+        goTop.init();
+        goTop.init();
+    </script>
+</body>
+</html>

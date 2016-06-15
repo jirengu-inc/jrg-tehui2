@@ -1,0 +1,180 @@
+body,div,h1,h2,h3,p,ul,li,ol,img{
+	margin: 0;
+	padding: 0;
+}
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+	color: #908E8E;
+}
+.line{
+	color: #908E8E;
+	opacity: 0.3;
+}
+.navigation{
+	height:50px;
+	width:100%;
+	position: fixed;
+	top: 0;
+    left: 0;
+	background: #fff;
+	border-bottom: 1px solid #908E8E;
+}
+.logo{
+	font-size:20px;
+}
+.arrows{
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    border-width: 4px;
+    width: 0;
+    height: 0;
+	position: relative;
+	top:-15px;
+	left:100%;
+}
+.menu{
+	width:1000px;
+	margin:0 auto;
+}
+.menu>li{
+	display:inline-block;
+	margin:15px 10px;
+}
+.menu>li:hover a{
+	color:#000;
+}
+
+.child{
+	display: none;
+}
+.child>li{
+	padding: 10px 80px 10px 20px;
+}
+
+.child .fa {
+    margin-right: 5px;
+}
+.menu>li:hover .child{
+	display:block;
+	position:absolute;
+	top:100%;
+	background: #fff;
+	border:1px solid #908E8E;
+    border-radius: 1px 1px 5px 5px;
+}
+
+#header{
+    height: 260px;
+	background: #b84d45;
+
+}
+.container{
+	width: 1000px;
+	margin:50px auto;
+}
+
+#header h1{
+	font-size:60px;
+	padding-top: 60px;
+	padding-bottom: 20px;
+	color: #fff;
+}
+#header p{
+	color: #fff;
+	font-size:22px;
+	padding-bottom: 10px;
+}
+
+ol{
+	width:1000px;
+	margin:40px auto;
+	background: #eee;
+	padding: 5px;
+}
+ol>li{
+	display: inline-block;
+	margin:5px ;
+}
+
+.home{
+	color:#b84d45;
+}
+.home:hover {
+    text-decoration: underline;
+    color: #803630;
+}
+.workshow{
+	width: 1000px;
+	margin:0 auto;
+}
+
+.collection {
+	margin-bottom: 2em;
+}
+.collection .item {
+	display: inline-block;
+
+	margin-left:16px;
+	padding-bottom:1em;
+	border:1px solid #ddd;
+	border-radius:5px;
+	text-align:center;
+}
+
+.collection .first-item {
+    margin-left:0;
+}
+.collection .item img {
+	width: 305px;
+	padding:5px;
+}
+.item>a:hover{
+	opacity:0.5;
+}
+.item .btn {
+	display: inline-block;
+	padding:0.3em .8em;
+	border:1px solid #ddd;
+	border-radius:3px;
+}
+
+.item .btn:hover {
+	color:#808080;
+	background-color:#ddd;
+}
+
+.item h2{
+	padding-top: 20px;
+	padding-bottom: 20px;
+
+}
+.item p{
+	padding-bottom: 15px;
+}
+
+#contact{
+	height: 150px;
+	background: #b84d45;
+	text-align: center;
+	color: #fff;
+	margin-bottom: 50px;
+
+}
+#contact h2{
+	padding-top: 50px;
+	padding-bottom: 20px;
+	font-size: 28px;
+}
+#footer{
+	text-align: center;
+	margin-top: 50px;
+	height:100px;
+}
+#footer hr{
+	margin-bottom: 30px;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>表单</title>
+<style type="text/css">
+	div{
+		margin: 3px 5px;
+	}
+</style>
+</head>
+<body>
+  <form name="myForm" action="a.php" method="post">
+     <div>姓名：<input name="user" type="text" placeholder="用户名" maxlength="10" /></div>
+  	 <div>密码：<input name="pwd"  type="password" placeholder="密码" maxlength="10" /></div>
+  	 <div>
+  	      性别：<input name="sex"  type="radio" value="male"  checked />男
+  	            <input name="sex"  type="radio" value="female" />女
+  	 </div>
+  	 <div>
+  	      取向：<input name="target"  type="radio" value="male" />男
+  	            <input name="target"  type="radio"  value="female" checked />女
+  	 </div>
+  	 <div>
+  	      爱好：<input name="dota"  type="checkbox"/>dota
+                <input name="travel"  type="checkbox" checked/>旅游
+                <input name="pat"  type="checkbox" />宠物
+  	 </div>
+  	 <div>
+  	 	  评论：<textarea name="comment" maxlength="120" placeholder="ddd"></textarea>
+                <input name="secret" type="hidden" value="123"/>
+  	 </div>
+  	 <select name="car" id="car">
+  	 	<option value="萨博">萨博</option>
+  	 	<option value="玛莎">玛莎</option>
+  	 	<option value="吉普">吉普</option>
+  	 </select>
+     <input type="submit" value="提交" />
+  </form>
+</body>
+</html>

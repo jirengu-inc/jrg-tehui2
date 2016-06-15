@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-22-4</title>
+	<style>
+		ul,li{
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+		#tab{
+			border: 2px solid #eee;
+			width: 904px;
+			height: 300px;
+		}
+		.tabhead:after{
+			content: '';
+			display: block;
+			clear: both;
+		}
+		.tabhead li{
+			float: left;
+			display: inline-block;
+			width: 300px;
+			height: 50px;
+			line-height: 50px;
+			text-align: center;
+			border-bottom: 2px solid #eee;
+			margin-bottom: 20px;
+		}
+		.tabhead li:active{
+			background-color: #eee;
+			cursor: pointer;
+   }
+		.tabhead li:nth-of-type(2){
+			border-left:2px solid #eee;
+			border-right: 2px solid #eee; 
+		}
+
+	</style>
+</head>
+<body>
+	<div id="tab">
+		<ul class="tabhead">
+			<li class="li1">tab1</li>
+			<li class="li2">tab2</li>
+			<li class="li3">tab3</li>
+		</ul>
+		<div class="main"></div>
+	</div>
+</body>
+<script>
+	var tabhead = document.querySelector('.tabhead'),
+		main = document.querySelector('.main');
+
+	tabhead.addEventListener('click', function (e) {
+		var liClass = e.target.className;
+		switch (liClass) {
+			case 'li1':
+				main.innerText = '内容1';
+				break;
+			case 'li2':
+				main.innerText = '内容2';
+				break;
+			case 'li3':
+				main.innerText = '内容3';
+				break;
+		}
+	})
+</script>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>test</title>
+</head>
+<body>
+
+	<script>
+	function car(name) {
+		this.name = name;
+	}
+	car.prototype.age = function (age) {
+		this.age = age;
+		console.log(this.name);
+	}
+	var a = new car("夏利")
+
+	</script>
+</body>
+</html>

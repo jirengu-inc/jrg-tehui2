@@ -1,0 +1,148 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>task24-3|注册表单验证</title>
+        <style>
+        body,html{
+        margin: 0;
+        padding: 0;
+        font-family: Microsoft YaHei;
+        background-color: #C5C5C5;
+        }
+        h2{
+        margin-top: 40px;
+        display: inline-block;
+        color: #616060;
+        }
+        .wrap{
+        background-color: #eee;
+        width: 500px;
+        height: 600px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        margin-left: -250px;
+        margin-top: -300px;
+        box-shadow:
+        0pt 2px 5px rgba(105, 108, 109,  0.7),
+        0px 0px 8px 5px rgba(208, 223, 226, 0.4) inset;
+        border-radius: 3px;
+        text-align: center;
+        }
+        .error{
+        	margin-top: 5px;
+        	color: red;
+        	font-size: 14px;
+        	display: block;
+        	height: 16px;
+        }
+        .signUp-form{
+        text-align: left;
+        padding-left: 32px;
+        }
+        .title{
+        margin-bottom: 5px;
+        }
+        #btn{
+        text-decoration: none;
+        margin-top: 10px;
+        padding: 5px 10px;
+        display: inline-block;
+        width: 100px;
+        height: 30px;
+        line-height: 30px;
+        text-align: center;
+        background-color: #609FF6;
+        border-radius: 3px;
+        color: white;
+        font-size: 20px;
+        }
+        #btn:hover{
+        background-color: #3A9CFB;
+        cursor: pointer;
+        }
+        .ipt{
+        margin-top: 5px;
+        border-radius: 3px;
+        /*border:none;	*/
+        outline: none;
+        width: 420px;
+        height: 40px;
+        padding-left: 10px;
+        }
+        .errColor{
+        	border-color: red;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="wrap">
+                <h2>—— 注册 ——</h2>
+                <div class="signUp-form">
+                    <label class="title" for="name">用户名:</label>
+                    <input class="ipt" type="text" id="name" name="name" placeholder="只能是字母、数字、下划线，3-10个字符" >
+                    <p class="error usernameErr"></p>
+
+                    <label class="title" for="email">邮箱: </label>
+                    <input class="ipt" type="text" id="email" name="email" placeholder="mysupermail@mail.com" >
+                    <p class="error emailErr"></p>
+                    
+                    <label class="title" for="pwd">密码: </label>
+                    <input class="ipt" type="password" id="pwd" name="pwd" placeholder="6-15个字符，包括大小写字母、数字、下划线至少两种" >
+                    <p class="error pwdErr"></p>
+                    
+                    <label class="title" for="repeatpwd">确认密码: </label>
+                    <input class="ipt" type="password" id="repeatpwd" name="repeatpwd" >
+                    <p class="error repeatpwdErr"></p>
+                </div>
+                <a id="btn" href="#">提交</a>
+        </div>
+        
+        <script src="../js/doClass.js"></script><!-- doClass.js 对元素class查询、添加、删除 -->
+        <script src="../js/checkIpt.js"></script><!-- checkIpt.js 检查用户输入 -->
+        <script src="../js/ajax.js"></script>
+        <script>
+        	var username = document.getElementById("name"),
+        		email = document.getElementById("email"),
+        		pwd = document.getElementById("pwd"),
+        		repeatpwd = document.getElementById("repeatpwd"),
+        		btn = document.getElementById("btn");
+                
+            username.addEventListener('blur', function() {
+                checkname() && existname();
+            }, false);
+
+            email.addEventListener('blur', function() {
+                checkemail();
+            }, false);
+
+            pwd.addEventListener('blur', function() {
+                checkpwd();
+            }, false);
+
+            repeatpwd.addEventListener('blur', function() {
+                checkrepeatpwd();
+            }, false);
+  
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                // if (checkname() && checkemail() && checkpwd() && checkrepeatpwd() && existname()) {
+                //     console.log("正在注册......");
+                //     alert("正在注册......");
+                // }
+                // //这里看起来没什么问题，但假设用户的网络很慢(ajax 需要几秒才有数据返回)， 他先输入了一个正常的用户名（未重复）,这时候 过了几秒钟 isSuccess 变成了 true。 这个时候他又换了个不正常的用户名(有重复),然后立即点注册（这时候因为 ajax 比较慢，所以 isSuccess 还是 true）， 会验证通过…  这就是同步和异步的问题
+                
+                if ( checkname() && checkemail() && checkpwd() && checkrepeatpwd() ) {
+                    existname(function (valiname) {
+                        if(valiname){
+                            console.log("正在注册......");
+                            alert("正在注册......");
+                        }
+                    });
+                }
+            });
+        </script>
+    </body>
+</html>

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task-11-1</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style>
+	html,body,div,ul,li{
+		padding: 0;
+		margin: 0;
+	}
+	.nav{
+		background: #CBCBCB;
+		/*overflow: hidden;*/
+	}
+	.nav ul{
+		list-style-type: none;
+	}
+	.nav>ul>li{
+		float: left;
+		position:relative;
+	}
+
+	.nav::after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.navbar>li>a{
+		display:block;
+		text-decoration: none;
+		color: #333;
+		font-size: 16px;
+		font-family: "Microsoft Yahei",Arial;
+		font-weight: bold;
+		height:30px;
+		line-height: 30px;
+		padding:4px 20px;
+	}
+	.navbar>li:hover>a{
+		background-color: #aaa;
+		border-radius: 5px 5px 0 0;
+	}
+	.content{
+		position: absolute;
+		top: 36px;
+		left: 0;
+		border: solid 1px #aaa;
+		border-top: none;
+		border-radius:0 0 5px 5px;
+		/*min-width: 110px;*/
+		z-index:-1;
+	}
+	.content li{
+		display: none;
+	}
+	.navbar>li:hover li{
+		display:block;
+	}
+	.content li a{
+		text-decoration: none;
+		font-family: "Microsoft Yahei",Arial;
+		font-size: 16px;
+		color: #333;
+		display: block;
+		height: 30px;
+		line-height: 30px;
+		padding:0px 10px;
+		font-weight: bold;
+	}
+	.content li:hover a{
+		background-color: #CBCBCB;
+	}
+</style>
+</head>
+<body>
+    <div class="nav">
+    	<ul class="navbar">
+    		<li>
+    			<a href="#">前端</a>
+    			<ul class="content">
+    				<li><a href="#">JavaScript</a></li>
+    				<li><a href="#">CSS</a></li>
+    				<li><a href="#">HTML</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<a href="#">服务端</a>
+    			<ul class="content">
+    				<li><a href="3">Java</a></li>
+    				<li><a href="3">PHP</a></li>
+    				<li><a href="3">Node</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<a href="#">前端工具</a>
+    			<ul class="content">
+    				<li><a href="#">Sublime</a></li>
+    				<li><a href="#">Webstrom</a></li>
+    				<li><a href="#">Git</a></li>
+    			</ul>
+    		</li>
+    		<li>
+    			<a href="#">HTML</a>
+    		</li>
+    		<li>
+    			<a href="#">NODE</a>
+    		</li>
+    	</ul>
+    </div>
+</body>
+</html>

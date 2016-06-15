@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>全屏幕轮播</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        li{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        html, body, #header, #header .carousel, #header .img-ct{
+            height: 100%;
+            width: 100%;
+        }
+        .carousel{
+            position: relative;
+            width: 400px;
+            height: 300px;
+            overflow: hidden;
+        }
+        #header .img-ct{
+            position: absolute;
+        }
+        #header .item{
+            position: relative;
+            float: left;
+            height: 100%;
+        }
+        .clearfix{
+            content:'';
+            clear: both;
+            display: block;
+        }
+        #header .main{
+            position: absolute;
+            width: 600px;
+            left: 50%;
+            top: 50%;
+            z-index: 9;
+            transform: translate(-50%, -50%);
+            color: #fff;
+            text-align: center;
+        }
+        #header .main h2{
+            font-size: 50px;
+        }
+        #header .main p{
+            font-size: 20px;
+            line-height: 20px;
+        }
+
+        #header .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            right: 0;
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: cover;
+            opacity: 0.8;
+        }
+        .bullet{
+            position: absolute;
+            top:90%;
+            left: 50%;
+            transform:translateX(-50%);
+        }
+        .bullet li{
+            display: inline-block;
+            width: 25px;
+            height: 7px;
+            background-color: #666;
+            margin-left: 10px;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+        }
+        ul.bullet li.active {
+            background: #fff;
+        }
+    </style>
+
+</head>
+<body>
+<div id="header"><!--感觉可以做第一屏幕,用header-->
+    <div class="carousel">
+        <ul class="img-ct clearfix"><!--前面一直用的ct,但是有点莫名其妙,最后还是为了规范都改正了-->
+            <li class="item">
+                <div class="cover" data-bg-img="img/ironman.jpg" ></div>
+                <div class="main">
+                    <h2>Like iron</h2>
+                    <p>I hope I can protect the one thing i can't live without</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover" data-bg-img="img/cap.jpg"></div>
+                <div class="main">
+                    <h2>I am Cap,not a cap</h2>
+                    <p>I can do this all day</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover" data-bg-img="img/hulk.jpg"></div>
+                <div class="main">
+                    <h2>Hulk Smash!</h2>
+                    <p>(╯‵□′)╯︵┻━┻</p>
+                </div>
+            </li>
+            <li class="item">
+                <div class="cover" data-bg-img="img/thor.jpg"></div>
+                <div class="main">
+                    <h2>其实罗永浩也能举起锤子</h2>
+                    <p>Come home!Loki!</p>
+                </div>
+            </li>
+        </ul>
+        <ul class="bullet">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var $ct = $('.img-ct'),
+            $items = $ct.children(),
+            $bullet = $('.bullet'),
+            imgWidth = $(window).width(),
+            //第一次获取成功之后就固定下来了,导致后面不刷新再拉动就会出现空白,
+            //我先提交了任务,后续想想,这里能否弄个获取宽度的函数,每次pre或者next时候,更新窗口宽度
+            imgCount = $ct.children().length,
+            imgRealCount = imgCount+2;//想试试不等clone之后再统计,因为clone之后还是+2
+
+    $ct.prepend($items.last().clone());
+    $ct.append($items.first().clone());
+    $ct.find('.item').css('width', imgWidth);
+    $ct.find('.cover').css('width', imgWidth);//前面获取的整个屏幕的宽度用上了,为后面的100%提供了基础
+
+    $ct.css({
+        left: 0-imgWidth, //让第一个出现的是非clone的
+        width: imgRealCount * imgWidth
+    });
+
+
+    var curIdx = 0;
+    var isAnimate = false;
+
+
+    $bullet.find('li').on('click', function(){
+        var idx = $(this).index();
+        if(idx > curIdx){
+            playNext(idx - curIdx);
+        }else if(idx < curIdx){
+            playPre(curIdx - idx);
+        }
+    });
+
+    function playNext(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+            isAnimate = true;
+            setBg(curIdx+2);//因为clone之后,都会加1
+            $ct.animate({left: '-='+(imgWidth*idx)},function(){
+                curIdx = (curIdx + idx)%imgCount;
+                if(curIdx === 0){
+                    $ct.css({left: 0-imgWidth});
+                    //和上个DOM的移动不一样的是,这里的css处理是为了让图片队列在到达最后一个clone元素时
+                    //瞬间'归零',回到非克隆的本体位置,相当于归零墙壁
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+    function playPre(idx){
+        var idx = idx || 1;
+        if(!isAnimate){
+            isAnimate = true;
+            setBg(curIdx);//这里不需要减是因为clone之后,最前面多了一个,抵消了
+            $ct.animate({left: '+='+(imgWidth*idx)},function(){
+                curIdx = (imgCount + curIdx - idx)%imgCount;
+                if(curIdx === (imgCount - 1)){
+                    $ct.css({left: 0-imgWidth * imgCount});
+                    //这里的css操作也是一堵回归墙壁,回到非克隆本体的位置
+                }
+                isAnimate = false;
+                setBullet();
+            });
+        }
+    }
+
+    function setBullet(){
+        $bullet.children().removeClass('active').eq(curIdx).addClass('active');
+    }
+
+    //懒加载这里看着老师视频学着写得,自己的课程还没学到
+    function setBg(idx){
+        var idx = idx || 0,
+            $node = $ct.children().eq(idx),
+            $cover = $node.find('.cover'),
+            imgUrl = $cover.attr('data-bg-img');
+        var isBgset = false;
+        if( isBgset ){
+            return;
+        }
+        $cover.css('background-image', 'url('+imgUrl+')');
+        isBgset = true;
+    }
+    function autoPlay(){
+        setInterval(function(){
+            console.log('nowIdx'+ curIdx);
+            playNext();
+        }, 3000);
+    }
+    setBg(1);
+    autoPlay();
+
+</script>
+</body>
+</html>

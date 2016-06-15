@@ -7,12 +7,7 @@
  */
 body,html,div,h1,h2,h3,p,ul,li,form,input,textarea{
     margin: 0;
-    padding: 0;
-    /*
-    -webkit-box-sizing: border-box;   // IE8以上兼容 
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;  
-    */          
+    padding: 0;      
 	font: 16px/1.2 "Roboto Slab","Helvetica Neue",Arial,sans-serif;
 	color: #333;
 }
@@ -40,18 +35,23 @@ li{
 	z-index: 10;
 	background-color: #222;
 }
-#topnav .navbar{
+
+#topnav ul.navbar:after{
+	content: "";
+	display: block;
+	clear: both;
 }
+
 #topnav li{
 	float: right;
 	height: 70px;
 	line-height: 70px;
 	margin-left: 30px;
 }
-/*
+
 #topnav li:first-of-type{
     margin-left: 0;
-}*/
+}
 #topnav a{
 	color: #fff;
 	font-size: 14px;
@@ -70,8 +70,8 @@ li{
 	color: #fec503;
 	font-style: italic;
 	font-family: "Kaushan Script";
-	word-spacing: -7px;
-	letter-spacing: -2px;
+	word-spacing: -7px;      //拉近单词与单词之间的距离
+	letter-spacing: -2px;    //拉近字母与字母之间的距离
 }
 #header{
 	position: relative;
@@ -124,26 +124,27 @@ li{
 #services{
 	background-color: #fff;
 }
-.nav-h2-decp{
+/*.nav-h2-decp{
 	margin: 0 auto;
 	padding-top: 140px;
-}
+}*/
 #services .wrap-center{
     text-align: center;
-    height: 684px;
+    height: 624px;
 }
-.nav-h2-decp h2{
+h2{
     font-size: 38px;
     font-weight: bold;
     letter-spacing: 1px;
     margin-bottom: 20px;
+    padding-top: 140px;
 }
 h3{
 	font-size: 18px;
 	font-weight: bold;
 	margin: 15px auto;
 }
-.nav-h2-decp p{
+p{
 	color: #838383;
 	letter-spacing: 1px;
 	font-style: italic;
@@ -152,7 +153,7 @@ h3{
     display: inline-block;
     *display: inline;
     padding: 50px 10px;
-    width: 350px;
+    width: 355px;
 }
 .fa-circle{
 	color: #fed136;
@@ -224,13 +225,17 @@ h3{
 	text-align: center;
 }
 #about ul{
-	/*
-	width: 1140px;
-	margin: 0 auto;
-	*/
 	margin-top: 80px;
 	margin-bottom: 100px;
 	}
+#about ul::before{
+	content: '';
+	position: absolute;
+	top: 400px;
+	bottom: 0;
+	background-color: #eee;
+	width: 2px;
+}
 #about li{
 	margin-bottom: 120px;
 	position: relative;
@@ -244,19 +249,19 @@ h3{
 #about .content{
 	position: absolute;
 	margin-top: -8px;
-	width: 500px;
+	width: 440px;
 	height: 180px; 
 }
 #about li:nth-child(1) .content,#about li:nth-child(3) .content{
 	text-align: right;
 	top: 0;		
-	left: -50px;
-    clear: right;
+	left: 10px;
+   /* clear: right;*/
 }
 #about li:nth-child(2) .content,#about li:nth-child(4) .content{
 	text-align: left;
 	top: 0;
-	right: -50px;
+	right: 10px;
 }
 #about .content h3{
 	font-style: normal;
@@ -291,7 +296,6 @@ h3{
 }
 #team .wrap-center{
 	text-align: center;
-
 }
 #team ul:after{
 	content: "";
@@ -348,7 +352,7 @@ h3{
 #contact{
 	position: relative;
 	width: 100%;
-	height: 630px;
+	height: 690px;
 	-webkit-background-size: contain;
     -moz-background-size: contain;
     background-size: contain;
@@ -364,7 +368,7 @@ h3{
 }
 #contact .fs{
 	margin: 0 auto;
-	margin-top: 75px;
+	margin-top: 50px;
 	width: 1140px;
 	position: relative;
 }
@@ -404,7 +408,7 @@ h3{
 	border: none;
 	text-transform: uppercase;
 	background-color: #fed136;
-	margin-bottom: 100px;
+	margin-top: 30px;
 }
 #contact .fs .submit:hover{
 	background-color: #fec503;
@@ -418,6 +422,7 @@ h3{
 #footer .wrap-center>div{
 	display: inline-block;
 }
+
 #footer .copy span{
 	font-size: 14px;
 	font-weight: bold;

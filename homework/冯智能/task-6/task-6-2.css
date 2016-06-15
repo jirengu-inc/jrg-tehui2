@@ -1,0 +1,39 @@
+.box{
+	border: 1px solid #ccc;
+	
+}
+.header{
+	height: 40px;
+	text-align: left;
+	padding-left: 10px;
+	color: #f00;
+	font-size: 16px;
+	border-bottom: 1px solid #ccc;
+}
+.content{
+	height: 100px;
+	color: blue;
+}
+
+.content a{
+	text-decoration: none;
+}
+.content a:hover{
+	color: red;
+}
+.footer{
+	height: 50px;
+	text-align: center;
+}
+.btn-cancel{
+	border:1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px 3px 4px 3px;
+	display: inline-block;
+}
+.btn-confirm{
+	border:1px solid #ccc;
+	border-radius: 3px;
+	padding: 4px 3px 4px 3px;
+	display: inline-block;
+}

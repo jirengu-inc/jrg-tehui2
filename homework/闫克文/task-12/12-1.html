@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>12-1圣杯布局</title>
+	<style type="text/css">
+		#header{
+			height: 50px;
+			background:#ccc;
+		}
+		#main{
+			padding: 0 200px;
+		}
+		#main:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		#main .content{
+			width: 100%;
+			height: 400px;
+			background: red;
+			float: left;
+		}
+		.side-left{
+			position: relative;
+			width: 200px;
+			height: 200px;
+			background:green;
+			float:left;
+			margin-left: -100%;
+			left: -200px;
+		}
+		.side-right{
+			position: relative;
+			width: 200px;
+			height: 200px;
+			background:blue;
+			float: left;
+			left: 200px;
+			margin-left: -200px;
+		}
+		#footer{
+			height: 50px;
+			background:#ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">头部</div>
+	<div id="main">
+		<div class="content"></div>
+		<div class="side-left"></div>
+		<div class="side-right"></div>
+	</div>
+	<div id="footer">尾部</div>
+</body>
+</html>

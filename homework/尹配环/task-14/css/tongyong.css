@@ -1,0 +1,67 @@
+.vertical-center {
+	display: table-cell;
+	text-align: center;
+	vertical-align: middle;
+}
+.btn {
+  display: inline-block;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  border: none;
+  text-decoration: none;
+  border-radius: 0;
+  cursor: pointer;
+  font-family: "Microsoft YaHei",Verdana,sans-serif;
+}
+.btn-black {
+	width: 146px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 1rem;
+  color: white;
+	background-color: rgba(0,0,0,.4);
+}
+.btn-black:hover{
+  background-color: rgba(0,0,0,.8);
+}
+.btn-white {
+	margin-right: 10px;
+	width: 140px;
+  height: 45px;
+  line-height: 45px;
+  font-size: 1rem;
+  color: black;
+	background-color: white;
+}
+.btn-light {
+  width: 100px;
+  height: 30px;
+  line-height: 30px;
+  font-size: .8rem;
+  color: black;
+  background-color: white;
+}
+.btn-light:hover,.btn-white:hover {
+	background-color: rgba(225,225,225,.8);
+}
+.btn-smail {
+  width: 131px;
+  height: 30px;
+  font-size: .8rem;
+  line-height: 30px;
+}
+.shortline {
+	width:8%;
+	margin:20px auto;
+	border-bottom: 1px solid;
+}
+.shortlineblack {
+	width:7%;
+	margin:20px auto;
+	border-bottom: 1px solid;
+	border-color: rgba(121,121,121,.2);
+}
+
+

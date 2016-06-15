@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Task 28-2</title>
+    <style>
+        #header {
+            width: 900px;
+            margin: 0 auto;
+            height: 50px;
+            line-height: 50px;
+            background: red;
+            text-align: center;
+        }
+
+        .container {
+            width: 900px;
+            margin: 20px auto;
+        }
+
+        .nav {
+            height: 40px;
+            background: yellow;
+            border: 1px solid black;
+        }
+
+        .nav.fixed {
+            position: fixed;
+            width: 900px;
+            top: 0;
+        }
+
+        .container:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+
+        .aside {
+            float: left;
+            width: 200px;
+            background: pink;
+            height: 400px;
+        }
+        .main {
+            margin-left: 220px;
+            width: 680px;
+            height: 400px;
+            background: blue;
+        }
+        #footer {
+            height: 30px;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+<div id="header">header</div>
+<div class="container">
+    <div class="nav">nav1</div>
+    <div class="aside">aside1</div>
+    <div class="main">main1</div>
+</div>
+<div class="container">
+    <div class="nav">nav2</div>
+    <div class="aside">aside2</div>
+    <div class="main">main2</div>
+</div>
+<div class="container">
+    <div class="nav">nav3</div>
+    <div class="aside">aside3</div>
+    <div class="main">main3</div>
+</div>
+<div class="container">
+    <div class="nav">nav4</div>
+    <div class="aside">aside4</div>
+    <div class="main">main4</div>
+</div>
+<div id="footer">footer</div>
+<script src="../hw26/jquery.js"></script>
+<script>
+    var $nav = $(".nav");
+    var hasCopy = [];
+    var isFixed = [];
+    var navTop = [];
+    for (var i = 0; i < $nav.length; i++) {
+        hasCopy.push(false);
+        isFixed.push(false);
+        navTop.push($nav.eq(i).offset().top);
+    }
+
+    function fixNav(nav) {
+        var idx = nav.index();
+        if(!isFixed[idx]) {
+            $copyNav = nav.clone();
+            $copyNav.css("visibility", "hidden");
+            $copyNav.insertAfter(nav);
+            hasCopy[idx] = true;
+            nav.addClass("fixed");
+            isFixed[idx] = true;
+        }
+    }
+
+    function unfixNav(nav) {
+        var idx = nav.index();
+        if (hasCopy[idx]){
+            $copyNav.remove();
+        }
+        nav.removeClass("fixed");
+        isFixed[idx] = false;
+    }
+
+        $(window).scroll(function() {
+            var top = $(window).scrollTop();
+            if( top < navTop[0]) {
+                unfixNav($nav.eq(0));
+            }
+            $nav.each(function(){
+                unfixNav($(this))
+            });
+            for (var i = 0; i < $nav.length; i++) {
+                if(top >= navTop[i] && top < navTop[i+1]) {
+                    fixNav($nav.eq(i));
+                }
+            }
+        });
+
+</script>
+</body>
+</html>

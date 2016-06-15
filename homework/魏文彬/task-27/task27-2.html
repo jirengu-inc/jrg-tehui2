@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	* {
+		padding: 0;
+		margin: 0;
+	}
+	li {
+		list-style: none;
+	}
+	a {
+		text-decoration: none;
+	}
+	.wrapper {
+		width: 400px;
+		height: 300px;
+		position: relative;
+		overflow: hidden;
+	}
+	.img-wrap li {
+		position: absolute;
+		display: none;
+	}
+	.img-wrap li img {
+		width: 400px;
+		height: 300px;
+	}
+	.arrow{
+	  	display:block;
+        width:30px;
+        height:30px;
+        color:#fff;
+        font-weight: bold;
+        border-radius:50%;
+        background-color:rgba(0,0,0,0.5);
+        position:absolute;
+        top:50%;
+        margin-top:-15px;
+        text-align: center;
+        line-height:30px;
+        cursor:pointer;
+    }
+    .arrow:hover {
+        background-color:rgba(0,0,0,1);
+    }
+    .pre {
+    	left: 10px;
+    }
+    .next {
+    	right: 10px;
+    }
+    .bullet {
+        position:absolute;
+        bottom:10px;
+        left:50%;
+        transform:translateX(-50%);
+
+    }
+    .bullet li {
+        display: inline-block;
+        width:25px;
+        height:5px;
+        background-color:#fff;
+        opacity: 0.5;
+        border-radius:5px;
+        margin:0 4px;
+        cursor:pointer;
+    }
+    .bullet li.active{
+	background-color: #fcc;
+}
+</style>
+</head>
+<body>
+	<div class="wrapper">
+    	<ul class="img-wrap">
+    		<li data-id=0><a href="#"><img src="images/1.jpg" alt=""></a></li>
+    		<li data-id=1><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    		<li data-id=2><a href="#"><img src="images/3.jpg" alt=""></a></li>
+    		<li data-id=3><a href="#"><img src="images/4.jpg" alt=""></a></li>
+    	</ul>
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+    <div class="wrapper">
+    	<ul class="img-wrap">
+    		<li data-id=0><a href="#"><img src="images/1.jpg" alt=""></a></li>
+    		<li data-id=1><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    		<li data-id=2><a href="#"><img src="images/3.jpg" alt=""></a></li>
+    		<li data-id=3><a href="#"><img src="images/4.jpg" alt=""></a></li>
+    	</ul>
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+
+    <div class="wrapper">
+    	<ul class="img-wrap">
+    		<li data-id=0><a href="#"><img src="images/1.jpg" alt=""></a></li>
+    		<li data-id=1><a href="#"><img src="images/2.jpg" alt=""></a></li>
+    		<li data-id=2><a href="#"><img src="images/3.jpg" alt=""></a></li>
+    		<li data-id=3><a href="#"><img src="images/4.jpg" alt=""></a></li>
+    	</ul>
+    	<a class="pre arrow" href="#"> < </a>
+    	<a class="next arrow" href="#"> > </a>
+    	<ul class="bullet">
+    		<li class="active"></li>
+    		<li></li>
+    		<li></li>
+    		<li></li>
+    	</ul>
+    </div>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+    	function eachPlay(id) {
+    		var $wrapIdx = $(".img-wrap").eq(id),
+    			$wrap = $wrapIdx.parents(".wrapper"),
+    			$pre = $wrap.find(".pre"),
+    			$next = $wrap.find(".next"),
+    			$bullet = $wrap.find(".bullet"),
+    			imgCount = $wrapIdx.children().size(),
+
+    			curIdx = 0;
+    			var isAnimate = false;
+    			$pre.on('click',function(){
+    				playPre();
+    			})
+    			$next.on('click',function(){
+    				playNext();
+    			})
+    			$bullet.on('click',function(){
+    				var idx = $(this).index();
+    				play(idx);
+    			})
+
+    			play(0);
+    			autoPlay();
+
+    			function play(idx) {
+    				if(isAnimate){
+    					return;
+    				}
+    				isAnimate = true;
+    				$wrapIdx.children().eq(curIdx).fadeOut(1000);
+    				$wrapIdx.children().eq(idx).fadeIn(1000,function(){
+    					isAnimate = false;
+    				})
+    				curIdx = idx;
+    				setBullet();
+    			}
+    			function playPre() {
+    				play((imgCount + curIdx - 1) % imgCount);
+    			}
+    			function playNext() {
+    				play((curIdx + 1) % imgCount);
+    			}
+    			function autoPlay() {
+					clock = setInterval(function(){
+						playNext();
+					},2000)
+				}
+				function stopAuto() {
+					clearInterval(clock);
+				}
+    			function setBullet() {
+    				$bullet.children().removeClass('active').eq(curIdx).addClass('active')
+    			}
+    			return {
+    				'play':play,
+					'playNext':playNext,
+					'playPre':playPre,
+					'autoPlay':autoPlay,
+					'stopAuto':stopAuto
+    			}
+    		}
+    			$imgwp = $('.img-wrap');
+				$imgwp.each(function(index){
+				var temp = eachPlay(index);
+				temp.autoPlay();
+			})
+    </script>
+</body>
+</html>

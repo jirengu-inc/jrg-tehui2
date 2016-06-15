@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-22-3</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="1.png">鼠标放置查看图片1</li>
+    <li data-img="2.png">鼠标放置查看图片2</li>
+    <li data-img="3.png">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<img src="" alt="">
+<script>
+
+    window.onload = function () {
+
+
+        /*
+         var ct = document.querySelector('.ct'),
+         childs = ct.querySelectorAll('li'),
+         preview = document.querySelector('.img-preview');
+
+         for(var i=0; i<childs.length; i++){
+         childs[i].addEventListener('mouseenter', function(){
+         var dataImg = this.getAttribute('data-img');
+         preview.innerHTML = '<img src="' + dataImg + '">'
+         });
+         }
+         */
+
+        //不使用循环的实现方式：
+
+        var ct = document.querySelector('.ct'),
+                preview = document.querySelector('.img-preview');
+
+        ct.onmouseover = function(ev){
+            var dataImg = ev.target.getAttribute('data-img');
+            preview.innerHTML = '<img src="' + dataImg + '">'
+        }
+
+    }
+
+</script>
+</body>
+</html>

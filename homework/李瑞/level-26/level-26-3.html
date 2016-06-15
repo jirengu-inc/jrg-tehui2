@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	div{
+		width:200px;
+		height:200px;
+		border:1px solid black;
+		border-radius: 10px;
+		margin:100px auto;
+	}
+	.hover{
+		background:red;
+	}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js
+"></script>
+<script>
+	$("div").on("mouseenter",function(){
+		$(this).addClass('hover');
+	}).on("mouseout",function(){
+		$(this).removeClass('hover');
+	})
+</script>
+</html>

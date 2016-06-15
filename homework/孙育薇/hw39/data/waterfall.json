@@ -1,0 +1,74 @@
+{
+	"works" : [
+		{
+			"title": "Round Icons",
+			"intro": "Graphic Design",
+			"img": "../hw15/agency/img/roundicons.png"
+		},{
+			"title": "Treehouse",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/treehouse.png"
+		},
+		{
+			"title": "StartUp Treehouse",
+			"intro": "Website Design",
+			"img": "img/startup-mix-treehouse.png"
+		},
+		{
+			"title": "Escaped Dreams",
+			"intro": "Website Design",
+			"img": "img/escape-mix-dreams.png"
+		},
+		{
+			"title": "Dreams",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/dreams.png"
+		},{
+			"title": "Escape",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/escape.png"
+		},{
+			"title": "Startup Framework",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/startup-framework.png"
+		},{
+			"title": "Golden",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/golden.png"
+		},{
+			"title": "Round Icons",
+			"intro": "Graphic Design",
+			"img": "../hw15/agency/img/roundicons.png"
+		},{
+			"title": "Dreams",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/dreams.png"
+		},
+		{
+			"title": "Golden",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/golden.png"
+		},{
+			"title": "Escape",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/escape.png"
+		},{
+			"title": "Golden",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/golden.png"
+		},
+		{
+			"title": "Round Dreams",
+			"intro": "Website Design",
+			"img": "img/x-mix-round.png"
+		},{
+			"title": "Treehouse",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/treehouse.png"
+		},{
+			"title": "Startup Framework",
+			"intro": "Website Design",
+			"img": "../hw15/agency/img/startup-framework.png"
+		}
+	]
+}

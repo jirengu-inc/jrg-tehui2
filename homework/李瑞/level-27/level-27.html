@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+		padding:0;
+		margin:0;
+
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+	li{
+		list-style: none;
+	}
+	#wrap{
+		width:300px;
+		height:170px;
+		border:5px solid #aaa;
+		border-radius: 5px;
+		position: relative;
+		overflow: hidden;
+		margin:100px auto;
+	}
+
+	.img-ct{
+		position: relative;
+	}
+	.img-ct li{
+		position: absolute;
+		left:0;
+		top:0;
+		display: none;
+	}
+	.img-ct img{
+		position: absolute;
+		left:0;
+		top:0;
+		width:300px;
+		height:170px;
+	}
+	.clear{
+		content:"";
+		display: block;
+		clear:both;
+	}
+	.prev{
+		width:30px;
+		height:30px;
+		line-height: 30px;
+		position: absolute;
+		left:10px;
+		top:50%;
+		margin-top:-15px;
+		border-radius:30px;
+		text-align: center;
+		background:#4E443C;
+		opacity: 0.7;
+		color:white;
+		font-weight: bolder;
+	}
+	.next{
+		width:30px;
+		height:30px;
+		line-height: 30px;
+		position: absolute;
+		right:10px;
+		top:50%;
+		margin-top:-15px;
+		border-radius:30px;
+		text-align: center;
+		background:#4E443C;
+		opacity: 0.7;
+		color:white;
+		font-weight: bolder;
+	}
+	.next:hover,.prev:hover{
+		opacity:1;
+
+	}
+	.footer-nav{
+		position: absolute;
+		bottom:20px;
+		left:50%;
+		transform:translateX(-50%);
+	}
+	.footer-nav li{
+		float:left;
+		background:white;
+		padding:5px;
+		margin-right:10px;
+		border-radius: 50%;
+		cursor:pointer;
+	}
+	.footer-nav li.active{
+		background:#aaa;
+	}
+	</style>
+</head>
+<body>
+	<div id="wrap">
+		<ul class="img-ct clear">
+			<li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/26.jpg" alt="图片1"></a></li>
+			<li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/25.jpg" alt="图片2"></a></li>
+			<li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/23.jpg" alt="图片3"></a></li>
+			<li><a href=""><img src="http://cdn.jirengu.com/book.jirengu.com/img/24.jpg" alt="图片4"></a></li>
+		</ul>
+		<a class="prev " href="javascript:void(0)"><</a>
+		<a class="next" href="javascript:void(0)">></a>
+		<ul class="footer-nav">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	var prev=$(".prev");
+	var next=$(".next");
+	var button=$(".footer-nav");
+	var imgCount=$(".img-ct").children().size();
+	var items=$(".img-ct").children();
+	var key;
+	prev.on("click",function(){
+		playPrev()
+	})
+
+	next.on("click",function(){
+		playNext()
+	})
+
+	button.find("li").on("click",function(){
+		var tem=$(this).index();
+		if(tem===curIdx){
+			return;
+		}
+		play(tem);
+	})
+		var curIdx = 0;
+			var isAnimate = false;
+	play(0);
+	function playPrev(){
+			play(imgCount+(curIdx-1)%imgCount);
+	}
+
+	function playNext(){
+			play((curIdx+1)%imgCount)
+	}
+	function play(e){
+		if(key===true){
+			return;
+		}
+		key=true;
+		items.eq(curIdx).fadeOut(1000);
+		items.eq(e).fadeIn(1000,function(){
+			key=false;
+		})
+		curIdx=e;
+		setBullet();
+	}
+	function setBullet(){
+		button.children().removeClass('active');
+		button.children().eq(curIdx).addClass('active');
+	}
+	function stopInterval(){
+		clearInterval(auto)
+	}
+	function setinterval(){
+		var auto=setInterval(function(){
+			playNext();
+		},1000)
+	}
+
+</script>
+</html>

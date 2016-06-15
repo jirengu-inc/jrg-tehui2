@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>task-3</title>
+	<meta charset="utf-8">
+<style type="text/css">
+	*{
+		box-sizing: border-box;
+	}
+	body,ul,li,p{
+		margin: 0px;
+		padding:0px;
+	}
+	ul{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color: red;
+	}
+	.wrap{
+		width: 702px;
+		margin: 0 auto;
+	}
+	.btn{
+		display: inline-block;
+		border:1px solid #ccc;
+		padding: 10px 20px;
+		color: #c81369;
+		border-radius: 3px;
+		background-color: #fff;
+		cursor: pointer;
+	}
+	.img{
+		position: relative;
+		float: left;
+		width: 220px;
+		padding: 10px 20px;
+		margin-top: 20px;
+		margin-left: 20px;
+		border: 1px solid #eee;
+		background-color: #fff;
+	}
+	.img-ct{
+		margin-top: -20px;
+		margin-left: -20px;
+	}
+	.img-ct:after{
+		display: block;
+		content: "";
+		clear: both;
+	}
+	.cover{
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0,0,0,0.3);
+		transition: all 1s;
+		opacity: 1;
+	}
+	.cover .btn{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+	}
+	.img .cover{
+		display:none;
+	}
+	.btn-add{
+		margin-top: 20px;
+	}
+	
+		
+</style>
+</head>
+<body>
+<div class="wrap">
+	<h1>珠宝首饰</h1>
+	<ul class="img-ct">
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+
+		<li class="img">
+			<div class="cover"><a class="btn" href="#">立即抢购</a></div>
+			<a href="#">
+				<img src="img/55b05e25N13d4ec5e.jpg">
+				<p class="img-name">藏美千足金和田玉吊坠</p>
+				<p class="img-price">￥1699</p>
+			</a>
+		</li>
+	</ul>
+	<a href="#" class="btn btn-add">添加</a>
+</div>
+
+<script src="jquery-2.2.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+	var pro = [{
+		img:'img/56c426a5N9b6673f4.jpg',
+		name:'黄金',
+		price:'￥1699'
+	},
+{
+		img:'img/56c426a5N9b6673f4.jpg',
+		name:'黄金',
+		price:'￥1699'
+	},
+	{
+		img:'img/56c426a5N9b6673f4.jpg',
+		name:'黄金',
+		price:'￥1699'
+	}
+	]
+	function getimg(img){
+		var html = '';
+		for(var i=0;i<pro.length;++i){
+		html += '<li class="img">';
+		html +=   '<div class="cover"><a class="btn" href="#">立即抢购</a></div>';
+		html +=    '<a href="#">';
+		html +=				'<img src="'+pro[i].img+'">';
+		html +=				'<p class="'+pro[i].name+'">';
+		html +=				'<p class="'+pro[i].price+'">';
+		html +=			'</a>'
+		html +=		'</li>';
+	}
+		return html;	
+	}
+	$('.btn-add').on('click',function(e){
+		e.preventDefault();
+		var html = getimg(pro);
+		$('.img-ct').append(html);
+	})
+
+	$('.img-ct').on('mouseenter','.img',function(){
+		$(this).find('.cover').show();
+	}).on('mouseleave','.img',function(){
+		$(this).find('.cover').hide();
+	});
+
+
+</script>
+</body>
+</html>

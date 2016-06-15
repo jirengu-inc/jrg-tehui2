@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>插件方式多轮播</title>
+</head>
+<style type="text/css">
+    *{
+        padding:0;
+        margin: 0;
+        box-sizing: border-box;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+    }
+    body{
+        background-color: rgba(233,233,232,1);
+    }
+    .title{
+        margin-top: 20px;
+        text-align: center;
+        color: rgba(66,66,66,1);
+    }
+    .carousel{
+        width: 1230px;
+        margin: 200px auto;
+    }
+    .wrap{
+        position: relative;
+        margin-left: 10px;
+        width: 400px;
+        height: 300px;
+        float: left;
+    }
+    .img-ct {
+        position: relative;
+    }
+    .img-ct li {
+        position: absolute;
+        display: none;
+    }
+    .img-ct li img{
+        width: 400px;
+        height: 300px;
+        border-radius: 5px;
+    }
+    .arrow{
+        position: absolute;
+        top:50%;
+        margin-top: -20px;
+        background-color: #666666;
+        opacity: 0.7;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        line-height: 40px;
+        color: #fff;
+        text-align: center;
+    }
+    .pre{
+        left: 2%;
+    }
+    .next{
+        right: 2%;
+    }
+    .bullet{
+        position: absolute;
+        top:90%;
+        left: 50%;
+        transform:translateX(-50%);
+    }
+    .bullet li{
+        display: inline-block;
+        width: 30px;
+        height: 7px;
+        background-color: #666;
+        margin-left: 10px;
+        -webkit-border-radius: 40px;
+        -moz-border-radius: 40px;
+        border-radius: 40px;
+    }
+    .bullet li.active{
+        background-color: #fff;
+    }
+    .clearfix{
+        content: '';
+        clear: both;
+        display: block;
+    }
+</style>
+<body>
+    <div class="title">
+        <h1>————— 插件方式多轮播 —————</h1>
+    </div>
+    <div class="carousel">
+        <div class="wrap">
+            <ul class="img-ct clearfix">
+                <li><img src="img/4.png"></li>
+                <li><img src="img/3.png"></li>
+                <li><img src="img/2.png"></li>
+                <li><img src="img/1.png"></li>
+            </ul>
+            <a class="arrow pre" href="#">&lt;</a>
+            <a class="arrow next" href="#">&gt;</a>
+            <ul class="bullet clearfix">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrap">
+            <ul class="img-ct clearfix">
+                <li><img src="img/4.png"></li>
+                <li><img src="img/3.png"></li>
+                <li><img src="img/2.png"></li>
+                <li><img src="img/1.png"></li>
+            </ul>
+            <a class="arrow pre" href="#">&lt;</a>
+            <a class="arrow next" href="#">&gt;</a>
+            <ul class="bullet clearfix">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+        <div class="wrap">
+            <ul class="img-ct clearfix">
+                <li><img src="img/4.png"></li>
+                <li><img src="img/3.png"></li>
+                <li><img src="img/2.png"></li>
+                <li><img src="img/1.png"></li>
+            </ul>
+            <a class="arrow pre" href="#">&lt;</a>
+            <a class="arrow next" href="#">&gt;</a>
+            <ul class="bullet clearfix">
+                <li class="active"></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="carouselPlug.js"></script>
+<script type="text/javascript">
+    $('.carousel .wrap').carousel();
+</script>
+</body>
+</html>

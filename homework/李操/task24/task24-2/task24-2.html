@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task24-2|加载更多</title>
+</head>
+<style>
+	ul,li{
+		margin:0;
+		padding: 0;
+		font-family: Microsoft YaHei;
+	}
+	#wrap li{
+	  list-style:none;
+	  border: 1px solid #ccc;
+	  padding: 10px;
+	  margin-top: 10px;
+	  cursor:pointer;
+	}
+	#load{
+		text-decoration: none;
+		color: red;
+		width: 80px;
+		height: 25px;
+		line-height: 25px;
+		text-align: center;
+		border:1px solid red;
+		display: block;
+		margin:10px auto;
+		padding: 5px;
+		border-radius: 3px;
+		transition: 0.2s;
+	}
+	#load:hover{
+		background-color: red;
+		color: #fff;
+	}
+</style>
+<body>
+	<ul id="wrap">
+		<li>內容1</li>
+		<li>內容2</li>
+	</ul>
+	<a href="#" id="load">加載更多</a>
+	<script src="../js/ajax.js"></script>
+	<script>
+		var btn = document.getElementById("load"),
+			wrap = document.getElementById("wrap"),
+			flag = false,//设置一个表示状态的flag，初始化值为`false`，数据到来之前防止重复点击
+			num = 2; //初始li數目為2
+
+		btn.addEventListener('click', function(e) {
+		    e.preventDefault();
+		    flag = true;
+	
+		    ajax({
+		        url: 'task24-2.php', //接口地址
+		        type: 'get',
+		        data: {
+		            nowNum: num, //當前li數目
+		            addNum: 5 //每次添加li數目
+		        },
+		        success: function(ret) {
+		            append(ret.data);
+		            num += 5;
+		            flag = false;
+		        },
+		        error: function() {
+		        	flag = false;
+		            alert("Error :(");
+		        }
+		    });
+		    if(flag){
+		        return;
+		    }	    
+		});
+
+		function append(arr) {
+		    for (var i = 0; i < arr.length; i++) {
+		        var li = document.createElement('li');
+		        li.innerText = arr[i];
+		        wrap.appendChild(li);
+		    }
+		}
+
+	</script>
+</body>
+</html>

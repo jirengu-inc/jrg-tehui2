@@ -1,0 +1,47 @@
+/** 清除内外边距 **/
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, /* structural elements 结构元素 */
+dl, dt, dd, ul, ol, li, /* list elements 列表元素 */
+pre, /* text formatting elements 文本格式元素 */
+form, fieldset, legend, button, input, textarea, /* form elements 表单元素 */
+th, td /* table elements 表格元素 */ {
+  margin: 0;
+  padding: 0;
+}
+
+body, button{
+	font-family: 'Microsoft YaHei',tahoma, arial, \5b8b\4f53, sans-serif;
+}
+a { text-decoration: none; color: #3998ED}
+a:hover { text-decoration: underline; }
+ul, ol { list-style: none; }
+
+.btn{
+	background-color: #333;
+	padding: 6px 14px;
+	margin: 10px;
+	text-align: center;
+	cursor: pointer;
+	border-radius: 20px;
+	color: #d0d0d0;
+	-webkit-transition: background-color 0.25s ease-out 0s;
+	-moz-transition: background-color 0.25s ease-out 0s;
+	transition: background-color 0.25s ease-out 0s;
+	box-shadow: 2px 3px 2px rgba(0, 0, 0, 0.3);
+}
+.btn:hover{
+	background-color: #222;
+	color: #fff;
+}
+#header{
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	color: #9E9999;
+	box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2);
+	margin-bottom: 50px;
+}
+
+.container{
+	text-align: center;
+}
+

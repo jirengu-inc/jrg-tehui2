@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无缝轮播</title>
+	<style>
+	body,ul,li{
+		padding:0;
+		margin:0;
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+	li{
+		list-style: none;
+	}
+	#head{
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	#wrap{
+		width:400px;
+		height:300px;
+		position: relative;
+		margin:0 auto;
+		border:10px solid black;
+		border-radius: 20px;
+	}
+	.ct{
+		position: relative;
+		width:400px;
+		height:300px;
+		overflow: hidden;
+	}
+	.ct-img{
+		position:absolute;
+	}
+	.ct-img li{
+		float:left;
+	}
+	.ct-img img{
+		width:400px;
+		height:300px;
+	}
+	.arrow{
+		width:30px;
+		height:30px;
+		position: absolute;
+		top:50%;
+		margin-top:-15px;
+		border-radius: 30px;
+		text-align:center;
+		line-height: 30px;
+		background:#aaa;
+		opacity: 0.8;
+		display: none;
+	}
+	.arrow:hover{
+		background:white;
+		opacity: 1;
+	}
+	#wrap:hover >.arrow{
+		display: block;
+	}
+	.prev{
+		left:10px;
+	}
+	.next{
+		right:10px;
+	}
+	.btn{
+		position:absolute;
+		left:50%;
+		transform:translateX(-50%);
+		bottom:20px;
+	}
+	.btn>li{
+		width:20px;
+		height:10px;
+		border-radius:10px;
+		float:left;
+		margin-right: 10px;
+		background:#aaa;
+	}
+	.btn li.active{
+		background:white;
+	}
+	</style>
+</head>
+<body>
+	<div id="head">
+		<h1>无缝轮播(操作DOM顺序)</h1>
+	</div>
+	<div id="wrap">
+		<div class="ct">
+		<ul class="ct-img">
+			<li><a href="javascript:void(0)"><img src="http://img1.cache.netease.com/catchpic/3/35/35ABB48BBD56C5EF7C3145B5F454CC43.jpg" alt="图片1"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://h.hiphotos.baidu.com/zhidao/pic/item/8cb1cb1349540923820e17559358d109b3de49b1.jpg" alt="图片2"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://i-7.vcimg.com/trim/9e31eba64ca3460d72688e7c96ecd741328963/trim.jpg" alt="图片3"></a></li>
+			<li><a href="javascript:void(0)"><img src="http://p17.qhimg.com/bdm/1600_900_85/d/_open360/game1012/8.jpg" alt="图片4"></a></li>
+		</ul>
+		</div>
+		<a class="arrow prev"href="javascript:void(0)"><</a>
+		<a class="arrow next"href="javascript:void(0)">></a>
+		<ul class="btn">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+<script>
+	var $ct=$(".ct-img");
+	var $prev=$(".prev");
+	var $next=$(".next");
+	var $btn=$(".btn");
+	var num=0//初始值设置为0;
+	var key=false//设置状态锁
+	var imgWidth=$(".ct-img").find("img").width();//图片宽度
+	var imgNum=$(".ct-img").children().size();//图片个数
+
+	$ct.prepend($ct.children().last().clone());//把最后一个元素克隆后弄到第一个
+	$ct.append($ct.children().eq(1).clone())//把第二个元素克隆后弄到最后一个。
+	var newNum=$ct.children().size();//克隆后图片的数量。
+	$ct.css({
+		"width":imgWidth*newNum,
+		"left":0-imgWidth//整体向左移动一个图片的距离，让我们看到的还是之前的那副图片
+	})
+	autoplay();
+	$(".ct").on("mouseenter",function(){
+		autostop();
+	})
+	$(".ct").on("mouseout",function(){
+		autoplay();
+	})
+	$prev.on("click",function(){
+		playPrev();
+	})
+	$next.on("click",function(){
+		playNext();
+	})
+	$btn.on("click","li",function(){
+		var tem=$(this).index();
+		if(tem>num){
+			playNext(tem-num);
+		}if(tem<num){
+			playPrev(num-tem);
+		}if(tem=num){
+			return;
+		}
+	})
+	function playNext(tem){
+		var idx=tem||1;
+		if(key===true){
+			return;
+		}
+		key=true;
+		$ct.animate({
+			"left":"-="+imgWidth*idx
+		},function(){
+			num=(num+idx)%imgNum;
+			if(num===0){
+				$ct.css("left",0-imgWidth)
+			}
+			key=false;
+			setButton();
+		})
+	}
+	function playPrev(tem){
+		var idx=tem||1;
+		if(key===true){
+			return;
+		}
+		key=true;
+		$ct.animate({"left":"+="+imgWidth*idx},function(){
+			num=(imgNum+num-idx)%imgNum;
+			if(num===(imgNum-1)){
+				$ct.css("left",0-imgWidth*imgNum)
+			}
+			key=false;
+			setButton();
+		})
+	}
+	function setButton(){
+		$btn.children().removeClass('active');
+		$btn.children().eq(num).addClass('active');
+	}
+	function autostop(){
+		clearInterval(auto);
+	}
+	function autoplay(){
+		auto=setInterval(function(){
+			playNext();
+		},3000)
+	}
+	
+	</script>

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task27-3 don't DOM</title>
+    <style>
+        ul {
+            margin:0;
+            padding:0;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+        }
+        a>img {
+            vertical-align: bottom;
+        }
+
+        .wrap {
+            position: relative;
+            width:300px;
+            height: 200px;
+            overflow: hidden;
+        }
+        .img-ct {
+            position: absolute;
+            /*width: 1800px;*/
+            /*left:-300px;*/
+        }
+        .img-ct:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+        .img-ct>li {
+            float: left;
+        }
+        .img-ct img {
+            width: 300px;
+            height: 200px;
+        }
+        .arrow {
+            position: absolute;
+            top:50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius:20px;
+            color:white;
+            background-color: #ccc;
+            opacity:.7;
+        }
+        .pre {
+            left:10px;
+        }
+        .next {
+            right:10px;
+        }
+        .arrow:hover {
+            opacity: 1;
+        }
+        .pointer {
+            position: absolute;
+            left:50%;
+            bottom:5px;
+            transform: translateX(-50%);
+        }
+        .pointer>li {
+            display: inline-block;
+            width: 30px;
+            height: 5px;
+            border-radius:10px;
+            background-color: white;
+            cursor:pointer;
+        }
+        .pointer>li.active {
+            background-color: #ccc;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+        <ul class="img-ct">
+            <li><a href="#"><img src="img/11.jpg" alt="0"></a></li>
+            <li><a href="#"><img src="img/22.jpg" alt="1"></a></li>
+            <li><a href="#"><img src="img/33.jpg" alt="2"></a></li>
+            <li><a href="#"><img src="img/44.jpg" alt="3"></a></li>
+        </ul>
+        <a href="#" class="pre arrow"><</a>
+        <a href="#" class="next arrow">></a>
+        <ul class="pointer">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+
+    </div>
+
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+    <script>
+        var $imgCt = $(".img-ct");
+        var $items = $imgCt.children();
+        var width = $items.width();
+        var $pre = $(".pre");
+        var $next = $(".next");
+        var $pointer = $(".pointer");
+        var curIndex = 0;
+        var isLoad = false;
+
+        $items.last().clone().prependTo($imgCt);
+        $items.first().clone().appendTo($imgCt);
+
+        var imgCount = $imgCt.children().size();
+        $imgCt.css({
+            width:imgCount*width,
+            left:0-width
+        });
+
+        function play(index) {
+            if (isLoad) return;
+            isLoad = true;
+
+            $imgCt.animate({left:index*(-width)},800,function () {
+                if (index == 5) {
+                    $imgCt.css('left','-300px');
+                    curIndex = 1;
+                }else if (index == 0) {
+                    $imgCt.css('left','-1200px');
+                    curIndex = 4;
+                }else {
+                    curIndex = index;
+                }
+                $pointer.children().removeClass("active").eq(curIndex-1).addClass("active");
+                isLoad =  false;
+            });
+
+        }
+        function playNext() {
+            play((curIndex+1)%imgCount);
+        }
+        function playPre() {
+            play((curIndex-1+imgCount)%imgCount);
+        }
+        $pointer.on("click","li",function (e) {
+            var idx = $(this).index()+1;
+            play(idx);
+        });
+        $pre.on("click",function (e) {
+            playPre();
+        });
+        $next.on("click",function (e) {
+            playNext();
+        });
+
+    </script>
+</body>
+</html>

@@ -177,6 +177,9 @@ li.clear{
 .about{
 	padding:120px;
 }
+.timeline ul{
+	position: relative;
+}
 .timeline li:after{
 	content: "";
 	display: table;
@@ -187,10 +190,10 @@ li.clear{
 	border-left: 2px solid #ddd;
     position: absolute;
     left: 50%;
-    height: 200%;
+    height: 85%;
     margin-left: 15px;
 }
-.time-img{
+.left1 .time-img{
 	border: 5px solid #ddd;
 	border-radius: 50%;
 	overflow:hidden;
@@ -198,8 +201,40 @@ li.clear{
 	height: 156px;
 	position: relative;
 	left: 50%;
-	margin-left: -80px;
+	margin-left: -15px;
 	margin-bottom: 120px;
+}
+.right1 .time-img{
+	border: 5px solid #ddd;
+	border-radius: 50%;
+	overflow:hidden;
+	width: 156px;
+	height: 156px;
+	position: relative;
+	left: 50%;
+	margin-right: 230px;
+	margin-bottom: 120px;
+}
+.story .time-img{
+	border: 5px solid #ddd;
+	border-radius: 50%;
+	overflow:hidden;
+	width: 156px;
+	height: 156px;
+	position: relative;
+	left: 50%;
+	margin-left: -60px;
+	margin-bottom: 120px;
+	background-color: #FED136;
+}
+.story .time-img a{
+	display: inline-block;
+    width: 60px;
+    color: #fff;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 50px;
 }
 .timeline ul:after{
 	content: "";
@@ -223,4 +258,174 @@ li.clear{
 .right1 .time-text{
     text-align: left;
     margin-right: 80px;
+}
+/*team样式*/
+.team{
+	background-color: #ddd;
+	padding: 120px 0;
+}
+.clearfix:after{
+	content: "";
+	clear: both;
+	display: table;	
+}
+.team-pic li{
+	float: left;
+	margin-left: 120px;
+}
+.pic1 img{
+	border: 3px solid #fff;
+	border-radius: 50%;
+	width: 240px;
+	height: 240px;
+	overflow: hidden;
+}
+.team-pic .fa-2x{
+     color: #fff;
+     margin-top: 6px;
+     font-size: 1.5em;
+} 
+.team-pic a{
+	background-color: #000;
+	width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.team-pic .text1 h3{
+	margin-top: 30px;
+	margin-bottom: 20px；
+}
+.team-pic .text1 p{
+	margin-bottom: 20px;
+}
+/*us*/
+.us{
+	padding:50px;
+}
+.us-pic1 img{
+	padding: 0 30px 0 30px;
+	width: 300px;
+}
+.us-pic2{
+	background: #000 url(../image/map-image.png) top left;
+    padding: 150px 0;
+	width: 100%;
+}
+.us-pic2 .map h4{
+	color: #fff;
+	font-size: 25px;
+}
+.us-pic2 .map p{
+	color: #fff;
+	font-style: italic;
+}
+.user-info input {
+    display: block;
+    width: 500px;
+    height: 30px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+}
+.user-info{
+	float: left;
+}
+
+.user-info input:focus, textarea:focus {
+    border: 1px solid #fed136;
+}
+textarea {
+    width: 45%;
+    height: 192px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+    float: left;
+    margin-left: 60px;
+}
+input[type="submit"]{
+	clear:both;
+}
+.btn{
+    font-weight: bold;
+    font-size: 17px;
+    text-transform: uppercase;
+    color: #fff;
+    background: #fed136;
+    display: block;
+    width: 220px;
+    height: 65px;
+    line-height: 65px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 50px auto;
+}
+/*foot*/
+.footer {
+    position: relative;
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    height: 90px;
+}
+
+.footer .wrap-center {
+    position: absolute;
+    width: 70%;
+    height: 42px;
+    top: 50%;
+    left: 50%;
+    margin-top: -21px;
+    margin-left: -35%;
+}
+
+.footer ul {
+    margin: 0 100px;
+}
+
+.footer .info a {
+    color: #fed136;
+}
+
+.footer .info a:hover {
+    color: #fec503;
+    text-decoration: underline;
+}
+
+.footer .info a:nth-child(2) {
+    margin-left: 15px;
+}
+.social li{
+	border-radius: 50%;
+	background-color: #000;
+	height:40px;
+	width: 40px;
+	float: left;
+}
+.social .fa-2x{
+	color: #fff;
+	margin-top: 10px;
+	font-size: 1.5em;
+}
+.footer-float.cleatfix {
+    margin-left: 100px;
+}
+.footer-float1 li{
+	float: left;
+}
+.copyright{
+	margin-top: 50px;
+}
+ul.social{
+	margin-top: 40px;
+}
+.info{
+	margin-top: 50px;
 }

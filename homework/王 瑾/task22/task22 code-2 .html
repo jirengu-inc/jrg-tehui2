@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task20</title>
+</head>
+<body>
+   <ul class="ct">
+   	<li>这里是</li>
+   	<li>饥人谷</li>
+   	<li>前端6班</li>
+   </ul>
+  <input class="ipt-add-content" placeholder="添加内容"/>
+  <button id="btn-add-start">开头添加</button>
+  <button id="btn-add-end">结尾添加</button>
+
+   <script type="text/javascript">
+   var ct = document.querySelector(".ct");
+   var lists =  document.querySelector(".ct").children;
+   var btnstart = document.querySelector("#btn-add-start");
+   var inputct = document.querySelector(".ipt-add-content");
+   var btnend = document.querySelector("#btn-add-end");
+
+   function addEle(content){
+      	if(content.length>0){
+   		var newli = document.createElement("li");
+   		newli.innerText = content;
+   		return newli;
+   	}
+   }
+
+   btnstart.addEventListener("click",function(){
+     ct.insertBefore(addEle(inputct.value),lists[0]);
+   },false);
+   btnend.addEventListener("click",function(){
+    ct.appendChild(addEle(inputct.value));
+   },false)
+   	for(var i=0;i<lists.length;i++){
+   	lists[i].addEventListener("click",function(){
+   		console.log(this.innerText);
+   	})
+   }
+    </script>
+</body>
+</html>

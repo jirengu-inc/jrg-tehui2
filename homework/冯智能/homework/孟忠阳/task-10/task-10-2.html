@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-10-2</title>
+	<style>
+       *{
+       	margin:0;
+       	padding:0;
+       }
+       
+       .kuang{
+       	border:2px solid gray;
+       	width: 300px;
+       	height: 200px;
+       	margin: 50px;
+       }
+       .gray:before{
+       	border-top:20px solid transparent;
+       	border-right:20px solid transparent;
+       	border-left: 20px solid transparent;
+       	border-bottom: 20px solid gray;
+       	position:absolute;
+        display:block;
+        content: "";
+        left: 70px;
+        top: 10px;
+       	}  
+       	.red:before{
+       	border-top:15px solid red;
+       	border-right:15px solid red;
+       	border-left: 15px solid transparent;
+       	border-bottom: 15px solid transparent;
+       	position:absolute;
+        display:block;
+        content: "";
+        left: 323px;
+        top: 305px;
+       	}  
+        .touming:before{
+        	margin:50px;
+        content: "";
+        width: 30px;
+        height: 30px;
+        border-top:2px solid gray;
+       	border-right:2px solid gray;
+        position: absolute;
+        -webkit-transform:rotate(-45deg);
+        left: 20px;
+        top:  494px;
+        background: #fff;
+        }
+       
+	</style>
+</head>
+<body>
+	<div class="gray">
+		<div class="kuang"></div>
+	</div>
+	<div class="red">
+		<div class="kuang"></div>
+	</div>
+	<div class="touming">
+		<div class="kuang"></div>
+		<div class="lingxing"></div>
+	</div>
+</body>
+</html>

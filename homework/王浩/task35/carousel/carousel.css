@@ -1,0 +1,48 @@
+html,body,h1,h2,h3,h4,div,p,ul,ol,li{
+	padding: 0;
+	margin: 0;
+}
+li{
+	list-style-type: none;
+}
+.carousel-ct{
+	position: relative;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.carousel-listWrap{
+	position: absolute;
+}
+.carousel-listWrap:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.carousel-imgList{
+	float: left;
+}
+.carousel-arrow{
+	position: absolute;
+	cursor: pointer;
+	opacity: 0.5;
+}
+.carousel-arrow:hover{
+	opacity: 1;
+}
+.carousel-bullet{
+	position: absolute;
+}
+.carousel-bullet:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.carousel-btn{
+	float: left;
+	display: block;
+	opacity: 0.5;
+	cursor: pointer;
+}
+.carousel-btn:hover{
+	opacity: 1;
+}

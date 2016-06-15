@@ -2,9 +2,6 @@ html,body,div,p,ul,li,h1,h2,h3,h4,h5,h6 {
 	margin: 0;
 	padding: 0;
 }
-html,body {
-	height: 100%;
-}
 body {
 	font:16px/1.5 "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;
 }
@@ -13,6 +10,10 @@ li {
 }
 a {
 	text-decoration: none;
+}
+html,body {
+	height: 100%;
+	width: 100%;
 }
 .clearfix:after {
 	content: "";
@@ -31,8 +32,11 @@ a {
 	width: 1140px;
 	margin: 0 auto;
 }
-.header-wrap>ul>li {
+.header-wrap>ul {
 	float: right;
+}
+.header-wrap>ul>li {
+	float: left;
 }
 .header-wrap>ul>li>a {
 	padding: 0 15px;
@@ -67,7 +71,7 @@ a {
 }
 .wel-text h1 {
 	font-size: 5em;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .wel-text h3 {
 	font-size: 2.5em;
@@ -274,12 +278,12 @@ a {
 	background-position: center center;
 	background-color: #222222;
 	height: 100%;
+	overflow: hidden;
 }
 .contact-wrap {
 	width: 1140px;
 	margin: 0 auto;
 	text-align: center;
-	overflow: auto;
 }
 .contact-wrap h3 {
 	color: #fff;
@@ -291,35 +295,34 @@ a {
 	font-style: italic;
 	margin-bottom: 50px;
 }
-.message {
-	color: #fff;
-	position: relative;
-	overflow: auto;
+
+.contact-wrap .input input{
+	width: 535px;
+	height: 50px;
+	margin-bottom: 20px;
 }
-.message input {
-	display: block;
-	padding: 25px;
-	width: 500px;
-	margin-bottom: 30px;
-	border-radius: 6px;
+.contact-wrap .input {
+	width: 555px;
+	float: left;
 }
-.message textarea {
-	position: absolute;
-	left: 600px;
-	top: 0;
-	padding: 30px;
-	border-radius: 6px;
-	width: 450px;
-	height: 207px;
+.contact-wrap .textarea {
+	width: 350px;
+	float: left;
 }
-.message a {
-	display: inline-block;
+.contact-wrap .textarea textarea {
+	width: 350px;
+	height: 199px;
+	margin-left: 20px;
+}
+.contact-wrap .submit>input {
+	border:none;
 	border-radius: 4px;
 	padding: 20px 40px;
 	background-color: #fed136;
 	color: #fff;
+	cursor: pointer;
 }
-.message a:hover {
+.submit>input:hover {
 	background-color: #fec503;
 }
 #footer {

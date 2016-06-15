@@ -1,0 +1,51 @@
+
+html,body {
+    margin: 0;
+    padding: 0;
+}
+ul,li {
+    list-style: none;
+}
+.wrap {
+    width: 960px;
+    margin: 10px auto;
+}
+.ct {
+    position: relative;
+}
+.ct:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.ct .item {
+    position: absolute;
+    padding: 0 0 10px 0;
+    margin: 10px;
+    width: 280px;
+    border: 1px solid #ccc;
+}
+.ct img {
+    width: 260px;
+    padding: 10px;
+}
+.ct .paragraph{
+    font-size: 14px;
+    line-height: 2;
+    margin: 10px 15px 0;
+    color: #333;
+}
+.ct .item .header{
+    text-align: center;
+    height: 25px;
+    margin: 0 12px;
+    border-bottom: 1px solid #DBDBDB;
+}
+#target {
+    visibility: hidden;
+    /*background: #ccc;*/
+    height: 20px;
+}
+.hide {
+    display: none;
+}

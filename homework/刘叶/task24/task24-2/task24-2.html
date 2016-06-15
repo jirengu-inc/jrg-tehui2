@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task24-2</title>
+    <style type="text/css">
+        ul,li,button{
+            margin: 0;
+            padding: 0;
+            font-family: "Microsoft YaHei UI";
+        }
+        #ct{
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+        #ct>li{
+            padding: 12px;
+            margin-top: 2px;
+            border: 1px solid #ccc;
+            list-style: none;
+        }
+        #div{
+            text-align: center;
+            margin-top: 20px;
+        }
+        #loadMoreBtn{
+            height: 44px;
+            width: 76px;
+        }
+        #loadMoreBtn:hover{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul id="ct">
+    <li>内容1</li>
+    <li>内容2</li>
+    <li>内容3</li>
+</ul>
+<div id="div"><button id="loadMoreBtn">加载更多</button></div>
+<script>
+    var ct = document.querySelector('#ct'),
+        loadMoreBtn=document.querySelector('#loadMoreBtn'),
+        cur = 3,
+        isLoading = false;//设置状态锁，防止在加载的数据回来之前用户多次点击
+
+    loadMoreBtn.addEventListener('click', function(){
+        if(isLoading){
+            return;
+        }
+        isLoading = true;
+        loadMoreBtn.innerHTML='<img src="http://i1.hdslb.com/icon/f8c84297779fb8f8d24f2476c78bbefc.gif">';
+        //加一个loading图片，分散用户注意力
+
+        ajax({
+            url: 'getMore.php',
+            type: 'get',
+            data: {
+                start:cur,//当前li数量
+                len:3//每次添加的数量
+            },
+            success: function(json){
+                onSuccess(json);
+            },
+            error: function(){
+                onError();
+            }
+        });
+    });
+    function onSuccess(json){
+        isLoading = false;
+        loadMoreBtn.innerText='加载更多';
+        if(json.status == 1){
+            append(json.data);
+            cur += 3;
+        }else{
+            alert('数据获取失败');
+        }
+    }
+    function onError(json){
+        isLoading = false;
+        loadMoreBtn.innerText = '加载更多';
+        alert('请稍后再试')
+    }
+    function  append(arr){
+        for(var i = 0;i<arr.length;i++){
+            var li = document.createElement('li');
+            li.innerText=arr[i];
+            ct.appendChild(li);
+        }
+    }
+</script>
+<script src="../mod/ajaxMod.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task-22-2</title>
+	<style>
+	  .ct{
+		background: pink;
+		padding: 20px;
+	  }
+	</style>
+</head>
+<body>
+<ul class="ct">
+    <li>让我们</li>
+    <li>一起学习</li>
+    <li>JavaScript</li>
+</ul>
+<input class="ipt-add-content" placeholder="添加内容"/>
+<button id="btn-add-start">开头添加</button>
+<button id="btn-add-end">结尾添加</button>
+</body>
+<script>
+	var ul = document.querySelector('.ct'),
+		addEnd = document.querySelector('#btn-add-end'),
+		addStart = document.querySelector('#btn-add-start');
+
+		// ul.onclick = function (e) {
+		//      console.log(e.target.innerText) ;
+		// }//注意：这样写会出问题，当点击到的是ul而不是li时（ul有padding时）会出错
+		//改为以下这种写法：
+		ul.addEventListener('click',function(e){
+		    if (e.target.tagName.toLowerCase() === 'li') {
+		        console.log(e.target.innerText);
+		    }
+		});
+
+	addEnd.onclick = function () {
+		var item = document.createElement('li');
+		item.innerText = document.querySelector('.ipt-add-content').value;
+		if (item.innerText) {
+			ul.appendChild(item);
+			document.querySelector('.ipt-add-content').value = null;
+		}else {
+			alert("Input Nothing!");
+		}
+	}
+
+	addStart.onclick = function (){
+		var item = document.createElement('li');
+		item.innerText = document.querySelector('.ipt-add-content').value;
+		if (item.innerText) {
+			ul.insertBefore(item,ul.firstChild);
+			document.querySelector('.ipt-add-content').value = null;
+		}else {
+			alert("Input Nothing!");
+		}
+	}
+</script>
+</html>

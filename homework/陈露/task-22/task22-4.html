@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tab切换-原生js</title>
+	<style>
+div,ul,li{
+  padding:0;
+  margin:0;
+}
+.nav{
+  box-sizing:border-box; 
+}
+.nav:after{
+  content:"";
+  height:0;
+  display:table;
+  clear:both;
+}
+.nav li{
+  float:left;
+  width:33%;
+  height:30px;
+  list-style:none;
+  text-align:center;
+  line-height:30px;
+  border:1px solid #ccc;
+  cursor:pointer;
+}
+.nav li:first-child{
+  border-right:none;
+}
+.nav li:last-child{
+  border-left:none;
+}
+.nav .active{
+  background:#eee;
+}
+.container .content{
+  border:1px solid #ccc;
+  border-top:none;
+  height:150px;
+  text-align:center;
+  line-height:150px;
+  display:none;
+}
+.container .active{
+  display:block;
+}
+
+ 
+	</style>
+</head>
+<body>
+ <div class="container">
+   <ul class="nav">
+     <li class="active">tab1</li>
+     <li>tab2</li>
+     <li>tab3</li>
+   </ul>
+   <div class="content active">内容1</div>
+   <div class="content">内容2</div>
+   <div class="content">内容3</div>
+ </div>
+</body>
+
+<script>
+     var Utils={
+    hasClass: function(el,cls){ 
+     var reg=new RegExp('\\b'+cls+'\\b','g');
+     return el.className.match(reg);
+},
+    singleAddClass: function(el, cls){
+        if(Utils.hasClass(el,cls)) return;
+        el.className += ' ' + cls;
+    },
+    singleRemoveClass:function(el,cls){
+       var reg=new RegExp('\\b'+cls+'\\b','g');
+       el.className=el.className.replace(reg,'');
+        
+    },
+   
+    addClass: function(el,cls){
+       if(el.length && el.length>0){
+          for(var i=0;i<el.length;i++){
+            Utils.singleAddClass(el[i],cls);
+          }
+       }else{
+         Utils.singleAddClass(el,cls);
+       }
+  },
+  
+     removeClass:function(el,cls){
+       if(el.length && el.length>0){
+          for(var i=0;i<el.length;i++){
+            Utils.singleRemoveClass(el[i],cls);
+          }
+       }else{
+         Utils.singleRemoveClass(el,cls);
+       }
+       
+     },
+  
+    indexOf: function(el){
+        var parent = el.parentElement,
+            siblings = parent.children;
+        for(var i=0; i<siblings.length; i++){
+            if(el === siblings[i]){
+              return i;
+           }
+        }
+        return -1;
+    }
+};
+
+
+var nav=document.querySelector('.nav'),
+    li=nav.children,
+    content=document.querySelectorAll('.content');
+    
+nav.addEventListener('click',function(e){
+    var target=e.target,
+        index= Utils.indexOf(target),
+        content=document.querySelectorAll('.content');
+    if(index>-1){
+        Utils.removeClass(li,'active');
+        Utils.addClass(target,'active');
+        Utils.removeClass(content,'active');
+        Utils.addClass(content[index],'active');
+           
+    }
+      
+ });
+  
+  
+</script>
+</body>
+</html>

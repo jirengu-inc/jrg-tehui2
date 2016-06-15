@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task-10-1</title>
+    <style>
+        body,html {
+            padding: 0;
+            margin: 0;
+            font-family:"SimHei","sans-serif";
+        }
+
+        .header {
+            margin-top:-20px;    /*顶部有20px空隙*/
+            height: 92px;
+            background-color: #333;
+            background-image: url(http://7xrart.com1.z0.glb.clouddn.com/jirengulogo.png);
+            background-repeat: no-repeat;
+            background-position: 14% 8px;
+        }
+        .nav1 {
+            list-style: none;
+        }
+        .header-li {
+            color: #fff;
+            height: 92px;
+            line-height: 92px;
+            float: left;
+            width: 72px;
+        }
+        .header-li:nth-child(1) {
+            margin-left: 66%;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+        a:hover {
+            color: #efefef;
+        }
+
+        .sidebar {
+            width:400px;
+            height:500px;
+            background: #eee;
+            position: absolute;
+            top:112px;
+            left:300px;
+            transition-duration:  0.2s;
+        }
+        .main {
+            width:500px;
+            height:360px;
+            background: #eee;
+            position: absolute;
+            right:300px;
+            top:112px;
+            transition-duration:  0.2s;
+        }
+        .main h2 {
+            color: #a3a3a3;
+            font-weight:normal;
+            text-indent:20px;
+            margin-top:2em;
+        }
+        .txt {
+            color: #a3a3a3;
+            margin-left:20px;
+            line-height:30px;
+        }
+        .sidebar:hover {
+            position: absolute;
+            top:118px;
+            left:305px;
+            background: #e8e8e8;
+        }
+        .main:hover {
+            position: absolute;
+            right:295px;
+            top:118px;
+            background: #e8e8e8;
+        }
+
+        .footer {
+            width:100%;
+            height:80px;
+            background: #333;
+            position: absolute;
+            left:0;
+            bottom:0;
+        }
+        .foo1 {
+            list-style:none;
+            color:#fff;
+            margin:0;
+            padding:0;
+        }
+        .footer-li {
+            width:100px;
+            line-height:80px;
+            float: left;
+        }
+        .footer-li:nth-child(1) {
+            margin-left:300px;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <ul class="nav1">
+        <li class="header-li"><a href="#">技能</a></li>
+        <li class="header-li"><a href="#">经历</a></li>
+        <li class="header-li"><a href="#">作品</a></li>
+        <li class="header-li"><a href="#">关于</a></li>
+    </ul>
+</div>
+<div class="box">
+    <div class="sidebar"></div>
+    <div class="main">
+        <h2>我的作品</h2>
+        <div class="txt">生活很美好<br>心情不错<br>代码写的很漂亮<br></div>
+    </div>
+</div>
+<div class="footer">
+    <ul class="foo1">
+        <li class="footer-li"><a href="#">饥人谷</a></li>
+        <li class="footer-li"><a href="#">JSCODE</a></li>
+        <li class="footer-li"><a href="#">JSBIN</a></li>
+    </ul>
+</div>
+</body>
+</html>

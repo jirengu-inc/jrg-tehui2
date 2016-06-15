@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task27-2|多个轮播</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<style type="text/css">
+	html,body,ul,li,h2{
+		margin: 0;
+		padding: 0;
+	}
+	a{
+		text-decoration: none;
+	}
+	li{
+		list-style: none;
+	}
+	#header{
+		height: 80px;
+		line-height: 80px;
+		text-align: center;
+		color: #9E9999;
+		font-family: Microsoft YaHei;
+		box-shadow: 0px 5px 5px #eee;
+		margin-bottom: 50px;
+	}
+	#content{
+		overflow: hidden;
+		width: 1240px;
+		margin:0 auto;
+	}
+	.carousel{
+		position: relative;
+		overflow: hidden;
+		width: 380px;
+		height: 250px;
+		float: left;
+		margin-left: 50px;
+	}
+	.carousel:first-of-type{
+		margin-left: 0;
+	}
+	.carousel .img-ct img{
+		width: 380px;
+		height: 250px;		
+	}
+	.carousel .img-ct li{
+		position: absolute;
+		display: none;
+	}
+	.carousel .img-ct{
+		position: relative;
+	}
+	.carousel .img-ct:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.carousel .arrow{
+		width: 30px;
+		height: 30px;
+		line-height: 30px;
+		border-radius: 30px;
+		background-color: #4B4848;
+		text-align: center;
+		color: #fff;
+		font-size: 20px;
+		position: absolute;
+		top: 50%;
+		margin-top: -15px;
+		opacity: 0.5;
+		display: none;
+	}
+	.carousel .pre{
+		left: 10px;
+	}
+	.carousel .next{
+		right: 10px;
+	}
+	.carousel .arrow:hover{
+		opacity: 0.8;
+	}
+	.carousel:hover>.arrow{
+		display: block;
+	}
+	.carousel .bullet{
+		position: absolute;
+		bottom: 10px;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.carousel .bullet:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.carousel .bullet li{
+	    width: 25px;
+	    height: 8px;
+	    border-radius: 5px;
+	    background: #eee;
+	    opacity: 0.8;
+	    float: left;
+	    margin: 0 5px; 
+	    cursor: pointer;		
+	}
+	.carousel .bullet li.active{
+	    background: #747474;
+	}
+	.carousel .bullet li.active{
+	    background: #747474;
+	}
+</style>
+</head>
+<body>
+	<div id="header">
+		<h2>—— 淡入淡出轮播 × 3 ——</h2>
+	</div>
+	
+	<div id="content">
+		<div class="carousel">
+		    <ul class="img-ct">
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-1.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-2.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-3.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-4.jpg" alt=""></a></li>
+		    </ul>
+		    <a href="#" class="pre arrow"><</a>
+		    <a href="#" class="next arrow">></a>
+		    <ul class="bullet">
+		    	<li class="active"></li>
+		    	<li></li>
+		    	<li></li>
+		    	<li></li>
+		    </ul>
+		</div>
+
+		<div class="carousel">
+		    <ul class="img-ct">
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-1.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-2.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-3.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-4.jpg" alt=""></a></li>
+		    </ul>
+		    <a href="#" class="pre arrow"><</a>
+		    <a href="#" class="next arrow">></a>
+		    <ul class="bullet">
+		    	<li class="active"></li>
+		    	<li></li>
+		    	<li></li>
+		    	<li></li>
+		    </ul>
+		</div>
+
+		<div class="carousel">
+		    <ul class="img-ct">
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-1.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-2.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-3.jpg" alt=""></a></li>
+		    	<li><a href="#"><img src="http://7xrvo9.com1.z0.glb.clouddn.com/0316/portfolio-4.jpg" alt=""></a></li>
+		    </ul>
+		    <a href="#" class="pre arrow"><</a>
+		    <a href="#" class="next arrow">></a>
+		    <ul class="bullet">
+		    	<li class="active"></li>
+		    	<li></li>
+		    	<li></li>
+		    	<li></li>
+		    </ul>
+		</div>
+	</div>
+
+	<script type="text/javascript">
+	//获取当前页面class名为carousel的轮播的数量，挨个执行各自的动作
+	//现实中这种做法也不太现实，应使用面向对象写法，后面回头补充
+	for(var i = 0;i < $('.carousel').length;i++){
+		$carousel = $('.carousel').eq(i);//选择第i个轮播
+		eachCarousel ($carousel);
+	}
+	function eachCarousel (num) {
+		var $imgct = num.children('.img-ct'),
+			$items = $imgct.children(),
+			$pre = num.children('.pre'),
+			$next = num.children('.next'),
+			$bullet = num.children('.bullet'),
+			itemNum = $items.length,//item数量，方便拓展
+			ready = false, //设置状态锁
+			nowView = 0; //当前显示的item
+		
+		play(0);//设置从第一张开始轮播
+		autoPlay();//自动轮播
+
+
+		// num.on('mouseover',function () {
+		// 	stopAuto();//停止轮播
+		// }).on('mouseleave',function () {
+		// 	 autoPlay();//自动轮播
+		// })
+		// 此处应该用闭包
+
+		$pre.on('click',function (e) {
+			e.preventDefault();
+			playPre(); //切换到下一item
+		});
+		$next.on('click',function (e) {
+			e.preventDefault();
+			playNext(); //切换到上一item
+		});
+		$bullet.find('li').on('click',function () {
+			var idx = $(this).index();
+			play(idx); ////切换到指定item
+		});
+
+		function autoPlay () {
+			clock = setInterval(function(){
+				playNext();
+			}, 3000);	
+		}	
+
+		function stopAuto () {
+				 clearInterval(clock) ;
+		}				
+
+		function playPre () {
+			play((itemNum+nowView-1)%itemNum);
+		}
+		function playNext () {
+			play((nowView+1)%itemNum); 
+		}
+
+		function play (idx) {
+			if(ready){return;}
+			ready = true;
+			$items.eq(nowView).fadeOut(600);
+			$items.eq(idx).fadeIn(600,function () {
+				 ready = false; 
+			});
+			nowView = idx;
+			bulletActive();
+		}
+
+		function bulletActive () {
+			 $bullet.children().removeClass("active").eq(nowView).addClass("active");
+		}
+	}
+
+
+	</script>
+</body>
+</html>

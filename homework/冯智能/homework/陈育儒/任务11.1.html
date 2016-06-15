@@ -1,0 +1,86 @@
+<!doctype html>
+<html>
+<head>
+	<title>任务11.1</title>
+	<meta charset="utf-8">
+	<style>
+		html,body,ul,li{
+			margin:0;
+			padding:0;
+		}
+		a{
+			text-decoration:none;
+		}
+		#header{
+			background-color:#eee;
+			font-size:0px;
+			height:40px;
+		}
+		.nav>li{
+			list-style:none;
+			font-size:23px;
+			display:block;
+			float:left;
+			padding:0px 13px;
+			position:relative;
+			line-height:40px;
+		}
+		.nav>li a{
+			color:black;
+		}
+		.nav>li:hover{
+			background-color:#ccc;
+		}
+		.nav .child{
+			display:none;
+			list-style:none;			
+		}
+		.nav>li>.child{
+			position:absolute;
+			padding:0px;
+			top:100%;
+			left:0px;
+			border:1px solid #ccc;
+		}
+		.nav>li:hover .child{
+			display:block;
+		}
+		.nav .child>li:hover{
+			background-color:#ccc;
+		}
+		.clear{
+			clear:both;
+		}
+
+	</style>
+</head>
+<body>
+<div id="header">
+	<ul class="nav">
+		<li><a href="">前端</a>
+			<ul class="child clear">
+				<li>JavaScript</li>
+				<li>CSS</li>
+				<li>HTML</li>
+			</ul>
+		</li>
+		<li><a href="">服务端</a>
+			<ul class="child">
+				<li>NODE</li>
+				<li>PHP</li>
+				<li>JAVA</li>
+			</ul>
+		</li>
+		<li><a href="">前端工具</a>
+			<ul class="child">
+				<li>sublime</li>
+				<li>webstorm</li>
+				<li>Git</li>
+			</ul>
+		</li>
+		<li><a href="">HTML</a></li>
+		<li><a href="">NODE</a></li>
+	</ul>
+</div>
+</body>
+</html>

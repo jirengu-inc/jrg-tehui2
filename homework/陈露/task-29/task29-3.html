@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>无限滚动</title>
+<style>
+ul,li{
+		margin:0;
+		padding: 0;
+		font-family: Microsoft YaHei;
+	}
+.ct{
+		width: 960px;
+		margin: 0 auto;
+	}
+.ct li{	
+	  margin-left: auto;
+	  margin-right: auto;
+	  width: 800px;
+	  list-style:none;
+	  background: orange;
+	  border-radius: 5px;
+	  padding: 20px;
+	  margin-top: 30px;
+	  cursor:pointer;
+	  color: white;
+	}
+.btn{
+		text-decoration: none;
+		width: 40px;
+		height: 40px;
+		margin:10px auto;
+		padding: 5px;
+		transition: 0.2s;
+	}
+.btn img{
+		width: 40px;
+		height: 40px;
+	}
+
+.hover{
+	 opacity: 0.5;
+	  color: #fff;
+	}
+.gotop{
+		width: 50px;
+		height: 50px;
+		background: #FFE153;
+		opacity: 0.6;
+		border:1px solid #FFBB77;
+		line-height: 50px;
+		text-align: center;
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+        display: none;
+		cursor: pointer;
+		border-radius: 50%;
+		box-shadow: 2px 2px 2px #ccc;
+}
+</style>
+</head>
+<body>
+<ul class="ct">
+		<li>内容1</li>
+		<li>内容2</li>
+		<li>内容3</li>
+		<li>内容4</li>
+		<li>内容5</li>
+</ul>
+<div class='btn'><img src="http://7xt1vz.com1.z0.glb.clouddn.com/yellowloading.gif" alt=""></div>
+<div class='gotop'>top</div>
+
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    var $btn=$('.btn'),
+        $gotop=$('.gotop'),
+        $ct=$('.ct'),
+        start=5;
+
+loadMore();
+// 事件代理，给li一个触击效果，这样ajax新加入的li也有效果
+ $ct.on('mouseenter','li',function(){
+ 	$(this).siblings().removeClass('hover');
+ 	$(this).addClass('hover');
+ })	;
+ $ct.on('mouseleave','li',function(){
+ 	$(this).removeClass('hover');
+ });
+
+
+var clock;
+$(window).on('scroll',function(){
+    var scrollTop=$(window).scrollTop();
+	if (scrollTop>200) {
+		$gotop.css('display','block');
+	}else{
+		$gotop.css('display','none');
+	}
+    goTop();
+
+
+    if(clock){
+         clearTimeout(clock);
+      }
+      clock=setTimeout(function(){
+      	    if(!isVisible($btn)) return;
+      	    loadMore($btn);  	    
+      },300);
+ });
+
+
+function isVisible($node){
+     var winH=$(window).height(),
+         scrollTop =$(window).scrollTop(),
+         offsetTop=$node.offset().top;
+    if(scrollTop+winH >= offsetTop ){
+          return true;
+    }else{
+         return false; 
+    }
+ }
+
+function goTop(){
+	$gotop.on('click',function(){
+		$(window).scrollTop(0);
+	})
+}
+
+ function loadMore($node){
+ 	$.ajax({
+ 		url:'getMore.php',
+ 		dataType:'json',
+ 		type:'get',
+ 		data:{
+ 			start:start,
+ 			len:5
+ 		},
+ 		success:function(ret){
+ 			onSuccess(ret);
+ 		},
+ 		error:function(){
+ 			onError();
+ 		}
+ 	});
+}
+ 	function onSuccess(ret){
+ 		console.log(ret);
+     if(ret.status ===1){
+     	append(ret.data);
+     	start +=5;
+     }else{
+     	alert('获取数据失败！');
+     }
+}
+
+  function onError(){
+	 alert("稍后再试~");
+}
+ 
+
+function append(arr){
+	for(var i=0;i<arr.length;i++){
+		$ct.append('<li>'+arr[i]+'</li>');
+	}
+}
+
+
+</script>
+</body>
+</html>

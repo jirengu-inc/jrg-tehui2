@@ -1,0 +1,163 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;	
+				padding: 0;
+			}
+			li{list-style: none;}
+			a{text-decoration: none;}
+			.clearfix:after{
+				content:'';
+				display: block;
+				clear: both;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+			
+			.ct{
+				margin:50px auto;
+				width:400px;
+				height:250px;
+				position: relative;
+			}
+			.imgct li{
+				position:absolute;
+				display:none;
+			}
+			.imgct li img{
+				width:400px;
+				height:250px;
+			}
+			.arrow{
+				position: absolute;
+				width:24px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				background:#111;
+				top:50%;
+				margin-top:-13px;
+				color:#fff;
+				opacity:.5;
+			}
+			.prev{
+				left:5px;
+			}
+			.next{
+				right:5px;
+			}
+			.arrow:hover{
+				opacity:0.9;
+			}
+			.bullet{
+				position:absolute;
+				bottom:5px;
+				left:50%;
+				transform: translateX(-50%);
+			}
+			.bullet li{
+				width:20px;
+				height:6px;
+				border-radius:2px;
+				background:#555;
+				float:left;
+				margin:0 6px;
+				cursor:pointer;
+			}
+			.bullet li.active{
+				background:#6d9eeb;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ct">
+			<ul class="imgct clearfix">
+				<li><a href="javascript:void(0)"><img src="1.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="2.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="3.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="4.jpg" alt=""></a></li>
+			</ul>
+			<a href="javascript:void(0)" class="prev arrow"><</a>
+			<a href="javascript:void(0)" class="next arrow">></a>
+			<ul class="bullet clearfix">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+
+
+	</body>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		var $imgct = $('.imgct');//图片容器
+		var $img = $('.imgct li');//图片个数
+		var $imgtotal = $img.children().length;
+		//或者$('.ct').children().size();总个数
+		var $btnPrev = $('.prev');//按钮上一页
+		var $btnNext = $('.next');//按钮下一页
+		var curIdx = 0;//初始化位置
+		var isRunning = false;//初始化
+		var $bullet = $('.bullet');
+		var $bullets = $bullet.children();
+		
+
+
+		function playNext(){
+			play((curIdx+1) % $imgtotal);
+		}
+
+		function playPrev(){
+			play(($imgtotal+curIdx-1) % $imgtotal);
+		}
+
+		function play(idx){
+			if(isRunning){return;};
+			isRunning = true;
+			$img.eq(curIdx).fadeOut(1000);
+			$img.eq(idx).fadeIn(1000,function(){
+				isRunning = false;
+			});
+			curIdx = idx;
+			setBullet();
+		}
+
+		function setBullet() {
+        $bullets.eq(curIdx).siblings().removeClass("active");
+        $bullets.eq(curIdx).addClass("active");
+    }
+
+    function autoPlay(){
+    	clock = setInterval(function(){
+    		playNext();
+    	},4000)
+    }
+
+		function stop(){};
+		play(0);
+		autoPlay();
+
+		$btnNext.on('click',function(){
+			playNext();
+		});
+		
+		$btnPrev.on('click',function(){
+			playPrev();
+		});
+
+		$bullet.on('click','li',function(){
+
+			var bulletIdx = $(this).index();
+			play(bulletIdx);
+		})
+	</script>
+</html>

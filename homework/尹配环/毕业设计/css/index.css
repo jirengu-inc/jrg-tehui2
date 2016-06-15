@@ -1,0 +1,362 @@
+* {
+	box-sizing: border-box;
+}
+html,body {
+	width:100%;
+	height: 100%;
+}
+h1, h2, h3, h4, h5, h6 {
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+}
+.warp {
+	width:1140px;
+	margin:0 auto;
+}
+ul,h2 {
+	margin:0;
+	padding:0;
+}
+li {
+	list-style: none;
+}
+a {
+	text-decoration:none;
+}
+.clearfix:after {
+	content:"";
+	display: block;
+	clear: both;	
+}
+.pos-relative {
+	position: relative;
+}
+.colorYellow {
+	color: #fed136;
+}
+.btn {
+	display: inline-block;
+	color:white;
+	background-color: #fed136;
+	border-radius:3px;
+	cursor: pointer;
+}
+.btn {
+	padding:20px 40px;
+	font-size: 20px;
+}
+
+.btn:hover {
+	background:#fec503;
+}
+/*nav*/
+.nav-pos {
+	position: fixed;
+
+    z-index: 1000;
+}
+#nav {
+	width:100%;
+	padding:10px 0;
+}
+#nav h2 {
+	float:left;
+	color: #fed136;
+	font-size:32px;
+    font-family: "Kaushan Script","Helvetica Neue",Helvetica,Arial,cursive;
+}
+#nav ul {
+	float:right;
+}
+#nav ul>li {
+	float:left;
+	margin-right: 20px;
+}
+#nav ul>li>a {
+	display: block;
+	padding: 8px;
+	color:white;
+	font-weight: bold;
+}
+#nav ul>li>a:hover {
+	color:#fed136;
+}
+
+/*head*/
+#head,#head>.ct,#head>.ct>li {
+	width:100%;
+	height: 100%;
+}
+#head {
+	overflow: hidden;
+}
+#head>.ct {
+	position: absolute;
+	top:0;
+	left:0;
+}
+#head>.ct>li {
+	float:left; 	
+	/*background-image: url(../img/bg1.jpg);*/
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: cover;
+}
+#head>.bullet {
+	position: absolute;
+	bottom:10px;
+	left:50%;
+	margin-left:-120px;
+}
+.bullet>li {
+	float: left;
+	margin-left:10px;
+	width:50px;
+	height:10px;
+	background-color: white;
+	border-radius:5px;
+	cursor: pointer;
+}
+.bullet>li.active {
+	background-color: #ccc;
+}
+#head>.content {
+	position:absolute;
+	z-index: 999;
+	left:18%;
+	top: 30%;
+	color:white;
+	text-align: center;
+}
+#head>.content>span {
+	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-style: italic;
+	font-size: 40px;
+}
+#head>.content>h1 {
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 75px;
+	line-height: 75px;
+	margin-top:30px;
+	margin-bottom: 50px;
+
+}
+
+/*services*/
+#services,#protfolio,#about,#team,#contact,#copyright {
+	padding-top:120px;
+	padding-bottom:120px;
+	text-align: center;
+}
+#services h2 {
+    margin-bottom:15px;
+}
+h2 {
+	font-size: 40px;
+	margin:0;
+}
+p {
+	font-size: 16px;
+	font-family: "Droid Serif","Helvetica Neue",Helvetica,Arial,sans-serif;
+	text-transform: none;
+	font-style: italic;
+	font-weight: 400;
+	margin-bottom: 75px;
+	color:#9E9E9E;
+}
+#services ul,#team ul,#copyright ul {
+	margin-left:-20px;
+}
+#services ul>li,#team ul>li,#copyright ul>li {
+	float:left;
+	width:360px;
+	margin-left:20px;
+}
+#services ul>li>h4,#team ul>li>h4 {
+	font-size: 18px;
+}
+#services ul>li>p,#team ul>li>p {
+	font-size: 14px;
+	color:#777;
+}
+
+/*protfolio*/
+
+#protfolio,#team {
+    background-color: #eee;
+}
+#protfolio ul,#clients ul {
+    margin-left: -25px;
+}
+#protfolio ul>.item,#clients ul>li {
+    width:260px;
+    margin-left:25px;
+}
+#protfolio ul>.item {
+    position:absolute;
+    padding:5px;
+    border:1px solid #ccc;
+    border-radius:3px;
+    transition: all 1s;
+}
+#protfolio ul>li img {
+    width:100%;
+}
+#protfolio ul>li>p {
+    margin:10px;
+}
+
+/*about*/
+
+#about {
+
+}
+#about ul {
+
+}
+#about ul>li {
+
+    opacity: 0;
+    transition: all 1s;
+}
+#about ul>li h4 {
+    margin-top:10px;
+}
+#line {
+    /*position: absolute;*/
+    /*top:0;*/
+    /*left: 50%;*/
+    /*margin-left: -2px;*/
+    margin:0 auto;
+    width:0;
+    height: 100px;
+    border: 1px solid #ddd;
+}
+#about ul>li>img{
+    width:160px;
+    border-radius:160px;
+    border:5px solid #ccc;
+}
+#about .info {
+    position:absolute;
+    top:0;
+    width:450px;
+}
+#about .right-text {
+    text-align: right;
+    left:0;
+}
+#about .left-text {
+    text-align: left;
+    right:0;
+}
+.about-end {
+    width:160px;
+    height:160px;
+    border-radius:160px;
+    border:5px solid #ccc;
+    margin:0 auto;
+    background-color: #fed136;
+}
+li.about-end {
+    margin-bottom: 0;
+    padding-top:50px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+
+/*******************team******************/
+#team img {
+    width:200px;
+    border-radius: 360px;
+}
+#team .info>p {
+    padding:0 250px;
+    padding-top:50px;
+    margin:0;
+}
+#team .link-icon {
+    font-size: 1.6rem;
+}
+/*******************clients******************/
+#clients {
+    padding-top:50px;
+    padding-bottom:50px;
+    text-align: center;
+}
+#clients ul>li {
+    float:left;
+}
+/*******************contact us******************/
+#contact {
+    background-image: url(../img/map.jpg);
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    padding-top: 100px;
+    padding-bottom: 100px;
+    color: white;
+}
+#contact h1 {
+    font-size: 40px;
+}
+#contact p {
+    font-style: italic;
+    color: #ccc;
+}
+#contact form {
+    margin-top: 50px;
+}
+
+.half-from {
+    box-sizing: border-box;
+    float: left;
+    width: 50%;
+    height: 280px;
+    padding:20px;
+}
+.half-from input,.half-from textarea {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 30px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    outline: none;
+}
+.half-from input:focus,.half-from textarea:focus {
+    border-color: #FED136;
+}
+.half-from textarea {
+    width: 100%;
+    height: 100%;
+
+}
+#contact form>button {
+    padding:20px 40px;
+    font-weight: bold;
+    color: white;
+    background-color: #FED136;
+    border: none;
+    border-radius: 5px;
+}
+#contact form>button:hover {
+    background-color: #FEC503;
+}
+
+/*******************copyright******************/
+
+
+#copyright ul>li:last-child a {
+    color: #FED136;
+}
+#copyright ul>li>a:hover {
+    color: #FEC503;
+    text-decoration: underline;
+}
+

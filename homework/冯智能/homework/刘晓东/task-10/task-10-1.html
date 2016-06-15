@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>左右两栏布局</title>
+	<style>
+	/*css reset*/
+	body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,fieldset,table,th,td,img,div,dl,dt,dd,input,select{margin: 0;padding: 0;}
+	body{font-size: 12px;}
+	img{border: none;vertical-align:top;}
+	li{list-style: none;}
+	input,select,textarea{outline: none;border: none;}
+	textarea{resize: none;overflow:auto;}
+	a{text-decoration: none;}
+
+
+	/*clear float*/
+	.clearfix:after{content: "";clear: both; display: table;}
+	.clearfix{zoom:1;}
+	
+	.fl{float: left;}
+	.fr{float: right;}
+
+	.wrapper{
+	width: 960px;
+	margin: 0 auto;
+	}
+	body{
+		font-family: "微软雅黑";
+	}
+	#header{
+		background-color: #333;
+	}
+	#header .nav li{
+		float: left;
+		margin: 0 10px;
+	}
+	#header .nav li a{
+		float: left;
+		height: 92px;
+		padding: 0 20px;
+		line-height: 92px;
+		font-size: 20px;
+		color: #fff;
+	}
+	#header .nav li a:hover{
+		color: #ccc;
+		background: #555;
+	}
+
+	#content{
+		margin: 20px 0;
+		background: #fff;
+	}
+	#content .main-content{
+		width: 740px;
+		padding-bottom: 30px;
+		background: #eee;
+	}
+	#content .aside{
+		width: 200px;
+		height: 500px;
+		background: #eee;
+	}
+	#content .main-content h1{
+		margin: 40px 20px;
+		font-weight: normal;
+		font-size: 25px;
+		color: #656565;
+	}
+	#content .main-content p{
+		margin: 5px 20px;
+		color: #656565;
+	}
+
+	#footer{
+		background: #333;
+	}
+	#footer ul{
+
+	}
+	#footer ul li{
+		float: left;
+		margin: 0 10px;
+	}
+	#footer ul li a{
+		line-height: 40px;
+		font-size: 14px;
+		color: #fff;
+	}
+	#footer ul li a:hover{
+		color: #999;
+	}
+	</style>
+</head>
+<body>
+
+	<div id="header">
+		<div class="wrapper clearfix">
+			<div class="logo fl">
+				<a href=""><img src="images/logo.png" alt="logo"></a>
+			</div>
+			<ul class="nav fr">
+				<li><a href="">技能</a></li>
+				<li><a href="">经历</a></li>
+				<li><a href="">作品</a></li>
+				<li><a href="">关于</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<div id="content">
+		<div class="wrapper clearfix">
+			<div class="main-content fr">
+				<h1>我的作品</h1>
+				<p>生活很美好</p>
+				<p>心情不错</p>
+				<p>代码写得很漂亮</p>
+			</div>
+			<div class="aside fl">
+				
+			</div>
+		</div>
+	</div>
+
+	<div id="footer">
+		<div class="wrapper clearfix">
+			<ul>
+				<li><a href="">饥人谷</a></li>
+				<li><a href="">JSCODE</a></li>
+				<li><a href="">JSBIN</a></li>
+			</ul>
+		</div>
+	</div>
+
+</body>
+</html>

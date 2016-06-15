@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>css sprite</title>
+</head>
+<style type="text/css">
+body {
+	font:16px "Microsoft Yahei",sans-serif;
+}
+ul {
+	padding:0;
+	margin:0;
+	list-style-type:none;
+}
+li {
+	display: inline-block;
+}
+a {
+	text-decoration:none;
+	color:inherit;
+}
+.icon {
+	background-image:url(http://7xrb9a.com1.z0.glb.clouddn.com/icons5.png);
+	background-repeat:no-repeat;
+	padding-left:20px; 
+}
+
+.forward {
+	background-position:left top;
+}
+.forward:hover {
+	background-position: -64px top;
+	color:#a459be;
+}
+
+.start {
+	background-position:left center;
+}
+
+.start:hover {
+	background-position:-64px center;
+	color:#a459be;
+}
+
+.stop {
+	background-position: left bottom;
+}
+.stop:hover {
+	background-position: -63px bottom;
+	color:#a459be;
+}
+</style>
+<body>
+<ul>
+<li><a class="icon forward" href="#">前进</a></li>
+
+<li><a class="icon start" href="#">开始</a></li>
+<li><a class="icon stop" href="#">停止</a></li>
+</ul>
+	
+</body>
+</html>

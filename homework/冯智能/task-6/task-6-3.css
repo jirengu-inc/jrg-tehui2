@@ -1,0 +1,24 @@
+#whole{
+	border-collapse: collapse;
+	border:10px solid #F5F5F5;
+	width: 100%;
+	padding: 8px;
+	line-height: 35px;
+}
+.content1{
+	text-align: center;
+	border:1px solid #ccc;
+}
+.content2{
+	text-align: center;
+	border:1px solid #ccc;
+}
+#whole td{
+	border:1px solid #ccc;
+}
+#whole th{
+	border:1px solid #ccc;
+}
+.header{
+	background-color: #11AAAB;
+}

@@ -1,0 +1,595 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif;;
+}
+
+#top-content {
+    background-image: url("../img/header-bg.jpg");
+    position: absolute;
+    background-size: cover;
+    left: 0;
+    top: 0;
+    z-index: 1;
+}
+
+.layout {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 2000px;
+}
+
+#nav {
+    position: fixed;
+    height: 60px;
+    width: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 4;
+    overflow: hidden;
+    /*这里背景色应该设置transparent滴,但是拉下去的时候导航文字就没了,太丑了,*/
+    /*按照老师的demo,这里应该是有一个js,探测到页面滑到多少就自动把导航的背景色给变了吧;*/
+}
+
+#nav > a {
+    margin-left: 70px;
+    font-size: 30px;
+    line-height: 60px;
+    float: left;
+    text-decoration: none;
+    color: #fed136;
+    font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
+}
+
+#nav li > a {
+    text-decoration: none;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+#nav ul {
+    margin: 0 80px 0 30px;
+}
+
+#nav li {
+    list-style: none;
+    float: right;
+    margin: 3px 0 0 25px;
+    line-height: 60px;
+}
+
+#nav li > a:hover {
+    color: #fed136;
+}
+
+#nav > ul :after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+#top-introduce {
+    margin-top: 60px;
+}
+
+.introduce-text {
+    height: 600px;
+    background-color: transparent;
+    color: #fff;
+    opacity: 0.9;
+}
+
+.introduce-lead-in {
+    font-style: italic;
+    font-size: 30px;
+    margin-bottom: 30px;
+    font-weight: lighter;
+}
+
+.introduce-heading {
+    font-size: 60px;
+    margin: auto 50px auto;
+}
+
+.introduce-btn {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 50px;
+    border-radius: 5px;
+    background-color: #fed136;
+    display: inline-block;
+    padding: 17px 26px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.introduce-btn:hover {
+    cursor: pointer;
+    background-color: orange;
+    opacity: 0.9;
+}
+
+#services {
+    margin-top: 660px;
+}
+
+.services-all-function h1 {
+    margin-bottom: 20px;
+}
+
+.services-content {
+    height: 600px;
+    background-color: #f9f9f9;
+}
+
+.services-content > h2 {
+    font-size: 50px;
+    margin: 30px auto;
+    font-weight: bold;
+}
+
+.services-content h3 {
+    margin-top: 30px;
+    font-style: italic;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.services-all-function p {
+    color: #aaa;
+}
+
+.services-all-function div {
+    display: inline-block;
+    margin: 30px 10px;
+}
+
+.service-item {
+    background-color: #fed136;
+    border-radius: 50%;
+    margin-bottom: 40px;
+    height: 100px;
+}
+
+.icon-shopping-cart {
+    font-size: 60px;
+    color: #ffffff;
+    padding: 16px;
+}
+
+.icon-laptop {
+    font-size: 60px;
+    color: #ffffff;
+    padding: 16px;
+}
+
+.icon-lock {
+    font-size: 60px;
+    color: #ffffff;
+    padding: 16px 28px;
+    /*这里我原来用的before来添加一个背景圆形,或者display:inline-block,然后设置宽高和边框还有背景也可以实现,
+    然后想了一下又没有别的法子,弄一个,最后写成了这样,工程量比较大不说,遇到不规则的图形还需要修改padding来修补*/
+}
+
+.portfolio-content {
+    height: 1200px;
+    background-color: #f7f7f7;
+}
+
+.portfolio-content > h3 {
+    margin: 30px auto;
+    font-size: 40px;
+}
+
+.portfolio-content > h4 {
+    margin-bottom: 70px;
+}
+
+.portfolio-all-function {
+    margin-top: 20px;
+}
+
+.portfolio-function img {
+    width: 300px;
+    height: 217px;
+}
+
+.portfolio-function {
+    display: inline-block;
+    width: 300px;
+    height: 337px;
+    background-color: #fff;
+    margin: 20px 20px;
+}
+
+.portfolio-function-word {
+    margin-top: 50%;
+}
+
+.portfolio-function-word > h3 {
+    margin-top: -120px;
+    margin-bottom: 10px;
+}
+
+.portfolio-function-word > h4 {
+    font-style: italic;
+    color: #aaaaaa;
+}
+
+.portfolio-all-function:last-child {
+    margin-bottom: 100px;
+}
+
+.portfolio-hover:hover {
+    cursor: pointer;
+    opacity: 0.9;
+    /*我看老师的demo,这里是背景色变半透明,但是中间的Plus符号透明度依旧为1的效果;*/
+    /*那这个是怎么做到的呢?*/
+    transition: 0.5s;
+}
+
+.portfolio-hover:hover .icon-plus {
+    opacity: 1;
+    transition: 0.5s;
+}
+
+.portfolio-hover {
+    position: absolute;
+    width: 300px;
+    height: 217px;
+    background-color: #fed136;
+    opacity: 0;
+}
+
+#timeline {
+    position: relative;
+    width: 100%;
+    height: 2000px;
+}
+.wrap-center>h3{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.wrap-center>p{
+    font-style: italic;
+    color: #aaaaaa;
+    margin-bottom: 20px;
+}
+#timeline .wrap-center {
+    position: absolute;
+    text-align: center;
+    width: 76%;
+    height: 1500px;
+    top: 50%;
+    left: 50%;
+    margin-left: -38%;
+    margin-top: -900px;
+}
+
+#timeline li {
+    position: relative;
+    width: 50.1%;
+    padding-bottom: 150px;
+    line-height: 1.5em;
+    list-style: none;
+}
+
+#timeline li h4 {
+    margin-bottom: 15px;
+}
+
+#timeline li p {
+    font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+    font-size: .875em;
+}
+
+#timeline li:nth-child(2n+1) {
+    text-align: right;
+    border-right: 2px solid #eee;
+    padding-right: 120px;
+    float: left;
+    clear: right;
+}
+
+#timeline li:nth-child(2n) {
+    text-align: left;
+    border-left: 2px solid #eee;
+    padding-left: 120px;
+    float: right;
+    clear: left;
+}
+
+#timeline li img {
+    position: absolute;
+    width: 27%;
+    border: 8px solid #eee;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+}
+
+#timeline li:nth-child(2n+1) img {
+    right: -13.5%;
+}
+
+#timeline li:nth-child(2n) img {
+    left: -14%;
+}
+
+#timeline ul {
+    position: relative;
+}
+
+#timeline ul:before {
+    content: "Be part of our story!";
+    font-weight: bold;
+    font-size: 1.125em;
+    color: #fff;
+    text-transform: uppercase;
+    background: #fed136;
+    position: absolute;
+    z-index: 3;
+    display: block;
+    width: 78px;
+    height: 78px;
+    left: 50%;
+    bottom: -100px;
+    border: 7px solid #eee;
+    -webkit-border-radius: 100%;
+    -moz-border-radius: 100%;
+    border-radius: 100%;
+    margin-left: -82px;
+    padding: 35px;
+}
+#timeline ul:after {
+    content: "";
+    display: block;
+    clear: both;
+}
+.icon-plus {
+    font-size: 60px;
+    color: #ffffff;
+    position: absolute;
+    opacity: 0;
+    padding: 80px 127px;
+    transition: 0.4s;
+}
+#team {
+    width: 100%;
+    height: 800px;
+    background-color: #f7f7f7
+}
+
+.member-1, .member-2, .member-3 {
+    display: inline-block;
+    margin: auto 30px auto 30px;
+}
+
+#team img {
+    margin: 60px 50px 30px 50px;
+    width: 180px;
+    height: 180px;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
+
+#team h4 {
+    color: #ccc;
+    margin: 10px auto;
+}
+
+#team li {
+    font-size: 20px;
+    margin: 10px;
+    color: #ffffff;
+    line-height: 35px;
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-color: #000000;
+    transition: 0.3s;
+}
+
+#team li:hover {
+    background-color: #fed136;
+    transition: 0.3s;
+}
+
+#team .word-under-member {
+    color: #000;
+    line-height: 30px;
+    margin: 40px 100px auto 100px;
+}
+
+#company {
+    width: 100%;
+    background-color: #ffffff;
+}
+
+.company-pic {
+    height: 150px;
+}
+
+.company-pic img {
+    margin: auto 40px;
+}
+
+.company-pic img:hover {
+    cursor: pointer;
+}
+
+/*这里应该是用a标签的,但是我想试试,不用a标签,用伪类是不是也可以,虽然pointer有了,但是没有办法跳转连接*/
+
+#contact {
+    position: relative;
+    text-align: center;
+    background: url(../img/map-image.png) center center no-repeat #000;
+    width: 100%;
+    height: 785px;
+}
+
+#contact .wrap-center {
+    position: absolute;
+    width: 80%;
+    height: 480px;
+    top: 50%;
+    left: 50%;
+    margin-top: -240px;
+    margin-left: -40%;
+}
+
+#contact h3 {
+    color: #fff;
+    font-size: 50px;
+    font-weight: bold;
+    margin: 30px auto;
+}
+
+#contact p {
+    color: #aaa;
+    margin-bottom: 20px;
+}
+
+.user-info {
+    width: 50%;
+    margin-right: 20px;
+    float: left;
+}
+
+.user-info input {
+    display: block;
+    width: 90%;
+    height: 50px;
+    border: 1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+
+}
+
+.user-info input:focus, textarea:focus {
+    border: 1px solid #fed136;
+}
+
+.user-info input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input:-moz-placeholder,
+textarea:-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input::-moz-placeholder,
+textarea::-moz-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+.user-info input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    font-weight: bold;
+    font-size: 1em;
+    text-transform: uppercase;
+}
+
+/*这一段是审查元素之后,才学习到的*/
+
+textarea {
+    width: 45%;
+    height: 191px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    margin: 20px 0;
+    padding: 15px;
+    float: left;
+}
+
+input[type="submit"] {
+    clear: both;
+}
+
+.contact-btn {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 50px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    background-color: #fed136;
+    display: inline-block;
+    padding: 17px 26px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.contact-btn:hover {
+    cursor: pointer;
+    background-color: orange;
+    opacity: 0.9;
+}
+
+/*写到最后这个地方的btn的时候,突然想到其实可以和layout还有clearfix一样,单独做出来,类似一个配件,*/
+/*需要同样款式的btn时,直接在class里面加一个就好了,重复利用率很高,这个以后要注意*/
+
+.footer-content {
+    height: 100px;
+}
+
+.footer-content ul {
+    display: inline-block;
+    margin: 0 170px;
+}
+
+.footer-content li {
+    font-size: 20px;
+    margin: 20px 10px;
+    color: #ffffff;
+    line-height: 40px;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    background-color: #000000;
+    transition: 0.3s;
+}
+
+.footer-content li:hover {
+    background-color: #fed136;
+    transition: 0.3s;
+}
+
+.footer-content > a {
+    color: #fed136;
+    text-decoration: none;
+    margin: auto 10px;
+}
+
+.footer-content > a:hover {
+    text-decoration: underline;
+    color: orange;
+}

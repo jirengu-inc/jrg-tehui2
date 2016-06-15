@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+</head>
+<body>
+    <!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>Examples</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<style type="text/css">
+		a{
+			text-decoration: none;
+
+		}
+		ul,li{
+			list-style: none;
+			padding: 0px;
+			margin: 0px;
+		}
+		html,body{
+			padding: 0px;
+			margin: 0px;
+		}
+		.clearfix:after{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.clearfix:before{
+			content: "";
+			clear: both;
+			display: block;
+		}
+		.img-list{
+	    	position: relative;\
+	    	width: 341px;
+	    	height: 582px;
+		}
+	    .img-list>li{
+	    	display: inline-block;
+	    	position: absolute;
+	    	top: 0px;
+	    	left: 0px;
+
+	    }
+	    .view{
+	    	overflow: hidden;
+			width: 341px;
+	    	height: 582px;
+	    	position: relative;
+	    	background-color: #999;
+	    }
+	    .btn-left,.btn-right{
+			position: absolute;
+			z-index: 1;
+			background-color: #999;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			height: 40px;
+			width: 40px;
+			opacity: 0.8;
+			cursor: pointer;
+			top: 50%;
+			margin-top: -20px;
+	    }
+	    .btn-left:hover,.btn-right:hover{
+	    	opacity: 1;
+	    }
+	    .btn-left{
+	    	left: 10px;
+	    }
+	    .btn-right{
+	    	right: 10px;
+	    }
+	    .btn-left>a,.btn-right>a{
+	    	font-family: "微软雅黑";
+	    	color: #fff;
+	    	font-size: 20px;
+
+	    }
+	    .bottom-nav{
+	    	position: absolute;
+	    	bottom: 10px;
+	    	left: 50%;
+	    }
+	    .bottom-nav>li{
+			display: inline-block;
+			width: 30px;
+			height: 10px;
+			background: #fff;
+			border-radius: 5px;
+			opacity: 0.8;
+
+	    }
+	    .bottom-nav>li>a{
+	    	display:block;
+			width: 30px;
+			height: 10px;
+			border-radius: 5px;
+	    }
+	    .active{
+	    	background: #aaa;
+	    }
+</style>
+</head>
+<body>
+    <div class="view">
+    	<ul class="img-list">
+    		<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+    	</ul>
+	    <div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+	<div class="view">
+    	<ul class="img-list">
+    		<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+    	</ul>
+	    <div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+	<div class="view">
+    	<ul class="img-list">
+    		<li><a href="javascript:void(0);"><img src="img/Archer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Lancer.jpg"></a></li>
+    		<li><a href="javascript:void(0);"><img src="img/Saber.jpg"></a></li>
+    	</ul>
+	    <div class="btn-left"><a href="javascript:void(0);"><</a></div>
+		<div class="btn-right"><a href="javascript:void(0);">></a></div>
+		<ul class="bottom-nav">
+			<li><a class="active" href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+			<li><a href="javascript:void(0);"></a></li>
+		</ul>
+	</div>
+    <script type="text/javascript">
+    	(function(){//初始话页面效果
+			//获取需要操作的元素节点
+			var $imgs=$(".img-list");
+			var $nav=$(".bottom-nav");
+			//设置底部导航水平居中
+			var $navWidth=$nav.width();
+			var setMargin="-"+($navWidth/2)+"px";
+			$nav.css("margin-left",setMargin);
+			//初始化轮播图
+			$imgs.find("li").hide();
+			$imgs.find("li:first-child").show();
+		})();//通过闭包形成块级作用域
+
+		//尝试用面向对象的方式来解决问题
+	    function View(viewNum){//构造函数construction
+	    	if($(".view").length == 0) {
+	    		alert("view is not exists ！");
+	    		return;
+	    	}
+	    	if(viewNum<0||viewNum>=$(".view")){
+				return;}
+	    	this.$view=$(".view").eq(viewNum);
+	   		this.$imgs=this.$view.find(".img-list");
+	   		this.$left=this.$view.find(".btn-left");
+			this.$right=this.$view.find(".btn-right");
+			this.$nav=this.$view.find(".bottom-nav");
+			this.$lis=this.$imgs.find("li");
+			this.lisNum=this.$lis.size();
+			this.curindx=0;//初始化当前选择的图片
+			this.isAnimate=false;//重复动画锁
+			//感觉有些数值可以抽象成公共属性。
+	    }
+	    //创建对象的公共方法
+	    //设置设置底部导航的按钮跳转
+	    View.prototype.btnColor=function(index){
+	    	var $select=this.$nav.find("li").eq(index);
+			$select.find("a").addClass("active");
+			$select.siblings().find("a").removeClass("active");
+	    }
+	   	//设置跳转函数
+	    View.prototype.skip=function(index){
+	    	if(this.isAnimate) return;
+	    	this.isAnimate=true;
+	    	var that=this;
+	    	this.$lis.fadeOut(function(){
+	    		that.btnColor(index);
+	    	});
+	    	this.$lis.eq(index).fadeIn(function(){
+	    		that.isAnimate=false;
+	    	});
+	    }
+	    //设置下一张图片的方法
+	    View.prototype.playNext=function(){
+	    	if(this.isAnimate) return;
+	    	var tempIndex=this.curindx;
+	    	++tempIndex;
+	    	tempIndex=tempIndex%this.lisNum;
+	    	this.curindx=tempIndex;
+	    	this.skip(tempIndex);
+	    }
+	    //设置上一张图片的方法
+	    View.prototype.playPre=function(){
+	    	if(this.isAnimate) return;
+	    	var tempIndex=this.curindx;
+	    	--tempIndex;
+	    	if(tempIndex<0) tempIndex=tempIndex+this.lisNum;
+	    	this.curindx=tempIndex;
+	    	this.skip(tempIndex);
+
+	    }
+
+
+	    //来少年，实验一发
+	    var viewNum=$(".view").size();
+	    var views=[];
+	    //for(var i=0;i<viewNum;i++){该方法,浏览器提示
+	    // var i=0;
+	    var run=function (i){//被逼无奈
+		    var view=new View(i);
+		    //console.log(i);
+		    views.push(view);
+		    // console.log(view.$imgs);
+		    // console.log(views[i].$imgs);
+		    views[i].$nav.on("click","li",function(){
+		    	views[i].skip($(this).index());
+		    });
+		    views[i].$left.on("click",function(){
+		    	views[i].playPre();
+		    })
+		    views[i].$right.on("click",function(){
+		    	views[i].playNext();
+		    })
+		    setInterval(function(){
+		    	//console.log(1);
+		    	views[i].playNext();
+		    },1000);
+		} 
+		//}
+		//console.log(views);
+		for(var i=0;i<viewNum;i++){
+			run(i);
+		}
+
+
+
+
+
+
+    </script>
+</body>
+</html>
+</body>
+</html>

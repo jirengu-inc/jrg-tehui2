@@ -1,0 +1,27 @@
+{
+  "name": "liuye",
+  "version": "1.0.0",
+  "description": "my first package",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "gulp": "^3.9.1"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.10",
+    "gulp-concat": "^2.6.0",
+    "gulp-fontmin": "^0.7.4",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-imagemin": "^3.0.1",
+    "gulp-jshint": "^2.0.1",
+    "gulp-uglify": "^1.5.3"
+  },
+  "scripts": {
+    "test": "no"
+  },
+  "keywords": [
+    "liuye"
+  ],
+  "author": "liuye",
+  "license": "ISC"
+}

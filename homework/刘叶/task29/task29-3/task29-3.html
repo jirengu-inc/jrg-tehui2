@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>到达底部Ajax加载新元素</title>
+</head>
+<style type="text/css">
+    body,.content,ul,li,div{
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+        text-align: center;
+        font-family: "Consolas", "Menlo", "Courier",monospace;
+    }
+    a{
+        text-decoration: none;
+    }
+    li{
+        list-style: none;
+        background-color: lightblue;
+    }
+    .content{
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    li{
+        background-color: lightskyblue;
+        margin: 30px 0;
+        padding: 30px;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .active{
+        color: #fff;
+        background-color: cornflowerblue;
+        transition: 0.5s;
+    }
+    .goTop{
+        opacity: 0;
+        position: fixed;
+        color: #fff;
+        right:8%;
+        top:85%;
+        height: 40px;
+        width: 40px;
+        line-height: 40px;
+        border-radius: 50%;
+        padding: 20px;
+        transition: 0.3s;
+        font-size: 20px;
+        background-color:rgba(52, 52, 52, .4);
+    }
+    .goTop:hover{
+        color: #fff;
+        background-color:rgba(52, 52, 52, .8);
+        transition: 0.5s;
+    }
+    .loading img{
+        height: 20%;
+        width: 20%;
+        background-color: #00a0d8;
+    }
+    .loadBtn{
+        margin-bottom: 200px;
+        color: #ff4500;
+    }
+</style>
+<body>
+    <div class="content">
+        <div class="introduce"><h2>页面向下滑动加载发送Ajax加载更多,鼠标上去还能变色</h2></div>
+        <ul class="infoCt">
+            <li>内容01</li>
+            <li>内容02</li>
+            <li>内容03</li>
+            <li>内容04</li>
+            <li>内容05</li>
+            <li>内容06</li>
+            <li>内容07</li>
+            <li>内容08</li>
+            <li>内容09</li>
+            <li>内容10</li>
+        </ul>
+        <div class="loadBtn">向下滑动加载更多</div>
+    </div>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var $ct = $('.content'),
+        $infoCt = $('.infoCt'),
+        $loadBtn = $('.loadBtn');
+    var clock;
+    var start = 11;
+
+    var $goTop =$('<a href="#" class="goTop">Top</a>');
+        $goTop.appendTo($ct);
+
+
+    //完成父容器事件代理,避免由ajax添加的新li无法绑定
+    $infoCt.on('mouseover','li',function(){
+        $(this).siblings().removeClass('active');
+        $(this).addClass('active');
+    });
+    $infoCt.on('mouseleave','li',function(){
+        $(this).removeClass('active');
+    });
+
+
+    //探测滑动距离,发送ajax的元素是否可见,是否到达需要显示goTop的位置
+    $(window).on('scroll',function(){
+        //回到Top的功能保留了
+        var scrollTop = $(window).scrollTop();
+        if(scrollTop > 100){
+            $goTop.css('opacity',1)
+        }else{
+            $goTop.css('opacity',0)
+        }
+
+        //下面是发送ajax的区域
+        if(clock) clearTimeout(clock);
+        clock = setTimeout(function(){
+            if(!isVisible($loadBtn)) return;
+            sendAjax($loadBtn);
+        }, 200);
+        // 和懒加载里面一样，只要还在滚动就在不停的设置定时器又在清除定时器，直到停止滚动才会发送
+        // 我自己做到这个时候，也发现和上次防止重复点击不一样，滚轮滑动的计量标准和鼠标点击的计量标准不一样
+        // 我们判定他是否出现是以按钮的上边界来算的，但是load按钮是有高度的；
+        // 也就是说在滚动经过这段按钮高度的距离内，发送了多个ajax
+    });
+
+
+    //判定是否到可见
+    function isVisible($node){
+        var offsetTop = $node.offset().top,//元素到页面顶部的偏移距离
+            scrollTop = $(window).scrollTop(),//页面垂直滚动的距离
+            windowH = $(window).height();//浏览器窗口高度
+        if(scrollTop + windowH > offsetTop){
+            return true
+        }else{
+            return false;
+        }
+    }
+
+    function sendAjax($node){
+        if($.data.isSend) return;
+        //这里是我最后发现的问题，到达按钮之后，等待延时器刚刚失效，ajax回来之前的空档
+        //稍微再滚动一下屏幕，就会造成发送了多次，就会append多次
+        $node.html('<div class="loading"><img src="load.gif"></div>');
+        $.data.isSend=true;
+        $.ajax({
+            url: 'getMore.php',
+            dataType: 'json',
+            type: 'GET',
+            data: {
+                start: start,
+                len: 5
+            },
+            success: function (ret) {
+                onSuccess(ret);
+            },
+            error: function () {
+                onError();
+            },
+            complete: function () {
+                onComplete();
+            }
+        });
+
+        //ajax发送之后,具体的处理措施
+        function onSuccess(ret) {
+            if (ret.status === 1) {
+                append(ret.data);
+                start += 5;
+            } else {
+                alert('错误');
+            }
+        }
+
+        function onError() {
+            alert('服务器出错了!');
+        }
+
+        function onComplete() {
+            $loadBtn.html('<div class="loadBtn">向下滑动加载更多</div>');
+        }
+
+        function append(arr) {
+            for (var i = 0; i < arr.length; i++) {
+                $infoCt.append('<li>' + arr[i] + '</li>');
+            }
+            $.data.isSend = false;
+        }
+    };
+</script>
+</body>
+</html>
