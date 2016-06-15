@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li,p,h3{
+			margin:0;
+			padding:0;
+			box-sizing: border-box;
+			font-family: "微软雅黑"
+	}
+	li{
+		list-style: none;
+		box-shadow:0 0 20px #aaa;
+	}
+	h1{
+		text-align:center;
+	}
+	#wrap{
+		width:1200px;
+		margin:0 auto;
+		text-align: center;
+	}
+	.ct{
+		position: relative;
+		
+	}
+	.ct-main{
+		width:342px;
+		border:1px solid black;
+		margin:20px;
+		position: absolute;
+	}
+	.ct img{
+		width:340px;
+	}
+	.hide{
+		display: none;
+	}
+	</style>
+</head>
+<body>
+		<h1>懒加载+ajax+瀑布流</h1>
+	<div id=wrap>
+		<ul class="ct">
+		<!-- 	<li class="ct-main">
+				<a href="javascript:viod(0)">
+					<img src="" alt="">
+				</a>
+				<h3></h3>
+				<p></p>
+			</li> -->
+			<li class="ct-main hide"></li>
+		</ul>
+		<span class="getMore"></span>
+	</div>
+
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script src="top.js"></script>
+<script>
+//回到顶部
+goTop();
+// 优化性能,防止滚动时,短时间多次触发
+var clock,
+	star=1,
+	len=6;
+
+$(window).on("scroll",function(){
+	if(clock){
+		clearTimeout(clock)
+	}
+	 clock=setTimeout(function(){
+	 	playShow()
+	 },300)
+});
+
+//初始化
+playShow();
+
+//判断是否可见
+function playShow(){
+	console.log("开始判断")
+	if(isVisble($(".getMore"))){
+		playAjax()// 发送ajax
+	}
+}
+
+function isVisble(node){
+	var height=$(window).height();
+	var getH=node.offset().top;
+	console.log (getH)
+	var curH=$(window).scrollTop();
+	if(height+curH>=getH){
+		return true;
+	}else{
+		return false;
+	}
+}
+
+function playAjax(){
+	console.log("发送数据");
+	$.ajax({
+		url:'http://platform.sina.com.cn/slide/album_tech',
+		type: 'get',
+		dataType: 'jsonp',
+		jsonp: 'jsoncallback',
+		data: {
+			app_key: '1271687855',
+			num:len,
+			page:star 
+		},
+		success:function(node){
+			var tem=node.data;
+			star++;
+			onSuccess(tem);
+		},
+		error:function(){
+			onError();
+		}
+	});
+}
+// 处理返回的数据
+function onSuccess(node){
+	console.log("处理数据");
+	var $nodeShow=concat(node);//拼接字符串,添加到页面中
+	var defereds=[]//创建一个空数组
+	$nodeShow.find("img").each(function(){
+		var defer=$.Deferred();
+		$(this).load(function(){
+			defer.resolve();
+		})//每当图标加载完成后,执行resolve;
+		defereds.push(defer)
+	});
+	 $.when.apply(null,defereds).done(function() { 
+	 	console.log("图片加载完成")
+		waterFull($nodeShow);
+	});
+}
+
+function onError(){
+	console.log("数据接收出错")
+}
+
+//拼接数据，并添加到html中
+function concat(items){
+	var tpl="",
+		$nodes;
+	for(var i=0;i<items.length;i++){
+		tpl += '<li class="ct-main">';
+		tpl += ' <a href="'+ items[i].url +'" ><img src="' + items[i].img_url + '" alt=""></a>';
+		tpl += ' <h4 >'+ items[i].short_name +'</h4><hr>';
+		tpl += '<p >'+items[i].short_intro+'</p>';
+		tpl += '</li>';
+	}
+	$nodes=$(tpl);
+	$(".ct").append($nodes);
+	console.log("添加到页面上")
+	return $nodes;
+}
+
+//瀑布流之前的准备
+var sumHeight=[],
+	ctWidth=$(".ct").width(),
+	mainWidth=$(".ct-main").outerWidth(true),
+	sum=Math.floor((ctWidth/mainWidth))
+
+if(sumHeight.length ===0){
+	for(var i=0;i<sum;i++){
+		sumHeight.push(0);
+	}
+}
+// 开始瀑布流
+function waterFull(node){
+	$(node).each(function(){
+		var idx=0,
+			minWidth=sumHeight[0],
+			$cur = $(this);
+		for(var i=0;i<sum;i++){
+			if(sumHeight[i]<minWidth){
+				idx=i;
+				minWidth=sumHeight[i];
+			}
+		}
+		$cur.css({
+				top:minWidth,
+				left:mainWidth*idx,
+			})
+			sumHeight[idx]=sumHeight[idx]+$cur.outerHeight(true)
+			$('.ct').height(Math.max.apply(null,sumHeight));
+	})
+	
+}
+</script>
+</html>

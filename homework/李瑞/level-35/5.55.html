@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	body,ul,li{
+			margin:0;
+			padding:0;
+	}
+	li{
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+		color:black;
+	}
+	.header{
+			text-align:center;
+			padding:20px;
+		}
+	.wrap{
+		margin:0 auto;
+		position: relative;
+		width:230px;
+		height:300px;
+	}
+	.wrap_ct{
+		position: relative;
+		width:230px;
+		height:300px;
+	}
+	.wrap_ct li{
+		position: absolute;
+		width:230px;
+		height:300px;
+		display: none;
+	}
+	.wrap_ct li img{
+		width:230px;
+		height:300px;
+	}
+	.arrow{
+		position: absolute;
+		width:30px;
+		height:30px;
+		background:#aaa;
+		line-height: 30px;
+		text-align: center;
+		border-radius: 30px;
+		top:50%;
+		margin-top:-15px;
+		opacity: 0.5;
+		display: none;
+	}
+	.prev{
+		left:10px;
+	}
+	.prev:hover,.next:hover{
+		opacity: 1;
+		background:white;
+	}
+	.next{
+		right:10px;
+	}
+	.wrap:hover .arrow{
+		display: block;
+	}
+	.button{
+		position: absolute;
+		left:50%;
+		transform: translateX(-50%);
+		bottom:20px;
+	}
+	.button li{
+		width:10px;
+		height:10px;
+		border-radius: 10px;
+		background:#aaa;
+		float:left;
+		margin-right:10px;
+	}
+	.button li.active{
+		background:white;
+	}
+	</style>
+</head>
+<body>
+	<div class="header">多组轮播</div>
+	<div class="wrap">
+		<ul class="wrap_ct">
+			<li><a href="javascript:void(0)"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/4.jpg" alt=""></a></li>
+		</ul>
+		<a href="#" class="arrow prev"><</a>
+		<a href="#" class="arrow next">></a>
+		<div class="button">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</div>
+	</div>
+	<div class="wrap">
+		<ul class="wrap_ct">
+			<li><a href="javascript:void(0)"><img src="img/1.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/2.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/3.jpg" alt=""></a></li>
+			<li><a href="javascript:void(0)"><img src="img/4.jpg" alt=""></a></li>
+		</ul>
+		<a href="#" class="arrow prev"><</a>
+		<a href="#" class="arrow next">></a>
+		<div class="button">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</div>
+	</div>
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	function show($ct){
+		this.$wrap_ct=$ct;
+		this.$prev=this.$wrap_ct.siblings(".prev");
+		this.$next=this.$wrap_ct.siblings(".next");
+		this.$button=this.$wrap_ct.siblings(".button");
+		this.num=0;
+		this.imgCt=$ct.children().size();
+		this.key=false;
+	}
+	show.prototype={
+		init:function(){
+			this.bind();
+			this.play(0);
+			this.autoPlay();
+		},
+		bind:function(){
+			var _this=this;
+
+			_this.$prev.on("click",function(){
+				_this.playPrev();
+			});
+
+			_this.$next.on("click",function(){
+				_this.playNext();
+			})
+
+			_this.$button.on("click","li",function(){
+				var tem=$(this).index();
+				_this.play(tem);
+			})
+		},
+		playPrev:function(){
+			var _this=this;
+			_this.play((_this.num-1+_this.imgCt)%_this.imgCt);
+		},
+		playNext:function(){
+			var _this=this;
+			_this.play((_this.num+1)%_this.imgCt);
+		},
+		play:function(e){
+			var _this=this;
+			if(_this.key){
+				return;
+			}
+			_this.key=true;
+			_this.$wrap_ct.children().eq(_this.num).fadeOut(1000);
+			_this.$wrap_ct.children().eq(e).fadeIn(1000);
+			_this.num=e;
+			_this.setButton(e);
+			_this.key=false;
+		},
+		setButton:function(e){
+			var _this=this;
+			_this.$button.children().removeClass('active');
+			_this.$button.children().eq(e).addClass('active');
+		},
+		autoPlay:function(){
+			var _this=this;
+			auto=setInterval(function(){
+				_this.playNext();
+			},1000)
+		},
+		stopPlay:function(){
+			clearInterval(auto);
+		}
+	}
+	var tem=$(".wrap_ct").eq(0),
+		tem1=$(".wrap_ct").eq(1);
+	var p1=new show(tem),
+		p2=new show(tem1);
+	p1.init();
+	p2.init();
+</script>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>HTML5</title>
+    <style type="text/css">
+        body,div{
+            margin: 0;
+            padding: 0;
+        }
+        #title{
+            text-align: center;
+        }
+        #demo{
+            margin: 100px auto;
+            width: 800px;
+        }
+        #datetime{
+            width: 300px;
+        }
+        p{
+            color: lightcoral;
+
+        }
+        p:after{
+            content: '';
+            display: block;
+            width: 80%;
+            border-bottom: 2px solid #000;
+            margin-top: 10px;
+            box-shadow: 2px 3px 3px  #666;
+        }
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+    </style>
+</head>
+<body>
+    <form id="demo">
+        <h1 id="title"><a href="http://www.w3school.com.cn/html5/att_input_type.asp">想了解更全面更准确?</a></h1>
+        <h3>color类型</h3>
+        <input type="color">
+        <p>点开选取一个颜色吧</p>
+
+        <h3>date类型</h3>
+        <input type="date">
+        <p>定义日期字段,一个框框可以让你输入年月日,但是无法选具体时间</p>
+
+        <h3>datetime类型</h3>
+        <input type="datetime" id="datetime">
+        <p>定义日期字段,一个框框可以让你输入年月日,还有(UTC时间)</p>
+
+        <h3>datetime-local类型</h3>
+        <input type="datetime-local" id="datetimeLocal">
+        <p>定义日期字段,不过选择的时间就是本地时间不包含时区,点上去键盘输入数字就好了</p>
+
+        <h3>number类型</h3>
+        <input type="number" id="number">
+        <p>你要输入一串数字,边框的右边还会出现调整上下的小箭头</p>
+
+        <h3>range类型</h3>
+        <input type="range" id="range" value="6" max="10" min="0" step="0.5">
+        <p>滑动条,想想在音量的时候,他自身有value、min、max可也设置滑动条的具体信息</p>
+
+        <h3>search类型</h3>
+        <input type="search" placeholder="热点新闻搜索">
+        <p>定义用于搜索的文本内容,这个对象有很多属性<a href="http://www.runoob.com/jsref/dom-obj-search.html">想看看么?</a></p>
+
+        <h3>tel类型</h3>
+        <input type="tel">
+        <a href="tel:12580">一按我帮您</a>
+        <p>检测你输入的是否是电话,原来是input的值去匹配一个正则,这个直接让输入类型包括电话号码的输入字段</p>
+
+        <h3>email类型</h3>
+        <input type="email">
+        <p>你必须要输入一个正确的邮箱</p>
+
+        <h3>url类型</h3>
+        <input type="url">
+        <p>你必须要输入一段url网址</p>
+
+        <input type="submit" value="点一下?" id="sumit">
+
+    </form>
+    <script type="text/javascript">
+        setInterval(function setDatetime(){
+            document.getElementById('datetime').value = new Date();
+        },100);
+        setInterval(function setNum(){
+            document.getElementById('number').value = parseInt(Math.random()*100000);
+        },500);
+    </script>
+</body>
+</html>

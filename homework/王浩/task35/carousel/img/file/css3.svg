@@ -1,0 +1,21 @@
+<svg width="900" height="500" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+@font-face {
+  font-family: "ifont";
+  src: url("//at.alicdn.com/t/font_1442373896_4754455.eot?#iefix") format("embedded-opentype"), url("//at.alicdn.com/t/font_1442373896_4754455.woff") format("woff"), url("//at.alicdn.com/t/font_1442373896_4754455.ttf") format("truetype"), url("//at.alicdn.com/t/font_1442373896_4754455.svg#ifont") format("svg");
+}
+
+]]>
+  </style>
+ </defs>
+ <g>
+  <title>Layer 1</title>
+  <g id="svg_1" class="transform-group">
+   <g id="svg_2" transform="translate(336, 110) scale(0.244141)">
+    <path id="svg_3" fill="#272636" d="m14.04389,-120.672783l1254.584406,0l-221.740479,1111.203117l-670.223145,222.57428l-581.860336,-222.57428l59.186386,-296.765381l247.582405,0l-24.174736,122.540771l351.783798,134.211365l405.134888,-134.211365l56.685486,-282.594055l-1007.001884,0l48.349434,-247.582397l1007.835495,0l31.677246,-159.219673l-1007.001873,0l49.183039,-247.582428l-0.00013,0.000046z" class="sec"/>
+   </g>
+  </g>
+ </g>
+</svg>

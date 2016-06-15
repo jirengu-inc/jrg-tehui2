@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+			}
+			li{
+				list-style:none;
+			}
+			html,body{
+				height:100%;
+			}
+			.wrap{
+				height:100%;
+				width:100%;
+				background-color:yellow;
+				position:relative;
+
+			}
+			.ct2{
+				position:absolute;
+				height:100%;
+				width:6400px;
+				background:red;
+				z-index:1;
+			}
+			.ct2:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.ct2 li{
+				float:left;
+				position:relative;
+				width:1600px;
+				height:100%;
+				background:green;
+				opacity:0.4;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="wrap">
+				<ul class="ct2">
+					<li>1</li>
+					<li>2</li>
+					<li>3</li>
+					<li>4</li>
+				</ul>
+		</div>
+
+	</body>
+</html>

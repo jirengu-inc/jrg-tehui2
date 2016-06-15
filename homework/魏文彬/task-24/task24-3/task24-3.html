@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>form</title>
+	<link rel="stylesheet" href="https://cdn.bootcss.com/normalize/4.1.1/normalize.min.css">
+<style>
+.register-ct>dt {
+	float: left;
+	display: inline-block;
+	width: 80px;
+	margin:5px;
+}
+
+#btn-register {
+	color: #F23D3D;
+	font-weight: bold;
+	margin-left: 120px;
+	margin-top: 20px;
+	padding: 3px 10px;
+}
+.msg {
+	color: #ccc;
+}
+.register-ct input.error{
+	border-color: #F23D3D;
+}
+</style>
+</head>
+<body>
+<div class='register'>
+	<h3>注册</h3>
+	<form id='register-form' action="">
+		<dl class='register-ct'>
+			<dt>用户名：</dt>
+    			<dd><input id="username" type="text" placeholder="用户名(hunger已注册)"></dd>
+    			<dd class='msg msg-un'>只能是字母、数字、下划线，3-10个字符</dd>
+	
+			<dt>密码：</dt>
+				<dd><input id='password1' type="password" placeholder='输入密码'></dd>
+    			<dd class='msg msg-pwd1'>大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+
+    		<dt>再输一次：</dt>
+				<dd><input id="password2" type="password" placeholder='再输入一次密码'></dd>
+				<dd class="msg msg-pwd2">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+
+    		<dt><input type='button' id="btn-register" value='注册'></dt>
+		</dl>
+	</form>
+</div>
+
+<script src='util-ajax.js'></script>
+<script src='util-class.js'></script>
+<script src='util-valid.js'></script>
+<script>
+	var usernameIpt = document.querySelector('#username'),
+	    pwdIpt1 = document.querySelector('#password1'),
+	    pwdIpt2 = document.querySelector('#password2'),
+	    registerBtn = document.querySelector('#btn-register'),
+
+	    unMsg = document.getElementsByClassName('msg-un')[0],
+	    pswMsg1 = document.getElementsByClassName('msg-pwd1')[0],
+	    pswMsg2 = document.getElementsByClassName('msg-pwd2')[0];
+
+
+usernameIpt.addEventListener('change',function(){
+	 testUn() && testUnUseage();
+});
+
+
+pwdIpt1.addEventListener('change',function(){
+	 testPwd1();
+});
+
+pwdIpt2.addEventListener('change',function(){
+	testPwd2();
+});
+
+registerBtn.addEventListener('click',function(e){
+      e.preventDefault();
+      if(testUn() && testPwd1() && testPwd2()){
+      	 testUnUseage(function(validName){ 
+             if(validName){
+             	alert('正在注册.....');
+             	console.log('正在注册....');
+             }
+      	 })
+      }
+});
+
+// AJAX验证用户名是否存在
+function testUnUseage(handle){
+	ajax({
+		url:'task24-3.php',
+		type:'post',
+		data:{
+			userName:usernameIpt.value
+		},
+		success:function(ret){
+             if(!ret.data){
+             	unMsg.innerText='用户名已存在';
+             	addClass(usernameIpt,'error');
+             	handle && handle(false);     
+             }else if(ret.data){
+             	unMsg.innerText='';
+                removeClass(usernameIpt,'error');
+                handle && handle(true);
+             }
+		}
+		
+	})
+}
+
+//验证用户名是否符合格式
+function testUn(){
+	var userName= usernameIpt.value;
+	if(!regName(userName)){
+		unMsg.innerText='请输入正确的格式';
+		addClass(usernameIpt,'error');
+		return false;
+	}else{
+		unMsg.innerText='';
+		removeClass(usernameIpt,'error');
+		return true;
+	}
+}
+
+
+//验证密码是否符合格式
+function testPwd1(){
+	var pwd1=pwdIpt1.value;
+	if(!regPassword(pwd1)){
+        pswMsg1.innerText='请输入正确的格式';
+        addClass(pwdIpt1,'error');
+        return false;
+	}else{
+       pswMsg1.innerText='';
+       removeClass(pwdIpt1,'error');
+       return true;
+	}
+}
+
+
+//验证密码是否符合格式，是否与上次输入一致
+function testPwd2(){
+	var pwd2=pwdIpt2.value;
+	if(!regPassword(pwd2)){
+        pswMsg2.innerText='请输入正确的格式';
+        addClass(pwdIpt2,'error');
+        return false;
+	}else if(pwd2 !== pwdIpt1.value){
+        pswMsg2.innerText='密码不一致';
+        addClass(pwdIpt2,'error');
+        return false;
+     }else{
+       pswMsg2.innerText='';
+       removeClass(pwdIpt2,'error');
+       return true;
+	}
+}
+</script>
+</body>
+</html>

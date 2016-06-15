@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+    <style>
+      .btn{
+        border:1px solid #ccc;
+        width:80px;
+        text-align:center;
+        padding:5px;
+      }
+    </style>
+</head>
+<body>
+	<button class="btn">点击获取</button>
+  <div class="show"></div>
+  <script src='http://libs.baidu.com/jquery/2.0.0/jquery.min.js'></script>
+  <script type="text/javascript">
+  var btn = document.querySelector('.btn');
+  var show = document.querySelector('.show');
+  btn.addEventListener('click',function(){
+  	// console.log(1);
+  	//  $.ajax({
+   //  url: 'http://b.com/a.php',
+   //  dataType: 'jsonp',
+   //  success: function (ret) {
+   //       console.log("I'm " + ret.name + ",and I'm " + ret.age + " years old."); 
+   //  },  
+   //  error: function () {
+   //       alert("Something error"); 
+   //  }
+   $.ajax({
+    url:'http://chenyuru1994.applinzi.com/jsonp/b.php',
+    dataType:'jsonp',
+    data:{name:'hunger'},
+    jsonp:'callback',
+    success:function(res){
+     show.innerText=res;
+    }
+   })
+  // });
+});
+</script>	
+</body>
+</html>

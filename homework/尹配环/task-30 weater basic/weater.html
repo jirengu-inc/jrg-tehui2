@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>task 30 </title>
+    <style>
+        .ct {
+            position: relative;
+            border: 1px solid #ccc;
+        }
+        .item {
+            position: absolute;
+            width: 100px;
+            margin: 10px;
+            transition:all 1s;
+        }
+        .h1 {
+            height: 100px;
+            background-color: #00a0d8;
+        }
+        .h2 {
+            height: 200px;
+            background-color: #1e347b;
+        }
+        .h3 {
+            height: 300px;
+            background-color: #00AA88;
+        }
+        .h4 {
+            height: 400px;
+            background-color: #00CC00;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="ct">
+    <div class="item h1">1</div>
+    <div class="item h2">2</div>
+    <div class="item h3">3</div>
+    <div class="item h4">4</div>
+    <div class="item h2">5</div>
+    <div class="item h3">6</div>
+    <div class="item h1">7</div>
+    <div class="item h3">8</div>
+    <div class="item h4">9</div>
+    <div class="item h2">10</div>
+    <div class="item h1">11</div>
+    <div class="item h4">12</div>
+    <div class="item h2">13</div>
+    <div class="item h3">14</div>
+    <div class="item h1">15</div>
+    <div class="item h2">16</div>
+    <div class="item h3">17</div>
+
+
+
+
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+/*
+    function rander ($ct) {
+        var $node = $ct.children(".item"),
+                $nodeW = $node.outerWidth(true),  //元素宽度
+                colNum = parseInt($ct.width() / $nodeW), //每行有几个元素
+                colArr = [] ;                            //存储列高
+
+        for (var i = 0 ; i < colNum ; i++) {            //初始化列高
+            colArr.push(0);
+        }
+
+        $node.each(function () {                        //为每个元素设置位置
+            $cur = $(this);
+
+            var idx = 0 ,                               //查找高度最低的一列
+                    min = colArr[0];
+            for (var key in colArr) {
+                if (colArr[key] < min) {
+                    idx = key;
+                    min = colArr[key];
+                }
+            }
+
+            $cur.css({
+                left: $nodeW * idx,
+                top : min
+            });
+
+            colArr[idx] += $cur.outerHeight(true);
+        })
+
+    }
+    var $ct = $(".ct");
+    rander($ct);
+*/
+var Weaterfall = {
+    init:function ($ct,listArr) {
+        this.$ct = $ct;
+        this.$nodes = $ct.find('.item');
+        this.nodeW = this.$nodes.outerWidth(true);
+        this.listArr = listArr;
+
+        this.initArr();
+        this.setCss();
+
+
+    },
+    initArr:function () {
+        var me = this;
+        var len = me.listArr.length;
+
+        if (len == 0) {            //初次使用列高度数组，全部初始化为0
+            var colNum = parseInt(me.$ct.width() / me.$nodes.outerWidth(true));
+            for (var i=0; i<colNum ; i++){
+                me.listArr.push(0);
+            }
+        }
+    },
+    setCss:function () {
+        var me =this;
+
+        me.$nodes.each(function (index, el) {
+            me.findMin();
+            var $cur = $(this);
+            console.log($cur +" , "+ $cur.height());
+            $cur.css({
+                left: me.nodeW * me.idx,
+                top:me.min
+            });
+            me.listArr[me.idx] += $cur.outerHeight(true);
+
+        });
+    },
+    findMin:function () {
+        var me = this;
+        me.min = me.listArr[0];
+        me.idx = 0;
+
+        for (var key in me.listArr){
+            if (me.listArr[key] < me.min) {
+                me.min = me.listArr[key];
+                me.idx = key;
+            }
+        }
+    }
+};
+
+function rander2() {
+    var $nodes = $('.ct');
+    var arr = [];
+    Weaterfall.init($nodes,arr);
+}
+rander2();
+$(window).on("resize" , function (e) {
+    rander2();
+});
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task44-3</title>
+<meta name="description" content="">
+<meta name="keywords" content="">
+<link href="" rel="stylesheet">
+<style type="text/css">
+	@-webkit-keyframes one{
+
+		0% {
+			margin-top:20px;
+			height: 80px;
+		}
+
+		50%{
+			margin-top:10px;
+			height: 90px;
+		}
+
+		100%{
+			margin-top:30px;
+			height: 70px;
+		}
+
+	}
+	@keyframes one{
+
+		0% {
+			margin-top:20px;
+			height: 80px;
+		}
+
+		50%{
+			margin-top:10px;
+			height: 90px;
+		}
+
+		100%{
+			margin-top:30px;
+			height: 70px;
+		}
+
+	}
+
+	@-webkit-keyframes two{
+		to{
+			transform: rotate(360deg);
+		}
+	}
+	
+	@keyframes two{
+		to{
+			transform: rotate(360deg);
+		}
+	}
+	html,body,.ct{
+		height: 100%;
+		width: 100%;
+		background-color: rgb(13, 206, 203);
+		padding: 0;
+		margin: 0;
+	}
+	.load-content-one{
+		display: inline-block;
+		width: 15px;
+		height: 70px;
+		background-color: #fff;
+		margin-left: 10px;
+		margin-top:30px;
+		animation: one 1s infinite .6s;
+	}
+	.loading-one:before{
+		content: "";
+		display: inline-block;
+		width: 15px;
+		height: 70px;
+		background-color: #fff;
+		margin-left: 10px;
+		margin-top:30px;
+		animation: one 1s infinite .3s;
+	}
+
+	.loading-one:after{
+		content: "";
+		display: inline-block;
+		width: 15px;
+		height: 70px;
+		background-color: #fff;
+		margin-left: 10px;
+		margin-top:30px;
+		animation: one 1s infinite .9s;
+	}
+
+	.load-content-two{
+
+		display: inline-block;
+		height: 100px;
+		width: 100px;
+		border-radius: 50%;
+		border-top:15px #fff solid;
+		border-bottom: 15px rgba(255,255,255,.7) solid;
+		border-left: 15px rgba(255,255,255,.7) solid;
+		border-right: 15px rgba(255,255,255,.7) solid;
+		animation: two 1s infinite linear;
+	}
+</style>
+</head>
+<body>
+    <div class="ct">
+    	<div class="loading-one">
+    		<div class="load-content-one"></div>
+    	</div>
+    	<div class="loading-two">
+    		<div class="load-content-two"></div>
+    	</div>
+    </div>
+</body>
+</html>

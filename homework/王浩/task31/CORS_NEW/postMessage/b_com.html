@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>b.com-postmessage</title>
+</head>
+<body>
+	<h3>b.com</h3>
+	<script>
+		var sentMessage = {
+			init: function(dataUrl) {
+				var me = this;
+				this.dataUrl = dataUrl;
+				window.addEventListener("message", function(event) {
+					me.event = event;
+					me.collectData();
+				}, false);
+			},
+
+			collectData: function() {
+				if (this.event.origin === "http://a.com") {
+					this.ajax();
+				} else {
+					console.log("Evildoer, you are a thief!");
+				}
+			},
+
+			ajax: function() {
+				var xhr = new XMLHttpRequest(),
+					url = this.dataUrl,
+					me = this;
+				xhr.onreadystatechange = function() {
+					if (xhr.status === 200 && xhr.readyState === 4) {
+						var obj = JSON.parse(xhr.responseText);
+						if (obj["state"] === "1") {
+							me.json = obj["value"];
+							me.sendData();
+						} else {
+							console.log("error")
+						}
+					}
+				}
+				xhr.open("get", url, true);
+				xhr.send();
+			},
+
+			sendData: function() {
+				this.event.source.postMessage(this.json, "*");
+			}
+		};
+		var dataUrl = "b_com.json"; //要访问的json数据位置
+		sentMessage.init(dataUrl);
+	</script>
+</body>
+</html>

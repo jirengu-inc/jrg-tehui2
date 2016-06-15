@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		* {
+			padding:0;
+			margin:0;
+		}
+		#ct {
+			width: 800px;
+			margin:0 auto;				
+		}
+		.content>li {
+			list-style: none;
+			padding:10px;
+			margin-bottom: 10px;
+			cursor: pointer;
+			border: 1px solid #ccc;
+		}
+		#btn {
+			display: block;
+			width: 80px;
+			height:40px;
+			line-height: 40px;
+			text-align: center;
+			margin:0 auto;
+			text-decoration: none;
+			border: 1px solid #ccc;
+		}
+		#btn img {
+			width: 40px;
+			height: 40px;
+		}
+	</style>
+</head>
+<body>
+		<div id="ct">
+			<ul class = "content">
+				<li>内容1</li>
+				<li>内容2</li>
+			</ul>
+	    <a id = "btn" href="#">加载更多</a>			
+		</div>
+
+<script src="util.js"></script>
+<script>
+/*定义接口
+
+1) url:
+2) type: "get"/"post"
+2) 入参: { start: 3, len: 6 }
+3) 回参: 
+{
+  data: [3,4,5,6,7,8]
+}
+*/
+
+var cur = 3;
+var isLoading = false ;  //状态锁，防止多次点击。
+var btn = document.querySelector("#btn");
+btn.addEventListener("click",function(e){
+	e.preventDefault();  //去掉a的默认事件。
+	if(isLoading){
+		return;
+	}
+	isLoading = true;
+	btn.innerHTML = "<img src='http://2.jrgapp.applinzi.com/%E4%BD%9C%E4%B8%9A%E5%AE%89%E6%8E%92/jscode/JS7-ajax/loading.gif'>";
+	ajax({
+		url:"add.php",
+		type:"post",
+		data:{
+			start:cur,
+			len:6
+		},
+		success:function(ret){
+			isLoading = false;
+			setTimeout(function(){btn.innerText = "加载更多";},500);
+			onSucess(ret);
+			cur += 6;
+		},
+		error:function(){
+			isLoading = false;
+
+			alert("系统异常");
+		}
+	});
+});
+function onSucess(ret){
+	if (ret.status == 0){
+		alert("获取数据失败");
+		return ;
+	}
+	var content = document.querySelector(".content");
+	for (var i = 0; i < ret.data.length; i++){
+		var li = document.createElement("li");
+		li.innerText = "内容"+ ret.data[i];
+		content.appendChild(li);
+	}
+}
+
+  	
+</script>
+</body>
+</html>

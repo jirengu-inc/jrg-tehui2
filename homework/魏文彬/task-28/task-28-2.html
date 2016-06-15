@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#wrapper {
+			width: 960px;
+			margin: 0 auto;
+		}
+		#header {
+			background-color: #fcc;
+			height: 50px;
+		}
+		.content-wrap {
+			margin-top: 10px;
+		}
+		.navbar {
+			height: 50px;
+			background-color: #ccc;
+		}
+		.aside {
+			float: left;
+			height:400px;
+			width: 100px;
+			background-color: lightgreen;
+		}
+		.main {
+			height: 700px;
+			margin-left: 110px;
+			background-color: lightblue;
+		}
+		.clearfix:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="header">header</div>
+
+	<div class="content-wrap clearfix">
+		<div class="navbar">navbar1</div>
+		<div class="content">
+			<div class="aside">aside1</div>
+			<div class="main">main1</div>
+		</div>
+	</div>
+
+	<div class="content-wrap clearfix">
+		<div class="navbar">navbar2</div>
+		<div class="content">
+			<div class="aside">aside2</div>
+			<div class="main">main2</div>
+		</div>
+	</div>
+
+	<div class="content-wrap clearfix">
+		<div class="navbar">navbar3</div>
+		<div class="content">
+			<div class="aside">aside3</div>
+			<div class="main">main3</div>
+		</div>
+	</div>
+
+	<div class="content-wrap clearfix">
+		<div class="navbar">navbar4</div>
+		<div class="content">
+			<div class="aside">aside4</div>
+			<div class="main">main4</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+	$(".navbar").each(function(){
+		var $nav = $(this),
+			navWidth = $nav.width(),
+			navHeight = $nav.height(),
+			navTop = $nav.offset().top,
+			navLeft = $nav.offset().left;
+		var $cloneNav = $nav.clone()
+							.css('opacity','0')
+							.insertBefore($nav)
+							.hide();
+
+		$(window).on('scroll',function(){
+			var scrollTop = $(this).scrollTop();
+			if(scrollTop>=navTop) {
+				if(!isFixed()){
+					setFixed();
+				}
+			}else{
+				if(isFixed()) {
+					unsetFixed();
+				}
+			}
+		});
+		function setFixed() {
+			$nav.data('data-fixed',true)
+				.css({
+					'position':'fixed',
+					'top':0,
+					'left':navLeft,
+					'width':navWidth,
+					'margin':0,
+					'z-index':1000
+				});
+			$cloneNav.show();
+		}
+		function isFixed() {
+			return $nav.data('data-fixed');
+		}
+		function unsetFixed() {
+			$nav.data('data-fixed',false)
+				.removeAttr('style');
+			$cloneNav.hide();
+		}
+	});
+</script>
+</body>
+</html>

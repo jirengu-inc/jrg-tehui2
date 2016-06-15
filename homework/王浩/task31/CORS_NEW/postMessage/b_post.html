@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>b.com-postmessage</title>
+</head>
+<body>
+	<h3>"hello world" from b.com</h3>
+	<script>
+		var message = {
+			init: function(){
+				this.data = document.querySelector("h3");
+				this.message();
+			},
+			message: function(){
+				var me = this,
+						wrap = document.createElement("div");
+				window.addEventListener("message",function(event){
+					me.event = event;
+					me.collectData();	//通过ajax获取b.com的json数据；
+					
+				},false);
+			},
+			collectData: function(){
+				var me = this;
+				if(this.event.origin === "http://a.com"){
+					xhr=new XMLHttpRequest();
+					url = "b_com.json";
+					xhr.onreadystatechange=function(){
+					    if(xhr.status===200 && xhr.readyState===4){
+					    	me.json = xhr.responseText;
+					    	me.sendData();
+					    	}
+					    }
+					    xhr.open("get",url,true);
+					    xhr.send();
+				}else{
+					console.log("you are a thief")
+				}
+			},
+			sendData: function(){
+				this.event.source.postMessage(this.json,'*');	//设置为`*`，这样不会报错。
+			}
+		};
+		message.init();
+	</script>
+</body>
+</html>

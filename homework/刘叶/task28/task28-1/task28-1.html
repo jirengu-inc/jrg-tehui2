@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>stickup效果</title>
+</head>
+<style type="text/css">
+    *{
+        font-size: 30px;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+    }
+    #header{
+        height: 80px;
+        width: 900px;
+        margin: 0 auto 10px;
+        background-color: palegoldenrod;
+        line-height: 80px;
+    }
+    #content{
+        height: 1000px;
+        width: 900px;
+        margin: 0px auto;
+    }
+    .nav{
+        height: 50px;
+        line-height: 50px;
+        background-color: palevioletred;
+    }
+    .aside{
+        float: left;
+        height: 300px;
+        width: 100px;
+        background-color: lightskyblue;
+        margin-top: 5px;
+    }
+    .main{
+        height: 600px;
+        background-color: lightsalmon;
+        margin: 5px 0 0 105px;
+    }
+    #footer{
+        height: 50px;
+        background-color: lightsteelblue;
+    }
+</style>
+<body>
+<div id="header">header</div>
+<div id="content">
+    <div class="nav">nav</div>
+    <div class="aside">aside</div>
+    <div class="main">main</div>
+</div>
+<div id="footer">footer</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    var $nav = $('.nav'),
+        navH = $nav.height(),
+        navW = $nav.width(),
+        offsetLeft = $nav.offset().left,
+        offsetTop = $nav.offset().top;
+
+    var $cloneNav = $nav.clone().css('opacity',0).insertBefore($nav).hide();
+
+    $(window).on('scroll',function(){
+        var scrollTop = $(this).scrollTop();
+        if(scrollTop>= offsetTop){
+            if(!isFixed()){
+                setFixed();
+            }
+        }else{
+            if(isFixed()){
+                unsetFixed();
+            }
+        }
+    });
+
+    function isFixed(){
+        return !!$nav.attr('position-fixed');
+    }
+
+    function setFixed(){
+        $nav.attr('position-fixed',true)
+                .css({
+                    position:'fixed',
+                    top:0,
+//                    left:offsetLeft,这句话我现在又恨又爱
+                    'z-index':7,
+                    width:navW,
+                    height:navH,
+                    margin:0
+                });
+        $cloneNav.show();
+    }
+
+    function unsetFixed(){
+        $nav.removeAttr('position-fixed').removeAttr('style');
+        $cloneNav.hide();
+    }
+</script>
+</body>
+</html>

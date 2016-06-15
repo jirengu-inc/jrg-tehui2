@@ -1,0 +1,210 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			*{
+				margin: 0;	
+				padding: 0;
+			}
+			li{list-style: none;}
+			a{text-decoration: none;}
+			.clearfix:after{
+				content:'';
+				display: block;
+				clear: both;
+			}
+			.clearfix{
+				*zoom: 1;
+			}
+			
+			.ct{
+				margin:50px auto;
+				width:400px;
+				height:250px;
+				position: relative;
+			}
+			.imgct li{
+				position:absolute;
+				display:none;
+			}
+			.imgct li img{
+				width:400px;
+				height:250px;
+			}
+			.arrow{
+				position: absolute;
+				width:24px;
+				height:26px;
+				line-height:26px;
+				text-align:center;
+				border-radius:3px;
+				background:#111;
+				top:50%;
+				margin-top:-13px;
+				color:#fff;
+				opacity:.5;
+			}
+			.prev{
+				left:5px;
+			}
+			.next{
+				right:5px;
+			}
+			.arrow:hover{
+				opacity:0.9;
+			}
+			.bullet{
+				position:absolute;
+				bottom:5px;
+				left:50%;
+				transform: translateX(-50%);
+			}
+			.bullet li{
+				width:20px;
+				height:6px;
+				border-radius:2px;
+				background:#555;
+				float:left;
+				margin:0 6px;
+				cursor:pointer;
+			}
+			.bullet li.active{
+				background:#6d9eeb;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div class="ct">
+			<ul class="imgct clearfix">
+				<li><a href="javascript:void(0)"><img src="1.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="2.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="3.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="4.jpg" alt=""></a></li>
+			</ul>
+			<a href="javascript:void(0)" class="prev arrow"><</a>
+			<a href="javascript:void(0)" class="next arrow">></a>
+			<ul class="bullet clearfix">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+		<div class="ct">
+			<ul class="imgct clearfix">
+				<li><a href="javascript:void(0)"><img src="1.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="2.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="3.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="4.jpg" alt=""></a></li>
+			</ul>
+			<a href="javascript:void(0)" class="prev arrow"><</a>
+			<a href="javascript:void(0)" class="next arrow">></a>
+			<ul class="bullet clearfix">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+
+				<div class="ct">
+			<ul class="imgct clearfix">
+				<li><a href="javascript:void(0)"><img src="1.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="2.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="3.jpg" alt=""></a></li>
+				<li><a href="javascript:void(0)"><img src="4.jpg" alt=""></a></li>
+			</ul>
+			<a href="javascript:void(0)" class="prev arrow"><</a>
+			<a href="javascript:void(0)" class="next arrow">></a>
+			<ul class="bullet clearfix">
+				<li></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		function eachPlay(id){
+			var $wrapIdx = $('.imgct').eq(id);
+			var $wrap = $wrapIdx.parents('.ct');
+			var $prev = $wrap.find('.prev');
+			var $next = $wrap.find('.next');
+			var $bullet = $wrap.find('.bullet');
+			var imgCount = $wrapIdx.children().size();
+			var curIdx = 0;
+			var isAnimate = false;
+			
+			$prev.on('click',function(){
+				playPrev();
+			});
+
+			$next.on('click',function(){
+				playNext();
+			});
+
+			$bullet.on('click',function(){
+				var idx = $(this).index();
+				play(idx);
+			})
+
+			play(0);
+			autoPlay();
+
+			function play(idx){
+				if(isAnimate){return;};
+				isAnimate = true;
+				$wrapIdx.children().eq(curIdx).fadeOut(100);
+				$wrapIdx.children().eq(idx).fadeIn(1000,function(){
+					isAnimate = false;
+				});
+				curIdx = idx;
+				setBullet();
+			}
+
+			function playPrev(){
+				play((imgCount + curIdx -1)%imgCount);
+			}
+
+			function playNext(){
+				play((curIdx + 1)%imgCount);
+			}
+
+			function autoPlay(){
+				clock = setInterval(function(){
+					playNext();
+				},2000);
+			}
+			function stopAutoPlay(){
+				clearInterval(clock);
+			}
+
+			function setBullet(){
+				$bullet.children().removeClass('active')
+													.eq(curIdx)
+													.addClass('active');
+			}
+
+			return{
+				'play':play,
+				'playNext':playNext,
+				'playPrev':playPrev,
+				'autoPlay':autoPlay,
+				'stopAutoPlay':stopAutoPlay
+			}
+		}
+
+    $('.imgct').each(function(index){
+      var temp = eachPlay(index);
+      temp.autoPlay();
+    })
+
+	</script>
+
+	</body>
+
+</html>

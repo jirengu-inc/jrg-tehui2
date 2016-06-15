@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a.com_domain</title>
+</head>
+<body>
+	<p>a.com</p>
+
+	<script>
+	var domain = {
+		init: function(url, toUrl) {
+			document.domain = url;
+			this.iframe = document.createElement("iframe");
+			this.iframe.src = toUrl;
+			this.iframe.style.display = "none";
+			document.body.appendChild(this.iframe);
+
+			this.bind(this.iframe);
+		},
+		bind: function(iframe) {
+			var me = this;
+			if (iframe.attachEvent) {
+				iframe.attachEvent("onload", function() {
+					me.showData(iframe);
+
+				});
+			} else {
+				iframe.onload = function() {
+
+					me.showData(iframe);
+				}
+			}
+		},
+		showData: function(iframe) {
+			var content = iframe.contentWindow.document.getElementsByTagName('p')[0].innerText;
+			console.log(content);
+		}
+	}
+
+	domain.init("a.com", "//child.a.com/PHP/task/task-31/domain/child_a_domain.html");
+	</script>
+</body>
+</html>

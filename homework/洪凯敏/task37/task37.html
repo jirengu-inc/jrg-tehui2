@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task37</title>
+<link href="" rel="stylesheet">
+<style type="text/css">
+	html,body{
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+	}
+	body{
+		box-sizing: content-box;
+		position: relative;
+		font-family: "微软雅黑";
+
+	}
+	.hide{
+		display: none;
+	}
+	.clearfix:after{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.clearfix:before{
+		content: "";
+		clear: both;
+		display: block;
+	}
+	.dialogue-ct{
+		/*background-color: red;*/
+		position: fixed;
+		top:10%;
+		left:50%;
+		box-shadow: 3px 3px 3px 1px #ccc;
+		border-radius: 5px;
+		overflow: hidden;
+		background-color: #fff;
+	}
+	.dialogue-close{
+		display: inline-block;
+		float: right;
+		border-radius: 50%;
+		color: #fff;
+		margin:.1em .3em;
+		cursor: pointer;
+
+	}
+	.dialogue-header{
+		background-color: red;
+	}
+	.dialogue-header>h4{
+		margin:.1em .3em;
+		float: left;
+		color: #fff;
+	}
+	.dialogue-btn{
+		margin: 0.5em 1em;
+		cursor: pointer;
+
+	}
+	.dialogue-move{
+		cursor: move;
+		opacity: 0.7;
+	}
+</style>
+</head>
+<body>
+<!--     <div class="dialogue-ct">
+    	<div class="dialogue-header clearfix">
+			<h4 >这里是饥人谷</h4>
+    		<span class="dialogue-close">X</span>
+    	</div>
+    	<div class="dialogue-body">
+    		
+    	</div>
+    	<div class="dialogue-footer clearfix">
+    		<button class="dialogue-btn confirm">确定</button>
+    		<button class="dialogue-btn cancel">取消</button>
+    	</div>
+    </div> -->
+<button id="open4">点击一下</button>
+</body>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script type="text/javascript">
+	//功能描述： 
+	// 1. 可使用 dialog.open() 去打开弹窗
+	// 2. 当点击确定、取消时可使用用户自定义事件
+	// 3. dialog 可拖动
+	// 4. 允许页面展示多个 dialog
+	var tpl = '<ul><li>列表1</li><li>列表2</li><li>列表1</li><li>列表1</li></ul>';
+
+	$('#open4').on('click',function(){
+	  var dialog4 = new Dialog();
+	  dialog4.open({
+	    title: '欢迎来到饥人谷',
+	    message: tpl,
+	    isShowCloseBtn: true,
+	    isShowConfirmBtn: true,
+	    onClose: function(){
+	      alert('close')
+	    },
+	    onConfirm: function(){
+	      alert('确定');
+	    }
+	  });
+	});
+
+	function Dialog(){
+		this.init();
+		this.bind();
+	}
+
+	Dialog.prototype.init=function(){
+		var str="<div class='dialogue-ct'>"
+				  +"<div class='dialogue-header clearfix'>"
+				  +"<h4 >这里是饥人谷</h4>"
+    			  +"<span class='dialogue-close'>X</span>"
+    			  +"</div>"
+    			  +"<div class='dialogue-body'>"
+    			  +"</div>"
+    			  +"<div class='dialogue-footer clearfix'>"
+    			  +"<button class='dialogue-btn confirm'>确定</button>"
+    		      +"<button class='dialogue-btn cancel'>取消</button>"
+    		      +"</div>"
+    			  +"</div>";
+    	this.$dialog=$(str);//创建对话框
+    	//把对话框中需要操作的元素绑定到对象上,成为元素的一个属性.
+    	this.$head=this.$dialog.find(".dialogue-header");
+    	this.$close=this.$head.find(".dialogue-close");
+    	this.$title=this.$head.find("h4");
+    	this.$body=this.$dialog.find(".dialogue-body");
+    	this.$footer=this.$dialog.find(".dialogue-footer");
+    	this.$confirm=this.$dialog.find(".confirm");
+    	this.$cancel=this.$dialog.find(".cancel");
+	}
+	Dialog.prototype.bind=function(){
+		var that=this;
+		var isMove=false;
+		this.$confirm.on("click",function(){
+			alert("confirm");
+			
+		});
+		this.$cancel.on("click",function(){
+			that.$dialog.remove();
+			
+		});
+		this.$close.on("click",function(){
+			that.$dialog.remove();
+			
+		});
+		this.$dialog.on("mousedown",function(e){
+			var $this=$(this);
+			var paddX=e.clientX-$this.offset().left;//获得鼠标在对话框的X轴偏移值.
+			var paddY=e.clientY-$this.offset().top;//获得鼠标在对话框的Y轴偏移值.
+			console.log(paddX);
+			console.log(paddY);
+			$this.data("paddX",paddX);
+			$this.data("paddY",paddY);
+			$this.addClass("dialogue-move");
+			isMove=true;
+		});
+		$("body").on("mouseup",function(){
+
+			that.$dialog.removeClass("dialogue-move");
+			console.log("moving");
+			isMove=false;
+		});
+		$("body").on("mousemove",function(e){
+			var $dialog=that.$dialog;
+			if(isMove){
+				$dialog.css({
+					left:(e.clientX-$dialog.data("paddX"))+"px",
+					top:(e.clientY-$dialog.data("paddY"))+"px",
+				});
+			}
+		});
+	}
+	Dialog.prototype.open=function(opts){
+
+	  if(opts.title){
+	  	this.$title.text(opts.title);
+	  }
+	  if(opts.message){
+	  	this.$body.html(opts.message);
+	  }
+	  if(!opts.isShowCloseBtn){
+	  	this.$cancel.addClass("hide");
+	  }
+	  if(!opts.isShowConfirmBtn){
+	  	this.$confirm.addClass("hide");
+	  }
+	  if(opts.onClose){
+	  	this.$cancel.off("click");
+	  	this.$cancel.on("click",opts.onClose);
+	  }
+	  if(opts.onConfirm){
+	  	this.$confirm.off("click");
+	  	this.$confirm.on("click",opts.onConfirm);
+	  }
+	  $("body").append(this.$dialog);
+
+	}
+
+</script>
+</html>

@@ -40,10 +40,13 @@ li{
 	background-color: #fff;
 	color: #777777;
 }
-#topnav ul.navbar:after{
+.clearfix:after{
 	content: "";
 	display: block;
 	clear: both;
+}
+.clearfix{
+	*zoom: 1;
 }
 #topnav h1{
 	float: left;
@@ -67,7 +70,7 @@ li{
 #topnav .navbar li a:hover{
 	color: #333;
 }
-#topnav .navbar li:first-child{
+#topnav .navbar>li:first-child{
 	position: relative;
 	margin-right: 20px;
 	margin-left: 20px;
@@ -146,7 +149,7 @@ li{
 	background-color: #fff;
 }
 /*------header------*/
-#header{
+/*#header{
 	background-color: #B84D45;
 	position: relative;
 	height: 300px;
@@ -157,12 +160,18 @@ li{
 	top: 105px;
 	left: 0;
 	right: 0;
+}*/
+#header{
+	background-color: #B84D45;
+	color: #fff;
+	padding: 40px 0;
 }
 #header .container h1{
 	font-size: 60px;
-	line-height: 60px;
+	/*line-height: 60px;*/
 	font-weight: normal;
 	font-family: "宋体";
+	margin-top: 40px;
 }
 #header .container p{
 	font-size: 24px;
@@ -180,7 +189,7 @@ li{
 	background-color: #f5f5f5;
 	border-radius: 5px;
 	padding: 10px 20px;
-	margin-top: 40px;
+	margin-top: 30px;
 	margin-bottom: 20px;
 }
 .main-title a{

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26</title>
+	<link rel="stylesheet" href="http://cdn.bootcss.com/normalize/3.0.3/normalize.min.css">
+	<style>
+		.wrap>p {
+			border: 1px solid #000;
+			border-radius: 5px;
+			transition: background 0.3s;
+			padding: 10px;
+		}
+		.btn {
+			display: block;
+			width: 100px;
+			border: 1px solid #000;
+			margin: 0 auto;
+			padding: 10px;
+			background-color: #fff;
+			transition: background 0.3s;
+		}
+		.hover {
+			background-color: #fcc;
+			color: #fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<p>内容1</p>
+		<p>内容2</p>
+	</div>
+	<button class="btn">加载更多</button>
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+<script>
+    var isLoad = false;
+    var cur = 2;
+    var len = 6;
+  	$('.wrap').on('mouseenter','p',function(){
+  		$(this).addClass('hover');
+  	}).on('mouseleave','p',function(){
+  		$(this).removeClass('hover');
+  	});
+
+
+    $(".btn").on("click",function (e) {
+        if (isLoad == true){return;}
+        isLoad = true;
+
+        $.ajax({
+            url:"task-26.php",
+            type:"GET",
+            data:{
+              start:cur,
+              len:len
+            },
+            dataType:"json",
+            success:function (e) {
+                onSuccess(e);
+            },
+            error:function (e) {
+                onError(e);
+            },
+            complete:function () {
+                isLoad = false;
+                // cur +=len;
+                $(".btn").text("加载更多");
+            }
+        });
+    });
+    function onSuccess(e) {
+        if (e.status == 1) {
+        	// $.each(e.data,function(key,val){
+        	// 	$('<p>'+e.data[key]+'</p>').appendTo($('.wrap'));
+        	// })
+            for(var key in e.data) {
+                $("<p>" + e.data[key] + "</p>").appendTo($(".wrap"));
+            }
+        }
+    }
+    function onError(e) {
+        console.log("出错了");
+    }
+ 
+</script>
+</body>
+</html>

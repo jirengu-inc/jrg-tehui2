@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+<body>
+<style media="screen">
+body,dl,dd,dt{
+  margin:0;
+  padding:0;
+}
+h2{
+margin-left:30px;
+}
+.wrap{
+  overflow: auto;
+}
+  .wrap dt{
+    float:left;
+    width:120px;
+    margin-left:30px;
+    font-size:14px;
+  }
+  .wrap dd{
+    margin-left:150px;
+    font-size:12px;
+    height:25px;
+    line-height: 25px;
+    color:#aaa;
+  }
+  .wrap input{
+    padding-left:10px;
+    border:1px solid #aaa;
+    border-radius: 4px;
+    height:25px;
+    line-height: 25px;
+  }
+  .btn{
+    margin-left:120px;
+    margin-top:20px;
+
+  }
+input.error {
+      border-color:red;
+  }
+
+</style>
+</head>
+<body>
+<h2>注册</h2>
+<dl class="wrap">
+<dt>用户名</dt>
+<dd><input type="text" name="name" placeholder="hunger已经被注册" ></dd>
+<dd class="tip-name">只能是字母、数字、下划线，3-10个字符</dd>
+<dt>密码</dt>
+<dd><input type="password" name="pass" placeholder="请输入密码" maxlength="15"></dd>
+<dd class="tip-pass">大写字母、小写、数字、下划线最少两种，6-15个字符</dd>
+<dt>再输入一次</dt>
+<dd><input type="password" name="again" placeholder="请在输入一次密码"></dd>
+<dd class="tip-again"></dd>
+<button class="btn">注册</button>
+</dl>
+</body>
+<script src="ajax.js"></script>
+<script src="class.js"></script>
+<script  src="test.js"></script>
+<script type="text/javascript">
+var username=document.getElementsByName("name")[0];
+var pass=document.getElementsByName("pass")[0];
+var again=document.getElementsByName("again")[0];
+var btn=document.querySelector(".btn");
+var nametip=document.querySelector(".tip-name");
+var againtip=document.querySelector(".tip-again");
+var passtip=document.querySelector(".tip-pass");
+
+//验证用户名是否正确
+username.addEventListener("change",function(){
+  testname();
+})
+//验证密码是否正确
+pass.addEventListener("change",function(){
+  testpass();
+})
+//验证密码是否再次正确
+again.addEventListener("change",function(){
+  testagin();
+});
+
+//提交验证
+btn.addEventListener("click",function(){
+  if(testagin()&&testpass()&&testname()){
+    alert("正在注册中");
+  }
+})
+</script>
+</body>
+</html>

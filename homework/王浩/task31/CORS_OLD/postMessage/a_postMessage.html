@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>a_postMessage</title>
+</head>
+<body>
+a_postMessage
+<input type="button" value="onclick">
+<iframe src="http://b.com/php/task/task-31/postMessage/b_postMessage.html" frameborder="0"></iframe>
+	<script>
+	var btn = document.querySelector("input");
+	var ifr = document.querySelector("iframe");
+	btn.addEventListener("click", function() {
+		ifr.contentWindow.postMessage("a.com", "http://b.com/php/task/task-31/postMessage/b_postMessage.html");
+	}, false);
+	</script>
+</body>
+</html>

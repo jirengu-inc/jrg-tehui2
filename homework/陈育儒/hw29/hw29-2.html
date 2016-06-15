@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			li{
+				list-style: none;
+			}
+			.pic-ct{
+				width:800px;
+				margin:0 auto;
+			}
+			.pic:after{
+				content:'';
+				display:block;
+				clear:both;
+			}
+			.pic li{
+				float:left;
+				margin-left:30px;
+			}
+			.pic img{
+				width:200px;
+				height:300px;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<div class="pic-ct">
+			<ul class="pic">
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li>
+					<img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg">
+				</li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+				<li><img src="" alt="" data-img="http://pic94.nipic.com/file/20160409/11284670_185122899000_2.jpg"></li>
+			</ul>
+		</div>
+		<script>
+			var clock;
+			var $img = $('.pic-ct img');
+			run();
+
+			$(window).on('scroll',function(){
+				if(clock){
+					clearTimeout(clock);}
+				clock = setTimeout(function(){
+					run();
+				},500);
+			});
+			/*
+			
+			防止重复运行，
+			设置定时器，等待滚动事件完成，500毫秒后执行run，
+
+			*/
+		
+			function isLoad($node){
+				if($node.data('isload')){
+					return true;
+				}
+				else{return false};
+			}
+
+			function isVisible($node){
+				var offsetH = $node.offset().top;
+				var winH = $(window).height();
+				var scrolTop = $(window).scrollTop();
+				if(offsetH < (winH + scrolTop)){
+					return true;
+				}
+				else{return false};;
+			}
+			function run(){
+				$img.each(function(){
+				var $cur = $(this);
+					if(!isLoad($cur)){
+						if(isVisible($cur)){
+							show($cur);
+						}
+					}
+				});
+			}
+
+			function show($node){
+				var url = $node.attr('data-img');
+				$node.attr('src',url);
+				$node.data('isload',true);
+			}
+
+		</script>
+	</body>
+</html>

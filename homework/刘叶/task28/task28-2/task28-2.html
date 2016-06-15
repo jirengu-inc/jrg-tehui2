@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>多个aside和nav去stick</title>
+</head>
+<style type="text/css">
+    *{
+        font-size: 20px;
+        text-align: center;
+        color: #fff;
+        font-family: "Consolas", "Menlo", "Courier", monospace;
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+    }
+    #header{
+        width: 900px;
+        height: 80px;
+        background-color: lightseagreen;
+        margin: 0 auto;
+        line-height: 80px;
+    }
+    #content{
+        width: 900px;
+        margin: 10px auto;
+    }
+    /*.content-item{*/
+        /*position: relative;*/
+    /*}*/
+    .nav{
+        height: 50px;
+        line-height: 50px;
+        background-color: palevioletred;
+        margin-bottom: 2px;
+    }
+    .aside{
+        float: left;
+        height: 200px;
+        width: 100px;
+        background-color: lightskyblue;
+    }
+    .main{
+        height: 200px;
+        margin-left: 102px;
+        margin-bottom: 50px;
+        background-color: lightsalmon;
+    }
+</style>
+<body>
+    <div id="header">header</div>
+    <div id="content">
+        <div id="content-1" class="content-item">
+            <div class="nav">nav1</div>
+            <div class="aside">aside1</div>
+            <div class="main">main1</div>
+        </div>
+        <div id="content-2" class="content-item">
+            <div class="nav">nav2</div>
+            <div class="aside">aside2</div>
+            <div class="main">main2</div>
+        </div>
+        <div id="content-3" class="content-item">
+            <div class="nav">nav3</div>
+            <div class="aside">aside3</div>
+            <div class="main">main3</div>
+        </div>
+        <div id="content-4" class="content-item">
+            <div class="nav">nav4</div>
+            <div class="aside">aside4</div>
+            <div class="main">main4</div>
+        </div>
+        <div id="content-5" class="content-item">
+            <div class="nav">nav5</div>
+            <div class="aside">aside5</div>
+            <div class="main">main5</div>
+        </div>
+    </div>
+    <div id="footer"></div>
+    <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="stickup.js"></script>
+<script type="text/javascript">
+    $('.nav').each(function(){
+        $(this).stick();
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.ct li{
+				border:1px solid #ccc;
+				padding:10px;
+				margin:20px;
+				list-style: none;
+			}
+			.addmore{
+				border: 1px solid #f00;
+				color:#f00;
+				width: 70px;
+				text-align:center;
+				padding:10px;
+				cursor: pointer;
+				margin:0 auto;
+			}
+			.hover{
+				background:#1E90FF;
+				color:#fff;
+			}
+		</style>
+		<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	</head>
+	<body>
+		<ul class="ct">
+			<li>内容1</li>
+			<li>内容2</li>
+		</ul>
+		<div class="addmore">加载更多</div>
+		<script>
+		
+		var $ct = $('.ct');
+		var $btnAdd = $('.addmore');
+		//内容hover效果,使用代理
+		$ct.on('mouseover','li',function(){
+			$(this).addClass('hover')
+					.on('mouseleave',function(){
+			$(this).removeClass('hover');
+			});
+		});
+
+		//加载更多事件
+		var start = 3;
+		var len = 20;
+		var clock;
+		
+		$(window).on('scroll',function(){
+			if(clock) clearTimeout(clock);
+			clock = setTimeout(function(){
+				if(!isVisible($btnAdd)){return;};
+				getMore();
+			},100);
+		});
+
+		getMore();
+		function getMore(){
+			$btnAdd.text('加载中')
+			$.ajax({
+				'url':'hw29.php',
+				'type':'get',
+				'dataType':'json',
+				'data':{
+					start:start,
+					len:len
+				},
+				'success':function(ret){
+					onSuccess(ret);
+				},
+				'error':function(){
+					onError();
+				}
+			})
+		}	
+		
+		function onSuccess(ret){
+			if(ret.status === 1){
+				var arr = ret.data;
+				var html = "";
+				// console.log(arr);
+				for(var i = 0; i< arr.length;i++){
+					html += '<li>'+arr[i]+'</li>';
+				}
+				$ct.append(html);
+				$btnAdd.text('加载更多');
+				start += 20;
+		 	}	
+		}
+
+		function onError(data){
+			alert('请检查网络');
+		}
+
+		function isVisible($node){
+			var winH = $(window).height(),
+				offsetTop = $node.offset().top,
+				scrollTop = $(window).scrollTop();
+			
+			if((offsetTop > scrollTop) && (offsetTop < scrollTop + winH)){
+				console.log('isvisible');
+				return true;
+			}
+			return false;
+		}
+		</script>
+	</body>
+</html>

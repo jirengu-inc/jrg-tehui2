@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			body,ul,li{
+				margin: 0;
+				padding: 0;
+			}
+			ul,li{
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#ct{
+				width: 900px;
+				margin: 0 auto;
+			}
+			#ct li{
+				border: 1px solid #ccc;
+				border-radius: 1px;
+				margin: 10px;
+				padding: 10px;
+				font-size: 20px;
+				color: black;
+			}
+			.btnmore{
+				display: block;
+				background-color:#ccc;
+				border-radius:5px;
+				width:100px;
+				text-align:center;
+				padding: 12px;
+				margin: 0 auto;
+				color:black;
+				opacity:0.6;
+			}
+			.btnmore:hover{
+				opacity:0.9;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="ct">
+			<li>内容</li>
+			<li>内容</li>
+		</ul>
+		<a href="#" class="btnmore">加载更多</a>
+	</body>
+	<script src="ajax.js"></script>
+	<script>
+		
+		var list=document.querySelector('#ct');
+		var btn=document.querySelector('.btnmore');
+		var start=3;
+		var len=6;
+		var isloading=false;
+		btn.addEventListener('click',function(e){
+			e.preventDefault();
+			if(isloading){
+				return;
+			}
+			isloading = true;
+			btn.innerText="加载中...";
+			btn.style.cursor="not-allowed";
+			ajax({
+				url:"hw24-2.php",
+				type:"get",
+				data:{
+					'start':start,
+					'len':len
+				},
+				success:function(data){
+					isloading= false;
+					onSuccess(data);
+					start += 6;
+					btn.innerText="加载更多";
+					btn.style.cursor="pointer";
+				},
+				error:function(){
+					isloading=false;
+					onError();
+					btn.innerText="加载更多";
+					btn.style.cursor="pointer";
+				}
+			});
+		})
+
+		function onSuccess(response){
+			for(var i = 0;i<response.list.length;i++){
+				var li = document.createElement("li");
+				var litext=document.createTextNode(response.list[i]);
+				li.appendChild(litext);
+				list.appendChild(li);
+			}
+		}
+		function onError(){
+			alert("出错拉！");
+		}
+	</script>
+</html>

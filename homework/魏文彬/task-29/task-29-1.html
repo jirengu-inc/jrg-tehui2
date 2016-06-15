@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-1</title>
+	<style>
+		p {
+			border: 1px solid #000;
+			border-radius: 5px;
+			transition: background 0.3s;
+			padding: 10px;
+		}
+		p:hover {
+			background-color: lightblue;
+			color: #fff;
+		}
+		#go-top {
+			position: fixed;
+			bottom:10px;
+			right:10px;
+			background: lightblue;
+			width: 80px;
+			height: 80px;
+			line-height: 80px;
+			border-radius: 50%;
+			text-align: center;
+			color: #fff;
+			cursor: pointer;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容5</p>
+	<p>内容6</p>
+	<p>内容7</p>
+	<p>内容8</p>
+	<p>内容9</p>
+	<p>内容10</p>
+	<p>内容11</p>
+	<p>内容12</p>
+	<p>内容1</p>
+	<p>内容2</p>
+	<p>内容3</p>
+	<p>内容4</p>
+	<p>内容5</p>
+	<p>内容6</p>
+	<p>内容7</p>
+	<p>内容8</p>
+	<p>内容9</p>
+	<p>内容10</p>
+	<p>内容11</p>
+	<p>内容12</p>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+	// var $goTop = $('<div id="go-top">回到顶部</div>');
+	// $('body').append($goTop);
+
+	// $(window).on('scroll',function(e){
+	// 	var offsetTop = $('body').scrollTop();
+	// 	if(offsetTop>100){
+	// 		$goTop.show();
+	// 	}else {
+	// 		$goTop.hide();
+	// 	}
+	// })
+	// $goTop.on('click',function(){
+	// 	$(window).scrollTop(0);
+	// });
+	// 
+	$(window).on('scroll',function(){
+		var offsetTop = $(window).scrollTop();
+		if(offsetTop>100) {
+			$goTop.show();
+		}else{
+			$goTop.hide()
+		}
+		goTop();
+	});
+
+	var $goTop = $('<div id="go-top">回到顶部</div>');
+	$goTop.appendTo($('body'));
+	function goTop() {
+		$goTop.on('click',function(){
+			$(window).scrollTop(0);
+		})
+	}
+</script>
+</body>
+</html>
