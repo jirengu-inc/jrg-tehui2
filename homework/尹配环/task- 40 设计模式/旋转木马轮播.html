@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马轮播</title>
+    <style>
+        ul {
+            margin:0;
+            padding:0;
+        }
+        li {
+            list-style: none;
+        }
+        .poster-item a,.poster-item img {
+            display: block;
+        }
+        .poster-main {
+            position:relative;
+            width:800px;
+            height:270px;
+
+        }
+        .poster-main .poster-list {
+            width:800px;
+            /*height:270px;*/
+        }
+        .poster-main .poster-list .poster-item {
+            position: absolute;
+            top:0;
+            left:0;
+        }
+        .poster-btn {
+            position: absolute;
+            top:0;
+            width:100px;
+            height:100%;
+            cursor:pointer;
+        }
+        .poster-prev-btn {
+            left:0;
+            background:url("img/btn_l.png") no-repeat center center;
+        }
+        .poster-next-btn {
+            right:0;
+            background:url("img/btn_r.png") no-repeat center center;
+        }
+
+
+    </style>
+</head>
+<body>
+
+<div class="J_Poster poster-main" data-setting='{
+                                            "width":1000,
+                                            "height":270,
+                                            "posterWidth":640,
+                                            "posterHeight":270,
+                                            "scale":0.9,
+                                            "speed":500,
+                                            "autoPlay":true,
+                                            "delay":2000,
+                                            "verticalAlign":"middle"
+                                            }'>
+    <div class="poster-btn poster-prev-btn"></div>
+
+    <ul class="poster-list">
+        <li class="poster-item"><a href="#"><img src="img/1.jpg" width="100%"></a></li>
+        <li class="poster-item"><a href="#"><img src="img/2.jpg" width="100%"></a></li>
+        <li class="poster-item"><a href="#"><img src="img/3.jpg" width="100%"></a></li>
+        <li class="poster-item"><a href="#"><img src="img/4.jpg" width="100%"></a></li>
+        <li class="poster-item"><a href="#"><img src="img/5.jpg" width="100%"></a></li>
+        <li class="poster-item"><a href="#"><img src="img/6.jpg" width="100%"></a></li>
+    </ul>
+
+    <div class="poster-btn poster-next-btn"></div>
+</div>
+
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="js/CarouselCSS3.js"></script>
+<script>
+    $(function(){
+
+        CarouselCSS3.init($('.J_Poster'));
+    })
+</script>
+
+</body>
+</html>
