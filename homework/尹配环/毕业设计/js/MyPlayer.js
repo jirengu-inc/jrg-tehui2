@@ -46,20 +46,13 @@ var MyPlayer = function(){
 MyPlayer.bindEvns = function () {
     MyPlayer.$playBtn.on('click',function(){
         event.stopImmediatePropagation();
-        if (MyPlayer.$playBtn.attr('data-status') == 'pause'){           //暂停状态
-            MyPlayer.$playBtn.children().removeClass('active').last().addClass('active');
-            MyPlayer.player.play();
-            MyPlayer.$playBtn.attr('data-status','play');
-        } else {                                                        //播放状态
-            MyPlayer.$playBtn.children().removeClass('active').first().addClass('active');
-            MyPlayer.player.pause();
-            MyPlayer.$playBtn.attr('data-status','pause');
-        }
+        playPause()
     });                     //播放 暂停
     MyPlayer.$nextBtn.on('click',function () {
         event.stopImmediatePropagation();
-
+        playPause();
         MyPlayer.getSongInfo(MyPlayer.channelId);
+
     });                   //下一曲
     MyPlayer.$chansCt.on('click','li',function () {
         var $item = $(this),
@@ -155,7 +148,17 @@ MyPlayer.bindEvns = function () {
         MyPlayer.$vol_range.css('width',pos + '%');
         MyPlayer.player.volume = pos/100;
     };
-
+    var playPause = function () {
+        if (MyPlayer.$playBtn.attr('data-status') == 'pause'){           //暂停状态
+            MyPlayer.$playBtn.children().removeClass('active').last().addClass('active');
+            MyPlayer.player.play();
+            MyPlayer.$playBtn.attr('data-status','play');
+        } else {                                                        //播放状态
+            MyPlayer.$playBtn.children().removeClass('active').first().addClass('active');
+            MyPlayer.player.pause();
+            MyPlayer.$playBtn.attr('data-status','pause');
+        }
+    }
 
 
 
