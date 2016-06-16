@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ct">
+	    <li data-img="https://www.baidu.com/img/bd_logo1.png">鼠标放置查看图片1</li>
+	    <li data-img="http://e.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=59341d6246166d22387712927e186eca/6609c93d70cf3bc793f25745d400baa1cc112aac.jpg">鼠标放置查看图片2</li>
+	    <li data-img="http://b.hiphotos.baidu.com/baike/w%3D268%3Bg%3D0/sign=b70574b2b01c8701d6b6b5e01f44f912/e1fe9925bc315c60addea1b98eb1cb1349547719.jpg">鼠标放置查看图片3</li>
+	</ul>
+	<div class="img-preview"></div>
+<script>
+//todo ...
+	var ct=document.querySelector('.ct');
+		img=document.querySelector('.img-preview');
+
+	ct.addEventListener('mouseover',function(e){
+		var imgsrc= e.target.getAttribute('data-img');
+		 	img.innerHTML='<img src="'+ imgsrc +'">';
+	});
+</script>
+</body>
+</html>
