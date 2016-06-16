@@ -50,8 +50,13 @@ MyPlayer.bindEvns = function () {
     });                     //播放 暂停
     MyPlayer.$nextBtn.on('click',function () {
         event.stopImmediatePropagation();
-        playPause();
         MyPlayer.getSongInfo(MyPlayer.channelId);
+
+        if (MyPlayer.$playBtn.attr('data-status') == 'pause'){           //暂停状态
+            MyPlayer.$playBtn.children().removeClass('active').last().addClass('active');
+            // MyPlayer.player.play();
+            MyPlayer.$playBtn.attr('data-status','play');
+        }
 
     });                   //下一曲
     MyPlayer.$chansCt.on('click','li',function () {

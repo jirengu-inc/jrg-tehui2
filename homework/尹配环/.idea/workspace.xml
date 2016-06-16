@@ -23,39 +23,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MyPlayer.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MyPlayer.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
+            <state relative-caret-position="323">
+              <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
                 <element signature="e#77#1389#0" expanded="false" />
-                <element signature="e#1818#2207#0" expanded="false" />
-                <element signature="e#2276#2340#0" expanded="false" />
-                <element signature="e#2413#2698#0" expanded="false" />
-                <element signature="e#2776#3232#0" expanded="false" />
-                <element signature="e#3327#3493#0" expanded="false" />
-                <element signature="e#3521#3614#0" expanded="false" />
-                <element signature="e#3676#3835#0" expanded="false" />
-                <element signature="e#3883#4133#0" expanded="false" />
-                <element signature="e#4075#4126#0" expanded="false" />
-                <element signature="e#4161#4266#0" expanded="false" />
-                <element signature="e#4314#4567#0" expanded="false" />
-                <element signature="e#4608#4834#0" expanded="false" />
-                <element signature="e#5472#6086#0" expanded="false" />
-                <element signature="e#6139#6684#0" expanded="false" />
-                <element signature="e#6741#7803#0" expanded="false" />
-                <element signature="e#7868#9147#0" expanded="false" />
-                <element signature="e#9216#9394#0" expanded="false" />
-                <element signature="e#9445#10335#0" expanded="false" />
-                <element signature="e#10384#10736#0" expanded="false" />
+                <element signature="e#2075#2464#0" expanded="false" />
+                <element signature="e#2533#2597#0" expanded="false" />
+                <element signature="e#2670#2955#0" expanded="false" />
+                <element signature="e#3033#3489#0" expanded="false" />
+                <element signature="e#3584#3750#0" expanded="false" />
+                <element signature="e#3778#3871#0" expanded="false" />
+                <element signature="e#3933#4092#0" expanded="false" />
+                <element signature="e#4140#4390#0" expanded="false" />
+                <element signature="e#4332#4383#0" expanded="false" />
+                <element signature="e#4418#4523#0" expanded="false" />
+                <element signature="e#4571#4824#0" expanded="false" />
+                <element signature="e#4865#5091#0" expanded="false" />
+                <element signature="e#5729#6343#0" expanded="false" />
+                <element signature="e#6396#6941#0" expanded="false" />
+                <element signature="e#6998#8060#0" expanded="false" />
+                <element signature="e#8125#9404#0" expanded="false" />
+                <element signature="e#9473#9651#0" expanded="false" />
+                <element signature="e#9702#10592#0" expanded="false" />
+                <element signature="e#10641#10993#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-292">
@@ -331,12 +331,12 @@
       <workItem from="1465781066144" duration="6665000" />
       <workItem from="1465804647284" duration="15643000" />
       <workItem from="1465860824126" duration="29348000" />
-      <workItem from="1465953134354" duration="43255000" />
+      <workItem from="1465953134354" duration="43567000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="168284000" />
+    <option name="totallyTimeSpent" value="168596000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -629,41 +629,41 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="52" column="20" selection-start-line="52" selection-start-column="20" selection-end-line="52" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#49#0" expanded="false" />
-            <element signature="e#77#1389#0" expanded="false" />
-            <element signature="e#1818#2207#0" expanded="false" />
-            <element signature="e#2276#2340#0" expanded="false" />
-            <element signature="e#2413#2698#0" expanded="false" />
-            <element signature="e#2776#3232#0" expanded="false" />
-            <element signature="e#3327#3493#0" expanded="false" />
-            <element signature="e#3521#3614#0" expanded="false" />
-            <element signature="e#3676#3835#0" expanded="false" />
-            <element signature="e#3883#4133#0" expanded="false" />
-            <element signature="e#4075#4126#0" expanded="false" />
-            <element signature="e#4161#4266#0" expanded="false" />
-            <element signature="e#4314#4567#0" expanded="false" />
-            <element signature="e#4608#4834#0" expanded="false" />
-            <element signature="e#5472#6086#0" expanded="false" />
-            <element signature="e#6139#6684#0" expanded="false" />
-            <element signature="e#6741#7803#0" expanded="false" />
-            <element signature="e#7868#9147#0" expanded="false" />
-            <element signature="e#9216#9394#0" expanded="false" />
-            <element signature="e#9445#10335#0" expanded="false" />
-            <element signature="e#10384#10736#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-292">
           <caret line="244" column="60" selection-start-line="244" selection-start-column="60" selection-end-line="244" selection-end-column="60" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="59" column="0" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#49#0" expanded="false" />
+            <element signature="e#77#1389#0" expanded="false" />
+            <element signature="e#2075#2464#0" expanded="false" />
+            <element signature="e#2533#2597#0" expanded="false" />
+            <element signature="e#2670#2955#0" expanded="false" />
+            <element signature="e#3033#3489#0" expanded="false" />
+            <element signature="e#3584#3750#0" expanded="false" />
+            <element signature="e#3778#3871#0" expanded="false" />
+            <element signature="e#3933#4092#0" expanded="false" />
+            <element signature="e#4140#4390#0" expanded="false" />
+            <element signature="e#4332#4383#0" expanded="false" />
+            <element signature="e#4418#4523#0" expanded="false" />
+            <element signature="e#4571#4824#0" expanded="false" />
+            <element signature="e#4865#5091#0" expanded="false" />
+            <element signature="e#5729#6343#0" expanded="false" />
+            <element signature="e#6396#6941#0" expanded="false" />
+            <element signature="e#6998#8060#0" expanded="false" />
+            <element signature="e#8125#9404#0" expanded="false" />
+            <element signature="e#9473#9651#0" expanded="false" />
+            <element signature="e#9702#10592#0" expanded="false" />
+            <element signature="e#10641#10993#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
