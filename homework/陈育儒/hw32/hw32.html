@@ -39,6 +39,9 @@
 			font-size:12px;
 			line-height:1.8;
 		}
+    .load{
+      opacity:0;
+    }
 	</style>
 </head>
 <body>
@@ -143,7 +146,7 @@
   	$nodes.each(function(){
   		var $cur = $(this);
   		
-      $(this).find('img').on('load',function(){
+      $cur.find('img').on('load',function(){
     			var idx = 0;
     			var minSumHeight = colSumHeight[0];
     			for(var i=0;i<colNum;i++){

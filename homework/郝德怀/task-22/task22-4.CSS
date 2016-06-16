@@ -1,0 +1,36 @@
+*{
+	box-sizing:border-box;
+	padding: 0;
+	margin:0;
+}
+
+.tabs li{
+	float: left;
+	width: 33.3333%;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+	cursor: pointer;
+	list-style: none;
+	border: 1px solid #ccc;
+}
+.wrap .tabs:after{
+	content: '';
+	display: table;
+	clear: both;
+}
+.content{
+	height: 300px;
+	padding: 50px;
+	border: 1px solid #ccc;
+
+}
+.tabs .active{
+	background: #ccc;
+}
+.wrap .content{
+	display: none;
+}
+.wrap .active{
+	display: block;
+}

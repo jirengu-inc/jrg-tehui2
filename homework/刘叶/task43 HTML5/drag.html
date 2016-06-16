@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        ul {
+            border: 1px solid #000;
+            margin: 0 100px;
+            min-height: 60px;
+        }
+        li {
+            list-style: none;
+            float: left;
+            margin: 10px;
+            padding: 10px;
+            border: 1px dotted #ccc;
+            background-color: #eee;
+            cursor: move;
+        }
+        ul:after {
+            content: "";
+            display: block;
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+<section id="all">
+    <h3>全部</h3>
+    <ul ondrop="drop(event)" ondragover="allowDrop(event)">
+        <li id="douga" draggable="true" ondragstart="drag(event)">番剧</li>
+        <li id="animate" draggable="true" ondragstart="drag(event)">动画</li>
+        <li id="fun" draggable="true" ondragstart="drag(event)">娱乐</li>
+        <li id="movie" draggable="true" ondragstart="drag(event)">电影</li>
+        <li id="technology" draggable="true" ondragstart="drag(event)">科技</li>
+        <li id="game" draggable="true" ondragstart="drag(event)">游戏</li>
+        <li id="guichu" draggable="true" ondragstart="drag(event)">鬼畜</li>
+    </ul>
+</section>
+<section id="sub">
+    <h3>订阅</h3>
+    <ul ondrop="drop(event)" ondragover="allowDrop(event)">
+        <li id="live" draggable="true" ondragstart="drag(event)">直播</li>
+    </ul>
+</section>
+<script>
+    function allowDrop(ev) {
+        ev.preventDefault();
+    }
+    function drag(ev) {
+        ev.dataTransfer.setData("itemId",ev.target.id);
+    }
+    function drop(ev) {
+        ev.preventDefault();
+        if(ev.target.tagName.toLowerCase() === "li") {
+            return false;
+        }
+        var itemId = ev.dataTransfer.getData("itemId");
+        ev.target.appendChild(document.getElementById(itemId));
+    }
+</script>
+</body>
+</html>

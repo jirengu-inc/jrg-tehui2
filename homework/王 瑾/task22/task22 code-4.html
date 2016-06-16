@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22 code-4</title>
+<link rel="stylesheet" type="text/css" href="task22-code4.css">
+</head>
+<body>
+    <div id="tab-cards">
+    	<div class="tab-tit">
+    	<ul class="lists">
+        <div class="bgcolorbox"></div>
+    		<li>tab1</li>
+    		<li>tab2</li>
+    		<li>tab3</li>
+    	</ul>
+    </div>
+    <div class="tab-ct"></div>
+</div>
+ 
+   <script type="text/javascript">
+    var lists = document.querySelector(".lists").children;
+    var tabtit = document.querySelector(".tab-tit");
+    var tabct = document.querySelector(".tab-ct");
+    
+    function hasClass(ele,cls){
+      return !!ele.className.match(new RegExp("\\b"+cls+"\\b"));
+    }
+   
+    function removeClass(ele,cls){
+        ele.className = ele.className.replace(new RegExp("\\b"+cls+"\\b","g"),"");
+    }
+
+    function addClass(ele,cls){
+      if(hasClass(ele,cls)) return;
+      ele.className += "" +cls;
+    }
+
+    function mClick(e){
+       //文本框部分
+       var reg = /\d+/g;
+       var titct = e.target.innerText;
+       var num = titct.match(reg);
+       tabct.innerText = "内容"+num;
+       // 背景颜色部分
+       for(var i=0;i<lists.length;i++){
+        if(hasClass(lists[i]),"bgcolorbox"){
+          removeClass(lists[i],"bgcolorbox");
+        }
+       }
+       addClass(e.target,"bgcolorbox");
+       e.stopPropagation();
+    }
+  
+   tabtit.addEventListener("click",mClick,false);  
+    </script>
+</body>
+</html>

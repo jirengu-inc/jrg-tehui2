@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task22 code-3</title>
+</head>
+<body>
+   <ul class="ct">
+   	<li data-img="http://imgbbs.zm7.cn/data/attachment/forum/201306/27/114541f8eg60m3nie8ld88.jpg">鼠标放置查看图片1</li>
+   	<li data-img="http://image.tianjimedia.com/uploadImages/2012/065/IR0D8SOB80AT.jpg">鼠标放置查看图片2</li>
+   	<li data-img="http://tupian.enterdesk.com/2012/0923/gha/1/dgfjbz16.jpg">鼠标放置查看图片3</li>
+   </ul>
+   <div class="img-preview"></div>
+ 
+   <script type="text/javascript">
+
+   var ct = document.querySelector(".ct");
+   var imgs = document.querySelector(".img-preview");
+  function fnOver(e){
+     if(e.target.tagName.toLowerCase()==="li"){ 
+      var src = e.target.getAttribute("data-img");
+      imgs.innerHTML = "<img src="+src+" />"; // 一开始图片无法显示，是因为/前没有加空格
+     }
+   }
+   ct.addEventListener("mouseover",fnOver,false); 
+    </script>
+</body>
+</html>

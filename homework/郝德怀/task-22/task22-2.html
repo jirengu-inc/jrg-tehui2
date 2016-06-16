@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul class="ct">
+	    <li>这里是</li>
+	    <li>饥人谷</li>
+	    <li>前端6班</li>
+	</ul>
+	<input class="ipt-add-content" placeholder="添加内容"/>
+	<button id="btn-add-start">开头添加</button>
+	<button id="btn-add-end">结尾添加</button>
+<script>
+//todo ...
+	var ipt=document.querySelector('.ipt-add-content');
+		ct=document.querySelector('.ct');
+		addStart=document.querySelector('#btn-add-start');
+		addEnd=document.querySelector('#btn-add-end');
+	
+	ct.addEventListener('click',function(e){
+		console.log(e.target.innerText);
+	})
+
+	addStart.addEventListener('click',function(){
+		var li=document.createElement('li');
+			li.innerText=ipt.value;
+			ct.insertBefore(li,ct.firstChild);
+	})	
+
+	addEnd.addEventListener('click',function(){
+		var li=document.createElement('li');
+			li.innerText=ipt.value;
+			ct.appendChild(li);
+	})
+</script>
+</body>
+</html>
