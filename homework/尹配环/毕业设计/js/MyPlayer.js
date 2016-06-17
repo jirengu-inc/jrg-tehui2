@@ -5,6 +5,7 @@
 
 var MyPlayer = function(){
     MyPlayer.$musicMa = $('.musicMain');
+    MyPlayer.$musicCo = $('.musicCover');
     MyPlayer.$songTit = $('.songTitle');
     MyPlayer.$songArt = $('.songArtist');
     MyPlayer.player   = $('#Js_player').get(0); //h5播放器
@@ -45,14 +46,12 @@ var MyPlayer = function(){
 //绑定事件
 MyPlayer.bindEvns = function () {
     MyPlayer.$playBtn.on('click',function(){
-        event.stopImmediatePropagation();
         playPause()
     });                     //播放 暂停
     MyPlayer.$nextBtn.on('click',function () {
-        event.stopImmediatePropagation();
         MyPlayer.getSongInfo(MyPlayer.channelId);
 
-        if (MyPlayer.$playBtn.attr('data-status') == 'pause'){           //暂停状态
+        if (MyPlayer.$playBtn.attr('data-status') == 'pause'){           //暂停状态  下一曲 自动改为 播放状态
             MyPlayer.$playBtn.children().removeClass('active').last().addClass('active');
             // MyPlayer.player.play();
             MyPlayer.$playBtn.attr('data-status','play');
@@ -60,6 +59,7 @@ MyPlayer.bindEvns = function () {
 
     });                   //下一曲
     MyPlayer.$chansCt.on('click','li',function () {
+        event.stopPropagation();
         var $item = $(this),
             idx = $item.index();
 
@@ -68,13 +68,19 @@ MyPlayer.bindEvns = function () {
         MyPlayer.channelId = parseInt($item.attr('data-channelId'));  //获取该li 对应的 channelsId
 
         MyPlayer.getSongInfo(MyPlayer.channelId);                     //获取该频道下 随机歌曲
-        MyPlayer.$chansList.css('visibility','hidden');
+        // MyPlayer.$chansList.css('visibility','hidden');
     });              //选频道
+    MyPlayer.$musicCo.on('click',function () {
+        event.stopPropagation();
+
+        MyPlayer.$chansList.animate({left:-200},500);
+    });     //关闭频道列表
+
     MyPlayer.$musicIcon.on('click',function () {
-        MyPlayer.$chansList.css('visibility','visible');
+        event.stopPropagation();
+        MyPlayer.$chansList.animate({left:0},500);
     });                 //打开频道列表
     MyPlayer.$volumeBtn.on('click',function(){                         //打开音量控制器
-        event.stopImmediatePropagation();
         if (MyPlayer.$vol_wrap.css('display') == 'none') {
             MyPlayer.$vol_wrap.css('display','inline-block');
         } else {
@@ -82,7 +88,6 @@ MyPlayer.bindEvns = function () {
         }
     });                   //打开音量控制条
     MyPlayer.$lyrcisBtn.on('click',function () {                        //歌词开关
-        event.stopImmediatePropagation();
         if(MyPlayer.$musicLyrics.hasClass('active')){
             MyPlayer.$musicLyrics.removeClass('active');
             MyPlayer.$lyrcisBtn.children().removeClass('active').last().addClass('active');
@@ -291,7 +296,7 @@ MyPlayer.getChannelsInfo = function () {
 
             for (var i=0;i<info.channels.length;i++){
                 // <li class="channelsItem"><a data-channelId=1 href="#">{{channelName}}</a></li>
-                temp += '<li class="channelsItem musicbtn" data-channelId=' + info.channels[i].channel_id + '>' + info.channels[i].name;
+                temp += '<li class="channelsItem" data-channelId=' + info.channels[i].channel_id + '>' + info.channels[i].name;
                 temp += '</li>';
             }
             MyPlayer.$chansCt.append($(temp));

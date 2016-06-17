@@ -48,6 +48,7 @@
             width:300px;
             height:400px;
             background-color: rgba(0,0,0,0.5);
+            overflow: hidden;
         }
         .musicHead {
 
@@ -119,15 +120,27 @@
             color:#ccc;
         }
 
+
+        .channelsList::-webkit-scrollbar {
+            width:6px;
+            background-color: rgba(235, 235, 235, 0.3);
+        }
+        .channelsList::-webkit-scrollbar-button,.channelsList::-webkit-scrollbar-track {
+            display: none;
+        }
+        .channelsList::-webkit-scrollbar-thumb{
+            background:#FFA711;
+            border-radius:4px;
+        }
+
         .channelsList {
             position:absolute;
-            left:0;
+            left:-200px;
             top:0;
-            width:300px;
+            width:200px;
             height:400px;
             background-color: rgba(0,0,0,.5);
             overflow: auto;
-            visibility: hidden;
         }
         .channelsCt {
             padding:20px 0;
@@ -136,9 +149,10 @@
         .channelsItem {
             text-align: left;
             padding:5px 15px;
+            cursor: pointer;
         }
         .channelsItem:hover {
-            background-color: #ccc;
+            background: -webkit-linear-gradient(left,rgba(255,167,17,.6),transparent);
         }
         .channelsItem.active:before {
             content: "";
@@ -147,7 +161,7 @@
             height: 21px;
             margin-left: -15px;
             margin-right:5px;
-            vertical-align: middle;
+            vertical-align: bottom;
             background-color: white;
         }
 
@@ -208,9 +222,8 @@
             background-color: #00a0d8;
         }
 
-        .iconFloat {
-            width:30px;
-            height:30px;
+        .iconFloat>i {
+            padding: 10px;
             /*background-color: #ffff00;*/
         }
     </style>
