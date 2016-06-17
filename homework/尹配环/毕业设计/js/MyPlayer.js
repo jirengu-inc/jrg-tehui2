@@ -101,6 +101,7 @@ MyPlayer.bindEvns = function () {
     MyPlayer.$progress.on('mousedown',function (e) {
         var $progress = $(this);
 
+
         MyPlayer.player.pause();     //暂停播放
         setCurrTimeAndWidth(e.offsetX);
 

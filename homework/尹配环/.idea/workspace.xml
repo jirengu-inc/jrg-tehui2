@@ -28,30 +28,32 @@
       <file leaf-file-name="MyPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+            <state relative-caret-position="355">
+              <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
                 <element signature="e#1517#1544#0" expanded="false" />
                 <element signature="e#1620#1971#0" expanded="false" />
                 <element signature="e#2048#2473#0" expanded="false" />
+                <element signature="e#2540#2635#0" expanded="false" />
+                <element signature="e#2699#2790#0" expanded="false" />
+                <element signature="e#2863#3106#0" expanded="false" />
                 <element signature="e#3184#3598#0" expanded="false" />
-                <element signature="e#3693#3859#0" expanded="false" />
-                <element signature="e#3887#3980#0" expanded="false" />
-                <element signature="e#4042#4201#0" expanded="false" />
-                <element signature="e#4249#4499#0" expanded="false" />
-                <element signature="e#4441#4492#0" expanded="false" />
-                <element signature="e#4527#4632#0" expanded="false" />
-                <element signature="e#4680#4933#0" expanded="false" />
-                <element signature="e#4974#5200#0" expanded="false" />
-                <element signature="e#5234#5781#0" expanded="false" />
-                <element signature="e#5838#6452#0" expanded="false" />
-                <element signature="e#6505#7050#0" expanded="false" />
-                <element signature="e#7107#8169#0" expanded="false" />
-                <element signature="e#8234#9513#0" expanded="false" />
-                <element signature="e#9582#9760#0" expanded="false" />
-                <element signature="e#9811#10692#0" expanded="false" />
-                <element signature="e#10741#11093#0" expanded="false" />
+                <element signature="e#3888#3981#0" expanded="false" />
+                <element signature="e#4043#4202#0" expanded="false" />
+                <element signature="e#4250#4500#0" expanded="false" />
+                <element signature="e#4442#4493#0" expanded="false" />
+                <element signature="e#4528#4633#0" expanded="false" />
+                <element signature="e#4681#4934#0" expanded="false" />
+                <element signature="e#4975#5201#0" expanded="false" />
+                <element signature="e#5235#5782#0" expanded="false" />
+                <element signature="e#5839#6453#0" expanded="false" />
+                <element signature="e#6506#7051#0" expanded="false" />
+                <element signature="e#7108#8170#0" expanded="false" />
+                <element signature="e#8235#9514#0" expanded="false" />
+                <element signature="e#9583#9761#0" expanded="false" />
+                <element signature="e#9812#10693#0" expanded="false" />
+                <element signature="e#10742#11094#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -60,8 +62,8 @@
       <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="226" column="12" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="12" />
+            <state relative-caret-position="221">
+              <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
               <folding />
             </state>
           </provider>
@@ -70,7 +72,7 @@
       <file leaf-file-name="drag.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/毕业设计/js/drag.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
+            <state relative-caret-position="255">
               <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
@@ -116,8 +118,8 @@
         <option value="$PROJECT_DIR$/毕业设计/musicbody.html" />
         <option value="$PROJECT_DIR$/毕业设计/js/ajax.js" />
         <option value="$PROJECT_DIR$/毕业设计/js/drag.js" />
-        <option value="$PROJECT_DIR$/毕业设计/js/MyPlayer.js" />
         <option value="$PROJECT_DIR$/毕业设计/main.html" />
+        <option value="$PROJECT_DIR$/毕业设计/js/MyPlayer.js" />
       </list>
     </option>
   </component>
@@ -157,6 +159,21 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope">
+        <subPane subId="Problems" />
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+        <subPane subId="Tests" />
+      </pane>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -175,54 +192,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="毕业设计" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="毕业设计" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
-      </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
-      <pane id="Scope">
-        <subPane subId="Problems" />
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-        <subPane subId="Tests" />
       </pane>
     </panes>
   </component>
@@ -334,33 +304,34 @@
       <workItem from="1465804647284" duration="15643000" />
       <workItem from="1465860824126" duration="29348000" />
       <workItem from="1465953134354" duration="43825000" />
-      <workItem from="1466125986608" duration="4870000" />
+      <workItem from="1466125986608" duration="5095000" />
+      <workItem from="1466162997405" duration="246000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173724000" />
+    <option name="totallyTimeSpent" value="174195000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
+    <editor active="false" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16443452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32298136" sideWeight="0.50793654" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19575857" sideWeight="0.4920635" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -376,7 +347,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="10" />
+      <option name="time" value="11" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -610,13 +581,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
           <caret line="108" column="0" selection-start-line="108" selection-start-column="0" selection-end-line="108" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/js/drag.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
+        <state relative-caret-position="255">
           <caret line="17" column="27" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
@@ -626,38 +596,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="75" column="46" selection-start-line="75" selection-start-column="46" selection-end-line="75" selection-end-column="46" />
+        <state relative-caret-position="355">
+          <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
             <element signature="e#1517#1544#0" expanded="false" />
             <element signature="e#1620#1971#0" expanded="false" />
             <element signature="e#2048#2473#0" expanded="false" />
+            <element signature="e#2540#2635#0" expanded="false" />
+            <element signature="e#2699#2790#0" expanded="false" />
+            <element signature="e#2863#3106#0" expanded="false" />
             <element signature="e#3184#3598#0" expanded="false" />
-            <element signature="e#3693#3859#0" expanded="false" />
-            <element signature="e#3887#3980#0" expanded="false" />
-            <element signature="e#4042#4201#0" expanded="false" />
-            <element signature="e#4249#4499#0" expanded="false" />
-            <element signature="e#4441#4492#0" expanded="false" />
-            <element signature="e#4527#4632#0" expanded="false" />
-            <element signature="e#4680#4933#0" expanded="false" />
-            <element signature="e#4974#5200#0" expanded="false" />
-            <element signature="e#5234#5781#0" expanded="false" />
-            <element signature="e#5838#6452#0" expanded="false" />
-            <element signature="e#6505#7050#0" expanded="false" />
-            <element signature="e#7107#8169#0" expanded="false" />
-            <element signature="e#8234#9513#0" expanded="false" />
-            <element signature="e#9582#9760#0" expanded="false" />
-            <element signature="e#9811#10692#0" expanded="false" />
-            <element signature="e#10741#11093#0" expanded="false" />
+            <element signature="e#3888#3981#0" expanded="false" />
+            <element signature="e#4043#4202#0" expanded="false" />
+            <element signature="e#4250#4500#0" expanded="false" />
+            <element signature="e#4442#4493#0" expanded="false" />
+            <element signature="e#4528#4633#0" expanded="false" />
+            <element signature="e#4681#4934#0" expanded="false" />
+            <element signature="e#4975#5201#0" expanded="false" />
+            <element signature="e#5235#5782#0" expanded="false" />
+            <element signature="e#5839#6453#0" expanded="false" />
+            <element signature="e#6506#7051#0" expanded="false" />
+            <element signature="e#7108#8170#0" expanded="false" />
+            <element signature="e#8235#9514#0" expanded="false" />
+            <element signature="e#9583#9761#0" expanded="false" />
+            <element signature="e#9812#10693#0" expanded="false" />
+            <element signature="e#10742#11094#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="226" column="12" selection-start-line="226" selection-start-column="12" selection-end-line="226" selection-end-column="12" />
+        <state relative-caret-position="221">
+          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
           <folding />
         </state>
       </provider>
