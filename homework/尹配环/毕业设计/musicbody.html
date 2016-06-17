@@ -105,39 +105,8 @@
         .channels>.musicIcon {
             padding:10px 22px;
         }
-        .channels>ul {
-            margin:0;
-            padding:0;
-            width:200px;
-        }
-        .channels>ul>li {
-            list-style: none;
-            padding-top:10px;
-            padding-bottom: 10px;
 
-        }
-        .channels>ul>li>.channelBox {
-            display: inline-block;
-            width:15px;
-            height:33px;
-            vertical-align: bottom;
 
-            background-color: white;
-            opacity: 0;
-        }
-        .channels>ul>li>.channelName {
-            display: inline-block;
-            text-decoration: none;
-        }
-        .channels>ul>li>.channelBox.active {
-            opacity: 1;
-        }
-        .channels>ul>li:hover {
-            background-image:linear-gradient(90deg, rgba(55,55,55,.8), rgba(0,0,0,0));
-        }
-        .arrowDown {
-            padding-left:50px;
-        }
     </style>
 </head>
 <body>
@@ -149,43 +118,14 @@
         <div class="musicIcon">      <!-- 菜单图标 -->
             <i class="fa fa-music fa-2x"></i>
         </div>
-        <ul>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox active"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li>
-                <div class="channelBox"></div>
-                <a class="channelName" href="#"><h2>电子 MHz</h2></a>
-            </li>
-            <li class="arrowDown">
-                <i class="fa fa-arrow-circle-o-down fa-2x"></i>
-            </li>
-        </ul>
+        <select id="channelsList">
+            <option><a class="channelName" href="#"><h2>电子 MHz</h2></a></option>
+
+        </select>
+
+
+
+
 
     </div>
 
@@ -226,7 +166,7 @@
                 </div>
             </div>
             <div id="musicSlider">
-                <div class="sliderLine"></div>
+                <div class="sliderLine"></div>           <!-- 播放进度条-->
                 <span class="currentTime">00:02</span>
                 <span class="times">03:00</span>
             </div>
@@ -239,7 +179,11 @@
 
 
 <script src="js/jquery.js"></script>
+<script src="js/MyPlayer.js"></script>
 <script>
+    getChannelsAndRander();
+
+
     $('.menu').on("click",function(){
         $('.channels').addClass('active');
     });

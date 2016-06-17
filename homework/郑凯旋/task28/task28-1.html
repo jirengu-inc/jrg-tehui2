@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task28</title>
+	<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+	<style>
+		#header{
+			height:80px;
+			line-height: 80px;
+			text-align: center;
+			background-color: red;
+		}
+		#nav{
+			height: 40px;
+			margin-top: 20px;
+			background: blue;
+		}
+		#content{
+			min-height: 800px;
+			padding: 10px;
+			overflow: auto;
+			background: #ccc;
+		}
+		#content .aside{
+			float: left;
+			background: green;
+			width:100px;
+			min-height: 400px;
+		}
+		#content .main{
+			background: white;
+			min-height: 800px;
+			overflow: auto;
+			padding-left: 20px;
+		}
+		#footer{
+			min-height: 20px;
+			background: #333;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">header</div>
+	<div id="nav">nav</div>
+	<div id="content">
+		<div class="aside">aside</div>
+		<div class="main">main</div>
+		<div id="footer">footer</div>
+	</div>
+	<script>
+
+	var $cur = $('#nav'),
+	    curH = $cur.height(),
+	    curW = $cur.width(),
+    	offsetTop = $cur.offset().top,
+	    offsetLeft = $cur.offset().left;
+    var $curClone = $cur.clone()
+                        .css({visibility: 'hidden', display: 'none'})
+                        .insertBefore($cur);
+    $(window).on('scroll', function(){
+        var scrollTop = $(this).scrollTop();
+
+    	if(scrollTop >= offsetTop ){
+        	if(!isFixed()){
+        		setFixed();
+        	}
+    	}else{
+            if(isFixed()){
+        	unsetFixed();
+        	}
+   		}
+    });
+
+    function isFixed(){
+     	return !!$cur.data('data-fixed');
+   	}
+
+   	function setFixed(){
+   	 	 $cur.data('data-fixed', true)
+         	 .css({
+               	'position': 'fixed', 
+               	'top': 0, 
+               	'left': offsetLeft,
+               	'width': curW, 
+               	'margin': 0,
+                'z-index': 9999
+            	});
+     $curClone.show();
+     
+    }
+
+   	function unsetFixed(){
+    	$cur.data('data-fixed', false)
+        	.removeAttr('style');
+    	$curClone.hide();
+    }
+
+
+	</script>
+</body>
+</html>
