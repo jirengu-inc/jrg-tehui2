@@ -1,6 +1,5 @@
 @charset "UTF-8";
 html,body{
-	width:100%;
 	margin:0;
 	padding:0;
 }
@@ -13,10 +12,9 @@ a{
 li{
 	list-style:none;
 }
-
 /*从servicespage起每个页面的标题和副标题*/
 .title{
-	padding-top:60px;
+	padding-top:50px;
 	display:block;
 	text-align:center;
 }
@@ -30,7 +28,6 @@ li{
 	font-family:"Kaushan Script","Microsoft Yahei";
 	font-size:20px;
 } 
-
 #homepage{
 	background:url(pics/bg1.jpg) 0 0 no-repeat;
 	background-size:cover;
@@ -58,12 +55,10 @@ li{
 }
 .navigation{
 	margin-right:60px;
-    float:right;
-    padding:4px;
 }
 .navigation li{
-	display:inline-block;
-    margin-right:20px;
+	float:right;
+    margin-right:25px;
 }
 .navigation a{
 	color:white;
@@ -74,7 +69,7 @@ li{
 }
 .content{
 	color:white;
-	text-align:center;/*可继承哈*/
+	text-align:center;
 	padding-top:300px;
 	padding-bottom:100px;
 	line-height: 30px;
@@ -94,12 +89,11 @@ li{
 	border-radius:5px;
 	color:white;
 	font-size:20px;
-	padding:24px;/*用padding撑开就不用再设宽高了*/
+	padding:20px;
 }
 .content-link a:hover{
 	background-color:orange;
 }
-
 #servicespage .fa-circle{
 	color:Gold;
 }
@@ -112,9 +106,9 @@ li{
 	display: block;
 }
 .icons-list{
-	padding: 0;
 	margin:0 auto;
-	width:1200px;
+	width:1143px;
+	padding: 0;
 }
 .icons-list li{
 	float: left;
@@ -131,8 +125,6 @@ li{
 	color:Grey;
 	font-size:14px;
 }
-  
-
 #displaypage{
 	background-color:#DCDCDC;
 	padding-bottom:60px;
@@ -165,7 +157,6 @@ li{
 	text-align:center;
 	border:10px solid #DCDCDC;
     background-color:white;
-    margin-bottom: 5px;
 }
 .display-content a:hover{
     position: relative;
@@ -173,7 +164,7 @@ li{
 .display-content a:hover:after{
 	content: "+";
     position: absolute;
-    top: -246px;
+    top: -246px;  /* ?? */
     display: block;
     font-size:160px;
     font-weight: bold;
@@ -184,11 +175,8 @@ li{
     height: 260px;
     line-height: 260px; /*让+号垂直居中*/
 }
-
 #aboutpage{
-	margin: 0;
-	padding: 0;
-	padding-bottom: 60px;
+	padding-bottom: 50px;
 }
 /*每个表格里的文字内容*/
 .timeline h3{
@@ -201,22 +189,19 @@ li{
 }
 .timeline{
 	padding: 0;/*不然padding-left默认值40px*/
-	width: 900px;
+	width: 902px;
 	margin:0 auto;
 }
- /*让整个ul水平居中,之前未设置成功是因为timeline的宽度没有设置,默认100% （？）*/
 .timeline:after{
     clear:both;
     display:block;
-    content:''; /*清除浮动*/
+    content:'';
 }
 .timeline img{
 	display:block;
 	height:180px;
 	width:180px;
 	border-radius:100%;
-	-webkit-border-radius:100%;
-	-ms-border-radius:100%;
 	border:8px solid #DCDCDC;
 }
 .timeline li:nth-child(2n+1){
@@ -224,7 +209,7 @@ li{
     clear:right;  
     float:left;
     text-align:right;
-    padding-right:130px;  /*左右border距离的设置*/
+    padding-right:130px;  
 }
 .timeline li:nth-child(2n){
 	border-left:2px solid #DCDCDC;
@@ -256,20 +241,17 @@ li{
 }
 .timeline li:last-child:after{
 	content:"";
-	display:inline-block;
+	display:block;
 	width: 180px;
 	height: 180px;
 	font-size:16px;
 	border-radius:100%;
-	-webkit-border-radius:100%;
-	-moz-border-radius:100%;
 	border:8px solid #DCDCDC;
 	background-color:Gold;
     position: relative;
     left: -230px;
     top:10px;
 }
-
 #teampage{
     background-color: #DCDCDC;
     padding-bottom:60px;
@@ -302,8 +284,6 @@ li{
 	height:200px;
 	width:200px;
 	border-radius:100%;
-	-webkit-border-radius:100%;
-	-moz-border-radius:100%;
 	border:5px solid white;
 }
 .member-name{
@@ -316,15 +296,12 @@ li{
 	font-size:12px;
 }
 .footer{
-	padding-top:30px;
-	display:block;
+	margin-top:30px;
 	font-size:14px;
 	color:Grey;
 	text-align:center;
 	font-family:"Roboto Slab","Helvetica Neue", "Helvetica", Arial;
 }
-
-
 .logo-list:after{
 	clear:both;
 	display:block;
@@ -339,8 +316,6 @@ li{
     float:left;
     padding: 15px 40px;
 }
-
-
 #feedback-page{
     background:url(pics/bg2.jpg) 0 0 no-repeat #000;
     background-size: cover;
@@ -364,8 +339,6 @@ li{
 	width:85%;
 	height:50px;
 	border: 1px solid #ccc;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
 	margin-bottom:30px;
 	margin-left:10%;
@@ -379,26 +352,21 @@ li{
 	height:212px; /*同左边表单高度去除margin-bottom后一致*/
 	width:85%;
 	border: 1px solid #ccc;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     margin-right:10%;
 }
 .button{
 	width:150px;
-	margin-left:40%;
+	margin-left:43%;
 }
 .button input{
 	color:white;
 	font-size:20px;
 	background-color:orange;
 	padding: 15px 25px;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
     border-radius: 5px;
     border:1px solid black;
 }
-
 #footer-page ul:after{
 	clear: both;
 	display: block;
