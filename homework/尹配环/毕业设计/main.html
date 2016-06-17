@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>main</title>
+    <meta charset="UTF-8">
+    <meta name="referrer" content="no-referrer">
+    <link rel="stylesheet" href="css/font-awesome.css">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: "微软雅黑", "sans-serif";
+            color:white;
+            background-color: #1F496E;
+        }
+        h1,h2,h3,p,ul,li {
+            padding:0;
+            margin: 0;
+        }
+        li {
+            list-style: none;
+        }
+        li>a {
+            text-decoration: none;
+            color:white;
+        }
+        .clearfix:after {
+            content:"";
+            display: block;
+            clear: both;
+        }
+
+        .musicMain {
+            text-align: center;
+            width:300px;
+            height:400px;
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .musicCover {
+            position:absolute;
+            padding:5px 20px;
+            width:300px;
+            height:400px;
+            background-color: rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+        .musicHead {
+
+        }
+        .musicHead>.musicIcon {
+            float: left;
+        }
+        .musicHead>.infoIcon {
+            float:right;
+        }
+
+        .lyrcisBtn>i {
+            display: none;
+
+        }
+        .lyrcisBtn>i.active {
+            display: inline-block;
+        }
+        .musicTitle {
+            text-align: center;
+            padding-top:20px;
+        }
+        .musicTitle>.songTitle {
+            height:42px;
+            line-height: 42px;
+            overflow: hidden;
+        }
+        .musicTitle>.songArtist {
+            height:25px;
+            line-height: 25px;
+            overflow: hidden;
+        }
+        .musicControl { padding-top:10px; }
+        .backwardIcon,.playIcon,.forwardIcon {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        .backwardIcon {
+            visibility: hidden;
+        }
+        .musicControl>.playIcon {
+            padding:0 20px;
+        }
+
+        .playIcon>i {
+            display: none;
+        }
+        .playIcon>i.active{
+            display: inline-block;
+        }
+        .musicLyrics {
+            background-color: rgba(33, 33, 33, 0.5);
+            height:70px;
+            overflow: hidden;
+            visibility: hidden;
+        }           /*歌词*/
+        .musicLyrics.active {
+            visibility: visible;
+        }
+        .lyric.active {
+            color:#22aaaa;
+            font-size: 1.2em;
+        }
+
+        .musicbtn {
+            cursor: pointer;
+        }
+        .musicbtn:hover {
+            color:#ccc;
+        }
+
+
+        .channelsList::-webkit-scrollbar {
+            width:6px;
+            background-color: rgba(235, 235, 235, 0.3);
+        }
+        .channelsList::-webkit-scrollbar-button,.channelsList::-webkit-scrollbar-track {
+            display: none;
+        }
+        .channelsList::-webkit-scrollbar-thumb{
+            background:#FFA711;
+            border-radius:4px;
+        }
+
+        .channelsList {
+            position:absolute;
+            left:-200px;
+            top:0;
+            width:200px;
+            height:400px;
+            background-color: rgba(0,0,0,.5);
+            overflow: auto;
+        }
+        .channelsCt {
+            padding:20px 0;
+
+        }
+        .channelsItem {
+            text-align: left;
+            padding:5px 15px;
+            cursor: pointer;
+        }
+        .channelsItem:hover {
+            background: -webkit-linear-gradient(left,rgba(255,167,17,.6),transparent);
+        }
+        .channelsItem.active:before {
+            content: "";
+            display: inline-block;
+            width: 10px;
+            height: 21px;
+            margin-left: -15px;
+            margin-right:5px;
+            vertical-align: bottom;
+            background-color: white;
+        }
+
+        .mediaControl { }
+        .lyrcisBtn {
+            float: right;
+        }
+        .volumeBtn {
+            float: left;
+        }
+
+
+        .vol-wrap {
+            position: relative;
+            display: none;
+            vertical-align: middle;
+            width: 100px;
+            padding: 2px 5px;
+            margin-top:-3px;
+            margin-left:-110px;
+        }
+        .vol {
+            width:100%;
+            height:4px;
+            background-color: white;
+        }
+        .vol-range {
+            width:100%;
+            height:4px;
+            background-color: #00a0d8;
+        }
+        .vol-hand {
+            position: absolute;
+            top: -1px;
+            left: 89px;
+            width: 10px;
+            height: 10px;
+            background-color: #e25f31;
+            border-radius: 50%;
+        }
+
+        .progress-wrap {
+            display: inline-block;
+            vertical-align: middle;
+            width: 167px;
+            padding: 2px 5px;
+            margin-top:-3px;
+        }
+        .progress {
+            position: relative;
+            width:100%;
+            height:8px;
+            background-color: white;
+        }
+        .progress-range {
+            width:0%;
+            height:100%;
+            background-color: #00a0d8;
+        }
+
+        .iconFloat>i {
+            padding: 10px;
+            /*background-color: #ffff00;*/
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div class="iconFloat">
+        <i class="fa fa-apple fa-2x"></i>
+
+
+        <div class="musicMain">
+            <div class="musicCover">     <!-- 覆盖背景层 降低亮度 -->
+                <audio id="Js_player" autoplay>
+                    <p>你的浏览器不支持audio标签</p>
+                </audio>
+                <div class="musicHead clearfix">
+                    <div class="musicIcon musicbtn">
+                        <i class="fa fa-music fa-2x"></i>
+                    </div>
+                    <div class="infoIcon musicbtn">
+                        <i class="fa fa-info fa-2x"></i>
+                    </div>
+                </div>
+                <div class="musicTitle">
+                    <h1 class="songTitle">RADIOACITVE</h1>
+                    <h3 class="songArtist">Imagine Dragons</h3>
+                </div>
+                <div class="musicControl">
+                    <div class="backwardIcon musicbtn">
+                        <i class="fa fa-backward fa-2x"></i>
+                    </div>
+                    <div class="playIcon musicbtn" data-status="play">
+                        <i class="fa fa-2x"><i class="fa fa-play-circle-o fa-4x"></i></i>
+                        <i class="fa fa-2x active"><i class="fa fa-pause-circle-o fa-4x"></i></i>
+                    </div>
+                    <div class="forwardIcon musicbtn">
+                        <i class="fa fa-forward fa-2x"></i>
+                    </div>
+                </div>
+                <div class="musicLyrics active">
+                    <p class="lyric">我是歌词</p>
+                    <p class="lyric active">我是歌词</p>
+                </div>
+                <div class="mediaControl clearfix">
+                    <div class="volumeBtn musicbtn">
+                        <i class="fa fa-volume-up fa-1x"></i>
+                    </div>
+                    <!--音量条-->
+                    <div class="vol-wrap">                  <!-- 包裹层 -->
+                        <div class="vol">                   <!-- 第一层 条 -->
+                            <div class="vol-range"></div>   <!-- 第二层 条 -->
+                        </div>
+                    </div>
+                    <div class="lyrcisBtn musicbtn">
+                        <i class="fa fa-toggle-on fa-1x active"></i>
+                        <i class="fa fa-toggle-off fa-1x"></i>
+                    </div>
+                </div>
+                <div class="musicSlider">
+                    <span class="currentTime">00:00</span>
+                    <div class="progress-wrap">                 <!-- 包裹层 -->
+                        <div class="progress">                  <!-- 第一层 条 -->
+                            <div class="progress-range"></div>  <!-- 第二层 条 -->
+                        </div>
+                    </div>
+                    <span class="times">00:00</span>
+                </div>
+
+                <div class="channelsList">
+                    <ul class="channelsCt">
+                        <!--<li class="channelsItem"><a data-channelId=1 href="#">{{channelName}}</a></li>-->
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+<script src="js/jquery.js"></script>
+<script src="js/drag.js"></script>
+<script src="js/MyPlayer.js"></script>
+<script>
+    new MyPlayer();
+    $('.iconFloat').drag();
+</script>
+
+
+</body>
+</html>
