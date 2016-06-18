@@ -27,16 +27,13 @@
     function hasClass(ele,cls){
       return !!ele.className.match(new RegExp("\\b"+cls+"\\b"));
     }
-   
     function removeClass(ele,cls){
         ele.className = ele.className.replace(new RegExp("\\b"+cls+"\\b","g"),"");
     }
-
     function addClass(ele,cls){
       if(hasClass(ele,cls)) return;
       ele.className += "" +cls;
     }
-
     function mClick(e){
        //文本框部分
        var reg = /\d+/g;
@@ -45,7 +42,7 @@
        tabct.innerText = "内容"+num;
        // 背景颜色部分
        for(var i=0;i<lists.length;i++){
-        if(hasClass(lists[i]),"bgcolorbox"){
+        if(hasClass(lists[i],"bgcolorbox")){
           removeClass(lists[i],"bgcolorbox");
         }
        }
