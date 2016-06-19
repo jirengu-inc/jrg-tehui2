@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+         .btn{
+            margin-top:1500px;
+         }
+		</style>
+		 <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	</head>
+	<body>
+		<div class="btn">点击</div>
+	<script>
+      function GoTop(ct){
+         this.ct = $(ct);
+         this.target =$('<div>回到顶部</div>');
+         this.bindEvent = function(){
+            var self = this;
+            $(window).on('scroll',function(){
+                  if($(window).scrollTop()>200){
+                     self.target.css({opacity:1});
+                     self.target.show();
+                     self.target.on('click',function(){
+                        $(window).scrollTop(0);
+                     })
+                  }else{
+                     self.target.hide();
+                  }
+               });
+         }
+         this.createNode = function(){
+            this.target.css({
+               position:'fixed',
+               opacity:0,
+               width:'80px',
+               padding:'5px',
+               textAlign:'center',
+               border:'1px solid red',
+               color:'red',
+               right:'30px',
+               cursor:'pointer',
+               bottom:'30px'
+            });
+            this.ct.append(this.target);
+            this.bindEvent();
+         }
+         this.createNode();
+      }
+
+      var gotop = new GoTop('body');
+      gotop.createNode();
+	</script>
+	</body>
+</html>
