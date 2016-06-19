@@ -1,0 +1,46 @@
+
+*{
+	margin:0;
+	padding: 0;
+	font-size: 16px;
+	font-family: "Microsoft Yahei";
+	list-style: none;
+}
+a{
+	text-decoration: none;
+	color: black;
+	display: block;
+	padding: 8px;    // 给a设置这个是为了撑起li，hover时背景色才能全显
+}
+a:hover{
+	background-color: grey;
+	opacity: 0.6;
+}
+.web-list,.server-list,.tool-list{
+	display: none;
+	width: 100px;
+	border: 1px solid lightGrey;
+	position: absolute;
+}
+.web,.server,.tool{
+	position: relative;
+}
+#nvbar{
+	width: 60%;
+	background-color: lightGrey;
+	margin:0 auto;
+}
+.nvbar-list>li{
+	display: inline-block;
+    width: 80px;
+    text-align: center;
+}
+.web:hover .web-list{
+	display: block;
+}
+.server:hover .server-list{
+	display: block;
+}
+.tool:hover .tool-list{
+	display: block;
+}

@@ -1,10 +1,9 @@
 
-body,html,{
-  height:100%;
-  width: 100%;
+body,html{
   margin: 0;
   padding: 0;
-  -webkit-box-sizing:border-box;
+  box-sizing:border-box;
+  font-family: "Microsoft Yahei";
 }
 a {
   text-decoration: none;
@@ -18,11 +17,6 @@ li {
 }
 .fa-cloud, .fa-compass, .fa-flask, .fa-shield, .fa-facebook, .fa-twitter, .fa-dribbble {
   color: SteelBlue;
-}
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Microsoft Yahei";
 }
 #homepage {
   height:100%;
@@ -45,8 +39,6 @@ body {
 }
 .a0 {
   display:block;
-  text-align:center;
-  height: 30px;
   width: 130px;
   margin: 0 auto;
   background-color:Grey;
@@ -54,7 +46,6 @@ body {
   padding: 12px;
 }
 .content2{
-  width：960px;
   text-align: center;
   padding-top: 85px;
   padding-bottom: 85px;
@@ -79,24 +70,26 @@ body {
   padding-top: 65px;
 }
 .header1 {
-  display:block;
   text-align: center;
   color: white;
   font-size: 25px;
 }
 .underline{
-  padding-top: 25px;
   width: 80px;
   border-bottom: 2px solid white;
-  margin: 0 auto;
+  margin: 25px auto;
 }
 .list1 {
-  text-align: center;
+  width: 880px;
+  margin:0 auto;
+  overflow: hidden;
+  padding: 0;
 }
 .list1 li {
   width: 200px;
-  display: inline-block;
-  padding: 0 40px;
+  float: left;
+  margin-right:20px;
+  text-align: center;
 }
 .iconname {
   font-weight: bold;
@@ -104,8 +97,8 @@ body {
 }
 .list1 a {
   font-size:12px;
-  width: 120px;
   height: 40px;
+  line-height: 40px;
   background-color:white;
   padding: 10px;
   color: black;
@@ -113,21 +106,18 @@ body {
 .list1 a:hover{
   background-color:LightGrey;
 }
-
 #pic {
   background: url(pics/2.jpg) 0 0 no-repeat;
   background-size: cover;
-  overflow: hidden;
+  text-align: center;
 }
 #pic p {
-  width: 700px;
-  margin: 0 auto;
   color: white;
   font-weight: bold;
   font-size: 55px;
   padding-top:200px;
   padding-bottom: 200px; 
-  
+  margin: 0;
 }
 
 #displaypage p {
@@ -139,34 +129,32 @@ body {
   margin: 0 auto;
   width: 80px;
   border-bottom: 2px solid Grey;
-  padding-top: 25px;
+  padding-top: 20px;
 }
 .graphs {
-  padding-top: 10px;
-  padding-left:145px;
+  width:1060px;
+  margin:15px auto;
+  padding: 0;
 }
 .graphs:after{
   content: '';
-  display: block;
+  display: table;
   clear: both;
-}
-.graphs1,.graphs3,.graphs2,.graphs4{
-  float:left;
 }
 .graphs li{
   border: 15px solid white;
   width:500px;
+  float:left;
 }
 #displaypage a {
   display: block;
-  width: 110px;
-  height: 20px;
+  text-align: center;
+  height:30px;
+  width:120px;
+  line-height: 30px;
   margin: 0 auto;
   background-color: Grey;
-  line-height:20px;
-  padding:7px;
   color: white;
-  margin-bottom: 40px;
 }
 #displaypage a:hover{
   background-color:DimGrey;
@@ -174,11 +162,12 @@ body {
 
 #button {
   background-color: SteelBlue;
+  text-align:center;
+  padding: 70px 0;
+  margin-top: 15px;
 }
 #button p {
   color: white;
-  padding-top: 90px;
-  text-align:center;
   font-size: 20px;
 }
 .a1,.a2 {
@@ -186,10 +175,7 @@ body {
   height: 25px;
   width: 100px;
   padding: 10px;
-}
-.button1{
-  padding-bottom: 90px;
-  text-align: center;
+  margin:0 auto;
 }
 .a1 {
   background-color: white;
@@ -208,10 +194,8 @@ body {
 }
 
 #lastpage{
-  padding-top: 50px;
-}
-.container {
-  text-align: center;
+  padding-top: 40px;
+   text-align: center;
 }
 .container a:hover {
   border-bottom: 1px solid;
@@ -225,15 +209,13 @@ body {
 .icon li {
   display: inline-block;
   text-align: center;
-  padding-right: 20px;
+  margin-right: 20px;
 }
 .underline3{
   width: 80px;
   border-bottom: 2px solid Grey;
   margin: 0 auto;
-
 }
 #lastpage p{
-    text-align: center;
-    margin-bottom: 35px;
+   line-height: 1.5em;
 }

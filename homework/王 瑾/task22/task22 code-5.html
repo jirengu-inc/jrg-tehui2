@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>task-22 code-5</title>
+    <link rel="stylesheet" type="text/css" href="task-22-code-5.css">
+  </head>
+  <body>
+    <input type="button" value="点我1" id="btn"/>
+    <div id="modal"> 
+      <div class="cover"></div>
+      <div id="modal-ct">
+         <h3 class="t1">我是标题1</h3>
+          <a href="#" id="close" class="cancel-btn">×</a>
+         <div class="ct">
+         <p>我是内容1</p>
+         <p>我是内容2</p>
+        </div>
+       <div id="btns">
+         <a href="#" class="cancel-btn">取消</a>
+         <a href="#">确定</a>
+       </div>
+     </div>
+    </div>
+    <script type="text/javascript">
+    var cancelbtn=document.querySelectorAll(".cancel-btn");
+    var modal = document.querySelector("#modal");
+    var btn = document.querySelector("#btn");
+    var cover = document.querySelector(".cover");
+  
+  modal.style.display="none";
+  function displayModal(ev){
+    modal.style.display="block";
+    ev.stopPropagation();
+  }
+  
+  function hideModal(ev){
+    modal.style.display="none";
+    ev.stopPropagation();
+  }
+
+   for(var i=0;i<cancelbtn.length;i++){
+      cancelbtn[i].addEventListener("click",hideModal,false);
+    };
+  btn.addEventListener("click",displayModal,false);
+  cover.addEventListener("click",hideModal,false);
+    </script>
+  </body>
+</html>

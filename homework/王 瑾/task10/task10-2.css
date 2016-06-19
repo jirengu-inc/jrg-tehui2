@@ -1,0 +1,33 @@
+ .box1,.box2,.box3{
+      width:150px;
+      height:100px;
+      border:1px solid Lightgrey;
+      margin:30px 0;
+      position: relative;
+    }
+  .grey,.red,.blank,.inblank{
+      height:0;
+      width:0;
+      position:absolute;
+      border:20px solid;
+      border-left-color:transparent;
+    }
+   .grey,.blank{
+   	  border-bottom-color:Lightgrey;
+      border-top-color:transparent;
+      border-right-color:transparent;
+      top:-40px;
+   }
+   .red{
+      border-top-color:red;
+      border-right-color:red;
+      border-bottom-color:transparent;
+      left:110px;
+  }
+  .inblank{
+       z-index: 2;
+       border-bottom-color:white;
+      border-top-color:transparent;
+      border-right-color:transparent;
+       top:-39px;
+  }
