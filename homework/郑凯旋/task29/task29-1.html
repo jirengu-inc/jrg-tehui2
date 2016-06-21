@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task29-1</title>
+	<style>
+		p{
+			line-height: 3;
+		}
+		#go-top{
+			position: fixed;
+			bottom: 10px;
+			right:10px;
+			border:1px solid red;
+			padding: 10px;
+			cursor: pointer;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容3</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容4</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容1</p>
+	<p>内容6</p>
+	<p>内容1</p>
+	<p>内容7</p>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+	var GoTop = {
+		init: function(){
+
+			if($('#go-top').length > 0){
+				return;
+			}
+			var $goTop = $('<div id="go-top">回到顶部</div>');
+			$('body').append($goTop);
+
+			this.$goTop = $goTop;
+			this.bind();
+
+		},
+		bind: function(){
+			var self = this;
+			$(window).on('scroll', function(e){
+				var offsetTop = $('body').scrollTop();
+				if(offsetTop>100){
+
+					self.$goTop.show();
+				}else{
+					self.$goTop.hide();
+				}
+			});
+			this.$goTop.on('click', function(){
+				$(window).scrollTop(0);
+			});
+		}
+	}
+
+		GoTop.init();
+	</script>
+</body>
+</html>

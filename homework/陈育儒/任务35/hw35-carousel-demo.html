@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{list-style:none;margin:0;padding:0;}
+		a{text-decoration: none;}
+		.clearfix:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.carousel{
+			width:300px;
+			height:300px;	
+			position:relative;
+			overflow:hidden;
+			border:1px solid #ccc;
+		}
+		.items{
+			position:absolute;
+      }
+		.items>li{
+			float:left;
+			font-size:300px;
+			line-height: 300px;
+			background:#eee;
+			text-align:center;
+			width:300px;
+			height:300px;
+		}
+		.bullets{
+			position:absolute;
+			bottom:10px;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		.bullets>li{
+			border:1px solid #333;
+			color:#333;
+			padding:3px;
+			margin:0 3px;
+			float:left;
+			cursor:pointer;
+		}
+		.bullets>li.active{
+			color:#ccc;
+			border-color:#ccc;
+		}
+		.prev,.next{
+			position:absolute;
+			display:none;
+			width:15px;
+			height:15px;
+			line-height:15px;
+			padding:5px;
+			color:#333;
+			text-align: center;
+			border-radius:5px;
+			background:#ccc;
+			opacity:0.5;
+		}
+		.prev{
+			left:3px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.next{
+			right:3px;
+			top:50%;
+			transform: translateY(-50%)
+		}
+
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<div class="carousel">
+	   <ul class="items clearfix">
+			<li><img src="1.jpg" alt=""></li>
+			<li><img src="2.jpg" alt=""></li>
+			<li><img src="3.jpg" alt=""></li>
+			<li><img src="4.jpg" alt=""></li>
+		</ul>
+		<ul class="bullets clearfix">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<a href="javascript:void(0)" class="prev"><</a>
+		<a href="javascript:void(0)" class="next">></a>
+	</div>
+	<script>
+	   var $wrap = $('.carousel');
+		var $ct = $('ul.items');
+		var $items = $ct.children();
+		var itemsCount = $items.size();
+		var itemWidth = $items.width();
+		var isAnimate = false;
+		var curIdx = 0;
+		var $btnPrev = $('.prev');
+		var $btnNext = $('.next');
+		var $bullets = $('.bullets');
+		var $bullet = $bullets.children();
+
+
+		$ct.prepend($items.last().clone());
+		$ct.append($items.first().clone());
+		var itemsRealCount = $ct.children().size();
+		$ct.css({left:-itemWidth,width:itemWidth*itemsRealCount});
+		
+		$wrap.on('mouseover',function(){
+			$btnPrev.show();
+			$btnNext.show();
+		});
+		$wrap.on('mouseleave',function(){
+			$btnPrev.hide();
+			$btnNext.hide();
+		});
+
+		$btnPrev.on('click',function(){
+			playPrev();
+		});
+		$btnNext.on('click',function(){
+			playNext();
+		});
+
+		$bullets.find('li').on('click',function(){
+				var idx = $(this).index();
+				if(idx > curIdx){
+					playNext(idx - curIdx);
+				}else if(idx < curIdx){
+					playPrev(curIdx - idx);
+				}
+			});
+		
+		function playNext(idx){
+			var idx = idx||1;
+			if(!isAnimate){
+				isAnimate = true;
+				$ct.animate({left:'-='+idx*itemWidth},function(){
+					curIdx = (curIdx+idx)%itemsCount;
+					if(curIdx === 0){
+						$ct.css({left:-itemWidth});				
+					}
+				isAnimate = false;
+				setBullet();
+				});
+			}
+			
+		}
+		
+		function playPrev(idx){
+			var idx = idx||1;
+			if(!isAnimate){
+				isAnimate = true;
+				$ct.animate({left:'+='+idx*itemWidth},function(){
+					curIdx = (itemsCount+curIdx-idx)%itemsCount;
+					if(curIdx === itemsCount-1){
+						$ct.css({left:0-itemWidth*itemsCount});
+					}		
+				isAnimate = false;
+				setBullet();
+				});
+
+			}
+		}
+		
+		function setBullet(){
+			$bullet.removeClass('active')
+						.eq(curIdx).addClass('active');
+		}
+
+		var clock;
+		function autoPlay(){
+			clock=setInterval(function(){
+				playNext();
+			},3000)
+		}
+
+		function stopAutoPlay(){
+			clearInterval(clock);
+		}
+		autoPlay();
+
+		function Carousel($node){
+
+		}
+
+	</script>
+</body>
+</html>

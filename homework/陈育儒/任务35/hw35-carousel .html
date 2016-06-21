@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		ul,li{list-style:none;margin:0;padding:0;}
+		a{text-decoration: none;}
+		.clearfix:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.carousel{
+			width:300px;
+			height:300px;	
+			position:relative;
+			overflow:hidden;
+			border:1px solid #ccc;
+		}
+		.items-ct{
+			position:absolute;
+      }
+		.items-ct>li{
+			float:left;
+			font-size:300px;
+			line-height: 300px;
+			background:#eee;
+			text-align:center;
+			width:300px;
+			height:300px;
+		}
+		.items-ct>li img{ 
+			width:100%;
+			height:100%;
+		}
+		.bullets{
+			position:absolute;
+			bottom:10px;
+			left:50%;
+			transform: translateX(-50%);
+		}
+		.bullets>li{
+			border:1px solid #333;
+			color:#333;
+			padding:3px;
+			margin:0 3px;
+			float:left;
+			cursor:pointer;
+		}
+		.bullets>li.active{
+			color:#ccc;
+			border-color:#ccc;
+		}
+		.prev,.next{
+			position:absolute;
+			/*display:none;*/
+			width:15px;
+			height:15px;
+			line-height:15px;
+			padding:5px;
+			color:#333;
+			text-align: center;
+			border-radius:5px;
+			background:#ccc;
+			opacity:0.5;
+		}
+		.prev{
+			left:3px;
+			top:50%;
+			transform: translateY(-50%);
+		}
+		.next{
+			right:3px;
+			top:50%;
+			transform: translateY(-50%)
+		}
+	</style>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+</head>
+<body>
+	<div class="carousel">
+	   <ul class="items-ct clearfix">
+			<li><img src="1.jpg" alt=""></li>
+			<li><img src="2.jpg" alt=""></li>
+			<li><img src="3.jpg" alt=""></li>
+			<li><img src="4.jpg" alt=""></li>
+		</ul>
+		<ul class="bullets clearfix">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<a href="javascript:void(0)" class="prev"><</a>
+		<a href="javascript:void(0)" class="next">></a>
+	</div>
+		<div class="carousel">
+	   <ul class="items-ct clearfix">
+			<li><img src="1.jpg" alt=""></li>
+			<li><img src="2.jpg" alt=""></li>
+			<li><img src="3.jpg" alt=""></li>
+			<li><img src="4.jpg" alt=""></li>
+		</ul>
+		<ul class="bullets clearfix">
+			<li class="active">1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+		</ul>
+		<a href="javascript:void(0)" class="prev"><</a>
+		<a href="javascript:void(0)" class="next">></a>
+	</div>
+	<script>
+	 
+		function Carousel($node){
+
+
+
+		}
+
+		function Carousel($node){
+			this.$carousel = $node;
+			this.$ct = this.$carousel.find('.items-ct');//获取轮播的图片
+			this.$prev = this.$carousel.find('.prev');//获取往前一页按钮
+			this.$next = this.$carousel.find('.next');//获取往后一页按钮
+
+
+			var item = this.$ct.find('li');//
+			this.itemNums = item.size();	//轮播图片的数量
+			this.itemWidth = item.width();//图片的宽度
+			
+			this.curIdx = 0;
+			this.isAnimate = false;
+			this.clock;//定时器
+
+			this.$ct.append(item.first().clone());//克隆第一个并插入容器的最前面
+			this.$ct.prepend(item.last().clone());//克隆最后一个并插入容器的最后
+			this.itemRealNums = this.$ct.children().size();//图片的真实个数
+
+			this.bullets = this.$carousel.find('.bullets');//找到子弹列表
+			this.bullet = this.bullets.children();//找到子弹的孩子
+
+			this.$ct.css({left:-this.itemWidth,'width':this.itemWidth*this.itemRealNums});//初始化
+			
+			this.bind();
+			this.autoPlay();
+		}
+		Carousel.prototype = {
+			bind:function(){
+				//绑定事件，为了防止事件影响this的指向，全部设置为self=this指向对象
+				var self = this;
+				self.$prev.on('click',function(){
+					self.playPrev();
+				});
+				self.$next.on('click',function(){
+					self.playNext();
+				});
+				self.bullets.find('li').on('click',function(){
+					var idx = $(this).index();
+					if(idx >self.curIdx){
+						self.playNext(idx - self.curIdx);
+					}else if(idx <self.curIdx){
+						self.playPrev(self.curIdx - idx);
+					}
+				});
+			},
+			playNext:function(idx){
+				var idx = idx ||1;
+				var self = this;
+				if(!self.isAnimate){
+					self.isAnimate = true;
+					self.$ct.animate({left:'-='+ idx * this.itemWidth},function(){
+						self.curIdx = (self.curIdx + idx ) % self.itemNums;
+						if(self.curIdx === 0){
+							self.$ct.css({left:-self.itemWidth});
+							// console.log('-0'+1);
+						}
+						self.isAnimate = false;
+						self.setBullet();
+						console.log(self.curIdx);
+					});
+				}
+			},
+			playPrev:function(idx){
+				var idx = idx||1;
+				var self = this;
+				if(!self.isAnimate){
+					self.isAnimate = true;
+					self.$ct.animate({left:'+='+ idx * this.itemWidth},function(){
+						self.curIdx = (self.itemNums + self.curIdx-idx) % self.itemNums;
+						if(self.curIdx === self.itemNums - 1){
+							self.$ct.css({left:0-self.itemWidth*self.itemNums});
+						}
+						self.isAnimate = false;
+						self.setBullet();
+					})
+				}
+			},
+			autoPlay:function(){
+				var self = this;
+				clock = setInterval(function(){
+					self.playNext();
+				},1500);
+			},
+			setBullet:function(){
+					// console.log('setBullet');
+					
+				this.bullet.removeClass('active')
+						.eq(this.curIdx).addClass('active');
+			}
+		};
+
+var $node1 = $('.carousel').eq(0);
+var $node2 = $('.carousel').eq(1);
+var c1 = new Carousel($node1);
+var c2 = new Carousel($node2);
+
+	</script>
+</body>
+</html>

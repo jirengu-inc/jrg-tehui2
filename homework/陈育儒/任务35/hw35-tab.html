@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	ul,li,div{margin:0;padding:0;}
+	ul,li{list-style:none;}
+	a{text-decoration: none;}
+		.clearfix:after{
+			content:'';
+			display:block;
+			clear:both;
+		}
+		.clearfix{
+			*zoom:1;
+		}
+		.tab-ct{
+			width:300px;
+			border:1px solid #ccc;
+			float:left;
+			margin-right:10px;
+		}
+		.tab-ct>.tab>li{
+			width:33.1%;
+			height:50px;
+			line-height:50px;
+			font-size:26px;
+			text-align:center;
+			float:left;
+			border-bottom:1px solid #ccc;
+		}
+		.tab-ct>.tab>li:nth-child(2){
+			border-right:1px solid #ccc;
+			border-left:1px solid #ccc;
+		}
+		.panel{
+			height:150px;
+			display:none;
+		}
+		.dplay-block{
+			display:block;
+		}
+		.active{
+			background:#ccc;
+			color:#fff;
+		}
+	</style>
+</head>
+<body>
+	<div class="wrap clearfix">
+		<div class="tab-ct">
+			<ul class="tab clearfix">
+				<li class="active">tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+			</ul>
+			<div class="panel dplay-block">内容1</div>
+			<div class="panel">内容2</div>
+			<div class="panel">内容3</div>
+		</div>
+		<div class="tab-ct">
+			<ul class="tab clearfix">
+				<li class="active">tab1</li>
+				<li>tab2</li>
+				<li>tab3</li>
+			</ul>
+			<div class="panel dplay-block">内容1</div>
+			<div class="panel">内容2</div>
+			<div class="panel">内容3</div>
+		</div>
+	</div>
+	<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<script>
+		// var tabCt = document.querySelector('.tab');
+		// var li = tabCt.children;
+		// var panel = document.querySelectorAll('.panel');
+		// tabCt.addEventListener('click',function(e){
+		// 	var target = e.target;
+		// 	for(var i =0;i<li.length;i++){
+		// 		li[i].className="";
+		// 		panel[i].className="panel";
+		// 		if(li[i]===target){
+		// 			li[i].className="active";
+		// 			panel[i].className=panel[i].className+" "+"dplay-block";
+		// 		}
+		// 	}
+		// });
+		
+		function Tab(node){
+			this.ct = node;
+			this.tab = this.ct.find('.tab');
+			this.list = this.tab.children();
+			this.panel = this.ct.find('.panel');
+			this.bind();
+		}
+		Tab.prototype={
+			bind:function(){
+				var self = this;
+				self.tab.on('click','li',function(){
+					var idx = $(this).index();
+					self.list.removeClass('active')
+								.eq(idx).addClass('active');
+					self.panel.removeClass('dplay-block')
+					          .eq(idx).addClass('dplay-block');
+				});
+			}
+		}
+		var node = $('.tab-ct').eq(0);
+		var node2 = $('.tab-ct').eq(1);
+		var tab1 = new Tab(node);
+		var tab2 = new Tab(node2);
+	</script>
+</body>
+</html>
