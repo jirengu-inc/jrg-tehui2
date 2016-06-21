@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading</title>
+</head>
+<style type="text/css">
+    body,div,span{
+        margin: 0;
+        padding: 0;
+    }
+    body{
+        background-color: rgba(0,0,0,0.5);
+    }
+    .demo{
+        text-align: center;
+        margin: 100px auto;
+    }
+    .foo2{
+        margin: 50px auto;
+    }
+    span{
+        width: 6px;
+        height: 60px;
+        background:yellowgreen;
+        display:inline-block;
+        *display: inline;
+        *zoom: 1;
+    }
+    @keyframes spanLoading {
+        0%,50%,100%{transform: scaleY(1);}
+        25%,75%{transform: scaleY(0.5);}
+    }
+    @keyframes spanLoading2 {
+        0%,50%,100%{transform: scaleX(1);}
+        25%,75%{transform: scaleX(0.5);}
+    }
+    @keyframes overWatch {
+        0%{transform: rotate(0deg)}
+        100%{transform: rotate(360deg)}
+    }
+    .foo>span:nth-child(1){
+        animation: spanLoading 2s infinite ease-in-out;
+    }
+    .foo>span:nth-child(2){
+        animation: spanLoading 2s infinite ease-in-out;
+        animation-delay: 0.1s;
+    }
+    .foo>span:nth-child(3){
+        animation: spanLoading 2s infinite ease-in-out;
+        animation-delay: 0.2s;
+    }
+    .foo>span:nth-child(4){
+        animation: spanLoading 2s infinite ease-in-out;
+        animation-delay: 0.3s;
+    }
+
+    .foo2>span:nth-child(1){
+        animation: spanLoading2 1s infinite ease-in-out;
+    }
+    .foo2>span:nth-child(2){
+        animation: spanLoading2 1s infinite ease-in-out;
+        animation-delay: 0.1s;
+    }
+    .foo2>span:nth-child(3){
+        animation: spanLoading2 1s infinite ease-in-out;
+        animation-delay: 0.2s;
+    }
+    .foo2>span:nth-child(4){
+        animation: spanLoading2 1s infinite ease-in-out;
+        animation-delay: 0.3s;
+    }
+    .foo3{
+        height: 100px;
+        width: 100px;
+        border: 10px solid;
+        border-color: rgba(254,206,45,1) rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5) rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        margin: 0 auto;
+        animation: overWatch 1s infinite linear;
+    }
+</style>
+<body>
+<div class="demo">
+  <div class="foo">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="foo2">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="foo3"></div>
+</div>
+</body>
+</html>

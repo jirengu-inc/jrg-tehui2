@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全屏过渡</title>
+    <style type="text/css">
+        body,div{
+            margin: 0;
+            padding: 0;
+        }
+        .cover{
+            position: fixed;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 3;
+            background: linear-gradient(to right,rgba(0,0,0,0.9),rgba(0,0,0,0.5));
+        }
+        .foo{
+            position: fixed;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 2;
+            background: url("cover.jpg");
+            background-size: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="cover"></div>
+    <div class="foo"></div>
+</body>
+</html>
