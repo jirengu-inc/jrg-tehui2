@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task24 code-3</title>
+<style>
+  #ct{
+    width:300px;
+    text-align:right;
+  }
+  #ct input{
+    border-radius:5px;
+    height:25px;
+    line-height:25px;
+  }
+  h3{
+    margin-left:65px;
+  }
+  .username-hint,.password-hint{
+    margin-top:6px;
+    margin-bottom:10px;
+    font-size:10px;
+    color:lightGrey;
+  }
+  #btn{
+    margin-left:130px;
+    margin-top:30px;
+  }
+  .bdcolorbox{
+    border-color:red;
+  }
+</style>          
+</head>
+<body>
+  <h3>注册</h3>
+    <form action="">
+      <div id="ct">
+       <div class="bdcolorbox"></div>
+  用户名：<input type="text" name="username" placeholder="用户名(xxx被注册过)" id="username"/><br/>
+  <div class="username-hint">只能是字母、数字、下划线，3-10个字符</div>
+  密码：<input type="password" name="pwd" id="pwd"/><br/>
+  <div class="password-hint">大小写字母、数字、下划线最少两种，6-15个字符</div>
+  再输一次：<input type="password" name="pwdagain" id="pwd2"/><br/>
+  <div class="password-hint2"></div>
+</div>
+</form>
+
+  <input type="submit" value="注册" id="btn" />
+
+  <script>
+     var username = document.querySelector("#username");
+     var pwd = document.querySelector("#pwd");
+     var pwd2 = document.querySelector("#pwd2");
+     var btn = document.querySelector("#btn");
+     var username_hint = document.querySelector(".username-hint");
+     var pwd_hint = document.querySelector(".password-hint");
+     var pwd_hint2 = document.querySelector(".password-hint2");
+
+    username.addEventListener("change",function(e){
+      isAvailable(this.value);
+    })
+    pwd.addEventListener("change",function(e){
+      testPwd(this.value);
+    })
+    pwd2.addEventListener("change",function(e){
+      testPwd2(this.value);
+    })
+    btn.addEventListener("click",function(e){
+      e.preventDefault();
+      if(isAvailable(username.value)&&testPwd(pwd.value)&&testPwd2(pwd2.value)){
+        alert("正在注册中");
+      }
+    })
+
+    /*这里只有用户名需要ajax进行检测是否重复
+     端口地址：1.php
+     传参：data{username:name}
+     回参：data{
+          status:1--可用；0--不可用
+     }
+     方法：post */
+
+    function ajax(opts){
+       var xhr = new XMLHttpRequest();
+       var dataStr = "";
+       for(var key in opts.data){
+        dataStr += key + "=" + opts.data[key] + "&"
+       }
+       dataStr = dataStr.substr(0,dataStr.length-1);
+
+       xhr.onreadystatechange = function(){
+        if(xhr.readyState==4&&xhr.status==200){
+          var json = JSON.parse(xhr.responseText);
+          opts.success(json);
+        }
+        if(xhr.status==404){
+          opts.error();
+        }
+       }
+
+       if(opts.type.toLowerCase()==="get"){
+        xhr.open(opts.type,opts.url+"?"+dataStr,true);
+        xhr.send();
+       }
+       if(opts.type.toLowerCase()==="post"){
+        xhr.open(opts.type,opts.url,true);
+        xhr.send(username);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+       }
+    }
+
+    function isAvailable(){
+      if(username.value==""){
+        username.style.border="1px solid red";
+        return false;
+      }
+         ajax({
+          url:"1.php",
+          type:"post",
+          dataType:"json",
+          data:{
+             username:username.value
+          },
+          success:function(res){
+             if(res.status==1){
+                var reg = /^[0-9A-Za-z]{3,10}$/;
+                if(reg.test(username.value)){
+                  username_hint.innerText="用户名可用";
+                  username.style.border="1px solid lightGrey";
+                  return true;
+                }else{
+                  username_hint.innerText="用户名格式不正确";
+                 username.style.border="1px solid red";
+                }
+             }else if(res.status==0){
+              username.style.border="1px solid red";
+              username_hint.innerText="用户名已存在，请重新输入";
+             }
+          },
+          error:function(){
+            console.log("the url doesn't exist");
+          }
+         });
+    }
+
+    function testPwd(str){
+      if(str==""){
+        pwd.style.border="1px solid red";
+        pwd_hint.innerText="密码不能为空";
+      }
+            var reg1 = /^\w{6,15}$/;
+            var reg2 = /^[a-z]{6,15}$||^\d{6,15}$||^[A-Z]{6,15}$||^_{6,15}$/;
+            if(reg1.test(str) && !reg2.test(str)){
+              pwd_hint.innerText="";
+              pwd.style.border="1px solid lightGrey";
+              return true;
+            }else{
+              pwd.style.border="1px solid red";
+              pwd_hint.innerText="密码格式不正确";
+            }
+    }
+
+    function testPwd2(str){
+      if(testPwd(pwd.value)){
+        if(pwd2.value===pwd.value){
+          pwd_hint2.innerText="";
+          pwd2.style.border="1px solid lightGrey";
+          return true;
+        }else{
+         pwd2.style.border="1px solid red";
+          pwd_hint2.innerText="两次密码不一致";
+        }
+      }
+    }  
+
+  </script>
+    
+</body>
+</html>

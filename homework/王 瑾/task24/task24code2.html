@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task24 code-2</title>
+<style>
+	p{
+		padding:10px;
+		border: 1px solid lightGrey;
+	}
+	a{
+		display:block;
+		text-decoration:none;
+		text-align:center;
+		color:red;
+		width:100px;
+		margin:0 auto;
+		border:1px solid red;
+		border-radius:3px;
+		padding:10px;
+		font-size:18px;
+		background-color:white;
+	}
+</style>
+</head>
+<body>
+	<div id="ct">
+    <p>内容1</p>
+    <p>内容2</p>
+    </div>
+    <a href="#" id="more-btn">加载更多</a>
+
+    <script>
+    var locked = false;
+    function ajax(opts){
+    	var xmlhttp = new XMLHttpRequest();
+    	var dataStr = "";
+    	for(var key in opts.data){
+    		dataStr += key + "=" + opts.data[key] + "&";
+    	}
+    	dataStr = dataStr.substr(0,dataStr.length-1);
+    	if(opts.type.toLowerCase()==="post"){
+    		xmlhttp.open(opts.type,opts.url,true);
+    		xmlhttp.send(dataStr);
+    		xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    	}
+    	if(opts.type.toLowerCase()==="get"){
+    		xmlhttp.open(opts.type,opts.url+"?"+dataStr,true);
+    		xmlhttp.send();
+    	}
+    	xmlhttp.onreadystatechange = function(){
+    		if(xmlhttp.readyState==4&&xmlhttp.status==200){
+    			var json = JSON.parse(xmlhttp.responseText);
+    			opts.success(json);
+    		}
+    		if(xmlhttp.status==404){
+    			opts.error();
+    		}
+    	}
+        locked = false;
+    }
+   
+    var morebtn = document.querySelector("#more-btn");
+    var ct = document.querySelector("#ct");
+    var cur = 2;
+    // P背景颜色变化部分
+    ct.addEventListener("mouseover",function(ev){
+    	if(ev.target.tagName.toLowerCase()==="p"){
+    		ev.target.style.backgroundColor="green";
+    		ev.stopPropagation();
+    	}
+    },false)
+    ct.addEventListener("mouseout",function(ev){
+    	if(ev.target.tagName.toLowerCase()==="p"){
+    		ev.target.style.backgroundColor="white";
+    		ev.stopPropagation();
+    	}
+    },false)
+    // 链接加载部分
+    morebtn.addEventListener("click",function(ev){
+      ev.preventDefault();
+      if(locked){return;}
+      locked=true;
+      ajax({
+      	url:"more.php", 
+      	type:"get",
+        dataType:"json",
+        data:{
+        	len:6,
+        	from:cur,
+        },
+        success:function(res){
+             success(res);
+        },
+        error:function(){ 
+            error();
+        }
+    });
+  },false);
+    //处理数据部分
+        function success(res){
+        	console.log(res); // check
+            for(var i=0;i<res.data.length;i++){
+                var newp = document.createElement("p");
+                newp.innerText = res.data[i];
+                ct.appendChild(newp);
+            }
+        }
+        function error(){
+        	console.log("error");
+        }
+
+    </script>
+</body>
+</html>
