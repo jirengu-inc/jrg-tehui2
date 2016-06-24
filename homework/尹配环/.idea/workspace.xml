@@ -3,8 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f74ad464-f5f8-4f55-b5ec-4e4735c7fa69" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/毕业设计/js/MyPlayer.js" afterPath="$PROJECT_DIR$/毕业设计/js/MyPlayer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/毕业设计/main.html" afterPath="$PROJECT_DIR$/毕业设计/main.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-28 jquery stickup/task28-1.html" afterPath="$PROJECT_DIR$/task-28 jquery stickup/task28-1.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/task-28 jquery stickup/task28-2.html" afterPath="$PROJECT_DIR$/task-28 jquery stickup/task28-2.html" />
     </list>
     <ignored path="尹配环.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -28,7 +28,7 @@
       <file leaf-file-name="MyPlayer.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
+            <state relative-caret-position="1037">
               <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
               <folding>
                 <element signature="e#0#49#0" expanded="false" />
@@ -59,11 +59,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="main.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="main.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
+            <state relative-caret-position="1343">
               <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task28-2.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/task-28 jquery stickup/task28-2.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1666">
+              <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="task28-1.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/task-28 jquery stickup/task28-1.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -120,6 +140,8 @@
         <option value="$PROJECT_DIR$/毕业设计/js/drag.js" />
         <option value="$PROJECT_DIR$/毕业设计/main.html" />
         <option value="$PROJECT_DIR$/毕业设计/js/MyPlayer.js" />
+        <option value="$PROJECT_DIR$/task-28 jquery stickup/task28-2.html" />
+        <option value="$PROJECT_DIR$/task-28 jquery stickup/task28-1.html" />
       </list>
     </option>
   </component>
@@ -159,6 +181,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches">
+        <subPane />
+      </pane>
       <pane id="Scope">
         <subPane subId="Problems" />
         <subPane subId="Project Files">
@@ -171,25 +196,12 @@
         </subPane>
         <subPane subId="Tests" />
       </pane>
-      <pane id="Scratches">
-        <subPane />
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <PATH>
             <PATH_ELEMENT>
               <option name="myItemId" value="尹配环" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="尹配环" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
         </subPane>
@@ -306,17 +318,19 @@
       <workItem from="1465953134354" duration="43825000" />
       <workItem from="1466125986608" duration="5095000" />
       <workItem from="1466162997405" duration="246000" />
+      <workItem from="1466171018580" duration="1376000" />
+      <workItem from="1466336536303" duration="20000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="174195000" />
+    <option name="totallyTimeSpent" value="175591000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16443452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16443452" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32298136" sideWeight="0.50793654" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -352,20 +366,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/task- 40 设计模式/旋转木马轮播.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="36" column="24" selection-start-line="36" selection-start-column="24" selection-end-line="36" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/task- 40 设计模式/js/CarouselCSS3.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/task- 40 设计模式/task-40-2.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1071">
@@ -596,7 +596,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/js/MyPlayer.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
+        <state relative-caret-position="1037">
           <caret line="106" column="0" selection-start-line="106" selection-start-column="0" selection-end-line="106" selection-end-column="0" />
           <folding>
             <element signature="e#0#49#0" expanded="false" />
@@ -628,8 +628,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/毕业设计/main.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="1343">
           <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task-28 jquery stickup/task28-2.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1666">
+          <caret line="98" column="32" selection-start-line="98" selection-start-column="32" selection-end-line="98" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/task-28 jquery stickup/task28-1.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="98" column="39" selection-start-line="98" selection-start-column="39" selection-end-line="98" selection-end-column="39" />
           <folding />
         </state>
       </provider>

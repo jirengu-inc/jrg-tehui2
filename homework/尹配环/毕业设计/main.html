@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>main</title>
+    <title>FMPlayer</title>
     <meta charset="UTF-8">
     <meta name="referrer" content="no-referrer">
     <link rel="stylesheet" href="css/font-awesome.css">
@@ -50,13 +50,30 @@
             overflow: hidden;
         }
         .musicHead {
-
+            position: relative;
+            height: 30px;
         }
         .musicHead>.musicIcon {
-            float: left;
+            position: absolute;
+            left:0;
         }
         .musicHead>.infoIcon {
-            float:right;
+            position: absolute;
+            right:-160px;
+        }
+        .infoIcon> i {
+            margin-right: 20px;
+        }
+        .infoIcon> a {
+            vertical-align: bottom;
+            line-height: 33px;
+
+            text-decoration: none;
+            color:#fff;
+            margin-left: 5px;
+        }
+        .infoIcon> a:hover {
+            color:#eee;
         }
 
         .lyrcisBtn>i {
@@ -246,6 +263,8 @@
                     </div>
                     <div class="infoIcon musicbtn">
                         <i class="fa fa-info fa-2x"></i>
+                        <a href="#">作者：尹配环</a>
+                        <a href="https://github.com/peifan325"><i class="fa fa-github fa-2x"></i></a>
                     </div>
                 </div>
                 <div class="musicTitle">
