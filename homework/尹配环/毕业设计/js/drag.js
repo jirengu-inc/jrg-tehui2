@@ -19,7 +19,6 @@ $.fn.drag = function(){
             oldy = e.pageY;
 
         }).on('mouseup',function(e){
-
             var $dialog = $(this);
             $dialog.removeClass('onMove').removeData('evtPos');
             
@@ -31,7 +30,8 @@ $.fn.drag = function(){
         });
         $('body').on('mousemove',function(e){
             var $onMove = $('.onMove');
-            if ($onMove.length && e.target.parentElement == _this.get(0) ) {   //触发事件元素的父元素等于绑定事件的元素
+            
+            if ($onMove.length) {   //触发事件元素的父元素等于绑定事件的元素
                 $onMove.offset({    //当有窗口在移动状态时
                     left:e.pageX - $onMove.data('evtPos').x,
                     top:e.pageY - $onMove.data('evtPos').y

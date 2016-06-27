@@ -17,7 +17,10 @@ var MyPlayer = function(){
     MyPlayer.$nextBtn  = $('.forwardIcon');     //下一曲
     MyPlayer.$chansCt  = $('.channelsCt');      //频道列表 ul
     MyPlayer.channelId ;
+
     MyPlayer.$musicIcon= $('.musicIcon');       //频道列表 按钮
+    MyPlayer.$infoIcon= $('.infoIcon');       //频道列表 按钮
+
     MyPlayer.$chansList= $('.channelsList');    //频道列表页面
     MyPlayer.$volumeBtn= $('.volumeBtn');       //音量按钮
     MyPlayer.$lyrcisBtn= $('.lyrcisBtn');       //歌词开关 按钮
@@ -80,6 +83,16 @@ MyPlayer.bindEvns = function () {
         event.stopPropagation();
         MyPlayer.$chansList.animate({left:0},500);
     });                 //打开频道列表
+    MyPlayer.$infoIcon.hover(function(e){
+        e.stopImmediatePropagation();
+        MyPlayer.$infoIcon.animate({right:0})
+
+    },function(e){
+        e.stopImmediatePropagation();
+        MyPlayer.$infoIcon.animate({right:-160})
+    });
+
+
     MyPlayer.$volumeBtn.on('click',function(){                         //打开音量控制器
         if (MyPlayer.$vol_wrap.css('display') == 'none') {
             MyPlayer.$vol_wrap.css('display','inline-block');
@@ -99,8 +112,8 @@ MyPlayer.bindEvns = function () {
     //播放 进度条
     
     MyPlayer.$progress.on('mousedown',function (e) {
+        e.stopImmediatePropagation();
         var $progress = $(this);
-
 
         MyPlayer.player.pause();     //暂停播放
         setCurrTimeAndWidth(e.offsetX);
@@ -108,7 +121,6 @@ MyPlayer.bindEvns = function () {
         $progress.addClass('pOnMove');
 
     }).on('mouseup',function (e) {
-
         var $progress = $(this);
         
         MyPlayer.player.play();     //播放
@@ -118,7 +130,7 @@ MyPlayer.bindEvns = function () {
 
     //音量控制条
     MyPlayer.$vol.on('mousedown',function (e) {
-        event.stopImmediatePropagation();
+        e.stopImmediatePropagation();
         var $progress = $(this);
 
         setVolAndWidth(e.offsetX);
