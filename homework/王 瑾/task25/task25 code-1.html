@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<style>
+	*{
+		padding: 0;
+		margin: 0;
+		list-style: none;
+		font-size:18px;
+	}
+	.cover{
+	    position:fixed;
+	    top:0;
+	    right:0;
+	    left:0;
+	    bottom:0;
+	    background-color:white;
+	    z-index:-1;
+    } 
+	#nvbar{
+		width:200px;
+		margin:50px auto;
+		border:1px solid brown;
+		background-color:brown;
+	}
+	span{
+        position: relative;
+        left:80px;
+	}
+	#nvbar>ul>li{
+		padding:10px;
+		border-bottom:1px dotted white;
+		margin-left:12px;
+		margin-right:12px;
+		position: relative;
+		color:white;
+	}
+	#aside{
+		width:178px;
+		border:1px solid lightgray;
+		position:absolute;
+		top:-1px;
+		left:189px;
+	}
+	#aside li{
+		width:79px;
+		float:left;
+	    margin-top:10px;
+	    margin-left:10px;
+	    margin-bottom:10px;
+	}
+</style>
+<title>task25 code-1</title>
+</head>
+<body>
+	<div class="cover"></div>
+    <div id="nvbar">
+    	<ul>
+    		<li>珠宝玉器<span>></span>
+                <div id="aside">
+	                <ul style="color:black">
+		                <li>翡翠</li>
+ 		                <li>玉石</li>
+		                <li>宝石</li>
+		                <li>水晶</li>
+	                </ul>
+                </div>
+    		</li>
+    		<li>珠宝玉器<span>></span></li>
+    		<li>珠宝玉器<span>></span></li>
+    		<li>珠宝玉器<span>></span></li>
+    		<li>珠宝玉器<span>></span></li>
+    	</ul>
+    </div>
+	<script src="jquery-3.0.0.js" type="text/javascript"></script>
+    <script>
+    var $aside = $("#aside"), $main = $("#nvbar>ul>li");
+        $aside.hide();
+     $main.on("mouseover",function(){
+     	$(this).siblings().remove($aside);
+     	$(this).append($aside);
+    	$aside.show();
+    });
+    $(".cover").on("mouseover",function(){
+       $aside.hide();
+    });
+     $aside.on("mouseleave",function(){
+     	$(this).hide();
+     });
+    </script>
+</body>
+</html>
