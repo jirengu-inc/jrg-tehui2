@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>TAB切换</title>
+	<style>
+div,ul,li{
+  padding:0;
+  margin:0;
+}
+.container{
+	width: 600px;
+	margin:15px auto;
+}
+.nav{
+  box-sizing:border-box; 
+}
+.nav:after{
+  content:"";
+  height:0;
+  display:table;
+  clear:both;
+}
+.nav li{
+  float:left;
+  width:33%;
+  height:30px;
+  list-style:none;
+  text-align:center;
+  line-height:30px;
+  border:1px solid #ccc;
+  cursor:pointer;
+}
+.nav li:first-child{
+  border-right:none;
+}
+.nav li:last-child{
+  border-left:none;
+}
+.nav .active{
+  background:#eee;
+}
+.container .content{
+  border:1px solid #ccc;
+  border-top:none;
+  min-height:200px;
+  text-align:center;
+  line-height:150px;
+  display:none;
+}
+
+.container .active{
+	  display:block;
+}
+
+.content .active{
+	  display:block;
+}
+
+</style>
+</head>
+<body>
+	 
+<div class="container">
+   <ul class="nav">
+     <li class="active">tab1</li>
+     <li>tab2</li>
+     <li>tab3</li>
+   </ul>
+   <div class="content">内容1</div>
+   <div class="content">内容2</div>
+   <div class="content active">内容3</div>
+</div>
+
+<div class="container">
+   <ul class="nav">
+     <li class="active">tab11</li>
+     <li>tab22</li>
+     <li>tab33</li>
+   </ul>
+   <div class="content">内容1</div>
+   <div class="content">内容2</div>
+   <div class="content active">内容3</div>
+</div>
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+	function tabChange($node){
+           this.$ct= $node;
+           this.$content=this.$ct.parent('.container').find('.content');
+           this.bind();
+	}
+
+	tabChange.prototype={
+		bind:function(){
+         	var _this=this;
+			this.$ct.on('click','li',function(){
+				var $cur=$(this);
+				var idx=$cur.index();
+			    $cur.siblings().removeClass('active');
+			    $cur.addClass('active');
+			    $cur.parents('.container').find('.content').removeClass('active');
+			    $cur.parents('.container').find('.content').eq(idx).addClass('active');
+				
+			});
+		}
+	}
+
+    var $node1=$('.container');
+	var tap= new tabChange($node1);
+</script>
+</body>
+</html>
