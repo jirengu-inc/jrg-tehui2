@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>两个轮播</title>
+	<style type="text/css">
+html,body,ul,li,p{
+	margin:0;
+	padding: 0;
+}
+li{
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+.carousel{
+	position: relative;
+	width: 440px;
+	height: 440px;
+	overflow: hidden;
+	float: left;
+	margin:4px;
+}
+
+
+.carousel .img-ct{
+	position: relative;
+}
+.carousel .img-ct img{
+	width: 440px;
+	height:440px;
+}
+.carousel .img-ct:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+.carousel .img-ct li{
+	position: absolute;
+	display: none;
+}
+.arrow{
+	position: absolute;
+	top: 50%;
+	margin-top: -30px;
+	width: 40px;
+	height: 40px;
+	border-radius: 50%;
+	line-height: 40px;
+	text-align: center;
+	background:pink;
+	color: white;
+	font-weight: bold;
+	box-shadow: 0 0 2px pink;
+	opacity: 1;
+
+}
+.arrow:hover{
+	opacity: 0.6;
+}
+.pre{
+	left: 10px;
+}
+.next{
+	right: 10px;
+}
+.carousel .bullet{
+	position: absolute;
+	bottom: 5px;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.carousel .bullet li{
+	width: 28px;
+	height: 7px;
+	border-radius: 10px;
+	background-color: pink;
+	display: inline-block;
+	cursor: pointer;
+}
+
+.carousel .bullet li.active{
+	background-color: #fff;
+}
+</style>
+</head>
+<body>
+<div class="carousel">	
+        <ul class="img-ct">
+           <li data-id='0'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l1.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='1'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l2.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='2'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l3.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='3'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l4.jpg" alt="">
+           </a>
+           </li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+
+        <ul class="bullet">
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+
+	</div>
+
+<div class="carousel">	
+        <ul class="img-ct">
+           <li data-id='0'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l5.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='1'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l6.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='2'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l7.jpg" alt="">
+           </a>
+           </li>
+           <li data-id='3'>	
+           <a href="#">
+           	<img src="http://7xt1vz.com1.z0.glb.clouddn.com/l8.jpg" alt="">
+           </a>
+           </li>
+        </ul>
+        <a class="pre arrow" href="#"><</a>
+        <a class="next arrow" href="#">></a>
+
+        <ul class="bullet">
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        	<li></li>
+        </ul>
+
+	</div>	
+
+<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+<script>
+	function Carousel($node){
+		this.$carousel=$node;
+	    var $ct=this.$ct=this.$carousel.find('.img-ct');
+		this.$items=$ct.find("li");
+		this.$pre=this.$carousel.find(".pre");
+		this.$next=this.$carousel.find(".next");
+		this.imgWidth=this.$items.width();
+		this.imgCount=this.$items.size();
+        
+        this.$bullets=this.$carousel.find(".bullet");
+
+        this.isAnimate=false;
+        this.curIdx=0;
+
+		this.bind();
+		this.play(0);
+		this.autoPlay();
+	}
+
+	Carousel.prototype={
+		bind:function(){
+			var _this=this;
+			this.$pre.on('click',function(){
+				_this.playPre();
+			});
+			this.$next.on('click',function(){
+				_this.playNext();
+			});
+			this.$bullets.find('li').on('click',function(){
+				var idx=$(this).index();
+				_this.play(idx);
+			})
+
+		},
+		play:function(idx){
+			var _this=this;
+			 if (this.isAnimate) {
+		     	return;
+		     }
+		     this.isAnimate= true;
+		     this.$items.eq(this.curIdx).fadeOut(500);
+		     this.$items.eq(idx).fadeIn(500,function(){
+		     	_this.isAnimate=false;
+		     })
+
+            this.curIdx= idx;
+            this.setBullet();
+		},
+		autoPlay:function(){
+			var _this=this;
+			clock=setInterval(function(){
+		            _this.playNext();
+	          },2000)
+	  	},
+	  	stopAuto:function(){
+	  		clearInterval(clock);
+	  	},
+		playPre:function(){
+			this.play((this.imgCount+this.curIdx-1)%this.imgCount);
+		},
+		playNext:function(){
+	        this.play((this.curIdx+1)%this.imgCount);
+        },
+        setBullet:function(){
+        	this.$bullets.children().removeClass('active')
+	                  .eq(this.curIdx).addClass('active');
+        }
+	}
+
+var $node1=$('.carousel').eq(0);
+var $node2=$('.carousel').eq(1);
+var c1 =new Carousel($node1);
+var c2 = new Carousel($node2);
+</script>
+</body>
+</html>

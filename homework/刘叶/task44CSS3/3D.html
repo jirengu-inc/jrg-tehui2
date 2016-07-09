@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3</title>
+</head>
+<style type="text/css">
+    body{
+        background-color: #ccc;
+    }
+    div{
+        color: #fff;
+        width: 200px;
+        height: 200px;
+        transition: 1.5s;
+        margin: 20px auto;
+        line-height: 200px;
+        text-align: center;
+    }
+    .foo{
+        background-color: lightsalmon;
+    }
+    .foo:hover{
+        -webkit-transform: rotateX(180deg);
+        -moz-transform: rotateX(180deg);
+        -ms-transform: rotateX(180deg);
+        -o-transform: rotateX(180deg);
+        transform: rotateX(180deg);
+    }
+    .foo2{
+        background-color: lightskyblue;
+    }
+    .foo2:hover{
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+    }
+    .foo3{
+        background-color: lightgreen;
+    }
+    .foo3:hover{
+        -webkit-transform: rotateY(180deg);
+        -moz-transform: rotateY(180deg);
+        -ms-transform: rotateY(180deg);
+        -o-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        transform-style: preserve-3d;
+    }
+</style>
+<body>
+    <div class="foo">X轴翻转</div>
+    <div class="foo2">Y轴翻转</div>
+    <div class="foo3">3D试水</div>
+</body>
+</html>

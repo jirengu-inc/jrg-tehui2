@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>stickup</title>
+    <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+    <style>
+    #target {
+        height: 40px;
+        margin-top: 20px;
+        background: blue;
+    }
+    
+    #header {
+        background: red;
+        height: 80px;
+        line-height: 80px;
+        text-align: center;
+    }
+    
+    #content {
+        min-height: 800px;
+        background: #ccc;
+        padding: 10px;
+        overflow: auto;
+    }
+    
+    #content .aside {
+        float: left;
+        width: 100px;
+        min-height: 400px;
+        background: green;
+    }
+    
+    #content .main {
+        overflow: auto;
+        background: #fff;
+        padding-left: 20px;
+        min-height: 800px;
+    }
+    
+    #footer {
+        background: #333;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="header">header</div>
+    <div id="target">target</div>
+    <div id="content">
+        <div class="aside">aside</div>
+        <div class="main">main</div>
+    </div>
+    <div id="footer">footer</div>
+    <script>
+    var $target = $('#target'),
+        targetH = $target.height(),
+        targetW = $target.width(),
+        offsetTop = $target.offset().top,
+        offsetLeft = $target.offset().left;
+
+
+    var $targetClone = $target.clone()
+        .css({
+            display: 'none'
+        })
+        .insertBefore($target);
+
+    $(window).on('scroll', function() {
+        var scrollTop = $(this).scrollTop();
+
+        if (scrollTop >= offsetTop) {
+
+            setFixed();
+        } else {
+
+            unsetFixed();
+        }
+    })
+
+    function setFixed() {
+        $target.css({
+            'position': 'fixed',
+            'top': 0,
+            'left': offsetLeft,
+            'width': targetW,
+            'margin': 0,
+            'z-index': 9999
+        });
+        $targetClone.show();
+    }
+
+    function unsetFixed() {
+        $target.removeAttr('style');
+        $targetClone.hide();
+    }
+    </script>
+</body>
+
+</html>

@@ -97,10 +97,8 @@
             'left':nodeLeft,
             'width':nodeWidth,
             'height':nodeHeight,
-            'opacity':0
+//            'opacity':0
         });
-
-        $node.after($nodeClone);
 
         $(window).on("resize",function (e) {
             nodeWidth = $node.width();
@@ -111,7 +109,7 @@
             $nodeClone.css ({
                 'left':nodeLeft,
                 'width':nodeWidth,
-                'height':nodeHeight,
+                'height':nodeHeight
             });
 
         });
@@ -126,15 +124,16 @@
         });
 
         function setFixed() {
+            $node.after($nodeClone);           //需要设置时，才添加到页面，防止 后面的覆盖前面的。导致无法点击
             $nodeClone.data('isFixed',true);
             $node.css({'opacity':0});
-            $nodeClone.css({'opacity':1});
+//            $nodeClone.css({'opacity':1});
         }
         function clearFixed() {
             if ($nodeClone.data('isFixed')){
                 $nodeClone.data('isFixed',false);
                 $node.css({'opacity':1});
-                $nodeClone.css({'opacity':0});
+                $nodeClone.remove();
             }
 
         }

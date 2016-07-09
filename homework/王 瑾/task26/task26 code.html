@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style>
+	p{
+		padding:10px;
+		border: 1px solid lightGrey;
+	}
+	a{
+		display:block;
+		text-decoration:none;
+		text-align:center;
+		color:red;
+		width:100px;
+		margin:0 auto;
+		border:1px solid red;
+		border-radius:3px;
+		padding:10px;
+		font-size:18px;
+		background-color:white;
+	}
+	.bgcolor{
+		background-color:green;
+	}
+	</style>
+	<body>
+		<div id="ct">
+            <p>内容1</p>
+            <p>内容2</p>
+        </div>
+    <a href="#" id="more-btn">加载更多</a>
+
+		<script src="jquery-3.0.0.min.js"></script>
+		<script type="text/javascript">
+		var cur = 2;
+		//鼠标放置变色部分
+	    $("p").hover(
+	    	function(){
+	    		$(this).addClass("bgcolor");
+	    	},
+	    	function(){
+	    		$(this).removeClass("bgcolor");
+	    	}
+	    );
+	    $("#more-btn").click(function(ev){
+	    	ev.preventDefault();
+            if($(this).data("isLoading")){
+            	return;
+            }
+            $(this).data("isLoading",true); // 锁住
+
+            //设置接口部分
+            //入参：start--cur, len--3
+            //回参：status--0 可用（--1 不可用）；data:[cur ...cur+3]
+            
+            $.ajax({
+            	url:"getMore.php",
+            	data:"json",
+            	dataType:"get",
+            	data:{
+            		start: cur,
+            		len:3
+            	},
+            	success:function(json){
+            		$("#more-btn").data("isLoading",false); // 解锁
+            		console.log(json);
+                    if(json.status == 1){
+                    	$("#ct").append("<p>"+json.data+"</p>");
+                    	cur += 3;
+                    }else{
+                    	alert("plz try again");
+                    }
+            	},
+            	error:function(){
+            		$("#more-btn").data("isLoading",false);  // 解锁
+            		alert("error");
+            	}
+            });
+	    });
+    
+		</script>
+	</body>
+</html>

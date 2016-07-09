@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title>task25 code-3</title>
+<style>
+*{
+	padding:0;
+	margin:0;
+	list-style:none;
+}
+a{
+	color:black;
+	text-decoration:none;
+}
+p{
+	text-align:left;
+	margin:10px;
+}
+#container{
+	width:590px;
+    margin:0 auto;
+}
+.item-list{
+	margin-right:-10px;
+	overflow:hidden;
+}
+/*.item-list:after{
+	clear:both;
+	display:block;
+	content:"";
+}*/
+h2,#add-btn{
+	position:relative;
+	left:10px;
+}
+.forLi{
+	width:178px;
+	border:1px solid lightGrey;
+	text-align:center;
+	float:left;
+	margin:10px;
+	position:relative;
+}
+span{
+	color:red;
+}
+.after{
+    height:217px;
+    width:178px;
+    background-color:grey;
+    opacity:0.7;
+    z-index:1;
+    display:none;
+   position:absolute;
+   top:0;
+}
+.btn{
+	display:block;
+	background-color:white;
+	padding:10px;
+	border:1px solid red;
+	width:70px;
+	margin:80px auto;
+	border-radius:5px;
+}
+#add-btn{
+	margin-top:20px;
+	font-size:16px;
+	background-color:white;
+	border:1px solid red;
+	padding:8px;
+    border-radius:5px;
+}
+</style>
+</head>
+<body>
+<div id="container">
+	<h2>珠宝首饰</h2>
+	<div class="outer">
+	<ul class="item-list" >
+		<li class="forLi">
+			<a href="#">
+			    <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+				 <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				 <p><span id="price">￥1699.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li class="forLi">
+			<a href="#">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+				 <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				 <p><span id="price">￥1699.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li class="forLi">
+			<a href="#">
+			    <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+			    <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+			    <p><span id="price">￥1699.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li class="forLi">
+			<a href="#">
+			    <img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+		        <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+		        <p><span id="price">￥1699.00</span></p>   			
+	    	</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li class="forLi">
+			<a href="#">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+				 <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				 <p><span id="price">￥1699.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li class="forLi">
+			<a href="#">
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg" alt="商品图片" />
+				 <p>藏美千足金和田玉金镶玉路路通吊坠</p>
+				 <p><span id="price">￥1699.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+	</ul>
+	<button id="add-btn" type="button" value="addclass">添加</button>
+	</div>
+</div>
+	<!-- 要添加的元素 -->
+	<ul id="add-list" style="display:none">
+		<li>
+			<a href="#">
+				<img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt="商品图片" />
+				 <p>珂兰 黄金手 猴哥款</p>
+				 <p style="padding-top:17px"><span id="price">￥405.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li>
+			<a href="#">
+				<img src='http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg' alt="商品图片" />
+				 <p>珂兰 黄金转运珠 猴哥款</p>
+				 <p><span id="price">￥100.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+		<li>
+				<a href="#">
+				<img src='http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg' alt="商品图片" />
+				 <p>珂兰 黄金手链 3D猴哥款</p>
+				 <p><span id="price">￥45.00</span></p>
+			</a>
+			<div class="after"><a href="#" class="btn">立即抢购</a></div>
+		</li>
+	</ul>
+
+    <script src="jquery-3.0.0.min.js"></script>
+    <script>
+    $lis = $("#add-list").find("li");
+     $("li").hover(
+        function(){
+        	$(this).find("div").show();
+        },
+        function(){
+        	$(this).find("div").hide();
+        }
+     );
+     $(".outer").on("click","button",function(){
+     	$lis.addClass("forLi");
+     	$lis.show();
+     	$(".item-list").append($lis.clone(true));
+     });
+
+     // 一开始没有使用clone,直接用的append，发现只能触发第一次，后面多久没反应了。原因在于第一次后，原lis已经移动到.item-list里了，#add-list里没有li元素了（内存还有） 也不知道理解对没有 - - 因为调试的时候能打出#add-list的li元素，但是页面上没有对应的可以显示
+    </script>
+</body>
+</html>

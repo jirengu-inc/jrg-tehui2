@@ -76,10 +76,9 @@
             'left':nodeLeft,
             'width':nodeWidth,
             'height':nodeHeight,
-            'opacity':0
         });
 
-        $node.after($nodeClone);
+
 
         $(window).on("resize",function (e) {
             nodeWidth = $node.width();
@@ -90,7 +89,7 @@
             $nodeClone.css ({
                 'left':nodeLeft,
                 'width':nodeWidth,
-                'height':nodeHeight,
+                'height':nodeHeight
             });
 
         });
@@ -107,13 +106,13 @@
         function setFixed() {
             $nodeClone.data('isFixed',true);
             $node.css({'opacity':0});
-            $nodeClone.css({'opacity':1});
+            $node.after($nodeClone);
         }
         function clearFixed() {
             if ($nodeClone.data('isFixed')){
                 $nodeClone.data('isFixed',false);
                 $node.css({'opacity':1});
-                $nodeClone.css({'opacity':0});
+                $nodeClone.remove();
             }
 
         }
