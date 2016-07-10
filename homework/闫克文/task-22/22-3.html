@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>22-3-Sample</title>
+</head>
+<body>
+<ul class="ct">
+    <li data-img="http://img.baidu.com/video/img/video_logo_new.gif">鼠标放置查看图片1</li>
+    <li data-img="http://news.baidu.com/resource/img/logo_news.gif">鼠标放置查看图片2</li>
+    <li data-img="http://static.wenku.bdimg.com/static/wkcore/widget/search/header/images/logo-wk-117-38_96efe38.gif">鼠标放置查看图片3</li>
+</ul>
+<div class="img-preview"></div>
+<script >
+	var ct = document.querySelector('.ct');
+		preview = document.querySelector('.img-preview');
+	ct.addEventListener('mouseover', function(e) {
+		var src = e.target.getAttribute('data-img');
+		preview.innerHTML = '<img src="' + src + '">';
+	})
+
+</script>
+</body>
+</html>
