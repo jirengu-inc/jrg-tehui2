@@ -26,11 +26,6 @@ p{
 	margin-right:-10px;
 	overflow:hidden;
 }
-/*.item-list:after{
-	clear:both;
-	display:block;
-	content:"";
-}*/
 h2,#add-btn{
 	position:relative;
 	left:10px;
@@ -132,52 +127,55 @@ span{
 	<button id="add-btn" type="button" value="addclass">添加</button>
 	</div>
 </div>
-	<!-- 要添加的元素 -->
-	<ul id="add-list" style="display:none">
-		<li>
-			<a href="#">
-				<img src="http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg" alt="商品图片" />
-				 <p>珂兰 黄金手 猴哥款</p>
-				 <p style="padding-top:17px"><span id="price">￥405.00</span></p>
-			</a>
-			<div class="after"><a href="#" class="btn">立即抢购</a></div>
-		</li>
-		<li>
-			<a href="#">
-				<img src='http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg' alt="商品图片" />
-				 <p>珂兰 黄金转运珠 猴哥款</p>
-				 <p><span id="price">￥100.00</span></p>
-			</a>
-			<div class="after"><a href="#" class="btn">立即抢购</a></div>
-		</li>
-		<li>
-				<a href="#">
-				<img src='http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg' alt="商品图片" />
-				 <p>珂兰 黄金手链 3D猴哥款</p>
-				 <p><span id="price">￥45.00</span></p>
-			</a>
-			<div class="after"><a href="#" class="btn">立即抢购</a></div>
-		</li>
-	</ul>
 
     <script src="jquery-3.0.0.min.js"></script>
     <script>
-    $lis = $("#add-list").find("li");
-     $("li").hover(
-        function(){
-        	$(this).find("div").show();
-        },
-        function(){
-        	$(this).find("div").hide();
-        }
-     );
-     $(".outer").on("click","button",function(){
-     	$lis.addClass("forLi");
-     	$lis.show();
-     	$(".item-list").append($lis.clone(true));
-     });
+    var products = [
+    {
+    img:"http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg",
+    name:"珂兰 黄金手 猴哥款",
+    price:"￥405.00"
+    },
+    {
+    	img:"http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg",
+    	name:"珂兰 黄金转运珠 猴哥款",
+    	price:"￥100.00"
+    },
+    {
+    	img:"http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg",
+    	name:"珂兰 黄金手链 3D猴哥款",
+    	price:"￥45.00"
+    }
+	];
 
-     // 一开始没有使用clone,直接用的append，发现只能触发第一次，后面多久没反应了。原因在于第一次后，原lis已经移动到.item-list里了，#add-list里没有li元素了（内存还有） 也不知道理解对没有 - - 因为调试的时候能打出#add-list的li元素，但是页面上没有对应的可以显示
+     function addProd(pro){
+        var html="";
+        html += "<li class='forLi'>";
+        html += "<a href='#'>";
+        html +=  '<img src="'+pro.img+'" alt="" +"/">';
+        html +=  "<p>"+pro.name+"</p>";
+        html += "<p><span id='prices'>"+pro.price+"</span></p>";
+        html += "</a>";
+        html += "<div class='after'><a href='#' class='btn'>立即抢购</a></div>";
+        html += "</li>";
+        return html;
+     }
+     
+     $("#add-btn").on("click",function(){
+     	$.each(products,function(idx,prod){
+     		var html = addProd(prod);
+     		$(".item-list").append(html);
+     	});
+
+      $("li").hover(
+         function(){
+         	$(this).find("div").show();
+         },
+         function(){
+         	$(this).find("div").hide();
+         }
+      );
+     });
     </script>
 </body>
 </html>

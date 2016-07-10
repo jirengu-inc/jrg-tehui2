@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>全屏轮播</title>
+		<script src="jquery-3.0.0.min.js"></script>
+		<style>
+			*{
+				padding: 0;
+				margin:0;
+				list-style:none;
+			}
+			a{
+				text-decoration: none;
+			}
+			html,body,#carousel{
+				height:100%;
+				width:100%;
+			}
+			#carousel{
+				position: relative;
+				overflow:hidden;
+			}
+			.img-ct{
+				position:absolute;
+				height:100%;
+			}
+			.img-ct:after{
+				content:"";
+				display:block;
+				clear:both;
+			}
+			.img-ct li{
+				float:left;
+				height:100%;
+				display: table;
+			}
+			.main{
+				text-align:center;
+				display:table-cell;
+				vertical-align: middle;
+			}
+			h3{
+				font-size:35px;
+			}
+			p{
+				font-size:18px;
+			}
+			#bullets{
+				position: absolute;
+				bottom:15px;
+				left:50%;
+				transform: translateX(-50%);
+			}
+			#bullets li{
+				display: inline-block;
+				width:16px;
+				height:4px;
+				background-color:#A9A9A9;
+				border-radius:3px;
+			}
+			#bullets li:hover{
+				cursor: pointer;
+			}
+			#bullets li.active{
+				background-color: midnightblue;
+			}
+		</style>
+	</head>
+	<body>
+			<div id="carousel">
+				<ul class="img-ct">
+					<li style="background:url(pics/2-1.jpg) no-repeat center center;background-size:cover">
+						<div class="main">
+							<h3>Time is life</h3>
+							<p>Treasure it</p>
+						</div>
+					</li>
+					<li style="background:url(pics/2-2.jpg) no-repeat center center;background-size:cover">
+						<div class="main">
+							<h3>Time is life</h3>
+							<p>Treasure it</p>
+						</div>
+					</li>
+					<li style="background:url(pics/2-3.jpg) no-repeat center center;background-size:cover">
+						<div class="main">
+							<h3>Time is life</h3>
+							<p>Treasure it</p>
+						</div>
+					</li>
+					<li style="background:url(pics/2-4.jpg) no-repeat center center;background-size:cover">
+						<div class="main">
+							<h3>Time is life</h3>
+							<p>Treasure it</p>
+						</div>
+					</li>
+				</ul>
+				<ul id="bullets">
+					<li class="active"></li>
+					<li></li>
+					<li></li>
+					<li></li>
+				</ul>
+			</div>
+		
+		<script>
+			var $ct = $(".img-ct"),
+			    $imgs = $ct.children(),
+			    $bullets = $("#bullets"),
+			    imgWidth = $(window).width(),
+			    imgCount = $imgs.length,
+			    curIdx = 0,
+			    isLocked = false;
+			    $imgs.css("width",imgWidth);//error:在clone之后声明导致图片显示错乱
+			    
+			$ct.append($imgs.first().clone());
+			$ct.prepend($imgs.last().clone());
+			var imgRealCount = $ct.children().length;
+			$ct.css({
+				"left":0-imgWidth,
+				"width":imgRealCount*imgWidth
+			})
+			
+            autoPlay();
+			
+			$bullets.on("click","li",function(){
+				var idx = $(this).index();
+				if(idx>curIdx){
+					playNext(idx-curIdx);
+				}else if(idx<curIdx){
+					playPre(curIdx-idx);
+				}
+			});
+			
+			function playNext(idx){
+				if(isLocked) return;
+				isLocked = true;
+				var idx1 = idx;
+				$ct.animate({
+					left:"-="+imgWidth*idx1
+				},function(){
+					curIdx = (curIdx+idx1)%imgCount;
+					if(curIdx===0){
+						$ct.css({
+							left:0-imgWidth
+						});
+						curIdx = 0;
+					}
+					setBullets();
+					isLocked = false;
+				});
+			}
+			
+			function playPre(idx){
+				if(isLocked) return;
+				isLocked = true;
+				var idx2 = idx;
+				$ct.animate({
+					left:"+="+imgWidth*idx2
+				},function(){
+					curIdx = (curIdx-idx2+imgCount)%imgCount;
+					if(curIdx===imgCount-1){
+						$ct.css({
+							left:0-imgWidth*imgCount
+						});
+						curIdx = imgCount-1;
+					}
+					setBullets();
+					isLocked = false;
+				});
+			}
+			
+			function setBullets(){
+				$bullets.children().removeClass("active").eq(curIdx).addClass("active");
+			}
+			
+			function autoPlay(){
+				var clock = setInterval(function(){
+					playNext(1);
+				},3000);
+			}
+			
+			function stopAuto(){
+				clearInterval(clock);
+			}
+		</script>
+		
+	</body>
+</html>
