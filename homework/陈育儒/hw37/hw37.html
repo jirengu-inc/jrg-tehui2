@@ -17,6 +17,10 @@
     .clearfix{
       *zoom:1;
     }
+    .btn-ct{
+      width:300px;
+      margin:0 auto;
+    }
     .btn{
       width:40px;
       padding:5px;
@@ -33,6 +37,8 @@
       background:#fff;
       display:block;
       position:absolute;
+      left:50%;
+      margin-left:-165px;
     }
     .dialog > .dialog-h{
       line-height:30px;
@@ -96,22 +102,14 @@
   </div> -->
 <script>
   function Dialog(){
-
-    this.createDialog();//先把弹窗创建出来
-
-    //存放拖拽的位置
+    this.createDialog();
     this.dragPosition={
       offsetX:0,
       offsetY:0
     };
-
-    //拖拽效果
-    this.drag();
-
+    this.drag();  
   }
   Dialog.prototype.createDialog=function(){
-
-      /* 拖拽的代码模版 */
      var dialogHtml = '<div class="dialog clearfix">'+
                   '<div class="dialog-h"><h4></h4><span class="close">'+
                   ' <a href="javascript:">×</a></span>'+
@@ -126,37 +124,29 @@
                     '<a href="javascript:" class="btn btn-cancel">取消</a>'+
                  ' </div>'+
                 '</div>';
-
-    /*绑定一个对象，便于操作*/
     this.$Dialog = $(dialogHtml).appendTo('body');
-
     // console.log(this.$Dialog);
   }
   
   Dialog.prototype.open = function(opts){
-
-      this.setDialog(opts);//设置弹窗的内容
-
-      this.bindEvents(opts);//给弹窗的按钮绑定事件
-
+      this.setDialog(opts);
+      this.bindEvents(opts);
   }
   
   Dialog.prototype.setDialog=function(opts){
-
       /*设置关闭按钮隐藏*/
       if(!opts.isShowCloseBtn){
         this.$Dialog.find('.dialog-h > span.close').hide();
       }
-
       /*设置确定和取消操作隐藏*/
       if(!opts.isShowConfirmBtn){
         this.$Dialog.find('.dialog-f > .btn-confirm').hide();
         this.$Dialog.find('.dialog-f > .btn-cancel').hide();
       }
-
       /*如果确定和取消按钮，关闭按钮同时隐藏，设置取消按钮显示*/
       if(!opts.isShowCloseBtn && !opts.isShowConfirmBtn){
         this.$Dialog.find('.dialog-f > .btn-cancel').show();
+        this.$Dialog.find('.dialog-h').hide();
       }
       
       /*如果有标题*/
@@ -165,7 +155,6 @@
       }else{
         this.$Dialog.find('.dialog-h > h4').text('你好，这里是饥人谷');
       }
-
       /*如果设置了指定信息*/
       if(opts.message){
         // console.log('message');
@@ -174,40 +163,31 @@
   }
   
   Dialog.prototype.bindEvents = function(opts){
-
-    /*设定this,放在在事件函数中受到this的影响*/
     var self = this;
     
-    /*给关闭按钮绑定事件*/
     this.$Dialog.find('.dialog-h span.close').on('click',function(e){
       // console.log(self.$Dialog);
       // console.log(e);
       self.$Dialog.hide();
+      self.$Dialog.remove();//同时删除DOM元素
     });
 
-    /*给确定按钮绑定事件*/
     this.$Dialog.find('.dialog-f > .btn-confirm').on('click',function(){
         opts.onConfirm();
         self.$Dialog.hide();
+        self.$Dialog.remove();//同时删除DOM元素
     });
 
-    /* 给取消按钮绑定事件*/
     this.$Dialog.find('.dialog-f > .btn-cancel').on('click',function(){
         opts.onClose();
         self.$Dialog.hide();
+        self.$Dialog.remove();//同时删除DOM元素
     });
 
 
   }
-
-  /*
-  拖拽效果的三个事件：
-  mousedown,mousemove,mouseup
-   */
 Dialog.prototype.drag = function(){
-
     var self = this;
-     
     this.$Dialog.on('mousedown',function(e){
       var e = e||window.event;
       // console.log(1);
@@ -215,7 +195,6 @@ Dialog.prototype.drag = function(){
       self.dragPosition.offsetY = e.pageY - self.$Dialog.offset().top;
       self.isDraging = true;
     });
-
     this.$Dialog.on('mousemove',function(e){
       var e = e||window.event;
       var mouseX = e.pageX;
@@ -225,9 +204,10 @@ Dialog.prototype.drag = function(){
       var moveY=0;
 
       if(self.isDraging){
-        moveX = mouseX - self.dragPosition.offsetX;
+        
+        moveX = +mouseX - self.dragPosition.offsetX;
         moveY = mouseY - self.dragPosition.offsetY;
-        self.$Dialog.css({left:moveX+'px',top:moveY+'px'});
+        self.$Dialog.css({marginLeft:0,left:moveX+'px',top:moveY+'px'});
       }
     });
     this.$Dialog.on('mouseup',function(){
