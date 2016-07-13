@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task28-code1 stickup顶部插件</title>
+		<script src="jquery-3.0.0.min.js"></script>
+		<style type="text/css">
+			*{
+				font-size:12px;
+			}
+			html,body{
+				height:100%;
+			}
+			#header{
+				background-color:red;
+				padding-top:15px;
+				padding-bottom:15px;
+				text-align:center;
+				margin-top:-8px;
+			}
+			#nav{
+				background-color:blue;
+				padding:0;
+				margin-top:8px;
+			}
+			#main{
+				border:5px solid gray;
+				overflow: hidden;
+				height:100%;
+			}
+			#aside{
+				background-color:green;
+				float:left;
+				width:40px;
+				height:400px;
+			}
+			#footer{
+				background-color:darkslategray;
+				padding: 0;
+				margin-bottom:8px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="header">header</div>
+		<div id="nav">nav</div>
+		<div id="main">
+			main
+			<div id="aside">aside</div>
+		</div>
+		<div id="footer">footer</div>
+		
+		<script>
+		
+			var $cur = $("#nav"),
+			curH = $cur.height(),
+			curW = $cur.width(),
+			offsetTop = $cur.offset().top,
+			offsetLeft = $cur.offset().left,
+			$orgClone = $cur.clone().css("opacity",0)
+			                .insertBefore($cur).hide();
+		        
+		    $(window).on("scroll",function(){
+		       	var scrollTop = $(this).scrollTop();
+		       	if(scrollTop>=offsetTop){
+		       	 	if(!isFixed()){
+		       	 		setFixed();
+		       	 	}
+		       	 }else if(scrollTop<offsetTop){
+		       	 	if(isFixed()){
+		       	 		unsetFixed();
+		       	 	}
+		       	 }
+		       });
+		        
+		       function isFixed(){
+		       	return !!$cur.attr("data-fixed"); 
+		       }
+		       
+		       function setFixed(){
+		       	$cur.attr("data-fixed","true").css({
+		       		"position":"fixed",
+		       		"top":0,
+		       		"left":0,
+		       		"right":0,
+		       		"z-index":1,
+		       		"margin":0
+		       	});
+		       	$orgClone.show();
+		       }
+		       
+		       function unsetFixed(){
+		       	$cur.removeAttr("data-fixed").removeAttr("style");
+		       	$orgClone.hide();
+		       }
+		
+		</script>	
+	</body>
+</html>
+
