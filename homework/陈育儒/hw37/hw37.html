@@ -102,13 +102,26 @@
   </div> -->
 <script>
   function Dialog(){
-    this.createDialog();
-    this.dragPosition={
-      offsetX:0,
-      offsetY:0
+
+    //用于存放偏移的地址
+    this.offsetPos={
+      oX:0,
+      oY:0
     };
-    this.drag();  
+  
   }
+  
+  Dialog.prototype.open = function(opts){
+
+      this.createDialog();//先创建弹窗
+
+      this.setDialog(opts);//配置弹窗
+
+      this.bindEvents(opts);//为弹窗绑定事件
+
+      this.drag(); //弹窗拖拽效果
+  }
+  
   Dialog.prototype.createDialog=function(){
      var dialogHtml = '<div class="dialog clearfix">'+
                   '<div class="dialog-h"><h4></h4><span class="close">'+
@@ -127,22 +140,20 @@
     this.$Dialog = $(dialogHtml).appendTo('body');
     // console.log(this.$Dialog);
   }
-  
-  Dialog.prototype.open = function(opts){
-      this.setDialog(opts);
-      this.bindEvents(opts);
-  }
-  
+
   Dialog.prototype.setDialog=function(opts){
+      
       /*设置关闭按钮隐藏*/
       if(!opts.isShowCloseBtn){
         this.$Dialog.find('.dialog-h > span.close').hide();
       }
+     
       /*设置确定和取消操作隐藏*/
       if(!opts.isShowConfirmBtn){
         this.$Dialog.find('.dialog-f > .btn-confirm').hide();
         this.$Dialog.find('.dialog-f > .btn-cancel').hide();
       }
+      
       /*如果确定和取消按钮，关闭按钮同时隐藏，设置取消按钮显示*/
       if(!opts.isShowCloseBtn && !opts.isShowConfirmBtn){
         this.$Dialog.find('.dialog-f > .btn-cancel').show();
@@ -155,47 +166,59 @@
       }else{
         this.$Dialog.find('.dialog-h > h4').text('你好，这里是饥人谷');
       }
+
       /*如果设置了指定信息*/
       if(opts.message){
-        // console.log('message');
+        
         this.$Dialog.find('.dialog-ct').html(opts.message);
       }
   }
   
   Dialog.prototype.bindEvents = function(opts){
-    var self = this;
     
-    this.$Dialog.find('.dialog-h span.close').on('click',function(e){
-      // console.log(self.$Dialog);
-      // console.log(e);
-      self.$Dialog.hide();
-      self.$Dialog.remove();//同时删除DOM元素
+    var self = this;
+    var $Dialog = self.$Dialog;
+    
+    //关闭按钮
+    $Dialog.find('.dialog-h span.close').on('click',function(e){
+
+      $Dialog.remove();//删除DOM元素
+
     });
 
-    this.$Dialog.find('.dialog-f > .btn-confirm').on('click',function(){
-        opts.onConfirm();
-        self.$Dialog.hide();
-        self.$Dialog.remove();//同时删除DOM元素
+    //确定按钮
+    $Dialog.find('.dialog-f > .btn-confirm').on('click',function(){
+
+        opts.onConfirm();//点击后执行函数
+        $Dialog.remove();//同时删除DOM元素
+
     });
 
-    this.$Dialog.find('.dialog-f > .btn-cancel').on('click',function(){
-        opts.onClose();
-        self.$Dialog.hide();
-        self.$Dialog.remove();//同时删除DOM元素
+    //取消按钮
+    $Dialog.find('.dialog-f > .btn-cancel').on('click',function(){
+
+        opts.onClose();//点击后执行函数
+        $Dialog.remove();//同时删除DOM元素
+
     });
 
 
   }
 Dialog.prototype.drag = function(){
+    
     var self = this;
-    this.$Dialog.on('mousedown',function(e){
+    var $Dialog = self.$Dialog;
+
+    $Dialog.on('mousedown',function(e){
       var e = e||window.event;
       // console.log(1);
-      self.dragPosition.offsetX = e.pageX - self.$Dialog.offset().left;
-      self.dragPosition.offsetY = e.pageY - self.$Dialog.offset().top;
-      self.isDraging = true;
+      self.offsetPos.oX = e.pageX - $Dialog.offset().left;
+      self.offsetPos.oY = e.pageY - $Dialog.offset().top;
+      self.isDragable = true;
+
     });
-    this.$Dialog.on('mousemove',function(e){
+    
+    $Dialog.on('mousemove',function(e){
       var e = e||window.event;
       var mouseX = e.pageX;
       var mouseY = e.pageY;
@@ -203,16 +226,18 @@ Dialog.prototype.drag = function(){
       var moveX=0;
       var moveY=0;
 
-      if(self.isDraging){
-        
-        moveX = +mouseX - self.dragPosition.offsetX;
-        moveY = mouseY - self.dragPosition.offsetY;
+      if(self.isDragable){
+        moveX = +mouseX - self.offsetPos.oX;
+        moveY = mouseY - self.offsetPos.oY;
         self.$Dialog.css({marginLeft:0,left:moveX+'px',top:moveY+'px'});
       }
+
     });
-    this.$Dialog.on('mouseup',function(){
-      self.isDraging = false;
+    
+    $Dialog.on('mouseup',function(){
+      self.isDragable = false;
     }); 
+
   };
 
   var tpl = '<p>11111111</p><p>22222</p>';
