@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task29 懒加载</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+				list-style: none;
+				box-sizing: border-box;
+			}
+			ul{
+				width:45%;
+				margin:0 auto;
+				overflow: hidden;
+			}
+			li{
+				float:left;
+				margin:18px;
+			}
+			img{
+				width:160px;
+				height:200px;
+			}
+		</style>
+	</head>
+	<body>
+		<ul id="container">
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+			<li><img src="pics/null.jpg" alt="" data-src="pics/1.jpg"/></li>
+		</ul>
+		<script src="jquery-3.0.0.min.js"></script>
+		<script>
+		$(window).on("scroll",function(){
+			if(clock){
+				clearTimeout(clock);
+			}
+			var clock = setTimeout(function(){
+//				console.log("check");
+				checkShow();
+			},300);
+		});
+		
+		checkShow();
+		
+		// 检查状态，未加载但在可视区域内的调用showImg
+		function checkShow(){
+			$("#container img").each(function(){
+				var cur = $(this);
+				if(cur.attr("loaded")) return;
+				if(isShow(cur)){
+					showImg(cur);
+				}
+			});
+		} 
+		
+		// 定义可视区域
+		function isShow($ele){
+			var scrollH = $(window).scrollTop(),
+			    top = $ele.offset().top,
+			    winH = $(window).height();
+			if(top<scrollH+winH){
+				return true;
+			}else{
+				return false;
+			}
+		};
+		
+		function showImg($ele){
+			$ele.attr("src",$ele.attr("data-src"));
+			$ele.attr("loaded","true");
+		}
+		</script>
+	</body>
+</html>

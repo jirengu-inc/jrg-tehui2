@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>回到顶部</title>
+		<style>
+			*{
+				font-size: 16px;
+                margin:0;
+                padding:0;
+			}
+			p{
+				margin:40px 20px;
+			}
+			#goTop{
+				border:1px solid red;
+				padding:15px;
+				position:fixed;
+				bottom:15px;
+				right:15px;
+				display:none;
+				border-radius:4px;
+				cursor: pointer;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="box">
+			<p>内容1</p>
+			<p>内容2</p>
+			<p>内容3</p>
+			<p>内容4</p>
+			<p>内容5</p>
+			<p>内容6</p>
+			<p>内容7</p>
+			<p>内容8</p>
+			<p>内容9</p>
+			<p>内容10</p>
+			<p>内容11</p>
+			<p>内容12</p>
+			<p>内容13</p>
+			<p>内容14</p>
+			<p>内容15</p>
+		</div>
+		<script src="jquery-3.0.0.min.js"></script>
+		<script>
+		var goTop = {
+			init:function(){
+				if($("#goTop").length>0) return;
+				var $goTop = $('<div id="goTop">回到顶部</div>');
+				$("body").append($goTop);
+				this.goTop = $goTop;
+				this.bind();
+			},
+			bind:function(){
+				var self = this;
+				$(window).on("scroll",function(){
+					var scrollTop = $(window).scrollTop();
+					if(scrollTop>80){
+						self.goTop.show();
+					}else{
+						self.goTop.hide();
+					}
+				});
+				self.goTop.on("click",function(){
+					$(window).scrollTop(0);
+				});
+			}
+		}
+      goTop.init();
+      goTop.init();
+		</script>
+	</body>
+</html>
