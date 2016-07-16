@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task30 -waterfall</title>
+		<style>
+		*{
+			padding:0;
+			margin:0;
+			box-sizing:border-box;
+		}
+		.color1{
+			background-color:hotpink;
+		}
+		.color2{
+			background-color: dodgerblue;
+		}
+		.color3{
+			background-color:aquamarine;
+		}
+		.color4{
+			background-color:mediumpurple;
+		}
+		.color5{
+			background-color:sandybrown;
+		}
+		#container{
+			position:relative;
+		}
+		.item{
+			position:absolute;
+			width:200px;
+			transition:all 1s;
+			margin-top:10px;
+			margin-right:10px;
+		}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div class="item color1">1</div>
+			<div class="item color2">2</div>
+			<div class="item color3">3</div>
+			<div class="item color4">4</div>
+			<div class="item color5">5</div>
+			<div class="item color1">6</div>
+			<div class="item color3">7</div>
+			<div class="item color4">8</div>
+			<div class="item color2">9</div>
+			<div class="item color5">10</div>
+			<div class="item color4">11</div>
+			<div class="item color3">12</div>
+			<div class="item color1">13</div>
+			<div class="item color2">14</div>
+		</div>
+		<script src="jquery-3.0.0.min.js"></script>
+		<script>
+		$(function(){
+			$(".item").each(function(){
+				$(this).height(Math.floor(Math.random()*200)+200);
+			});
+			
+			function waterFall(){
+				var oWidth= $(".item").outerWidth(true),
+				    winW = $(window).width(),
+				    colArr = [],
+				    colCount = parseInt(winW/oWidth);
+				    
+				for(var i=0;i<colCount;i++){
+					colArr.push(0);
+				}
+				
+				$(".item").each(function(){
+					var idx = 0,
+					    minHeight = colArr[0];
+					for(var j=0;j<colArr.length;j++){
+						if(minHeight>colArr[j]){
+							minHeight = colArr[j];
+							idx = j;
+						}
+					}
+				    $(this).css({
+				    	"left":oWidth*idx,
+				    	"top":minHeight
+				    });
+				    
+				    colArr[idx] += $(this).outerHeight(true);
+				});
+			}
+			
+			waterFall();
+			$(window).on("resize",function(){
+				waterFall();
+			});
+		})
+			
+		</script>
+	</body>
+</html>
