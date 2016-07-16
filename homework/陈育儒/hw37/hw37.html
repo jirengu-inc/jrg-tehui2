@@ -25,7 +25,7 @@
       width:40px;
       padding:5px;
       border-radius:3px;
-      background:#77cffd;
+      background:#006741;
       color:#fff;
       text-align:center;
     }
@@ -34,6 +34,7 @@
       font-size:12px;
       color:#333;
       border:1px solid #ccc;
+      border-radius:2px;
       background:#fff;
       display:block;
       position:absolute;
@@ -43,8 +44,8 @@
     .dialog > .dialog-h{
       line-height:30px;
       border-bottom:1px solid #ccc;
-      background:#77cffd;
-      color:#fff;
+      background:#f3f3f3;
+
       padding-left:10px;
       position:relative;
     }
@@ -52,6 +53,7 @@
       position:absolute;
       right:0;
       top:0;
+      opacity:0.5;
     }
     .dialog > .dialog-h > .close a{
       display:block;
@@ -59,7 +61,7 @@
       padding:0 5px;
     }
     .dialog > .dialog-h > .close:hover{
-      background:red;
+      opacity:0.8;
     }
     .dialog > .dialog-ct{
       margin-left:10px;
@@ -259,8 +261,8 @@ Dialog.prototype.drag = function(){
     dialog1.open({
       title:'',
       message:tpl2,
-      isShowConfirmBtn:false,
-      isShowCloseBtn:false,
+      isShowConfirmBtn:true,
+      isShowCloseBtn:true,
       onClose:function(){},
       onConfirm:function(){}
     });
@@ -282,7 +284,7 @@ Dialog.prototype.drag = function(){
   $('.open4').on('click',function(){
     var dialog1 = new Dialog();
     dialog1.open({
-      title:'',
+      title:'请确定信息',
       message:tpl,
       isShowConfirmBtn:true,
       isShowCloseBtn:true,
