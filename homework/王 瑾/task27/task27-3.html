@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task27 code-3</title>
+		<style type="text/css">
+			*{
+				padding: 0;
+				margin:0;
+				list-style: none;
+			}
+			a{
+				text-decoration: none;
+			}
+			#carousel{
+				position:relative;
+				width:310px;
+				height:200px;
+				overflow: hidden;
+			}
+			.img-ct{
+				position:absolute;
+			}
+			.img-ct:after{
+				clear:both;
+				display:block;
+				content:"";
+			}
+			.img-ct li{
+				float:left;
+			}
+			img{
+				width:310px;
+				height:200px;
+			}
+			.arrow{
+				position:absolute;
+				top:50%;
+				margin-top:-15px;
+				background:gray;
+				opacity:0.6;
+				width:30px;
+				height:30px;
+				line-height:30px;
+				text-align: center;
+				color:white;
+				border-radius:100%;
+			}
+			.arrow:hover{
+				opacity:1;
+			}
+			.pre{
+				left:10px;
+			}
+			.next{
+				right:10px;
+			}
+			#bullets{
+				position: absolute;
+				bottom:10px;
+				left:50%;
+				transform: translateX(-50%);
+			}
+			#bullets li{
+				display:inline-block;
+				width:18px;
+				height:4px;
+				border-radius:3px;
+				background-color:slategrey;
+			}
+			#bullets li.active{
+				background-color:lightblue;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="carousel">
+			<ul class="img-ct">
+				<li><img src="pics/1.jpg" alt="" /></li>
+				<li><img src="pics/2.jpg" alt="" /></li>
+				<li><img src="pics/3.jpg" alt="" /></li>
+				<li><img src="pics/4.png" alt="" /></li>
+			</ul>
+			<a href="#" class="pre arrow"><</a>
+		    <a href="#" class="next arrow">></a>
+		    <ul id="bullets">
+		    	<li class="active"></li>
+		    	<li></li>
+		    	<li></li>
+		    	<li></li>
+		    </ul>
+		</div>
+		<script src="jquery-3.0.0.min.js"></script>
+		<script>
+			var $pre = $(".pre"),
+			    $next = $(".next"),
+			    $bullets = $("#bullets"),
+			    $imgct = $(".img-ct"),
+			    $imgs = $imgct.children(),
+			    imgCount = $imgs.length,
+			    imgWidth = $imgs.width(),
+			    isLocked = false,
+			    curIdx = 0;
+			
+			$imgct.append($imgs.first().clone());
+	        $imgct.prepend($imgs.last().clone());
+	        var imgRealCount = $imgct.children().length;
+	        $imgct.css({
+	        	left:0-imgWidth,
+	        	width:imgRealCount*imgWidth
+	        })
+	        
+			$next.click(function(){
+				playNext(1);
+			});
+			$pre.click(function(){
+				playPre(1);
+			});
+			$bullets.on("click","li",function(){
+				var idx = $(this).index();
+				if(idx>curIdx){
+					playNext(idx-curIdx);
+				}else if(idx<curIdx){
+					playPre(curIdx-idx);
+				}
+			});
+			function playNext(idx){
+				var idx1 = idx;
+				if(isLocked) return;
+				isLocked = true;
+				$imgct.animate({
+					left:"-="+(imgWidth*idx1)
+				},function(){
+					curIdx=(curIdx+idx1)%imgCount;
+					if(curIdx===0){
+						$imgct.css({
+							left:0-imgWidth
+						});
+					}
+				    isLocked = false;
+				    setBullets();
+				});
+			}
+			
+			function playPre(idx){
+				var idx2 = idx;
+				if(isLocked) return;
+				isLocked = true;
+				$imgct.animate({
+					left:"+="+(imgWidth*idx2)
+				},function(){
+					curIdx = (curIdx-idx2+imgCount)%imgCount;
+					if(curIdx===(imgCount-1)){
+						$imgct.css({
+							left:0-imgCount*imgWidth
+						});
+					}
+                 isLocked = false;
+                 setBullets();
+				});
+			}
+			
+			function setBullets(){
+				$bullets.children().removeClass("active").eq(curIdx).addClass("active");
+			}
+		</script>
+	</body>
+</html>

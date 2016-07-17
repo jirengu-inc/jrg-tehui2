@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>hw37</title>
+  <style>
+    html,body,div,ul,li,p,a,h4{
+      margin:0;
+      padding:0;
+    }
+    a{text-decoration: none;color:inherit;}
+    .clearfix:after{
+      content:'';
+      display:block;
+      clear:both;
+    }
+    .clearfix{
+      *zoom:1;
+    }
+    .btn-ct{
+      width:300px;
+      margin:0 auto;
+    }
+    .btn{
+      width:40px;
+      padding:5px;
+      border-radius:3px;
+      background:#006741;
+      color:#fff;
+      text-align:center;
+    }
+    .dialog{
+      width:330px;
+      font-size:12px;
+      color:#333;
+      border:1px solid #ccc;
+      border-radius:2px;
+      background:#fff;
+      display:block;
+      position:absolute;
+      left:50%;
+      margin-left:-165px;
+    }
+    .dialog > .dialog-h{
+      line-height:30px;
+      border-bottom:1px solid #ccc;
+      background:#f3f3f3;
+
+      padding-left:10px;
+      position:relative;
+    }
+    .dialog > .dialog-h > .close{
+      position:absolute;
+      right:0;
+      top:0;
+      opacity:0.5;
+    }
+    .dialog > .dialog-h > .close a{
+      display:block;
+      font-size:16px;
+      padding:0 5px;
+    }
+    .dialog > .dialog-h > .close:hover{
+      opacity:0.8;
+    }
+    .dialog > .dialog-ct{
+      margin-left:10px;
+      padding:10px 0;
+    }
+    .dialog > .dialog-f{
+      text-align:center;
+      margin:8px 0;
+    }
+    .dialog > .dialog-f .btn{
+      margin-left:10px;
+    }
+    .dialog > .dialog-f > .btn:hover{
+      opacity:.8;
+    }
+  </style>
+
+  <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+
+</head>
+<body>
+  <div class="btn-ct">
+    <button class="open">点击1</button>
+    <button class="open2">点击2</button>
+    <button class="open3">点击3</button>
+    <button class="open4">点击4</button>
+  </div>
+
+<!--   <div class="dialog clearfix">
+    <div class="dialog-h"><h4>这里是饥人谷</h4><span class="close"><a href="javascirpt:">×</a></span></div>
+    <div class="dialog-ct">
+      <p>你好啊</p>
+      <p>你好啊</p>
+      <p>你好啊</p>
+    </div>
+    <div class="dialog-f clearfix">
+      <a href="" class="btn btn-confirm">确定</a>
+      <a href="" class="btn btn-cancel">取消</a>
+    </div>
+  </div> -->
+<script>
+  function Dialog(){
+
+    //用于存放偏移的地址
+    this.offsetPos={
+      oX:0,
+      oY:0
+    };
+  
+  }
+  
+  Dialog.prototype.open = function(opts){
+
+      this.createDialog();//先创建弹窗
+
+      this.setDialog(opts);//配置弹窗
+
+      this.bindEvents(opts);//为弹窗绑定事件
+
+      this.drag(); //弹窗拖拽效果
+  }
+  
+  Dialog.prototype.createDialog=function(){
+     var dialogHtml = '<div class="dialog clearfix">'+
+                  '<div class="dialog-h"><h4></h4><span class="close">'+
+                  ' <a href="javascript:">×</a></span>'+
+                  '</div>'+
+                  '<div class="dialog-ct">'+
+                    '<p>你好啊</p>'+
+                    '<p>你好啊</p>'+
+                    '<p>你好啊</p>'+
+                  '</div>'+
+                    '<div class="dialog-f clearfix">'+
+                    '<a href="javascript:" class="btn btn-confirm">确定</a>'+
+                    '<a href="javascript:" class="btn btn-cancel">取消</a>'+
+                 ' </div>'+
+                '</div>';
+    this.$Dialog = $(dialogHtml).appendTo('body');
+    // console.log(this.$Dialog);
+  }
+
+  Dialog.prototype.setDialog=function(opts){
+      
+      /*设置关闭按钮隐藏*/
+      if(!opts.isShowCloseBtn){
+        this.$Dialog.find('.dialog-h > span.close').hide();
+      }
+     
+      /*设置确定和取消操作隐藏*/
+      if(!opts.isShowConfirmBtn){
+        this.$Dialog.find('.dialog-f > .btn-confirm').hide();
+        this.$Dialog.find('.dialog-f > .btn-cancel').hide();
+      }
+      
+      /*如果确定和取消按钮，关闭按钮同时隐藏，设置取消按钮显示*/
+      if(!opts.isShowCloseBtn && !opts.isShowConfirmBtn){
+        this.$Dialog.find('.dialog-f > .btn-cancel').show();
+        this.$Dialog.find('.dialog-h').hide();
+      }
+      
+      /*如果有标题*/
+      if(opts.title){
+        this.$Dialog.find('.dialog-h > h4').text(opts.title)
+      }else{
+        this.$Dialog.find('.dialog-h > h4').text('你好，这里是饥人谷');
+      }
+
+      /*如果设置了指定信息*/
+      if(opts.message){
+        
+        this.$Dialog.find('.dialog-ct').html(opts.message);
+      }
+  }
+  
+  Dialog.prototype.bindEvents = function(opts){
+    
+    var self = this;
+    var $Dialog = self.$Dialog;
+    
+    //关闭按钮
+    $Dialog.find('.dialog-h span.close').on('click',function(e){
+
+      $Dialog.remove();//删除DOM元素
+
+    });
+
+    //确定按钮
+    $Dialog.find('.dialog-f > .btn-confirm').on('click',function(){
+
+        opts.onConfirm();//点击后执行函数
+        $Dialog.remove();//同时删除DOM元素
+
+    });
+
+    //取消按钮
+    $Dialog.find('.dialog-f > .btn-cancel').on('click',function(){
+
+        opts.onClose();//点击后执行函数
+        $Dialog.remove();//同时删除DOM元素
+
+    });
+
+
+  }
+Dialog.prototype.drag = function(){
+    
+    var self = this;
+    var $Dialog = self.$Dialog;
+
+    $Dialog.on('mousedown',function(e){
+      var e = e||window.event;
+      // console.log(1);
+      self.offsetPos.oX = e.pageX - $Dialog.offset().left;
+      self.offsetPos.oY = e.pageY - $Dialog.offset().top;
+      self.isDragable = true;
+
+    });
+    
+    $Dialog.on('mousemove',function(e){
+      var e = e||window.event;
+      var mouseX = e.pageX;
+      var mouseY = e.pageY;
+      // console.log(2);
+      var moveX=0;
+      var moveY=0;
+
+      if(self.isDragable){
+        moveX = +mouseX - self.offsetPos.oX;
+        moveY = mouseY - self.offsetPos.oY;
+        self.$Dialog.css({marginLeft:0,left:moveX+'px',top:moveY+'px'});
+      }
+
+    });
+    
+    $Dialog.on('mouseup',function(){
+      self.isDragable = false;
+    }); 
+
+  };
+
+  var tpl = '<p>11111111</p><p>22222</p>';
+  $('.open').on('click',function(){
+    var dialog1 = new Dialog();
+    dialog1.open({
+      title:'',
+      message:tpl,
+      isShowConfirmBtn:false,
+      isShowCloseBtn:false,
+      onClose:function(){},
+      onConfirm:function(){}
+    });
+    });
+
+   var tpl2 = '<p>3333</p><p>2444444</p>';
+  $('.open2').on('click',function(){
+    var dialog1 = new Dialog();
+    dialog1.open({
+      title:'',
+      message:tpl2,
+      isShowConfirmBtn:true,
+      isShowCloseBtn:true,
+      onClose:function(){},
+      onConfirm:function(){}
+    });
+    });
+
+  $('.open3').on('click',function(){
+    var dialog1 = new Dialog();
+    dialog1.open({
+      title:'',
+      message:'',
+      isShowConfirmBtn:true,
+      isShowCloseBtn:true,
+      onClose:function(){alert('取消')},
+      onConfirm:function(){alert('确定')}
+    });
+    });
+
+   // var tpl = '<p>11111111</p><p>22222</p>';
+  $('.open4').on('click',function(){
+    var dialog1 = new Dialog();
+    dialog1.open({
+      title:'请确定信息',
+      message:tpl,
+      isShowConfirmBtn:true,
+      isShowCloseBtn:true,
+      onClose:function(){alert('取消')},
+      onConfirm:function(){alert('确定')}
+    });
+    });
+</script> 
+</body>
+</html>

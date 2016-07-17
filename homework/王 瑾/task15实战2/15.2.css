@@ -25,12 +25,13 @@ li{
 }
 .title p{
 	color:Grey;
-	font-family:"Kaushan Script","Microsoft Yahei";
+	font-family:"Microsoft Yahei";
 	font-size:20px;
 } 
 #homepage{
 	background:url(pics/bg1.jpg) 0 0 no-repeat;
 	background-size:cover;
+	height:100%;
 }
 #nvbar{
 	background-color:black;
@@ -188,7 +189,7 @@ li{
   font-size:15px;
 }
 .timeline{
-	padding: 0;/*不然padding-left默认值40px*/
+	padding: 0;
 	width: 902px;
 	margin:0 auto;
 }

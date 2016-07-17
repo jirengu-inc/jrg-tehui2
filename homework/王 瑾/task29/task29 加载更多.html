@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task29 load-more</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+				list-style: none;
+				font-size:16px;
+			}
+			#container #main{
+				width:94%;
+				margin:10px auto;
+			}
+			li{
+				padding:10px;
+				width:100%;
+				margin-bottom:10px;
+				border:1px solid;
+			}
+			#btn{
+				text-decoration: none;
+				display:block;
+				width:70px;
+				margin:0 auto;
+				border:1px solid red;
+				border-radius:4px;
+				text-align:center;
+				padding:10px;
+			}
+			.active{
+				color:white;
+				background-color:green;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<ul id="main">
+				<li>我是内容1</li>
+				<li>我是内容2</li>
+				<li>我是内容3</li>
+			</ul>
+		</div>
+		<a href="#" id="btn">加载更多</a>
+		
+		<script src= "jquery-3.0.0.js"></script>
+		<script>
+		
+		    var cur =2;
+		    loadMore();
+		    
+			//定义hover，事件代理
+		    $("#main").on("mouseenter","li",function(){
+		    	$(this).addClass("active");
+		    });
+		    $("#main").on("mouseleave","li",function(){
+		    	$(this).removeClass("active");
+		    });
+		    
+		    $(window).on("scroll",function(){
+		    	if(clock){
+		    		clearTimeout(clock);
+		    	}
+		    	var clock = setTimeout(function(){
+		    		if(!isShow($("#btn"))) return;
+		    		loadMore();   // 展示的时候表示正在加载
+		    	},300);
+		    });
+		    
+		    function loadMore(){
+		    	/*  定义接口部分
+		     * 入参：len--5,start--cur
+		     * 回参：status-0可用，1不可用
+		     *      data--[cur,...cur+4]
+		     */
+		    $.ajax({
+		    	dataType:"json",
+		    	type:"get",
+		    	url:"load-more.php",
+		    	data:{
+		    		len:5,
+		    		start:cur
+		    	},
+		    	success:function(json){
+		    		success(json);
+		    	},
+		    	error:function(){
+		    		error();
+		    	}
+		    });
+		    }
+		    
+		    function success(json){
+		    	if(json.status==0){
+		    		for(var i=0;i<json.data.length;i++){
+		    			$("#main").append("<li>+json.data[i]+</li>");
+		    		}
+		    		cur += 5;
+		    	}else if(json.status==1){
+		    	alert("无法获取数据");
+		    }
+		    }
+		    
+		    function error(){
+		    	alert("获取失败");
+		    }
+		    
+		    function isShow($ele){
+		    	var scrollH = $(window).scrollTop(),
+		    	    winH = $(window).height(),
+		    	    top = $ele.offset().top;
+		    	if(top<WinH+scrollH){
+		    		if(scrollH<top){
+		    			return true;
+		    			$ele.show();
+		    		}else{
+		    			return false;
+		    			$ele.hide();
+		    		}
+		    	}
+		    }
+		</script>
+	</body>
+</html>

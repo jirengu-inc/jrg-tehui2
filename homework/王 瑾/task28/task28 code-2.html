@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task28  多个stickup</title>
+		<script src="jquery-3.0.0.min.js"></script>
+		<style>
+			*{
+				padding: 0;
+				margin:0;
+				font-size:12px;
+				list-style: none;
+				box-sizing: border-box;
+			}
+			#container{
+				width:80%;
+				margin:0 auto;
+			}
+			#header{
+				background-color:red;
+				width:100%;
+				height:30px;
+				margin-top:5px;
+			}
+			.nav{
+				background-color: yellow;
+				padding:5px 0;
+				border:1px solid;
+			}
+			.container,.lists,.box,.nav,.ct{
+				width:100%;
+			}
+			.box{
+				margin-top:15px;
+			}
+			.ct{
+				overflow: hidden;
+			}
+			.aside{
+				float:left;
+				width:35%;
+				height:300px;
+			}
+			.main{
+				float:right;
+				background-color:blue;
+				width:62%;
+				height:300px;
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div id="container">
+			<div id="header">header</div>
+			<ul id="lists">
+				<li class="box">
+					<div class="nav" style="z-index: 1">nav1</div>
+					<div class="ct">
+						<div class="aside" style="background-color:lightpink">aside1</div>
+						<div class="main">main1</div>
+					</div>
+				</li>
+				<li class="box">
+					<div class="nav" style="z-index: 2">nav2</div>
+					<div class="ct">
+						<div class="aside" style="background-color:yellow">aside2</div>
+						<div class="main">main2</div>
+					</div>
+				</li>
+				<li class="box">
+					<div class="nav" style="z-index: 3">nav3</div>
+					<div class="ct">
+						<div class="aside" style="background-color:red">aside3</div>
+						<div class="main">main3</div>
+					</div>
+				</li>
+				<li class="box">
+					<div class="nav" style="z-index: 4">nav4</div>
+					<div class="ct">
+						<div class="aside" style="background-color:lightpink">aside4</div>
+						<div class="main">main4</div>
+					</div>
+				</li>
+			</ul>
+			<div id="footer">footer</div>
+		</div>
+		
+		<script>
+	     $.fn.stickUp = function(){
+	     	var $cur = this,
+	     	    curT = $cur.offset().top,
+	     	    curL = $cur.offset().left,
+	     	    curW = $cur.width(),
+	     	    $curClone = $cur.clone().css("opacity",0).insertBefore($cur).hide();
+	     	
+	     	$(window).on("scroll",function(){
+	     		var scrollTop = $(this).scrollTop();
+	     		if(scrollTop>=curT){  		
+	     				setFixed();
+	     		}else{
+	     				unsetFixed();
+	     		}
+	     	});	     	
+	     	
+	     	function setFixed(){
+	     		$cur.css({
+	     			"position":"fixed",
+	     			"z-index":1,
+	     			"left":curL,
+	     			"top":0,
+	     			"width":curW,
+	     		});
+	     		$curClone.show();
+	     	}
+	     	
+	     	function unsetFixed(){
+	     		$cur.removeAttr("style");
+	     		$curClone.hide();
+	     	}
+	     };
+	     
+	    $(".nav").each(function(){
+	    	$(this).stickUp();
+	    });
+		</script>
+	</body>
+</html>

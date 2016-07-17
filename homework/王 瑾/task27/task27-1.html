@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task27 无限轮播</title>
+		<style>
+			*{
+	padding:0;
+	margin:0;
+	list-style: none;
+}
+a{
+	text-decoration: none;
+}
+#carousel{
+	position:relative;
+	overflow: hidden;
+	width:300px;
+	height:210px;
+}
+.img-ct{
+	position:relative;
+}
+.img-ct:after{
+	clear:both;
+	display:block;
+	content:"";
+}
+.img-ct li{
+	position:absolute;
+	display:none; /*error:一开始忘记写这个了,所以第一轮轮播没有反应,从第二轮才开始的*/
+}
+img{
+	width:300px;
+	height:210px;
+}
+.arrow{
+	position:absolute;
+	top:50%;
+	color:white;
+	margin-top:-15px;
+	text-align:center;
+	line-height:30px;
+	width:30px;
+	height:30px;
+	border-radius:100%;
+	background-color:darkgray;
+	opacity: 0.6;
+}
+.arrow:hover{
+	opacity: 1;
+}
+.pre{
+	left:10px;
+}
+.next{
+	right:10px;
+}
+.bullets{
+	position: absolute;
+	bottom:10px;
+	left:50%;
+	transform:translateX(-50%);
+}
+.bullets li{
+	width:18px;
+	height:4px;
+	border-radius: 3px;
+	background:whitesmoke;
+    display: inline-block;  /*用浮动的话还要设margin,父元素也要清除浮动,更麻烦*/
+}
+.bullets li.active{
+	background:gray;
+}
+		</style>
+	</head>
+	<body>
+		<div id="carousel">
+			<ul class="img-ct">
+				<li><img src="pics/1-1.jpg" alt="" /></li>
+				<li><img src="pics/1-2.jpg" alt="" /></li>
+				<li><img src="pics/1-3.jpg" alt="" /></li>
+				<li><img src="pics/1-4.jpg" alt="" /></li>
+			</ul>
+			<a href="#" class="pre arrow"><</a>
+			<a href="#" class="next arrow">></a>
+			<ul class="bullets">
+				<li class="active"></li>
+				<li></li>
+				<li></li>
+				<li></li>
+			</ul>
+		</div>
+		
+		<script src="jquery-3.0.0.min.js"></script>
+		<script>
+			var $imgct = $(".img-ct"),
+			    $imgs = $imgct.children(),
+			    $bullets = $(".bullets"), 
+			    $pre = $(".pre"), 
+			    $next = $(".next"),
+			    imgWidth = $imgs.width()
+			    imgCount = $imgct.children().length,
+			    isLocked = false,
+			    curIdx = 0;
+ 
+            play(0);
+            autoPlay();
+            
+            $next.click(function(){
+            	playNext();
+            });
+            $pre.click(function(){
+            	playPre();
+            });
+            $bullets.on("click","li",function(){
+            	var $idx = $(this).index();
+            	play($idx);
+            });
+            
+            function autoPlay(){
+            	auto = setInterval(function(){
+            		playNext();
+            	},3000);
+            }
+            function stopAuto(){
+            	clearInterval(auto);
+            }            
+            function playNext(){
+            	play((curIdx+1)%imgCount); // 下一个所以加1就行，当curIdx是3的时候，直接显示第一张
+            };
+            function playPre(){
+            	play((curIdx-1+imgCount)%imgCount);//当curIdx=0,-1后为负，所以加上一个imgCount,余数结果不变
+            };
+            function play(idx){
+            	if(isLocked) return;
+            	isLocked = true;
+            	$imgs.eq(curIdx).fadeOut(1000);
+            	$imgs.eq(idx).fadeIn(1000,function(){
+            		isLocked = false;
+            	});
+            	curIdx = idx;
+                setBullets();
+                // error:开始我把这两个放在了fadeIn的回调函数里，然后bullets的变色和图片转换不一致
+            }
+            function setBullets(){
+            	$bullets.children().removeClass("active").eq(curIdx).addClass("active");
+            }
+
+		</script>
+	</body>
+</html>
+
