@@ -81,8 +81,8 @@
 				<li><img src="pics/3.jpg" alt="" /></li>
 				<li><img src="pics/4.png" alt="" /></li>
 			</ul>
-			<a href="#" class="pre arrow"><</a>
-		    <a href="#" class="next arrow">></a>
+			<a href="#" class="pre arrow"> < </a>
+		    <a href="#" class="next arrow"> > </a>
 		    <ul id="bullets">
 		    	<li class="active"></li>
 		    	<li></li>
@@ -125,13 +125,12 @@
 				}
 			});
 			function playNext(idx){
-				var idx1 = idx;
 				if(isLocked) return;
 				isLocked = true;
 				$imgct.animate({
-					left:"-="+(imgWidth*idx1)
+					left:"-="+(imgWidth*idx)
 				},function(){
-					curIdx=(curIdx+idx1)%imgCount;
+					curIdx=(curIdx+idx)%imgCount;
 					if(curIdx===0){
 						$imgct.css({
 							left:0-imgWidth
@@ -143,13 +142,12 @@
 			}
 			
 			function playPre(idx){
-				var idx2 = idx;
 				if(isLocked) return;
 				isLocked = true;
 				$imgct.animate({
-					left:"+="+(imgWidth*idx2)
+					left:"+="+(imgWidth*idx)
 				},function(){
-					curIdx = (curIdx-idx2+imgCount)%imgCount;
+					curIdx = (curIdx-idx+imgCount)%imgCount;
 					if(curIdx===(imgCount-1)){
 						$imgct.css({
 							left:0-imgCount*imgWidth

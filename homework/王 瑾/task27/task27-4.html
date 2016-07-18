@@ -58,8 +58,6 @@
 				height:4px;
 				background-color:#A9A9A9;
 				border-radius:3px;
-			}
-			#bullets li:hover{
 				cursor: pointer;
 			}
 			#bullets li.active{
@@ -120,26 +118,37 @@
 				"left":0-imgWidth,
 				"width":imgRealCount*imgWidth
 			})
-			
+
+			function autoPlay(){
+				var clock = setInterval(function(){
+					playNext(1);
+				},3000);
+			}
+
+			function stopAuto(){
+				clearInterval(clock);
+			}
+
             autoPlay();
-			
+
 			$bullets.on("click","li",function(){
+				// stopAuto();
 				var idx = $(this).index();
 				if(idx>curIdx){
 					playNext(idx-curIdx);
 				}else if(idx<curIdx){
 					playPre(curIdx-idx);
 				}
+
 			});
-			
+
 			function playNext(idx){
 				if(isLocked) return;
 				isLocked = true;
-				var idx1 = idx;
 				$ct.animate({
-					left:"-="+imgWidth*idx1
+					left:"-="+imgWidth*idx
 				},function(){
-					curIdx = (curIdx+idx1)%imgCount;
+					curIdx = (curIdx+idx)%imgCount;
 					if(curIdx===0){
 						$ct.css({
 							left:0-imgWidth
@@ -154,11 +163,10 @@
 			function playPre(idx){
 				if(isLocked) return;
 				isLocked = true;
-				var idx2 = idx;
 				$ct.animate({
-					left:"+="+imgWidth*idx2
+					left:"+="+imgWidth*idx
 				},function(){
-					curIdx = (curIdx-idx2+imgCount)%imgCount;
+					curIdx = (curIdx-idx+imgCount)%imgCount;
 					if(curIdx===imgCount-1){
 						$ct.css({
 							left:0-imgWidth*imgCount
@@ -169,21 +177,12 @@
 					isLocked = false;
 				});
 			}
-			
+
 			function setBullets(){
 				$bullets.children().removeClass("active").eq(curIdx).addClass("active");
 			}
-			
-			function autoPlay(){
-				var clock = setInterval(function(){
-					playNext(1);
-				},3000);
-			}
-			
-			function stopAuto(){
-				clearInterval(clock);
-			}
+
 		</script>
-		
+
 	</body>
 </html>
