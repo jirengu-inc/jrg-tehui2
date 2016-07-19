@@ -302,7 +302,7 @@
 	color: black;
 }
 .content-forth>.wrap-content>ul>li{
-	margin: 40px 50px; 
+	margin: 40px 50px;
 }
 .content-forth>.wrap-content>ul>li>img{
 	width: 250px;
@@ -331,6 +331,7 @@
 }
 .form-content div{
 	display: inline-block;
+	vertical-align:top;
 }
 .form-content>div>div:first-child{
 	width: 500px;
@@ -351,9 +352,7 @@
 	display: inline-block;
 	height: 204px;
 	width: 500px;
-	position: relative;
-	top: 29px;
-	left: 0px;
+	margin: 10px auto;
 	border: 1px #ccc solid;
 	outline-color: #fec503;
 }
