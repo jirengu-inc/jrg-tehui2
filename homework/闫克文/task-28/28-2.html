@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>stickup2</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<style type="text/css">
+		.ct{
+			width: 900px;
+			margin:0 auto;
+		}
+		.header{
+			height: 60px;
+			background: red;
+		}
+		.nav{
+			height: 40px;
+			margin-top: 10px;
+			background: blue;
+		}
+		.content{
+			height: 800px;
+			background: #ccc;
+			padding: 10px;
+			overflow: auto;
+		}
+		.content .aside{
+			width: 120px;
+			height: 400px;
+			background: green;
+			float: left;
+		}
+		.content .main{
+			background: #fff;
+			height: 800px;
+			overflow: auto;
+		}
+		.footer{
+			background-color: #333;
+			margin-top: 
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<div class="header">header1</div>
+		<div class="nav">nav1</div>
+		<div class="content">
+			<div class="aside">aside1</div>
+			<div class="main">main1</div>
+		</div>
+		
+
+		<div class="header">header2</div>
+		<div class="nav">nav2</div>
+		<div class="content">
+			<div class="aside">aside2</div>
+			<div class="main">main2</div>
+		</div>
+		
+
+		<div class="header">header3</div>
+		<div class="nav">nav3</div>
+		<div class="content">
+			<div class="aside">aside3</div>
+			<div class="main">main3</div>
+		</div>
+		<div class="footer">footer</div>
+
+	<script type="text/javascript">
+		$.fn.stickup = function () {
+			this.each(function() {
+			var $nav = $(this),
+				height = $nav.height(),
+				width = $nav.width(),
+				offsetTop = $nav.offset().top,
+				offsetLeft = $nav.offset().left;
+
+			var $clone = $nav.clone()
+						.css("display","none")
+						.hide()
+						.text("clone")
+						.insertBefore($nav);
+			$(window).on('scroll', function(){
+				var scrollTop = $(this).scrollTop();
+				if(scrollTop >= offsetTop){
+					if(!isFixed()){
+						setFixed();
+					}
+				}else if(isFixed()){
+						unsetFixed();
+					}
+			});
+		 	function isFixed(){
+		        return $nav.data('data-fixed');
+		    }
+	        function setFixed(){
+			 $nav.data('data-fixed', true)
+			     .css({
+			           'position': 'fixed', 
+			           'top': 0, 
+			           'left': offsetLeft,
+			           'width': width, 
+			           'margin': 0,
+			         });
+			 $clone.show();
+	   		}
+	   		function unsetFixed(){
+			     $nav.data('data-fixed', false)
+			         .removeAttr('style');
+			     $clone.hide();
+		    }
+		})
+		}
+	   $('.nav').stickup();
+	</script>
+</body>
+</html>
