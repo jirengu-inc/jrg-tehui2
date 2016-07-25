@@ -220,7 +220,7 @@
     });
 
     $(document).on('mousemove',function(e){
-      var ev = ev||window.event;
+      var ev = e||window.event;
       if(self.dragable){
         moveX = ev.pageX- self.curLeft;
         moveY = ev.pageY- self.curTop;
