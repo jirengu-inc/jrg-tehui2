@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>load-more</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<style>
+		.ct >li{
+			list-style: none;
+			border: 1px solid #ccc;
+			border-radius: 3px;
+			padding: 10px;
+			margin: 8px 0;
+		}
+		.items{
+			margin: 10px auto;
+			text-align: center;
+		}
+		#loadMore{
+			border-radius: 3px;
+			border: 1px solid red;
+			font-size: 15px;
+			padding:10px;
+			background-color: #FFF;
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<ul class="ct">
+		<li>内容1</li>
+		<li>内容2</li>	
+	</ul>
+	<div class="items">
+		<button id="loadMore">加载更多</button>
+	</div>
+	<script>
+		var isLoading = false,	//防止多次点击，开关的作用
+			start = 2;	//下一次加载的起始位置
+			len = 5;	//每次加载的长度
+		$('#loadMore').on('click', function() {
+			if(isLoading){
+				return;
+			};
+			isLoading = true;	//上锁
+			$.ajax({
+				url:'26-6.php',
+				type:'get',
+				data:{
+					start: start, 
+			        len: len 	
+				},
+				dataType:"json",	//这个不能丢，不然无法解析
+				success:function(ret){
+					append(ret.data);
+			        start += 5;
+			        isLoading = false;
+				},
+				error: function() {
+		            alert("Error!");
+		            isLoading = false;
+			    }
+			})
+		})
+
+		function append(arr) {
+		    for (var i = 0; i < arr.length; i++) {
+		        var li = document.createElement('li');
+		        li.innerText = arr[i];
+		        $('.ct').append(li);
+		    }
+		}
+	</script>
+</body>
+</html>

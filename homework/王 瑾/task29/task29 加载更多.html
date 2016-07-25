@@ -23,12 +23,12 @@
 			#btn{
 				text-decoration: none;
 				display:block;
-				width:80px;
+				width:70px;
 				margin:0 auto;
 				border:1px solid red;
 				border-radius:4px;
 				text-align:center;
-				padding:15px;
+				padding:10px;
 			}
 			.active{
 				color:white;
@@ -115,8 +115,10 @@
 		    	if(top<WinH+scrollH){
 		    		if(scrollH<top){
 		    			return true;
+		    			$ele.show();
 		    		}else{
 		    			return false;
+		    			$ele.hide();
 		    		}
 		    	}
 		    }
