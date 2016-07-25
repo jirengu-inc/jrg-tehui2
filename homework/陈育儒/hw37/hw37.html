@@ -106,11 +106,8 @@
   function Dialog(){
 
     //用于存放偏移的地址
-    this.offsetPos={
-      oX:0,
-      oY:0
-    };
-  
+    this.curLeft=0;
+    this.curTop=0;
   }
   
   Dialog.prototype.open = function(opts){
@@ -206,38 +203,38 @@
 
 
   }
-Dialog.prototype.drag = function(){
+  Dialog.prototype.drag = function(){
     
     var self = this;
     var $Dialog = self.$Dialog;
 
     $Dialog.on('mousedown',function(e){
-      var e = e||window.event;
-      // console.log(1);
-      self.offsetPos.oX = e.pageX - $Dialog.offset().left;
-      self.offsetPos.oY = e.pageY - $Dialog.offset().top;
-      self.isDragable = true;
-
+  
+        self.dragable = true;
+        self.curLeft = e.pageX - $Dialog.offset().left;
+        self.curTop = e.pageY - $Dialog.offset().top;
+        
     });
-    
-    $Dialog.on('mousemove',function(e){
-      var e = e||window.event;
-      var mouseX = e.pageX;
-      var mouseY = e.pageY;
-      // console.log(2);
-      var moveX=0;
-      var moveY=0;
+    $Dialog.on('selectstart',function(e){
+      return false;
+    });
 
-      if(self.isDragable){
-        moveX = +mouseX - self.offsetPos.oX;
-        moveY = mouseY - self.offsetPos.oY;
-        self.$Dialog.css({marginLeft:0,left:moveX+'px',top:moveY+'px'});
+    $(document).on('mousemove',function(e){
+      var ev = ev||window.event;
+      if(self.dragable){
+        moveX = ev.pageX- self.curLeft;
+        moveY = ev.pageY- self.curTop;
+        self.$Dialog.css({
+          marginLeft:0,
+          left:moveX+'px',
+          top:moveY+'px'
+        });
       }
 
     });
     
-    $Dialog.on('mouseup',function(){
-      self.isDragable = false;
+    $(document).on('mouseup',function(){
+      self.dragable = false;
     }); 
 
   };
