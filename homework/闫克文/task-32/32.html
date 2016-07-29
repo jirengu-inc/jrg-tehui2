@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>无限加载</title>
+        <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+        <style media="screen">
+            html,body,ul,li,p,div{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+            ul,li{
+                list-style: none;
+            }
+            .ct{
+                width: 900px;
+                margin: 0 auto;
+            }
+            .clearfix:after{
+        		content: '';
+        		display: block;
+        		clear: both;
+        	}
+            .ct  #items-ct{
+                position: relative;
+            }
+            #items-ct .item{
+                position: absolute;
+                padding-right: 10px;
+                width: 280px;
+                margin: 10px;
+                border: 1px solid #ccc;
+                box-shadow: 3px 3px 8px #666;
+                opacity: 0;
+                transition: all .8s;
+            }
+            #items-ct .item img{
+                width: 260px;
+                margin: 10px;
+            }
+            #items-ct .desp{
+                font-size: 12px;
+                line-height: 1.5;
+                margin: 10px 15px 0;
+                color: #777371;
+            }
+            #items-ct .item .header{
+        		height: 25px;
+        	    margin: 0 12px;
+        	    border-bottom: 1px solid #DBDBDB;
+        	}
+            #load{
+                /*visibility:hidden;*/
+                margin: 20px;
+                height: 20px;
+                background: url(loading.gif) 50% 0 no-repeat;
+                background-size: contain;
+        	}
+        	.hide{
+        		display: none;
+        	}
+        </style>
+    </head>
+    <body>
+        <div class="ct">
+            <ul id="items-ct" class="clearfix">
+    			<li class="item hide"></li>
+        	</ul>
+            <div id="load"></div>
+        </div>
+
+        <script type="text/javascript">
+            var clock;
+            $(window).on('scroll', function(){
+                if(clock){
+                    clearTimeout(clock);
+                }
+                clock = setTimeout(function(){
+                    checkshow();
+                }, 500);
+            });
+            $(window).on('resize', function(){
+                checkshow();
+            })
+
+            checkshow();
+
+            function checkshow(){
+                if(isShow($('#load'))){
+                    loadAndPlace();
+                }
+            }
+            function isShow($node){
+                var scrollH = $(window).scrollTop(),    //鼠标滚动的距离
+                    winH = $(window).height(),          //窗口的高度
+                    top = $node.offset().top;           //元素相对顶部的距离
+
+                if(top < scrollH + winH){
+                    return true;
+                } else{
+                    return false;
+                }
+            };
+
+            var start = 1,
+                len = 10;
+            function loadAndPlace(){
+                $.ajax({
+                    url: 'http://platform.sina.com.cn/slide/album_tech',
+                    dataType:'jsonp',
+                    jsonp:'jsoncallback',
+                    data:{
+                        app_key: '1271687855',
+                        num: len,
+                        page: start
+                    },
+                    success:function(ret){
+                        if(ret && ret.status && ret.status.code === "0"){
+                            start++;
+                            place(ret.data);
+                        }
+                    },
+                    error:function(){
+                        console.log("get data error");
+                    }
+                })
+            };
+
+            function place($node){
+                var $ele = render($node);
+                    waterFall($ele);
+            };
+            function render(items){
+            	var tpl = '',
+            		$nodes;
+            	for(var i = 0;i<items.length;i++){
+            		tpl += '<li class="item">';
+            		tpl += ' <a href="'+ items[i].url +'" class="link"><img src="' + items[i].img_url + '" alt=""></a>';
+            		tpl += ' <h4 class="header">'+ items[i].short_name +'</h4>';
+            		tpl += '<p class="desp">'+items[i].short_intro+'</p>';
+            		tpl += '</li>';
+            	}
+            	$nodes = $(tpl);
+            	$('#items-ct').append($nodes);
+            	return $nodes;
+            };
+
+            //瀑布流
+            var colSumHeight = [];
+            function waterFall($ele){
+                var nodeWidth = $ele.outerWidth(true),
+                    colNum = parseInt($('#items-ct').width()/nodeWidth);
+
+                if(colSumHeight.length ==0){
+                    for (var i = 0; i < colNum; i++) {
+                        colSumHeight[i] = 0;
+                    }
+                };
+                $ele.each(function(){
+                    var $cur = $(this);
+                    $cur.find('img').on('load', function(){
+                        var idx = 0,
+                            minSumHeight = colSumHeight[0];
+                        for (var i = 0; i < colSumHeight.length; i++) {
+                            if (colSumHeight[i] < minSumHeight) {
+                                idx = i;
+                                minSumHeight = colSumHeight[i];
+                            }
+                        }
+
+                        $cur.css({
+                            left: nodeWidth * idx,
+                            top: minSumHeight,
+                            opacity:1
+                        });
+                        colSumHeight[idx] += $cur.outerHeight(true);
+                        $('#items-ct').height(Math.max.apply(null,colSumHeight));
+                    })
+                })
+            };    
+        </script>
+    </body>
+</html>
