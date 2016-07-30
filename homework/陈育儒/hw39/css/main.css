@@ -107,10 +107,13 @@ html,body{  height: 100%;}
 	width: 20px;
 	height: 8px;
 	margin: 0 10px;
-	background-color: #333;
+	background-color: #ccc;
 	border-radius:4px;
 	float: left;
 	cursor: pointer;
+}
+#first-page .bullet > .active{
+	background-color:#333;
 }
 #first-page .btn-prev , #first-page .btn-next {
 	position:absolute;
