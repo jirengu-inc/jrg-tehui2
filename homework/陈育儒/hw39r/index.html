@@ -9,8 +9,8 @@
 <body>
 	<div id="header" class="clearfix">
 		<div class="layout clearfix">
-			<h1><a href="javascript:">Start Bootstrap</a></h1>
-			<ul class="nav clearfix">
+			<h1 class="fl"><a href="javascript:">Start Bootstrap</a></h1>
+			<ul class="nav clearfix fr">
 				<li><a href="javascript:">SERVICES</a></li>
 				<li><a href="javascript:">PORTFOLIO</a></li>
 				<li><a href="javascript:">ABOUT</a></li>
@@ -51,7 +51,7 @@
 <!-- 		<a href="javascript:" class="btn-prev"><</a>
 		<a href="javascript:" class="btn-next">></a> -->
 	</div>
-	<div id="service">
+	<div id="service" nav-mark="0">
 		<div class="layout">
 			<h2>SERVICES</h2>
 			<p>Lorem ipsum dolor sit amet consectetur</p>
@@ -80,60 +80,65 @@
 			</ul>
 		</div>
 	</div>
-	<div id="portfolio">
-		<div class="layout">
+	<div id="portfolio" nav-mark="1">
+		<div class="layout" style="position:relative;">
 			<h2>PORTFOLIO</h2>
 			<p>Lorem ipsum dolor sit amet consectetur</p>
-				<ul class="clearfix">
+				<ul>
 					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
+						<img src="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_30/453_79975_999560.jpg"alt="">
+						<h4>科学家发现紫色球状物</h4>
+						<p>海洋勘探信托”组织的科学家在加利福尼亚州附近海域的海床上发现了奇特的紫色球状物</p>
 					</li>
 					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
+						<img src="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_30/453_79924_464058.gif" alt="">
+						<h4>微型医疗机器人似创可贴</h4>
+						<p>一款有趣的微型医疗机器人，可进入体内来执行特定的任务</p>
 					</li>
 					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
-					</li>
-					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
-					</li>
-					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
-					</li>
-					<li>
-						<img src="img/golden.png" alt="">
-						<h4>Round Icons</h4>
-						<p>Graphic Design</p>
+						<img src="http://www.sinaimg.cn/dy/slidenews/5_t160/2016_30/453_79916_951514.jpg" alt="">
+						<h4>美小镇禁用Wi-Fi和手机</h4>
+						<p>美国西弗吉尼亚州的绿岸小镇有143名居民，被称为美国“最安静的小镇</p>
 					</li>
 				</ul>
 		</div>
-		<a href="javascript:" class="btn">LOAD MORE</a>
+		<a href="javascript:" id="loadmore" class="btn">LOAD MORE</a>
 	</div>
-	<div id="about">
+	<div id="timeline" nav-mark="2">
 		<div class="layout">
 			<h2>ABOUT</h2>
 			<p>Lorem ipsum dolor sit amet consectetur</p>
-			<ul class="clearfix">
-				<li>
+			<ul class="clearfix time-item">
+				<li class="fl">
 					<img src="img/2009.jpg" alt="">
 					<h4>2009-2011</h4>
 					<h4>Our Humble Beginnings</h4>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+					</p>
 				</li>
+				<li class="line"></li>
+				<li class="fr">
+					<img src="img/2009.jpg" alt="">
+					<h4>2009-2011</h4>
+					<h4>Our Humble Beginnings</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+					</p>
+				</li>
+				<li class="line"></li>
+				<li class="fl">
+					<img src="img/2009.jpg" alt="">
+					<h4>2009-2011</h4>
+					<h4>Our Humble Beginnings</h4>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+					</p>
+				</li>
+				<li class="line"></li>
+				<li class="center"><p>BE PART OF OUR STORY!</p></li>
+
 			</ul>
 		</div>
 	</div>
-	<div id="team">
+	<div id="team" nav-mark="3">
 		<div class="layout">
 			<h2>OUR AMAZING TEAM</h2>
 			<p>Lorem ipsum dolor sit amet consectetur.</p>
@@ -180,7 +185,7 @@
 			<li><img src="img/creative-market.jpg" alt=""></li>
 		</ul>
 	</div>
-	<div id="contact">
+	<div id="contact" nav-mark="4">
 		<div class="layout">
 			<h2>CONTACT US</h2>
 			<p>Lorem ipsum dolor sit amet consectetur</p>
@@ -209,9 +214,15 @@
 			</li>
 		</ul>
 	</div>
-	<div style="position:fixed;bottom:50px;right:50px;width:0px;height:0px;border-top:10px solid transparent ;border-right:10px solid transparent;border-bottom:10px solid green;border-left:10px solid transparent;"></div>
- <script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+	<div class="backtop">
+		TOP
+	</div>
+ <!--<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>-->
+ <!--<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script src="carousel.js"></script>
-<script src="backtop.js"></script>
+<script src="exposure.js"></script>
+<script src="waterfall.js"></script>
+<script src="backtop.js"></script>-->
+<script data-main="js/main.min.js" src="js/lib/require.js"></script>
 </body>
 </html>
