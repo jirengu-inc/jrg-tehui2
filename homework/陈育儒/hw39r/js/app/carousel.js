@@ -103,7 +103,7 @@ define(['jquery'],function($){
  		if(this.playing){return}
  		this.playing = true;
  		var me = this;
- 		this.$viewPort.animate({left:'-='+index*this.ViewWidth},function(){
+ 		this.$viewPort.animate({left:'-='+index*this.ViewWidth},700,function(){
  			me.curIdx = me.curIdx + index;
  			if(me.curIdx === me.itemsRealCount - 1){
  				me.$viewPort.css('left',-me.ViewWidth);
@@ -118,7 +118,7 @@ define(['jquery'],function($){
  		if(this.playing){return}
  		this.playing = true;
  		var me = this;
- 		this.$viewPort.animate({left:'+='+index*this.ViewWidth},function(){
+ 		this.$viewPort.animate({left:'+='+index*this.ViewWidth},700,function(){
  			me.curIdx = me.curIdx - index;
  			//处于放在最前面的最后一张
  			if(me.curIdx === 0) {
@@ -133,7 +133,7 @@ define(['jquery'],function($){
  		var me = this;
  		this.timer = setInterval(function(){
  			me.playNext(1);
- 		},1500);
+ 		},3000);
  	}
  }
  
