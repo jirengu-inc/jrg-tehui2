@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style media="screen">
+  body,h4,ul,li{
+      padding: 0;
+      margin: 0;
+    }
+    a{
+      text-decoration: none;
+      color:black;
+    }
+    .dialog{
+      position: absolute;
+      left: 50%;
+      top: 30%;
+      margin-left: -175px;
+      width: 350px;
+      box-shadow: 0 0 5px 2px #aaa;
+    }
+    .dialog .dialog-head{
+      padding: 10px;
+      color: white;
+      background-color: #676666;
+    }
+    .dialog .dialog-head p{
+      float: left;
+      margin: 0 190px 0 10px;
+    }
+    .dialog-head .close{
+      cursor: pointer;
+      position: absolute;
+      top:10px;
+      right:10px;
+    }
+    .dialog .dialog-con{
+      padding: 30px;
+      background-color: #eee;
+    }
+    .dialog .dialog-footer{
+      text-align: center;
+      padding-bottom: 20px;
+      background-color: #eee;
+    }
+    .dialog .dialog-footer span{
+      margin-right: 10px;
+      padding: 5px;
+      color: white;
+      background-color: #e33100;
+      cursor: pointer;
+    }
+    .move{
+      opacity: 0.8;
+      cursor: move;
+    }
+    header{
+      margin:40px auto;
+      text-align: center;
+    }
+    .wrap{
+      margin:0 auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    dialog
+  </header>
+  <div class="wrap">
+  <button class="btn1">click me</button>
+  <button class="btn2">click me</button>
+  <button class="btn3">click me</button>
+  <button class="btn4">click me</button>
+  <button class="btn5">click me</button>
+    </div>
+
+</body>
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+function Dialog(){};   // 创建空函数
+    Dialog.prototype={     // 设置函数原型
+      defaultOpts:{       //初期设定
+        title: '',
+        message: '',
+        isShowCloseBtn: true,
+        isShowConfirmBtn: false,
+        onClose: function(){},
+        onConfirm: function(){}
+      },
+      setOpts:function(opts){  // 处理输入参数
+        if(typeof opts === 'string'){
+          this.opts=$.extend({}, this.defaultOpts, {message:opts});
+        }else if(typeof opts === 'object'){
+          this.opts=$.extend({}, this.defaultOpts, opts);
+        }
+      },
+      open:function(opts){   // 函数open 打开dialog
+        this.setOpts(opts);  // 处理参数 创造html 设置部分按钮有无 绑定事件
+        this.createHtml();
+        this.setButton();
+        this.bindEvent();
+      },
+      createHtml:function(){   // 根据参数 创建html
+        var html='<div class="dialog" style="display:none">'
+        +'<div class="dialog-head">'
+        +'<h4>'+this.opts.title+'</h4>'
+        +'<span class="close">×</span>'
+        +'</div>'
+        +'<div class="dialog-con">'
+        +this.opts.message
+        +'</div>'
+        +'<div class="dialog-footer">'
+        +'<span class="close">取消</span>'
+        +'<span class="commit">确定</span>'
+        +'</div>'
+        +'</div>';
+        this.$dialog=$(html);
+        $('body').append(this.$dialog);
+      },
+      setButton:function(){     // 根据参数 设置部分按钮的有无
+        var _this=this;
+        if(this.opts.isShowCloseBtn){
+          _this.$dialog.find('.dialog-head .close').show();
+        }else{
+          _this.$dialog.find('dialog-head .close').hide();
+        };
+        if(this.opts.isShowConfirmBtn){
+          _this.$dialog.find('.dialog-head .cancel').show();
+        }else{
+          _this.$dialog.find('dialog-head .cancel').hide();
+        };
+        if(this.opts.title){
+          _this.$dialog.find('.dialog-head').show();
+        }else{
+          _this.$dialog.find('.dialog-head').hide();
+        };
+        _this.$dialog.show();
+      },
+      bindEvent:function(){       // 给按钮绑定事件
+        var $dialog=this.$dialog;
+        this.drag=false;
+        var _this=this;
+        $dialog.find('.close').on('click',function(){
+          _this.opts.onClose();
+          $dialog.hide();
+        });
+        $dialog.find('.commit').on('click',function(){
+          _this.opts.onConfirm();
+          $dialog.hide();
+        });
+        $dialog.on('mousedown',function(e){
+          $dialog.addClass('move');
+          console.log('开始移动');
+          _this.left=e.pageX-_this.$dialog.offset().left;
+          _this.top=e.pageY-_this.$dialog.offset().top;
+          _this.$dialog.data("pageX",_this.left);
+          _this.$dialog.data("pageY",_this.top);
+          _this.drag=true;
+        });
+        $dialog.on('mouseup',function(){
+          _this.drag=false;
+          $dialog.removeClass('move');
+          console.log('结束移动');
+        });
+        $('body').on('mousemove',function(e){
+          if(_this.drag){
+            $dialog.css({
+              marginLeft:0,
+              left: +e.pageX-_this.$dialog.data("pageX"),
+              top: e.pageY-_this.$dialog.data("pageY")
+            });
+          };
+        });
+      },
+    }
+    $('.btn1').on('click',function(){
+        var dialog1 = new Dialog();
+        dialog1.open('hello, nice to meet you');
+      });
+      $('.btn2').on('click',function(){
+        var dialog2 = new Dialog();
+        dialog2.open('<a href="http://chenlu.win">secret gargen</a>');
+      });
+      $('.btn3').on('click',function(){
+        var dialog3 = new Dialog();
+        dialog3.open({
+          title: 'welcome',
+          message: 'hello',
+          isShowCloseBtn: true,
+          isShowConfirmBtn: true,
+          onClose: function(){
+            alert('close')
+          },
+          onConfirm: function(){
+            alert('确定');
+          }
+        });
+      });
+      var tpl = '<ul><li>list1</li><li>list2</li><li>list3</li><li>list4</li></ul>';
+      $('.btn4').on('click',function(){
+        var dialog4 = new Dialog();
+        dialog4.open({
+          title: 'welcome',
+          message: tpl,
+          isShowCloseBtn: true,
+          isShowConfirmBtn: true,
+          onClose: function(){
+            alert('close')
+          },
+          onConfirm: function(){
+            alert('确定');
+          }
+        });
+      });
+      $('.btn5').on('click',function(){
+        var dialog5 = new Dialog();
+        dialog5.open({
+          title: 'welcome',
+          message: 'hello',
+          isShowCloseBtn: false,
+          isShowConfirmBtn: false
+        });
+      });
+</script>
+</html>
+
