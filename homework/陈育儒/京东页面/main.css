@@ -1,0 +1,415 @@
+@charset 'UTF-8';
+body,div,p,h1,h2,h3,h4,h5,h6,ul,li,input,form,input,dl,dt,dd { margin:0; padding: 0;}
+li { list-style: none;}
+a{ text-decoration: none; color: #666;}
+body{ font-family: Arial,Verdana,"\5b8b\4f53"; font-size: 12px;}
+input[type=submit]{ cursor: pointer; border: 0;}
+button[type=submit]{cursor: pointer; border: 0;}
+input[type=text]{ outline: none; border: 0;}
+.clearfix:after { content:''; display: block; clear: both;}
+.fl { float:left;}
+.fr { float:right;}
+.layout { width: 1210px; margin: 0 auto;}
+
+/* 顶部条 start */
+.topbar-wrapper {
+	background: #f1f1f1;
+}
+.topbar {
+	height:30px;
+	line-height:30px;
+}
+.topbar > .site {
+	float: left;
+	position: relative;
+	border-right: 1px solid transparent;
+	border-left: 1px solid transparent;	
+}
+.topbar > .site > span {
+	padding:0 10px;
+}
+.topbar > .site:hover {
+	background: #fff;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+}
+.topbar .site:hover .site-pick {
+	display: block;
+}
+.topbar .site-pick {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: -1px;
+	margin-top: -1px;
+	width:301px;
+	border: 1px solid #ddd;
+	padding: 10px 0 10px 10px;
+	background: #fff;
+}
+.topbar .site-pick > li{
+	float: left;
+	width: 60px;
+	line-height: 24px;
+	padding: 2px 0;
+}
+.topbar .site-pick > li:hover a{
+	background: #f4f4f4;
+	color: #c81623;
+}
+.topbar .site-pick > li a {
+	padding:5px 8px;
+}
+.topbar > .site > .spacer {
+	display: none;
+	position: absolute;
+	top: 100%;
+	margin-top: -1px;
+	width: 100%;
+	height: 1px;
+	background: #fff;
+}
+.topbar > .site:hover > .spacer {
+	display: block;
+}
+.topbar > .links > a {
+	padding: 0 8px;
+}
+.topbar > .links .split {
+	color:#ddd;
+}
+/* 顶部条 end */
+
+
+/* 顶部banner start */
+.top-banner {
+	height: 50px;
+	background: pink;
+}
+/* 顶部banner end */
+
+
+/* 京东标志 搜索 购物车 start */
+.logo-search-cart {
+	padding: 20px 0;
+}
+.logo-search-cart .logo {
+	display: block;
+	width: 270px;
+	height: 60px;
+	margin-right: 100px;
+	color: rgba(0,0,0,0);
+	background: url(http://misc.360buyimg.com/lib/img/e/logo-201305.png) no-repeat 0 0 ;
+}
+.logo-search-cart > .search {
+	margin-top:2px;
+	margin-bottom: 4px;
+}
+.logo-search-cart > .search > input[type=text] {
+	float:left;
+	width: 446px;
+	height: 24px;
+	padding: 4px;
+	line-height: 24px;
+	font-size: 14px;
+	border-width: 2px 0 2px 2px;
+	border-color: #b61d1d;
+	border-style: solid;
+}
+.logo-search-cart > .search > input[type=submit] {
+	width: 82px;
+	height: 36px;
+	font-size: 16px;
+	background: #b61d1d;
+	color: #fff;
+}
+.logo-search-cart > .search > .recommend {
+	height: 20px;
+	margin-top:3px;
+	background: #fff;
+}
+.logo-search-cart > .search > .recommend a{
+	margin-right:10px;
+}
+.logo-search-cart > .cart {
+	position: relative;
+	width: 75px;
+	height: 34px;
+	line-height: 34px;
+	margin-right: 65px;
+	border:1px solid #dfdfdf;
+	padding: 0 28px 0 36px;
+	background: #f9f9f9;
+	text-align: center;
+}
+.logo-search-cart .icon {
+	position: absolute;
+	display: block;
+}
+.logo-search-cart .icon-left {
+	top: 9px;
+	left: 16px;
+	width: 18px;
+	height: 16px;
+	background: url(http://misc.360buyimg.com/jdf/1.0.0/unit/globalImages/1.0.0/jd2015img.png) 0 -58px no-repeat;
+}
+.logo-search-cart .icon-count {
+	top: -4px;
+	left: 104px;
+	font-size: 12px;
+	line-height: 12px;
+	background: #c81623;
+	text-align: center;
+	padding: 1px 4px;
+	color: #fff;
+	border-radius: 7px 7px 7px 0;
+}
+.logo-search-cart .icon-right {
+	top: 11px;
+	right: 10px;
+	width: 7px;
+	height: 13px;
+	font: 200 13px/13px simsun;
+}
+/* 京东标志 搜索 购物车 end */
+
+/* 商品分类 start */
+.shopping-nav {
+	position: relative;
+	height: 44px;
+	border-bottom: 2px solid #b1191a;
+}
+.shopping-nav  .product-category {
+	color: #fff;
+	width: 210px;
+	position: relative;
+	z-index: 1;
+}
+.shopping-nav  .product-category > dl > dt {
+	width: 190px;
+	line-height: 44px;
+	padding: 0 10px;
+	font: 400 15px/44px "microsoft yahei";
+	background: #b1191a;
+}
+.shopping-nav .product-category > dl > dd {
+	background: #b61d1d;
+	height: 31px;
+	padding: 0 10px;
+}
+.shopping-nav  .product-category > dl > dd a {
+	color: #fff;
+	font: 400 14px/31px "microsoft yahei";
+}
+.shopping-nav  .nav {
+	line-height: 44px;
+}
+.shopping-nav  .nav a {
+	padding: 0 20px;
+	font: 400 15px/44px "microsoft yahei";
+	font-size: 16px;
+	color: #333;
+}
+.shopping-nav .dropdown-menu {
+	display: none;
+	position: absolute;
+	top: 46px;
+	left: 210px;
+	background: yellow;
+	font-family: "Microsoft YaHei",tahoma,arial,"Hiragino Sans GB","\5b8b\4f53",sans-serif;
+}
+.shopping-nav .dropdown-menu > li {
+	width: 999px;
+	padding-bottom: 10px;
+	background: #f7f7f7;
+	z-index:1;
+}
+.shopping-nav .dropdown-menu .sub-nav {
+	padding: 20px 0 0 20px;
+	line-height: 23px;
+}
+.shopping-nav .dropdown-menu .sub-nav > a {
+	display: block;
+	float: left;
+	margin-right: 10px;
+	padding-left: 8px;
+	background: #7c7171;
+	color: #fff;
+}
+.shopping-nav .dropdown-menu .sub-nav .icon {
+	background: #5c5251;
+	margin-left: 8px;
+	padding: 4px 8px;
+	font-family: consolas;
+	line-height: 24px;
+}	
+.shopping-nav .dropdown-menu dl {
+	padding-left: 20px;
+	line-height: 36px;
+}
+.shopping-nav .dropdown-menu dl:after,
+.shopping-nav .dropdown-menu dd:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+.shopping-nav .dropdown-menu dt {
+	float: left;
+	width: 54px;
+	text-align: right;
+	padding-right: 30px;
+	position: relative;
+	font-weight: 700;
+}
+.shopping-nav .dropdown-menu dt .icon {
+	position: absolute;
+	top: 11px;
+	right:18px; 
+	font: 700 9px/14px consolas;
+}
+.shopping-nav .dropdown-menu dd {
+	float: left;
+	margin-top: 6px;
+	width: 620px;
+	padding-bottom: 6px;
+	border-bottom: 1px solid #e0e0e0;
+}
+
+.shopping-nav .dropdown-menu dd a {
+	float: left;
+	border-left: 1px solid #e0e0e0;
+	line-height: 16px;
+	padding: 0 8px ;
+	margin: 4px 0;
+}
+/* 主轮播 start */
+.main-slider {
+	position: relative;
+	z-index: 0;
+	padding-top: 8px;
+}
+.main-slider > .slider-wrap {
+	position: relative;
+	width: 728px;
+	height: 452px;
+	border: 1px solid #ccc;	
+	margin-left: 220px;
+	overflow: hidden;
+	z-index: 0;
+}
+
+/* 快报 生活服务 start */
+.news-serve-wrapper {
+	position: relative;
+	top: -454px;
+}
+.news-serve {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 248px;
+	border: 1px solid #ccc;
+}
+.news-serve > .news {
+	width: 248px;
+	overflow: hidden;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #ccc;
+}
+.news-serve > .news > h2  {
+	height: 32px;
+	line-height: 32px;
+	padding: 0 15px;
+	border-bottom: 1px dotted #e8e8e7;
+	color: #666;
+	font-family: "microsoft yahei";
+	font-weight: 400;
+}
+.news-serve > .news .news-title a {
+	font: 12px/32px Arial,Verdana,"\5b8b\4f53";
+}
+.news-serve > .news .icon {
+	font: 12px/32px consolas;
+	padding-left: 5px;
+}
+
+.news-serve .news-info {
+	padding: 5px 15px 0 15px;
+	line-height: 24px;
+}
+.news-serve .news-info > li {
+	height: 24px;
+	line-height: 24px;
+	overflow: hidden;
+}
+.news-serve .news-info span {
+	font-weight: 700;
+	margin-right: 5px;
+}
+
+.news-serve .lifeserve {
+	width: 248px;
+	height: 208px;
+	overflow: hidden;
+}
+.news-serve > .lifeserve > .items {
+	margin-right: -10px;
+}
+.news-serve > .lifeserve > .items > li {
+	float: left;
+	height: 69px;
+	position: relative;
+	text-align: center;
+	border-right: 1px solid #e7e7e8;
+	border-bottom: 1px solid #e7e7e8;
+}
+.news-serve > .lifeserve > .items .icon {
+	position: absolute;
+	top: 13px;
+	left: 18px;
+	width: 25px;
+	height: 25px;
+	background: url(./src/img/life-serve-bg-icon.png) no-repeat;
+}
+.news-serve .lifeserve .items a {
+	display: block;
+	width: 62px;
+	height: 28px;
+	line-height: 28px;
+	margin-top: 41px;
+}
+.news-serve-wrapper > .bottom-banner {
+	position: absolute; 
+	right:0; 
+	top: 454px;
+	width: 250px;
+	height: 75px; 
+	margin-top: -75px;
+
+}
+.news-serve-wrapper > .bottom-banner img {
+	height: 75px;
+}
+/* 快报 生活服务 end */
+
+/* 今日推荐(banner) start */
+.todays-recommend {
+	margin: 10px auto;
+	overflow: hidden;
+	height: 164px;
+	font-size: 0;
+}
+.todays-recommend .slider-wrap {
+	float: left;
+	width: 1000px;
+	height: 164px;
+	overflow: hidden;
+}
+.todays-recommend .slider {
+	
+}
+.todays-recommend .slider > li {
+	float: left;
+	width: 1000px;
+}
+/* 今日推荐(banner) end */
