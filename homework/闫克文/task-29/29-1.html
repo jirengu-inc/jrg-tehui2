@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>回到顶部</title>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <style>
+        p {
+            line-height: 2em;
+            padding: 15px;
+        }
+
+        .goTop {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            width: 90px;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #ccc;
+            background: #f12;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            cursor: pointer;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <p>内容1</p>
+    <script>
+        var goTop = (function() {
+            var $goTop = $('<div class="goTop">回到顶部</div>'),
+                $body = $('body');
+            $goTop.data('unloaded', true);
+
+            function init() {
+                if ($goTop.data('unloaded')) {
+                    $body.append($goTop);
+                    $goTop.data('unloaded', false);
+                }
+                $(window).on('scroll', function() {
+                    var offsetTop = $body.scrollTop();
+                    if (offsetTop > 100) {
+                        $goTop.show();
+                    } else {
+                        $goTop.hide();
+                    }
+                })
+                $goTop.on('click', function() {
+                    $body.scrollTop(0);
+                })
+            }
+            return {
+                init: init
+            }
+        })()
+        goTop.init();
+    </script>
+</body>
+
+</html>

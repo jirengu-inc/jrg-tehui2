@@ -1,0 +1,349 @@
+/* 通用css*/
+
+body,a,div,p,h1,h2,h3,h4,h5,h6,ul,li{ margin: 0; padding: 0;}
+a{ text-decoration: none; color: inherit;}
+li{ list-style: none;}
+.clearfix:after{ content: ''; display: block; clear: both;}
+.layout{ width: 1150px; margin: 0 auto;}
+body{ font-family: "Montserrat", "Helvetica Neue", "Helvetica", Arial, sans-serif; font-size: 16px;}
+html,body{  height: 100%;}
+.btn{ 
+	display: block;
+	width: 200px;
+	font-size: 20px;
+	padding:20px 0;
+	background-color: #fac532;
+	text-align: center;
+	margin: 15px auto;
+	color:#fff;
+	border-radius: 3px;
+}
+.btn:hover {
+	opacity: 0.9;
+}
+
+/*头部导航*/
+#header {
+	position: fixed;
+	z-index: 99;
+	width: 100%;
+	height: 70px;
+	line-height: 70px;
+	background: transparent;
+}
+#header  h1 {
+
+	font-family: "Kaushan Script",cursive;
+	float: left;
+	color: #fac532;
+
+}
+#header  .nav {
+	float: right;
+}
+#header  .nav > li {
+	float: left;
+	padding: 0 15px;
+	font-size: 14px;
+	font-weight: bold;
+	color: #ffffff;
+	letter-spacing: 1px;
+}
+
+/*每个项目的标题CSS*/
+
+.layout > h2{
+	font-size: 40px;
+}
+.layout > h2+p{
+	margin-top: 20px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+
+
+/*  首页轮播*/
+#first-page {
+	width: 100%;
+	height: 100%;
+	position:relative;
+	overflow: hidden;
+}
+#first-page .carousel{
+
+	height: 100%;
+	position: absolute;
+} 
+#first-page .carousel > li {
+	float:left;
+	height:100%;
+/*	background-image: url(../img/3.jpg);*/
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+#first-page .welcome {
+	padding-top:300px;
+	text-align: center;
+	color:#fff;
+}
+#first-page .welcome > h2 {
+	font-size:50px;
+}
+#first-page .welcome > h3 {
+	font-size:40px;
+	font-style: italic;
+}
+/* 首页-轮播的导航 */
+#first-page > .bullet{
+	position: absolute;
+	bottom: 25px;
+	width: 120px;
+	left:50%;
+	margin-left:-60px;
+}
+#first-page .bullet > li {
+	width: 20px;
+	height: 8px;
+	margin: 0 10px;
+	background-color: #ccc;
+	border-radius:4px;
+	float: left;
+	cursor: pointer;
+}
+#first-page .bullet > .active{
+	background-color:#333;
+}
+#first-page .btn-prev , #first-page .btn-next {
+	position:absolute;
+	display: block;
+	width:30px;
+	height:30px;
+	top:50%;
+	margin-top: -15px;
+	border-radius:50%;
+	background-color:#000;
+	color:#fff;
+	text-align: center;
+	line-height:30px;
+	font-weight:bold;
+}
+#first-page .btn-prev {
+	left:30px;
+}
+#first-page .btn-next {
+	right: 30px;
+}
+/* service的css */
+#service {
+	padding: 120px 0;
+	text-align: center;
+}
+#service ul{
+	margin-top:50px;
+}
+#service ul .fa{
+  font-size:50px;
+  background-color:#fbd135;
+  color:#fff;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  line-height:110px;
+}
+#service ul > li{
+	width:33.3%;
+	float:left;
+	padding:0 10px;
+	box-sizing: border-box;
+}
+
+#service ul h3{
+	margin:20px 0;
+}
+.layout ul p{
+	font-family: "Roboto Slab", "Helvetica Neue", "Helvetica", Arial, sans-serif;
+	font-size:14px;
+}
+
+/* portfolio的CSS */
+#portfolio{
+	background-color: #eee;
+	padding: 120px 0;
+	text-align: center;
+}
+
+#portfolio ul{
+	margin-right:-50px;
+}
+
+#portfolio ul > li{
+	width: 30%;
+	background-color: #fff;
+	margin-right: 32px;
+	margin-top: 20px;
+	float: left;
+}
+#portfolio img{
+	width: 100%;
+	height: 230px;
+}
+#portfolio ul h4{
+	margin: 6px 0;
+}
+#portfolio ul p{
+	color: #aaa;
+	font-size: 16px;
+	font-style: italic;
+}
+
+/* #about部分 */
+#about{
+	padding:120px 0;
+}
+#about > .layout {
+	text-align: center;
+}
+#about ul{
+	padding:50px 0;
+	font-size:14px;
+}
+#about ul > li{
+	width:50%;
+	text-align: right;
+	float: left;
+}
+#about ul h4 {
+	margin-bottom: 10px;
+	font-size:20px;
+}
+#about ul img{
+	width:150px;
+	height:150px;
+	border:8px solid #eee;
+	border-radius: 50%;
+	float: right;
+	margin-left: 30px;
+	margin-right:-83px;
+}
+
+/*team的CSS*/
+#team{
+	text-align: center;
+	background-color: #eee;
+	padding:120px 0;
+}
+#team ul{
+	margin:30px 0;
+}
+#team li{
+	width:33.3%;
+	float:left;
+}
+#team li img{
+	border:8px solid #fff;
+	border-radius:50%;
+}
+#team .fa{
+	width:30px;
+	height:30px;
+	font-size:20px;
+	line-height:30px;
+	text-align:center ;
+	background-color:#222;
+	border-radius:50%;
+	color:#fff;
+}
+#team span{
+	margin-right:15px;
+}
+#team .icon{
+	padding-left:13px;
+}
+#team h3 {
+	margin:10px 0 3px;
+}
+#team h3+p {
+	margin-bottom: 10px
+}
+#team >p{
+	width:60%;
+}
+#team ul{
+	margin-bottom:50px;
+}
+#team ul+p{
+	width:60%;
+	margin:0 auto;
+}
+
+/*customer图片展示部分*/
+#customer{
+	padding:50px;
+}
+#customer > ul > li{
+	float:left;
+	margin-left:95px;
+}
+
+/*contact us部分*/
+#contact{
+	text-align: center;
+	padding:150px 0;
+	background: url(../img/map-image.png) center center no-repeat #000;
+	color:#fff;
+}
+#contact form {
+	
+}
+#contact form > div{
+	float:left;
+	width:50%;
+}
+#contact form input {
+	display:block;
+	width:90%;
+	margin:20px 0;
+	padding:20px;
+	border-radius:3px;
+	outline: none;
+	font-size:16px;
+}
+#contact form textarea {
+	width:47%;
+	margin:20px 0;
+	height:220px;
+	border-radius:3px;
+	outline: none;
+}
+#contact form .btn{
+	color:#fff;
+	border:none;
+	cursor:pointer;
+}
+
+/*copyright部分*/
+#copyright{
+	padding:20px;
+	line-height:42px;
+}
+
+#copyright ul >li{
+	float: left;
+}
+#copyright .center-icon{
+	margin:0 280px;
+}
+#copyright .center-icon .fa{
+	width:40px;
+	height:40px;
+	line-height: 40px;
+	background-color: #333;
+	border-radius:50%;
+	text-align: center;
+	color: #fff;
+}
+#copyright .link{
+	color: #fbd135;
+}

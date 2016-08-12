@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>22-4Sample</title>
+	<meta charset="utf-8">
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<style>
+		ul,li{
+		  margin: 0;
+		  padding: 0;
+		  list-style: none;
+		}
+		.top-tab {
+		  border: 1px solid #ccc;	/*父容器外边框*/
+		}
+		.top-tab .tabs:after {
+		  content: '';
+		  display: block;
+		  clear: both;
+		}
+		.top-tab .tabs li {
+		  width: 33.33%;	/*三等分父容器宽带*/
+		  height: 40px;
+		  float: left;
+		  line-height: 40px;
+		  text-align: center;
+		  border-left: 1px solid #ccc;	/*已经有外边框，只设置左边和下方即可*/
+		  border-bottom: 1px solid #ccc;
+		  box-sizing: border-box;  /*宽度包含边框及padding,便于计算*/
+		  cursor: pointer;
+		}
+		.top-tab .tabs li:first-child {
+		  border-left: none;	  /*去掉重合的边框*/
+		}
+		.top-tab .content {
+		  display: none;
+		  height: 120px;
+		  padding: 10px;
+		}
+		.top-tab .tabs .active {
+		  background: #ddd;
+		}
+		.top-tab .active {
+		  display: block;
+		}
+	</style>
+</head>
+<body>
+<div class="top-tab">
+	<ul class="tabs">
+		<li class="active">tab1</li>	<!-- 默认选中 -->
+     	<li>tab2</li>
+     	<li>tab3</li>
+	</ul>
+	<div class="content active">内容1</div> <!-- 默认显示 -->
+    <div class="content">内容2</div>
+    <div class="content">内容3</div>
+</div>
+<script>
+    function Tab($node){
+        this.node = $node;
+        this.lis = this.node.find('li');
+        this.content = this.node.find('.content');
+        this.init();
+    }
+    Tab.prototype = {
+
+        init: function(){
+            var _this = this;
+            this.lis.on('click', function(){
+                var idx = $(this).index();
+                _this.lis.removeClass('active')
+                        .eq(idx).addClass('active');
+                _this.content.removeClass('active')
+                        .eq(idx).addClass('active');
+            })
+        }
+    }
+    var tab = new Tab($('.top-tab'));
+</script>
+</body>
+</html>

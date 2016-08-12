@@ -5,10 +5,10 @@
 		<title>task27 无限轮播</title>
 		<style>
 			*{
-	padding:0;
-	margin:0;
-	list-style: none;
-}
+			padding:0;
+			margin:0;
+			list-style: none;
+			}
 a{
 	text-decoration: none;
 }
@@ -20,11 +20,6 @@ a{
 }
 .img-ct{
 	position:relative;
-}
-.img-ct:after{
-	clear:both;
-	display:block;
-	content:"";
 }
 .img-ct li{
 	position:absolute;
@@ -125,7 +120,7 @@ img{
             }
             function stopAuto(){
             	clearInterval(auto);
-            }            
+            }
             function playNext(){
             	play((curIdx+1)%imgCount); // 下一个所以加1就行，当curIdx是3的时候，直接显示第一张
             };

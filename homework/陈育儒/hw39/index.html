@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<script src="http://apps.bdimg.com/libs/require.js/2.1.9/require.min.js
+"></script>
+<script>
+   requirejs.config({
+          baseUrl: "src",  //以这个目录为基准
+          paths: {
+            'm3': 'src2/src3/m3',//这里可以不写m3.js
+            'jquery':'http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min'
+          }
+        });
+   require(['m1','m2','m3','jquery'],function(){
+   	alert(jQuery);
+   });
+</script>
+</body>
+</html>
