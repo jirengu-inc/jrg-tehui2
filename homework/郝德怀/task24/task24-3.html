@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Register</title>
+	<script type="text/javascript" src="ajax-tools.js"></script>
+<style>
+.wrap{
+	padding: 20px;
+	margin: 50px auto;
+	width: 400px;
+	height: 500px;
+	background-color:#18c7f8;
+	text-align: center;
+	border-radius: 30px;
+}
+p{
+	font-size: 14px;
+}
+input{
+	width: 250px;
+	height: 20px;
+	line-height: 20px;
+}
+.submit{
+	color: red;
+	text-decoration: none;
+	display: inline-block;
+	width: 80px;
+	height: 30px;
+	line-height: 30px;
+	border-radius: 5px;
+	border:2px solid blue;
+}
+.error{
+	color: red;
+	font-weight:bold;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<h2>注册账号</h2>
+
+		<h4>用户名</h4>
+		<input type="text" class="username" placeholder="hunger已被注册，不信试试？">
+		<p class="usernamealert">数字、字母、下划线，5-10个字符</p>
+		
+		<h4>密码</h4>
+
+		<input type="text" class="password" placeholder="">
+		<p class="passwordalert">数字/大小写字母/下划线，至少两种，5-10个字符</p>
+		
+		<h4>确认密码</h4>
+		<input type="text" class="enteragain" placeholder="">
+		<p class="enteragainalert">请再输入一遍</p>
+		
+		<input type="button" value="注册" class="submit">
+	</div>
+	
+	<script>
+		var username = document.querySelector(".username");
+		var password = document.querySelector(".password");
+		var password2 =document.querySelector(".enteragain");
+		var alert1 = document.querySelector(".usernamealert");
+		var alert2 = document.querySelector(".passwordalert");
+		var alert3 = document.querySelector(".enteragainalert");
+
+		//-----验证用户名------
+		username.addEventListener("change",
+			function(e){
+				testusername();
+			})
+		//-----验证密码------
+		password.addEventListener("change",
+			function(e){
+				var str = password.value.toString();
+
+				if (str.match(/[0-9]/g) !== null &&
+					str.length === str.match(/[0-9]/g).length ||
+					str.match(/[a-z]/g) !== null &&
+					str.length === str.match(/[a-z]/g).length ||
+					str.match(/[A-Z]/g) !== null &&
+					str.length === str.match(/[A-Z]/g).length ||
+					str.match(/_/g) !== null &&
+					str.length === str.match(/_/g).length) 
+					{
+						addClass(alert2,'error');
+						alert2.innerHTML = "错误！A-Z/a-z/0-9/_ 至少两种 5-15个字符";
+					}
+				
+				else{
+					removeClass(alert2,'error');
+					alert2.innerHTML = "密码格式正确";
+				}	
+
+		});
+
+
+		//----验证二次密码------
+		password2.addEventListener("change",
+			function(e){
+				if (password2.value === password.value) {
+					removeClass(alert3,'error');
+					alert3.innerHTML = "一致，没毛病";
+				}
+				else{
+					addClass(alert3,'error');
+					alert3.innerHTML = "两次密码不一致，请检查重新输入";
+				}
+			});
+
+	</script>
+</body>
+</html>
