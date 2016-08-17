@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>单页多轮播</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<style>
+		html,ul,li{
+			padding: 0;
+			margin: 0;	
+		}
+		li{
+			list-style: none;
+		}
+		a{
+			text-decoration: none;
+		}
+		.ct{
+			float: left;
+			position: relative;
+			width: 284px;
+			height: 220px;
+			overflow: hidden;
+			margin: 20px;
+			border:1px solid #ccc;
+		}
+		.ct .img-show{
+			position: absolute;
+		}
+		.ct .img-show img{
+			width: 284px;
+			height: 220px;
+		}
+		.ct .img-show li{
+			float: left;
+		}
+		.img-show:after{
+			content: "";
+			display: block;
+			clear:both;
+		}
+		.arrow{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			line-height: 30px;
+			top: 50%;	
+			margin-top: -15px;
+			text-align: center;
+			border-radius: 15px;
+			color:#FFF;
+			background-color:  #666;
+			opacity: 0.8;
+		}
+		.arrow:hover{
+			opacity: 1
+		}
+		.pre{
+			left: 10px;
+		}
+		.next{
+			right: 10px;
+		}
+		.bullet{
+			position: absolute;
+			left: 50%;
+			bottom: 10px;
+			transform: translateX(-50%);
+		}
+		.bullet li{
+			display: inline-block;
+			width: 16px;
+			height: 4px;
+			background: #aaa;
+			border-radius: 3px;
+			cursor:pointer;
+		}
+		.bullet li.active{
+			background: green;
+		}
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<ul class="img-show">
+			<li><a href="#"><img src="img/1.jpg"></a></li>
+			<li><a href="#"><img src="img/2.jpg"></a></li>
+			<li><a href="#"><img src="img/3.jpg"></a></li>
+			<li><a href="#"><img src="img/4.jpg"></a></li>
+		</ul>
+		<a class="pre arrow"><</a>
+		<a class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div class="ct">
+		<ul class="img-show">
+			<li><a href="#"><img src="img/1.jpg"></a></li>
+			<li><a href="#"><img src="img/2.jpg"></a></li>
+			<li><a href="#"><img src="img/3.jpg"></a></li>
+			<li><a href="#"><img src="img/4.jpg"></a></li>
+		</ul>
+		<a class="pre arrow"><</a>
+		<a class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<div class="ct">
+		<ul class="img-show">
+			<li><a href="#"><img src="img/1.jpg"></a></li>
+			<li><a href="#"><img src="img/2.jpg"></a></li>
+			<li><a href="#"><img src="img/3.jpg"></a></li>
+			<li><a href="#"><img src="img/4.jpg"></a></li>
+		</ul>
+		<a class="pre arrow"><</a>
+		<a class="next arrow">></a>
+		<ul class="bullet">
+			<li class="active"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+	</div>
+
+	<script>
+		$.fn. carousel = function() {
+			$(this).each(function() {
+				var $this = $(this),
+					$imgShow = $this.find('.img-show'),
+					$item = $imgShow.children(),
+					$pre = $this.find('.pre'),
+					$next = $this.find('.next'),
+					$bullet = $this.find('.bullet'),
+					imgWidth = $item.width(),
+					imgCount = $item.size(),
+					imgRealCount,
+					curIdx = 0,
+					isAnimate = false;
+					
+				$imgShow.prepend($item.last().clone());
+				$imgShow.append($item.first().clone());
+				imgRealCount = imgCount + 2;
+				$imgShow.css({left:0-imgWidth,width:imgRealCount*imgWidth});
+
+				$next.on('click', function() {
+					playNext();
+				});
+				$pre.on('click', function() {
+					playPre();
+				})
+				$bullet.find('li').on('click', function() {			
+					var idx = $(this).index();
+					if(idx > curIdx){
+						playNext(idx - curIdx);
+					}
+					if(idx < curIdx){
+						playPre(curIdx - idx);
+					}else{
+						return;
+					}
+				})
+				//autoPlay() ;
+				function autoPlay() {
+					var clock = setInterval(function(){
+						playNext();
+					},3000)
+				}
+				function stopAuto(){
+					clearInterval(clock);
+				}
+				function playNext(idx){
+					
+					var idx = idx || 1;
+					if(!isAnimate){
+						isAnimate = true;
+						$imgShow.animate({'left': '-='+(imgWidth*idx)},function(){
+							curIdx = (curIdx + idx)%imgCount;
+							if(curIdx === 0){
+								$imgShow.css({'left': 0-imgWidth});;
+							}
+							/*curIdx++;
+							if(curIdx === imgCount){
+								$imgShow.css({left: 0-imgWidth});;
+								curIdx = 0;
+							}*/
+							isAnimate = false;
+							setBullet();
+						});
+					}
+				}
+				function playPre(idx){
+					var idx = idx || 1;
+					if(!isAnimate){
+						isAnimate = true;
+						$imgShow.animate({left:'+='+(imgWidth*idx)},function() {
+							curIdx = (imgCount + curIdx - idx)%imgCount;
+							console.log("curIdx:",curIdx);
+							if(curIdx == (imgCount -1)){
+								$imgShow.css({left:0-imgWidth * imgCount});
+							}
+							isAnimate = false;
+							setBullet();
+						});
+					};
+				};
+				function setBullet() {
+					$bullet.children().removeClass('active')
+						   .eq(curIdx).addClass('active');
+				}
+			})
+		}
+		$('.ct').carousel();
+	</script>
+</body>
+</html>

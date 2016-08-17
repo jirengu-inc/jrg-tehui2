@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>25-3</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+
+	<style>
+		ul,li{
+			padding: 0;
+			margin: 0;
+			list-style: none;
+		}
+		.ct{
+			width: 726px;
+			margin: 0 auto;
+		}
+		.ct h3{
+			padding: 10px;
+		}
+		.product{
+			position: relative;
+			width: 220px;
+			float: left;
+			border: 1px solid #ccc;
+			margin: 10px;
+			text-align: center;
+		}
+		ul:after{
+			content: '';
+			display: block;
+			clear:both;
+		}
+		.product .cover{
+			display: none;
+			position: absolute;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: rgba(0,0,0, 0.3);
+			opacity: 0；
+		}
+		.product .cover .btn{
+			position: absolute;
+			display: block;
+			text-decoration: none;
+			top: 50%;
+			left: 50%;
+			padding: 10px;
+			border-radius: 2px;
+			color: red;
+			background: white;
+			transform: translate(-50%,-50%);
+			border: 1px solid red;
+			opacity: 1;
+		}
+		.product .price{
+			color: red;
+		}
+		.ct #add{
+			display: block;
+			color: red;
+			background: white;
+			border: 1px solid red;
+			border-radius: 2px;
+			font-size: 15px;
+			padding: 10px 20px;
+			margin: 10px;
+		} 
+	</style>
+</head>
+<body>
+	<div class="ct">
+		<h3>珠宝首饰</h3>
+		<ul class="list">
+			<li class="product">
+				<div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+			<li class="product">
+				<div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+			<li class="product">
+				<div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+			<li class="product">
+				 <div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+			<li class="product">
+				 <div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+			<li class="product">
+				<div class="cover"><a class="btn" href="">立即抢购</a></div>
+				<img src="http://img10.360buyimg.com/N3/jfs/t1360/330/897475737/123557/23624706/55b05e25N13d4ec5e.jpg">
+				<div class="name">藏美千足金和田玉金镶玉路路通吊坠</div>
+				<div class="price">￥1699.00</div>
+			</li>
+		</ul>
+		<div><button id="add">添加</button></div>
+	</div>
+	<script>
+		var products = [
+			{
+				img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name: '珂兰 黄金手 猴哥款',
+				price: '￥405.00'
+			},{
+				img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name: '珂兰 黄金转运珠 猴哥款',
+				price: '￥100.00'
+			},{
+				img: 'http://img10.360buyimg.com/N3/jfs/t2242/92/1446546284/374195/9196ac66/56af0958N1a723458.jpg',
+				name: '珂兰 黄金手链 3D猴哥款',
+				price: '￥45.00'
+			}
+		];
+
+		$(function(){
+			/*若使用$('.list .product').on('mouseenter', function(){})会出现新添加的产品没有 cover 这个功能。应该是因为上面的代码表示把事件绑定到了特定的元素上，而新添加的元素没有绑定这个事件。而使用下面的代码，则是使用了一个事件代理，把事件处理程序匹配到了选中的元素（'.product'）上*/
+			$('.list').on('mouseenter','.product', function() {
+				$(this).find('.cover').show();
+			});
+			$('.list').on('mouseleave', '.product',function() {
+				$(this).find('.cover').hide();
+			})
+			$('#add').on('click',function() {
+				addProd(products);
+			})
+		})
+
+		function addProd(product) {
+			var cover = '<div class="cover"><a class="btn" href="">立即抢购</a></div>';
+			for(var i=0; i<product.length; i++) {
+				var newprod = document.createElement('li');
+					newprod = $(newprod);
+					img = '<img src='+product[i].img+'>';
+					name = '<div class="name">'+product[i].name+'</div>';
+					price = '<div class="price">'+product[i].price+'</div>';
+
+				newprod.html(cover+img+name+price);
+				newprod.attr('class','product');
+				$('.ct .list').append(newprod);
+			}
+		}
+	</script>
+</body>
+</html>

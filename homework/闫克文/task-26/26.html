@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Click</title>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+	<style >
+		.showHeight{
+			position: fixed;
+			top:200px;
+			width: 128px;
+			height: 20px;
+			padding:10px;
+			border:1px solid red;
+		}
+		.height{
+			height: 1200px;
+
+		}
+	</style>
+</head>
+<body>
+<div class="showHeight">高度为：0 像素</div>
+	<input type="text" id="ipt">
+	<select >
+	  <option value ="volvo">Volvo</option>
+	  <option value ="saab">Saab</option>
+	  <option value="opel">Opel</option>
+	  <option value="audi">Audi</option>
+	</select>
+	<div class="content"></div>
+	<div class="height"></div>
+	<script >
+		$('#ipt').on('focus', function() {
+			$(this).css("borderColor","blue");
+		})
+		$('#ipt').on("blur",function () {
+	        $(this).css("borderColor","");
+	    });
+	    $('#ipt').on("keyup",function () {
+	        $(this).val($(this).val().toUpperCase());
+	        $('.content').text($(this).val());
+	        console.log($(this).val());
+	    });
+	    $("select").on("change",function () {
+	    	$('#ipt').val($(this).val());
+	        $('.content').text($(this).val());
+	    });
+	     $(document).scroll(function(){
+           $('.showHeight').html("高度为："+$(document).scrollTop()+" 像素");
+        });
+	</script>	
+</body>
+</html>
