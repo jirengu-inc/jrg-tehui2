@@ -9,64 +9,64 @@
 			margin:0;
 			list-style: none;
 			}
-a{
-	text-decoration: none;
-}
-#carousel{
-	position:relative;
-	overflow: hidden;
-	width:300px;
-	height:210px;
-}
-.img-ct{
-	position:relative;
-}
-.img-ct li{
-	position:absolute;
-	display:none; /*error:一开始忘记写这个了,所以第一轮轮播没有反应,从第二轮才开始的*/
-}
-img{
-	width:300px;
-	height:210px;
-}
-.arrow{
-	position:absolute;
-	top:50%;
-	color:white;
-	margin-top:-15px;
-	text-align:center;
-	line-height:30px;
-	width:30px;
-	height:30px;
-	border-radius:100%;
-	background-color:darkgray;
-	opacity: 0.6;
-}
-.arrow:hover{
-	opacity: 1;
-}
-.pre{
-	left:10px;
-}
-.next{
-	right:10px;
-}
-.bullets{
-	position: absolute;
-	bottom:10px;
-	left:50%;
-	transform:translateX(-50%);
-}
-.bullets li{
-	width:18px;
-	height:4px;
-	border-radius: 3px;
-	background:whitesmoke;
-    display: inline-block;  /*用浮动的话还要设margin,父元素也要清除浮动,更麻烦*/
-}
-.bullets li.active{
-	background:gray;
-}
+			a{
+			text-decoration: none;
+			}
+			#carousel{
+			position:relative;
+			overflow: hidden;
+			width:300px;
+			height:210px;
+			}
+			.img-ct{
+			position:relative;
+			}
+			.img-ct li{
+			position:absolute;
+			display:none; /*error:一开始忘记写这个了,所以第一轮轮播没有反应,从第二轮才开始的*/
+			}
+			img{
+			width:300px;
+			height:210px;
+			}
+			.arrow{
+			position:absolute;
+			top:50%;
+			color:white;
+			margin-top:-15px;
+			text-align:center;
+			line-height:30px;
+			width:30px;
+			height:30px;
+			border-radius:100%;
+			background-color:darkgray;
+			opacity: 0.6;
+			}
+			.arrow:hover{
+			opacity: 1;
+			}
+			.pre{
+			left:10px;
+			}
+			.next{
+			right:10px;
+			}
+			.bullets{
+			position: absolute;
+			bottom:10px;
+			left:50%;
+			transform:translateX(-50%);
+			}
+			.bullets li{
+			width:18px;
+			height:4px;
+			border-radius: 3px;
+			background:whitesmoke;
+			display: inline-block;
+		    }
+			.bullets li.active{
+			background:gray;
+			}
 		</style>
 	</head>
 	<body>
@@ -86,22 +86,22 @@ img{
 				<li></li>
 			</ul>
 		</div>
-		
+
 		<script src="jquery-3.0.0.min.js"></script>
 		<script>
 			var $imgct = $(".img-ct"),
 			    $imgs = $imgct.children(),
-			    $bullets = $(".bullets"), 
-			    $pre = $(".pre"), 
+			    $bullets = $(".bullets"),
+			    $pre = $(".pre"),
 			    $next = $(".next"),
 			    imgWidth = $imgs.width()
 			    imgCount = $imgct.children().length,
 			    isLocked = false,
 			    curIdx = 0;
- 
+
             play(0);
             autoPlay();
-            
+
             $next.click(function(){
             	playNext();
             });
@@ -112,7 +112,7 @@ img{
             	var $idx = $(this).index();
             	play($idx);
             });
-            
+
             function autoPlay(){
             	auto = setInterval(function(){
             		playNext();
