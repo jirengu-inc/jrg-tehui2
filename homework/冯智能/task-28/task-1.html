@@ -54,13 +54,13 @@
 			navWidth = $nav.width(),
 			navHeight = $nav.height(),
 			navLeft = $nav.offset().left,
-			navTop = $nav.offset().top;
+			navTop = $nav.offset().top;//元素距离页面顶部的距离
 
-	var $clonenav = $nav.clone()
-											.css({'visibility':'hidden','display':'none'})
-											.insertBefore($nav)
-			$(window).on('scroll',function(){
-				var scrollTop = $(this).scrollTop();
+	var $clonenav = $nav.clone()  //克隆一个nav，为什么要克隆呢？克隆一个放在nav的位置，可以防止排版错乱
+						.css({'visibility':'hidden','display':'none'})
+						.insertBefore($nav)
+			$(window).on('scroll',function(){  //给window绑定一个滚动函数
+				var scrollTop = $(this).scrollTop(); //获取鼠标滚动的高度
 				if (scrollTop>=navTop) {
 					if (!isFixed()) {
 						setFixed();

@@ -15,7 +15,6 @@ body,html,ul,li,p,a,div,h1,h4,p,input,form,textarea{
 #nav{
 	height: 80px;
 	background-color: black;
-	position: fixed;
 	z-index: 2;
 	width: 100%;
 }
@@ -23,6 +22,7 @@ body,html,ul,li,p,a,div,h1,h4,p,input,form,textarea{
 	display: inline-block;
 	height: 80px;
 	line-height: 80px;
+	position: fixed;
 	text-align: center;
 	margin-left: 30px;
 }
@@ -385,4 +385,16 @@ form{
 .copyright{
 	position: relative;
 	top: 40px;
+}
+.banner{
+	width: 500px;
+	height: 500px;
+	border:1px solid #ccc;
+	background-color: red;
+}
+.contents a{
+	border-right: 1px solid #ccc;
+	padding-left: 5px;
+	padding-right: 5px;
+	display: inline-block;
 }

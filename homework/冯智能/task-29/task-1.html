@@ -52,33 +52,34 @@
 
 <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
 <script type="text/javascript">
-	var GoTop = (function(){
-		var $goTop = $('<div class="go-top">回到顶部</div>');
-		$('body').append($goTop);
-
-		function a (){
-			$(window).on('scroll', function(e){
-				var offsetTop = $('body').scrollTop();
-				console.log(offsetTop);
-				if(offsetTop>100){
-
-					$goTop.show();
-				}else{
-					$goTop.hide();
-				}
-			})
-			$goTop.on('click', function(){
-				$(window).scrollTop(0);
-			});
-
+var goTops = {
+	init:function(){
+		if ($('.goTop').length>0) {
+				return;
 		}
+		var $goTop = $('<div class="go-top">返回顶部</div>');
+				$('body').append($goTop);
+		    this.$goTop = $goTop;
+				this.blind();		
+	},
 
-
-		return {
-			init: a
-		}
-	})();
-GoTop.init();
+	blind:function(){
+	  var me = this;
+		$(window).on('scroll',function(){
+		
+			var scrollTop = $(window).scrollTop();
+			if (scrollTop>100) {
+				me.$goTop.show();
+			}else{
+				me.$goTop.hide();
+			}
+		})
+		this.$goTop.on('click',function(){
+			$(window).scrollTop(0);
+		})
+	}
+}
+goTops.init();
 
 
 </script>
