@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    //        创建一个 Car 对象，拥有属性name、color、status；拥有方法run，stop，getStatus (难度: ****)
+    function Car(attr){
+        this.name = attr.name || 'BWM';
+        this.color = attr.color || 'blue';
+        this.status = attr.status || 'running';
+    }
+
+    Car.prototype.run = function(){
+        return 'running';
+    };
+
+    Car.prototype.stop = function(){
+        return 'stoped';
+    };
+
+    Car.prototype.getStats = function(){
+        return this.status;
+    };
+
+    var car1 = new Car({name:'beach',status:'stop'});
+    console.log(car1.name,car1.getStats());
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<title>music player</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		.video1{
+			border: 1px solid #ccc;
+			background-color: red;
+		}
+		.audio{
+			list-style: :none;
+			text-decoration: none;
+			background-color: red;
+/*			display: none;*/
+		}
+	</style>
+</head>
+<body>
+  <audio src="杜雯媞、王艺翔 - 雪.mp3" preload="auto"  loop class="audio" id="start" autoplay></audio>
+  <div id="player">
+  	<button id="btn1">播放</button>
+  	<button id="btn2">暂停</button>
+  	<button id="btn3">提高音量</button>
+  	<button id="btn4">降低音量</button>
+  </div>
+  <script src="jquery.js"></script>
+  <script type="text/javascript">
+  	var play = document.getElementById('btn1'),
+  			stop = document.getElementById('btn2'),
+  			add = document.getElementById('btn3'),
+  			reduce = document.getElementById('btn4'),
+  			starts = document.getElementById('start');
+  			play.onclick = function(){
+  				starts.play();
+  			}
+  			stop.onclick = function(){
+  				starts.pause();
+  				mediaElement.src = '';
+  			}
+  			add.onclick = function (){
+  				starts.volume+=0.1;
+  			}
+  			reduce.onclick = function(){
+  				starts.volume-=0.1;
+  			}
+
+
+  	var Move = {
+    init:function($node,opacity){
+        this.$node = $node;
+        this.opacity = opacity||'1';
+        this.$node.css('position','absolute');
+        this.bind();
+    },
+    bind:function(){
+        var _this = this;
+        _this.$node.on('mousedown',function(e){
+            _this.$node.css({
+                opacity:_this.opacity,
+                cursor:'move'
+            });
+            _this.isDown = true;//状态锁
+            _this.$node.realX = e.pageX - _this.$node.offset().left;
+            _this.$node.realY = e.pageY - _this.$node.offset().top;
+        });
+        _this.$node.on('mouseup',function(){
+            _this.$node.css({
+                opacity:'1',
+                cursor:'default'
+            });
+            _this.isDown = false;//状态锁
+        });
+        _this.$node.on('mousemove',function(e){
+            if(_this.isDown){
+                _this.$node.css({
+                    top: e.pageY - _this.$node.realY,
+                    left: e.pageX - _this.$node.realX
+                })
+            }
+        });
+    }
+}
+
+Move.init($('#player'));
+  </script>
+</body>
+</html>

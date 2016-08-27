@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        li{
+            width: 100px;
+            height: 100px;
+            margin-top: 500px;
+        }
+        div{
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+    <li>1</li>
+</ul>
+    <!--<div id="go-top">返回顶部</div>-->
+<script>
+    var oTop = document.getElementById('go-top');
+//        创建一个 GoTop 对象，当 new 一个 GotTop 对象则会在页面上创建一个回到顶部的元素，点击页面滚动到顶部。拥有以下属性和方法 (难度: ****)
+//
+//        ct属性，GoTop 对应的 DOM 元素的容器
+//        target属性， GoTop 对应的 DOM 元素
+//        bindEvent 方法， 用于绑定事件
+//        createNode 方法， 用于在容器内创建节点
+        function GoTop(){
+            this.ct = '';
+            this.init();
+        }
+
+        GoTop.prototype.init = function(){
+            this.createNode();
+            this.bindNode();
+        };
+
+        GoTop.prototype.bindNode = function(){
+            console.log(this.ct);
+            this.ct.onclick = function(){
+                document.documentElement.scrollTop = document.body.scrollTop = 0;
+            };
+        };
+
+        GoTop.prototype.createNode = function(){
+            var eleNode = document.createElement('div');
+            eleNode.style.cssText = "position: fixed; width:100px;height:50px;border:1px solid red;line-height:50px;text-align:center;right:0;bottom:0";
+            eleNode.innerHTML = '回到顶部';
+            this.ct = eleNode;
+            document.body.appendChild(eleNode);
+        };
+
+        new GoTop().init();
+
+
+</script>
+</body>
+</html>

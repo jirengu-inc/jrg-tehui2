@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        ul>li{
+            width: 100px;
+            height: 30px;
+            border-left: 1px solid #CCCCCC;
+            border-bottom: 1px solid #CCCCCC;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            cursor: pointer;
+        }
+        ul>li:first-child{
+            border-left: none;
+        }
+        .clearfix:after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        .clearfix{
+            *zoom: 1;
+        }
+        #tab,#tab1{
+            width: 302px;
+            height: 200px;
+            border: 1px solid #ccc;
+        }
+        #tab div{
+            height: 170px;
+            display: none;
+        }
+        #tab .on{
+            display: block;
+        }
+        .active{
+            background: #CCCCCC;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="tab">
+        <ul class="clearfix">
+            <li class="active">tab1</li>
+            <li>tab2</li>
+            <li>tab3</li>
+        </ul>
+        <div class="on">内容一</div>
+        <div>内容二</div>
+        <div>内容三</div>
+    </div>
+
+<script>
+
+
+
+    function Tab(id){
+        this.oTab = document.getElementById(id);
+        this.aUl = this.oTab.getElementsByTagName('ul');
+        this.aLi = this.oTab.getElementsByTagName('li');
+        this.aDiv = this.oTab.getElementsByTagName('div');
+        this.init();
+    }
+
+    Tab.prototype.init = function(){
+        var _this = this;
+        for(var i = 0;i < this.aLi.length;i++){
+            _this.aLi[i].index = i;
+            this.aLi[i].onclick = function(){
+                _this.tab(this.index);
+            };
+        }
+    };
+
+
+    Tab.prototype.tab = function(index){
+        for(var j = 0; j < this.aLi.length;j++){
+            this.aDiv[j].className = '';
+            this.aLi[j].className = '';
+        }
+        this.aDiv[index].className = 'on';
+        this.aLi[index].className = 'active';
+    };
+
+    new Tab('tab');
+</script>
+</body>
+</html>
