@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>task 35-对象及原型</title>
+	<style type="text/css">
+		*{
+			padding: 0;
+			margin:0;
+		}
+		.link{
+			text-decoration: none;
+			font-size:16px;
+			color:black;
+			display:block;
+			padding:12px;
+			border:1px solid;
+			border-radius:3px;
+			position:fixed;
+			right:30px;
+			bottom:30px;
+			cursor: pointer;
+		}
+		.container{
+			width:900px;
+			margin:0 auto;
+			border:1px solid #FF8080;
+			height:2000px;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	function goTop(){
+		var that = this;
+		this.ct = "";
+		this.target = "";
+		this.init = function createNode(){
+			this.ct = document.createElement("div");
+			this.ct.className = "container";
+            document.body.appendChild(this.ct);
+            this.target = document.createElement("a");
+            this.target.className = "link";
+            this.target.innerHTML = "回到顶部";
+            document.body.appendChild(this.target);
+            this.bind();
+		};
+		this.bind = function bindEvent(){
+			this.target.addEventListener("click",function(){
+				document.body.scrollTop = 0;
+			},false);
+		}
+	}
+
+	var obj = new goTop();
+	obj.init();
+
+</script>
+</body>
+</html>
