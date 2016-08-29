@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>task35 多个轮播</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+		}
+		a{
+			text-decoration: none;
+		}
+		li{
+			list-style: none;
+		}
+		img{
+			width:250px;
+			height:250px;
+		}
+		.ct{
+			position:relative;
+			width:250px;
+			height:250px;
+			overflow: hidden;
+		}
+		.img-ct{
+			position:absolute;
+		}
+		.img-ct:after{
+			content:"";
+			display:block;
+			clear:both;
+		}
+		.img-ct li{
+			float:left;
+		}
+		.arrow{
+			position: absolute;
+			top:50%;
+			margin-top:-15px;
+			width:30px;
+			opacity:0.5;
+			height:30px;
+			line-height:30px;
+			border-radius: 100%;
+			text-align:center;
+			background-color:#6B6F5E;
+			color:white;
+		}
+		.arrow:hover{
+			opacity:1;
+		}
+		.pre{
+			left:10px;
+		}
+		.next{
+			right:10px;
+		}
+	</style>
+</head>
+<body>
+<div class="ct">
+	<ul class="img-ct">
+		<li><img src="pics/1.jpg" /></li>
+		<li><img src="pics/2.jpg" /></li>
+		<li><img src="pics/3.jpg" /></li>
+	</ul>
+    <a href="#" class="pre arrow"><</a>
+    <a href="#" class="next arrow">></a>
+</div>
+<div class="ct">
+	<ul class="img-ct">
+		<li><img src="pics/1.jpg" /></li>
+		<li><img src="pics/2.jpg" /></li>
+		<li><img src="pics/3.jpg" /></li>
+	</ul>
+    <a href="#" class="pre arrow"><</a>
+    <a href="#" class="next arrow">></a>
+</div>
+
+<script>
+	function Carousel($node){
+		this.node = $node;
+	}
+
+    Carousel.prototype = {
+       init:function setCarousel(){
+
+            var $imgs = this.node.find($(".img-ct")).children(),
+                oWidth = this.node.find("img").width();
+
+            this.node.find("ul").append($imgs.first().clone())
+                                .prepend($imgs.last().clone());
+
+            var imgCount = this.node.find("li").length;
+			this.imgCount = imgCount;
+			this.oWidth = oWidth;
+			this.imgs = $imgs;
+			this.idx = 0;
+			this.status = "unlocked";
+			this.node.find($(".img-ct")).css({
+				"left":0-oWidth,
+				"width":imgCount*oWidth
+			});
+    		this.bind();
+    	},
+    	bind:function bindEvent(){
+    		var that = this,
+    		    l = that.imgs.length,
+    		    $pre = that.node.find($(".pre")),
+    		    $next = that.node.find($(".next")),
+    		    $imgct = that.node.find($(".img-ct"));
+
+    		$pre.on("click",function(){
+    			if(that.status=="locked") return;
+    			that.status = "locked";
+    			that.idx -= 1;
+               $imgct.animate({
+                	"left":"+="+that.oWidth
+                },function(){
+                	if(that.idx<0){
+                		that.idx += l;
+                		$imgct.css({
+                			"left":"-="+l*that.oWidth
+                		});
+                	}
+                	that.status = "unlocked";
+                });
+            });
+
+    		$next.on("click",function(){
+    			if(that.status=="locked") return;
+    			that.status = "locked";
+    			that.idx += 1;
+    			$imgct.animate({
+    				"left":"-="+that.oWidth
+    			},function(){
+    				if(that.idx%l===0){
+    					that.idx -= l;
+    					console.log(that.idx);
+    					$imgct.css({
+    						"left":"+="+l*that.oWidth
+    					});
+    				}
+    				that.status = "unlocked";
+    			});
+    		});
+    }
+}
+
+    var $node1 = $(".ct").eq(0),
+        $node2 = $(".ct").eq(1),
+        carousel1 = new Carousel($node1),
+        carousel2 = new Carousel($node2),
+        obj1 = new Carousel($node1),
+        obj2 = new Carousel($node2);
+
+    obj1.init();
+    obj2.init();
+</script>
+</body>
+</html>

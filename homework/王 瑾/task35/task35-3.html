@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>task35 tab-alter</title>
+	<script src="jquery-3.0.0.min.js"></script>
+	<style>
+		*{
+			padding:0;
+			margin:0;
+			font-family: "Microsoft Yahei";
+			box-sizing: border-box;
+		}
+		li{
+			list-style: none;
+		}
+		#tab-box{
+			width:300px;
+			margin:0 auto;
+            margin-top:120px;
+		}
+		.tabs:after{
+			clear:both;
+			content:"";
+			display:block;  /*try table*/
+		}
+		.tabs{
+			text-align: center;
+			width:100%;
+		}
+		.tabs li{
+			float:left;
+			height:40px;
+			line-height:40px;
+			border:1px solid #4B4E43;
+			text-align: center;
+			padding:0 12px;
+			width:100px;
+		}
+		#info-ct{
+			width:300px;
+			border:1px solid #4B4E43;
+			height:180px;
+			padding:50px;
+		}
+		.info li{
+			text-align:center;
+		}
+		.active{
+			background-color:#FF80C0;
+		}
+	</style>
+</head>
+<body>
+<div id="tab-box">
+	<ul class="tabs">
+		<li>tab1</li>
+		<li>tab2</li>
+		<li>tab3</li>
+	</ul>
+	<div id="info-ct">
+		<ul class="info" >
+		<li>
+		    <p>Kim</p>
+		    <p>27</p>
+		    <p>Female</p>
+		</li>
+		<li>
+			<p>Chris</p>
+			<p>16</p>
+			<p>Male</p>
+		</li>
+		<li>
+			<p>Lucy</p>
+			<p>10</p>
+			<p>Female</p>
+		</li>
+	</ul>
+	</div>
+</div>
+<script>
+	function tabAlter(){
+		this.tab = tabs;
+		this.info = infos,
+		this.idx;
+	}
+
+    tabAlter.prototype = {
+		bind:function bindEvent(){
+			var that = this,
+			    infobox = $("#info-ct");
+
+			that.info.hide();
+			this.tab.on("click",function(){
+				var idx = $(this).index();
+				$(this).siblings().removeClass("active");
+				$(this).addClass("active");
+				that.info.siblings().hide();
+				that.info.eq(idx).show();
+			});
+		}
+	};
+
+	var tabs = $(".tabs").children(),
+	    infos = $(".info").children(),
+        obj = new tabAlter();
+	obj.bind();
+</script>
+</body>
+</html>
