@@ -8,7 +8,7 @@ var MyPlayer = function(){
     MyPlayer.$musicCo = $('.musicCover');
     MyPlayer.$songTit = $('.songTitle');
     MyPlayer.$songArt = $('.songArtist');
-    MyPlayer.player   = $('#Js_player').get(0); //h5播放器
+    MyPlayer.player   = $("#Js_player").get(0); //h5播放器
     MyPlayer.$curTime = $('.currentTime');      //当前播放时间
     MyPlayer.$allTime = $('.times');            //歌曲总时间
     MyPlayer.curClock;                          //播放    计时器
@@ -138,7 +138,19 @@ MyPlayer.bindEvns = function () {
         $progress.addClass('vOnMove');
 
     });
+    
+$(MyPlayer.player).on('timeupdate',function () {	
+//  MyPlayer.curClock && clearInterval(MyPlayer.curClock);        //停止上一首的计时
+console.log("歌曲载入完成");
+    MyPlayer.$allTime.text(MyPlayer.formatTime(MyPlayer.player.duration));
 
+    MyPlayer.$curTime.text(MyPlayer.formatTime(MyPlayer.player.currentTime));
+    MyPlayer.setProgress(MyPlayer.player.currentTime);     //设置进度条；
+    if (Math.floor(MyPlayer.player.currentTime) === Math.floor(MyPlayer.player.duration) || Math.ceil(MyPlayer.player.currentTime) === Math.ceil(MyPlayer.player.duration)){
+       MyPlayer.getSongInfo(MyPlayer.channelId); //自动下一首
+    }
+
+});
 
 
     $('body').on('mousemove',function (e) {
@@ -162,7 +174,7 @@ MyPlayer.bindEvns = function () {
         var pos = ((evtX/MyPlayer.$progress.width())*100*100)/100; //鼠标点击位置 相对总宽度的百分比
         if ( pos>=100 || pos < 0 ) return ;
         MyPlayer.$curPro.css('width',pos + '%');
-        MyPlayer.player.currentTime = (pos/100)*MyPlayer.songLen;
+        MyPlayer.player.currentTime = (pos/100)*MyPlayer.player.duration;
 
     };
     var setVolAndWidth = function(evtX){
@@ -208,18 +220,11 @@ MyPlayer.randerLyric = function (lyJson) {
     },300);
 
 };
+
+
+
 //渲染进度条
-MyPlayer.randerProgress = function(songLen){
-    MyPlayer.curClock && clearInterval(MyPlayer.curClock);        //停止上一首的计时
-    MyPlayer.$allTime.text(MyPlayer.formatTime(songLen));
-    MyPlayer.curClock = setInterval(function(){
-        MyPlayer.$curTime.text(MyPlayer.formatTime(MyPlayer.player.currentTime));
-        MyPlayer.setProgress(MyPlayer.player.currentTime);     //设置进度条；
-        if (Math.floor(MyPlayer.player.currentTime) === songLen || Math.ceil(MyPlayer.player.currentTime) === songLen){
-            MyPlayer.getSongInfo(MyPlayer.channelId); //自动下一首
-        }
-    },1000);
-};
+
 
 //获取歌词信息
 MyPlayer.getLyricInfo = function (sid, ssid) {
@@ -256,21 +261,17 @@ MyPlayer.getSongInfo = function (channel_id) {
     $.get('http://api.jirengu.com/fm/getSong.php',{channel: channel_id})
         .done(function(song){
             song = JSON.parse(song);
-            if (song.r != 0) {
-                console.log("获取歌曲失败");
-                return;
-            }
-
+//          if (song.r != 0) {
+//              console.log("获取歌曲失败");
+//              return;
+//          }
             var songInfo = song.song[0],            //歌曲总信息
                 songUrl  = songInfo.url,            //歌曲地址
                 songPic  = songInfo.picture,        //歌曲图片
                 songTit  = songInfo.title,          //歌曲名
                 songArt  = songInfo.artist,         //演唱者
                 songSid  = songInfo.sid,            //sid
-                songSsid = songInfo.ssid;           //ssid
-                songLen  = songInfo.length;         //长度
-            MyPlayer.songLen = songLen;
-
+                songSsid = songInfo.ssid;                   //长度
 
             //将信息填入页面
             MyPlayer.$songTit.text(songTit);        //歌名
@@ -278,10 +279,7 @@ MyPlayer.getSongInfo = function (channel_id) {
             MyPlayer.$musicMa.css('backgroundImage','url('+songPic+')');    //图片
             MyPlayer.player.src = songUrl;          //设置 音乐 播放器
 
-            if (songLen != NaN) {
-                console.log('歌曲长度：' + songLen);
-                MyPlayer.randerProgress(songLen);
-            }
+
 
             //获取歌词信息
             MyPlayer.getLyricInfo(songSid,songSsid);
@@ -294,7 +292,7 @@ MyPlayer.getSongInfo = function (channel_id) {
 //设置进度条
 MyPlayer.setProgress = function (currTime) {
     currTime = Math.round(currTime*100)/100;
-    var pos = Math.round((currTime/MyPlayer.songLen)*100*100)/100;  //当前时间相对总时间的百分比
+    var pos = Math.round((currTime/MyPlayer.player.duration)*100*100)/100;  //当前时间相对总时间的百分比
     MyPlayer.$curPro.css('width',pos + '%');
 
 };
