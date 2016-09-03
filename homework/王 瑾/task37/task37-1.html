@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>task 37-继承</title>
+    <script src = "jquery-3.0.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="task37-1.css">
+</head>
+<body>
+    <div id="btn-ct">
+      <!--  <button>打开1</button>
+            <button>打开2</button>
+            ...... -->
+    </div>
+    <p style="margin:0 8px 5px 8px">鼠标在dialog上左键按下可拖动dialog</p>
+    <p style="margin:0 8px 5px 8px">可创建多个dialog</p>
+   <div id="box">
+       <ul style="list-style:none" class="wrapper">
+       <!-- <li class="container"></li>
+            ...... -->
+       </ul>
+   </div>
+
+    <script>
+    var $ct = $("#btn-ct"),
+        $wrapper = $(".wrapper"),
+        oBtn = $("<button></button>");
+
+    //动态添加btn
+    function createButton(){
+        this.button = oBtn.clone();
+        $ct.append(this.button);
+        this.idx = this.button.index();
+        this.button.text("打开"+(this.idx+1));
+    }
+
+    //5个dialog的html内容
+    function createTpl(el){
+        var tpl = "";
+        if(el.idx===0){
+            tpl += "<li class='container'><div class='main'>";
+            tpl += "<p>hello,这里是饥人谷</p>";
+            tpl += "</div>";
+            tpl += "<div class='footer'><a href='#' class='pick close'>取消</a></div>";
+            tpl += "</li>";
+        }else if(el.idx===1){
+            tpl += "<li class='container'><div class='main'>";
+            tpl += "<a href='http://jirengu.com/' target='_blank' class='mainlink'>饥人谷</a>";
+            tpl += "</div>";
+            tpl += "<div class='footer'><a href='#' class='pick close'>取消</a></div>";
+            tpl += "</li>";
+        }else if(el.idx===2){
+            tpl += "<li class='container'><div class='header'>";
+            tpl += "<p>欢迎来到饥人谷</p>";
+            tpl += "<a href='#' class='back close'>X</a>";
+            tpl += "</div>";
+            tpl += "<div class='main'>";
+            tpl += "<p>hello</p>";
+            tpl += "</div>";
+            tpl += "<div class='footer'><a href='#' class='pick close'>取消</a><a href='#' class='pick confirm'>确定</a></div>";
+            tpl += "</li>";
+        }else if(el.idx===3){
+            tpl += "<li class='container'><div class='header'>";
+            tpl += "<p>欢迎来到饥人谷</p>";
+            tpl += "<a href='#' class='back close'>X</a>";
+            tpl += "</div>";
+            tpl += "<div class='main'>";
+            tpl += "<ul type='disc'><li>列表1</li><li>列表2</li><li>列表3</li><li>列表4</li></ul>";
+            tpl += "</div>";
+            tpl += "<div class='footer'><a href='#' class='pick close'>取消</a><a href='#' class='pick confirm'>确定</a></div>";
+            tpl += "</li>";
+        }else if(el.idx===4){
+            tpl += "<li class='container'><div class='header'>";
+            tpl += "<p>欢迎来到饥人谷</p>";
+            tpl += "<a href='#' class='back close'>X</a>";
+            tpl += "</div>";
+            tpl += "<div class='main'>";
+            tpl += "<p>hello</p>";
+            tpl += "</div>";
+            tpl += "</li>";
+        }
+         var newtpl = tpl;
+         return newtpl;
+    }
+
+    function createDialog(){
+        createButton.call(this);
+        $wrapper.append(createTpl(this));
+        this.dialog = $wrapper.children("li.container").eq(this.idx);
+        this.close = this.dialog.find(".close");
+        this.confirm =this.dialog.find(".confirm");
+        this.dialog.hide();
+        this.dialog.data("isDragable",false);
+        this.init();
+        this.startDrag();
+    }
+
+    //btn及a的点击事件
+    createDialog.prototype.init = function(){
+        var $that = this,
+            curIdx = $that.idx;
+        $that.button.on("click",function(e){
+            e.stopPropagation();
+            $that.dialog.show();
+            $that.dialog.offset({
+                "left":($(window).width()-$that.dialog.outerWidth(true))/2,
+                "top":($(window).height()-$that.dialog.outerHeight(true))/2
+            });
+        });
+        $that.close.on("click",function(e){
+            e.stopPropagation();
+            $that.dialog.hide();
+            if($that.idx>1){
+                alert("close");
+            };
+        });
+        $that.confirm.on("click",function(e){
+            e.stopPropagation();
+            $that.dialog.hide();
+            alert("确定");
+        });
+    }
+
+    //dialog的拖拽事件
+    createDialog.prototype.startDrag = function(){
+        var $that = this,
+            $aim = $that.dialog;
+
+        $aim.on("mousedown",function(e){
+            $(this).data("isDragable",true);
+            $(this).addClass("isDraging");
+
+            var offX = e.pageX-$(this).offset().left,
+                offY = e.pageY-$(this).offset().top;
+            $(this).data("posX",offX);
+            $(this).data("posY",offY);
+        });
+
+        $("body").on("mouseup",function(){
+            $aim.removeClass("isDraging");
+            $aim.data("isDragable",false);
+        });
+
+        $("body").on("mousemove",function(e){
+            if($aim.data("isDragable")===false) return;
+            var resX = e.pageX-$aim.data("posX"),
+                resY = e.pageY-$aim.data("posY"),
+                maxX = $(window).width()-$aim.outerWidth(true),
+                maxY = $(window).height()-$aim.outerHeight(true);
+            if(resX>0 && resY>0 && resX<maxX && resY<maxY){
+                $aim.offset({
+                    "left":resX,
+                    "top":resY
+               });
+            }
+        });
+    }
+
+    var dlg1 = new createDialog(),
+        dlg2 = new createDialog(),
+        dlg3 = new createDialog(),
+        dlg4 = new createDialog(),
+        dlg5 = new createDialog();
+
+    </script>
+</body>
+</html>
