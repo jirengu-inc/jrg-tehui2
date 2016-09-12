@@ -1,0 +1,12 @@
+({
+	"baseUrl":"./js",
+	"paths":{
+		'jquery':'lib/jquery-3.0.0.min',
+		'carousel':"com/carousel",
+		'waterfall':'com/waterfall',
+		'gotop':'com/gotop',
+		'exposure':'com/exposure'
+	},
+	"name":"main",
+	"out":"merge.js"
+})
