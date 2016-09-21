@@ -1,0 +1,147 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>task40-3-2</title>
+		<style>
+			*{
+				padding:0;
+				margin:0;
+				list-style: none;
+			}
+			img{
+				width:220px;
+				height:220px;
+			}
+			.carousel{
+				width:220px;
+				height:220px;
+				margin:0 auto;
+				margin-bottom:10px;
+				position:relative;
+				overflow: hidden;
+			}
+			.box{
+				position:absolute;
+			}
+			.box:after{
+				display: block;
+				content:"";
+				clear:both;
+			}
+			.box li{
+				float:left;
+			}
+			.arrow{
+				position:absolute;
+				border-radius: 100%;
+				text-align: center;
+				width:20px;
+				height:20px;
+				color:white;
+				line-height: 20px;
+				top:50%;
+				transform:translateY(-50%);
+				opacity: 0.6;
+				background-color: #44463C;
+				text-decoration: none;
+			}
+			.pre{
+				left:10px;
+			}
+			.next{
+				right:10px;
+			}
+			.arrow:hover{
+				opacity: 1;
+			}
+		</style>
+	</head>
+	<body>
+	<div class="carousel">
+		<ul class="box">
+			<li><img src="img/lm1.jpeg"></li>
+			<li><img src="img/lm2.jpeg"></li>
+			<li><img src="img/lm3.jpg"></li>
+	    </ul>
+	<a href="#" class="pre arrow"><</a>
+	<a href="#" class="next arrow">></a>
+	</div>
+	<div class="carousel">
+		<ul class="box">
+			<li><img src="img/pkq1.jpg"></li>
+			<li><img src="img/pkq2.jpg"></li>
+			<li><img src="img/pkq3.jpg"></li>
+	   </ul>
+	<a href="#" class="pre arrow"><</a>
+	<a href="#" class="next arrow">></a>
+	</div>
+	<div class="carousel">
+		<ul class="box">
+			<li><img src="img/sdq1.jpg"></li>
+			<li><img src="img/sdq2.jpg"></li>
+			<li><img src="img/sdq3.jpeg"></li>
+	    </ul>
+	<a href="#" class="pre arrow"><</a>
+	<a href="#" class="next arrow">></a>
+	</div>
+	<script src="jquery-3.0.0.min.js"></script>
+		<script>
+		//通过创建对象的方式
+		function Carousel($node){
+			this.node = $node;
+			this.init();
+		}
+
+		Carousel.prototype.init = function(){
+			this.pre = this.node.find(".pre");
+			this.next = this.node.find(".next");
+			this.box = this.node.find("ul");
+			this.img = this.box.find("li");
+			this.count = this.img.length;
+			this.oWidth = this.img.width();
+			this.box.prepend(this.img.last().clone())
+			        .append(this.img.first().clone());
+			this.realCount = this.box.find("li").length;
+			this.box.css({
+				"width":this.oWidth*this.realCount,
+				"left":0-this.oWidth
+			});
+			this.curIdx = 0;
+			this.bind();
+		};
+
+		Carousel.prototype.bind = function(){
+			var that = this;
+			that.pre.on("click",function(){
+				that.curIdx -= 1;
+					that.box.animate({
+						"left": "+=" + that.oWidth
+					},function(){
+						if(that.curIdx<0){
+							that.curIdx += that.count;
+							that.box.css("left",0-that.count*that.oWidth);
+						}
+					});
+			});
+
+			that.next.on("click",function(){
+				that.curIdx +=1;
+					that.box.animate({
+						"left":"-=" + that.oWidth
+					},function(){
+						if(that.curIdx===that.count){
+							that.curIdx = 0;
+							that.box.css("left",0-that.oWidth);
+						}
+					});
+			});
+		};
+
+		$(".carousel").each(function(){
+			new Carousel($(this));
+		});
+		</script>
+	</body>
+</html>
