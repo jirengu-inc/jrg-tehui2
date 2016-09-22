@@ -1,0 +1,1 @@
+function fn1(){alert("this's a.js")}function fn2(){alert("this's b.js")}fn1(),fn2();

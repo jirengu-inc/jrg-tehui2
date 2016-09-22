@@ -1,0 +1,40 @@
+var gulp = require("gulp");
+
+var minifycss = require("gulp-minify-css"),
+    uglify = require("gulp-uglify"),
+    concat = require("gulp-concat"),
+    rename = require("gulp-rename"),
+    clean = require("gulp-clean"),
+    minhtml = require("gulp-htmlmin"),
+    jshint = require("gulp-jshint"),
+    imagemin = require("gulp-imagemin");
+
+gulp.task("html",function(){
+	gulp.src("src/*.html")
+        .pipe(minhtml({collapseWhitespace:true}))
+        .pipe(gulp.dest("dist"));
+});
+
+gulp.task("css",function(arguments){
+	gulp.src("src/css/*.css")
+	    .pipe(concat("merge.min.css"))
+	    .pipe(minifycss())
+	    .pipe(gulp.dest("dist/css/"));
+});
+
+gulp.task("js",function(){
+	gulp.src("src/js/*.js")
+	    .pipe(jshint())
+	    .pipe(jshint.reporter("default"))
+	    .pipe(concat("merge.js"))
+	    .pipe(uglify())
+	    .pipe(gulp.dest("dist/js/"));
+});
+
+gulp.task("img",function(arguments){
+	gulp.src("src/img/*")
+	    .pipe(imagemin())
+	    .pipe(gulp.dest("dist/img/"))
+});
+
+gulp.task("default",["html","css","js","img"]);
