@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+	<title>task43</title>
+	<style type="text/css">
+	    *{
+	    	padding:0;
+	    	margin:0;
+	    	list-style: none;
+	    }
+		header{
+			font:24px "Microsoft Yahei", bold;
+			margin:20px 10px;
+		}
+		.ct-box{
+			height:50px;
+			padding:15px;
+			border:1px solid #ccc;
+			margin:0 10px;
+		}
+		.ct-box:after{
+			clear:both;
+			display: block;
+			content: "";
+		}
+		.ct-box li{
+			border:1px dashed #ccc;
+			padding:15px;
+			background-color:#999C8B;
+			float:left;
+			width:50px;
+			text-align: center;
+			margin-right:20px;
+		}
+	</style>
+</head>
+<body>
+<header>全部</header>
+	<ul class="ct-box" id="drag1" ondrop="drop(event)" ondragover="allowDrop(event)">
+		<li draggable="true" id="phone" ondragstart="drag(event)">手机</li>
+		<li draggable="true" id="military" ondragstart="drag(event)">军事</li>
+		<li draggable="true" id="car" ondragstart="drag(event)">汽车</li>
+		<li draggable="true" id="tech" ondragstart="drag(event)">科技</li>
+		<li draggable="true" id="makeup" ondragstart="drag(event)">美妆</li>
+		<li draggable="true" id="zj" ondragstart="drag(event)">浙江</li>
+		<li draggable="true" id="universe" ondragstart="drag(event)">宇宙</li>
+		<li draggable="true" id="entertainment" ondragstart="drag(event)">娱乐</li>
+	</ul>
+<header>订阅</header>
+<ul class="ct-box" id="drag2" ondrop="drop(event)" ondragover="allowDrop(event)"></ul>
+
+	<script type="text/javascript">
+		function drag(ev){
+			ev.dataTransfer.setData("Text",ev.target.id); // 当监听到被拖对象开始被拖时，取得被拖对象，并以Text的格式赋予数据
+		}
+
+		function drop(ev){
+			ev.preventDefault();
+			var data = ev.dataTransfer.getData("Text");
+			ev.target.appendChild(document.getElementById(data)); // 在拖放的过程中，获得被拖对象的数据，然后在目的地中将其插入
+		}
+
+		function allowDrop(ev){
+			ev.preventDefault(); //因为默认地，元素或数据不允许被放入其他元素中，所以需要阻止这个默认情况
+		}
+	</script>
+</body>
+</html>
