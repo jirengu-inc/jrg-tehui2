@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+	<title>task44-1</title>
+	<style type="text/css">
+		.box{
+			height:200px;
+			width:200px;
+			text-align: center;
+			border:1px solid;
+			line-height: 200px;
+			display:inline-block;
+			margin-right: 40px;
+			margin-top:40px;
+		}
+		.b1{
+			border-radius: 10px;
+		}
+		.b2{
+            border-radius:50%;
+		}
+		.b3{
+			box-shadow: 20px 20px 10px #272822;
+		}
+		.b4,.b5,.b6{
+			transition:all 2s;
+		}
+		.b4:hover{
+			transform: scale(1.2,1.2);
+		}
+		.b5:hover{
+			transform: rotate(30deg);
+		}
+		.b6{
+			position:relative;
+		}
+		.b6:hover{
+			transform: translateY(30px);
+		}
+		.b7{
+			background:linear-gradient(lightblue,pink,grey);
+		}
+		.b8{
+			transition: background-color 1s linear;
+		}
+		.b8:hover{
+			background-color:purple;
+		}
+		@keyframes dh{
+			from{background-color:lightblue;}
+			to{background-color:pink;transform:rotate(30deg);border-radius:50%;}
+		}
+		.b9{
+			animation: dh 3s;
+			position:relative;
+			transition:all 3s;
+		}
+	</style>
+</head>
+<body>
+<div class="box b1">我有圆角</div>
+<div class="box b2">我是圆形</div>
+<div class="box b3">我有阴影</div>
+<div class="box b4">我会变大变小</div>
+<div class="box b5">我会旋转</div>
+<div class="box b6">我会偏移,必须是定位元素</div>
+<div class="box b7">我的背景色径向渐变</div>
+<div class="box b8">我设置了过渡效果</div>
+<div class="box b9">我有动画</div>
+</body>
+</html>
