@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+	<title>task44-3-1</title>
+	<script src="outer/jquery-3.0.0.min.js"></script>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			list-style: none;
+		}
+		html,body{
+			width:100%;
+			height:100%;
+		}
+		.box{
+			position:fixed;
+			top:0;
+			height:100%;
+			width:100%;
+			background-color:#8CC5FF;
+		}
+		ul{
+			width:200px;
+			margin:70px auto;
+			text-align: center;
+		}
+		ul li{
+			display:inline-block;
+			width:10px;
+			height:30px;
+			border:1px solid white;
+			background-color:white;
+		}
+		@keyframes ani{
+			from{transform:scale(1,1);}
+			to{transform:scale(1,1.8);}
+		}
+		/*效果的不同在于预备时间与持续时间的比例不同*/
+		.first{
+			animation:ani 0.5s ease infinite alternate;
+		}
+		.second{
+			animation:ani 0.5s ease 0.18s infinite alternate;
+		}
+		.third{
+			animation:ani 0.5s ease 0.32s infinite alternate;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li class="first"></li>
+			<li class="second"></li>
+			<li class="third"></li>
+		</ul>
+	</div>
+</body>
+</html>
