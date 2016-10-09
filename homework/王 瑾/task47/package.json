@@ -1,0 +1,17 @@
+{
+  "name": "task47",
+  "version": "1.0.0",
+  "description": "improve css",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "css"
+  ],
+  "author": "Jessie",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp-less": "^3.1.0"
+  }
+}

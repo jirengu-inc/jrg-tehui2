@@ -1,0 +1,251 @@
+*{
+	padding:0;
+	margin:0;
+	box-sizing: border-box;
+}
+html,body,.main{
+	height:100%;
+	width:100%;
+}
+body{
+	min-height:600px;
+	min-width: 1200px;
+	-webkit-font-smoothing: antialiased;
+	font-smoothing: antialiased;
+	font-family:"WenQuanYi Micro Hei",SimSun,sans-serif;
+}
+.main{
+	background:url(img/bg.jpg) no-repeat center center;
+	background-size: cover;
+}
+.c_box{
+	position:absolute;
+	left:700px;
+	bottom:184px;
+	width:312px;
+	height:305px;
+	perspective: 1000px;
+}
+.c_box_rock{
+	animation:rock 2s infinite;
+}
+.c_zongzi{
+	width:312px;
+	height:305px;
+	background:url(img/zz.png);
+	transition:all 1s;
+}
+.c_shengzi1{
+	width:218px;
+	height:180px;
+	position: absolute;
+	background:url(img/line_1.png);
+	left:10px;
+	top:120px;
+	z-index: 999;
+	cursor: pointer;
+}
+.c_shengzi2{
+	width:219px;
+	height:159px;
+	position:absolute;
+	background: url(img/line_2.png);
+	left:10px;
+	top:158px;
+}
+.c_shengzi3{
+	background: url(img/line_3.png);
+	position: absolute;
+	left:10px;
+	top:220px;
+	width:264px;
+	height:117px;
+}
+.c_shengzi4{
+	width:288px;
+	height:56px;
+	position: absolute;
+	background: url(img/line_4.png);
+	left:10px;
+	top:290px;
+}
+.c_shengzi0{
+	display: none;
+}
+.c_zongzi_out{
+	opacity: 0;
+	transform: scale(.5);
+	z-index:0;
+}
+.c_zongzirou{
+	width:288px;
+	height:206px;
+	position: absolute;
+	background:url(img/zzr_1.png);
+	background-size: 288px 206px;
+	left:50px;
+	top:50px;
+	z-index:10;
+	opacity: 0;
+	transition: all 1s;
+	transform: scale(.8);
+	transform-origin: top center;
+}
+.c_zongzirou_view_2{
+	background: url(img/zzr_2.png);
+}
+.c_zongzirou_view_3{
+	background: url(img/zzr_3.png);
+}
+.c_zongzirou_view_4{
+	background: url(img/zzr_4.png);
+}
+.c_zongzirou_view_1{
+	background: url(img/zzr_1.png);
+	transform: rotateY(180deg);
+}
+.c_zongzirou_in{
+	opacity:1;
+	transform: scale(1);
+}
+.c_zuoye{
+	width:114px;
+	height:266px;
+	position: absolute;
+	background:url(img/leaf_left.png);
+	left:0;
+	top:-30px;
+	z-index: 1;
+	opacity: 0;
+	transition: all 1s; 
+	transform-origin: left bottom;
+}
+.c_zuoye_in{
+	opacity: 1;
+	transform: rotate(-5deg);
+}
+.c_zuoye_out{
+	opacity: 0;
+	transform: rotate(-15deg);
+}
+.c_youye{
+	width:318px;
+	height:330px;
+	position: absolute;
+	background:url(img/leaf_right.png);
+	left:80px;
+	top:-60px;
+	z-index: 11;
+	opacity: 0;
+	transition: all 1s;
+	transform-origin: left bottom;
+	transform: scale(.8);
+}
+.c_youye_in{
+	opacity: 1;
+	transform: rotate(5deg) scale(.8);
+}
+.c_youye_out{
+	opacity:0;
+	transform: rotate(15deg) scale(.8);
+}
+.c_diye{
+	width:618px;
+	height:468px;
+	position: absolute;
+	background:url(img/leaf_expand.png);
+	left:-150px;
+	top:-45px;
+	z-index: 3;
+	opacity: 0;
+	transition: all 1s;
+}
+.c_diye_in{
+	opacity: 1;
+}
+.c_t1,.c_t2{
+	width:180px;
+	height:100px;
+	position: absolute;
+	left:50%;
+	top:55%;
+	margin-left:-70px;
+	margin-top:-50px;
+	z-index: 99;
+	transform-origin: center center;
+	transform:scale(.8);
+	opacity: 0;
+	transition: all 1s;
+}
+.c_t1{
+	background:url(img/t_jixiang.png);
+}
+.c_t2{
+	background:url(img/t_ruyi.png);
+}
+.c_t_in{
+	opacity:1;
+}
+.c_t_view_1{
+	transform:scale(.8) rotateY(30deg) translate(-50px,0) rotate(8deg);
+}
+.c_t_view_2{
+	transform:scale(.7) rotateY(70deg) translate(283px,-15px) rotate(-8deg);
+}
+.c_t_view_3{
+	transform:scale(.75) rotateY(49deg) translate(-94px,0) rotate(15deg);
+}
+.c_t_view_4{
+	transform:scale(.75) rotateY(49deg) translate(118px,0) rotate(-15deg);
+}
+.c_t_view_5{
+	transform:scale(.6) rotateY(50deg) translate(-196px,10px) rotate(24deg);
+}
+.c_t_view_6{
+	transform:scale(.8) rotateY(30deg) translate(58px,10px) rotate(-5deg);
+}
+.c_t_view_0{
+	display: none;
+	z-index:0;
+}
+.text{
+	position: absolute;
+	height:370px;
+	width:400px;
+	top:140px;
+	left:180px;
+	font-size:14px;
+	line-height: 20px;
+	color:#333;
+}
+.text .caption{
+	background:url(img/caption.png) no-repeat;
+	width:400px;
+	height:240px;
+	transition:all 1s;
+	animation:move .8s linear;
+}
+.text .msg,.text .from,.text .to{
+	width:400px;
+	margin-top:10px;
+	transition:all 1s .6s;
+	animation:move .8s linear;
+}
+.text .from{
+	text-align: right;
+}
+@keyframes rock{
+	0%{transform: rotate(0deg);}
+	10%{transform: rotate(3deg);}
+	20%{transform: rotate(-3deg);}
+	30%{transform: rotate(2deg);}
+	40%{transform: rotate(-2deg);}
+	50%{transform: rotate(1deg);}
+	60%{transform: rotate(-1deg);}
+	70%{transform: rotate(0deg);}
+	100%{transform: rotate(0deg);}
+}
+@keyframes move{
+	from{margin-left:40px;opacity:0;}
+	to{margin-left:0px;opacity:1;}
+}
