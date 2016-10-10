@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <meta charset="UTF-8">
+	<title>折角效果</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			list-style: none;
+			box-sizing: border-box;
+		}
+		.img-ct{
+			width:400px;
+			height:300px;
+			margin:40px auto;
+			position: relative;
+		}
+		.img-ct:before{
+			content:"";
+			position:absolute;
+			top:0;
+			right:0;
+			border:0 solid;
+			border-color: rgba(0,0,0,0.2) #fff;	
+			border-radius: 0 0 0 4px;
+			transition: all .4s ease-out;
+		}
+		.img-ct:hover:before{
+			border-bottom-width: 80px;
+			border-right-width:80px;
+		}
+		.demo{
+			width:200px;
+			height:160px;
+			background-color: #58A7A0;
+			margin:40px 500px;
+			position:relative;
+		}
+		.inner{
+			position:absolute;
+			top:0;
+			right:0;
+			width:0;
+			height:0;
+			border-left:0 solid pink;
+			border-right:0 solid white;
+			border-bottom:0 solid lightgreen;
+			border-top:0 solid purple;
+			border-radius:0 0 0 4px;
+			transition: all .4s ease-out;
+		}
+		.demo:hover .inner{
+			border-bottom-width:40px;
+			border-right-width: 40px;
+		}
+	</style>
+</head>
+<body>
+	<div class="img-ct">
+		<img src="../pics/400×300/wn1.jpg" alt="pic">
+	</div>
+
+	<div class="demo">
+		<div class="inner"></div>
+	</div>
+
+</body>
+</html>

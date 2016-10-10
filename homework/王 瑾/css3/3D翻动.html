@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>3D翻动</title>
+	<style>
+	.box{
+		perspective:800px;
+		perspective-origin:  50% 50%;
+		overflow: hidden;
+	}
+	.pagegroup{
+		width:400px;
+		height:400px;
+		margin:50px auto;
+		position:relative;
+		transform-style: preserve-3d;
+		perspective-origin: 50% 50%;
+	}
+	.page{
+		width:360px;
+		height:360px;
+		line-height: 360px;
+		text-align: center;
+		color:white;
+		background-color: black;
+		position: absolute;
+		padding: 20px;
+		font-size:150px;
+		backface-visibility: hidden;
+	}
+	#page1{
+		transform-origin: bottom;
+		transform-origin: bottom;
+		transition:transform 1s linear;
+	}
+	#page2,#page3,#page4,#page5,#page6{
+		transform-origin: bottom;
+		transition:transform 1s linear;
+		transform: rotateX(90deg);
+	}
+	button{
+		text-align: center;
+		margin:30px auto;
+	}
+	</style>
+</head>
+<body>
+<div class="box">
+	<div class="pagegroup">
+		<div class="page" id="page1">1</div>
+		<div class="page" id="page2">2</div>
+		<div class="page" id="page3">3</div>
+		<div class="page" id="page4">4</div>
+		<div class="page" id="page5">5</div>
+		<div class="page" id="page6">6</div>
+	</div>
+</div>
+<div class="open">
+	<button class="next">后翻</button>
+	<button class="pre">前翻</button>
+</div>
+<script src="../outer/jquery-3.0.0.min.js"></script>
+<script>
+    var curIdx= 1;
+	$(".next").on("click",function(){
+		if(curIdx===6) return;
+		    curPage = $("#page"+curIdx);
+	    curPage.css("transform","rotateX(-90deg)");
+	    curIdx++;
+	    var nextPage = $("#page"+curIdx);
+	    nextPage.css("transform","rotateX(0deg)");
+	});
+	$(".pre").on("click",function(){
+       if(curIdx===1) return;
+       curpage = $("#page"+curIdx);
+       curpage.css("transform","rotateX(90deg)");
+       curIdx--;
+       prepage = $("#page"+curIdx);
+       	prepage.css("transform","rotateX(0deg)");
+	});
+</script>
+</body>
+</html>

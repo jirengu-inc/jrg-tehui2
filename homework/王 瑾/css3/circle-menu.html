@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>css3-径向菜单</title>
+	<style type="text/css">
+	    *{
+	    	padding:0;
+	    	margin:0;
+	    }
+	    body{
+	    	background-color: #292a38;
+	    	font-family: "Microsoft Yahei";
+	    }
+	    .nav-wrap{
+	    	position: relative;
+		  	width: 200px;
+			height: 200px;
+			margin: 50px auto;
+			border: 2px dotted #4e5061;
+			border-radius: 50%;
+	    }
+	    .nav-wrap .main-nav{
+	    	position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%,-50%);
+			width: 40px;
+			height: 40px;
+			line-height: 40px;
+			font-size: 12px;
+			text-align: center;
+			text-decoration: none;
+			color: #fff;
+			border-radius: 3px;
+			text-shadow: 1px 1px 0px #000;
+			background: #15a5f3;
+			cursor: pointer;
+	    }
+	    .nav-wrap nav{
+	    	position: absolute;
+			width: 100%;
+			height: 100%;
+			transform: scale(0);
+			transition: all 0.5s ease-out;
+			opacity: 0;
+	    }
+	    .nav-wrap.active nav {
+			transform: scale(1);
+			opacity: 1;
+		}
+	    .nav-wrap nav > a{
+			position: absolute;
+			width: 30px;
+			height: 30px;
+			background: #f44283;
+			text-align: center;
+			line-height: 30px;
+			text-decoration: none;
+			color: #fff;
+			border-radius: 3px;
+			text-shadow: 1px 1px 0px #000;
+			transform: translate(-50%,-50%);
+		}
+	</style>
+</head>
+<body>
+<div class="nav-wrap">
+	<nav>
+		<a class="nav-item">1</a>
+		<a class="nav-item">2</a>
+		<a class="nav-item">3</a>
+		<a class="nav-item">4</a>
+		<a class="nav-item">5</a>
+		<a class="nav-item">6</a>
+		<a class="nav-item">7</a>
+		<a class="nav-item">8</a>
+	</nav>
+	<a class="main-nav">点我</a>
+</div>
+<script src="../outer/jquery-3.0.0.min.js"></script>
+<script>
+	(function(){
+		var isLocated = false;
+		$(".nav-wrap").on("click",".main-nav",function(e){
+			e.preventDefault();
+			var me = $(this),
+			    navWrap = me.parents(".nav-wrap"),
+			    navs = navWrap.find("nav a");
+
+			    if(!navWrap.hasClass("active") && !isLocated){
+			    	var width = navWrap.width(),
+			    	    radius = width/2,
+			    	    startAngle = 0,
+			    	    endAngle = 360;
+			    	    total = navs.length,
+			    	    gap = (endAngle-startAngle)/total,
+			    	    radian = Math.PI/180;
+			        $.each(navs,function(index,item){
+			        	var myAngle = (startAngle+gap*index)*radian,
+			        	   myX = radius + radius*Math.cos(myAngle),
+			        	   myY = radius + radius*Math.sin(myAngle);
+			            $(this).css({
+			            	"left":myX,
+			            	"top":myY
+			            });
+			        });
+
+			        isLocated = true;
+			    }
+			    navWrap.toggleClass("active");
+		});
+	})();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title>正反面翻转</title>
+	<style type="text/css">
+		*{
+			padding:0;
+			margin:0;
+			box-sizing: border-box;
+		}
+		.container{
+			perspective: 800px;
+			margin:80px auto;
+		}
+		.container,.front,.back{
+			width:320px;
+			text-align: center;
+		}
+		.card{
+			transform-style: preserve-3d;
+			transition:transform .6s linear;
+			position:relative;
+			border:1px solid #ccc;
+			height:350px;
+			width:100%;
+		}
+		.front,.back{
+			backface-visibility: hidden;
+			position: absolute;
+			top:0;
+			left:0;
+		}
+		.front{
+			z-index: 2; /* 此时背面被遮挡所以未展示 */
+			padding-top: 15px;
+		}
+		.back{
+			transform: rotateY(180deg);
+		}
+		.container:hover .card{
+			transform: rotateY(180deg);
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="card">
+			<div class="front">
+				<img src="pics/400×300/wn2.jpg" alt="pic" />
+				<p>我是正面的介绍</p>
+			</div>
+			<div class="back">
+				<p class="desc">我是反面的描述</p>
+			</div>
+		</div>
+	</div>
+<script src="outer/jquery-3.0.0.min.js"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>
