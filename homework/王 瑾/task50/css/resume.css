@@ -119,8 +119,8 @@ html,body,.page2{
 	transform: translateX(-50%);
 }
 .carousel{
-	width:900px;
-	height:490px;
+	width:980px;
+	height:520px;
 	border:1px solid #758479;
 	position:absolute;
 	left:50%;
@@ -139,8 +139,8 @@ html,body,.page2{
 }
 .carousel ul li{
 	font-family: "Microsoft Yahei";
-	width:900px;
-	height:490px;
+	width:980px;
+	height:520px;
 	background-color:#FCFCFC;
 	padding:30px;
 	line-height:1.8em;
