@@ -151,7 +151,7 @@ html,body,.page2{
 	margin-bottom:15px;
 }
 .carousel ul li p{
-	margin-bottom:25px;
+	margin-bottom:15px;
 }
 @keyframes shrink{
 	25%{top:-40px;}
