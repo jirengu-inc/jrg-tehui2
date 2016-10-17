@@ -30,7 +30,7 @@
   .bdcolorbox{
     border-color:red;
   }
-</style>          
+</style>
 </head>
 <body>
   <h3>注册</h3>
@@ -124,7 +124,7 @@
           },
           success:function(res){
              if(res.status==1){
-                var reg = /^[0-9A-Za-z]{3,10}$/;
+                var reg = /^\w{3,10}$/;
                 if(reg.test(username.value)){
                   username_hint.innerText="用户名可用";
                   username.style.border="1px solid lightGrey";
@@ -172,9 +172,8 @@
           pwd_hint2.innerText="两次密码不一致";
         }
       }
-    }  
+    }
 
   </script>
-    
 </body>
 </html>

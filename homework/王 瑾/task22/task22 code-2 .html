@@ -32,9 +32,11 @@
 
    btnstart.addEventListener("click",function(){
      ct.insertBefore(addEle(inputct.value),lists[0]);
+     inputct.value = "";
    },false);
    btnend.addEventListener("click",function(){
     ct.appendChild(addEle(inputct.value));
+    inputct.value = "";
    },false)
    	for(var i=0;i<lists.length;i++){
    	lists[i].addEventListener("click",function(){
