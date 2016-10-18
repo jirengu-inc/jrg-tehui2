@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<title>无限懒加载加瀑布流加AJAX</title>
+	<meta name="discription" content="">
+	<meta name="keywords" content="">
+	<style type="text/css">
+	html,body,div,ul,li,p{
+		margin:0;
+		padding:0;
+		box-sizing:border-box;
+	}
+	ul,li{list-style-type:none;}
+	.swap{
+		width:900px;
+		margin:0 auto;
+	}
+	.clearfix:after{
+		content:'';
+		display:block;
+		clear:both;
+	}
+	#ct-pic{
+		position:relative;
+	}
+	#ct-pic .item{
+		position:absolute;
+		padding:0 0 10px 0;
+		width:280px;
+		margin:10px;
+		border: 1px solid #ccc;
+		background-color:#fff;
+		opacity:0;
+		transition:all .8s;
+	}
+	#ct-pic .item img{
+		margin:10px;
+		width:260px;
+	}
+	#ct-pic .item .header{
+		height:25px;
+		margin:0 12px;
+		border-bottom:1px solid #DBDBDB;
+	}
+	#ct-pic .desp{
+		font-size: 12px;
+		line-height: 1.8;
+	    margin: 10px 15px 0;
+	    color: #777371;
+	}
+	 #load{
+	 	visibility:hidden;
+	 	height:20px;
+	 }
+	 .hide{
+	 	display: none;
+	 }
+	</style>
+</head>
+<body>
+<div class="swap">
+	<div class="ct-waterfall">
+		<ul id="ct-pic" clsaa="clearfix">
+			<li class="item"></li>
+		</ul>
+		<div id="load"></div>
+	</div>
+</div>
+<script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript">
+	checkShow();
+	var clock;
+	$(window).on("scroll",function(){
+		if(clock) clearTimeout(clock);
+		clock=setTimeout(function(){
+			checkShow();
+		},100);
+	})
+//当load滚动出现在页面上时，向后端发送ajax请求
+	function checkShow(){
+		 if(isShow($('#load'))){
+		 	loadAndPlace();
+		 }
+	}
+	function isShow($el){
+		var scrollH=$(window).scrollTop(),
+			winH=$(window).height(),
+			top=$el.offset().top;
+		if(top<scrollH+winH){
+			return true;
+		}else{
+			return false;
+		}
+	}
+//ajax请求数据
+	var curPage=1,
+		len=9;
+	function loadAndPlace(){
+		$.ajax({
+			url:'http://platform.sina.com.cn/slide/album_tech',
+			dataType:'jsonp',
+			jsonp:'jsoncallback',
+			data:{
+				app_key:'1271687855',
+				num:len,
+				page:curPage
+			},
+			success:function(ret){
+				if(ret && ret.status && ret.status.code === "0"){
+					console.log(ret.data);
+					place(ret.data);
+					curPage++;
+				}else{
+					console.log("get error data");
+				}
+			}
+		});
+	}
+	function place(nodeList){
+		var $nodes=renderData(nodeList);
+		var deferds=[];
+		$nodes.find('img').each(function(){
+			var defer=$.Deferred();
+			$(this).load(function(){
+				defer.resolve();
+			});
+			deferds.push(defer);
+		});
+		$.when.apply(null,deferds).done(function(){
+			console.log('new images all loaded...');
+			waterfall($nodes);
+		});	
+	}
+//瀑布流
+	var colSumHeight=[],
+		nodeWidth=$(".item").outerWidth(true),
+		colNum=parseInt($('#ct-pic').width()/nodeWidth);
+	for(var i=0;i<colNum;i++){
+		colSumHeight.push(0);
+	}
+	function waterfall($nodes){
+		$nodes.each(function(){
+			var $cur = $(this);
+			var idx=0;
+			var minHeight=colSumHeight[0];
+			for(var i=0;i<colSumHeight.length;i++){
+				if(minHeight>colSumHeight[i]){
+					minHeight=colSumHeight[i];
+					idx=i;
+				}
+			}
+			$cur.css({
+				left:nodeWidth*idx,
+				top:minHeight,
+				opacity:1 
+			});
+			colSumHeight[idx]=$cur.outerHeight(true)+colSumHeight[idx];
+			$("#ct-pic").height(Math.max.apply(null,colSumHeight));
+		});
+	}
+//将后台返回的数据摆放到页面上，
+	function renderData(items){
+		var tpl='',
+			$nodes;
+		for(var i=0;i<items.length;i++){
+			tpl+='<li class="item">';
+			tpl+='<a href="'+items[i].url+'" class="link"><img src="'+items[i].img_url+'"alt=""></a>';
+			tpl+='<h4 class="header">'+items[i].short_name+'</h4>';
+			tpl+='<p class="desp">'+items[i].short_intro+'</p>';
+			tpl+='</li>';
+		}
+		$nodes=$(tpl);//tp1位dom对象，转化为jquery对象
+		$("#ct-pic").append($nodes);
+		return $nodes;
+	}
+</script>
+</body>
+</html>
