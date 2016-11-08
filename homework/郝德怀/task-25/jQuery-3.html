@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery-添加商品</title>
+<style>
+	ul,li{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	a{
+		text-decoration: none;
+	}
+	.goods_wrap{
+		width: 680px;
+		margin: 10px auto;
+	}
+	.title{
+		font-size: 20px;
+		font-family: '微软雅黑';
+	}
+	.goods_list{
+		border-radius: 5px;
+	}
+	.goods_list:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	.goods_item{
+		position: relative;
+		width: 230px;
+		height: 280px;
+		border: 1px solid grey;
+		margin: 5px;
+		float: left;
+
+	}
+	
+	.cover{
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		background: rgba(0,0,0,0.3);
+		display: none;
+	}
+	
+	.goods_item:hover .cover{
+		display: block;
+	}
+
+	.buy_btn{
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%,-50%);
+		border: 1px solid #c81623;
+		border-radius: 3px;
+		padding: 10px 15px;
+		text-align: center;
+		cursor: pointer;
+		color: red;
+		background-color: #fff;	
+	}
+	
+	.panel{
+		width: 750px;
+		height: 600px;
+	}
+
+	.goods_name{
+		font-size: 10px;
+	}
+	.goods_price{
+		color: red;
+		font-family: '微软雅黑'；
+	}
+	.btn{
+		width: 60px;
+		height: 30px;
+		border-radius: 3px;
+		text-align: center;
+		line-height: 30px;
+	}
+</style>	
+</head>
+<body>
+	
+	<div class="goods_wrap">
+		<div class="title">珠宝商品</div>
+		<ul>
+			<li class="panel">
+				<ul class="goods_list">
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="#">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+					<li class="goods_item">
+						<div class="cover">
+							<a href="javascript:void(0)" class="buy_btn">立即抢购</a>
+						</div>
+						<a href="">
+							<img src="https://g-search3.alicdn.com/img/bao/uploaded/i4/i3/TB1q0SEOXXXXXcAXpXXXXXXXXXX_!!0-item_pic.jpg_230x230.jpg_.webp" alt="">
+							<div class="goods_name">藏美千足金和田玉金镶玉路路通吊坠</div>
+							<div class="goods_price">￥1699.00</div>
+						</a>
+					</li>
+				</ul>
+			</li>
+		</ul>
+		<button class="btn">添加</button>
+	</div>
+	
+
+<script src="http://apps.bdimg.com/libs/jquery/1.9.1/jquery.js"></script>
+<script>
+
+// “添加”按钮
+	var products = [
+		{
+			img:'http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg',
+			name:'后添加的',
+			price:'￥9999'
+		},
+
+		{
+			img:'http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg',
+			name:'后添加的',
+			price:'￥9999'
+		},
+
+		{
+			img:'http://img13.360buyimg.com/N3/jfs/t2461/336/2166939566/101221/3af27699/56c426a5N9b6673f4.jpg',
+			name:'后添加的',
+			price:'￥9999'
+		}
+
+	]
+
+	function addMore(goods){
+		var addcontent = '';
+			addcontent += '<li class="goods_item"><div class="cover"><a class="buy_btn" href="javascript:void(0)">立即购买</a></div><a href="#">';
+			addcontent += '<img src="'+goods.img+'" alt="">';
+			addcontent += '<div class="goods_name">'+goods.name+'</div>';
+			addcontent += '<div class="goods_price">'+goods.price+'</div>';
+			addcontent += '</a></li>';
+		return addcontent;
+	}
+
+	$('.btn').on('click',function(){
+		$.each(products,function(i,goods){
+			var addcontent = addMore(goods);
+			$('.goods_list').append(addcontent);	
+		});
+	});
+
+// “立即抢购”浮现-可不用（对后添加的商品没有作用，改用css hover）
+	// $('.goods_item').on('mouseenter',function(){
+	// 	$(this).addClass('hover');
+	// });
+
+	//$('.goods_item').on('mouseleave',function(){
+	//$(this).removeClass('hover');
+	// });
+</script>	
+</body>
+</html>
