@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-2</title>
+<style>
+.btn1{
+	width: 100px;
+	height: 50px;
+}
+.box2{
+	position: fixed;
+	top: 0;
+	right: 100px;
+	width: 100px;
+	height: 100px;
+	background-color:red; 
+
+}
+.box3{
+	width: 150px;
+	height: 150px;
+	border: 1px solid #000;
+}
+</style>
+</head>
+<body>
+	<fieldset>
+		<legend>1.当点击$btn 时，让 $btn 的背景色变为红色再变为蓝色</legend>
+		<button class="btn1">点击变色</button>
+	</fieldset>
+	<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<script>
+	$('.btn1').on('click',function () {
+		$('.btn1').css('background-color','red');
+		setTimeout(function(){
+			$('.btn1').css('background-color','blue');
+		},1000)
+	})
+	</script>
+	<fieldset>
+		<legend>2.当窗口滚动时，获取垂直滚动距离</legend>
+		请看右上角，可能需要把窗口调小一点
+		<div class="box2"></div>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+		<script>
+		
+		$('.box2').text('距离顶部：'+$(window).scrollTop()+'px')
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>3.当鼠标放置到$div上，把$div背景色改为红色，移出鼠标背景色变为白色</legend>
+		<div class="box3">请移动鼠标</div>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+		<script>
+			$('.box3').on('mouseenter',function(){
+            	$('.box3').css('background-color','red');
+         }).on('mouseleave',function(){
+         	 $('.box3').css('background-color','white');
+         })
+		
+		</script>
+	</fieldset>
+	<fieldset>
+		<legend>4.当鼠标激活 input 输入框时让输入框边框变为蓝色，当输入框内容改变时把输入框里的文字小写变为大写，当输入框失去焦点时去掉边框蓝色，控制台展示输入框里的文字</legend>
+		<input class="input4" type="text" placeholder="请键入文字">
+		<script src='http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js'></script>
+		<script>
+		$('.input4').on('focus',function(){
+			$('.input4').css('outlineColor','blue');
+		})
+		$('.input4').on('keyup',function(){
+			$('.input4').val($('.input4').val().toUpperCase());
+		})
+		$('.input4').on('blur',function(){
+			console.log($('.input4').val());
+		})
+		</script> 
+	</fieldset>
+	<fieldset>
+		<legend>5.当选择 select 后，获取用户选择的内容</legend>
+		<select class="cars">
+			<option >Audi</option>
+			<option >Benz</option>
+			<option >BMW</option>
+			<option >DasAuto</option>
+			<option >Toyota</option>
+		</select>
+		<p class="p5">Audi</p>
+		<script src='http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js'></script>
+		<script>
+		$('.cars').on('change',function(){
+			$('.p5').text($('.cars').val());
+		})
+		</script>
+	</fieldset>
+</body>
+</html>

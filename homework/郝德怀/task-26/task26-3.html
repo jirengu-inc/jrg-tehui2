@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>task26-3</title>
+<style>
+body,ul{
+	margin: 0;
+	padding: 0;
+}
+li{
+	border: 1px solid gray;
+	border-radius: 5px;
+	margin: 10px;
+	height: 50px;
+	line-height: 50px;
+	color: red;
+	text-align: center;
+}
+#loadMore{
+	margin: 10px auto;
+	display: block;
+	height: 30px;
+	background: transparent;
+	border: 1px solid red;
+	font-size: 16px;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.hover{
+	background: blue;
+}
+</style>
+</head>
+<body>
+	<ul id="content">
+		<li>内容1</li>
+		<li>内容2</li>
+	</ul>
+	<button id="loadMore">点击加载</button>
+
+	<script  src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.js"></script>
+	<script>
+	$('#content>li').on('mouseenter',function () {
+		$(this).addClass('hover');
+	}).on('mouseleave',function(){
+		$(this).removeClass('hover');
+	})
+
+	var btn=$('#loadMore');
+	var ct=$('#content');
+	var cur=2;
+	var isLoading=false;
+
+	btn.on('click',function(e){
+		e.preventDefault();
+		if (isLoading) {
+			return;
+		}
+		isLoading=true;
+		btn.innerHTML='加载中'
+		$.ajax({
+			url:'date.php',
+			type:'get',
+			dataType:'json',
+			data:{
+				start:cur,
+				len:2
+			},
+			success:function(json){
+				onSuccess(json);
+			},
+			error:function(){
+				onError();
+			}
+		});
+		
+	})
+	function onSuccess(json){
+		isLoading=false;
+		btn.innerHTML='加载更多';
+		if (json.status==1) {
+			var arr=json.data;
+			for (var i=0;i<arr.length;i++){
+				ct.append('<li>'+arr[i]+'</li>')
+			}
+			cur +=2;
+		} else{
+			alert('加载失败');
+		}
+	}
+	function onError(){
+		isLoading=false;
+		btn.innerHTML='加载更多';
+		alert('请稍后再试');
+	}
+	</script>
+</body>
+</html>

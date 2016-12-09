@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>jQuery常用方法</title>
+	<style>
+	.box1{
+		width: 100px;
+		height: 100px;
+		border: 1px solid #000;
+	}
+
+	*{
+		font-family: 微软雅黑;
+	}
+
+	.backgroundcolor{
+		background-color:red;
+	}
+
+	.box10{
+		padding: 10px;
+		margin: 10px;
+		height:200px;
+		width: 200px;
+		border: 20px solid red;
+		background-color:green;
+	}
+	.box11{
+		height: 200px;
+		width: 200px;
+		background-color:yellow;
+		position: fixed;
+		right: 50px;
+		top: 50px;
+	}
+	.box12{
+		width: 150px;
+		height: 150px;
+		background-color:blue;
+		color: white;
+	}
+	</style>
+</head>
+<body>
+	<fieldset class="fieldset">
+		<legend class="title">1.给元素 $node 添加 class，给元素 $noed 删除 class</legend>
+		<div class="box1"></div>
+		<br>
+		<button class="addColor">添加背景色</button>
+		<button class="removeColor">移除背景色</button>
+
+
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.addColor').on('click',function(){
+			$('.box1').addClass('backgroundcolor');
+		})
+
+			$('.removeColor').on('click',function(){
+			$('.box1').removeClass('backgroundcolor');
+		})
+		</script>
+	</fieldset>
+	
+	<fieldset class="fieldset">
+		<legend class="title">2.展示元素$node, 隐藏元素$node</legend>
+		<img class="img1"src="http://img6.bdstatic.com/img/image/smallpic/fengjing1201.jpg" alt="一张图片">
+		<br>
+		<button class="hide">隐藏</button>
+		<button class="show">出现</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.hide').on('click',function(){
+			$('.img1').hide();
+		})
+
+			$('.show').on('click',function(){
+			$('.img1').show();
+		})
+
+		</script>
+	</fieldset>
+
+
+	<fieldset class="fieldset">
+		<legend class="title">3.获取元素$node 的 属性: id、src、title， 修改以上属性</legend>
+		<img class="img2" id="img2" src="http://img6.bdstatic.com/img/image/smallpic/chongwu1201.jpeg" title="宠物">
+		<br>
+		<form action="#">
+		修改id：<input class="newid" type="text" placeholder="输入新id">
+		修改src: <input class="newsrc" type="text" placeholder="输入新src">
+		修改title：<input class="newtitle" type="text" placeholder="输入新title">
+		</form>
+		<p class="property"></p>
+		<button class="get-property">获取属性</button>
+		<button class="modify-property">修改属性</button>
+
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+
+		<script>
+			$('.get-property').on('click',function(){
+			var idInfo=$('.img2').attr('id');
+			var srcInfo=$('.img2').attr('src');
+			var titleInfo=$('.img2').attr('title');
+
+			$('.property').html(
+				'当前id：'+idInfo+'<br>'+
+				'当前src：'+srcInfo+'<br>'+
+				'当前title：'+titleInfo+'<br>'			
+			)
+		})
+		
+		$('.modify-property').on('click',function(){
+			var newid = $('.newid').val();
+			var newsrc = $('.newsrc').val();
+			var newtitle = $('.newtitle').val();
+			
+			$('.img2').attr('id',newid);
+			$('.img2').attr('src',newsrc);
+			$('.img2').attr('title',newtitle);
+
+		})
+		</script>
+	</fieldset>
+
+	<fieldset class="fieldset">
+		<legend class="title">4.给$node 添加自定义属性data-src</legend>
+		<div class="ct4">
+		<p class="data-src">点击查看新属性</p>
+		</div>
+
+		<button class="diyproperty">添加</button>
+		<p class="propertydisplay"></p>
+
+
+
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.diyproperty').on('click',function(){
+				$('.data-src').attr('data-src','hello world');
+				$('.propertydisplay').text($('.ct4').html())
+			})
+		</script>
+	</fieldset>
+
+	<fieldset class="fieldset">
+		<legend class="title">5.在$ct 内部最开头、最末尾添加元素$node,删除$node</legend>
+		<ul class="ct">
+			<li>这是内容</li>
+		</ul>
+		<button class="addfirst">开头添加</button>
+		<button class="addlast">末尾添加</button>
+		<button class="clear">清空全部</button>
+		<button class="remove">删除一行</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script src="jquery-3.1.1.min.js"></script>
+		<script>
+			$('.addfirst').on('click',function(){
+				var ct=$('.ct');
+				ct.prepend('<li>我在上边</li>');
+				return ct;
+			})
+
+			$('.addlast').on('click',function(){
+				var ct=$('.ct');
+				ct.append('<li>我在下边</li>'); 
+				return ct;
+			})
+
+			$('.clear').on('click',function(){
+				var ct=$('.ct');
+				ct.empty();
+				return ct;
+			})
+
+			$('.remove').on('click',function(){
+				var ct=$('.ct');
+				$('.ct li:last').remove();
+				return ct;
+			})
+
+		</script>
+		
+	</fieldset>
+	
+
+	
+	<fieldset class="fieldset">
+		<legend class="title">9.在$ct 里设置 html &lt;div class="btn"&gt;  &lt;/div &gt; </legend>
+		<div class="ct9">
+			<p>即将被更改的html</p>
+		</div>
+		
+		
+		<button class="change">更改html</button>
+
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.change').on('click',function(){
+				$('.ct9').html('<div class="btn">更改后的html</div>')
+			})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">10、获取、设置$node 的宽度、高度</legend>
+		<div class="box10">盒子</div>
+
+		<p class="sizeresult"></p>
+		输入新的宽高：<input class="newWidth" type="text" placeholder="宽"><input class="newHeight" type="text" placeholder="高">
+		<button class="inputsize">变</button>
+		<br>
+		<button class="getsize">获取盒子尺寸</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$('.inputsize').on('click',function(){
+			$('.box10').width($('.newWidth').val());
+			$('.box10').height($('.newHeight').val());
+		})
+		$('.getsize').on('click',function(){
+			var width=$('.box10').width();
+			var innerWidth=$('.box10').innerWidth();
+			var outerWidth=$('.box10').outerWidth();
+			var outerWidthTrue=$('.box10').outerWidth(true);
+
+			var height=$('.box10').height();
+			var innerHeight=$('.box10').innerHeight();
+			var outerHeight=$('.box10').outerHeight();
+			var outerHeightTrue=$('.box10').outerHeight(true);
+
+			$('.sizeresult').html('不含内边距的宽度是：'+width+'<br>'+'含内边距的宽度是：'+innerWidth+'<br>'+'含边框的宽度是：'+outerWidth+'<br>'+'含外边距的宽度是：'+outerWidthTrue+'<br>'+'<br>'+'不含内边距的高度是：'+height+'<br>'+'含内边距的高度是：'+innerHeight+'<br>'+'含边框的高度是：'+outerHeight+'<br>'+'含外边距的高度是：'+outerHeightTrue+'<br>'
+
+			)
+		})
+
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">11、获取窗口滚动条垂直滚动距离</legend>
+		<p>看右上角</p>
+		<div class="box11"></div>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$(window).on('scroll',function(){
+			$('.box11').text('距离顶部：'+$(window).scrollTop()+'px')
+		})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">12、获取$node 到根节点水平、垂直偏移距离</legend>
+			<div class="box12"></div>点击蓝块
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.box12').on('click',function(){
+				var x=$('.box12').offset();
+				$('.box12').html('距左：'+x.left+'px'+'<br>'+'距顶：'+x.top+'px')
+			})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">13、修改$node 的样式，字体颜色设置红色，字体大小设置14px</legend>
+			<p class="p13">点我变换样式</p>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.p13').on('click',function(){
+				$('.p13').css({'color':'red','font-size':'14px'})
+			})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">14、遍历节点，把每个节点里面的文本内容重复一遍</legend>
+			<ul class="ct14">
+				<li>第一个</li>
+				<li>第二个</li>
+				<li>第三个</li>
+			</ul>
+			<p class="p14"></p>
+			<button class="btn14">遍历文本</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.btn14').on('click',function(){
+				$('.ct14 li').each(function(i){
+					$('.p14').append(i+':'+$(this).text()+'<br>');
+					
+			})
+		  })
+				
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">15、从$ct 里查找 class 为 .item的子元素</legend>
+		
+		<ul class="ct15">
+			<li >我是li</li>
+			<li class="item15">我是item</li>
+			<li>我是li</li>
+		</ul>
+		<button class="btn15">点亮item</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+			$('.btn15').on('click',function(){
+				$('.ct15').find('.item15').css('color','red');
+			})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">16、获取$ct 里面的所有孩子</legend>
+		<ul class="ct16">
+			<li>我是1</li>
+			<li>我是2</li>
+			<li>我是3</li>
+			<li>我是4</li>
+			<li>我是5</li>
+		</ul>
+		<button class="btn16">点亮子元素</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$('.btn16').on('click',function(){
+			$('.ct16').children().css('color','red');
+		})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">17、对于$node，向上找到 class 为’.ct’的父亲，在从该父亲找到’.panel’的孩子</legend>
+		<div class="ct17">
+			<p class="p17">点我找panel</p>
+			<p class="panel">我是panel</p>
+		</div>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$('.p17').on('click',function(){
+			$('.p17').parent().find('.panel').css('color','red');
+		})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">18、获取选择元素的数量</legend>
+			<div class="ct18">
+				<p>这里是p</p>
+				<p>这里是p</p>
+				<p>这里是p</p>
+				<ul>
+					<li>这里是li</li>
+					<li>这里是li</li>
+				</ul>
+			</div>
+			<p class="p18"></p>
+			<button class="btn18">统计元素</button>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$('.btn18').on('click',function(){
+
+			var num1=$('.ct18').find('p').length
+			var num2=$('.ct18').find('li').length
+			$('.p18').text('元素p：'+num1+'个，元素li：'+num2+'个')
+		})
+		</script>
+	</fieldset>
+	<fieldset class="fieldset">
+		<legend class="title">19、获取当前元素在兄弟中的排行</legend>
+		<ul class="ct19">
+			<li>我是老几</li>
+			<li>我是老几</li>
+			<li>我是老几</li>
+			<li>我是老几</li>
+			<li>我是老几</li>
+		</ul>
+		点击获取排行：<p class="p19"></p>
+		<script src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.js"></script>
+		<script>
+		$('.ct19>li').on('click',function(){
+			$('.p19').text($(this).index()+1)
+		})
+		</script>
+	</fieldset>
+	
+
+	
+	
+
+
+</body>
+</html>
